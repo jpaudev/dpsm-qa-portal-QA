@@ -1,5 +1,6 @@
 import Layout from '../../components/layout'
 import PersonalInfo from '../../components/faculty/basic-info/personal-info'
+import Education from '../../components/faculty/basic-info/education'
 
 function Dashboard() {
     return (
@@ -14,8 +15,8 @@ function Dashboard() {
             </nav>
             <div className="tab-content" id="nav-tabContent">
             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab"><PersonalInfo /></div>
-            <div className="tab-pane fade" id="emp-history" role="tabpanel" aria-labelledby="emp-history-tab">.1..</div>
-            <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">..2.</div>
+            <div className="tab-pane fade" id="emp-history" role="tabpanel" aria-labelledby="emp-history-tab"></div>
+            <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab"><Education /></div>
             <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">..2.</div>
             </div>
         </Layout>

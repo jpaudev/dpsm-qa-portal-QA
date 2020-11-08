@@ -2,6 +2,7 @@ import Link from 'next/link'
 
 function PersonalInfo() {
     return (
+        <div>
             <form action="">
                 <div class = "form-row">
                     <div class = "form-group col-md-4">
@@ -82,7 +83,8 @@ function PersonalInfo() {
                         <input class = "form-control" type = "text" name = "EmergencyContactNumber" value = "Input emergency contact number" required />
                     </div>
                 </div>
-            </form>     
+            </form>
+        </div>     
     )
   }
   
