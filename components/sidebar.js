@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 function Sidebar() {
     return (
-            <div className="col-3">
+            <div className="col-2">
                 <div className="nav flex-column list-group">
                     <Link href="/faculty"><a>Faculty</a></Link>
                     <Link href="/faculty/basic-info"><a>Basic Information</a></Link>
