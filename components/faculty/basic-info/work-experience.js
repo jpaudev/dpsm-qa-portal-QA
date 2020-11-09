@@ -3,7 +3,7 @@ import Link from 'next/link'
 function WorkExperience(){
 	return(
 	<div>
-			<table class = "table table-striped table-sm">
+			<table className = "table table-striped table-sm">
 			<tbody>
 				<tr>
 					<th>Employer</th>
@@ -50,55 +50,55 @@ function WorkExperience(){
 <div>
 	<form>
 		<hr />
-		<div class = "form-row">
-			<div class = "col-auto">
-				<button type = "button" class = "btn btn-primary" id = "AddWorkExperience"> Add Work Experience </button>
+		<div className = "form-row">
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-primary" id = "AddWorkExperience"> Add Work Experience </button>
 			</div>
-			<div class = "col-auto">
-				<button type = "button" class = "btn btn-danger" id = "RemoveWorkExperience"> Remove a Row </button>
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-danger" id = "RemoveWorkExperience"> Remove a Row </button>
 			</div>
 		</div>
 		<br />
-		<div class = "form-row">
-			<div class = "form-group col-md-2">
-				<label for = "EmployerWorkExperience[]"> Employer </label>
-				<input class = "form-control" type = "text" name = "EmployerWorkExperience[]" placeholder = "Input name of employer" />
+		<div className = "form-row">
+			<div className = "form-group col-md-2">
+				<label htmlFor = "EmployerWorkExperience[]"> Employer </label>
+				<input className = "form-control" type = "text" name = "EmployerWorkExperience[]" placeholder = "Input name of employer" />
 			</div>
-			<div class = "form-group col-md-4">
-				<label for = "AddressWorkExperience[]"> Address </label>
-				<input class = "form-control" type = "text" name = "AddressWorkExperience[]" placeholder = "Input address of employer" />
+			<div className = "form-group col-md-4">
+				<label htmlFor = "AddressWorkExperience[]"> Address </label>
+				<input className = "form-control" type = "text" name = "AddressWorkExperience[]" placeholder = "Input address of employer" />
 			</div>
-			<div class = "form-group col-md-2">
-				<label for = "PositionWorkExperience[]"> Title/Position </label>
-				<input class = "form-control" type = "text" name = "PositionWorkExperience[]" placeholder = "Input position" />
+			<div className = "form-group col-md-2">
+				<label htmlFor = "PositionWorkExperience[]"> Title/Position </label>
+				<input className = "form-control" type = "text" name = "PositionWorkExperience[]" placeholder = "Input position" />
 			</div>
-			<div class = "form-group col-md-2">
-				<label for = "ContactNumberWorkExperience[]"> Contact Number </label>
-				<input class = "form-control" type = "text" name = "ContactNumberWorkExperience[]" placeholder = "Input contact number" />
+			<div className = "form-group col-md-2">
+				<label htmlFor = "ContactNumberWorkExperience[]"> Contact Number </label>
+				<input className = "form-control" type = "text" name = "ContactNumberWorkExperience[]" placeholder = "Input contact number" />
 			</div>
-			<div class = "form-group col-md-2">
-				<label for = "SupervisorWorkExperience[]"> Supervisor </label>
-				<input class = "form-control" type = "text" name = "SupervisorWorkExperience[]" placeholder = "Input name of supervisor" />
+			<div className = "form-group col-md-2">
+				<label htmlFor = "SupervisorWorkExperience[]"> Supervisor </label>
+				<input className = "form-control" type = "text" name = "SupervisorWorkExperience[]" placeholder = "Input name of supervisor" />
 			</div>
 		</div>
-		<div class = "form-row">
-			<div class = "form-group col-md-2">
-					<label for = "StartDateWorkExperience[]"> Start Date </label>
-					<input type = "date" class = "form-control" name = "StartDateWorkExperience[]" />
+		<div className = "form-row">
+			<div className = "form-group col-md-2">
+					<label htmlFor = "StartDateWorkExperience[]"> Start Date </label>
+					<input type = "date" className = "form-control" name = "StartDateWorkExperience[]" />
 				</div>
-				<div class = "form-group col-md-2">
-					<label for = "EndDateWorkExperience[]"> End Date </label>
-					<input type = "date" class = "form-control" name = "EndDateWorkExperience[]" />
+				<div className = "form-group col-md-2">
+					<label htmlFor = "EndDateWorkExperience[]"> End Date </label>
+					<input type = "date" className = "form-control" name = "EndDateWorkExperience[]" />
 			</div>
 		</div>
-		<div class = "form-group">
-			<label for = "DescriptionWorkExperience[]"> Description </label>
-			<input class = "form-control" type = "textarea" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+		<div className = "form-group">
+			<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
+			<input className = "form-control" type = "textarea" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
 		</div>
 		<div id = "WorkExperience">
 		</div>
 		<br />
-		<button type = "submit" class = "btn btn-primary"> Submit </button>
+		<button type = "submit" className = "btn btn-primary"> Submit </button>
 		<hr />
 		
 	</form>
