@@ -4,7 +4,7 @@ function Publication(){
 	return(
 		<div>
 			<div>
-	<table class = "table table-striped table-sm">
+	<table className = "table table-striped table-sm">
 		<tbody>
 			<tr>
 				<th>Publication</th>
@@ -33,34 +33,34 @@ function Publication(){
 	<form>
 		<h5> Publications </h5>
 		<hr />
-		<div class = "form-row">
-			<div class = "col-auto">
-				<button type = "button" class = "btn btn-primary" id = "AddPublication"> Add Publication </button>
+		<div className = "form-row">
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-primary" id = "AddPublication"> Add Publication </button>
 			</div>
-			<div class = "col-auto">
-				<button type = "button" class = "btn btn-danger" id = "RemovePublication"> Remove a Row </button>
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-danger" id = "RemovePublication"> Remove a Row </button>
 			</div>
 		</div>
 		<br />
-		<div class = "form-row">
-			<div class = "form-group col-md-2">
-				<label for = "Publication[]"> Publication </label>
-				<input class = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
+		<div className = "form-row">
+			<div className = "form-group col-md-2">
+				<label htmlFor = "Publication[]"> Publication </label>
+				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
 			</div>
-			<div class = "form-group col-md-4">
-				<label for = "PublicationAuthor[]"> Author/s </label>
-				<input class = "form-control" type = "text" name = "PublicationAuthor[]" placeholder = "Input publication authors" />
+			<div className = "form-group col-md-4">
+				<label htmlFor = "PublicationAuthor[]"> Author/s </label>
+				<input className = "form-control" type = "text" name = "PublicationAuthor[]" placeholder = "Input publication authors" />
 			</div>
-			<div class = "form-group col-md-2">
-				<label for = "PublishDate[]"> Date Published </label>
-				<input type = "date" class = "form-control" name = "PublishDate[]" />
+			<div className = "form-group col-md-2">
+				<label htmlFor = "PublishDate[]"> Date Published </label>
+				<input type = "date" className = "form-control" name = "PublishDate[]" />
 			</div>
 
 		</div>
 		<div id = "Publication">
 		</div>
 		<br />
-		<button type = "submit" class = "btn btn-primary"> Submit </button>
+		<button type = "submit" className = "btn btn-primary"> Submit </button>
 		<hr />
 		
 	</form>
