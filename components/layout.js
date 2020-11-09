@@ -6,7 +6,7 @@ import Content from './content'
 
 function Layout(props) {
     return (
-        <div class = "container-fluid">
+        <div className = "container-fluid">
             <Head>
                 <title>DPSM-QA-PORTAL</title>
                 {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link> */}
@@ -16,7 +16,7 @@ function Layout(props) {
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </Head>
             <Header />
-		<div class = "row">
+		<div className = "row">
             <Sidebar />
                 <div className="col-10">
                     <div className="container">
