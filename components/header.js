@@ -5,7 +5,7 @@ function Header() {
         <div className="row">
             <nav className="navbar navbar-expand-lg">
                 <Link href="/faculty">
-                    <span class="navbar-text">
+                    <span className="navbar-text">
                         <a className="navbar-brand">
                             <img src="/dpsm-seal.png" width="70" height="70" className="d-inline-block align-top" alt="DPSM-QA-Portal" />
                         </a>
