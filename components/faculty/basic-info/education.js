@@ -4,7 +4,7 @@ function Education() {
     return (
         <div>
             <div>
-                <table class = "table table-striped table-sm">
+                <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
                             <th>Institution/School</th>
@@ -49,98 +49,98 @@ function Education() {
             <div>
                 <form>
                     <hr />
-                    <div class = "form-row">
-                        <div class = "col-auto">
-                            <button type = "button" class = "btn btn-primary" id = "AddEducationalHistory"> Add Educational History </button>
+                    <div className = "form-row">
+                        <div className = "col-auto">
+                            <button type = "button" className = "btn btn-primary" id = "AddEducationalHistory"> Add Educational History </button>
                         </div>
-                        <div class = "col-auto">
-                            <button type = "button" class = "btn btn-danger" id = "RemoveEducationalHistory"> Remove a Row </button>
+                        <div className = "col-auto">
+                            <button type = "button" className = "btn btn-danger" id = "RemoveEducationalHistory"> Remove a Row </button>
                         </div>
                     </div>
                     <br />
-                    <div class = "form-row">
-                        <div class = "form-group col-md-2">
-                            <label for = "SchoolEducationalHistory[]"> School/Institution </label>
-                            <input class = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" />
+                    <div className = "form-row">
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
+                            <input className = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" />
                         </div>
-                        <div class = "form-group col-md-2">
-                            <label for = "DegreeEducationalHistory[]"> Degree/Certification </label>
-                            <input class = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" />
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
+                            <input className = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" />
                         </div>
-                        <div class = "form-group col-md-2">
-                            <label for = "MajorEducationalHistory[]"> Major/Specialization </label>
-                            <input class = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major" />
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
+                            <input className = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major" />
                         </div>
-                        <div class = "form-group col-md-2">
-                            <label for = "StartDateEducationalHistory[]"> Start Date </label>
-                            <input type = "date" class = "form-control" name = "StartDateEducationalHistory[]" />
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
+                            <input type = "date" className = "form-control" name = "StartDateEducationalHistory[]" />
                         </div>
-                        <div class = "form-group col-md-2">
-                            <label for = "EndDateEducationalHistory[]"> End Date </label>
-                            <input type = "date" class = "form-control" name = "EndDateEducationalHistory[]" />
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
+                            <input type = "date" className = "form-control" name = "EndDateEducationalHistory[]" />
                         </div>
-                        <div class = "form-group col-md-2">
-                            <label for = "ProofEducationalHistory[]"> Proof </label>
-                            <input type = "file" class = "form-control" name = "ProofEducationalHistory[]" />
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
+                            <input type = "file" className = "form-control" name = "ProofEducationalHistory[]" />
                         </div>
                     </div>
                     <div id = "EducationalHistory">
                         {/* <!-- Duplicate fields will appear here --> */}
                     </div>
                     <br />
-                    <button type = "submit" class = "btn btn-primary"> Submit </button>
+                    <button type = "submit" className = "btn btn-primary"> Submit </button>
                     <hr />
                     
                     {/* <!-- End of Educational History --> */}
                 </form>
             </div>   
 
-            <div class="modal fade" id="ongoing" tabindex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="ongoingLabel">Update Education Information</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div className="modal fade" id="ongoing" tabindex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="ongoingLabel">Update Education Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                         <form>
                             <hr />
-                            <div class = "form-row">
-                                <div class = "form-group">
-                                    <label for = "EndDate"> End Date </label>
-                                    <input type = "date" class = "form-control" name = "EndDate" />
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "EndDate"> End Date </label>
+                                    <input type = "date" className = "form-control" name = "EndDate" />
                                 </div>
                             </div>
-                            <div class = "form-row">
-                                <div class = "form-group">
-                                    <label for = "Proof"> Proof </label>
-                                    <input type = "file" class = "form-control" name = "Proof" />
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "Proof"> Proof </label>
+                                    <input type = "file" className = "form-control" name = "Proof" />
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-primary">Save changes</button>
                     </div>
                     </div>
                 </div>
             </div>
         
-            <div class="modal fade" id="forVerif" tabindex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="forVerifLabel">Status</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div className="modal fade" id="forVerif" tabindex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="forVerifLabel">Status</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
                         <hr />
-                        <table class = "table table-striped table-sm">
+                        <table className = "table table-striped table-sm">
                             <tr>
                                 <th>Position</th>
                                 <th>Name</th>
@@ -162,9 +162,9 @@ function Education() {
                             
                         </table>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-primary">Save changes</button>
                     </div>
                     </div>
                 </div>
