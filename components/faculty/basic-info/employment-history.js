@@ -3,7 +3,7 @@ function EmploymentHistory(){
 	return(
 <div>
 		<div>
-	<table class = "table table-striped table-sm">
+	<table className = "table table-striped table-sm">
 		<tbody>
 			<tr>
 				<th>Position</th>
@@ -32,27 +32,27 @@ function EmploymentHistory(){
 <div>
 	<form>
 		<hr />
-		<div class = "form-row">
-			<div class = "col-auto">
-				<button type = "button" class = "btn btn-primary" id = "AddEmploymentHistory"> Add Employment History </button>
+		<div className = "form-row">
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-primary" id = "AddEmploymentHistory"> Add Employment History </button>
 			</div>
-			<div class = "col-auto">
-				<button type = "button" class = "btn btn-danger" id = "RemoveEmploymentHistory"> Remove a Row </button>
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-danger" id = "RemoveEmploymentHistory"> Remove a Row </button>
 			</div>
 		</div>
 		<br />
-		<div class = "form-row">
-			<div class = "form-group col-md-2">
-				<label for = "PositionEmploymentHistory[]"> Position </label>
-				<input class = "form-control" type = "text" name = "PositionEmploymentHistory[]" placeholder = "Input position" />
+		<div className = "form-row">
+			<div className = "form-group col-md-2">
+				<label htmlFor = "PositionEmploymentHistory[]"> Position </label>
+				<input className = "form-control" type = "text" name = "PositionEmploymentHistory[]" placeholder = "Input position" />
 			</div>
-			<div class = "form-group col-md-2">
-				<label for = "StartDateEmploymentHistory[]"> Start Date </label>
-				<input type = "date" class = "form-control" name = "StartDateEmploymentHistory[]" />
+			<div className = "form-group col-md-2">
+				<label htmlFor = "StartDateEmploymentHistory[]"> Start Date </label>
+				<input type = "date" className = "form-control" name = "StartDateEmploymentHistory[]" />
 			</div>
-			<div class = "form-group col-md-2">
-				<label for = "EndDateEmploymentHistory[]"> End Date </label>
-				<input type = "date" class = "form-control" name = "EndDateEmploymentHistory[]" />
+			<div className = "form-group col-md-2">
+				<label htmlFor = "EndDateEmploymentHistory[]"> End Date </label>
+				<input type = "date" className = "form-control" name = "EndDateEmploymentHistory[]" />
 			</div>
 
 		</div>
@@ -60,7 +60,7 @@ function EmploymentHistory(){
 			
 		</div>
 		<br />
-		<button type = "submit" class = "btn btn-primary"> Submit </button>
+		<button type = "submit" className = "btn btn-primary"> Submit </button>
 		<hr />
 	</form>
 </div>	
