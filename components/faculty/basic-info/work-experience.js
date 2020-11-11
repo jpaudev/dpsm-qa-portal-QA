@@ -16,22 +16,22 @@ function WorkExperience(){
 					<td>Professor 2</td>
 					<td>University of the Philippines Diliman</td>
 					<td>2020-01-26</td>
-					<td></td>
-					<td></td>
+					<td>Present</td>
+					<td>CMSC 127 professor</td>
 				</tr>
 				<tr>
 					<td>Professor 1</td>
 					<td>University of the Philippines Diliman</td>
 					<td>2017-05-26</td>
 					<td>2020-01-25</td>
-					<td></td>
+					<td>Stat 130 professor</td>
 				</tr>
 				<tr>
 					<td>Instructor 1</td>
 					<td>University of the Philippines Los Banos</td>
 					<td>2010-09-06</td>
 					<td>2017-05-25</td>
-					<td></td>
+					<td>Math 121.1 Professor</td>
 				</tr>
 			</tbody>
 		</table>
