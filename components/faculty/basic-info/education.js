@@ -81,7 +81,7 @@ function Education() {
                         </div>
                         <div className = "form-group col-md-2">
                             <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
-                            <input type = "file" className = "form-control" name = "ProofEducationalHistory[]" />
+                            <input type = "file" className = "form-control-file" name = "ProofEducationalHistory[]" />
                         </div>
                     </div>
                     <div id = "EducationalHistory">
