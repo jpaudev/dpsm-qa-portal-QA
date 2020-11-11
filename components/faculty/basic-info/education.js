@@ -18,9 +18,9 @@ function Education() {
                         <tr>
                             <td>University of the Philippines Diliman</td>
                             <td>Doctor of Philosophy in Computer Science</td>
-                            <td></td>
+                            <td>None</td>
                             <td>2020-01-26</td>
-                            <td></td>
+                            <td>Present</td>
                             <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoing">Ongoing</a></td>
                         </tr>
@@ -66,6 +66,7 @@ function Education() {
                         <div className = "form-group col-md-2">
                             <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
                             <input className = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" />
+				<small className = "text-muted"> Write "None" if none </small>
                         </div>
                         <div className = "form-group col-md-2">
                             <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
@@ -78,6 +79,7 @@ function Education() {
                         <div className = "form-group col-md-2">
                             <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
                             <input type = "date" className = "form-control" name = "EndDateEducationalHistory[]" />
+			    <small className = "text-muted"> Leave blank if currently taking program </small>
                         </div>
                         <div className = "form-group col-md-2">
                             <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
