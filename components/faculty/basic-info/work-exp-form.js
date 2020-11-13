@@ -9,7 +9,7 @@ class WorkExpForm extends React.Component{
 	}
 
 	clone(){
-		this.state.duplicateForms.push(<div><div className = "form-row">
+		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
 				<div className = "form-group col-md-3">
 					<label htmlFor = "EmployerWorkExperience[]"> Employer </label>
 					<input className = "form-control" type = "text" name = "EmployerWorkExperience[]" placeholder = "Input name of employer" />
@@ -30,7 +30,13 @@ class WorkExpForm extends React.Component{
 			<div className = "form-group">
 				<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
 				<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
-			</div></div>)
+			</div>
+				<style jsx>{`
+			hr{
+				border: 1px solid black;
+			}
+		`}</style>
+			</div>)
 		this.setState({
 			
 		})
@@ -82,7 +88,6 @@ class WorkExpForm extends React.Component{
 			</div>
 			<br />
 			<button type = "submit" className = "btn btn-primary"> Submit </button>
-			<hr />
 		
 			</form>
 		)
