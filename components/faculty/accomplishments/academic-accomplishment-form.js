@@ -3,12 +3,38 @@ import React from 'react'
 class AcadAccomplishmentForm extends React.Component{
 	constructor(){
 		super()
+		this.state = {
+			duplicateForms: []
+		}
 	}
 	clone(){
-		alert('add')
+		this.state.duplicateForms.push(<div className = "form-row">
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "AcademicAccomplishment[]"> Accomplishment </label>
+                            <input className = "form-control" type = "text" name = "AcademicAccomplishment[]" placeholder = "Input accomplishment" />
+                        </div>
+			<div className = "form-group col-md-4">
+                            <label htmlFor = "AcademicAccomplishmentDescription[]"> Description </label>
+                            <input className = "form-control" type = "text" name = "AcademicAccomplishmentDescription[]" placeholder = "Input description" />
+                        </div>
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "AcademicAccomplishmentDate[]"> Date </label>
+                            <input type = "date" className = "form-control" name = "AcademicAccomplishmentDate[]" />
+                        </div>
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "AcademicAccomplishmentProof[]"> Proof </label>
+                            <input type = "file" className = "form-control-file" name = "AcademicAccomplishmentProof[]" />
+                        </div>
+                    </div>)
+		this.setState({
+			
+		})
 	}
 	remove(){
-		alert('remove')
+		this.state.duplicateForms.pop()
+		this.setState({
+			
+		})
 	}
 	render(){
 		return(
@@ -42,7 +68,7 @@ class AcadAccomplishmentForm extends React.Component{
                         </div>
                     </div>
                     <div id = "AcademicAccomplishment">
-                        {/* <!-- Duplicate fields will appear here --> */}
+                        {this.state.duplicateForms}
                     </div>
                     <br />
                     <button type = "submit" className = "btn btn-primary"> Submit </button>
