@@ -8,7 +8,7 @@ class PublicServiceAccomplishmentForm extends React.Component{
 		}
 	}
 	clone(){
-		this.state.duplicateForms.push(<div className = "form-row">
+		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
                         <div className = "form-group col-md-2">
                             <label htmlFor = "PublicServiceAccomplishment[]"> Accomplishment </label>
                             <input className = "form-control" type = "text" name = "PublicServiceAccomplishment[]" placeholder = "Input accomplishment" />
@@ -25,7 +25,13 @@ class PublicServiceAccomplishmentForm extends React.Component{
                             <label htmlFor = "PublicServiceAccomplishmentProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "PublicServiceAccomplishmentProof[]" />
                         </div>
-                    </div>)
+                    </div>
+			<style jsx>{`
+			hr{
+				border: 1px solid black;
+			}
+		`}</style>
+			</div>)
 		this.setState({
 			
 		})
