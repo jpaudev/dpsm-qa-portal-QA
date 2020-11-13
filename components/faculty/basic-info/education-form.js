@@ -3,13 +3,47 @@ import React from 'react'
 class EducationForm extends React.Component{
 	constructor(){
 		super()
+		this.state = {
+			duplicateForms: []
+		}
 	}
 
 	clone(){
-		alert('add')
+		this.state.duplicateForms.push(<div className = "form-row">
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
+                            <input className = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" />
+                        </div>
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
+                            <input className = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" />
+                        </div>
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
+                            <input className = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major" />
+                        </div>
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
+                            <input type = "date" className = "form-control" name = "StartDateEducationalHistory[]" />
+                        </div>
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
+                            <input type = "date" className = "form-control" name = "EndDateEducationalHistory[]" />
+                        </div>
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
+                            <input type = "file" className = "form-control-file" name = "ProofEducationalHistory[]" />
+                        </div>
+                    </div>)
+		this.setState({
+			
+		})
 	}
 	remove(){
-		alert('remove')
+		this.state.duplicateForms.pop()
+		this.setState({
+			
+		})
 	}
 	render(){
 		return(
@@ -51,7 +85,7 @@ class EducationForm extends React.Component{
                         </div>
                     </div>
                     <div id = "EducationalHistory">
-                        {/* Duplicate fields will appear here */}
+                        {this.state.duplicateForms}
                     </div>
                     <br />
                     <button type = "submit" className = "btn btn-primary"> Submit </button>
