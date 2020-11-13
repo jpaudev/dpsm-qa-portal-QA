@@ -15,6 +15,8 @@ function Dashboard() {
 		<a className="nav-item nav-link" id="licensure-exam-tab" data-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">Licensure Exams</a>
             </div>
             </nav>
+	    	<br />
+		<br />
             <div className="tab-content" id="nav-tabContent">
             <div className="tab-pane fade show active" id="academic-accomplishment" role="tabpanel" aria-labelledby="academic-accomplishment-tab"><AcademicAccomplishment /></div>
 	    <div className="tab-pane fade" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab"><PublicServiceAccomplishment /></div>
