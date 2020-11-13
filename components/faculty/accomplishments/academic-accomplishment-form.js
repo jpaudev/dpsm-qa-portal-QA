@@ -8,7 +8,7 @@ class AcadAccomplishmentForm extends React.Component{
 		}
 	}
 	clone(){
-		this.state.duplicateForms.push(<div className = "form-row">
+		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
                         <div className = "form-group col-md-2">
                             <label htmlFor = "AcademicAccomplishment[]"> Accomplishment </label>
                             <input className = "form-control" type = "text" name = "AcademicAccomplishment[]" placeholder = "Input accomplishment" />
@@ -25,7 +25,13 @@ class AcadAccomplishmentForm extends React.Component{
                             <label htmlFor = "AcademicAccomplishmentProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "AcademicAccomplishmentProof[]" />
                         </div>
-                    </div>)
+                    </div>
+			<style jsx>{`
+			hr{
+				border: 1px solid black;
+			}
+		`}</style>
+			</div>)
 		this.setState({
 			
 		})
@@ -72,7 +78,6 @@ class AcadAccomplishmentForm extends React.Component{
                     </div>
                     <br />
                     <button type = "submit" className = "btn btn-primary"> Submit </button>
-                    <hr />
                     
                 </form>
 		)
