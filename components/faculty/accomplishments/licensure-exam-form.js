@@ -8,7 +8,7 @@ class LicensureExamForm extends React.Component{
 		}
 	}
 	clone(){
-		this.state.duplicateForms.push(<div className = "form-row">
+		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
                         <div className = "form-group col-md-2">
                             <label htmlFor = "LicensureExam[]"> Licensure Exam </label>
                             <input className = "form-control" type = "text" name = "LicensureExam[]" placeholder = "Input licensure exam" />
@@ -20,8 +20,14 @@ class LicensureExamForm extends React.Component{
 			<div className = "form-group col-md-2">
                             <label htmlFor = "LicensureExamRank[]"> Rank </label>
                             <input className = "form-control" type = "text" name = "LicensureExamRank[]" placeholder = "Input rank" />
-                        </div><hr />
-                    </div>)
+                        </div>
+                    </div>
+			<style jsx>{`
+			hr{
+				border: 1px solid black;
+			}
+		`}</style>
+			</div>)
 		this.setState({
 			
 		})
