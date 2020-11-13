@@ -127,24 +127,6 @@ function Education() {
             </div>
         
         </div>
-
-	
-       // $(document).ready(function(){
-            // HTML for duplicate educational history fields
-         //   var AdditionalFieldEducationalHistory = '<hr class = "duplicate"><div class = "form-row"><div class = "form-group col-md-2"><label for = "SchoolEducationalHistory[]"> School/Institution </label><input class = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" ></div><div class = "form-group col-md-2"><label for = "DegreeEducationalHistory[]"> Degree/Certification </label><input class = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" ></div><div class = "form-group col-md-2"><label for = "MajorEducationalHistory[]"> Major/Specialization </label><input class = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major"></div><div class = "form-group col-md-2"><label for = "StartDateEducationalHistory[]"> Start Date </label><input type = "date" class = "form-control" name = "StartDateEducationalHistory[]" ></div><div class = "form-group col-md-2"><label for = "EndDateEducationalHistory[]"> End Date </label><input type = "date" class = "form-control" name = "EndDateEducationalHistory[]"></div></div>';
-
-             // Appends new educational history fields
-         //    $("#AddEducationalHistory").click(function(){
-        //         $("#EducationalHistory").append(AdditionalFieldEducationalHistory);
-        //    });
-
-            // Removes last row of duplicate educational history fields
-         //    $("#RemoveEducationalHistory").click(function(){
-        //         $("#EducationalHistory").children("div").last().remove();
-        //         $("#EducationalHistory").children("hr").last().remove();
-       //     });
-
-      //   });
 	
 	
     )
