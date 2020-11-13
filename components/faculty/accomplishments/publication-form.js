@@ -8,7 +8,7 @@ class PublicationForm extends React.Component{
 		}
 	}
 	clone(){
-		this.state.duplicateForms.push(<div className = "form-row">
+		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
 			<div className = "form-group col-md-2">
 				<label htmlFor = "Publication[]"> Publication </label>
 				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
@@ -22,6 +22,12 @@ class PublicationForm extends React.Component{
 				<input type = "date" className = "form-control" name = "PublishDate[]" />
 			</div>
 
+		</div>
+		<style jsx>{`
+			hr{
+				border: 1px solid black;
+			}
+		`}</style>
 		</div>)
 		this.setState({
 			
@@ -67,8 +73,6 @@ class PublicationForm extends React.Component{
 		</div>
 		<br />
 		<button type = "submit" className = "btn btn-primary"> Submit </button>
-		<hr />
-		
 	</form>
 		)
 	}
