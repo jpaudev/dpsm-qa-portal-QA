@@ -3,13 +3,43 @@ import React from 'react';
 class WorkExpForm extends React.Component{
 	constructor(){
 		super()
+		this.state = {
+			duplicateForms: []
+		}
 	}
 
 	clone(){
-		alert('add')
+		this.state.duplicateForms.push(<div><div className = "form-row">
+				<div className = "form-group col-md-3">
+					<label htmlFor = "EmployerWorkExperience[]"> Employer </label>
+					<input className = "form-control" type = "text" name = "EmployerWorkExperience[]" placeholder = "Input name of employer" />
+				</div>
+				<div className = "form-group col-md-3">
+					<label htmlFor = "PositionWorkExperience[]"> Title/Position </label>
+					<input className = "form-control" type = "text" name = "PositionWorkExperience[]" placeholder = "Input position" />
+				</div>
+				<div className = "form-group col-md-3">
+					<label htmlFor = "StartDateWorkExperience[]"> Start Date </label>
+					<input type = "date" className = "form-control" name = "StartDateWorkExperience[]" />
+				</div>
+				<div className = "form-group col-md-3">
+					<label htmlFor = "EndDateWorkExperience[]"> End Date </label>
+					<input type = "date" className = "form-control" name = "EndDateWorkExperience[]" />
+				</div>
+			</div>
+			<div className = "form-group">
+				<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
+				<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+			</div></div>)
+		this.setState({
+			
+		})
 	}
 	remove(){
-		alert('remove')
+		this.state.duplicateForms.pop()
+		this.setState({
+			
+		})
 	}
 
 	render(){
@@ -34,8 +64,6 @@ class WorkExpForm extends React.Component{
 					<label htmlFor = "PositionWorkExperience[]"> Title/Position </label>
 					<input className = "form-control" type = "text" name = "PositionWorkExperience[]" placeholder = "Input position" />
 				</div>
-			</div>
-			<div className = "form-row">
 				<div className = "form-group col-md-3">
 					<label htmlFor = "StartDateWorkExperience[]"> Start Date </label>
 					<input type = "date" className = "form-control" name = "StartDateWorkExperience[]" />
@@ -47,10 +75,10 @@ class WorkExpForm extends React.Component{
 			</div>
 			<div className = "form-group">
 				<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
-				<input className = "form-control col-md-6" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+				<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
 			</div>
 			<div id = "WorkExperience">
-				{/* duplicate forms here */}
+				{this.state.duplicateForms}
 			</div>
 			<br />
 			<button type = "submit" className = "btn btn-primary"> Submit </button>
