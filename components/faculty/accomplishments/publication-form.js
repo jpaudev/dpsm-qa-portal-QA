@@ -3,12 +3,41 @@ import React from 'react'
 class PublicationForm extends React.Component{
 	constructor(){
 		super()
+		this.state = {
+			duplicateForms: []
+		}
 	}
 	clone(){
-		alert('add')
+		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
+			<div className = "form-group col-md-2">
+				<label htmlFor = "Publication[]"> Publication </label>
+				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
+			</div>
+			<div className = "form-group col-md-4">
+				<label htmlFor = "PublicationAuthor[]"> Author/s </label>
+				<input className = "form-control" type = "text" name = "PublicationAuthor[]" placeholder = "Input publication authors" />
+			</div>
+			<div className = "form-group col-md-2">
+				<label htmlFor = "PublishDate[]"> Date Published </label>
+				<input type = "date" className = "form-control" name = "PublishDate[]" />
+			</div>
+
+		</div>
+		<style jsx>{`
+			hr{
+				border: 1px solid black;
+			}
+		`}</style>
+		</div>)
+		this.setState({
+			
+		})
 	}
 	remove(){
-		alert('remove')
+		this.state.duplicateForms.pop()
+		this.setState({
+			
+		})
 	}
 	render(){
 		return(
@@ -40,11 +69,10 @@ class PublicationForm extends React.Component{
 
 		</div>
 		<div id = "Publication">
+			{this.state.duplicateForms}
 		</div>
 		<br />
 		<button type = "submit" className = "btn btn-primary"> Submit </button>
-		<hr />
-		
 	</form>
 		)
 	}

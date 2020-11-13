@@ -3,12 +3,40 @@ import React from 'react'
 class LicensureExamForm extends React.Component{
 	constructor(){
 		super()
+		this.state = {
+			duplicateForms: []
+		}
 	}
 	clone(){
-		alert('add')
+		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "LicensureExam[]"> Licensure Exam </label>
+                            <input className = "form-control" type = "text" name = "LicensureExam[]" placeholder = "Input licensure exam" />
+                        </div>
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "LicensureExamDate[]"> Date </label>
+                            <input type = "date" className = "form-control" name = "LicensureExamDate[]" />
+                        </div>
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "LicensureExamRank[]"> Rank </label>
+                            <input className = "form-control" type = "text" name = "LicensureExamRank[]" placeholder = "Input rank" />
+                        </div>
+                    </div>
+			<style jsx>{`
+			hr{
+				border: 1px solid black;
+			}
+		`}</style>
+			</div>)
+		this.setState({
+			
+		})
 	}
 	remove(){
-		alert('remove')
+		this.state.duplicateForms.pop()
+		this.setState({
+			
+		})
 	}
 	render(){
 		return(
@@ -38,7 +66,7 @@ class LicensureExamForm extends React.Component{
                         </div>
                     </div>
                     <div id = "LicensureExam">
-                        {/* <!-- Duplicate fields will appear here --> */}
+                        {this.state.duplicateForms}
                     </div>
                     <br />
                     <button type = "submit" className = "btn btn-primary"> Submit </button>

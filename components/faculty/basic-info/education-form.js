@@ -9,7 +9,7 @@ class EducationForm extends React.Component{
 	}
 
 	clone(){
-		this.state.duplicateForms.push(<div className = "form-row">
+		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
                         <div className = "form-group col-md-2">
                             <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
                             <input className = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" />
@@ -34,7 +34,13 @@ class EducationForm extends React.Component{
                             <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "ProofEducationalHistory[]" />
                         </div>
-                    </div>)
+                    </div>
+			<style jsx>{`
+			hr{
+				border: 1px solid black;
+			}
+		`}</style>
+			</div>)
 		this.setState({
 			
 		})

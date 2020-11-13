@@ -128,7 +128,6 @@ function Education() {
         
         </div>
 	
-	
     )
   }
   
