@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import EducationForm from './education-form'
 
 function Education() {
     return (
@@ -18,9 +19,9 @@ function Education() {
                         <tr>
                             <td>University of the Philippines Diliman</td>
                             <td>Doctor of Philosophy in Computer Science</td>
-                            <td></td>
+                            <td>None</td>
                             <td>2020-01-26</td>
-                            <td></td>
+                            <td>Present</td>
                             <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoing">Ongoing</a></td>
                         </tr>
@@ -47,52 +48,7 @@ function Education() {
             </div>
 
             <div>
-                <form>
-                    <hr />
-                    <div className = "form-row">
-                        <div className = "col-auto">
-                            <button type = "button" className = "btn btn-primary" id = "AddEducationalHistory"> Add Educational History </button>
-                        </div>
-                        <div className = "col-auto">
-                            <button type = "button" className = "btn btn-danger" id = "RemoveEducationalHistory"> Remove a Row </button>
-                        </div>
-                    </div>
-                    <br />
-                    <div className = "form-row">
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
-                            <input className = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
-                            <input className = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
-                            <input className = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
-                            <input type = "date" className = "form-control" name = "StartDateEducationalHistory[]" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
-                            <input type = "date" className = "form-control" name = "EndDateEducationalHistory[]" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
-                            <input type = "file" className = "form-control-file" name = "ProofEducationalHistory[]" />
-                        </div>
-                    </div>
-                    <div id = "EducationalHistory">
-                        {/* <!-- Duplicate fields will appear here --> */}
-                    </div>
-                    <br />
-                    <button type = "submit" className = "btn btn-primary"> Submit </button>
-                    <hr />
-                    
-                    {/* <!-- End of Educational History --> */}
-                </form>
+                <EducationForm />
             </div>   
 
             <div className="modal fade" id="ongoing" tabindex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
@@ -171,22 +127,26 @@ function Education() {
             </div>
         
         </div>
-        // $(document).ready(function(){
-        //     // HTML for duplicate educational history fields
-        //     var AdditionalFieldEducationalHistory = '<hr class = "duplicate"><div class = "form-row"><div class = "form-group col-md-2"><label for = "SchoolEducationalHistory[]"> School/Institution </label><input class = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" ></div><div class = "form-group col-md-2"><label for = "DegreeEducationalHistory[]"> Degree/Certification </label><input class = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" ></div><div class = "form-group col-md-2"><label for = "MajorEducationalHistory[]"> Major/Specialization </label><input class = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major"></div><div class = "form-group col-md-2"><label for = "StartDateEducationalHistory[]"> Start Date </label><input type = "date" class = "form-control" name = "StartDateEducationalHistory[]" ></div><div class = "form-group col-md-2"><label for = "EndDateEducationalHistory[]"> End Date </label><input type = "date" class = "form-control" name = "EndDateEducationalHistory[]"></div></div>';
 
-        //     // Appends new educational history fields
-        //     $("#AddEducationalHistory").click(function(){
+	
+       // $(document).ready(function(){
+            // HTML for duplicate educational history fields
+         //   var AdditionalFieldEducationalHistory = '<hr class = "duplicate"><div class = "form-row"><div class = "form-group col-md-2"><label for = "SchoolEducationalHistory[]"> School/Institution </label><input class = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" ></div><div class = "form-group col-md-2"><label for = "DegreeEducationalHistory[]"> Degree/Certification </label><input class = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" ></div><div class = "form-group col-md-2"><label for = "MajorEducationalHistory[]"> Major/Specialization </label><input class = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major"></div><div class = "form-group col-md-2"><label for = "StartDateEducationalHistory[]"> Start Date </label><input type = "date" class = "form-control" name = "StartDateEducationalHistory[]" ></div><div class = "form-group col-md-2"><label for = "EndDateEducationalHistory[]"> End Date </label><input type = "date" class = "form-control" name = "EndDateEducationalHistory[]"></div></div>';
+
+             // Appends new educational history fields
+         //    $("#AddEducationalHistory").click(function(){
         //         $("#EducationalHistory").append(AdditionalFieldEducationalHistory);
-        //     });
+        //    });
 
-        //     // Removes last row of duplicate educational history fields
-        //     $("#RemoveEducationalHistory").click(function(){
+            // Removes last row of duplicate educational history fields
+         //    $("#RemoveEducationalHistory").click(function(){
         //         $("#EducationalHistory").children("div").last().remove();
         //         $("#EducationalHistory").children("hr").last().remove();
-        //     });
+       //     });
 
-        // });
+      //   });
+	
+	
     )
   }
   

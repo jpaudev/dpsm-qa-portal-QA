@@ -13,7 +13,7 @@ function EmploymentHistory(){
 			<tr>
 				<td>Professor 2</td>
 				<td>2020-01-26</td>
-				<td></td>
+				<td>Present</td>
 			</tr>
 			<tr>
 				<td>Professor 1</td>
