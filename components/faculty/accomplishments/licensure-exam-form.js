@@ -42,7 +42,7 @@ class LicensureExamForm extends React.Component{
 		return(
 			<form>
                     <hr />
-                    <div className = "form-row">
+                   {/* <div className = "form-row">
                         <div className = "col-auto">
                             <button type = "button" className = "btn btn-primary" id = "AddAccomplishment" onClick = {() => this.clone()}> Add Licensure Exam </button>
                         </div>
@@ -50,12 +50,8 @@ class LicensureExamForm extends React.Component{
                             <button type = "button" className = "btn btn-danger" id = "RemoveAccomplishment" onClick = {() => this.remove()}> Remove a Row </button>
                         </div>
                     </div>
-                    <br />
+                    <br /> */}
                     <div className = "form-row">
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "LicensureExam[]"> Licensure Exam </label>
-                            <input className = "form-control" type = "text" name = "LicensureExam[]" placeholder = "Input licensure exam" />
-                        </div>
 			<div className = "form-group col-md-2">
                             <label htmlFor = "LicensureExamDate[]"> Date </label>
                             <input type = "date" className = "form-control" name = "LicensureExamDate[]" />
@@ -63,6 +59,10 @@ class LicensureExamForm extends React.Component{
 			<div className = "form-group col-md-2">
                             <label htmlFor = "LicensureExamRank[]"> Rank </label>
                             <input className = "form-control" type = "text" name = "LicensureExamRank[]" placeholder = "Input rank" />
+                        </div>
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "LicensureExamProof[]"> Proof </label>
+                            <input type = "file" className = "form-control-file" name = "LicensureExamProof[]" />
                         </div>
                     </div>
                     <div id = "LicensureExam">
