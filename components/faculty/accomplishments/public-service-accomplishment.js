@@ -4,6 +4,7 @@ import PublicServiceAccomplishmentForm from './public-service-accomplishment-for
 function PublicServiceAccomplishment(){
 	return(
 	<div>
+	
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -18,15 +19,15 @@ function PublicServiceAccomplishment(){
                             <td>Failed COVID-19 response</td>
                             <td>Not implementing mass testing or contact tracing</td>
 			    <td>2020-02-29</td>
-                            <td><button>Preview proof here (img/pdf)</button></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoing">Ongoing</a></td>
+                            <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
                         <tr>
                             <td>Corruption</td>
                             <td>Embezzlement of taxpayer funds</td>
 			    <td>2020-03-20</td>
-                            <td><button>Preview proof here (img/pdf)</button></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerif">For Verification</a></td>
+                            <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -35,6 +36,81 @@ function PublicServiceAccomplishment(){
             <div>
                 <PublicServiceAccomplishmentForm />
             </div>   
+		
+		<div className="modal fade" id="ongoingstatus" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="ongoingLabel">Update Education Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <form>
+                            <hr />
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "EndDate"> End Date </label>
+                                    <input type = "date" className = "form-control" name = "EndDate" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "Proof"> Proof </label>
+                                    <input type = "file" className = "form-control-file" name = "Proof" />
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div className="modal fade" id="forVerifstatus" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="forVerifLabel">Status</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <hr />
+                        <table className = "table table-striped table-sm">
+                            <tr>
+                                <th>Position</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Date of Approval</th>
+                            </tr>
+                            <tr>
+                                <td>Unit Head</td>
+                                <td>Therese Basco-Uy</td>
+                                <td>Approved</td>
+                                <td>2020-11-08</td>
+                            </tr>
+                            <tr>
+                                <td>Department Head</td>
+                                <td>LOL Dunno</td>
+                                <td>For Approval</td>
+                                <td></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+        
+        </div>
 
             </div>
 	)
