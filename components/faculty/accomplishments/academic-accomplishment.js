@@ -18,14 +18,14 @@ function AcademicAccomplishment(){
                             <td>Earned masteral degreee</td>
                             <td>MS Computer Science</td>
 			    <td>2020-02-29</td>
-                            <td></td>
+                            <td><a href = "#">Download proof</a></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoing">Ongoing</a></td>
                         </tr>
                         <tr>
                             <td>Attendee of global conference</td>
                             <td>Conference on public health</td>
 			    <td>2020-03-20</td>
-                            <td></td>
+                            <td><a href = "#">Download proof</a></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerif">For Verification</a></td>
                         </tr>
                     </tbody>
