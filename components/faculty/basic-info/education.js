@@ -31,7 +31,7 @@ function Education() {
                             <td>Biostat</td>
                             <td>2017-05-26</td>
                             <td>2020-01-25</td>
-                            <td><button>Preview proof here (img/pdf)</button></td>
+                            <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerif">For Verification</a></td>
                         </tr>
                         <tr>
@@ -40,7 +40,7 @@ function Education() {
                             <td>Health Informatics</td>
                             <td>2010-09-06</td>
                             <td>2017-05-25</td>
-                            <td><button>Preview proof here (img/pdf)</button></td>
+                            <td></td>
                             <td>Verified</td>
                         </tr>
                     </tbody>
@@ -72,7 +72,7 @@ function Education() {
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "Proof"> Proof </label>
-                                    <input type = "file" className = "form-control" name = "Proof" />
+                                    <input type = "file" className = "form-control-file" name = "Proof" />
                                 </div>
                             </div>
                         </form>
@@ -120,13 +120,13 @@ function Education() {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
                     </div>
                     </div>
                 </div>
             </div>
         
         </div>
+	
 	
     )
   }
