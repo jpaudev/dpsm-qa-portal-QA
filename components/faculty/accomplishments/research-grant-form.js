@@ -1,0 +1,108 @@
+import React from 'react'
+import ResearchGrantFormAuthor from './research-grant-form-author'
+
+class ResearchGrantForm extends React.Component{
+	constructor(){
+		super()
+		this.state = {
+			duplicateForms: []
+		}
+	}
+	clone(){
+		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
+			<div className = "form-group col-md-2">
+				<label htmlFor = "Research[]"> Research Name </label>
+				<input className = "form-control" type = "text" name = "Research[]" placeholder = "Input research name" />
+			</div>
+			<div className = "form-group col-md-2"> 
+				<label htmlFor = "ResearchGranter[]"> Granter </label>
+				<input className = "form-control" type = "text" name = "ResearchGranter[]" placeholder = "Input granter" />
+			</div>
+			<div className = "form-group col-md-2"> 
+				<label htmlFor = "ResearchAmount[]"> Granter </label>
+				<input className = "form-control" type = "text" name = "ResearchAmount[]" placeholder = "Input amount" />
+			</div>
+			<div className = "form-group col-md-2">
+				<label htmlFor = "ResearchStartDate[]"> Start Date </label>
+				<input type = "date" className = "form-control" name = "ResearchStartDate[]" />
+			</div>
+			<div className = "form-group col-md-2">
+				<label htmlFor = "ResearchEndDate[]"> End Date </label>
+				<input type = "date" className = "form-control" name = "ResearchEndDate[]" />
+			</div>
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "ResearchProof[]"> Proof </label>
+                            <input type = "file" className = "form-control-file" name = "ResearchProof[]" />
+                        </div>
+		</div>
+		<div>
+				<ResearchGrantFormAuthor />
+			</div>
+		<style jsx>{`
+			hr{
+				border: 1px solid black;
+			}
+		`}</style>
+		</div>)
+		this.setState({
+			
+		})
+	}
+	remove(){
+		this.state.duplicateForms.pop()
+		this.setState({
+			
+		})
+	}
+	render(){
+		return(
+			<form>
+		<div className = "form-row">
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-primary" id = "AddResearchGrant" onClick = {() => this.clone()}> Add Research </button>
+			</div>
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-danger" id = "RemoveResearchGrant" onClick = {() => this.remove()}> Remove a Row </button>
+			</div>
+		</div>
+		<br />
+		<div className = "form-row">
+			<div className = "form-group col-md-2">
+				<label htmlFor = "Research[]"> Research Name </label>
+				<input className = "form-control" type = "text" name = "Research[]" placeholder = "Input research name" />
+			</div>
+			<div className = "form-group col-md-2"> 
+				<label htmlFor = "ResearchGranter[]"> Granter </label>
+				<input className = "form-control" type = "text" name = "ResearchGranter[]" placeholder = "Input granter" />
+			</div>
+			<div className = "form-group col-md-2"> 
+				<label htmlFor = "ResearchAmount[]"> Granter </label>
+				<input className = "form-control" type = "text" name = "ResearchAmount[]" placeholder = "Input amount" />
+			</div>
+			<div className = "form-group col-md-2">
+				<label htmlFor = "ResearchStartDate[]"> Start Date </label>
+				<input type = "date" className = "form-control" name = "ResearchStartDate[]" />
+			</div>
+			<div className = "form-group col-md-2">
+				<label htmlFor = "ResearchEndDate[]"> End Date </label>
+				<input type = "date" className = "form-control" name = "ResearchEndDate[]" />
+			</div>
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "ResearchProof[]"> Proof </label>
+                            <input type = "file" className = "form-control-file" name = "ResearchProof[]" />
+                        </div>
+		</div>
+		<div>
+				<ResearchGrantFormAuthor />
+			</div>
+		<div id = "Research">
+			{this.state.duplicateForms}
+		</div>
+		<br />
+		<button type = "submit" className = "btn btn-primary"> Submit </button>
+	</form>
+		)
+	}
+}
+
+export default ResearchGrantForm
