@@ -1,7 +1,18 @@
 import Link from 'next/link'
 import WorkExpForm from './work-exp-form'
 
-function WorkExperience(){
+function WorkExperience(props){
+	let content = Object.keys(props.children).map(key => {
+		return (
+			<tr>
+				<td>{props.children[key].employerName}</td>
+				<td>{props.children[key].position}</td>
+				<td>{props.children[key].startDate}</td>
+				<td>{props.children[key].endDate}</td>
+				<td>{props.children[key].description}</td>
+			</tr>
+		);
+	});
 	return(
 	<div>
 			<table className = "table table-striped table-sm">
@@ -13,7 +24,8 @@ function WorkExperience(){
 					<th>End Date</th>
 					<th>Description</th>
 				</tr>
-				<tr>
+				{content}
+				{/*<tr>
 					<td>Professor 2</td>
 					<td>University of the Philippines Diliman</td>
 					<td>2020-01-26</td>
@@ -33,7 +45,7 @@ function WorkExperience(){
 					<td>2010-09-06</td>
 					<td>2017-05-25</td>
 					<td>Math 121.1 Professor</td>
-				</tr>
+				</tr>*/}
 			</tbody>
 		</table>
 <div>

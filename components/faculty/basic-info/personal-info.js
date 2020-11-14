@@ -35,7 +35,7 @@ function PersonalInfo(props) {
                 <br />
                 <div className = "form-group">
                     <label htmlFor = "PresentAddress"> Present Address </label>
-                    <input className = "form-control" type = "text" name = "PresentAddress" defaultValue = { props.children.presentAdress } required />
+                    <input className = "form-control" type = "text" name = "PresentAddress" defaultValue = { props.children.presentAddress } required />
                 </div>
                 <div className = "form-group">
                     <label htmlFor = "PermanentAddress"> Permanent Address </label>

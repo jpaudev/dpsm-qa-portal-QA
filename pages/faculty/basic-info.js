@@ -24,8 +24,12 @@ function BasicInfo(props) {
             <div className="tab-pane fade" id="emp-history" role="tabpanel" aria-labelledby="emp-history-tab">
                 <EmploymentHistory>{ props.employment }</EmploymentHistory>
             </div>
-            <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab"><Education /></div>
-            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab"><WorkExperience /></div>
+            <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
+                <Education>{ props.education }</Education>
+            </div>
+            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
+                <WorkExperience>{ props.workExperience }</WorkExperience>
+            </div>
             </div>
     <style jsx>{`
         a.nav-item:focus{
@@ -71,11 +75,27 @@ BasicInfo.getInitialProps = async () => {
     })
     const employment = await employ.json()
 
-    console.log(employment)
+    url = 'https://sp-api-test.alun.app/api/faculty/9/education'
+    const educ = await fetch(url, {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+    const education = await educ.json()
+
+    url = 'https://sp-api-test.alun.app/api/faculty/9/work-exp'
+    const work = await fetch(url, {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    })
+    const workExperience = await work.json()
 
     return { 
         personalInfo: personalInfo.result,
-        employment: employment.result
+        employment: employment.result,
+        education: education.result,
+        workExperience: workExperience.result
     }
 }
   
