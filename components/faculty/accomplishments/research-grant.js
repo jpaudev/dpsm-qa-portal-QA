@@ -1,45 +1,60 @@
 import Link from 'next/link'
-import LicensureExamForm from './licensure-exam-form'
+import ResearchGrantForm from './research-grant-form'
 
-function LicensureExam() {
-    return (
-        <div>
-            <div>
-                <table className = "table table-striped table-sm">
-                    <tbody>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Date</th>
-                            <th>Proof</th>
-                            <th>Status</th>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2020-11-11</td>
-                            <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus2">Ongoing</a></td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>2020-1-14</td>
-                            <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus2">For Verification</a></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2020-4-1</td>
-                            <td></td>
-                            <td>Verified</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+function ResearchGrant(){
+	return(
+		<div>
+			<div>
+	<table className = "table table-striped table-sm">
+		<tbody>
+			<tr>
+				<th>Research Name</th>
+				<th>Author/s</th>
+				<th>Granter</th>
+				<th>Amount</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Proof</th>
+				<th>Status</th>
+			</tr>
+			<tr>
+				<td>COVID-19 vaccine</td>
+				<td><a href = "#">Steve</a>, Bob, Greg</td>
+				<td>WHO</td>
+				<td>Php100,000,000</td>
+				<td>2019-12-25</td>
+				<td>2020-12-31</td>
+				<td><a href ="#">Download proof</a></td>
+				<td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus5">Ongoing</a></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>2017-05-26</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus5">For Verification</a></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>2010-09-06</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>	
+	</div>
+	<div>
+		<ResearchGrantForm />
+	</div>
 
-            <div>
-                <LicensureExamForm />
-            </div>   
-	
-<div className="modal fade" id="ongoingstatus2" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+	<div className="modal fade" id="ongoingstatus5" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -73,7 +88,7 @@ function LicensureExam() {
                 </div>
             </div>
         
-            <div className="modal fade" id="forVerifstatus2" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+            <div className="modal fade" id="forVerifstatus5" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -111,13 +126,11 @@ function LicensureExam() {
                     </div>
                     </div>
                 </div>
-            </div>
-            
-        
-        </div>
-	
-	
-    )
-  }
-  
-  export default LicensureExam
+            </div>		
+
+
+		</div>
+	)
+}
+
+export default ResearchGrant

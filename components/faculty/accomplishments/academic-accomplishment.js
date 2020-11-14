@@ -18,14 +18,14 @@ function AcademicAccomplishment(){
                             <td>Earned masteral degreee</td>
                             <td>MS Computer Science</td>
 			    <td>2020-02-29</td>
-                            <td><button>Preview proof here (img/pdf)</button></td>
+                            <td><a href = "#">Download proof</a></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoing">Ongoing</a></td>
                         </tr>
                         <tr>
                             <td>Attendee of global conference</td>
                             <td>Conference on public health</td>
 			    <td>2020-03-20</td>
-                            <td><button>Preview proof here (img/pdf)</button></td>
+                            <td><a href = "#">Download proof</a></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerif">For Verification</a></td>
                         </tr>
                     </tbody>
@@ -57,7 +57,7 @@ function AcademicAccomplishment(){
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "Proof"> Proof </label>
-                                    <input type = "file" className = "form-control" name = "Proof" />
+                                    <input type = "file" className = "form-control-file" name = "Proof" />
                                 </div>
                             </div>
                         </form>
@@ -65,6 +65,45 @@ function AcademicAccomplishment(){
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" className="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+		<div className="modal fade" id="forVerif" tabindex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="forVerifLabel">Status</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <hr />
+                        <table className = "table table-striped table-sm">
+                            <tr>
+                                <th>Position</th>
+                                <th>Name</th>
+                                <th>Status</th>
+                                <th>Date of Approval</th>
+                            </tr>
+                            <tr>
+                                <td>Unit Head</td>
+                                <td>Therese Basco-Uy</td>
+                                <td>Approved</td>
+                                <td>2020-11-08</td>
+                            </tr>
+                            <tr>
+                                <td>Department Head</td>
+                                <td>LOL Dunno</td>
+                                <td>For Approval</td>
+                                <td></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                     </div>
                 </div>
