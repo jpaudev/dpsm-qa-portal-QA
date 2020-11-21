@@ -23,17 +23,31 @@ class ResearchGrantForm extends React.Component{
 				<input className = "form-control" type = "text" name = "ResearchAmount[]" placeholder = "Input amount" />
 			</div>
 			<div className = "form-group col-md-2">
-				<label htmlFor = "ResearchStartDate[]"> Start Date </label>
+				<label htmlFor = "ResearchStartDate[]"> Start Date (Actual) </label>
 				<input type = "date" className = "form-control" name = "ResearchStartDate[]" />
 			</div>
 			<div className = "form-group col-md-2">
-				<label htmlFor = "ResearchEndDate[]"> End Date </label>
+				<label htmlFor = "ResearchEndDate[]"> End Date (Actual) </label>
 				<input type = "date" className = "form-control" name = "ResearchEndDate[]" />
 			</div>
 			<div className = "form-group col-md-2">
                             <label htmlFor = "ResearchProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "ResearchProof[]" />
                         </div>
+		</div>
+		<div className = "form-row">
+			<div className = "form-group col-md-2">
+				<label htmlFor = "ResearchProjectedStartDate[]"> Start Date (Projected) </label>
+				<input type = "date" className = "form-control" name = "ResearchProjectedStartDate[]" />
+			</div>
+			<div className = "form-group col-md-2">
+				<label htmlFor = "ResearchProjectedEndDate[]"> End Date (Projected) </label>
+				<input type = "date" className = "form-control" name = "ResearchProjectedEndDate[]" />
+			</div>
+			<div className = "form-group col-md-2"> 
+				<label htmlFor = "ResearchProgress[]"> Research Progress </label>
+				<input className = "form-control" type = "text" name = "ResearchProgress[]" placeholder = "Input progress" />
+			</div>
 		</div>
 		<div>
 				<ResearchGrantFormAuthor />
