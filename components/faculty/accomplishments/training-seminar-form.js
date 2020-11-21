@@ -9,11 +9,15 @@ class TrainingSeminarForm extends React.Component{
 	}
 	clone(){
 		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
-			<div className = "form-group col-md-4">
+			<div className = "form-group col-md-3">
                             <label htmlFor = "TrainingSeminar[]"> Name of Training/Seminar </label>
                             <input className = "form-control" type = "text" name = "TrainingSeminar[]" placeholder = "Input training/seminar" />
                         </div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
+                            <label htmlFor = "TrainingSeminarRole[]"> Role</label>
+                            <input className = "form-control" type = "text" name = "TrainingSeminarRole[]" placeholder = "Input training/seminar" />
+                        </div>
+			<div className = "form-group col-md-3">
                             <label htmlFor = "TrainingSeminarVenue[]"> Venue </label>
                             <input className = "form-control" type = "text" name = "TrainingSeminarVenue[]" placeholder = "Input venue" />
                         </div>
@@ -60,11 +64,15 @@ class TrainingSeminarForm extends React.Component{
                     </div>
                     <br />
                     <div className = "form-row">
-			<div className = "form-group col-md-4">
+			<div className = "form-group col-md-3">
                             <label htmlFor = "TrainingSeminar[]"> Name of Training/Seminar </label>
                             <input className = "form-control" type = "text" name = "TrainingSeminar[]" placeholder = "Input training/seminar" />
                         </div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
+                            <label htmlFor = "TrainingSeminarRole[]"> Role</label>
+                            <input className = "form-control" type = "text" name = "TrainingSeminarRole[]" placeholder = "Input training/seminar" />
+                        </div>
+			<div className = "form-group col-md-3">
                             <label htmlFor = "TrainingSeminarVenue[]"> Venue </label>
                             <input className = "form-control" type = "text" name = "TrainingSeminarVenue[]" placeholder = "Input venue" />
                         </div>
