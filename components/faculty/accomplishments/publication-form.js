@@ -10,19 +10,25 @@ class PublicationForm extends React.Component{
 	}
 	clone(){
 		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-6">
 				<label htmlFor = "Publication[]"> Publication </label>
-				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
+				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name/title" />
 			</div>
-			<div className = "form-group col-md-4">
+			<div className = "form-group col-md-6">
+				<label htmlFor = "PublicationCitation[]"> Citation </label>
+				<input className = "form-control" type = "text" name = "PublicationCitation[]" placeholder = "Input full citation for publication" />
+			</div>
+		</div>
+		<div className = "form-row">
+			<div className = "form-group col-md-6"> 
 				<label htmlFor = "PublicationURL[]"> URL </label>
 				<input className = "form-control" type = "text" name = "PublicationURL[]" placeholder = "Input publication URL" />
 			</div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
 				<label htmlFor = "PublishDate[]"> Date Published </label>
 				<input type = "date" className = "form-control" name = "PublishDate[]" />
 			</div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
                             <label htmlFor = "PublicationProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "PublicationProof[]" />
                         </div>
@@ -61,19 +67,25 @@ class PublicationForm extends React.Component{
 		</div>
 		<br />
 		<div className = "form-row">
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-6">
 				<label htmlFor = "Publication[]"> Publication </label>
-				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
+				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name/title" />
 			</div>
-			<div className = "form-group col-md-4"> 
+			<div className = "form-group col-md-6">
+				<label htmlFor = "PublicationCitation[]"> Citation </label>
+				<input className = "form-control" type = "text" name = "PublicationCitation[]" placeholder = "Input full citation for publication" />
+			</div>
+		</div>
+		<div className = "form-row">
+			<div className = "form-group col-md-6"> 
 				<label htmlFor = "PublicationURL[]"> URL </label>
 				<input className = "form-control" type = "text" name = "PublicationURL[]" placeholder = "Input publication URL" />
 			</div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
 				<label htmlFor = "PublishDate[]"> Date Published </label>
 				<input type = "date" className = "form-control" name = "PublishDate[]" />
 			</div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
                             <label htmlFor = "PublicationProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "PublicationProof[]" />
                         </div>
