@@ -10,8 +10,12 @@ class PublicServiceAccomplishmentForm extends React.Component{
 	clone(){
 		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceAccomplishment[]"> Accomplishment </label>
-                            <input className = "form-control" type = "text" name = "PublicServiceAccomplishment[]" placeholder = "Input accomplishment" />
+                            <label htmlFor = "PublicServicePosition[]"> Position/Role </label>
+                            <input className = "form-control" type = "text" name = "PublicServicePosition[]" placeholder = "Input position/role" />
+                        </div>
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "PublicServiceOrganization[]"> Organization </label>
+                            <input className = "form-control" type = "text" name = "PublicServiceOrganization[]" placeholder = "Input organization" />
                         </div>
 			<div className = "form-group col-md-4">
                             <label htmlFor = "PublicServiceAccomplishmentDescription[]"> Description </label>
@@ -57,8 +61,12 @@ class PublicServiceAccomplishmentForm extends React.Component{
                     <br />
                     <div className = "form-row">
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceAccomplishment[]"> Accomplishment </label>
-                            <input className = "form-control" type = "text" name = "PublicServiceAccomplishment[]" placeholder = "Input accomplishment" />
+                            <label htmlFor = "PublicServicePosition[]"> Position/Role </label>
+                            <input className = "form-control" type = "text" name = "PublicServicePosition[]" placeholder = "Input position/role" />
+                        </div>
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "PublicServiceOrganization[]"> Organization </label>
+                            <input className = "form-control" type = "text" name = "PublicServiceOrganization[]" placeholder = "Input organization" />
                         </div>
 			<div className = "form-group col-md-4">
                             <label htmlFor = "PublicServiceAccomplishmentDescription[]"> Description </label>
