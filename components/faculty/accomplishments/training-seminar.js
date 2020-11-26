@@ -1,42 +1,46 @@
 import Link from 'next/link'
-import LicensureExamForm from './licensure-exam-form'
+import TrainingSeminarForm from './training-seminar-form'
 
-function LicensureExam() {
+function TrainingSeminar() {
     return (
         <div>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
-			    <th>Exam Name</th>
-                            <th>Rank</th>
-                            <th>Date</th>
-			    <th>License Number</th>
+                            <th>Name of Training/Seminar</th>
+			    <th>Role</th>
+			    <th>Venue</th>
+                            <th>Start Date</th>
+			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
                         </tr>
                         <tr>
-			    <td>Mechanical Engineering</td>
                             <td>3</td>
+			    <td></td>
                             <td>2020-11-11</td>
-			    <td></td>
                             <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus2">Ongoing</a></td>
+			    <td></td>
+			    <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus3">Ongoing</a></td>
                         </tr>
                         <tr>
-			    <td></td>
                             <td>8</td>
+     			    <td></td>
                             <td>2020-1-14</td>
-			    <td></td>
                             <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus2">For Verification</a></td>
+			    <td></td>
+			    <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus3">For Verification</a></td>
                         </tr>
                         <tr>
-			    <td></td>
                             <td>1</td>
                             <td>2020-4-1</td>
-			    <td></td>
                             <td></td>
+			    <td></td>
+			    <td></td>
+			    <td></td>
                             <td>Verified</td>
                         </tr>
                     </tbody>
@@ -44,10 +48,10 @@ function LicensureExam() {
             </div>
 
             <div>
-                <LicensureExamForm />
+                <TrainingSeminarForm />
             </div>   
 	
-<div className="modal fade" id="ongoingstatus2" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+<div className="modal fade" id="ongoingstatus3" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -81,7 +85,7 @@ function LicensureExam() {
                 </div>
             </div>
         
-            <div className="modal fade" id="forVerifstatus2" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+            <div className="modal fade" id="forVerifstatus3" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -128,4 +132,4 @@ function LicensureExam() {
     )
   }
   
-  export default LicensureExam
+  export default TrainingSeminar
