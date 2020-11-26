@@ -9,6 +9,7 @@ function TrainingSeminar() {
                     <tbody>
                         <tr>
                             <th>Name of Training/Seminar</th>
+			    <th>Role</th>
 			    <th>Venue</th>
                             <th>Start Date</th>
 			    <th>End Date</th>
@@ -17,6 +18,7 @@ function TrainingSeminar() {
                         </tr>
                         <tr>
                             <td>3</td>
+			    <td></td>
                             <td>2020-11-11</td>
                             <td></td>
 			    <td></td>
@@ -25,6 +27,7 @@ function TrainingSeminar() {
                         </tr>
                         <tr>
                             <td>8</td>
+     			    <td></td>
                             <td>2020-1-14</td>
                             <td></td>
 			    <td></td>
@@ -35,6 +38,7 @@ function TrainingSeminar() {
                             <td>1</td>
                             <td>2020-4-1</td>
                             <td></td>
+			    <td></td>
 			    <td></td>
 			    <td></td>
                             <td>Verified</td>

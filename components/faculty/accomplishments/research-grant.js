@@ -12,8 +12,10 @@ function ResearchGrant(){
 				<th>Author/s</th>
 				<th>Granter</th>
 				<th>Amount</th>
+				<th>Projected Duration</th>
 				<th>Start Date</th>
 				<th>End Date</th>
+				<th>Research Progress</th>
 				<th>Proof</th>
 				<th>Status</th>
 			</tr>
@@ -22,12 +24,16 @@ function ResearchGrant(){
 				<td><a href = "#">Steve</a>, Bob, Greg</td>
 				<td>WHO</td>
 				<td>Php100,000,000</td>
+				<td>2019-11-20 to 2021-5-18</td>
 				<td>2019-12-25</td>
-				<td>2020-12-31</td>
+				<td></td>
+				<td>Ongoing</td>
 				<td><a href ="#">Download proof</a></td>
 				<td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus5">Ongoing</a></td>
 			</tr>
 			<tr>
+				<td></td>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td>2017-05-26</td>
@@ -38,6 +44,8 @@ function ResearchGrant(){
 				<td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus5">For Verification</a></td>
 			</tr>
 			<tr>
+				<td></td>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td>2010-09-06</td>
