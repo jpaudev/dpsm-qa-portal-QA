@@ -1,4 +1,5 @@
 import React from 'react'
+import PublicationFormAuthor from './publication-form-author'
 
 class PublicationForm extends React.Component{
 	constructor(){
@@ -14,15 +15,21 @@ class PublicationForm extends React.Component{
 				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
 			</div>
 			<div className = "form-group col-md-4">
-				<label htmlFor = "PublicationAuthor[]"> Author/s </label>
-				<input className = "form-control" type = "text" name = "PublicationAuthor[]" placeholder = "Input publication authors" />
+				<label htmlFor = "PublicationURL[]"> URL </label>
+				<input className = "form-control" type = "text" name = "PublicationURL[]" placeholder = "Input publication URL" />
 			</div>
 			<div className = "form-group col-md-2">
 				<label htmlFor = "PublishDate[]"> Date Published </label>
 				<input type = "date" className = "form-control" name = "PublishDate[]" />
 			</div>
-
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "PublicationProof[]"> Proof </label>
+                            <input type = "file" className = "form-control-file" name = "PublicationProof[]" />
+                        </div>
 		</div>
+		<div>
+				<PublicationFormAuthor />
+			</div>
 		<style jsx>{`
 			hr{
 				border: 1px solid black;
@@ -58,16 +65,22 @@ class PublicationForm extends React.Component{
 				<label htmlFor = "Publication[]"> Publication </label>
 				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
 			</div>
-			<div className = "form-group col-md-4">
-				<label htmlFor = "PublicationAuthor[]"> Author/s </label>
-				<input className = "form-control" type = "text" name = "PublicationAuthor[]" placeholder = "Input publication authors" />
+			<div className = "form-group col-md-4"> 
+				<label htmlFor = "PublicationURL[]"> URL </label>
+				<input className = "form-control" type = "text" name = "PublicationURL[]" placeholder = "Input publication URL" />
 			</div>
 			<div className = "form-group col-md-2">
 				<label htmlFor = "PublishDate[]"> Date Published </label>
 				<input type = "date" className = "form-control" name = "PublishDate[]" />
 			</div>
-
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "PublicationProof[]"> Proof </label>
+                            <input type = "file" className = "form-control-file" name = "PublicationProof[]" />
+                        </div>
 		</div>
+		<div>
+				<PublicationFormAuthor />
+			</div>
 		<div id = "Publication">
 			{this.state.duplicateForms}
 		</div>

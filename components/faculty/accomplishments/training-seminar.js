@@ -1,85 +1,57 @@
 import Link from 'next/link'
-import EducationForm from './education-form'
+import TrainingSeminarForm from './training-seminar-form'
 
-function Education(props) {
-    let content = Object.keys(props.children).map(key => {
-        const stat = () => {
-            if(props.children[key].status == 'ongoing')
-                return "#ongoing"
-            if(props.children[key].status == 'for verification')
-                return "#forVerif"
-        }
-        return (
-            <tr>
-                <td>{props.children[key].institutionSchool}</td>
-                <td>{props.children[key].degreeCert}</td>
-                <td>{props.children[key].majorSpecialization}</td>
-                <td>{props.children[key].startDate}</td>
-                <td>{props.children[key].endDate}</td>
-                <td><button>Preview proof here (img/pdf)</button></td>
-                <td>
-                    <a 
-                        className="btn btn-info"
-                        data-toggle="modal"
-                        data-target={stat}
-                    >
-                        {props.children[key].status}
-                    </a>
-                </td>
-            </tr>
-        );
-    });
+function TrainingSeminar() {
     return (
         <div>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
-                            <th>Institution/School</th>
-                            <th>Degree/Certification</th>
-                            <th>Major/Specialization</th>
+                            <th>Name of Training/Seminar</th>
+			    <th>Role</th>
+			    <th>Venue</th>
                             <th>Start Date</th>
-                            <th>End Date</th>
+			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
                         </tr>
-                        {content}
-                        {/*<tr>
-                            <td>University of the Philippines Diliman</td>
-                            <td>Doctor of Philosophy in Computer Science</td>
-                            <td>None</td>
-                            <td>2020-01-26</td>
-                            <td>Present</td>
+                        <tr>
+                            <td>3</td>
+			    <td></td>
+                            <td>2020-11-11</td>
                             <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoing">Ongoing</a></td>
+			    <td></td>
+			    <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus3">Ongoing</a></td>
                         </tr>
                         <tr>
-                            <td>University of the Philippines Diliman</td>
-                            <td>MS Computer Science</td>
-                            <td>Biostat</td>
-                            <td>2017-05-26</td>
-                            <td>2020-01-25</td>
+                            <td>8</td>
+     			    <td></td>
+                            <td>2020-1-14</td>
                             <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerif">For Verification</a></td>
+			    <td></td>
+			    <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus3">For Verification</a></td>
                         </tr>
                         <tr>
-                            <td>University of the Philippines Los Banos</td>
-                            <td>BS Computer Science</td>
-                            <td>Health Informatics</td>
-                            <td>2010-09-06</td>
-                            <td>2017-05-25</td>
+                            <td>1</td>
+                            <td>2020-4-1</td>
                             <td></td>
+			    <td></td>
+			    <td></td>
+			    <td></td>
                             <td>Verified</td>
-                        </tr>*/}
+                        </tr>
                     </tbody>
                 </table>
             </div>
 
             <div>
-                <EducationForm />
+                <TrainingSeminarForm />
             </div>   
-
-            <div className="modal fade" id="ongoing" tabindex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+	
+<div className="modal fade" id="ongoingstatus3" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -113,7 +85,7 @@ function Education(props) {
                 </div>
             </div>
         
-            <div className="modal fade" id="forVerif" tabindex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+            <div className="modal fade" id="forVerifstatus3" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -152,6 +124,7 @@ function Education(props) {
                     </div>
                 </div>
             </div>
+            
         
         </div>
 	
@@ -159,4 +132,4 @@ function Education(props) {
     )
   }
   
-  export default Education
+  export default TrainingSeminar
