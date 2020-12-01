@@ -1,5 +1,6 @@
 function EvaluationSemester() {
 	return(
+		<div>
 		<table className = "table table-sm">
 			<thead>
 				<tr>
@@ -48,6 +49,8 @@ function EvaluationSemester() {
 				</tr>
 			</tbody>
 		</table>
+		<button type = "submit" class = "btn btn-primary">Update</button>
+		</div>
 	)
 }
 
