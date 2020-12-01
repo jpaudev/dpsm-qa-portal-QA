@@ -88,7 +88,7 @@ function PersonalInfo() {
                         <input className = "form-control" type = "tel" name = "EmergencyContactNumber" pattern = "[0]{1}[9]{1}[0-9]{9}" required />
                     </div>
                 </div>
-		<div className = "form-row">
+		{/* <div className = "form-row">
 			<div className = "form-group col-md-3 required">
 				<label className = "control-label" htmlFor ="Unit"> Unit </label>
                     		<select className = "form-control" name = "Unit">
@@ -148,7 +148,7 @@ function PersonalInfo() {
 					<option>Full-time</option>
 				</select>
                 	</div>
-		</div>
+		</div> */}
 		<br />
 		<button type = "submit" className = "btn btn-primary"> Update </button>
             </form>
