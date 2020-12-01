@@ -8,9 +8,12 @@ class PublicationFormAuthor extends React.Component{
 		}
 	}
 	clone(){
-		this.state.duplicateAuthors.push(<div><div className = "form-group col-md-3"><label htmlFor = "PublicationAuthor[]"> Author </label>
-				<input className = "form-control" type = "text" name = "PublicationAuthor[]" placeholder = "Input author" />
-			</div></div>)
+		this.state.duplicateAuthors.push(<div><div className = "form-row">
+			<div className = "form-group col-md-6">
+				<label htmlFor = "PublicationAuthorDPSM[]"> Author (from DPSM) </label>
+				<input className = "form-control" type = "text" name = "PublicationAuthorDPSM[]" placeholder = "Input author (must be part of DPSM)" />
+			</div>
+		</div></div>)
 		this.setState({
 
 		})
@@ -24,13 +27,13 @@ class PublicationFormAuthor extends React.Component{
 	render(){
 		return(<div>
 			<div className = "btn-group btn-group-sm col-md-2">
-				<button type = "button" className = "btn btn-primary" id = "AddAuthor" onClick = {() => this.clone()}> Add Author </button>
+				<button type = "button" className = "btn btn-primary" id = "AddAuthor" onClick = {() => this.clone()}> Add DPSM Author </button>
 				<button type = "button" className = "btn btn-danger" id = "RemoveAuthor" onClick = {() => this.remove()}> Remove a Row </button>
 			</div>
 			<div className = "form-row">
-			<div className = "form-group col-md-3">
-				<label htmlFor = "PublicationAuthor[]"> Author </label>
-				<input className = "form-control" type = "text" name = "PublicationAuthor[]" placeholder = "Input author" />
+			<div className = "form-group col-md-6">
+				<label htmlFor = "PublicationAuthorDPSM[]"> Author (from DPSM) </label>
+				<input className = "form-control" type = "text" name = "PublicationAuthorDPSM[]" placeholder = "Input author (must be part of DPSM)" />
 			</div>
 		</div>
 		<div>
