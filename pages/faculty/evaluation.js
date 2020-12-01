@@ -9,8 +9,8 @@ function Evaluation() {
 		<h3 align = "center"> Evaluation </h3>
 		<br />
             <div className="list-group">
-                <a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" href = "#sem1ay20202021">1st Semester, AY 2020-2021</a>
-		<div id = "sem1ay20202021" className = "jumbotron collapse">
+                <a className = "list-group-item list-group-item-action list-group-item-secondary" href = "#evaluationsem1ay20202021" data-toggle = "collapse" aria-controls = "evaluationsem1ay20202021">1st Semester, AY 2020-2021</a>
+		<div id = "evaluationsem1ay20202021" className = "jumbotron collapse">
 			<EvaluationSemester />
 		</div>
 		<a className = "list-group-item list-group-item-action list-group-item-secondary">Midterm, AY 2019-2020</a>
