@@ -10,6 +10,15 @@ class PublicationForm extends React.Component{
 	}
 	clone(){
 		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-primary" id = "AddPublication" onClick = {() => this.clone()}> Add Publication </button>
+			</div>
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-danger" id = "RemovePublication" onClick = {() => this.remove()}> Remove a Row </button>
+			</div>
+		</div>
+		<br />
+		<div className = "form-row">
 			<div className = "form-group col-md-6">
 				<label htmlFor = "Publication[]"> Publication </label>
 				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name/title" />
@@ -32,6 +41,12 @@ class PublicationForm extends React.Component{
                             <label htmlFor = "PublicationProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "PublicationProof[]" />
                         </div>
+		</div>
+		<div className = "form-row">
+			<div className = "form-group col-md-12">
+				<label htmlFor = "PublicationAuthorNonDPSM[]"> Authors (non-DPSM) </label>
+				<input className = "form-control" type = "text" name = "PublicationAuthorNonDPSM[]" placeholder = "Input all authors outside DPSM (separate names with commas)" />
+			</div>
 		</div>
 		<div>
 				<PublicationFormAuthor />
@@ -89,6 +104,12 @@ class PublicationForm extends React.Component{
                             <label htmlFor = "PublicationProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "PublicationProof[]" />
                         </div>
+		</div>
+		<div className = "form-row">
+			<div className = "form-group col-md-12">
+				<label htmlFor = "PublicationAuthorNonDPSM[]"> Authors (non-DPSM) </label>
+				<input className = "form-control" type = "text" name = "PublicationAuthorNonDPSM[]" placeholder = "Input all authors outside DPSM (separate names with commas)" />
+			</div>
 		</div>
 		<div>
 				<PublicationFormAuthor />
