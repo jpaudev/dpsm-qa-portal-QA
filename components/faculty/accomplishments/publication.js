@@ -1,7 +1,14 @@
 import Link from 'next/link'
 import PublicationForm from './publication-form'
 
-function Publication(){
+function Publication(props){
+    let content = Object.keys(props.children).map(key => {
+        return (
+            <tr>
+                <td></td>
+            </tr>
+        );
+    });
 	return(
 		<div>
 			<div>
@@ -12,6 +19,7 @@ function Publication(){
 				<th>Author/s</th>
 				<th>Publication Date</th>
 				<th>URL</th>
+				<th>Citation</th>
 				<th>Proof</th>
 				<th>Status</th>
 			</tr>
@@ -21,6 +29,7 @@ function Publication(){
 				<td>2020-01-26</td>
 				<td>http://clubpenguin.com</td>
 				<td></td>
+				<td></td>
 				<td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus4">Ongoing</a></td>
 			</tr>
 			<tr>
@@ -29,12 +38,14 @@ function Publication(){
 				<td>2017-05-26</td>
 				<td></td>
 				<td></td>
+				<td></td>
 				<td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus4">For Verification</a></td>
 			</tr>
 			<tr>
 				<td>Algorithms and Advanced Data Structures I</td>
 				<td></td>
 				<td>2010-09-06</td>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>

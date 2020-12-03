@@ -4,12 +4,12 @@ function Sidebar() {
     return (
             <div className="col-2">
                 <div className="list-group">
-			<a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" href = "#faculty"> Faculty </a>
-			<div id = "faculty" className = "collapse show">
+			<a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" href = "#facultyMenu" aria-controls = "facultyMenu"> Faculty </a>
+			<div id = "facultyMenu" className = "collapse show">
                     <Link href="/faculty"><a className = "list-group-item list-group-item-action list-group-item-success">Dashboard</a></Link>
                     <Link href="/faculty/basic-info"><a className = "list-group-item list-group-item-action list-group-item-success">Basic Information</a></Link>
                     <Link href="/faculty/accomplishment"><a className = "list-group-item list-group-item-action list-group-item-success">Accomplishment</a></Link>
-                    <Link href="/faculty/class"><a className = "list-group-item list-group-item-action list-group-item-success">Class</a></Link>
+                    <Link href="/faculty/faculty-load"><a className = "list-group-item list-group-item-action list-group-item-success">Faculty Load</a></Link>
                     <Link href="/faculty/evaluation"><a className = "list-group-item list-group-item-action list-group-item-success ">Evaluation</a></Link>
 			</div>
                 </div>

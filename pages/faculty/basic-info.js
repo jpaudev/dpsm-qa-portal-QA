@@ -45,7 +45,8 @@ function BasicInfo(props) {
   }
 
 BasicInfo.getInitialProps = async () => {
-    const res = await fetch('https://sp-api-test.alun.app/api/token',
+    let url = 'https://sp-api-test.alun.app/api/';
+    const res = await fetch(url + 'token',
     {
         body: JSON.stringify({"username": "username", "password": "password"}),
         headers: {
@@ -56,37 +57,23 @@ BasicInfo.getInitialProps = async () => {
     
     const access = await res.json()
     let token = access.result
-
-    let url = 'https://sp-api-test.alun.app/api/faculty/9'
-    const personal = await fetch(url, {
+    url = 'https://sp-api-test.alun.app/api/faculty/basic-info/';
+    let header = {
         headers: {
             'Authorization': 'Bearer ' + token
         }
-    })
+    }
+
+    const personal = await fetch(url + '9', header)
     const personalInfo = await personal.json()
 
-    // url = 'https://sp-api-test.alun.app/api/faculty/9/employment'
-    // const employ = await fetch(url, {
-    //     headers: {
-    //         'Authorization': 'Bearer ' + token
-    //     }
-    // })
+    // const employ = await fetch(url + 'faculty/9/employment', header)
     // const employment = await employ.json()
 
-    url = 'https://sp-api-test.alun.app/api/faculty/9/education'
-    const educ = await fetch(url, {
-        headers: {
-            'Authorization': 'Bearer ' + token
-        }
-    })
+    const educ = await fetch(url + '9/education', header)
     const education = await educ.json()
 
-    url = 'https://sp-api-test.alun.app/api/faculty/9/work-exp'
-    const work = await fetch(url, {
-        headers: {
-            'Authorization': 'Bearer ' + token
-        }
-    })
+    const work = await fetch(url + '9/work-exp', header)
     const workExperience = await work.json()
 
     return { 
