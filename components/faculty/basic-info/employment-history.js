@@ -1,14 +1,36 @@
 import Link from 'next/link'
 function EmploymentHistory(props){
 	let content = Object.keys(props.children).map(key => {
-		return (
-			<tr>
-				<td>{props.children[key].position}</td>
-				<td>{props.children[key].startDate}</td>
-				<td>{props.children[key].endDate}</td>
-			</tr>
-		);
+		if(props.children[key].faculty_employment_position.employmentType == 'ftt') {
+			return (
+				<tr>
+					<td>{props.children[key].faculty_employment_position.position}</td>
+					<td>Full-time (Temporary)</td>
+					<td>{props.children[key].startDate}</td>
+					<td>{props.children[key].endDate}</td>
+				</tr>
+			);
+		} else if(props.children[key].faculty_employment_position.employmentType == 'ftp') {
+			return (
+				<tr>
+					<td>{props.children[key].faculty_employment_position.position}</td>
+					<td>Full-time (Permanent)</td>
+					<td>{props.children[key].startDate}</td>
+					<td>{props.children[key].endDate}</td>
+				</tr>
+			);
+		} else if(props.children[key].faculty_employment_position.employmentType == 'pt') {
+			return (
+				<tr>
+					<td>{props.children[key].faculty_employment_position.position}</td>
+					<td>Part-time</td>
+					<td>{props.children[key].startDate}</td>
+					<td>{props.children[key].endDate}</td>
+				</tr>
+			);
+		}
 	});
+
 	return(
 		<div>
 			<div>
@@ -16,6 +38,7 @@ function EmploymentHistory(props){
 				<tbody>
 					<tr>
 						<th>Position</th>
+						<th>Type</th>
 						<th>Start Date</th>
 						<th>End Date</th>
 					</tr>

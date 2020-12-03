@@ -3,31 +3,47 @@ import EducationForm from './education-form'
 
 function Education(props) {
     let content = Object.keys(props.children).map(key => {
-        const stat = () => {
-            if(props.children[key].status == 'ongoing')
-                return "#ongoing"
-            if(props.children[key].status == 'for verification')
-                return "#forVerif"
+        if(props.children[key].status == 'ongoing') {
+            return (
+                <tr>
+                    <td>{props.children[key].institutionSchool}</td>
+                    <td>{props.children[key].degreeCert}</td>
+                    <td>{props.children[key].majorSpecialization}</td>
+                    <td>{props.children[key].startDate}</td>
+                    <td>{props.children[key].endDate}</td>
+                    <td><button>Preview proof here (img/pdf)</button></td>
+                    <td>
+                        <a 
+                            className="btn btn-info"
+                            data-toggle="modal"
+                            data-target="#ongoing"
+                        >
+                            {props.children[key].status}
+                        </a>
+                    </td>
+                </tr>
+            );
+        } else if(props.children[key].status == 'for verification') {
+            return (
+                <tr>
+                    <td>{props.children[key].institutionSchool}</td>
+                    <td>{props.children[key].degreeCert}</td>
+                    <td>{props.children[key].majorSpecialization}</td>
+                    <td>{props.children[key].startDate}</td>
+                    <td>{props.children[key].endDate}</td>
+                    <td><button>Preview proof here (img/pdf)</button></td>
+                    <td>
+                        <a 
+                            className="btn btn-info"
+                            data-toggle="modal"
+                            data-target="#forVerif"
+                        >
+                            {props.children[key].status}
+                        </a>
+                    </td>
+                </tr>
+            );
         }
-        return (
-            <tr>
-                <td>{props.children[key].institutionSchool}</td>
-                <td>{props.children[key].degreeCert}</td>
-                <td>{props.children[key].majorSpecialization}</td>
-                <td>{props.children[key].startDate}</td>
-                <td>{props.children[key].endDate}</td>
-                <td><button>Preview proof here (img/pdf)</button></td>
-                <td>
-                    <a 
-                        className="btn btn-info"
-                        data-toggle="modal"
-                        data-target={stat}
-                    >
-                        {props.children[key].status}
-                    </a>
-                </td>
-            </tr>
-        );
     });
     return (
         <div>

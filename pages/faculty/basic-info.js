@@ -67,14 +67,17 @@ BasicInfo.getInitialProps = async () => {
     const personal = await fetch(url + '9', header)
     const personalInfo = await personal.json()
 
-    // const employ = await fetch(url + 'faculty/9/employment', header)
-    // const employment = await employ.json()
+    const employ = await fetch(url + '9/employment', header)
+    const employment = await employ.json()
 
     const educ = await fetch(url + '9/education', header)
     const education = await educ.json()
 
     const work = await fetch(url + '9/work-exp', header)
     const workExperience = await work.json()
+
+    workExperience.result.push(employment.result)
+    console.log(workExperience.result)
 
     return { 
         personalInfo: personalInfo.result,
