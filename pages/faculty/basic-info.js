@@ -77,7 +77,6 @@ BasicInfo.getInitialProps = async () => {
     const workExperience = await work.json()
 
     workExperience.result.push(employment.result)
-    console.log(workExperience.result)
 
     return { 
         personalInfo: personalInfo.result,

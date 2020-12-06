@@ -51,7 +51,7 @@ function PersonalInfo(props) {
 		<div className = "form-row">
                 	<div className = "form-group col-md-6 required">
 				<label className = "control-label" htmlFor ="CivilStatus"> Civil Status </label>
-                    		<select className = "form-control" name = "CivilStatus" value = { props.children.civilStatus }>
+                    		<select className = "form-control" name = "CivilStatus" defaultValue = { props.children.civilStatus }>
 					<option>Single</option>
 					<option>Married</option>
 					<option>Separated (Legally)</option>

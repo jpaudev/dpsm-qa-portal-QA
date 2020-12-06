@@ -5,7 +5,7 @@ function Education(props) {
     let content = Object.keys(props.children).map(key => {
         if(props.children[key].status == 'ongoing') {
             return (
-                <tr>
+                <tr key = {props.children.[key].educInfoId}>
                     <td>{props.children[key].institutionSchool}</td>
                     <td>{props.children[key].degreeCert}</td>
                     <td>{props.children[key].majorSpecialization}</td>
