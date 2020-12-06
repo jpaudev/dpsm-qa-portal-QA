@@ -1,3 +1,4 @@
+import Fetch from 'isomorphic-unfetch'
 import Layout from '../../components/layout'
 import PersonalInfo from '../../components/faculty/basic-info/personal-info'
 import Education from '../../components/faculty/basic-info/education'
@@ -85,5 +86,21 @@ BasicInfo.getInitialProps = async () => {
         workExperience: workExperience.result
     }
 }
+
+//   BasicInfo.getInitialProps = async () => {
+//       let url = 'https://sp-api-test.alun.app/api/faculty/9'
+//       let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXJuYW1lIiwiaWF0IjoxNjA1MzM5MjI4LCJleHAiOjE2MDUzNDI4Mjh9.deoiQ1EyQW0LDkKAY_T-lgjiehjeZ2KnsEGlkD2oP4A'
+//       const response = await fetch(url, {
+//           headers: {
+//               'Authorization': 'Bearer ' + token
+//           }
+//       })
+//       const personalInfo = await response.json()
+
+//       return { 
+//           personalInfo: personalInfo.result
+//         }
+//   }
+  
 
   export default BasicInfo
