@@ -1,7 +1,50 @@
 import Link from 'next/link'
 import EducationForm from './education-form'
 
-function Education() {
+function Education(props) {
+    let content = Object.keys(props.children).map(key => {
+        if(props.children[key].status == 'ongoing') {
+            return (
+                <tr key = {props.children.[key].educInfoId}>
+                    <td>{props.children[key].institutionSchool}</td>
+                    <td>{props.children[key].degreeCert}</td>
+                    <td>{props.children[key].majorSpecialization}</td>
+                    <td>{props.children[key].startDate}</td>
+                    <td>{props.children[key].endDate}</td>
+                    <td><button>Preview proof here (img/pdf)</button></td>
+                    <td>
+                        <a 
+                            className="btn btn-info"
+                            data-toggle="modal"
+                            data-target="#ongoing"
+                        >
+                            {props.children[key].status}
+                        </a>
+                    </td>
+                </tr>
+            );
+        } else if(props.children[key].status == 'for verification') {
+            return (
+                <tr>
+                    <td>{props.children[key].institutionSchool}</td>
+                    <td>{props.children[key].degreeCert}</td>
+                    <td>{props.children[key].majorSpecialization}</td>
+                    <td>{props.children[key].startDate}</td>
+                    <td>{props.children[key].endDate}</td>
+                    <td><button>Preview proof here (img/pdf)</button></td>
+                    <td>
+                        <a 
+                            className="btn btn-info"
+                            data-toggle="modal"
+                            data-target="#forVerif"
+                        >
+                            {props.children[key].status}
+                        </a>
+                    </td>
+                </tr>
+            );
+        }
+    });
     return (
         <div>
             <div>
@@ -16,7 +59,8 @@ function Education() {
                             <th>Proof</th>
                             <th>Status</th>
                         </tr>
-                        <tr>
+                        {content}
+                        {/*<tr>
                             <td>University of the Philippines Diliman</td>
                             <td>Doctor of Philosophy in Computer Science</td>
                             <td>None</td>
@@ -42,7 +86,7 @@ function Education() {
                             <td>2017-05-25</td>
                             <td></td>
                             <td>Verified</td>
-                        </tr>
+                        </tr>*/}
                     </tbody>
                 </table>
             </div>

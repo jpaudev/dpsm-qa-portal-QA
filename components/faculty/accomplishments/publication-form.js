@@ -10,22 +10,43 @@ class PublicationForm extends React.Component{
 	}
 	clone(){
 		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
-			<div className = "form-group col-md-2">
-				<label htmlFor = "Publication[]"> Publication </label>
-				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-primary" id = "AddPublication" onClick = {() => this.clone()}> Add Publication </button>
 			</div>
-			<div className = "form-group col-md-4">
+			<div className = "col-auto">
+				<button type = "button" className = "btn btn-danger" id = "RemovePublication" onClick = {() => this.remove()}> Remove a Row </button>
+			</div>
+		</div>
+		<br />
+		<div className = "form-row">
+			<div className = "form-group col-md-6">
+				<label htmlFor = "Publication[]"> Publication </label>
+				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name/title" />
+			</div>
+			<div className = "form-group col-md-6">
+				<label htmlFor = "PublicationCitation[]"> Citation </label>
+				<input className = "form-control" type = "text" name = "PublicationCitation[]" placeholder = "Input full citation for publication" />
+			</div>
+		</div>
+		<div className = "form-row">
+			<div className = "form-group col-md-6"> 
 				<label htmlFor = "PublicationURL[]"> URL </label>
 				<input className = "form-control" type = "text" name = "PublicationURL[]" placeholder = "Input publication URL" />
 			</div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
 				<label htmlFor = "PublishDate[]"> Date Published </label>
 				<input type = "date" className = "form-control" name = "PublishDate[]" />
 			</div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
                             <label htmlFor = "PublicationProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "PublicationProof[]" />
                         </div>
+		</div>
+		<div className = "form-row">
+			<div className = "form-group col-md-12">
+				<label htmlFor = "PublicationAuthorNonDPSM[]"> Authors (non-DPSM) </label>
+				<input className = "form-control" type = "text" name = "PublicationAuthorNonDPSM[]" placeholder = "Input all authors outside DPSM (separate names with commas)" />
+			</div>
 		</div>
 		<div>
 				<PublicationFormAuthor />
@@ -61,22 +82,34 @@ class PublicationForm extends React.Component{
 		</div>
 		<br />
 		<div className = "form-row">
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-6">
 				<label htmlFor = "Publication[]"> Publication </label>
-				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name" />
+				<input className = "form-control" type = "text" name = "Publication[]" placeholder = "Input publication name/title" />
 			</div>
-			<div className = "form-group col-md-4"> 
+			<div className = "form-group col-md-6">
+				<label htmlFor = "PublicationCitation[]"> Citation </label>
+				<input className = "form-control" type = "text" name = "PublicationCitation[]" placeholder = "Input full citation for publication" />
+			</div>
+		</div>
+		<div className = "form-row">
+			<div className = "form-group col-md-6"> 
 				<label htmlFor = "PublicationURL[]"> URL </label>
 				<input className = "form-control" type = "text" name = "PublicationURL[]" placeholder = "Input publication URL" />
 			</div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
 				<label htmlFor = "PublishDate[]"> Date Published </label>
 				<input type = "date" className = "form-control" name = "PublishDate[]" />
 			</div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-3">
                             <label htmlFor = "PublicationProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "PublicationProof[]" />
                         </div>
+		</div>
+		<div className = "form-row">
+			<div className = "form-group col-md-12">
+				<label htmlFor = "PublicationAuthorNonDPSM[]"> Authors (non-DPSM) </label>
+				<input className = "form-control" type = "text" name = "PublicationAuthorNonDPSM[]" placeholder = "Input all authors outside DPSM (separate names with commas)" />
+			</div>
 		</div>
 		<div>
 				<PublicationFormAuthor />

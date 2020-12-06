@@ -2,30 +2,65 @@ import Link from 'next/link'
 import PublicServiceAccomplishmentForm from './public-service-accomplishment-form'
 
 function PublicServiceAccomplishment(){
-	return(
-	<div>
-	
-            <div>
+    return(
+    <div>
+        <div>
+        <h5 align = "center">Within UP Manila </h5>
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
-                            <th>Accomplishment</th>
-			    <th>Description</th>
+                            <th>Position/Role</th>
+                <th>Organization</th>
+                <th>Description</th>
                             <th>Date</th>
                             <th>Proof</th>
                             <th>Status</th>
                         </tr>
                         <tr>
-                            <td>Failed COVID-19 response</td>
-                            <td>Not implementing mass testing or contact tracing</td>
-			    <td>2020-02-29</td>
+                <td></td>
+                            <td></td>
+                            <td></td>
+                <td>2020-02-29</td>
                             <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
                         <tr>
-                            <td>Corruption</td>
-                            <td>Embezzlement of taxpayer funds</td>
-			    <td>2020-03-20</td>
+                <td></td>
+                            <td></td>
+                            <td></td>
+                <td>2020-03-20</td>
+                            <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+        <br />
+        <h5 align = "center">Outside UP Manila </h5>
+                <table className = "table table-striped table-sm">
+                    <tbody>
+                        <tr>
+                            <th>Position/Role</th>
+                <th>Organization</th>
+                <th>Description</th>
+                            <th>Date</th>
+                            <th>Proof</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                <td></td>
+                            <td></td>
+                            <td></td>
+                <td>2020-02-29</td>
+                            <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
+                        </tr>
+                        <tr>
+                <td></td>
+                            <td></td>
+                            <td></td>
+                <td>2020-03-20</td>
                             <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
@@ -36,8 +71,8 @@ function PublicServiceAccomplishment(){
             <div>
                 <PublicServiceAccomplishmentForm />
             </div>   
-		
-		<div className="modal fade" id="ongoingstatus" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+        
+        <div className="modal fade" id="ongoingstatus" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -113,7 +148,7 @@ function PublicServiceAccomplishment(){
         </div>
 
             </div>
-	)
+    )
 }
 
 export default PublicServiceAccomplishment

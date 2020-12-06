@@ -1,19 +1,23 @@
 import React from 'react'
 
 class PublicServiceAccomplishmentForm extends React.Component{
-	constructor(){
-		super()
-		this.state = {
-			duplicateForms: []
-		}
-	}
-	clone(){
-		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
+    constructor(){
+        super()
+        this.state = {
+            duplicateForms: []
+        }
+    }
+    clone(){
+        this.state.duplicateForms.push(<div><hr /><div className = "form-row">
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceAccomplishment[]"> Accomplishment </label>
-                            <input className = "form-control" type = "text" name = "PublicServiceAccomplishment[]" placeholder = "Input accomplishment" />
+                            <label htmlFor = "PublicServicePosition[]"> Position/Role </label>
+                            <input className = "form-control" type = "text" name = "PublicServicePosition[]" placeholder = "Input position/role" />
                         </div>
-			<div className = "form-group col-md-4">
+            <div className = "form-group col-md-2">
+                            <label htmlFor = "PublicServiceOrganization[]"> Organization </label>
+                            <input className = "form-control" type = "text" name = "PublicServiceOrganization[]" placeholder = "Input organization" />
+                        </div>
+            <div className = "form-group col-md-4">
                             <label htmlFor = "PublicServiceAccomplishmentDescription[]"> Description </label>
                             <input className = "form-control" type = "text" name = "PublicServiceAccomplishmentDescription[]" placeholder = "Input description" />
                         </div>
@@ -26,25 +30,25 @@ class PublicServiceAccomplishmentForm extends React.Component{
                             <input type = "file" className = "form-control-file" name = "PublicServiceAccomplishmentProof[]" />
                         </div>
                     </div>
-			<style jsx>{`
-			hr{
-				border: 1px solid black;
-			}
-		`}</style>
-			</div>)
-		this.setState({
-			
-		})
-	}
-	remove(){
-		this.state.duplicateForms.pop()
-		this.setState({
-			
-		})
-	}
-	render(){
-		return(
-			<form>
+            <style jsx>{`
+            hr{
+                border: 1px solid black;
+            }
+        `}</style>
+            </div>)
+        this.setState({
+            
+        })
+    }
+    remove(){
+        this.state.duplicateForms.pop()
+        this.setState({
+            
+        })
+    }
+    render(){
+        return(
+            <form>
                     <hr />
                     <div className = "form-row">
                         <div className = "col-auto">
@@ -57,10 +61,14 @@ class PublicServiceAccomplishmentForm extends React.Component{
                     <br />
                     <div className = "form-row">
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceAccomplishment[]"> Accomplishment </label>
-                            <input className = "form-control" type = "text" name = "PublicServiceAccomplishment[]" placeholder = "Input accomplishment" />
+                            <label htmlFor = "PublicServicePosition[]"> Position/Role </label>
+                            <input className = "form-control" type = "text" name = "PublicServicePosition[]" placeholder = "Input position/role" />
                         </div>
-			<div className = "form-group col-md-4">
+            <div className = "form-group col-md-2">
+                            <label htmlFor = "PublicServiceOrganization[]"> Organization </label>
+                            <input className = "form-control" type = "text" name = "PublicServiceOrganization[]" placeholder = "Input organization" />
+                        </div>
+            <div className = "form-group col-md-4">
                             <label htmlFor = "PublicServiceAccomplishmentDescription[]"> Description </label>
                             <input className = "form-control" type = "text" name = "PublicServiceAccomplishmentDescription[]" placeholder = "Input description" />
                         </div>
@@ -81,8 +89,8 @@ class PublicServiceAccomplishmentForm extends React.Component{
                     <hr />
                     
                 </form>
-		)
-	}
+        )
+    }
 }
 
 export default PublicServiceAccomplishmentForm
