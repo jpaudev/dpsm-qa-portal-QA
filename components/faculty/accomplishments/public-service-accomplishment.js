@@ -37,7 +37,67 @@ function PublicServiceAccomplishment(){
             </div>
             <div>
 		<br />
-		<h5 align = "center">Outside UP Manila </h5>
+		<h5 align = "center"> Contributions to Profession </h5>
+                <table className = "table table-striped table-sm">
+                    <tbody>
+                        <tr>
+                            <th>Position/Role</th>
+			    <th>Organization</th>
+			    <th>Description</th>
+                            <th>Date</th>
+                            <th>Proof</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+			    <td></td>
+                            <td></td>
+                            <td></td>
+			    <td>2020-02-29</td>
+                            <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
+                        </tr>
+                        <tr>
+			    <td></td>
+                            <td></td>
+                            <td></td>
+			    <td>2020-03-20</td>
+                            <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+		<br />
+		<h5 align = "center"> Contributions to the Nation </h5>
+                <table className = "table table-striped table-sm">
+                    <tbody>
+                        <tr>
+                            <th>Position/Role</th>
+			    <th>Organization</th>
+			    <th>Description</th>
+                            <th>Date</th>
+                            <th>Proof</th>
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+			    <td></td>
+                            <td></td>
+                            <td></td>
+			    <td>2020-02-29</td>
+                            <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
+                        </tr>
+                        <tr>
+			    <td></td>
+                            <td></td>
+                            <td></td>
+			    <td>2020-03-20</td>
+                            <td></td>
+                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+		<br />
+		<h5 align = "center"> Contributions to the World </h5>
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
