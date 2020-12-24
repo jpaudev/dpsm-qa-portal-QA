@@ -18,6 +18,7 @@ function ResearchGrant(){
 				<th>Research Progress</th>
 				<th>Proof</th>
 				<th>Status</th>
+				<th>Action</th>
 			</tr>
 			<tr>
 				<td>COVID-19 vaccine</td>
@@ -29,6 +30,7 @@ function ResearchGrant(){
 				<td></td>
 				<td>Ongoing</td>
 				<td><a href ="#">Download proof</a></td>
+				<td>Pending Approval</td>
 				<td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus5">Ongoing</a></td>
 			</tr>
 			<tr>
@@ -41,6 +43,7 @@ function ResearchGrant(){
 				<td></td>
 				<td></td>
 				<td></td>
+				<td>Pending Approval</td>
 				<td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus5">For Verification</a></td>
 			</tr>
 			<tr>
@@ -53,6 +56,7 @@ function ResearchGrant(){
 				<td></td>
 				<td></td>
 				<td></td>
+				<td>Verified</td>
 				<td></td>
 			</tr>
 		</tbody>
