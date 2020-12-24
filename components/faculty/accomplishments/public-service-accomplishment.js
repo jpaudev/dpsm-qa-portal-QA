@@ -12,7 +12,8 @@ function PublicServiceAccomplishment(){
                             <th>Position/Role</th>
 			    <th>Organization</th>
 			    <th>Description</th>
-                            <th>Date</th>
+                            <th>Start Date</th>
+			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
                         </tr>
@@ -21,6 +22,7 @@ function PublicServiceAccomplishment(){
                             <td></td>
                             <td></td>
 			    <td>2020-02-29</td>
+			    <td></td>
                             <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
@@ -29,6 +31,7 @@ function PublicServiceAccomplishment(){
                             <td></td>
                             <td></td>
 			    <td>2020-03-20</td>
+			    <td></td>
                             <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
@@ -44,7 +47,8 @@ function PublicServiceAccomplishment(){
                             <th>Position/Role</th>
 			    <th>Organization</th>
 			    <th>Description</th>
-                            <th>Date</th>
+                            <th>Start Date</th>
+			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
                         </tr>
@@ -54,6 +58,7 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td>2020-02-29</td>
                             <td></td>
+			    <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
                         <tr>
@@ -62,6 +67,7 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td>2020-03-20</td>
                             <td></td>
+			    <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
                     </tbody>
@@ -74,7 +80,8 @@ function PublicServiceAccomplishment(){
                             <th>Position/Role</th>
 			    <th>Organization</th>
 			    <th>Description</th>
-                            <th>Date</th>
+                            <th>Start Date</th>
+			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
                         </tr>
@@ -84,6 +91,7 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td>2020-02-29</td>
                             <td></td>
+			    <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
                         <tr>
@@ -92,6 +100,7 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td>2020-03-20</td>
                             <td></td>
+			    <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
                     </tbody>
@@ -104,7 +113,8 @@ function PublicServiceAccomplishment(){
                             <th>Position/Role</th>
 			    <th>Organization</th>
 			    <th>Description</th>
-                            <th>Date</th>
+                            <th>Start Date</th>
+			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
                         </tr>
@@ -114,6 +124,7 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td>2020-02-29</td>
                             <td></td>
+			    <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
                         <tr>
@@ -122,6 +133,7 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td>2020-03-20</td>
                             <td></td>
+			    <td></td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
                     </tbody>
