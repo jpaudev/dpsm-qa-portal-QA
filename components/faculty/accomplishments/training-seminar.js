@@ -15,6 +15,7 @@ function TrainingSeminar() {
 			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
+			    <th>Action</th>
                         </tr>
                         <tr>
                             <td>3</td>
@@ -23,6 +24,7 @@ function TrainingSeminar() {
                             <td></td>
 			    <td></td>
 			    <td></td>
+			    <td>Pending Approval</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus3">Ongoing</a></td>
                         </tr>
                         <tr>
@@ -32,6 +34,7 @@ function TrainingSeminar() {
                             <td></td>
 			    <td></td>
 			    <td></td>
+			    <td>Pending Approval</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus3">For Verification</a></td>
                         </tr>
                         <tr>
@@ -42,6 +45,7 @@ function TrainingSeminar() {
 			    <td></td>
 			    <td></td>
                             <td>Verified</td>
+			    <td></td>
                         </tr>
                     </tbody>
                 </table>
