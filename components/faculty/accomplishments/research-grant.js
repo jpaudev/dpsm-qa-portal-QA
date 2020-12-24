@@ -10,7 +10,7 @@ function ResearchGrant(){
 			<tr>
 				<th>Research Name</th>
 				<th>Author/s</th>
-				<th>Granter</th>
+				<th>Sponsor</th>
 				<th>Amount</th>
 				<th>Projected Duration</th>
 				<th>Start Date</th>
