@@ -15,7 +15,8 @@ function PublicServiceAccomplishment(){
                             <th>Start Date</th>
 			    <th>End Date</th>
                             <th>Proof</th>
-                            <th>Status</th>
+			    <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         <tr>
 			    <td></td>
@@ -24,6 +25,7 @@ function PublicServiceAccomplishment(){
 			    <td>2020-02-29</td>
 			    <td></td>
                             <td></td>
+			    <td>Pending Approval</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
                         <tr>
@@ -33,6 +35,7 @@ function PublicServiceAccomplishment(){
 			    <td>2020-03-20</td>
 			    <td></td>
                             <td></td>
+			    <td>Verified</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
                     </tbody>
@@ -51,6 +54,7 @@ function PublicServiceAccomplishment(){
 			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         <tr>
 			    <td></td>
@@ -59,6 +63,7 @@ function PublicServiceAccomplishment(){
 			    <td>2020-02-29</td>
                             <td></td>
 			    <td></td>
+			    <td>Pending Approval</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
                         <tr>
@@ -68,6 +73,7 @@ function PublicServiceAccomplishment(){
 			    <td>2020-03-20</td>
                             <td></td>
 			    <td></td>
+			    <td>Verified</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
                     </tbody>
@@ -84,6 +90,7 @@ function PublicServiceAccomplishment(){
 			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         <tr>
 			    <td></td>
@@ -92,6 +99,7 @@ function PublicServiceAccomplishment(){
 			    <td>2020-02-29</td>
                             <td></td>
 			    <td></td>
+			    <td>Pending Approval</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
                         <tr>
@@ -101,6 +109,7 @@ function PublicServiceAccomplishment(){
 			    <td>2020-03-20</td>
                             <td></td>
 			    <td></td>
+			    <td>Verified</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
                     </tbody>
@@ -117,6 +126,7 @@ function PublicServiceAccomplishment(){
 			    <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         <tr>
 			    <td></td>
@@ -125,6 +135,7 @@ function PublicServiceAccomplishment(){
 			    <td>2020-02-29</td>
                             <td></td>
 			    <td></td>
+			    <td>Pending Approval</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
                         </tr>
                         <tr>
@@ -134,6 +145,7 @@ function PublicServiceAccomplishment(){
 			    <td>2020-03-20</td>
                             <td></td>
 			    <td></td>
+			    <td>Verified</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
                         </tr>
                     </tbody>
