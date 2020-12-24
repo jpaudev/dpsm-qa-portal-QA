@@ -10,7 +10,7 @@ function PersonalInfo() {
                 <div className = "form-row">
                     <div className = "form-group col-md-3 required">
                         <label className = "control-label" htmlFor = "FirstName"> First Name </label>
-                        <input className = "form-control" type = "text" name = "FirstName" value = "Jodie Lee Diane" disabled required />
+                        <input className = "form-control" type = "text" name = "FirstName" value = "Jodie Lee Diane" required />
                     </div>
                     <div className = "form-group col-md-3">
                         <label htmlFor = "MiddleName"> Middle Name </label>
@@ -22,21 +22,24 @@ function PersonalInfo() {
                     </div>
 		    <div className = "form-group col-md-3">
                         <label htmlFor = "Suffix"> Suffix </label>
-                        <input className = "form-control" type = "text" name = "LastName" required />
+                        <input className = "form-control" type = "text" name = "Suffix" />
                     </div>
                 </div>
                 <div className = "form-row">
-                    <div className = "form-group col-md-4">
-                        <label className = "control-label" htmlFor = "Sex"> Sex </label>
-                        <input className = "form-control" type = "text" name = "Sex" value = "Female" disabled required />
-                    </div>
+                    <div className = "form-group col-md-4 required">
+				<label className = "control-label" htmlFor ="Sex"> Sex </label>
+                    		<select className = "form-control" name = "Sex" required>
+					<option>Male</option>
+					<option>Female</option>
+				</select>
+                	</div>
                     <div className = "form-group col-md-4 required">
                         <label className = "control-label" htmlFor = "DateOfBirth"> Date of Birth </label>
-                        <input className = "form-control" type = "text" name = "DateOfBirth" value = "1994-01-06" disabled required />
+                        <input className = "form-control" type = "date" name = "DateOfBirth" value = "1994-01-06" required />
                     </div>
                     <div className = "form-group col-md-4 required">
                         <label className = "control-label" htmlFor = "PlaceOfBirth"> Place of Birth </label>
-                        <input className = "form-control" type = "text" name = "PlaceOfBirth" value = "Cristobal" disabled required />
+                        <input className = "form-control" type = "text" name = "PlaceOfBirth" value = "Cristobal" required />
                     </div>
                 </div>
                 <br />
@@ -51,7 +54,7 @@ function PersonalInfo() {
 		<div className = "form-row">
                 	<div className = "form-group col-md-6 required">
 				<label className = "control-label" htmlFor ="CivilStatus"> Civil Status </label>
-                    		<select className = "form-control" name = "CivilStatus">
+                    		<select className = "form-control" name = "CivilStatus" required>
 					<option>Single</option>
 					<option>Married</option>
 					<option>Separated (Legally)</option>
