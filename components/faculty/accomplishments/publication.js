@@ -15,6 +15,7 @@ function Publication(){
 				<th>Citation</th>
 				<th>Proof</th>
 				<th>Status</th>
+				<th>Action</th>
 			</tr>
 			<tr>
 				<td>Principles of Programming Languages</td>
@@ -23,6 +24,7 @@ function Publication(){
 				<td>http://clubpenguin.com</td>
 				<td></td>
 				<td></td>
+				<td>Pending Approval</td>
 				<td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus4">Ongoing</a></td>
 			</tr>
 			<tr>
@@ -32,12 +34,14 @@ function Publication(){
 				<td></td>
 				<td></td>
 				<td></td>
+				<td>Verified</td>
 				<td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus4">For Verification</a></td>
 			</tr>
 			<tr>
 				<td>Algorithms and Advanced Data Structures I</td>
 				<td></td>
 				<td>2010-09-06</td>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
