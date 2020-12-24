@@ -15,8 +15,8 @@ class ResearchGrantForm extends React.Component{
 				<input className = "form-control" type = "text" name = "Research[]" placeholder = "Input research name" />
 			</div>
 			<div className = "form-group col-md-2"> 
-				<label htmlFor = "ResearchGranter[]"> Granter </label>
-				<input className = "form-control" type = "text" name = "ResearchGranter[]" placeholder = "Input granter" />
+				<label htmlFor = "ResearchSponsor[]"> Sponsor </label>
+				<input className = "form-control" type = "text" name = "ResearchGranter[]" placeholder = "Input sponsor" />
 			</div>
 			<div className = "form-group col-md-2"> 
 				<label htmlFor = "ResearchAmount[]"> Amount </label>
@@ -92,8 +92,8 @@ class ResearchGrantForm extends React.Component{
 				<input className = "form-control" type = "text" name = "Research[]" placeholder = "Input research name" />
 			</div>
 			<div className = "form-group col-md-2"> 
-				<label htmlFor = "ResearchGranter[]"> Granter </label>
-				<input className = "form-control" type = "text" name = "ResearchGranter[]" placeholder = "Input granter" />
+				<label htmlFor = "ResearchSponsor[]"> Sponsor </label>
+				<input className = "form-control" type = "text" name = "ResearchSponsor[]" placeholder = "Input sponsor" />
 			</div>
 			<div className = "form-group col-md-2"> 
 				<label htmlFor = "ResearchAmount[]"> Amount </label>
