@@ -15,6 +15,7 @@ function Education() {
                             <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
+			    <th>Action</th>
                         </tr>
                         <tr>
                             <td>University of the Philippines Diliman</td>
@@ -23,6 +24,7 @@ function Education() {
                             <td>2020-01-26</td>
                             <td>Present</td>
                             <td></td>
+			    <td>Pending Approval</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoing">Ongoing</a></td>
                         </tr>
                         <tr>
@@ -32,6 +34,7 @@ function Education() {
                             <td>2017-05-26</td>
                             <td>2020-01-25</td>
                             <td></td>
+			    <td>Pending Approval</td>
                             <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerif">For Verification</a></td>
                         </tr>
                         <tr>
@@ -41,7 +44,8 @@ function Education() {
                             <td>2010-09-06</td>
                             <td>2017-05-25</td>
                             <td></td>
-                            <td>Verified</td>
+			    <td>Verified</td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
