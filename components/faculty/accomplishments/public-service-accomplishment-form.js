@@ -17,19 +17,23 @@ class PublicServiceAccomplishmentForm extends React.Component{
                             <label htmlFor = "PublicServiceOrganization[]"> Organization </label>
                             <input className = "form-control" type = "text" name = "PublicServiceOrganization[]" placeholder = "Input organization" />
                         </div>
-			<div className = "form-group col-md-4">
-                            <label htmlFor = "PublicServiceAccomplishmentDescription[]"> Description </label>
-                            <input className = "form-control" type = "text" name = "PublicServiceAccomplishmentDescription[]" placeholder = "Input description" />
+			<div className = "form-group col-md-2">
+                            <label htmlFor = "PublicServiceAccomplishmentStartDate[]"> Start Date </label>
+                            <input type = "date" className = "form-control" name = "PublicServiceAccomplishmentStartDate[]" />
                         </div>
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceAccomplishmentDate[]"> Date </label>
-                            <input type = "date" className = "form-control" name = "PublicServiceAccomplishmentDate[]" />
+                            <label htmlFor = "PublicServiceAccomplishmentEndDate[]"> End Date </label>
+                            <input type = "date" className = "form-control" name = "PublicServiceAccomplishmentEndDate[]" />
                         </div>
                         <div className = "form-group col-md-2">
                             <label htmlFor = "PublicServiceAccomplishmentProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "PublicServiceAccomplishmentProof[]" />
                         </div>
                     </div>
+			<div className = "form-group col-md-6">
+                            <label htmlFor = "PublicServiceAccomplishmentDescription[]"> Description </label>
+                            <input className = "form-control" type = "text" name = "PublicServiceAccomplishmentDescription[]" placeholder = "Input description" />
+                        </div>
 			<style jsx>{`
 			hr{
 				border: 1px solid black;
@@ -68,19 +72,23 @@ class PublicServiceAccomplishmentForm extends React.Component{
                             <label htmlFor = "PublicServiceOrganization[]"> Organization </label>
                             <input className = "form-control" type = "text" name = "PublicServiceOrganization[]" placeholder = "Input organization" />
                         </div>
-			<div className = "form-group col-md-4">
-                            <label htmlFor = "PublicServiceAccomplishmentDescription[]"> Description </label>
-                            <input className = "form-control" type = "text" name = "PublicServiceAccomplishmentDescription[]" placeholder = "Input description" />
+                        <div className = "form-group col-md-2">
+                            <label htmlFor = "PublicServiceAccomplishmentStartDate[]"> Start Date </label>
+                            <input type = "date" className = "form-control" name = "PublicServiceAccomplishmentStartDate[]" />
                         </div>
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceAccomplishmentDate[]"> Date </label>
-                            <input type = "date" className = "form-control" name = "PublicServiceAccomplishmentDate[]" />
+                            <label htmlFor = "PublicServiceAccomplishmentEndDate[]"> End Date </label>
+                            <input type = "date" className = "form-control" name = "PublicServiceAccomplishmentEndDate[]" />
                         </div>
                         <div className = "form-group col-md-2">
                             <label htmlFor = "PublicServiceAccomplishmentProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "PublicServiceAccomplishmentProof[]" />
                         </div>
                     </div>
+			<div className = "form-group col-md-6">
+                            <label htmlFor = "PublicServiceAccomplishmentDescription[]"> Description </label>
+                            <input className = "form-control" type = "text" name = "PublicServiceAccomplishmentDescription[]" placeholder = "Input description" />
+                        </div>
                     <div id = "PublicServiceAccomplishment">
                         {this.state.duplicateForms}
                     </div>
