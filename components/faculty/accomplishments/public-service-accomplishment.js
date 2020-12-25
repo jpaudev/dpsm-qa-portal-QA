@@ -26,7 +26,12 @@ function PublicServiceAccomplishment(){
 			    <td></td>
                             <td></td>
 			    <td>Pending Approval</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublicService">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService">Delete</a>
+				</div>
+			    </td>
                         </tr>
                         <tr>
 			    <td></td>
@@ -36,7 +41,12 @@ function PublicServiceAccomplishment(){
 			    <td></td>
                             <td></td>
 			    <td>Verified</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublicService">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService">Delete</a>
+				</div>
+			    </td>
                         </tr>
                     </tbody>
                 </table>
@@ -64,7 +74,12 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td></td>
 			    <td>Pending Approval</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublicService">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService">Delete</a>
+				</div>
+			    </td>
                         </tr>
                         <tr>
 			    <td></td>
@@ -74,7 +89,12 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td></td>
 			    <td>Verified</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublicService">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService">Delete</a>
+				</div>
+			    </td>
                         </tr>
                     </tbody>
                 </table>
@@ -100,7 +120,12 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td></td>
 			    <td>Pending Approval</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublicService">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService">Delete</a>
+				</div>
+			    </td>
                         </tr>
                         <tr>
 			    <td></td>
@@ -110,7 +135,12 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td></td>
 			    <td>Verified</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublicService">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService">Delete</a>
+				</div>
+			    </td>
                         </tr>
                     </tbody>
                 </table>
@@ -136,7 +166,12 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td></td>
 			    <td>Pending Approval</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus">Ongoing</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublicService">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService">Delete</a>
+				</div>
+			    </td>
                         </tr>
                         <tr>
 			    <td></td>
@@ -146,7 +181,12 @@ function PublicServiceAccomplishment(){
                             <td></td>
 			    <td></td>
 			    <td>Verified</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus">For Verification</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublicService">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService">Delete</a>
+				</div>
+			    </td>
                         </tr>
                     </tbody>
                 </table>
@@ -156,11 +196,11 @@ function PublicServiceAccomplishment(){
                 <PublicServiceAccomplishmentForm />
             </div>   
 		
-		<div className="modal fade" id="ongoingstatus" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+		<div className="modal fade" id="editPublicService" tabIndex="-1" role="dialog" aria-labelledby="editPublicServiceLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="ongoingLabel">Update Education Information</h5>
+                        <h5 className="modal-title" id="editPublicServiceLabel">Update Public Service Accomplishment Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -169,17 +209,47 @@ function PublicServiceAccomplishment(){
                         <form>
                             <hr />
                             <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "EndDate"> End Date </label>
-                                    <input type = "date" className = "form-control" name = "EndDate" />
-                                </div>
-                            </div>
+                        	<div className = "form-group">
+                            		<label htmlFor = "PublicServicePositionUpdate"> Position/Role </label>
+                            		<input className = "form-control" type = "text" name = "PublicServicePositionUpdate" placeholder = "Input position/role" />
+                        	</div>
+                    	    </div>
                             <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "Proof"> Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "Proof" />
-                                </div>
-                            </div>
+                        	<div className = "form-group">
+                            		<label htmlFor = "PublicServiceOrganizationUpdate"> Organization </label>
+                            		<input className = "form-control" type = "text" name = "PublicServiceOrganizationUpdate" placeholder = "Input organization" />
+                       		</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "PublicServiceAccomplishmentStartDateUpdate"> Start Date </label>
+                            		<input type = "date" className = "form-control" name = "PublicServiceAccomplishmentStartDateUpdate" />
+                        	</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "StartDateEducationalHistoryUpdate"> Start Date </label>
+                            		<input type = "date" className = "form-control" name = "StartDateEducationalHistoryUpdate" />
+                       		</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "PublicServiceAccomplishmentEndDateUpdate"> End Date </label>
+                            		<input type = "date" className = "form-control" name = "PublicServiceAccomplishmentEndDateUpdate" />
+                        	</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "PublicServiceAccomplishmentDescriptionUpdate"> Description </label>
+                            		<input className = "form-control" type = "text" name = "PublicServiceAccomplishmentDescriptionUpdate" placeholder = "Input description" />
+                        	</div>
+                    	    </div>
+			    <div className = "form-row">
+                        	<div className = "form-group col-md-2">
+                            		<label htmlFor = "PublicServiceAccomplishmentProofUpdate"> Proof </label>
+                            		<input type = "file" className = "form-control-file" name = "PublicServiceAccomplishmentProofUpdate" />
+                        	</div>
+                    	    </div>
                         </form>
                     </div>
                     <div className="modal-footer">
@@ -190,41 +260,22 @@ function PublicServiceAccomplishment(){
                 </div>
             </div>
         
-            <div className="modal fade" id="forVerifstatus" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+            <div className="modal fade" id="deletePublicService" tabIndex="-1" role="dialog" aria-labelledby="deletePublicServiceLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="forVerifLabel">Status</h5>
+                        <h5 className="modal-title" id="deletePublicServiceLabel">Delete Public Service Accomplishment Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <hr />
-                        <table className = "table table-striped table-sm">
-                            <tr>
-                                <th>Position</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Date of Approval</th>
-                            </tr>
-                            <tr>
-                                <td>Unit Head</td>
-                                <td>Therese Basco-Uy</td>
-                                <td>Approved</td>
-                                <td>2020-11-08</td>
-                            </tr>
-                            <tr>
-                                <td>Department Head</td>
-                                <td>LOL Dunno</td>
-                                <td>For Approval</td>
-                                <td></td>
-                            </tr>
-                            
-                        </table>
+                        <p> Are you sure you want to delete this public service accomplishment information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+			<button type="button" className="btn btn-danger">Yes, delete</button>
                     </div>
                     </div>
                 </div>
