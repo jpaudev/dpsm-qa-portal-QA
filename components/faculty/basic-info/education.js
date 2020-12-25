@@ -25,7 +25,12 @@ function Education() {
                             <td>Present</td>
                             <td></td>
 			    <td>Pending Approval</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoing">Ongoing</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editEducation">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation">Delete</a>
+				</div>
+			    </td>
                         </tr>
                         <tr>
                             <td>University of the Philippines Diliman</td>
@@ -35,7 +40,12 @@ function Education() {
                             <td>2020-01-25</td>
                             <td></td>
 			    <td>Pending Approval</td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerif">For Verification</a></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editEducation">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation">Delete</a>
+				</div>
+			    </td>
                         </tr>
                         <tr>
                             <td>University of the Philippines Los Banos</td>
@@ -45,7 +55,12 @@ function Education() {
                             <td>2017-05-25</td>
                             <td></td>
 			    <td>Verified</td>
-                            <td></td>
+                            <td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editEducation">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation">Delete</a>
+				</div>
+			    </td>
                         </tr>
                     </tbody>
                 </table>
@@ -55,11 +70,11 @@ function Education() {
                 <EducationForm />
             </div>   
 
-            <div className="modal fade" id="ongoing" tabindex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+            <div className="modal fade" id="editEducation" tabIndex="-1" role="dialog" aria-labelledby="editEducationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="ongoingLabel">Update Education Information</h5>
+                        <h5 className="modal-title" id="editEducationLabel">Update Education Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -68,17 +83,41 @@ function Education() {
                         <form>
                             <hr />
                             <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "EndDate"> End Date </label>
-                                    <input type = "date" className = "form-control" name = "EndDate" />
-                                </div>
-                            </div>
+                        	<div className = "form-group">
+                            		<label htmlFor = "SchoolEducationalHistoryUpdate"> School/Institution </label>
+                            		<input className = "form-control" type = "text" name = "SchoolEducationalHistoryUpdate" placeholder = "Input school" />
+                        	</div>
+                    	    </div>
                             <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "Proof"> Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "Proof" />
-                                </div>
-                            </div>
+                        	<div className = "form-group">
+                            		<label htmlFor = "DegreeEducationalHistoryUpdate"> Degree/Certification </label>
+                            		<input className = "form-control" type = "text" name = "DegreeEducationalHistoryUpdate" placeholder = "Input degree" />
+                        	</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "MajorEducationalHistoryUpdate"> Major/Specialization </label>
+                            		<input className = "form-control" type = "text" name = "MajorEducationalHistoryUpdate" placeholder = "Input major" />
+                        	</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "StartDateEducationalHistoryUpdate"> Start Date </label>
+                            		<input type = "date" className = "form-control" name = "StartDateEducationalHistoryUpdate" />
+                       		</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "EndDateEducationalHistoryUpdate"> End Date </label>
+                            		<input type = "date" className = "form-control" name = "EndDateEducationalHistoryUpdate" />
+                        	</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "ProofEducationalHistoryUpdate"> Proof </label>
+                            		<input type = "file" className = "form-control-file" name = "ProofEducationalHistoryUpdate" />
+                        	</div>
+                    	    </div>
                         </form>
                     </div>
                     <div className="modal-footer">
@@ -89,41 +128,22 @@ function Education() {
                 </div>
             </div>
         
-            <div className="modal fade" id="forVerif" tabindex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+            <div className="modal fade" id="deleteEducation" tabIndex="-1" role="dialog" aria-labelledby="deleteEducationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="forVerifLabel">Status</h5>
+                        <h5 className="modal-title" id="deleteEducationLabel">Delete Education Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <hr />
-                        <table className = "table table-striped table-sm">
-                            <tr>
-                                <th>Position</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Date of Approval</th>
-                            </tr>
-                            <tr>
-                                <td>Unit Head</td>
-                                <td>Therese Basco-Uy</td>
-                                <td>Approved</td>
-                                <td>2020-11-08</td>
-                            </tr>
-                            <tr>
-                                <td>Department Head</td>
-                                <td>LOL Dunno</td>
-                                <td>For Approval</td>
-                                <td></td>
-                            </tr>
-                            
-                        </table>
+                        <p> Are you sure you want to delete this education information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+			<button type="button" className="btn btn-danger">Yes, delete</button>
                     </div>
                     </div>
                 </div>
