@@ -25,7 +25,12 @@ function Publication(){
 				<td></td>
 				<td></td>
 				<td>Pending Approval</td>
-				<td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus4">Ongoing</a></td>
+				<td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
+				</div>
+			    </td>
 			</tr>
 			<tr>
 				<td>Advanced Computer Systems</td>
@@ -35,7 +40,10 @@ function Publication(){
 				<td></td>
 				<td></td>
 				<td>Verified</td>
-				<td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus4">For Verification</a></td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
+				</div>
 			</tr>
 			<tr>
 				<td>Algorithms and Advanced Data Structures I</td>
@@ -45,7 +53,10 @@ function Publication(){
 				<td></td>
 				<td></td>
 				<td></td>
-				<td></td>
+				<div className = "btn-group">
+					<a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
+					<a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
+				</div>
 			</tr>
 		</tbody>
 	</table>	
@@ -54,11 +65,11 @@ function Publication(){
 		<PublicationForm />
 	</div>
 
-	<div className="modal fade" id="ongoingstatus4" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+	<div className="modal fade" id="editPublication" tabIndex="-1" role="dialog" aria-labelledby="editPublicationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="ongoingLabel">Update Education Information</h5>
+                        <h5 className="modal-title" id="editPublicationLabel">Update Publication Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -67,17 +78,47 @@ function Publication(){
                         <form>
                             <hr />
                             <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "EndDate"> End Date </label>
-                                    <input type = "date" className = "form-control" name = "EndDate" />
-                                </div>
-                            </div>
+                        	<div className = "form-group">
+					<label htmlFor = "PublicationUpdate"> Publication </label>
+					<input className = "form-control" type = "text" name = "PublicationUpdate" placeholder = "Input publication name/title" />
+				</div>
+                    	    </div>
                             <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "Proof"> Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "Proof" />
-                                </div>
-                            </div>
+                        	<div className = "form-group">
+					<label htmlFor = "PublicationCitationUpdate"> Citation </label>
+					<input className = "form-control" type = "text" name = "PublicationCitationUpdate" placeholder = "Input full citation for publication" />
+				</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group"> 
+					<label htmlFor = "PublicationURLUpdate"> URL </label>
+					<input className = "form-control" type = "text" name = "PublicationURLUpdate" placeholder = "Input publication URL" />
+				</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+					<label htmlFor = "PublishDateUpdate"> Date Published </label>
+					<input type = "date" className = "form-control" name = "PublishDateUpdate" />
+				</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+					<label htmlFor = "PublicationAuthorNonDPSMUpdate"> Authors (non-DPSM) </label>
+					<input className = "form-control" type = "text" name = "PublicationAuthorNonDPSMUpdate" placeholder = "Input all authors outside DPSM (separate names with commas)" />
+				</div>
+                    	    </div>
+			    <div className = "form-row">
+                        	<div className = "form-group">
+					<label htmlFor = "PublicationAuthorDPSMUpdate"> Authors (DPSM) </label>
+					<input className = "form-control" type = "text" name = "PublicationAuthorDPSMUpdate" placeholder = "Input author (must be part of DPSM)" />
+				</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "PublicationProofUpdate"> Proof </label>
+                            		<input type = "file" className = "form-control-file" name = "PublicationProofUpdate" />
+                        	</div>
+                    	    </div>
                         </form>
                     </div>
                     <div className="modal-footer">
@@ -88,41 +129,22 @@ function Publication(){
                 </div>
             </div>
         
-            <div className="modal fade" id="forVerifstatus4" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+            <div className="modal fade" id="deletePublication" tabIndex="-1" role="dialog" aria-labelledby="deletePublicationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="forVerifLabel">Status</h5>
+                        <h5 className="modal-title" id="deletePublicationLabel">Delete Publication Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <hr />
-                        <table className = "table table-striped table-sm">
-                            <tr>
-                                <th>Position</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Date of Approval</th>
-                            </tr>
-                            <tr>
-                                <td>Unit Head</td>
-                                <td>Therese Basco-Uy</td>
-                                <td>Approved</td>
-                                <td>2020-11-08</td>
-                            </tr>
-                            <tr>
-                                <td>Department Head</td>
-                                <td>LOL Dunno</td>
-                                <td>For Approval</td>
-                                <td></td>
-                            </tr>
-                            
-                        </table>
+                        <p> Are you sure you want to delete this education information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+			<button type="button" className="btn btn-danger">Yes, delete</button>
                     </div>
                     </div>
                 </div>
