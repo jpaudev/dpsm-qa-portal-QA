@@ -11,7 +11,7 @@ function SidebarUnitHead() {
                     <Link href="/unit-head/accomplishment"><a className = "list-group-item list-group-item-action list-group-item-success">Accomplishment</a></Link>
                     <Link href="/unit-head/faculty-load"><a className = "list-group-item list-group-item-action list-group-item-success">Faculty Load</a></Link>
                     <Link href="/unit-head/evaluation"><a className = "list-group-item list-group-item-action list-group-item-success ">Peer Evaluation</a></Link>
-		    <Link href=""><a className = "list-group-item list-group-item-action list-group-item-success ">Faculty List</a></Link>
+		    <Link href="/unit-head/faculty/all"><a className = "list-group-item list-group-item-action list-group-item-success ">Faculty List</a></Link>
 			</div>
                 </div>
                 <div className="list-group">
