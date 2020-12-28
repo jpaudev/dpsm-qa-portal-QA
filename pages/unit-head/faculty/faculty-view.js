@@ -1,4 +1,12 @@
 import LayoutUnitHead from '../../../components/layout-unit-head'
+import PersonalInfo from '../../../components/unit-head/faculty-list/basic-info/personal-info'
+import Education from '../../../components/unit-head/faculty-list/basic-info/education'
+import WorkExperience from '../../../components/unit-head/faculty-list/basic-info/work-experience'
+import PublicServiceAccomplishment from '../../../components/unit-head/faculty-list/accomplishments/public-service-accomplishment'
+import Publication from '../../../components/unit-head/faculty-list/accomplishments/publication'
+import TrainingSeminar from '../../../components/unit-head/faculty-list/accomplishments/training-seminar'
+import LicensureExam from '../../../components/unit-head/faculty-list/accomplishments/licensure-exam'
+import ResearchGrant from '../../../components/unit-head/faculty-list/accomplishments/research-grant'
 
 function FacultyView() {
     return (
@@ -21,9 +29,9 @@ function FacultyView() {
             				</div>
             			</nav>
 				<div className="tab-content" id="nav-tabContent-basic-info">
-            				<div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">z</div>
-            				<div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">y</div>
-            				<div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">x</div>
+            				<div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab"><PersonalInfo />s</div>
+            				<div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab"><Education /></div>
+            				<div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab"><WorkExperience /></div>
             			</div>
 			</div>
 	    		<div className="tab-pane fade" id="accomplishments" role="tabpanel" aria-labelledby="accomplishments-tab">
@@ -37,11 +45,11 @@ function FacultyView() {
             				</div>
             			</nav>
 				 <div className="tab-content" id="nav-tabContent-accomplishment">
-	    				<div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">a</div>
-	    				<div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">b</div>
-	    				<div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">c</div>
-	    				<div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">d</div>
-	    				<div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">e</div>
+	    				<div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab"><PublicServiceAccomplishment /></div>
+	    				<div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab"><Publication /></div>
+	    				<div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab"><TrainingSeminar /></div>
+	    				<div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab"><LicensureExam /></div>
+	    				<div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab"><ResearchGrant />></div>
             			</div>
 			</div>
             	</div>
