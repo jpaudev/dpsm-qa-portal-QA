@@ -10,7 +10,7 @@ function Sidebar() {
                     <Link href="/faculty/basic-info"><a className = "list-group-item list-group-item-action list-group-item-success">Basic Information</a></Link>
                     <Link href="/faculty/accomplishment"><a className = "list-group-item list-group-item-action list-group-item-success">Accomplishment</a></Link>
                     <Link href="/faculty/faculty-load"><a className = "list-group-item list-group-item-action list-group-item-success">Faculty Load</a></Link>
-                    <Link href="/faculty/evaluation"><a className = "list-group-item list-group-item-action list-group-item-success ">Evaluation</a></Link>
+                    <Link href="/faculty/evaluation"><a className = "list-group-item list-group-item-action list-group-item-success ">Peer Evaluation</a></Link>
 			</div>
                 </div>
                 <div className="list-group">
