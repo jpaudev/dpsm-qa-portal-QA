@@ -3,7 +3,7 @@ function EmploymentHistory(props){
 	let content = Object.keys(props.children).map(key => {
 		if(props.children[key].faculty_employment_position.employmentType == 'ftt') {
 			return (
-				<tr>
+				<tr key = {props.children.[key].employmentInfoId}>
 					<td>{props.children[key].faculty_employment_position.position}</td>
 					<td>Full-time (Temporary)</td>
 					<td>{props.children[key].startDate}</td>
@@ -12,7 +12,7 @@ function EmploymentHistory(props){
 			);
 		} else if(props.children[key].faculty_employment_position.employmentType == 'ftp') {
 			return (
-				<tr>
+				<tr key = {props.children.[key].employmentInfoId}>
 					<td>{props.children[key].faculty_employment_position.position}</td>
 					<td>Full-time (Permanent)</td>
 					<td>{props.children[key].startDate}</td>
@@ -21,7 +21,7 @@ function EmploymentHistory(props){
 			);
 		} else if(props.children[key].faculty_employment_position.employmentType == 'pt') {
 			return (
-				<tr>
+				<tr key = {props.children.[key].employmentInfoId}>
 					<td>{props.children[key].faculty_employment_position.position}</td>
 					<td>Part-time</td>
 					<td>{props.children[key].startDate}</td>

@@ -7,7 +7,7 @@ function WorkExperience(props){
 	let content = Object.keys(props.children).map(key => {
 		if(key != len) {
 			return (
-				<tr>
+				<tr key = {props.children.[key].workExpId}>
 					<td>{props.children[key].employerName}</td>
 					<td>{props.children[key].position}</td>
 					<td>{props.children[key].startDate}</td>
@@ -25,7 +25,7 @@ function WorkExperience(props){
 			<h5 align = "center"> Outside UP Manila </h5>
 			<table className = "table table-striped table-sm">
 			<tbody>
-				<tr>
+				<tr key = "headers">
 					<th>Employer</th>
 					<th>Position</th>
 					<th>Start Date</th>
