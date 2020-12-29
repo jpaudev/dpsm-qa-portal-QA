@@ -1,7 +1,26 @@
 import Link from 'next/link'
 import TrainingSeminarForm from './training-seminar-form'
 
-function TrainingSeminar() {
+function TrainingSeminar(props) {
+    let content = Object.keys(props.children).map(key => {
+        return (
+            <tr>
+                <td>{props.children[key].title}</td>
+                <td>{props.children[key].role}</td>
+                <td>{props.children[key].venue}</td>
+                <td>{props.children[key].dateFrom}</td>
+                <td>{props.children[key].dateTo}</td>
+                <td>{props.children[key].proof}</td>
+                <td>{props.children[key].status}</td>
+                <td>
+                    <div className = "btn-group">
+                        <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
+                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        );
+    });
     return (
         <div>
             <div>
@@ -9,39 +28,59 @@ function TrainingSeminar() {
                     <tbody>
                         <tr>
                             <th>Name of Training/Seminar</th>
-			    <th>Role</th>
-			    <th>Venue</th>
+                            <th>Role</th>
+                            <th>Venue</th>
                             <th>Start Date</th>
-			    <th>End Date</th>
+                            <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
+                        {content}
                         <tr>
                             <td>3</td>
-			    <td></td>
+                            <td></td>
+                            <td></td>
                             <td>2020-11-11</td>
                             <td></td>
-			    <td></td>
-			    <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus3">Ongoing</a></td>
+                            <td></td>
+                            <td>Pending Approval</td>
+                            <td>
+                                <div className = "btn-group">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>8</td>
-     			    <td></td>
+                            <td></td>
+                            <td></td>
                             <td>2020-1-14</td>
                             <td></td>
-			    <td></td>
-			    <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus3">For Verification</a></td>
+                            <td></td>
+                            <td>Pending Approval</td>
+                            <td>
+                                <div className = "btn-group">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>1</td>
+                            <td></td>
+                            <td></td>
                             <td>2020-4-1</td>
                             <td></td>
-			    <td></td>
-			    <td></td>
-			    <td></td>
+                            <td></td>
                             <td>Verified</td>
+                            <td>
+                                <div className = "btn-group">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -51,11 +90,11 @@ function TrainingSeminar() {
                 <TrainingSeminarForm />
             </div>   
 	
-<div className="modal fade" id="ongoingstatus3" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+<div className="modal fade" id="editTrainingSeminar" tabIndex="-1" role="dialog" aria-labelledby="editTrainingSeminarLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="ongoingLabel">Update Education Information</h5>
+                        <h5 className="modal-title" id="editTrainingSeminarLabel">Update Training/Seminar Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -65,14 +104,38 @@ function TrainingSeminar() {
                             <hr />
                             <div className = "form-row">
                                 <div className = "form-group">
-                                    <label htmlFor = "EndDate"> End Date </label>
-                                    <input type = "date" className = "form-control" name = "EndDate" />
+                                    <label htmlFor = "TrainingSeminarUpdate"> Name of Training/Seminar </label>
+                                    <input className = "form-control" type = "text" name = "TrainingSeminarUpdate" placeholder = "Input training/seminar" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
-                                    <label htmlFor = "Proof"> Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "Proof" />
+                                    <label htmlFor = "TrainingSeminarRoleUpdate"> Role </label>
+                                    <input className = "form-control" type = "text" name = "TrainingSeminarRoleUpdate" placeholder = "Input role" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "TrainingSeminarVenueUpdate"> Venue </label>
+                                    <input className = "form-control" type = "text" name = "TrainingSeminarVenueUpdate" placeholder = "Input venue" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "TrainingSeminarStartDateUpdate"> Start Date </label>
+                                    <input type = "date" className = "form-control" name = "TrainingSeminarStartDateUpdate" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "TrainingSeminarEndDateUpdate"> End Date </label>
+                                    <input type = "date" className = "form-control" name = "TrainingSeminarEndDateUpdate" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "TrainingSeminarProofUpdate"> Proof </label>
+                                    <input type = "file" className = "form-control-file" name = "TrainingSeminarProofUpdate" />
                                 </div>
                             </div>
                         </form>
@@ -85,41 +148,22 @@ function TrainingSeminar() {
                 </div>
             </div>
         
-            <div className="modal fade" id="forVerifstatus3" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+            <div className="modal fade" id="deleteTrainingSeminar" tabIndex="-1" role="dialog" aria-labelledby="deleteTrainingSeminarLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="forVerifLabel">Status</h5>
+                        <h5 className="modal-title" id="deleteTrainingSeminarLabel">Delete Training/Seminar Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <hr />
-                        <table className = "table table-striped table-sm">
-                            <tr>
-                                <th>Position</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Date of Approval</th>
-                            </tr>
-                            <tr>
-                                <td>Unit Head</td>
-                                <td>Therese Basco-Uy</td>
-                                <td>Approved</td>
-                                <td>2020-11-08</td>
-                            </tr>
-                            <tr>
-                                <td>Department Head</td>
-                                <td>LOL Dunno</td>
-                                <td>For Approval</td>
-                                <td></td>
-                            </tr>
-                            
-                        </table>
+                        <p> Are you sure you want to delete this education information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-danger" data-dismiss="modal">Yes, delete</button>
                     </div>
                     </div>
                 </div>

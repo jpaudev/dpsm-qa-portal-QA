@@ -1,7 +1,37 @@
 import Link from 'next/link'
 import ResearchGrantForm from './research-grant-form'
 
-function ResearchGrant(){
+function ResearchGrant(props){
+    let content = Object.keys(props.children).map(key => {
+        let res = props.children[key].faculty_researchers;
+        return (
+            <tr>
+                <td>{props.children[key].researchName}</td>
+                <td>
+                    {Object.keys(res).map(auth => {
+                        return (
+                            <a href = "#">{res[auth].faculty_personal_info.firstName}, </a>
+                        );
+                    })}
+                    {props.children[key].nonFacultyResearchers}
+                </td>
+                <td>{props.children[key].granter}</td>
+                <td>{props.children[key].amount}</td>
+                <td>{props.children[key].projectedStart} to {props.children[key].projectedEnd}</td>
+                <td>{props.children[key].actualStart}</td>
+                <td>{props.children[key].actualEnd}</td>
+                <td>{props.children[key].researchProgress}</td>
+                <td>{res[0].proof}</td>
+                <td>{res[0].status}</td>
+                <td>
+                    <div className = "btn-group">
+                        <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
+                        <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        );
+    });
 	return(
 		<div>
 			<div>
@@ -10,7 +40,7 @@ function ResearchGrant(){
 			<tr>
 				<th>Research Name</th>
 				<th>Author/s</th>
-				<th>Granter</th>
+				<th>Sponsor</th>
 				<th>Amount</th>
 				<th>Projected Duration</th>
 				<th>Start Date</th>
@@ -18,7 +48,9 @@ function ResearchGrant(){
 				<th>Research Progress</th>
 				<th>Proof</th>
 				<th>Status</th>
+                <th>Action</th>
 			</tr>
+            {content}
 			<tr>
 				<td>COVID-19 vaccine</td>
 				<td><a href = "#">Steve</a>, Bob, Greg</td>
@@ -29,7 +61,13 @@ function ResearchGrant(){
 				<td></td>
 				<td>Ongoing</td>
 				<td><a href ="#">Download proof</a></td>
-				<td><a className="btn btn-info" data-toggle="modal" data-target="#ongoingstatus5">Ongoing</a></td>
+                <td>Pending Approval</td>
+				<td>
+                    <div className = "btn-group">
+                        <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
+                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant">Delete</a>
+                    </div>
+                </td>
 			</tr>
 			<tr>
 				<td></td>
@@ -41,7 +79,13 @@ function ResearchGrant(){
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><a className="btn btn-info" data-toggle="modal" data-target="#forVerifstatus5">For Verification</a></td>
+                <td>Pending Approval</td>
+				<td>
+                    <div className = "btn-group">
+                        <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
+                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant">Delete</a>
+                    </div>
+                </td>
 			</tr>
 			<tr>
 				<td></td>
@@ -53,7 +97,13 @@ function ResearchGrant(){
 				<td></td>
 				<td></td>
 				<td></td>
-				<td></td>
+                <td>Verified</td>
+				<td>
+                    <div className = "btn-group">
+                        <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
+                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant">Delete</a>
+                    </div>
+                </td>
 			</tr>
 		</tbody>
 	</table>	
@@ -62,11 +112,11 @@ function ResearchGrant(){
 		<ResearchGrantForm />
 	</div>
 
-	<div className="modal fade" id="ongoingstatus5" tabIndex="-1" role="dialog" aria-labelledby="ongoingLabel" aria-hidden="true">
+	<div className="modal fade" id="editResearchGrant" tabIndex="-1" role="dialog" aria-labelledby="editResearchGrantLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="ongoingLabel">Update Education Information</h5>
+                        <h5 className="modal-title" id="editResearchGrantLabel">Update Research Grant Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -76,14 +126,68 @@ function ResearchGrant(){
                             <hr />
                             <div className = "form-row">
                                 <div className = "form-group">
-                                    <label htmlFor = "EndDate"> End Date </label>
-                                    <input type = "date" className = "form-control" name = "EndDate" />
+                                    <label htmlFor = "ResearchUpdate"> Research Name </label>
+                                    <input className = "form-control" type = "text" name = "ResearchUpdate" placeholder = "Input research name" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
-                                    <label htmlFor = "Proof"> Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "Proof" />
+                                    <label htmlFor = "ResearchSponsorUpdate"> Sponsor </label>
+                                    <input className = "form-control" type = "text" name = "ResearchSponsorUpdate" placeholder = "Input sponsor" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "ResearchAmountUpdate"> Amount </label>
+                                    <input className = "form-control" type = "text" name = "ResearchAmountUpdate" placeholder = "Input amount" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "ResearchStartDateUpdate"> Start Date (Actual) </label>
+                                    <input type = "date" className = "form-control" name = "ResearchStartDateUpdate" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "ResearchEndDateUpdate"> End Date (Actual) </label>
+                                    <input type = "date" className = "form-control" name = "ResearchEndDateUpdate" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "ResearchProjectedStartDateUpdate"> Start Date (Projected) </label>
+                                    <input type = "date" className = "form-control" name = "ResearchProjectedStartDateUpdate" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "ResearchProjectedEndDateUpdate"> End Date (Projected) </label>
+                                    <input type = "date" className = "form-control" name = "ResearchProjectedEndDateUpdate" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "ResearchProgressUpdate"> Progress </label>
+                                    <input className = "form-control" type = "text" name = "ResearchProgressUpdate" placeholder = "Input progress" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "ResearchAuthorNonDPSMUpdate"> Authors (non-DPSM) </label>
+                                    <input className = "form-control" type = "text" name = "ResearchAuthorNonDPSMUpdate" placeholder = "Input all authors outside DPSM (separate names with commas)" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "ResearchAuthorDPSMUpdate"> Authors (DPSM) </label>
+                                    <input className = "form-control" type = "text" name = "ResearchAuthorDPSMUpdate" placeholder = "Input author (must be from DPSM)" />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "ResearchProofUpdate"> Proof </label>
+                                    <input type = "file" className = "form-control-file" name = "ResearchProofUpdate" />
                                 </div>
                             </div>
                         </form>
@@ -96,41 +200,22 @@ function ResearchGrant(){
                 </div>
             </div>
         
-            <div className="modal fade" id="forVerifstatus5" tabIndex="-1" role="dialog" aria-labelledby="forVerifLabel" aria-hidden="true">
+            <div className="modal fade" id="deleteResearchGrant" tabIndex="-1" role="dialog" aria-labelledby="deleteResearchGrantLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="forVerifLabel">Status</h5>
+                        <h5 className="modal-title" id="deleteResearchGrantLabel">Delete Research Grant Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <hr />
-                        <table className = "table table-striped table-sm">
-                            <tr>
-                                <th>Position</th>
-                                <th>Name</th>
-                                <th>Status</th>
-                                <th>Date of Approval</th>
-                            </tr>
-                            <tr>
-                                <td>Unit Head</td>
-                                <td>Therese Basco-Uy</td>
-                                <td>Approved</td>
-                                <td>2020-11-08</td>
-                            </tr>
-                            <tr>
-                                <td>Department Head</td>
-                                <td>LOL Dunno</td>
-                                <td>For Approval</td>
-                                <td></td>
-                            </tr>
-                            
-                        </table>
+                        <p> Are you sure you want to delete this education information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-danger">Yes, delete</button>
                     </div>
                     </div>
                 </div>
