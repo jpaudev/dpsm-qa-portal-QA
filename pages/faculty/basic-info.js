@@ -1,4 +1,4 @@
-import Fetch from 'isomorphic-unfetch'
+// import Fetch from 'isomorphic-unfetch'
 import Layout from '../../components/layout'
 import PersonalInfo from '../../components/faculty/basic-info/personal-info'
 import Education from '../../components/faculty/basic-info/education'
@@ -80,6 +80,7 @@ BasicInfo.getInitialProps = async () => {
     workExperience.result.push(employment.result)
 
     return { 
+        token: token,
         personalInfo: personalInfo.result,
         // employment: employment.result,
         education: education.result,

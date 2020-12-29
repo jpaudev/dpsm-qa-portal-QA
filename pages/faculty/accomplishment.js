@@ -76,6 +76,7 @@ Accomplishments.getInitialProps = async () => {
     const researchGrant = await rg.json()    
 
     return {
+        token: token,
     	publications: publications.result,
     	trainingSeminar: trainingSeminar.result,
     	licensureExam: licensureExam.result,
