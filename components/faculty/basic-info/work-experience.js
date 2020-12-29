@@ -20,7 +20,7 @@ function WorkExperience(props){
 	return(
 		<div>
 			<h5 align = "center"> Within UP Manila </h5>
-			<EmploymentHistory>{props.children[len]}</EmploymentHistory>
+			<EmploymentHistory />
 			<br />
 			<h5 align = "center"> Outside UP Manila </h5>
 			<table className = "table table-striped table-sm">
