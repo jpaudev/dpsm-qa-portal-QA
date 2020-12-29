@@ -1,14 +1,14 @@
 import React from 'react'
 
 class PublicServiceAccomplishmentForm extends React.Component{
-	constructor(){
-		super()
-		this.state = {
-			duplicateForms: []
-		}
-	}
-	clone(){
-		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
+    constructor(){
+        super()
+        this.state = {
+            duplicateForms: []
+        }
+    }
+    clone(){
+        this.state.duplicateForms.push(<div><hr /><div className = "form-row">
                         <div className = "form-group col-md-2">
                             <label htmlFor = "PublicServicePosition[]"> Position/Role </label>
                             <input className = "form-control" type = "text" name = "PublicServicePosition[]" placeholder = "Input position/role" />
@@ -74,7 +74,6 @@ class PublicServiceAccomplishmentForm extends React.Component{
                         </div>
                         <div className = "form-group col-md-2">
                             <label htmlFor = "PublicServiceAccomplishmentStartDate[]"> Start Date </label>
-                            <input type = "date" className = "form-control" name = "PublicServiceAccomplishmentStartDate[]" />
                         </div>
                         <div className = "form-group col-md-2">
                             <label htmlFor = "PublicServiceAccomplishmentEndDate[]"> End Date </label>
@@ -97,8 +96,8 @@ class PublicServiceAccomplishmentForm extends React.Component{
                     <hr />
                     
                 </form>
-		)
-	}
+        )
+    }
 }
 
 export default PublicServiceAccomplishmentForm

@@ -1,7 +1,28 @@
 import Link from 'next/link'
 import PublicationForm from './publication-form'
 
-function Publication(){
+function Publication(props){
+    let content = Object.keys(props.children).map(key => {
+        let pub = props.children[key].faculty_publishers;
+        return (
+            <tr>
+                <td>{props.children[key].title}</td>
+                <td>
+                    {Object.keys(pub).map(auth => {
+                        return (
+                            <a href = "#">{pub[auth].faculty_personal_info.firstName}, </a>
+                        );
+                    })}
+                    {props.children[key].nonFacultyAuthors}
+                </td>
+                <td>{props.children[key].publicationDate}</td>
+                <td>{props.children[key].url}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        );
+    });
 	return(
 		<div>
 			<div>
@@ -17,6 +38,7 @@ function Publication(){
 				<th>Status</th>
 				<th>Action</th>
 			</tr>
+            {content}
 			<tr>
 				<td>Principles of Programming Languages</td>
 				<td><a href = "#">Steve</a>, Bob, Greg</td>

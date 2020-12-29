@@ -5,7 +5,7 @@ import LicensureExam from '../../components/faculty/accomplishments/licensure-ex
 import TrainingSeminar from '../../components/faculty/accomplishments/training-seminar'
 import ResearchGrant from '../../components/faculty/accomplishments/research-grant'
 
-function Dashboard() {
+function Accomplishments(props) {
     return (
         <Layout>
             <nav>
@@ -23,10 +23,10 @@ function Dashboard() {
             <div className="tab-content" id="nav-tabContent">
             {/* <div className="tab-pane fade show active" id="academic-accomplishment" role="tabpanel" aria-labelledby="academic-accomplishment-tab"><AcademicAccomplishment /></div> */}
 	    <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab"><PublicServiceAccomplishment /></div>
-	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab"><Publication /></div>
-	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab"><TrainingSeminar /></div>
-	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab"><LicensureExam /></div>
-	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab"><ResearchGrant /></div>
+	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab"><Publication>{ props.publications }</Publication></div>
+	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab"><TrainingSeminar>{ props.trainingSeminar }</TrainingSeminar></div>
+	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab"><LicensureExam>{ props.licensureExam }</LicensureExam></div>
+	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab"><ResearchGrant>{ props.researchGrant }</ResearchGrant></div>
             </div>
 	<style jsx>{`
 		a.nav-item:focus{
@@ -42,5 +42,45 @@ function Dashboard() {
         </Layout>
     )
   }
+
+Accomplishments.getInitialProps = async () => {
+	let url = 'https://sp-api-test.alun.app/api/';
+    const res = await fetch(url + 'token',
+    {
+        body: JSON.stringify({"username": "username", "password": "password"}),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        method: 'POST'
+    })
+    
+    const access = await res.json()
+    let token = access.result
+    url = 'https://sp-api-test.alun.app/api/faculty/accomplishment/';
+    let header = {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
+
+    const pub = await fetch(url + '9/publication', header)
+    const publications = await pub.json()
+
+    const ts = await fetch(url + '9/training-seminar', header)
+    const trainingSeminar = await ts.json()
+
+	const le = await fetch(url + '9/licensure-exam', header)
+    const licensureExam = await le.json()
+
+	const rg = await fetch(url + '9/research-grant', header)
+    const researchGrant = await rg.json()    
+
+    return {
+    	publications: publications.result,
+    	trainingSeminar: trainingSeminar.result,
+    	licensureExam: licensureExam.result,
+    	researchGrant: researchGrant.result
+    }
+}
   
-  export default Dashboard
+  export default Accomplishments
