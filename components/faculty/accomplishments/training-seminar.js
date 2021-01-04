@@ -6,64 +6,76 @@ function TrainingSeminar() {
         <div>
             <div>
                 <table className = "table table-striped table-sm">
-                    <tbody>
-                        <tr>
-                            <th>Name of Training/Seminar</th>
-			    <th>Role</th>
-			    <th>Venue</th>
-                            <th>Start Date</th>
-			    <th>End Date</th>
-                            <th>Proof</th>
-                            <th>Status</th>
-			    <th>Action</th>
-                        </tr>
-                        <tr>
-                            <td>Paradigm Shifts in Public Health</td>
-			    <td>Attendee</td>
-                            <td>Hammerstein Ballroom</td>
-                            <td>2020-11-11</td>
-			    <td>2020-11-11</td>
-			    <td><a href = "#">Download proof</a></td>
-			    <td>Pending Approval</td>
-                            <td>
-				<div className = "btn-group">
-					<a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
-					<a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
-				</div>
-			    </td>
-                        </tr>
-                        <tr>
-                            <td>Privacy in the Age of Information</td>
-     			    <td>Lecturer</td>
-                            <td>Madison Square Garden</td>
-                            <td>2020-1-14</td>
-			    <td>2020-1-14</td>
-			    <td><a href = "#">Download proof</a></td>
-			    <td>Pending Approval</td>
-                            <td>
-				<div className = "btn-group">
-					<a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
-					<a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
-				</div>
-			    </td>
-                        </tr>
-                        <tr>
-                            <td>A Primer on String Theory</td>
-                            <td>Lecturer</td>
-                            <td>Full Sail University</td>
-			    <td>2020-4-1</td>
-			    <td>2020-4-1</td>
-			    <td><a href = "#">Download proof</a></td>
-                            <td>Verified</td>
-			    <td>
-				<div className = "btn-group">
-					<a className="btn btn-info disabled" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
-					<a className="btn btn-danger disabled" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
-				</div>
-			    </td>
-                        </tr>
-                    </tbody>
-                </table>
+		<tbody>
+			<tr>
+				<th>Research Name</th>
+				<th>Author/s</th>
+				<th>Sponsor</th>
+				<th>Amount</th>
+				<th>Projected Duration</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Research Progress</th>
+				<th>Proof</th>
+				<th>Status</th>
+				<th>Action</th>
+			</tr>
+			<tr>
+				<td>COVID-19 vaccine</td>
+				<td><a href = "#">Steve</a>, Bob, Greg</td>
+				<td>WHO</td>
+				<td>Php100,000,000</td>
+				<td>2019-11-20 to 2021-5-18</td>
+				<td>2019-12-25</td>
+				<td></td>
+				<td>Ongoing</td>
+				<td><a href ="#">Download proof</a></td>
+				<td>Pending Approval</td>
+				<td>
+					<div className = "btn-group">
+						<a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
+						<a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant">Delete</a>
+					</div>
+			    	</td>
+			</tr>
+			<tr>
+				<td>Lightsail Prototype</td>
+				<td><a href = "#">Steve</a>, Bob, Greg</td>
+				<td>NASA</td>
+				<td>Php1,500,000,000</td>
+				<td>2019-11-20 to 2021-5-18</td>
+				<td>2019-12-25</td>
+				<td></td>
+				<td>Ongoing</td>
+				<td><a href ="#">Download proof</a></td>
+				<td>Pending Approval</td>
+				<td>
+					<div className = "btn-group">
+						<a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
+						<a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant">Delete</a>
+					</div>
+			    	</td>
+			</tr>
+			<tr>
+				<td>Microplastic Filtration System</td>
+				<td><a href = "#">Steve</a>, Bob, Greg</td>
+				<td>EPA</td>
+				<td>Php70,000,000</td>
+				<td>2019-11-20 to 2021-5-18</td>
+				<td>2019-12-25</td>
+				<td></td>
+				<td>Ongoing</td>
+				<td><a href ="#">Download proof</a></td>
+				<td>Verified</td>
+				<td>
+					<div className = "btn-group">
+						<a className="btn btn-info disabled" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
+						<a className="btn btn-danger disabled" data-toggle="modal" data-target="#deleteResearchGrant">Delete</a>
+					</div>
+			    	</td>
+			</tr>
+		</tbody>
+	</table>	
             </div>
 
             <div>
