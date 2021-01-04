@@ -18,12 +18,12 @@ function TrainingSeminar() {
 			    <th>Action</th>
                         </tr>
                         <tr>
-                            <td>3</td>
-			    <td></td>
+                            <td>Paradigm Shifts in Public Health</td>
+			    <td>Attendee</td>
+                            <td>Hammerstein Ballroom</td>
                             <td>2020-11-11</td>
-                            <td></td>
-			    <td></td>
-			    <td></td>
+			    <td>2020-11-11</td>
+			    <td><a href = "#">Download proof</a></td>
 			    <td>Pending Approval</td>
                             <td>
 				<div className = "btn-group">
@@ -33,12 +33,12 @@ function TrainingSeminar() {
 			    </td>
                         </tr>
                         <tr>
-                            <td>8</td>
-     			    <td></td>
+                            <td>Privacy in the Age of Information</td>
+     			    <td>Lecturer</td>
+                            <td>Madison Square Garden</td>
                             <td>2020-1-14</td>
-                            <td></td>
-			    <td></td>
-			    <td></td>
+			    <td>2020-1-14</td>
+			    <td><a href = "#">Download proof</a></td>
 			    <td>Pending Approval</td>
                             <td>
 				<div className = "btn-group">
@@ -48,17 +48,17 @@ function TrainingSeminar() {
 			    </td>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>2020-4-1</td>
-                            <td></td>
-			    <td></td>
-			    <td></td>
-			    <td></td>
+                            <td>A Primer on String Theory</td>
+                            <td>Lecturer</td>
+                            <td>Full Sail University</td>
+			    <td>2020-4-1</td>
+			    <td>2020-4-1</td>
+			    <td><a href = "#">Download proof</a></td>
                             <td>Verified</td>
 			    <td>
 				<div className = "btn-group">
-					<a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
-					<a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
+					<a className="btn btn-info disabled" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
+					<a className="btn btn-danger disabled" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
 				</div>
 			    </td>
                         </tr>
