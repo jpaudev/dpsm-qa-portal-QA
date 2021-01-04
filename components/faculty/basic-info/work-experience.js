@@ -32,30 +32,29 @@ function WorkExperience(props){
 					<th>End Date</th>
 					<th>Description</th>
 				</tr>
-				{content}
-				{/*<tr>
+				<tr>
+					<td>ON Semiconductor</td>
 					<td>Systems Analyst</td>
-					<td></td>
 					<td>2020-01-26</td>
 					<td>Present</td>
-					<td></td>
+					<td>Developer of Genesis program</td>
 				</tr>
 				<tr>
+					<td>NASA</td>
 					<td>Aeronautics Engineer</td>
-					<td></td>
 					<td>2017-05-26</td>
 					<td>2020-01-25</td>
-					<td></td>
+					<td>Principal contributor in Jet Propulsion Lab</td>
 				</tr>
 				<tr>
-					<td>Interior Designer</td>
-					<td></td>
+					<td>Ubisoft</td>
+					<td>Creative Director</td>
 					<td>2010-09-06</td>
 					<td>2017-05-25</td>
-					<td></td>
-				</tr>*/}
+					<td>Lead in creative development of games</td>
+				</tr>
 			</tbody>
-			</table>
+		</table>
 			<div>
 				<WorkExpForm />
 			</div>
