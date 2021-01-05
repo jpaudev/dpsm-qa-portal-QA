@@ -127,6 +127,12 @@ function WorkExperience(props){
 					<input className = "form-control" type = "text" name = "DescriptionWorkExperienceUpdate" placeholder = "Add Description" />
 				</div>
                     	    </div>
+			    <div className = "form-row">
+                        	<div className = "form-group">
+                            		<label htmlFor = "ProofWorkExperienceUpdate"> Proof </label>
+                            		<input type = "file" className = "form-control-file" name = "ProofWorkExperienceUpdate" />
+                        	</div>
+                    	    </div>
                         </form>
                     </div>
                     <div className="modal-footer">
