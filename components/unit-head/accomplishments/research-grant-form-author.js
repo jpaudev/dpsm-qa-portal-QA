@@ -11,7 +11,10 @@ class ResearchGrantFormAuthor extends React.Component{
 		this.state.duplicateAuthors.push(<div><div className = "form-row">
 			<div className = "form-group col-md-6">
 				<label htmlFor = "ResearchAuthorDPSM[]"> Author (from DPSM) </label>
-				<input className = "form-control" type = "text" name = "ResearchAuthorDPSM[]" placeholder = "Input author (must be part of DPSM)" />
+				<select className = "form-control col-md-6" name = "ResearchAuthorDPSM[]" required>
+					<option>Cabalo, Francis</option>
+					<option>Yu, Berwin</option>
+				</select>
 			</div>
 		</div></div>)
 		this.setState({
@@ -33,7 +36,10 @@ class ResearchGrantFormAuthor extends React.Component{
 			<div className = "form-row">
 			<div className = "form-group col-md-6">
 				<label htmlFor = "ResearchAuthorDPSM[]"> Author (from DPSM) </label>
-				<input className = "form-control" type = "text" name = "ResearchAuthorDPSM[]" placeholder = "Input author (must be part of DPSM)" />
+				<select className = "form-control col-md-6" name = "ResearchAuthorDPSM[]" required>
+					<option>Cabalo, Francis</option>
+					<option>Yu, Berwin</option>
+				</select>
 			</div>
 		</div>
 		<div>
