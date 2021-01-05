@@ -17,33 +17,133 @@ function WorkExperience(){
 					<th>Start Date</th>
 					<th>End Date</th>
 					<th>Description</th>
+					<th>Proof</th>
+                            		<th>Status</th>
+			    		<th>Action</th>
 				</tr>
 				<tr>
+					<td>ON Semiconductor</td>
 					<td>Systems Analyst</td>
-					<td></td>
 					<td>2020-01-26</td>
 					<td>Present</td>
-					<td></td>
+					<td>Developer of Genesis program</td>
+					<td><a href = "#">Download proof</a></td>
+			    		<td>Pending Approval</td>
+                            		<td>
+						<div className = "btn-group">
+							<a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience">Edit</a>
+							<a className="btn btn-danger" data-toggle="modal" data-target="#deleteWorkExperience">Delete</a>
+						</div>
+			    		</td>
 				</tr>
 				<tr>
+					<td>NASA</td>
 					<td>Aeronautics Engineer</td>
-					<td></td>
 					<td>2017-05-26</td>
 					<td>2020-01-25</td>
-					<td></td>
+					<td>Principal contributor in Jet Propulsion Lab</td>
+					<td><a href = "#">Download proof</a></td>
+					<td>Pending Approval</td>
+                            		<td>
+						<div className = "btn-group">
+							<a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience">Edit</a>
+							<a className="btn btn-danger" data-toggle="modal" data-target="#deleteWorkExperience">Delete</a>
+						</div>
+			    		</td>
 				</tr>
 				<tr>
-					<td>Interior Designer</td>
-					<td></td>
+					<td>Ubisoft</td>
+					<td>Creative Director</td>
 					<td>2010-09-06</td>
 					<td>2017-05-25</td>
-					<td></td>
+					<td>Lead in creative development of games</td>
+					<td><a href = "#">Download proof</a></td>
+					<td>Pending Approval</td>
+                            		<td>
+						<div className = "btn-group">
+							<a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience">Edit</a>
+							<a className="btn btn-danger" data-toggle="modal" data-target="#deleteWorkExperience">Delete</a>
+						</div>
+			    		</td>
 				</tr>
 			</tbody>
 		</table>
 <div>
 	<WorkExpForm />
 </div>
+
+<div className="modal fade" id="editWorkExperience" tabIndex="-1" role="dialog" aria-labelledby="editWorkExperienceLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="editWorkExperienceLabel">Update Work Experience Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <form>
+                            <hr />
+                            <div className = "form-row">
+                        	<div className = "form-group">
+					<label htmlFor = "EmployerWorkExperienceUpdate"> Employer </label>
+					<input className = "form-control" type = "text" name = "EmployerWorkExperienceUpdate" placeholder = "Input name of employer" />
+				</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+					<label htmlFor = "PositionWorkExperienceUpdate"> Title/Position </label>
+					<input className = "form-control" type = "text" name = "PositionWorkExperienceUpdate" placeholder = "Input position" />
+				</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+					<label htmlFor = "StartDateWorkExperienceUpdate"> Start Date </label>
+					<input type = "date" className = "form-control" name = "StartDateWorkExperienceUpdate" />
+				</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+					<label htmlFor = "EndDateWorkExperienceUpdate"> End Date </label>
+					<input type = "date" className = "form-control" name = "EndDateWorkExperienceUpdate" />
+				</div>
+                    	    </div>
+                            <div className = "form-row">
+                        	<div className = "form-group">
+					<label htmlFor = "DescriptionWorkExperienceUpdate"> Description </label>
+					<input className = "form-control" type = "text" name = "DescriptionWorkExperienceUpdate" placeholder = "Add Description" />
+				</div>
+                    	    </div>
+                        </form>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div className="modal fade" id="deleteWorkExperience" tabIndex="-1" role="dialog" aria-labelledby="deleteWorkExperienceLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="deleteWorkExperienceLabel">Delete Work Experience Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <hr />
+                        <p> Are you sure you want to delete this work experience information? </p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+			<button type="button" className="btn btn-danger">Yes, delete</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
 
 </div>
 	)
