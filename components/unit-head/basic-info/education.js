@@ -4,6 +4,8 @@ import EducationForm from './education-form'
 function Education() {
     return (
         <div>
+	    <h3 align = "center"> Educational History: <u>Cena, John</u> </h3>
+	    <br />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
