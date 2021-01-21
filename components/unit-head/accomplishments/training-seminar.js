@@ -4,6 +4,8 @@ import TrainingSeminarForm from './training-seminar-form'
 function TrainingSeminar() {
     return (
         <div>
+	    <h3 align = "center"> Trainings and Seminars: <u>Cena, John</u> </h3>
+		<br />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
