@@ -6,7 +6,7 @@ function FacultyLoad() {
     return (
         <LayoutUnitHead>
 		<br />
-		<h3 align = "center"> Faculty Load </h3>
+		<h3 align = "center"> Faculty Load: <u>Cena, John</u> </h3>
 		<br />
             <div className="list-group">
                 <a className = "list-group-item list-group-item-action list-group-item-secondary" href = "#facultyloadsem1ay20202021" data-toggle = "collapse" aria-controls = "facultyloadsem1ay20202021">1st Semester, AY 2020-2021</a>
