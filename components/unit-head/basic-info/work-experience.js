@@ -5,6 +5,8 @@ import EmploymentHistory from './employment-history'
 function WorkExperience(){
 	return(
 	<div>
+		<h3 align = "center"> Work Experience: <u>Cena, John</u> </h3>
+		<br />
 			<h5 align = "center"> Within UP Manila </h5>
 			<EmploymentHistory />
 			<br />
