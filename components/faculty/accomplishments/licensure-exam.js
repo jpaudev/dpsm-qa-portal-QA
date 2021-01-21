@@ -4,6 +4,8 @@ import LicensureExamForm from './licensure-exam-form'
 function LicensureExam() {
     return (
         <div>
+	    <h3 align = "center"> Licensure Exams: <u>Cena, John</u> </h3>
+	    <br />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
