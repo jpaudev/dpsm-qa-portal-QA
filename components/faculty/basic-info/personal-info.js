@@ -4,6 +4,8 @@ import PersonalInfoDependents from './personal-info-dependents'
 function PersonalInfo(props) {
     return (
         <div>
+	    	<h3 align = "center"> Personal Information: <u>Cena, John</u> </h3>
+		<br />
 		<h6>Required</h6>
 		
             <form action="">
