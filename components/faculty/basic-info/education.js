@@ -47,6 +47,8 @@ function Education(props) {
     });
     return (
         <div>
+	    <h3 align = "center"> Educational History: <u>Cena, John</u> </h3>
+	    <br />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -60,14 +62,13 @@ function Education(props) {
                             <th>Status</th>
 			    <th>Action</th>
                         </tr>
-                        {content}
                         <tr>
                             <td>University of the Philippines Diliman</td>
                             <td>Doctor of Philosophy in Computer Science</td>
                             <td>None</td>
                             <td>2020-01-26</td>
                             <td>Present</td>
-                            <td></td>
+                            <td><a href = "#">Download proof</a></td>
 			    <td>Pending Approval</td>
                             <td>
 				<div className = "btn-group">
@@ -82,7 +83,7 @@ function Education(props) {
                             <td>Biostat</td>
                             <td>2017-05-26</td>
                             <td>2020-01-25</td>
-                            <td></td>
+                            <td><a href = "#">Download proof</a></td>
 			    <td>Pending Approval</td>
                             <td>
 				<div className = "btn-group">
@@ -97,12 +98,12 @@ function Education(props) {
                             <td>Health Informatics</td>
                             <td>2010-09-06</td>
                             <td>2017-05-25</td>
-                            <td></td>
+                            <td><a href = "#">Download proof</a></td>
 			    <td>Verified</td>
                             <td>
 				<div className = "btn-group">
-					<a className="btn btn-info" data-toggle="modal" data-target="#editEducation">Edit</a>
-					<a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation">Delete</a>
+					<a className="btn btn-info disabled" data-toggle="modal" data-target="#editEducation">Edit</a>
+					<a className="btn btn-danger disabled" data-toggle="modal" data-target="#deleteEducation">Delete</a>
 				</div>
 			    </td>
                         </tr>

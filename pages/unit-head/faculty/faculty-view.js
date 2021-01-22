@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import LayoutUnitHead from '../../../components/layout-unit-head'
 import PersonalInfo from '../../../components/unit-head/faculty-list/basic-info/personal-info'
 import Education from '../../../components/unit-head/faculty-list/basic-info/education'
@@ -12,7 +13,9 @@ function FacultyView() {
     return (
         <LayoutUnitHead>
 		<br />
-            	<h4 align = "center"> View Profile </h4>
+		<Link href = "/unit-head/faculty/all"><a href = "#">Back</a></Link>
+		<br />
+            	<h4 align = "center"> View Profile: <u>Baes, Gregorio</u> </h4>
 		<nav>
             		<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
 				<a className="nav-item nav-link active" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic Information</a>
@@ -29,7 +32,7 @@ function FacultyView() {
             				</div>
             			</nav>
 				<div className="tab-content" id="nav-tabContent-basic-info">
-            				<div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab"><PersonalInfo />s</div>
+            				<div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab"><PersonalInfo /></div>
             				<div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab"><Education /></div>
             				<div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab"><WorkExperience /></div>
             			</div>

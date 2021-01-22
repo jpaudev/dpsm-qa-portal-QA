@@ -1,8 +1,11 @@
 import Link from 'next/link'
+import PersonalInfoDependents from './personal-info-dependents'
 
 function PersonalInfo(props) {
     return (
         <div>
+	    	<h3 align = "center"> Personal Information: <u>Cena, John</u> </h3>
+		<br />
 		<h6>Required</h6>
 		
             <form action="">
@@ -68,19 +71,25 @@ function PersonalInfo(props) {
                 	</div>
 		</div>
                 <div className = "form-row">
-                    <div className = "form-group col-md-4 required">
+                    <div className = "form-group col-md-6 required">
                         <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Landline) </label>
                         <input className = "form-control" type = "tel" name = "ContactNumberLandline" pattern = "[0-9]{8}" defaultValue = { props.children.landline } required />
                     </div>
-		    <div className = "form-group col-md-4 required">
+		    <div className = "form-group col-md-6 required">
                         <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Mobile) </label>
                         <input className = "form-control" type = "tel" name = "ContactNumberMobile" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.mobile } required />
                     </div>
-                    <div className = "form-group col-md-4 required">
-                        <label className = "control-label" htmlFor = "EmailAddress"> Email Address </label>
-                        <input className = "form-control" type = "email" name = "EmailAddress" defaultValue = { props.children.email } required />
-                    </div>
                 </div>
+		<div className = "form-row">
+		    <div className = "form-group col-md-6 required">
+                        <label className = "control-label" htmlFor = "EmailAddressUP"> Email Address (UP Mail) </label>
+                        <input className = "form-control" type = "email" name = "EmailAddressUP" defaultValue = { props.children.email } disabled required />
+                    </div>
+		    <div className = "form-group col-md-6">
+                        <label className = "control-label" htmlFor = "EmailAddressAlt"> Email Address (alternate) </label>
+                        <input className = "form-control" type = "email" name = "EmailAddressAlt" />
+                    </div>
+		</div>
                 <div className = "form-row">
                     <div className = "form-group col-md-6 required">
                         <label className = "control-label" htmlFor = "EmergencyContact"> Emergency Contact </label>
@@ -91,6 +100,7 @@ function PersonalInfo(props) {
                         <input className = "form-control" type = "tel" name = "EmergencyContactNumber" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.emergencyContactNumber } required />
                     </div>
                 </div>
+		<PersonalInfoDependents />
 		{/* <div className = "form-row">
 			<div className = "form-group col-md-3 required">
 				<label className = "control-label" htmlFor ="Unit"> Unit </label>

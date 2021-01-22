@@ -29,6 +29,10 @@ class TrainingSeminarForm extends React.Component{
                             <label htmlFor = "TrainingSeminarEndDate[]"> End Date </label>
                             <input type = "date" className = "form-control" name = "TrainingSeminarEndDate[]" />
                         </div>
+			<div className = "form-group col-md-8">
+			    <label htmlFor = "TrainingSeminarRemarks[]"> Remarks </label>
+                            <input className = "form-control" type = "text" name = "TrainingSeminarRemarks[]" placeholder = "Input remarks" />
+			</div>
 			<div className = "form-group col-md-2">
                             <label htmlFor = "TrainingSeminarProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "TrainingSeminarProof[]" />
@@ -84,6 +88,10 @@ class TrainingSeminarForm extends React.Component{
                             <label htmlFor = "TrainingSeminarEndDate[]"> End Date </label>
                             <input type = "date" className = "form-control" name = "TrainingSeminarEndDate[]" />
                         </div>
+			<div className = "form-group col-md-8">
+			    <label htmlFor = "TrainingSeminarRemarks[]"> Remarks </label>
+                            <input className = "form-control" type = "text" name = "TrainingSeminarRemarks[]" placeholder = "Input remarks" />
+			</div>
 			<div className = "form-group col-md-2">
                             <label htmlFor = "TrainingSeminarProof[]"> Proof </label>
                             <input type = "file" className = "form-control-file" name = "TrainingSeminarProof[]" />

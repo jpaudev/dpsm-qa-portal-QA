@@ -16,7 +16,7 @@ function LayoutUnitHead(props) {
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </Head>
             <Header />
-		<div className = "row">
+		<div className = "row" id = "layout_row">
             <SidebarUnitHead />
                 <div className="col-10">
                     <div className="container">
@@ -24,7 +24,7 @@ function LayoutUnitHead(props) {
                     </div>
                 </div>
 	    </div>
-            <Footer />
+	    {/* <Footer /> */}
         </div>
     )
   }
