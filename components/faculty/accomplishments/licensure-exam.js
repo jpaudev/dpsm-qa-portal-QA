@@ -13,8 +13,8 @@ function LicensureExam(props) {
                 <td>{props.children[key].status}</td>
                 <td>
                     <div className = "btn-group">
-                        <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
-                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
+                        <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam">Edit</a>
+                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam">Delete</a>
                     </div>
                 </td>
             </tr>
@@ -22,6 +22,8 @@ function LicensureExam(props) {
     });
     return (
         <div>
+        <h3 align = "center"> Licensure Exams: <u>Cena, John</u> </h3>
+        <br />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>

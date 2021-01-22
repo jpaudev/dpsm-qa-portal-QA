@@ -11,7 +11,10 @@ class PublicationFormAuthor extends React.Component{
 		this.state.duplicateAuthors.push(<div><div className = "form-row">
 			<div className = "form-group col-md-6">
 				<label htmlFor = "PublicationAuthorDPSM[]"> Author (from DPSM) </label>
-				<input className = "form-control" type = "text" name = "PublicationAuthorDPSM[]" placeholder = "Input author (must be part of DPSM)" />
+				<select className = "form-control col-md-6" name = "PublicationAuthorDPSM[]" required>
+					<option>Cabalo, Francis</option>
+					<option>Yu, Berwin</option>
+				</select>
 			</div>
 		</div></div>)
 		this.setState({
@@ -31,11 +34,14 @@ class PublicationFormAuthor extends React.Component{
 				<button type = "button" className = "btn btn-danger" id = "RemoveAuthor" onClick = {() => this.remove()}> Remove a Row </button>
 			</div>
 			<div className = "form-row">
-			<div className = "form-group col-md-6">
-				<label htmlFor = "PublicationAuthorDPSM[]"> Author (from DPSM) </label>
-				<input className = "form-control" type = "text" name = "PublicationAuthorDPSM[]" placeholder = "Input author (must be part of DPSM)" />
+				<div className = "form-group col-md-6">
+					<label htmlFor = "PublicationAuthorDPSM[]"> Author (from DPSM) </label>
+					<select className = "form-control col-md-6" name = "PublicationAuthorDPSM[]" required>
+						<option>Cabalo, Francis</option>
+						<option>Yu, Berwin</option>
+					</select>
+				</div>
 			</div>
-		</div>
 		<div>
 				{this.state.duplicateAuthors}
 		</div>

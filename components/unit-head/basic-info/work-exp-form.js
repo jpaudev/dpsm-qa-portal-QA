@@ -27,9 +27,15 @@ class WorkExpForm extends React.Component{
 					<input type = "date" className = "form-control" name = "EndDateWorkExperience[]" />
 				</div>
 			</div>
-			<div className = "form-group">
-				<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
-				<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+			<div className = "form-row">
+				<div className = "form-group col-md-8">
+					<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
+					<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+				</div>
+				<div className = "form-group col-md-2">
+                            		<label htmlFor = "ProofWorkExperience[]"> Proof </label>
+                            		<input type = "file" className = "form-control-file" name = "ProofWorkExperience[]" />
+                        	</div>
 			</div>
 				<style jsx>{`
 			hr{
@@ -79,9 +85,15 @@ class WorkExpForm extends React.Component{
 					<input type = "date" className = "form-control" name = "EndDateWorkExperience[]" />
 				</div>
 			</div>
-			<div className = "form-group">
-				<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
-				<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+			<div className = "form-row">
+				<div className = "form-group col-md-8">
+					<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
+					<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+				</div>
+				<div className = "form-group col-md-2">
+                            		<label htmlFor = "ProofWorkExperience[]"> Proof </label>
+                            		<input type = "file" className = "form-control-file" name = "ProofWorkExperience[]" />
+                        	</div>
 			</div>
 			<div id = "WorkExperience">
 				{this.state.duplicateForms}

@@ -53,9 +53,12 @@ class ResearchGrantForm extends React.Component{
 				<label htmlFor = "ResearchProjectedEndDate[]"> End Date (Projected) </label>
 				<input type = "date" className = "form-control" name = "ResearchProjectedEndDate[]" />
 			</div>
-			<div className = "form-group col-md-2"> 
+			<div className = "form-group col-md-4"> 
 				<label htmlFor = "ResearchProgress[]"> Research Progress </label>
-				<input className = "form-control" type = "text" name = "ResearchProgress[]" placeholder = "Input progress" />
+				<select className = "form-control" name = "ResearchProgress[]" required>
+					<option>Ongoing</option>
+					<option>Completed</option>
+				</select>
 			</div>
 		</div>
 		<div>
@@ -146,9 +149,12 @@ class ResearchGrantForm extends React.Component{
 								<label htmlFor = "ResearchProjectedEndDate[]"> End Date (Projected) </label>
 								<Field type = "date" className = "form-control" name = "projectedEnd" />
 							</div>
-							<div className = "form-group col-md-2"> 
+							<div className = "form-group col-md-4"> 
 								<label htmlFor = "ResearchProgress[]"> Research Progress </label>
-								<Field className = "form-control" type = "text" name = "researchProgress" placeholder = "Input progress" />
+								<Field as = "select" className = "form-control" name = "researchProgress" required>
+	                                <option value = "ongoing">Ongoing</option>
+	                                <option value = "completed">Completed</option>
+	                            </Field>
 							</div>
 						</div>
 						<div>

@@ -10,6 +10,7 @@ function TrainingSeminar(props) {
                 <td>{props.children[key].venue}</td>
                 <td>{props.children[key].dateFrom}</td>
                 <td>{props.children[key].dateTo}</td>
+                <td>remarks?</td>
                 <td>{props.children[key].proof}</td>
                 <td>{props.children[key].status}</td>
                 <td>
@@ -23,6 +24,8 @@ function TrainingSeminar(props) {
     });
     return (
         <div>
+            <h3 align = "center"> Trainings and Seminars: <u>Cena, John</u> </h3>
+            <br />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -32,18 +35,20 @@ function TrainingSeminar(props) {
                             <th>Venue</th>
                             <th>Start Date</th>
                             <th>End Date</th>
+                            <th>Remarks</th>
                             <th>Proof</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
                         {content}
                         <tr>
-                            <td>3</td>
-                            <td></td>
-                            <td></td>
+                            <td>Paradigm Shifts in Public Health</td>
+                            <td>Attendee</td>
+                            <td>Hammerstein Ballroom</td>
+                            <td>2020-11-11</td>
                             <td>2020-11-11</td>
                             <td></td>
-                            <td></td>
+                            <td><a href = "#">Download proof</a></td>
                             <td>Pending Approval</td>
                             <td>
                                 <div className = "btn-group">
@@ -53,12 +58,13 @@ function TrainingSeminar(props) {
                             </td>
                         </tr>
                         <tr>
-                            <td>8</td>
-                            <td></td>
-                            <td></td>
+                            <td>Privacy in the Age of Information</td>
+                            <td>Lecturer</td>
+                            <td>Madison Square Garden</td>
+                            <td>2020-1-14</td>
                             <td>2020-1-14</td>
                             <td></td>
-                            <td></td>
+                            <td><a href = "#">Download proof</a></td>
                             <td>Pending Approval</td>
                             <td>
                                 <div className = "btn-group">
@@ -68,12 +74,13 @@ function TrainingSeminar(props) {
                             </td>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td></td>
-                            <td></td>
+                            <td>A Primer on String Theory</td>
+                            <td>Lecturer</td>
+                            <td>Full Sail University</td>
+                            <td>2020-4-1</td>
                             <td>2020-4-1</td>
                             <td></td>
-                            <td></td>
+                            <td><a href = "#">Download proof</a></td>
                             <td>Verified</td>
                             <td>
                                 <div className = "btn-group">

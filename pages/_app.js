@@ -1,6 +1,7 @@
 import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 import '../styles/nprogress.css'; //styles of nprogress
+import '../styles/layout-height.css';
 
 //Binding events. 
 Router.events.on('routeChangeStart', () => NProgress.start());
