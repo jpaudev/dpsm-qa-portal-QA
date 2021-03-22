@@ -1,51 +1,68 @@
 import Link from 'next/link'
 import EducationForm from './education-form'
+import Router from 'next/router'
+
+import downloadProof from '../../../services/faculty/downloadProof'
+import deleteEducation from '../../../services/faculty/basic-info/deleteEducation'
 
 function Education(props) {
+    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
     let content = Object.keys(props.children).map(key => {
-        // if(props.children[key].status == 'ongoing') {
-            return (
-                <tr key = {props.children.[key].educInfoId}>
-                    <td>{props.children[key].institutionSchool}</td>
-                    <td>{props.children[key].degreeCert}</td>
-                    <td>{props.children[key].majorSpecialization}</td>
-                    <td>{props.children[key].startDate}</td>
-                    <td>{props.children[key].endDate}</td>
-                    <td><button>{props.children[key].proof}</button></td>
-                    <td>{props.children[key].status}</td>
-                    <td>
-                        <div className = "btn-grp">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#editEducation">Edit</a>
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation">Delete</a>
-                        </div>
-                    </td>
-                </tr>
-            );
-        /*} else if(props.children[key].status == 'for verification') {
-            return (
-                <tr>
-                    <td>{props.children[key].institutionSchool}</td>
-                    <td>{props.children[key].degreeCert}</td>
-                    <td>{props.children[key].majorSpecialization}</td>
-                    <td>{props.children[key].startDate}</td>
-                    <td>{props.children[key].endDate}</td>
-                    <td><button>Preview proof here (img/pdf)</button></td>
-                    <td></td>
-                    <td>
-                        <a 
-                            className="btn btn-info"
-                            data-toggle="modal"
-                            data-target="#forVerif"
-                        >
-                            {props.children[key].status}
-                        </a>
-                    </td>
-                </tr>
-            );
-        }*/
+        if(props.children[key].educInfoId != null) {
+            if(props.children[key].proof) {
+                return (
+                    <tr key = {props.children.[key].educInfoId}>
+                        <td>{props.children[key].institutionSchool}</td>
+                        <td>{props.children[key].degreeCert}</td>
+                        <td>{props.children[key].majorSpecialization}</td>
+                        <td>{props.children[key].startDate}</td>
+                        <td>{props.children[key].endDate}</td>
+                        <td>
+                            <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick = {() => {
+                                    let file = props.children[key].proof
+                                    downloadProof(file)
+                                }}
+                            >
+                                Download
+                            </button>
+                        </td>
+                        <td>{props.children[key].status}</td>
+                        <td>
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editEducation">Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                );
+            } else {
+                return (
+                    <tr key = {props.children.[key].educInfoId}>
+                        <td>{props.children[key].institutionSchool}</td>
+                        <td>{props.children[key].degreeCert}</td>
+                        <td>{props.children[key].majorSpecialization}</td>
+                        <td>{props.children[key].startDate}</td>
+                        <td>{props.children[key].endDate}</td>
+                        <td>None</td>
+                        <td>{props.children[key].status}</td>
+                        <td>
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editEducation">Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                );
+            }
+        }
     });
     return (
         <div>
+        <h3 align = "center"> Educational History: <u>{name}</u> </h3>
+        <br />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -60,37 +77,9 @@ function Education(props) {
                             <th>Action</th>
                         </tr>
                         {content}
-                        {/*<tr>
-                            <td>University of the Philippines Diliman</td>
-                            <td>Doctor of Philosophy in Computer Science</td>
-                            <td>None</td>
-                            <td>2020-01-26</td>
-                            <td>Present</td>
-                            <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#ongoing">Ongoing</a></td>
-                        </tr>
-                        <tr>
-                            <td>University of the Philippines Diliman</td>
-                            <td>MS Computer Science</td>
-                            <td>Biostat</td>
-                            <td>2017-05-26</td>
-                            <td>2020-01-25</td>
-                            <td></td>
-                            <td><a className="btn btn-info" data-toggle="modal" data-target="#forVerif">For Verification</a></td>
-                        </tr>
-                        <tr>
-                            <td>University of the Philippines Los Banos</td>
-                            <td>BS Computer Science</td>
-                            <td>Health Informatics</td>
-                            <td>2010-09-06</td>
-                            <td>2017-05-25</td>
-                            <td></td>
-                            <td>Verified</td>
-                        </tr>*/}
                     </tbody>
                 </table>
             </div>
-
             <div>
                 <EducationForm />
             </div>   
@@ -168,16 +157,16 @@ function Education(props) {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger">Yes, delete</button>
+                        <button type="button" className="btn btn-danger" onClick = {() => {
+                            deleteEducation()
+                            Router.reload()
+                        }}>Yes, delete</button>
                     </div>
                     </div>
                 </div>
             </div>
-        
         </div>
-	
-	
     )
-  }
-  
-  export default Education
+}
+
+export default Education

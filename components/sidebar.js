@@ -22,10 +22,13 @@ function Sidebar() {
                 <div className="list-group">
                     <Link href="/department-activities"><a className = "list-group-item list-group-item-action list-group-item-secondary">Department Activities</a></Link>
                 </div>
+		<div className="list-group">
+                    <Link href="/"><a className = "list-group-item list-group-item-action list-group-item-danger">Log Out</a></Link>
+                </div>
 
 		<style jsx>{`
 			.col-2 {
-  				background-color: #017823; 
+  				background-color: #017823;
 			}
 			.list-group-item-success{
 				text-indent:20%;

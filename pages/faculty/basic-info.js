@@ -4,6 +4,7 @@ import PersonalInfo from '../../components/faculty/basic-info/personal-info'
 import Education from '../../components/faculty/basic-info/education'
 import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
+import jwt from 'jsonwebtoken'
 
 function BasicInfo(props) {
     return (
@@ -46,10 +47,11 @@ function BasicInfo(props) {
   }
 
 BasicInfo.getInitialProps = async () => {
-    let url = 'https://sp-api-test.alun.app/api/';
-    const res = await fetch(url + 'token',
+    // let url = 'https://sp-api-test.alun.app/api/';
+    let url = 'http://localhost:3001/api/'
+    const res = await fetch(url + 'login',
     {
-        body: JSON.stringify({"username": "username", "password": "password"}),
+        body: JSON.stringify({"upemail": "jpcristobal1@upm.edu.ph", "password": "password"}),
         headers: {
             'Content-Type': 'application/json'
         },
@@ -57,32 +59,40 @@ BasicInfo.getInitialProps = async () => {
     })
     
     const access = await res.json()
-    let token = access.result
-    url = 'https://sp-api-test.alun.app/api/faculty/basic-info/';
+    let token = access.result.token
+    let facultyId = 0;
+    if (token) {
+        const json = jwt.decode(token)
+        facultyId = json.facultyId
+    } else {
+        console.log(access.result.message)
+    }
+    // url = 'https://sp-api-test.alun.app/api/faculty/basic-info/' + facultyId;
+    url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
     let header = {
         headers: {
             'Authorization': 'Bearer ' + token
         }
     }
 
-    const personal = await fetch(url + '9', header)
+    const personal = await fetch(url, header)
     const personalInfo = await personal.json()
 
-    const employ = await fetch(url + '9/employment', header)
+    const employ = await fetch(url + '/employment', header)
     const employment = await employ.json()
 
-    const educ = await fetch(url + '9/education', header)
+    const educ = await fetch(url + '/education', header)
     const education = await educ.json()
 
-    const work = await fetch(url + '9/work-exp', header)
+    const work = await fetch(url + '/work-exp', header)
     const workExperience = await work.json()
 
+    education.result.push(personalInfo.result)
     workExperience.result.push(employment.result)
+    workExperience.result.push(personalInfo.result)
 
     return { 
-        token: token,
         personalInfo: personalInfo.result,
-        // employment: employment.result,
         education: education.result,
         workExperience: workExperience.result
     }

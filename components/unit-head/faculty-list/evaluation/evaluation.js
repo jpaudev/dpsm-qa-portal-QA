@@ -1,14 +1,8 @@
-import LayoutUnitHead from '../../components/layout-unit-head'
-import EvaluationSemester from '../../components/unit-head/evaluation/evaluation-semester'
-import Link from 'next/link'
+import EvaluationSemester from '../../../../components/unit-head/faculty-list/evaluation/evaluation-semester'
 
-function Evaluation() {
-    return (
-        <LayoutUnitHead>
-            <br />
-		<h3 align = "center"> Peer Evaluation: <u>Cena, John</u> </h3>
-		<br />
-            <div className = "list-group">
+function Evaluation(){
+	return(
+		<div className = "list-group">
 			<a className = "list-group-item list-group-item-action list-group-item-secondary" href = "#evaluation_ay20202021" data-toggle = "collapse" aria-controls = "evaluation_ay20202021">AY 2020-2021</a>
 				<div id = "evaluation_ay20202021" className = "jumbotron collapse">
 					<EvaluationSemester />
@@ -23,14 +17,8 @@ function Evaluation() {
                 		<div id = "evaluation_ay20182019" className = "jumbotron collapse">
 					<EvaluationSemester />
 				</div>
-            </div>
-		<style jsx>{`
-			.list-group-item-info{
-				text-indent:5%;
-			}
-		`}</style>
-        </LayoutUnitHead>
-    )
-  }
-  
- export default Evaluation
+            	</div>
+	)
+}
+
+export default Evaluation

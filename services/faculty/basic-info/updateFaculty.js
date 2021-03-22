@@ -1,17 +1,33 @@
 import axios from "axios"
+import jwt from 'jsonwebtoken'
 
 export default async function updateFaculty(data) {
 	try {
-		let token = null
-		const tokenRes = await axios.post("https://sp-api-test.alun.app/api/token", {
-			username: "username",
-			password: "password"
-		})
-
-		if(tokenRes.data.success) {
-			token = tokenRes.data.result
-			try {
-				const response = await axios.put("https://sp-api-test.alun.app/api/faculty/basic-info/9/personal", {
+		let url = 'http://localhost:3001/api/'
+	    const res = await fetch(url + 'login',
+	    {
+	        body: JSON.stringify({"upemail": "jpcristobal1@upm.edu.ph", "password": "password"}),
+	        headers: {
+	            'Content-Type': 'application/json'
+	        },
+	        method: 'POST'
+	    })
+	    
+	    const access = await res.json()
+	    let token = access.result.token
+	    let facultyId = 0;
+	    if (token) {
+	        const json = jwt.decode(token)
+	        console.log(json)
+	        facultyId = json.facultyId
+	        url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
+		    let header = {
+		        headers: {
+		            'Authorization': 'Bearer ' + token
+		        }
+		    }
+	        try {
+				const response = await axios.put(url + "/personal", {
 					lastName: `${data.lastName}`,
 					middleName: `${data.middleName}`,
 					permanentAddress: `${data.permanentAddress}`,
@@ -20,7 +36,7 @@ export default async function updateFaculty(data) {
 					landline: `${data.landline}`,
 					email: `${data.email}`,
 					civilStatus: `${data.civilStatus}`,
-					religion: `${data.lastName}`,
+					religion: `${data.religion}`,
 					emergencyContactPerson: `${data.emergencyContactPerson}`,
 	  				emergencyContactNumber: `${data.emergencyContactNumber}`
 				}, {
@@ -39,6 +55,8 @@ export default async function updateFaculty(data) {
 				console.error(err)
 				return err
 			}
+	    } else {
+	        console.log(access.result.message)
 		}
 	} catch (err) {
 		console.error(err)

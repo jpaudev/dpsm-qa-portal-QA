@@ -1,5 +1,6 @@
 import React from 'react'
 import { Formik, Form, Field } from "formik"
+import Router from 'next/router'
 
 import addEducation from '../../../services/faculty/basic-info/addEducation'
 
@@ -12,32 +13,33 @@ class EducationForm extends React.Component{
 	}
 
 	clone(){
-		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
-                            <input className = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
-                            <input className = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
-                            <input className = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
-                            <input type = "date" className = "form-control" name = "StartDateEducationalHistory[]" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
-                            <input type = "date" className = "form-control" name = "EndDateEducationalHistory[]" />
-                        </div>
-                        <div className = "form-group col-md-2">
-                            <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
-                            <input type = "file" className = "form-control-file" name = "ProofEducationalHistory[]" />
-                        </div>
-                    </div>
+		this.state.duplicateForms.push(<div><hr />
+            <div className = "form-row">
+                <div className = "form-group col-md-2">
+                    <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
+                    <input className = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" />
+                </div>
+                <div className = "form-group col-md-2">
+                    <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
+                    <input className = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" />
+                </div>
+                <div className = "form-group col-md-2">
+                    <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
+                    <input className = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major" />
+                </div>
+                <div className = "form-group col-md-2">
+                    <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
+                    <input type = "date" className = "form-control" name = "StartDateEducationalHistory[]" />
+                </div>
+                <div className = "form-group col-md-2">
+                    <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
+                    <input type = "date" className = "form-control" name = "EndDateEducationalHistory[]" />
+                </div>
+                <div className = "form-group col-md-2">
+                    <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
+                    <input type = "file" className = "form-control-file" name = "ProofEducationalHistory[]" />
+                </div>
+            </div>
 			<style jsx>{`
 			hr{
 				border: 1px solid black;
@@ -63,13 +65,22 @@ class EducationForm extends React.Component{
             endDate: "",
             proof: ""
         }
+
 		return(
             <Formik
                 initialValues={EducationDetails}
-                onSubmit={async (values) => {await addEducation(values)}}
+                onSubmit={async (values) => {
+                    console.log(values.proof)
+                    let form = document.getElementById('educForm')
+                    let formData = new FormData(form)
+                    formData.append('facultyId', '1')
+                    formData.append('status', 'For Verification')
+                    await addEducation(values, formData)
+                    Router.reload()
+                }}
             >
                 {({ values, errors, touched, isSubmitting }) => (
-                    <Form>
+                    <Form id = "educForm">
                         <hr />
                         <div className = "form-row">
                             <div className = "col-auto">
@@ -83,27 +94,27 @@ class EducationForm extends React.Component{
                         <div className = "form-row">
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
-                                <Field className = "form-control" type = "text" name = "institutionSchool" placeholder = "Input school" />
+                                <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
-                                <Field className = "form-control" type = "text" name = "degreeCert" placeholder = "Input degree" />
+                                <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
-                                <Field className = "form-control" type = "text" name = "majorSpecialization" placeholder = "Input major" />
+                                <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
-                                <Field type = "date" className = "form-control" name = "startDate" />
+                                <Field type = "date" className = "form-control" name = "startDate" id = "startDate" />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
-                                <Field type = "date" className = "form-control" name = "endDate" />
+                                <Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
-                                <Field type = "file" className = "form-control-file" name = "proof" />
+                                <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
                             </div>
                         </div>
                         <div id = "EducationalHistory">

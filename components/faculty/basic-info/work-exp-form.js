@@ -1,5 +1,6 @@
 import React from 'react';
 import { Formik, Form, Field } from "formik"
+import Router from 'next/router'
 
 import addWorkExp from '../../../services/faculty/basic-info/addWorkExp'
 
@@ -30,9 +31,15 @@ class WorkExpForm extends React.Component{
 					<input type = "date" className = "form-control" name = "EndDateWorkExperience[]" />
 				</div>
 			</div>
-			<div className = "form-group">
-				<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
-				<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+			<div className = "form-row">
+				<div className = "form-group col-md-8">
+					<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
+					<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+				</div>
+				<div className = "form-group col-md-2">
+					<label htmlFor = "ProofWorkExperience[]"> Proof </label>
+					<input type = "file" className = "form-control-file" name = "ProofWorkExperience[]" />
+				</div>
 			</div>
 				<style jsx>{`
 			hr{
@@ -62,7 +69,10 @@ class WorkExpForm extends React.Component{
 		return(
 			<Formik
 				initialValues={WorkDetails}
-				onSubmit={async (values) => {await addWorkExp(values)}}
+				onSubmit={async (values) => {
+					await addWorkExp(values)
+					// Router.reload()
+				}}
 			>
 				{({ values, errors, touched, isSubmitting }) => (
 					<Form>
@@ -94,9 +104,15 @@ class WorkExpForm extends React.Component{
 								<Field type = "date" className = "form-control" name = "endDate" />
 							</div>
 						</div>
-						<div className = "form-group">
-							<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
-							<Field className = "form-control" type = "text" name = "description" placeholder = "Add Description" />
+						<div className = "form-row">
+							<div className = "form-group col-md-8">
+								<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
+								<Field className = "form-control" type = "text" name = "description" placeholder = "Add Description" />
+							</div>
+							<div className = "form-group col-md-2">
+								<label htmlFor = "ProofWorkExperience[]"> Proof </label>
+								<input type = "file" className = "form-control-file" name = "ProofWorkExperience[]" />
+							</div>
 						</div>
 						<div id = "WorkExperience">
 							{this.state.duplicateForms}

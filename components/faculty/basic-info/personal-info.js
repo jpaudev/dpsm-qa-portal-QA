@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { MenuItem } from '@material-ui/core'
 import { Formik, Form, Field } from "formik"
+import Router from 'next/router'
+import PersonalInfoDependents from './personal-info-dependents'
 
 import updateFaculty from '../../../services/faculty/basic-info/updateFaculty'
 
@@ -20,10 +22,15 @@ function PersonalInfo(props) {
     }
     return (
         <div>
+        <h3 align = "center"> Personal Information: <u>{props.children.lastName}, {props.children.firstName} {props.children.middleName}</u> </h3>
+        <br />
 		<h6>Required</h6>
 		<Formik
             initialValues={FacultyDetails}
-            onSubmit={async (values) => {await updateFaculty(values)}}
+            onSubmit={async (values) => {
+                await updateFaculty(values)
+                Router.reload()
+            }}
         >
             {({ values, errors, touched, isSubmitting }) => (
                 <Form>
@@ -31,7 +38,7 @@ function PersonalInfo(props) {
                     <div className = "form-row">
                         <div className = "form-group col-md-3 required">
                             <label className = "control-label" htmlFor = "FirstName"> First Name </label>
-                            <input className = "form-control" type = "text" name = "FirstName" defaultValue = { props.children.firstName } required />
+                            <input className = "form-control" type = "text" name = "FirstName" defaultValue = { props.children.firstName } disabled required />
                         </div>
                         <div className = "form-group col-md-3">
                             <label htmlFor = "MiddleName"> Middle Name </label>
@@ -47,20 +54,20 @@ function PersonalInfo(props) {
                         </div>
                     </div>
                     <div className = "form-row">
-                        <div className = "form-group col-md-4" required>
+                        <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "Sex"> Sex </label>
-                            <select className = "form-control" name = "Sex" defaultValue = { props.children.gender } required>
-                                <option>Male</option>
-                                <option>Female</option>
+                            <select className = "form-control" name = "Sex" defaultValue = { props.children.gender } disabled required>
+                                <option value = "male">Male</option>
+                                <option value = "female">Female</option>
                             </select>
                         </div>
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "DateOfBirth"> Date of Birth </label>
-                            <input className = "form-control" type = "date" name = "DateOfBirth" defaultValue = { props.children.dateOfBirth } required />
+                            <input className = "form-control" type = "date" name = "DateOfBirth" defaultValue = { props.children.dateOfBirth } disabled required />
                         </div>
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "PlaceOfBirth"> Place of Birth </label>
-                            <input className = "form-control" type = "text" name = "PlaceOfBirth" defaultValue = { props.children.placeOfBirth } required />
+                            <input className = "form-control" type = "text" name = "PlaceOfBirth" defaultValue = { props.children.placeOfBirth } disabled required />
                         </div>
                     </div>
                     <br />
@@ -75,31 +82,37 @@ function PersonalInfo(props) {
                     <div className = "form-row">
                         <div className = "form-group col-md-6 required">
                             <label className = "control-label" htmlFor ="CivilStatus"> Civil Status </label>
-                            <select className = "form-control" name = "CivilStatus" defaultValue = { props.children.civilStatus } required>
-                                <option>Single</option>
-                                <option>Married</option>
-                                <option>Separated (Legally)</option>
-                                <option>Divorced</option>
-                                <option>Widowed</option>
-                            </select>
+                            <Field as = "select" className = "form-control" name = "civilStatus" defaultValue = { props.children.civilStatus } required>
+                                <option value = "single">Single</option>
+                                <option value = "married">Married</option>
+                                <option value = "separated">Separated (Legally)</option>
+                                <option value = "divorced">Divorced</option>
+                                <option value = "widowed">Widowed</option>
+                            </Field>
                         </div>
                         <div className = "form-group col-md-6">
                                 <label htmlFor = "Religion"> Religion </label>
-                                <Field className = "form-control" type = "text" name = "Religion" defaultValue = { props.children.religion } required />
+                                <Field className = "form-control" type = "text" name = "religion" defaultValue = { props.children.religion } required />
                         </div>
                     </div>
                     <div className = "form-row">
-                        <div className = "form-group col-md-4 required">
+                        <div className = "form-group col-md-6 required">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Landline) </label>
                             <Field className = "form-control" type = "tel" name = "landline" pattern = "[0-9]{8}" defaultValue = { props.children.landline } required />
                         </div>
-                    <div className = "form-group col-md-4 required">
+                        <div className = "form-group col-md-6 required">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Mobile) </label>
                             <Field className = "form-control" type = "tel" name = "mobile" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.mobile } required />
                         </div>
-                        <div className = "form-group col-md-4 required">
-                            <label className = "control-label" htmlFor = "EmailAddress"> Email Address </label>
+                    </div>
+                    <div className = "form-row">
+                        <div className = "form-group col-md-6 required">
+                            <label className = "control-label" htmlFor = "EmailAddressUP"> Email Address (UP Mail) </label>
                             <Field className = "form-control" type = "email" name = "email" defaultValue = { props.children.email } required />
+                        </div>
+                        <div className = "form-group col-md-6 required">
+                            <label className = "control-label" htmlFor = "EmailAddressAlt"> Email Address (alternate) </label>
+                            <Field className = "form-control" type = "email" name = "emailAddressAlt" defaultValue = { props.children.email } />
                         </div>
                     </div>
                     <div className = "form-row">
@@ -112,67 +125,7 @@ function PersonalInfo(props) {
                             <Field className = "form-control" type = "tel" name = "emergencyContactNumber" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.emergencyContactNumber } required />
                         </div>
                     </div>
-                    {/* <div className = "form-row">
-                        <div className = "form-group col-md-3 required">
-                            <label className = "control-label" htmlFor ="Unit"> Unit </label>
-                                        <select className = "form-control" name = "Unit">
-                                <option>Mathematics and Computer Science</option>
-                                <option>Physics and Geology</option>
-                                <option>Chemistry</option>
-                            </select>
-                                </div>
-                        <div className = "form-group col-md-6 required">
-                            <label className = "control-label" htmlFor ="Position"> Position </label>
-                                        <select className = "form-control" name = "Position" required>
-                                <option>Instructor 1</option>
-                                <option>Instructor 2</option>
-                                <option>Instructor 3</option>
-                                <option>Instructor 4</option>
-                                <option>Instructor 5</option>
-                                <option>Instructor 6</option>
-                                <option>Instructor 7</option>
-                                <option>Assistant Professor 1</option>
-                                <option>Assistant Professor 2</option>
-                                <option>Assistant Professor 3</option>
-                                <option>Assistant Professor 4</option>
-                                <option>Assistant Professor 5</option>
-                                <option>Assistant Professor 6</option>
-                                <option>Assistant Professor 7</option>
-                                <option>Associate Professor 1</option>
-                                <option>Associate Professor 2</option>
-                                <option>Associate Professor 3</option>
-                                <option>Associate Professor 4</option>
-                                <option>Associate Professor 5</option>
-                                <option>Associate Professor 6</option>
-                                <option>Associate Professor 7</option>
-                                <option>Professor 1</option>
-                                <option>Professor 2</option>
-                                <option>Professor 3</option>
-                                <option>Professor 4</option>
-                                <option>Professor 5</option>
-                                <option>Professor 6</option>
-                                <option>Professor 7</option>
-                                <option>Professor 8</option>
-                                <option>Professor 9</option>
-                                <option>Professor 10</option>
-                                <option>Professor 11</option>
-                                <option>Professor 12</option>
-                                <option>Lecturer 1</option>
-                                <option>Lecturer 2</option>
-                                <option>Lecturer 3</option>
-                                <option>Senior Lecturer 1</option>
-                                <option>Senior Lecturer 2</option>
-                                <option>Senior Lecturer 3</option>
-                            </select>
-                                </div>
-                        <div className = "form-group col-md-3 required">
-                            <label className = "control-label" htmlFor ="PositionType"> Type </label>
-                                        <select className = "form-control" name = "PositionType" required>
-                                <option>Part-time</option>
-                                <option>Full-time</option>
-                            </select>
-                                </div>
-                            </div> */}
+                    <PersonalInfoDependents />
                     <br />
                     <button 
                         type = "submit" 
@@ -184,18 +137,18 @@ function PersonalInfo(props) {
                 </Form>
             )}
         </Formik>
-	<style jsx>{`
-		.form-group.required .control-label:after{
-			content: "*";
-			color: #f00;
-		}
-		h6:before{
-			content: "* ";
-			color: #f00;
-		}
-	`}</style>
+    	<style jsx>{`
+    		.form-group.required .control-label:after{
+    			content: "*";
+    			color: #f00;
+    		}
+    		h6:before{
+    			content: "* ";
+    			color: #f00;
+    		}
+    	`}</style>
         </div>     
     )
-  }
-  
-  export default PersonalInfo
+}
+
+export default PersonalInfo

@@ -3,9 +3,10 @@ import WorkExpForm from './work-exp-form'
 import EmploymentHistory from './employment-history'
 
 function WorkExperience(props){
-	const len = props.children.length - 1;
+    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
+	const len = props.children.length - 2;
 	let content = Object.keys(props.children).map(key => {
-		if(key != len) {
+		if(key < len) {
 			return (
 				<tr key = {props.children.[key].workExpId}>
 					<td>{props.children[key].employerName}</td>
@@ -13,8 +14,8 @@ function WorkExperience(props){
 					<td>{props.children[key].startDate}</td>
 					<td>{props.children[key].endDate}</td>
 					<td>{props.children[key].description}</td>
-					<td>proof</td>
-					<td>status</td>
+					<td></td>
+					<td></td>
 					<td>
                         <div className = "btn-grp">
                             <a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience">Edit</a>
@@ -27,7 +28,7 @@ function WorkExperience(props){
 	});
 	return(
 		<div>
-            <h3 align = "center"> Work Experience: <u>Cena, John</u> </h3>
+            <h3 align = "center"> Work Experience: <u>{name}</u> </h3>
             <br />
 			<h5 align = "center"> Within UP Manila </h5>
 			<EmploymentHistory>{props.children[len]}</EmploymentHistory>
