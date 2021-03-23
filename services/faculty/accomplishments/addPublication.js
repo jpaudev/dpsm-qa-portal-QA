@@ -13,7 +13,7 @@ export default async function addPublication(data) {
 			try {
 				const response = await axios.post("http://localhost:3001/api/faculty/accomplishment/add/publication", {
 					title: `${data.title}`,
-					citation: `${data.journal}`,
+					citation: `${data.citation}`,
 					url: `${data.url}`,
 					publicationDate:`${data.publicationDate}`,
 					nonFacultyAuthors: `${data.nonFacultyAuthors}`
