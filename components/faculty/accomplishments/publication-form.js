@@ -67,7 +67,7 @@ class PublicationForm extends React.Component{
 	render(){
 		let PublicationDetails = {
 			title: "",
-			journal: "",
+			citation: "",
 			url: "",
 			publicationDate: "",
 			nonFacultyAuthors: ""
@@ -100,7 +100,7 @@ class PublicationForm extends React.Component{
 							</div>
 							<div className = "form-group col-md-6">
 								<label htmlFor = "PublicationCitation[]"> Citation </label>
-								<Field className = "form-control" type = "text" name = "journal" placeholder = "Input full citation for publication" />
+								<Field className = "form-control" type = "text" name = "citation" placeholder = "Input full citation for publication" />
 							</div>
 						</div>
 						<div className = "form-row">
