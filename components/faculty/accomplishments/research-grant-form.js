@@ -40,7 +40,7 @@ class ResearchGrantForm extends React.Component{
 		</div>
 		<div className = "form-row">
 			<div className = "form-group col-md-12">
-				<label htmlFor = "ResearchAuthorNonDPSM[]"> Authors (non-DPSM) </label>
+				<label htmlFor = "ResearchAuthorNonDPSM[]"> Researchers (non-DPSM) </label>
 				<input className = "form-control" type = "text" name = "ResearchAuthorNonDPSM[]" placeholder = "Input all authors outside DPSM (separate names with commas)" />
 			</div>
 		</div>
@@ -136,7 +136,7 @@ class ResearchGrantForm extends React.Component{
 						</div>
 						<div className = "form-row">
 							<div className = "form-group col-md-12">
-								<label htmlFor = "ResearchAuthorNonDPSM[]"> Authors (non-DPSM) </label>
+								<label htmlFor = "ResearchAuthorNonDPSM[]"> Researchers (non-DPSM) </label>
 								<Field className = "form-control" type = "text" name = "nonFacultyResearchers" placeholder = "Input all authors outside DPSM (separate names with commas)" />
 							</div>
 						</div>

@@ -41,7 +41,7 @@ function ResearchGrant(props){
 		<tbody>
 			<tr>
 				<th>Research Name</th>
-				<th>Author/s</th>
+				<th>Researcher/s</th>
 				<th>Sponsor</th>
 				<th>Amount</th>
 				<th>Projected Duration</th>

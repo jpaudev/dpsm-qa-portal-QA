@@ -10,7 +10,7 @@ function TrainingSeminar(props) {
                 <td>{props.children[key].venue}</td>
                 <td>{props.children[key].dateFrom}</td>
                 <td>{props.children[key].dateTo}</td>
-                <td>remarks?</td>
+                <td></td>
                 <td>{props.children[key].proof}</td>
                 <td>{props.children[key].status}</td>
                 <td>
@@ -41,7 +41,7 @@ function TrainingSeminar(props) {
                             <th>Action</th>
                         </tr>
                         {content}
-                        <tr>
+                        {/*<tr>
                             <td>Paradigm Shifts in Public Health</td>
                             <td>Attendee</td>
                             <td>Hammerstein Ballroom</td>
@@ -88,7 +88,7 @@ function TrainingSeminar(props) {
                                     <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
                                 </div>
                             </td>
-                        </tr>
+                        </tr>*/}
                     </tbody>
                 </table>
             </div>

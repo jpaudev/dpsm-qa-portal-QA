@@ -3,15 +3,15 @@ import axios from "axios"
 export default async function addLicensure(data) {
 	try {
 		let token = null
-		const tokenRes = await axios.post("https://sp-api-test.alun.app/api/token", {
-			username: "username",
+		const tokenRes = await axios.post("http://localhost:3001/api/login", {
+			upemail: "jpcristobal1@upm.edu.ph",
 			password: "password"
 		})
 
 		if(tokenRes.data.success) {
-			token = tokenRes.data.result
+			token = tokenRes.data.result.token
 			try {
-				const response = await axios.post("https://sp-api-test.alun.app/api/faculty/accomplishment/add/licensure-exam",{
+				const response = await axios.post("http://localhost:3001/api/faculty/accomplishment/add/licensure-exam",{
 					facultyId: "9",
 					examName: `${data.examName}`,
 		            examDate: `${data.examDate}`,

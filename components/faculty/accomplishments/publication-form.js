@@ -1,6 +1,7 @@
 import React from 'react'
 import PublicationFormAuthor from './publication-form-author'
 import { Formik, Form, Field } from "formik"
+import Router from 'next/router'
 
 import addPublication from '../../../services/faculty/accomplishments/addPublication'
 
@@ -12,14 +13,7 @@ class PublicationForm extends React.Component{
 		}
 	}
 	clone(){
-		this.state.duplicateForms.push(<div><hr /><div className = "form-row">
-			<div className = "col-auto">
-				<button type = "button" className = "btn btn-primary" id = "AddPublication" onClick = {() => this.clone()}> Add Publication </button>
-			</div>
-			<div className = "col-auto">
-				<button type = "button" className = "btn btn-danger" id = "RemovePublication" onClick = {() => this.remove()}> Remove a Row </button>
-			</div>
-		</div>
+		this.state.duplicateForms.push(<div><hr />
 		<br />
 		<div className = "form-row">
 			<div className = "form-group col-md-6">
@@ -81,7 +75,10 @@ class PublicationForm extends React.Component{
 		return(
 			<Formik
 				initialValues={PublicationDetails}
-                onSubmit={async (values) => {await addPublication(values)}}
+                onSubmit={async (values) => {
+                	await addPublication(values)
+                	Router.reload()
+                }}
 			>
 				{({ values, errors, touched, isSubmitting }) => (
 					<Form>
@@ -107,7 +104,7 @@ class PublicationForm extends React.Component{
 							</div>
 						</div>
 						<div className = "form-row">
-							<div className = "form-group col-md-6"> 
+							<div className = "form-group col-md-3"> 
 								<label htmlFor = "PublicationURL[]"> URL </label>
 								<Field className = "form-control" type = "text" name = "url" placeholder = "Input publication URL" />
 							</div>
@@ -116,9 +113,9 @@ class PublicationForm extends React.Component{
 								<Field type = "date" className = "form-control" name = "publicationDate" />
 							</div>
 							<div className = "form-group col-md-3">
-				                            <label htmlFor = "PublicationProof[]"> Proof </label>
-				                            <input type = "file" className = "form-control-file" name = "PublicationProof[]" />
-				                        </div>
+	                            <label htmlFor = "PublicationProof[]"> Proof </label>
+	                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
+	                        </div>
 						</div>
 						<div className = "form-row">
 							<div className = "form-group col-md-12">
@@ -127,8 +124,8 @@ class PublicationForm extends React.Component{
 							</div>
 						</div>
 						<div>
-								<PublicationFormAuthor />
-							</div>
+							<PublicationFormAuthor />
+						</div>
 						<div id = "Publication">
 							{this.state.duplicateForms}
 						</div>

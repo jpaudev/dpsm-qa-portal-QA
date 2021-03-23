@@ -3,13 +3,13 @@ import axios from "axios"
 export default async function addResearch(data) {
 	try {
 		let token = null
-		const tokenRes = await axios.post("https://sp-api-test.alun.app/api/token", {
-			username: "username",
+		const tokenRes = await axios.post("http://localhost:3001/api/login", {
+			upemail: "jpcristobal1@upm.edu.ph",
 			password: "password"
 		})
 
 		if(tokenRes.data.success) {
-			token = tokenRes.data.result
+			token = tokenRes.data.result.token
 			let bod = {
 				researchName: `${data.researchName}`,
 				granter: `${data.granter}`,
@@ -23,7 +23,7 @@ export default async function addResearch(data) {
 			}
 			try {
 				console.log(bod)
-				const response = await axios.post("https://sp-api-test.alun.app/api/faculty/accomplishment/add/research-grant", {
+				const response = await axios.post("http://localhost:3001/api/faculty/accomplishment/add/research-grant", {
 					researchName: `${data.researchName}`,
 					granter: `${data.granter}`,
 					amount: `${data.amount}`,

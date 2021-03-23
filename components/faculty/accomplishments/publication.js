@@ -5,7 +5,7 @@ function Publication(props){
     let content = Object.keys(props.children).map(key => {
         let pub = props.children[key].faculty_publishers;
         return (
-            <tr>
+            <tr key = {props.children.[key].publicationId}>
                 <td>{props.children[key].title}</td>
                 <td>
                     {Object.keys(pub).map(auth => {
@@ -17,9 +17,17 @@ function Publication(props){
                 </td>
                 <td>{props.children[key].publicationDate}</td>
                 <td>{props.children[key].url}</td>
+                <td>{props.children[key].citation}</td>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td>
+                    {Object.keys(pub).map(auth => {
+                        if(pub[auth].facultyId == 9) {
+                            return (
+                                pub[auth].status
+                            );
+                        }
+                    })}
+                </td>
                 <td>
                     <div className = "btn-group">
                         <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
@@ -47,7 +55,7 @@ function Publication(props){
                 <th>Action</th>
 			</tr>
             {content}
-			<tr>
+			{/*<tr>
 				<td>Principles of Programming Languages</td>
 				<td><a href = "#">Steve</a>, Bob, Greg</td>
 				<td>2020-01-26</td>
@@ -91,7 +99,7 @@ function Publication(props){
                         <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
                     </div>
                 </td>
-			</tr>
+			</tr>*/}
 		</tbody>
 	</table>	
 	</div>
