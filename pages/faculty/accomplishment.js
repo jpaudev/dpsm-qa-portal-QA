@@ -69,7 +69,7 @@ Accomplishments.getInitialProps = async () => {
         }
     }
 
-    const personal = await fetch(url, header)
+    const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
 
     const psa = await fetch(url + '/public-service', header)
