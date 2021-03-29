@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import LicensureExamForm from './licensure-exam-form'
+import NameDisplay from '../../../components/name-display'
 
 function LicensureExam(props) {
     let content = Object.keys(props.children).map(key => {
@@ -22,8 +23,8 @@ function LicensureExam(props) {
     });
     return (
         <div>
-        <h3 align = "center"> Licensure Exams: <u>Cena, John</u> </h3>
-        <br />
+        <h2 align = "center"> Licensure Exams </h2>
+        <NameDisplay />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>

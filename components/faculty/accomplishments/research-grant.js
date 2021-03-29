@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import ResearchGrantForm from './research-grant-form'
+import NameDisplay from '../../../components/name-display'
 
 function ResearchGrant(props){
     let content = Object.keys(props.children).map(key => {
@@ -34,8 +35,8 @@ function ResearchGrant(props){
     });
 	return(
 		<div>
-            <h3 align = "center"> Research Grants: <u>Cena, John</u> </h3>
-            <br />
+            <h2 align = "center"> Research Grants </h2>
+            <NameDisplay />
 			<div>
 	<table className = "table table-striped table-sm">
 		<tbody>

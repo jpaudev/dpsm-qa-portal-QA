@@ -19,14 +19,25 @@ class EducationForm extends React.Component{
                     <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
                     <input className = "form-control" type = "text" name = "SchoolEducationalHistory[]" placeholder = "Input school" />
                 </div>
-                <div className = "form-group col-md-2">
+                <div className = "form-group col-md-4">
                     <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
                     <input className = "form-control" type = "text" name = "DegreeEducationalHistory[]" placeholder = "Input degree" />
                 </div>
-                <div className = "form-group col-md-2">
+                <div className = "form-group col-md-4">
                     <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
                     <input className = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major" />
                 </div>
+                <div className = "form-group col-md-2 required">
+                <label className = "control-label" htmlFor ="DegreeType"> Degree Type </label>
+                            <select className = "form-control" name = "DegreeType" required>
+                    <option>BS</option>
+                    <option>BA</option>
+                    <option>MS</option>
+                    <option>PhD</option>
+                </select>
+                    </div>
+             </div>
+             <div className = "form-row">
                 <div className = "form-group col-md-2">
                     <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
                     <input type = "date" className = "form-control" name = "StartDateEducationalHistory[]" />
@@ -96,14 +107,26 @@ class EducationForm extends React.Component{
                                 <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
                                 <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" />
                             </div>
-                            <div className = "form-group col-md-2">
+                            <div className = "form-group col-md-4">
                                 <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
                                 <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
                             </div>
-                            <div className = "form-group col-md-2">
+
+                            <div className = "form-group col-md-4">
                                 <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
                                 <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
                             </div>
+                            <div className = "form-group col-md-2 required">
+                                <label className = "control-label" htmlFor ="DegreeType"> Degree Type </label>
+                                    <Field as = "select" className = "form-control" name = "DegreeType" required>
+                                        <option value = "BS">BS</option>
+                                        <option value = "BA">BA</option>
+                                        <option value = "MS">MS</option>
+                                        <option value = "PhD">PhD</option>
+                                    </Field>
+                            </div>
+                            </div>
+                            <div className = "form-row">
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
                                 <Field type = "date" className = "form-control" name = "startDate" id = "startDate" />

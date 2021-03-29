@@ -3,6 +3,7 @@ import { MenuItem } from '@material-ui/core'
 import { Formik, Form, Field } from "formik"
 import Router from 'next/router'
 import PersonalInfoDependents from './personal-info-dependents'
+import NameDisplay from '../../../components/name-display'
 
 import updateFaculty from '../../../services/faculty/basic-info/updateFaculty'
 
@@ -22,8 +23,9 @@ function PersonalInfo(props) {
     }
     return (
         <div>
-        <h3 align = "center"> Personal Information: <u>{props.children.lastName}, {props.children.firstName} {props.children.middleName}</u> </h3>
-        <br />
+        {/*<h3 align = "center"> Personal Information: <u>{props.children.lastName}, {props.children.firstName} {props.children.middleName}</u> </h3>*/}
+        <h2 align = "center"> Personal Information </h2>
+        <NameDisplay />
 		<h6>Required</h6>
 		<Formik
             initialValues={FacultyDetails}

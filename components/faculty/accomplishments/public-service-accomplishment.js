@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import PublicServiceAccomplishmentForm from './public-service-accomplishment-form'
+import NameDisplay from '../../../components/name-display'
 
 import downloadProof from '../../../services/faculty/downloadProof'
 
@@ -214,8 +215,8 @@ function PublicServiceAccomplishment(props){
     });
 	return(
 	<div>
-		<h3 align = "center"> Public Service Accomplishments: <u>Cena, John</u> </h3>
-		<br />
+		<h2 align = "center"> Public Service Accomplishments </h2>
+        <NameDisplay />
 		<div>
 		<h5 align = "center">Within UP Manila </h5>
             <table className = "table table-striped table-sm">

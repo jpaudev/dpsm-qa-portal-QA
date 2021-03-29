@@ -1,17 +1,19 @@
 import Link from 'next/link'
 import EducationForm from './education-form'
+import NameDisplay from '../../../components/name-display'
 
 function Education() {
     return (
         <div>
-	    <h3 align = "center"> Educational History: <u>Cena, John</u> </h3>
-	    <br />
+	    <h2 align = "center"> Educational History </h2>
+	    <NameDisplay />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
                             <th>Institution/School</th>
                             <th>Degree/Certification</th>
+	    		    <th>Degree Type</th>
                             <th>Major/Specialization</th>
                             <th>Start Date</th>
                             <th>End Date</th>
@@ -22,6 +24,7 @@ function Education() {
                         <tr>
                             <td>University of the Philippines Diliman</td>
                             <td>Doctor of Philosophy in Computer Science</td>
+	    		    <td>PhD</td>
                             <td>None</td>
                             <td>2020-01-26</td>
                             <td>Present</td>
@@ -37,6 +40,7 @@ function Education() {
                         <tr>
                             <td>University of the Philippines Diliman</td>
                             <td>MS Computer Science</td>
+	    		    <td>MS</td>
                             <td>Biostat</td>
                             <td>2017-05-26</td>
                             <td>2020-01-25</td>
@@ -52,6 +56,7 @@ function Education() {
                         <tr>
                             <td>University of the Philippines Los Banos</td>
                             <td>BS Computer Science</td>
+	    		    <td>BS</td>
                             <td>Health Informatics</td>
                             <td>2010-09-06</td>
                             <td>2017-05-25</td>

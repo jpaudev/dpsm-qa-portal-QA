@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import EducationForm from './education-form'
+import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
 
 import downloadProof from '../../../services/faculty/downloadProof'
@@ -14,6 +15,7 @@ function Education(props) {
                     <tr key = {props.children.[key].educInfoId}>
                         <td>{props.children[key].institutionSchool}</td>
                         <td>{props.children[key].degreeCert}</td>
+                        <td>Degree Type</td>
                         <td>{props.children[key].majorSpecialization}</td>
                         <td>{props.children[key].startDate}</td>
                         <td>{props.children[key].endDate}</td>
@@ -43,6 +45,7 @@ function Education(props) {
                     <tr key = {props.children.[key].educInfoId}>
                         <td>{props.children[key].institutionSchool}</td>
                         <td>{props.children[key].degreeCert}</td>
+                        <td>Degree Type</td>
                         <td>{props.children[key].majorSpecialization}</td>
                         <td>{props.children[key].startDate}</td>
                         <td>{props.children[key].endDate}</td>
@@ -61,14 +64,16 @@ function Education(props) {
     });
     return (
         <div>
-        <h3 align = "center"> Educational History: <u>{name}</u> </h3>
-        <br />
+        {/*<h3 align = "center"> Educational History: <u>{name}</u> </h3>*/}
+        <h2 align = "center"> Educational History </h2>
+        <NameDisplay />
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
                             <th>Institution/School</th>
                             <th>Degree/Certification</th>
+                            <th>Degree Type</th>
                             <th>Major/Specialization</th>
                             <th>Start Date</th>
                             <th>End Date</th>
