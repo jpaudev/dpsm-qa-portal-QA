@@ -1,7 +1,15 @@
 import Link from 'next/link'
 import Head from 'next/head'
+import { Formik, Form, Field } from "formik"
+import axios from "axios"
+import Router from 'next/router'
 
 function Login() {
+  let loginDetails = {
+    username: "",
+    password: "",
+  }
+
     return (
         <div className = "d-flex justify-content-center">
 		<Head>
@@ -13,15 +21,48 @@ function Login() {
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </Head>
 	<div className = "jumbotron">
-            <form action="">
+          <Formik
+            initialValues={loginDetails}
+            onSubmit={async (values) => {
+              try {
+                let token = null
+                const tokenRes = await axios.post("http://localhost:3001/api/login", {
+                  upemail: `${values.username}`,
+                  password: `${values.password}`
+                })
+
+                console.log(tokenRes)
+                if(tokenRes.data.success) {
+                  Router.push('/faculty')
+                } else {
+                  window.alert('something wrong')
+                }
+              } catch (err) {
+                console.error(err)
+                window.alert('Invalid credentials!')
+                return err
+              }
+            }}
+          >
+            {({ values, errors, touched, isSubmitting }) => (
+              <Form action="">
                 <label htmlFor="email">UP Email:</label>
-                <input className = "form-control" type="text" id="email" name="email" />
+                <Field className = "form-control" type="text" id="username" name="username" />
                 
                 <label htmlFor="password">Password:</label>
-                <input className = "form-control" type="password" id="password" name="password" />
-		<br />
-                <Link href="/faculty"><input type="submit" className = "btn btn-primary" value="Login"></input></Link>
-            </form>
+                <Field className = "form-control" type="password" id="password" name="password" />
+		            <br />
+                <button
+                  type = "submit"
+                  className = "btn btn-primary"
+                  disabled = {isSubmitting}
+                >
+                  Submit
+                </button>
+                {/*<Link href="/faculty"><input type="submit" className = "btn btn-primary" value="Login"></input></Link>*/}
+              </Form>
+            )}
+          </Formik>
 	</div>
 	<style jsx>{`
 		.d-flex{
