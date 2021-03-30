@@ -66,7 +66,7 @@ function Education(props) {
         <div>
         {/*<h3 align = "center"> Educational History: <u>{name}</u> </h3>*/}
         <h2 align = "center"> Educational History </h2>
-        <NameDisplay />
+        <NameDisplay>{name}</NameDisplay>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>

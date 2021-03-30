@@ -31,7 +31,7 @@ function WorkExperience(props){
 		<div>
             {/*<h3 align = "center"> Work Experience: <u>{name}</u> </h3>*/}
             <h2 align = "center"> Work Experience </h2>
-            <NameDisplay />
+            <NameDisplay>{name}</NameDisplay>
 			<h5 align = "center"> Within UP Manila </h5>
 			<EmploymentHistory>{props.children[len]}</EmploymentHistory>
 			<br />

@@ -21,11 +21,12 @@ function PersonalInfo(props) {
         emergencyContactPerson: props.children.emergencyContactPerson,
         emergencyContactNumber: props.children.emergencyContactNumber
     }
+    let name = props.children.lastName + ', ' + props.children.firstName + ' ' + props.children.middleName
     return (
         <div>
         {/*<h3 align = "center"> Personal Information: <u>{props.children.lastName}, {props.children.firstName} {props.children.middleName}</u> </h3>*/}
         <h2 align = "center"> Personal Information </h2>
-        <NameDisplay />
+        <NameDisplay>{name}</NameDisplay>
 		<h6>Required</h6>
 		<Formik
             initialValues={FacultyDetails}
