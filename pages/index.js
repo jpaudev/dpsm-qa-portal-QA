@@ -9,7 +9,7 @@ function Login() {
     username: "",
     password: "",
   }
-
+  let errorMessage = ""
     return (
         <div className = "d-flex justify-content-center">
 		<Head>
@@ -24,6 +24,24 @@ function Login() {
           <Formik
             initialValues={loginDetails}
             onSubmit={async (values) => {
+
+              // let token = null
+              // const tokenRes = await axios.post("http://localhost:3001/api/login", {
+              //   upemail: `${values.username}`,
+              //   password: `${values.password}`
+              // })
+
+              // console.log(tokenRes)
+
+              // if(tokenRes.data.success) {
+              //   Router.push('/faculty')
+              // } else {
+              //   let alert = document.getElementById("alert")
+              //   alert.setAttribute("style", "visibility: visible");
+              //   values.username=""
+              //   values.password=""
+              // }
+
               try {
                 let token = null
                 const tokenRes = await axios.post("http://localhost:3001/api/login", {
@@ -38,9 +56,10 @@ function Login() {
                   window.alert('something wrong')
                 }
               } catch (err) {
-                console.error(err)
+                console.error(err.response.data.errors.[0].message)
+                errorMessage = err.response.data.errors.[0].message
                 let alert = document.getElementById("alert")
-                alert.setAttribute("id", "showAlert");
+                alert.setAttribute("style", "visibility: visible");
                 values.username=""
                 values.password=""
                 return err
@@ -50,7 +69,7 @@ function Login() {
             {({ values, errors, touched, isSubmitting }) => (
               <Form action="">
                 <div className="alert alert-danger" role="alert" id="alert">
-                  Invalid credentials!
+                  {errorMessage}
                 </div>
                 <label htmlFor="email">UP Email:</label>
                 <Field className = "form-control" type="text" id="username" name="username" />
@@ -80,9 +99,6 @@ function Login() {
 		}
     #alert {
       visibility: hidden;
-    }
-    #showAlert {
-      visibility: visible;
     }
 	`}</style>
         </div>
