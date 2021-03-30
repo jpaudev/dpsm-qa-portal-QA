@@ -39,13 +39,19 @@ function Login() {
                 }
               } catch (err) {
                 console.error(err)
-                window.alert('Invalid credentials!')
+                let alert = document.getElementById("alert")
+                alert.setAttribute("id", "showAlert");
+                values.username=""
+                values.password=""
                 return err
               }
             }}
           >
             {({ values, errors, touched, isSubmitting }) => (
               <Form action="">
+                <div className="alert alert-danger" role="alert" id="alert">
+                  Invalid credentials!
+                </div>
                 <label htmlFor="email">UP Email:</label>
                 <Field className = "form-control" type="text" id="username" name="username" />
                 
@@ -72,6 +78,12 @@ function Login() {
   			display: flex;
   			align-items: center;
 		}
+    #alert {
+      visibility: hidden;
+    }
+    #showAlert {
+      visibility: visible;
+    }
 	`}</style>
         </div>
     )
