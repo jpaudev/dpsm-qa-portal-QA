@@ -3,13 +3,14 @@ import Router from 'next/router'
 import jwt from 'jsonwebtoken'
 
 function Dashboard(props) {
-	console.log(props)
+    console.log('dashboard:', props)
 	if(props.role == 1) {
-		Router.push('/faculty/basic-info')
-		return <Layout user={props}/>
-	} else {
+        Router.push('/faculty/basic-info')
+		return <Layout userId={props.userId} facultyId={props.facultyId} role={props.role} />
+	} else if(props.role == 2 || props.role == 3){
+        Router.push('/faculty')
 		return (
-	        <Layout>
+	        <Layout userId={props.userId} facultyId={props.facultyId} role={props.role}>
 	        	{/*props*/}
 	            <div className="col-9">
 	                <div className="container">
@@ -19,17 +20,13 @@ function Dashboard(props) {
 	        </Layout>
 	    )	
 	}
-    
 }
 
 Dashboard.getInitialProps = async (appContext) => {
     let data
     if (!appContext.ctx) {
-        // console.log('client')
     	let token = document.cookie
-    	// console.log(token)
 	    data = jwt.decode(token)
-	    // console.log(data)	
 	} else {
 		console.log('server')
 	}

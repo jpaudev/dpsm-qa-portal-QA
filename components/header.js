@@ -1,6 +1,7 @@
 import Link from 'next/link'
 
-function Header() {
+function Header(props) {
+	console.log("header:", props);
     return (
         <div className="row">
             <nav className="navbar navbar-expand-lg">
@@ -10,7 +11,7 @@ function Header() {
 				<p align = "center"> Currently Logged In: </p>
 			</div>
 			<div className = "card-block">
-				<p align = "center"> Cena, John </p>
+				<p align = "center"> {props.facultyId}</p>
 			</div>
 		</div>
 
