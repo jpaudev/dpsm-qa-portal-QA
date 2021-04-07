@@ -3,6 +3,7 @@ import Head from 'next/head'
 import { Formik, Form, Field } from "formik"
 import axios from "axios"
 import Router from 'next/router'
+import jwt from 'jsonwebtoken'
 
 function Login() {
   let loginDetails = {
@@ -24,24 +25,6 @@ function Login() {
           <Formik
             initialValues={loginDetails}
             onSubmit={async (values) => {
-
-              // let token = null
-              // const tokenRes = await axios.post("http://localhost:3001/api/login", {
-              //   upemail: `${values.username}`,
-              //   password: `${values.password}`
-              // })
-
-              // console.log(tokenRes)
-
-              // if(tokenRes.data.success) {
-              //   Router.push('/faculty')
-              // } else {
-              //   let alert = document.getElementById("alert")
-              //   alert.setAttribute("style", "visibility: visible");
-              //   values.username=""
-              //   values.password=""
-              // }
-
               try {
                 let token = null
                 const tokenRes = await axios.post("http://localhost:3001/api/login", {
@@ -49,9 +32,16 @@ function Login() {
                   password: `${values.password}`
                 })
 
-                console.log(tokenRes)
                 if(tokenRes.data.success) {
-                  Router.push('/faculty')
+                  document.cookie = tokenRes.data.result.token
+                  token = jwt.decode(tokenRes.data.result.token)
+                  let role = token.role
+                  if(role == 1) { // faculty 
+                    
+                    Router.push('/faculty')
+                  } else if (role == 2 || role == 3) { // unit head or dept. chair
+                    Router.push('/faculty')
+                  }
                 } else {
                   window.alert('something wrong')
                 }

@@ -5,6 +5,7 @@ import Footer from './footer'
 import Content from './content'
 
 function Layout(props) {
+    console.log(props)
     return (
         <div className = "container-fluid">
             <Head>
@@ -15,9 +16,9 @@ function Layout(props) {
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </Head>
-            <Header />
-		<div className = "row" id = "layout_row">
-            <Sidebar />
+            <Header/>
+            <div className = "row" id = "layout_row">
+            <Sidebar role = {props.user} />
                 <div className="col-10">
                     <div className="container">
                         { props.children }
@@ -29,6 +30,20 @@ function Layout(props) {
 		
         </div>
     )
-  }
-  
-  export default Layout
+}
+
+// Layout.getInitialProps = async (appContext) => {
+//     let data
+//     if (!appContext.ctx) {
+//         // console.log('client')
+//         let token = document.cookie
+//         // console.log(token)
+//         data = jwt.decode(token)
+//         // console.log(data)    
+//     } else {
+//         console.log('server')
+//     }
+//     return data
+// }
+
+export default Layout
