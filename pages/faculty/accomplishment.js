@@ -8,7 +8,7 @@ import jwt from 'jsonwebtoken'
 
 function Accomplishments(props) {
     return (
-        <Layout>
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName}>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 		<a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
@@ -42,27 +42,20 @@ function Accomplishments(props) {
     )
   }
 
-Accomplishments.getInitialProps = async () => {
-    let url = 'http://localhost:3001/api/'
-    const res = await fetch(url + 'login',
-    {
-        body: JSON.stringify({"upemail": "jpcristobal1@upm.edu.ph", "password": "password"}),
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        method: 'POST'
-    })
-    
-    const access = await res.json()
-    let token = access.result.token
+Accomplishments.getInitialProps = async (appContext) => {
+    let data
     let facultyId = 0;
-    if (token) {
-        const json = jwt.decode(token)
-        facultyId = json.facultyId
+    let token
+    if (!appContext.ctx) {
+        token = document.cookie
+        data = jwt.decode(token)
+        facultyId = data.facultyId
+
     } else {
-        console.log(access.result.message)
+        console.log('server')
     }
-    url = 'http://localhost:3001/api/faculty/accomplishment/' + facultyId;
+
+    let url = 'http://localhost:3001/api/faculty/accomplishment/' + facultyId;
     let header = {
         headers: {
             'Authorization': 'Bearer ' + token
@@ -92,6 +85,8 @@ Accomplishments.getInitialProps = async () => {
     // publications.result.push(personalInfo.result)
 
     return {
+        data: data,
+        personalInfo: personalInfo.result,
         publicService: publicService.result,
     	publications: publications.result,
     	trainingSeminar: trainingSeminar.result,

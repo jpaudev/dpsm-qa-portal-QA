@@ -6,7 +6,6 @@ import Content from './content'
 import jwt from 'jsonwebtoken'
 
 function Layout(props) {
-    console.log("layout:", props)
     return (
         <div className = "container-fluid">
             <Head>
@@ -17,7 +16,7 @@ function Layout(props) {
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </Head>
-            <Header facultyId = { props.facultyId } />
+            <Header facultyId = { props.facultyId } name={ props.name }/>
             <div className = "row" id = "layout_row">
             <Sidebar role = {props.role} />
                 <div className="col-10">

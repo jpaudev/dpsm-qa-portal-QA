@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 function Sidebar(props) {
-    console.log("sidebar:", props)
     let faculty = true
     if(props.role == 2 || props.role == 3) faculty = false
 

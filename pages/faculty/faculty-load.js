@@ -2,10 +2,11 @@ import Layout from '../../components/layout'
 import Link from 'next/link'
 import FacultyLoadSemester from '../../components/faculty/faculty-load/faculty-load-semester'
 import NameDisplay from '../../components/name-display'
+import jwt from 'jsonwebtoken'
 
-function FacultyLoad() {
+function FacultyLoad(props) {
     return (
-        <Layout>
+        <Layout userId={props.userId} facultyId={props.facultyId} role={props.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName}>
 		<br />
 		<h2 align = "center"> Faculty Load </h2>
 		<NameDisplay />
@@ -38,5 +39,33 @@ function FacultyLoad() {
         </Layout>
     )
   }
+
+  FacultyLoad.getInitialProps = async (appContext) => {
+	let data
+	let facultyId = 0;
+    let token
+
+	if (!appContext.ctx) {
+		token = document.cookie
+		data = jwt.decode(token)
+		facultyId = data.facultyId
+	} else {
+		console.log('server')
+	}
+
+	let header = {
+        headers: {
+            'Authorization': 'Bearer ' + token
+        }
+    }
+	
+	const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
+    const personalInfo = await personal.json()
+
+	return {
+		data,
+		personalInfo: personalInfo.result
+	}
+}
   
 export default FacultyLoad
