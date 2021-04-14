@@ -3,6 +3,7 @@ import Link from 'next/link'
 import FacultyLoadSemester from '../../components/faculty/faculty-load/faculty-load-semester'
 import NameDisplay from '../../components/name-display'
 import jwt from 'jsonwebtoken'
+import { parseCookies } from "../../helpers"
 
 function FacultyLoad(props) {
     return (
@@ -40,22 +41,21 @@ function FacultyLoad(props) {
     )
   }
 
-  FacultyLoad.getInitialProps = async (appContext) => {
-	let data
-	let facultyId = 0;
-    let token
+  FacultyLoad.getInitialProps = async ({ req, res }) => {
+	const token = parseCookies(req)
+    if (res) {
+        if (Object.keys(token).length === 0 && token.constructor === Object) {
+            res.writeHead(301, { Location: "/login" })
+            res.end()
+        }
+    } 
+    let data = jwt.decode(token.user)
 
-	if (!appContext.ctx) {
-		token = document.cookie
-		data = jwt.decode(token)
-		facultyId = data.facultyId
-	} else {
-		console.log('server')
-	}
+    let facultyId = data.facultyId
 
 	let header = {
         headers: {
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + token.user
         }
     }
 	

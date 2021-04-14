@@ -5,6 +5,7 @@ import LicensureExam from '../../components/faculty/accomplishments/licensure-ex
 import TrainingSeminar from '../../components/faculty/accomplishments/training-seminar'
 import ResearchGrant from '../../components/faculty/accomplishments/research-grant'
 import jwt from 'jsonwebtoken'
+import { parseCookies } from "../../helpers"
 
 function Accomplishments(props) {
     return (
@@ -42,23 +43,22 @@ function Accomplishments(props) {
     )
   }
 
-Accomplishments.getInitialProps = async (appContext) => {
-    let data
-    let facultyId = 0;
-    let token
-    if (!appContext.ctx) {
-        token = document.cookie
-        data = jwt.decode(token)
-        facultyId = data.facultyId
+Accomplishments.getInitialProps = async ({ req, res }) => {
+    const token = parseCookies(req)
+    if (res) {
+        if (Object.keys(token).length === 0 && token.constructor === Object) {
+            res.writeHead(301, { Location: "/login" })
+            res.end()
+        }
+    } 
+    let data = jwt.decode(token.user)
 
-    } else {
-        console.log('server')
-    }
+    let facultyId = data.facultyId
 
     let url = 'http://localhost:3001/api/faculty/accomplishment/' + facultyId;
     let header = {
         headers: {
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + token.user
         }
     }
 
@@ -67,8 +67,6 @@ Accomplishments.getInitialProps = async (appContext) => {
 
     const psa = await fetch(url + '/public-service', header)
     const publicService = await psa.json()
-
-    console.log(publicService)
 
     const pub = await fetch(url + '/publication', header)
     const publications = await pub.json()

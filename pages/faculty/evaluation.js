@@ -3,6 +3,7 @@ import EvaluationSemester from '../../components/faculty/evaluation/evaluation-s
 import NameDisplay from '../../components/name-display'
 import Link from 'next/link'
 import jwt from 'jsonwebtoken'
+import { parseCookies } from "../../helpers"
 
 function Evaluation(props) {
     return (
@@ -35,22 +36,21 @@ function Evaluation(props) {
     )
   }
 
-Evaluation.getInitialProps = async (appContext) => {
-    let data
-	let facultyId = 0;
-    let token
+Evaluation.getInitialProps = async ({ req, res }) => {
+    const token = parseCookies(req)
+    if (res) {
+        if (Object.keys(token).length === 0 && token.constructor === Object) {
+            res.writeHead(301, { Location: "/login" })
+            res.end()
+        }
+    } 
+    let data = jwt.decode(token.user)
 
-    if (!appContext.ctx) {
-    	token = document.cookie
-	    data = jwt.decode(token)
-		facultyId = data.facultyId
-	} else {
-		console.log('server')
-	}
+    let facultyId = data.facultyId
 
 	let header = {
         headers: {
-            'Authorization': 'Bearer ' + token
+            'Authorization': 'Bearer ' + token.user
         }
     }
 

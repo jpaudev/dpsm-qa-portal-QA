@@ -21,12 +21,14 @@
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "axios": "^0.21.1",
+    "cookie": "^0.4.1",
     "formik": "^2.2.6",
     "isomorphic-unfetch": "^3.1.0",
     "jsonwebtoken": "^8.5.1",
     "next": "^10.0.9",
     "nprogress": "^0.2.0",
     "react": "^17.0.1",
+    "react-cookie": "^4.0.3",
     "react-dom": "^17.0.1",
     "react-table": "^7.6.3"
   }

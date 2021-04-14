@@ -1,8 +1,9 @@
 import Layout from '../../components/layout'
 import Router from 'next/router'
 import jwt from 'jsonwebtoken'
+import { parseCookies } from "../../helpers"
 
-function Dashboard(props) {
+function Dashboard(props) { 
 	if(props.data.role == 1) {
         Router.push('faculty/basic-info')
 		return (<Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName} />)
@@ -20,29 +21,32 @@ function Dashboard(props) {
 	}
 }
 
-Dashboard.getInitialProps = async (appContext) => {
+Dashboard.getInitialProps = async ({ req, res }) => {
+    const token = parseCookies(req)
     let data
-	let facultyId = 0;
-    let token
-
-	if (!appContext.ctx) {
-		token = document.cookie
-		data = jwt.decode(token)
-		facultyId = data.facultyId
-	} else {
-		console.log('server')
-	}
-
-	let header = {
-        headers: {
-            'Authorization': 'Bearer ' + token
+    let personalInfo
+    if (res) {
+        if (Object.keys(token).length === 0 && token.constructor === Object) {
+            res.writeHead(301, { Location: "/login" })
+            res.end()
+        } else {
+            data = jwt.decode(token.user)
+        
+            let facultyId = data.facultyId
+        
+            let header = {
+                headers: {
+                    'Authorization': 'Bearer ' + token.user
+                }
+            }
+            
+            const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
+            personalInfo = await personal.json()
         }
-    }
-	
-	const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
-    const personalInfo = await personal.json()
+    } 
 
     return {
+        token: token && token,
 		data,
 		personalInfo: personalInfo.result
 	}

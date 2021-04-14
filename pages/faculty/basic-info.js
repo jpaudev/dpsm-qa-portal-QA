@@ -4,6 +4,7 @@ import Education from '../../components/faculty/basic-info/education'
 import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
 import jwt from 'jsonwebtoken'
+import { parseCookies } from "../../helpers"
 
 function BasicInfo(props) {
     return (
@@ -43,43 +44,51 @@ function BasicInfo(props) {
     )
   }
 
-BasicInfo.getInitialProps = async (appContext) => {
+BasicInfo.getInitialProps = async ({ req, res }) => {
+    const token = parseCookies(req)
+
+    let personalInfo
+    let employment
+    let education
+    let workExperience
     let data
-    let facultyId = 0;
-    let token
-    if (!appContext.ctx) {
-        token = document.cookie
-        data = jwt.decode(token)
-        facultyId = data.facultyId
-
-    } else {
-        console.log('server')
-    }
-    
-    let url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
-    let header = {
-        headers: {
-            'Authorization': 'Bearer ' + token
+    if (res) {
+        if (Object.keys(token).length === 0 && token.constructor === Object) {
+            res.writeHead(301, { Location: "/login" })
+            res.end()
         }
-    }
-
-    const personal = await fetch(url, header)
-    const personalInfo = await personal.json()
-
-    const employ = await fetch(url + '/employment', header)
-    const employment = await employ.json()
-
-    const educ = await fetch(url + '/education', header)
-    const education = await educ.json()
-
-    const work = await fetch(url + '/work-exp', header)
-    const workExperience = await work.json()
-
-    education.result.push(personalInfo.result)
-    workExperience.result.push(employment.result)
-    workExperience.result.push(personalInfo.result)
+        else {
+            data = jwt.decode(token.user)
+        
+            let facultyId = data.facultyId
+            
+            let url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
+            let header = {
+                headers: {
+                    'Authorization': 'Bearer ' + token.user
+                }
+            }
+        
+            const personal = await fetch(url, header)
+            personalInfo = await personal.json()
+        
+            const employ = await fetch(url + '/employment', header)
+            employment = await employ.json()
+            
+            const educ = await fetch(url + '/education', header)
+            education = await educ.json()
+        
+            const work = await fetch(url + '/work-exp', header)
+            workExperience = await work.json()
+        
+            education.result.push(personalInfo.result)
+            workExperience.result.push(employment.result)
+            workExperience.result.push(personalInfo.result)
+        }
+    } 
 
     return { 
+        token: token && token,
         data: data,
         personalInfo: personalInfo.result,
         education: education.result,
