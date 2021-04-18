@@ -20,7 +20,7 @@ function Education(props) {
                         <td>{props.children[key].startDate}</td>
                         <td>{props.children[key].endDate}</td>
                         <td>
-                            <button
+                            {/* <button
                                 type="button"
                                 className="btn btn-primary"
                                 onClick = {() => {
@@ -29,7 +29,8 @@ function Education(props) {
                                 }}
                             >
                                 Download
-                            </button>
+                            </button> */}
+                            <a href={"http://localhost:3001/" + props.children[key].proof} target="_blank">Preview</a>
                         </td>
                         <td>{props.children[key].status}</td>
                         <td>
