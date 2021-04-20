@@ -1,22 +1,17 @@
 import axios from "axios"
+import jwt from 'jsonwebtoken'
 
-export default async function addPublicService(data, formData) {
+export default async function addPublicService(formData, token) {
+	let cookieData = jwt.decode(token)
+    let facultyId = cookieData.facultyId
 	try {
-		let token = null
-		const tokenRes = await axios.post("http://localhost:3001/api/login", {
-			upemail: "jpcristobal1@upm.edu.ph",
-			password: "password"
-		})
-
-		if(tokenRes.data.success) {
-			token = tokenRes.data.result.token
+		if (token) {
 			try {
 				if(formData.get('endDate') == "") {
 					formData.delete('endDate')
 				}
-				for (var value of formData.values()) {
- 					  console.log(value);
-				}
+				formData.append('facultyId', facultyId)
+				formData.append('status', 'Pending')
 				const response = await axios({
 				    method: 'POST',
 				    url: 'http://localhost:3001/api/faculty/accomplishment/add/public-service',
