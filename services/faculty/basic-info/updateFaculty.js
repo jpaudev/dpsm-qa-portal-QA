@@ -1,26 +1,12 @@
 import axios from "axios"
 import jwt from 'jsonwebtoken'
 
-export default async function updateFaculty(data) {
+export default async function updateFaculty(data, token) {
+	let cookieData = jwt.decode(token)
+    let facultyId = cookieData.facultyId
 	try {
-		let url = 'http://localhost:3001/api/'
-	    const res = await fetch(url + 'login',
-	    {
-	        body: JSON.stringify({"upemail": "jpcristobal1@upm.edu.ph", "password": "password"}),
-	        headers: {
-	            'Content-Type': 'application/json'
-	        },
-	        method: 'POST'
-	    })
-	    
-	    const access = await res.json()
-	    let token = access.result.token
-	    let facultyId = 0;
-	    if (token) {
-	        const json = jwt.decode(token)
-	        console.log(json)
-	        facultyId = json.facultyId
-	        url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
+	    if (token) {	      
+	        let url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
 		    let header = {
 		        headers: {
 		            'Authorization': 'Bearer ' + token
@@ -38,7 +24,8 @@ export default async function updateFaculty(data) {
 					civilStatus: `${data.civilStatus}`,
 					religion: `${data.religion}`,
 					emergencyContactPerson: `${data.emergencyContactPerson}`,
-	  				emergencyContactNumber: `${data.emergencyContactNumber}`
+	  				emergencyContactNumber: `${data.emergencyContactNumber}`,
+	  				suffix: `${data.suffix}`
 				}, {
 					headers: {
 						Authorization: `Bearer ${token}`
