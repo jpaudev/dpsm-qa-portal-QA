@@ -21,13 +21,23 @@ function Accomplishments(props) {
             </nav>
 		<br />
 		<br />
-            <div className="tab-content" id="nav-tabContent">
-	    <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab"><PublicServiceAccomplishment>{ props.publicService }</PublicServiceAccomplishment></div>
-	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab"><Publication>{ props.publications }</Publication></div>
-	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab"><TrainingSeminar>{ props.trainingSeminar }</TrainingSeminar></div>
-	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab"><LicensureExam>{ props.licensureExam }</LicensureExam></div>
-	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab"><ResearchGrant>{ props.researchGrant }</ResearchGrant></div>
+        <div className="tab-content" id="nav-tabContent">
+    	    <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
+                <PublicServiceAccomplishment token = { props.token.user }>{ props.publicService }</PublicServiceAccomplishment>
             </div>
+    	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
+                <Publication token = { props.token.user }>{ props.publications }</Publication>
+            </div>
+    	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
+                <TrainingSeminar token = { props.token.user }>{ props.trainingSeminar }</TrainingSeminar>
+            </div>
+    	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">
+                <LicensureExam token = { props.token.user }>{ props.licensureExam }</LicensureExam>
+            </div>
+    	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
+                <ResearchGrant token = { props.token.user }>{ props.researchGrant }</ResearchGrant>
+            </div>
+        </div>
 	<style jsx>{`
 		a.nav-item:focus{
 			background-color:#78b6c2;
@@ -80,9 +90,10 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
 	const rg = await fetch(url + '/research-grant', header)
     const researchGrant = await rg.json()
 
-    // publications.result.push(personalInfo.result)
+    publicService.result.push(personalInfo.result)
 
     return {
+        token: token && token,
         data: data,
         personalInfo: personalInfo.result,
         publicService: publicService.result,
