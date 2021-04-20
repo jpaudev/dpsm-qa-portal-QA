@@ -5,8 +5,8 @@ import Router from 'next/router'
 import addWorkExp from '../../../services/faculty/basic-info/addWorkExp'
 
 class WorkExpForm extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			duplicateForms: []
 		}
@@ -22,6 +22,13 @@ class WorkExpForm extends React.Component{
 					<label htmlFor = "PositionWorkExperience[]"> Title/Position </label>
 					<input className = "form-control" type = "text" name = "PositionWorkExperience[]" placeholder = "Input position" />
 				</div>
+				<div className = "form-group col-md-6">
+					<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
+					<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
+				</div>
+				
+			</div>
+			<div className = "form-row">
 				<div className = "form-group col-md-3">
 					<label htmlFor = "StartDateWorkExperience[]"> Start Date </label>
 					<input type = "date" className = "form-control" name = "StartDateWorkExperience[]" />
@@ -29,16 +36,6 @@ class WorkExpForm extends React.Component{
 				<div className = "form-group col-md-3">
 					<label htmlFor = "EndDateWorkExperience[]"> End Date </label>
 					<input type = "date" className = "form-control" name = "EndDateWorkExperience[]" />
-				</div>
-			</div>
-			<div className = "form-row">
-				<div className = "form-group col-md-8">
-					<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
-					<input className = "form-control" type = "text" name = "DescriptionWorkExperience[]" placeholder = "Add Description" />
-				</div>
-				<div className = "form-group col-md-2">
-					<label htmlFor = "ProofWorkExperience[]"> Proof </label>
-					<input type = "file" className = "form-control-file" name = "ProofWorkExperience[]" />
 				</div>
 			</div>
 				<style jsx>{`
@@ -69,9 +66,10 @@ class WorkExpForm extends React.Component{
 		return(
 			<Formik
 				initialValues={WorkDetails}
-				onSubmit={async (values) => {
-					await addWorkExp(values)
-					// Router.reload()
+				onSubmit={async (values, {resetForm}) => {
+					await addWorkExp(values, this.props.token)
+					resetForm()
+					Router.push('/faculty/basic-info#work-exp', '/')
 				}}
 			>
 				{({ values, errors, touched, isSubmitting }) => (
@@ -95,6 +93,12 @@ class WorkExpForm extends React.Component{
 								<label htmlFor = "PositionWorkExperience[]"> Title/Position </label>
 								<Field className = "form-control" type = "text" name = "position" placeholder = "Input position" />
 							</div>
+							<div className = "form-group col-md-6">
+								<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
+								<Field className = "form-control" type = "text" name = "description" placeholder = "Add Description" />
+							</div>
+						</div>
+						<div className = "form-row">
 							<div className = "form-group col-md-3">
 								<label htmlFor = "StartDateWorkExperience[]"> Start Date </label>
 								<Field type = "date" className = "form-control" name = "startDate" />
@@ -102,16 +106,6 @@ class WorkExpForm extends React.Component{
 							<div className = "form-group col-md-3">
 								<label htmlFor = "EndDateWorkExperience[]"> End Date </label>
 								<Field type = "date" className = "form-control" name = "endDate" />
-							</div>
-						</div>
-						<div className = "form-row">
-							<div className = "form-group col-md-8">
-								<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
-								<Field className = "form-control" type = "text" name = "description" placeholder = "Add Description" />
-							</div>
-							<div className = "form-group col-md-2">
-								<label htmlFor = "ProofWorkExperience[]"> Proof </label>
-								<input type = "file" className = "form-control-file" name = "ProofWorkExperience[]" />
 							</div>
 						</div>
 						<div id = "WorkExperience">
