@@ -5,8 +5,8 @@ import Router from 'next/router'
 import addPublicService from '../../../services/faculty/accomplishments/addPublicService'
 
 class PublicServiceAccomplishmentForm extends React.Component{
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             duplicateForms: []
         }
@@ -79,13 +79,12 @@ class PublicServiceAccomplishmentForm extends React.Component{
 		return(
             <Formik
                 initialValues={PublicServiceDetails}
-                onSubmit={async (values) => {
-                    console.log(values.proof)
+                onSubmit={async (values, {resetForm}) => {
                     let form = document.getElementById('psForm')
                     let formData = new FormData(form)
-                    formData.append('facultyId', '1')
-                    await addPublicService(values, formData)
-                    Router.reload()
+                    await addPublicService(formData, this.props.token)
+                    resetForm()
+                    Router.push('/faculty/accomplishment#public-service-accomplishment', '/')
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (
@@ -124,14 +123,14 @@ class PublicServiceAccomplishmentForm extends React.Component{
                     </div>
                     <div className = "form-row">
                     <div className = "form-group col-md-4">
-                            <label htmlFor = "PublicServiceAccomplishmentType[]"> Type of Contribution </label>
-                            <Field as = "select" className = "form-control" name = "type" id = "type" required>
-                    <option value = "Within UPM">Within UPM</option>
-                    <option value = "Within Pro">Contribution to the Profession</option>
-                    <option value = "Within Nat">Contribution to the Nation</option>
-                    <option value = "Within Wor">Contribution to the World</option>
-                    </Field>
-                        </div>
+                        <label htmlFor = "PublicServiceAccomplishmentType[]"> Type of Contribution </label>
+                        <Field as = "select" className = "form-control" name = "type" id = "type" required>
+                            <option value = "Within UPM">Within UPM</option>
+                            <option value = "Within Pro">Contribution to the Profession</option>
+                            <option value = "Within Nat">Contribution to the Nation</option>
+                            <option value = "Within Wor">Contribution to the World</option>
+                        </Field>
+                    </div>
                     <div className = "form-group col-md-6">
                             <label htmlFor = "PublicServiceAccomplishmentDescription[]"> Description </label>
                             <Field className = "form-control" type = "text" name = "description" id = "description" placeholder = "Input description" />
