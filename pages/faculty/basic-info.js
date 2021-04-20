@@ -20,13 +20,13 @@ function BasicInfo(props) {
 		<br />
             <div className="tab-content" id="nav-tabContent">
             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                <PersonalInfo>{ props.personalInfo }</PersonalInfo>
+                <PersonalInfo token = { props.token.user }>{ props.personalInfo }</PersonalInfo>
             </div>
             <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                <Education>{ props.education }</Education>
+                <Education token = { props.token.user }>{ props.education }</Education>
             </div>
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
-                <WorkExperience>{ props.workExperience }</WorkExperience>
+                <WorkExperience token = { props.token.user }>{ props.workExperience }</WorkExperience>
             </div>
             </div>
 	<style jsx>{`
