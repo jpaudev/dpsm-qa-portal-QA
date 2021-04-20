@@ -2,7 +2,6 @@ import Link from 'next/link'
 import EducationForm from './education-form'
 import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
-import { Formik, Form, Field } from "formik"
 import React from 'react'
 
 import downloadProof from '../../../services/faculty/downloadProof'

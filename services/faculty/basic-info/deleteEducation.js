@@ -5,7 +5,7 @@ export default async function deleteEducation(data, token) {
 	let cookieData = jwt.decode(token)
     let facultyId = cookieData.facultyId
 	try {
-		if(token) {
+		if (token) {
 			try {
 				const response = await axios.delete("http://localhost:3001/api/faculty/basic-info/" + facultyId + "/education", {
 					headers: {

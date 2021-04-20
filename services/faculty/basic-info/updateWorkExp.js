@@ -1,7 +1,7 @@
 import axios from "axios"
 import jwt from 'jsonwebtoken'
 
-export default async function updateFaculty(data, token) {
+export default async function updateWorkExp(data, token) {
 	let cookieData = jwt.decode(token)
     let facultyId = cookieData.facultyId
 	try {

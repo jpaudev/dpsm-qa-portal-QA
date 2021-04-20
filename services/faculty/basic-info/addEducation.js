@@ -5,7 +5,7 @@ export default async function addEducation(formData, token) {
 	let cookieData = jwt.decode(token)
     let facultyId = cookieData.facultyId
 	try {
-		if(token) {
+		if (token) {
 			try {
 				if(formData.get('endDate') == "") {
 					formData.delete('endDate')
