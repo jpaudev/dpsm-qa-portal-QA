@@ -5,15 +5,15 @@ import Router from 'next/router'
 import addEducation from '../../../services/faculty/basic-info/addEducation'
 
 class EducationForm extends React.Component{
-	constructor(){
-		super()
-		this.state = {
-			duplicateForms: []
-		}
-	}
+    constructor(props){
+        super(props)
+        this.state = {
+            duplicateForms: []
+        }
+    }
 
-	clone(){
-		this.state.duplicateForms.push(<div><hr />
+    clone(){
+        this.state.duplicateForms.push(<div><hr />
             <div className = "form-row">
                 <div className = "form-group col-md-2">
                     <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
@@ -28,14 +28,18 @@ class EducationForm extends React.Component{
                     <input className = "form-control" type = "text" name = "MajorEducationalHistory[]" placeholder = "Input major" />
                 </div>
                 <div className = "form-group col-md-2 required">
-                <label className = "control-label" htmlFor ="DegreeType"> Degree Type </label>
-                            <select className = "form-control" name = "DegreeType" required>
-                    <option>BS</option>
-                    <option>BA</option>
-                    <option>MS</option>
-                    <option>PhD</option>
-                </select>
-                    </div>
+                    <label className = "control-label" htmlFor ="DegreeType"> Degree Type </label>
+                    <select className = "form-control" name = "DegreeType" required>
+                        <option value = "AA">AA</option>
+                        <option value = "AS">AS</option>
+                        <option value = "BA">BA</option>
+                        <option value = "BS">BS</option>
+                        <option value = "MA">MA</option>
+                        <option value = "MS">MS</option>
+                        <option value = "MD">MD</option>
+                        <option value = "PhD">PhD</option>
+                    </select>
+                </div>
              </div>
              <div className = "form-row">
                 <div className = "form-group col-md-2">
@@ -51,25 +55,26 @@ class EducationForm extends React.Component{
                     <input type = "file" className = "form-control-file" name = "ProofEducationalHistory[]" />
                 </div>
             </div>
-			<style jsx>{`
-			hr{
-				border: 1px solid black;
-			}
-		`}</style>
-			</div>)
-		this.setState({
-			
-		})
-	}
-	remove(){
-		this.state.duplicateForms.pop()
-		this.setState({
-			
-		})
-	}
-	render(){
+            <style jsx>{`
+            hr{
+                border: 1px solid black;
+            }
+        `}</style>
+            </div>)
+        this.setState({
+            
+        })
+    }
+    remove(){
+        this.state.duplicateForms.pop()
+        this.setState({
+            
+        })
+    }
+    render(){
         let EducationDetails = {
             institutionSchool: "",
+            degreeType: "",
             degreeCert: "",
             majorSpecialization: "",
             startDate: "",
@@ -77,17 +82,15 @@ class EducationForm extends React.Component{
             proof: ""
         }
 
-		return(
+        return(
             <Formik
                 initialValues={EducationDetails}
-                onSubmit={async (values) => {
-                    console.log(values.proof)
+                onSubmit={async (values, {resetForm}) => {
                     let form = document.getElementById('educForm')
                     let formData = new FormData(form)
-                    formData.append('facultyId', '1')
-                    formData.append('status', 'For Verification')
-                    await addEducation(values, formData)
-                    Router.reload()
+                    await addEducation(formData, this.props.token)
+                    resetForm()
+                    Router.push('/faculty/basic-info#educ', '/')
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (
@@ -118,10 +121,14 @@ class EducationForm extends React.Component{
                             </div>
                             <div className = "form-group col-md-2 required">
                                 <label className = "control-label" htmlFor ="DegreeType"> Degree Type </label>
-                                    <Field as = "select" className = "form-control" name = "DegreeType" required>
-                                        <option value = "BS">BS</option>
+                                    <Field as = "select" className = "form-control" name = "degreeType" id = "degreeType" required>
+                                        <option value = "AA">AA</option>
+                                        <option value = "AS">AS</option>
                                         <option value = "BA">BA</option>
+                                        <option value = "BS">BS</option>
+                                        <option value = "MA">MA</option>
                                         <option value = "MS">MS</option>
+                                        <option value = "MD">MD</option>
                                         <option value = "PhD">PhD</option>
                                     </Field>
                             </div>
@@ -156,7 +163,7 @@ class EducationForm extends React.Component{
                 )}
             </Formik>
         )
-	}
+    }
 }
 
 export default EducationForm
