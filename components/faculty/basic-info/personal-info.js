@@ -4,6 +4,7 @@ import { Formik, Form, Field } from "formik"
 import Router from 'next/router'
 import PersonalInfoDependents from './personal-info-dependents'
 import NameDisplay from '../../../components/name-display'
+import { parseCookies } from "../../../helpers"
 
 import updateFaculty from '../../../services/faculty/basic-info/updateFaculty'
 
@@ -19,19 +20,38 @@ function PersonalInfo(props) {
         civilStatus: props.children.civilStatus,
         religion: props.children.religion,
         emergencyContactPerson: props.children.emergencyContactPerson,
-        emergencyContactNumber: props.children.emergencyContactNumber
+        emergencyContactNumber: props.children.emergencyContactNumber,
+        suffix: props.children.suffix,
+        faculty_dependents: props.children.faculty_dependents
     }
     let name = props.children.lastName + ', ' + props.children.firstName + ' ' + props.children.middleName
+    let dependents = Object.keys(props.children.faculty_dependents).map(key => {
+        return (
+            <div className = "form-row">
+                <div className = "form-group col-md-4 required"> 
+                    <label className = "control-label" htmlFor = "Dependent"> Name of Dependent </label>
+                    <input className = "form-control" type = "text" name = "name" defaultValue = { props.children.faculty_dependents[key].name } required />
+                </div>
+                <div className = "form-group col-md-4 required">
+                    <label className = "control-label" htmlFor = "DependentDateOfBirth"> Date of Birth </label>
+                    <input className = "form-control" type = "date" name = "birthDate" defaultValue = { props.children.faculty_dependents[key].birthDate } required />
+                </div>
+                <div className = "form-group col-md-4 required">
+                    <label className = "control-label" htmlFor = "DependentRelationship[]"> Relationship to User </label>
+                    <input className = "form-control" type = "text" name = "relationship" defaultValue = { props.children.faculty_dependents[key].relationship } required />
+                </div>
+            </div>
+        );
+    });
     return (
         <div>
-        {/*<h3 align = "center"> Personal Information: <u>{props.children.lastName}, {props.children.firstName} {props.children.middleName}</u> </h3>*/}
         <h2 align = "center"> Personal Information </h2>
         <NameDisplay>{name}</NameDisplay>
 		<h6>Required</h6>
 		<Formik
             initialValues={FacultyDetails}
-            onSubmit={async (values) => {
-                await updateFaculty(values)
+            onSubmit={async (values, token) => {
+                await updateFaculty(values, props.token)
                 Router.reload()
             }}
         >
@@ -45,21 +65,21 @@ function PersonalInfo(props) {
                         </div>
                         <div className = "form-group col-md-3">
                             <label htmlFor = "MiddleName"> Middle Name </label>
-                            <Field className = "form-control" type = "text" name = "middleName" defaultValue = { props.children.middleName } required />
+                            <Field className = "form-control" type = "text" name = "middleName" defaultValue = { props.children.middleName } />
                         </div>
                         <div className = "form-group col-md-3 required">
                             <label className = "control-label" htmlFor = "LastName"> Last Name </label>
                             <Field className = "form-control" type = "text" name = "lastName" defaultValue = { props.children.lastName } required />
                         </div>
                         <div className = "form-group col-md-3">
-                            <label htmlFor = "Suffix"> Suffix </label>
-                            <input className = "form-control" type = "text" name = "Suffix" />
+                            <label className = "control-label" htmlFor = "Suffix"> Suffix </label>
+                            <Field className = "form-control" type = "text" name = "suffix" defaultValue = { props.children.suffix } />
                         </div>
                     </div>
                     <div className = "form-row">
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "Sex"> Sex </label>
-                            <select className = "form-control" name = "Sex" defaultValue = { props.children.gender } disabled required>
+                            <select className = "form-control" name = "Sex" value = { props.children.gender } disabled required>
                                 <option value = "male">Male</option>
                                 <option value = "female">Female</option>
                             </select>
@@ -99,22 +119,16 @@ function PersonalInfo(props) {
                         </div>
                     </div>
                     <div className = "form-row">
-                        <div className = "form-group col-md-6 required">
+                        <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Landline) </label>
                             <Field className = "form-control" type = "tel" name = "landline" pattern = "[0-9]{8}" defaultValue = { props.children.landline } required />
                         </div>
-                        <div className = "form-group col-md-6 required">
+                        <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Mobile) </label>
                             <Field className = "form-control" type = "tel" name = "mobile" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.mobile } required />
                         </div>
-                    </div>
-                    <div className = "form-row">
-                        <div className = "form-group col-md-6 required">
-                            <label className = "control-label" htmlFor = "EmailAddressUP"> Email Address (UP Mail) </label>
-                            <Field className = "form-control" type = "email" name = "email" defaultValue = { props.children.email } required />
-                        </div>
-                        <div className = "form-group col-md-6 required">
-                            <label className = "control-label" htmlFor = "EmailAddressAlt"> Email Address (alternate) </label>
+                        <div className = "form-group col-md-4 required">
+                            <label className = "control-label" htmlFor = "EmailAddressAlt"> Personal E-mail Address </label>
                             <Field className = "form-control" type = "email" name = "emailAddressAlt" defaultValue = { props.children.email } />
                         </div>
                     </div>
@@ -129,21 +143,7 @@ function PersonalInfo(props) {
                         </div>
                     </div>
                     <h5 align = "center"> Dependents </h5>
-                    <div className = "form-row">
-                        <div className = "form-group col-md-4 required"> 
-                            <label className = "control-label" htmlFor = "Dependent"> Name of Dependent </label>
-                            <input className = "form-control" type = "text" name = "Dependent" value = "Steve" required />
-                        </div>
-                        <div className = "form-group col-md-4 required">
-                            <label className = "control-label" htmlFor = "DependentDateOfBirth"> Date of Birth </label>
-                            <input className = "form-control" type = "date" name = "DependentDateOfBirth" value = "1994-01-06" required />
-                        </div>
-                        <div className = "form-group col-md-4 required">
-                            <label className = "control-label" htmlFor = "DependentRelationship[]"> Relationship to User </label>
-                            <input className = "form-control" type = "text" name = "DependentRelationship[]" value = "Son" required />
-                        </div>
-                    </div>
-                    <PersonalInfoDependents />
+                    {dependents}
                     <br />
                     <button 
                         type = "submit" 
@@ -152,19 +152,21 @@ function PersonalInfo(props) {
                     > 
                         Update
                     </button>
+                    <PersonalInfoDependents />
+                    <br />
                 </Form>
             )}
         </Formik>
-    	<style jsx>{`
-    		.form-group.required .control-label:after{
-    			content: "*";
-    			color: #f00;
-    		}
-    		h6:before{
-    			content: "* ";
-    			color: #f00;
-    		}
-    	`}</style>
+        <style jsx>{`
+            .form-group.required .control-label:after{
+                content: "*";
+                color: #f00;
+            }
+            h6:before{
+                content: "* ";
+                color: #f00;
+            }
+        `}</style>
         </div>     
     )
 }
