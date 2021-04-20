@@ -1,18 +1,13 @@
 import axios from "axios"
+import jwt from 'jsonwebtoken'
 
-export default async function deleteWorkExp(data) {
+export default async function deleteWorkExp(data, token) {
+	let cookieData = jwt.decode(token)
+    let facultyId = cookieData.facultyId
 	try {
-		let token = null
-		const tokenRes = await axios.post("http://localhost:3001/api/login", {
-			upemail: "jpcristobal1@upm.edu.ph",
-			password: "password"
-		})
-		
-		if(tokenRes.data.success) {
-			token = tokenRes.data.result.token
+		if (token) {
 			try {
-				console.log(data)
-				const response = await axios.delete("http://localhost:3001/api/faculty/basic-info/1/work-exp", {
+				const response = await axios.delete("http://localhost:3001/api/faculty/basic-info/" + facultyId + "/work-exp", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},
