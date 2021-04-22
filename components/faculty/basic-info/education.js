@@ -151,12 +151,12 @@ function Education(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <form>
+                        <form id = "editEducForm">
                             <hr />
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "SchoolEducationHistoryUpdate"> School/Institution </label>
-                                    <input className = "form-control" type = "text" name = "SchoolEducationHistoryUpdate" placeholder = "Input school" defaultValue = { currData.institutionSchool } onChange = {(e) => handleInputChange("institutionSchool", e)} required />
+                                    <input className = "form-control" type = "text" name = "SchoolEducationHistoryUpdate" placeholder = "Input school" value = { currData.institutionSchool } onChange = {(e) => handleInputChange("institutionSchool", e)} required />
                                 </div>
                             </div>
                             <div className = "form-row">
@@ -177,25 +177,25 @@ function Education(props) {
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree/Certification </label>
-                                    <input className = "form-control" type = "text" name = "DegreeEducationalHistoryUpdate" placeholder = "Input degree" defaultValue = { currData.degreeCert} onChange = {(e) => handleInputChange("degreeCert", e)} />
+                                    <input className = "form-control" type = "text" name = "DegreeEducationalHistoryUpdate" placeholder = "Input degree" value = { currData.degreeCert} onChange = {(e) => handleInputChange("degreeCert", e)} />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "MajorEducationalHistoryUpdate"> Major/Specialization </label>
-                                    <input className = "form-control" type = "text" name = "MajorEducationalHistoryUpdate" placeholder = "Input major" defaultValue = { currData.majorSpecialization } onChange = {(e) => handleInputChange("majorSpecialization", e)} />
+                                    <input className = "form-control" type = "text" name = "MajorEducationalHistoryUpdate" placeholder = "Input major" value = { currData.majorSpecialization } onChange = {(e) => handleInputChange("majorSpecialization", e)} />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "StartDateEducationalHistoryUpdate"> Start Date </label>
-                                    <input className = "form-control" type = "date" name = "StartDateEducationalHistoryUpdate" defaultValue = { currData.startDate } onChange = {(e) => handleInputChange("startDate", e)} required />
+                                    <input className = "form-control" type = "date" name = "StartDateEducationalHistoryUpdate" value = { currData.startDate } onChange = {(e) => handleInputChange("startDate", e)} required />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "EndDateEducationalHistoryUpdate"> End Date </label>
-                                    <input className = "form-control" type = "date" name = "EndDateEducationalHistoryUpdate" defaultValue = { currData.endDate } onChange = {(e) => handleInputChange("endDate", e)} />
+                                    <input className = "form-control" type = "date" name = "EndDateEducationalHistoryUpdate" value = { currData.endDate } onChange = {(e) => handleInputChange("endDate", e)} />
                                 </div>
                             </div>
                             <div className = "form-row">
@@ -209,6 +209,9 @@ function Education(props) {
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" className="btn btn-primary" data-dismiss="modal" onClick = {() => {
+                            // let form = document.getElementById('editEducForm')
+                            // let formData = new FormData(form)
+                            // formData.append('educInfoId', currData.educInfoId)
                             updateEducation(currData, props.token)
                             Router.push('/faculty/basic-info#educ', '/')
                         }}>Save changes</button>

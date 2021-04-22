@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Form, Field } from "formik"
+import { Formik, Form, Field } from 'formik'
 import Router from 'next/router'
 
 import addEducation from '../../../services/faculty/basic-info/addEducation'

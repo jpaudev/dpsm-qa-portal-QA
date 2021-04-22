@@ -22,7 +22,7 @@ function WorkExperience(props){
         description: ''
     })
     let content = Object.keys(props.children).map(key => {
-        if(key < len) {
+        if(props.children[key].workExpId != null) {
             return (
                 <tr key = {props.children.[key].workExpId}>
                     <td>{props.children[key].employerName}</td>

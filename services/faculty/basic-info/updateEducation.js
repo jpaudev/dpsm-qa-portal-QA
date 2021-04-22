@@ -5,6 +5,32 @@ export default async function updateEducation(data, token) {
 	let cookieData = jwt.decode(token)
     let facultyId = cookieData.facultyId
 	try {
+		// if (token) {
+		// 	try {
+		// 		if(formData.get('endDate') == "") {
+		// 			formData.delete('endDate')
+		// 		}
+		// 		for (var value of formData.values()) {
+  //                   console.log(value)
+  //               }
+		// 		const response = axios('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/education', {
+		// 		    method: 'PUT',
+		// 		    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`},
+		// 		    data: formData  
+		// 	    })
+		// 	    .then(function (response) {
+		// 	        //handle success
+		// 	        console.log(response.data);
+		// 	    })
+		// 	    .catch(function (response) {
+		// 	        //handle error
+		// 	        console.log(response);
+		// 	    });
+		// 	} catch (err) {
+		// 		console.error(err)
+		// 		return err
+		// 	}
+		// }
 	    if (token) {
 	        let url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
 		    let header = {
