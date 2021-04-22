@@ -91,6 +91,10 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
     const researchGrant = await rg.json()
 
     publicService.result.push(personalInfo.result)
+    publications.result.push(personalInfo.result)
+    trainingSeminar.result.push(personalInfo.result)
+    licensureExam.result.push(personalInfo.result)
+    researchGrant.result.push(personalInfo.result)
 
     return {
         token: token && token,
