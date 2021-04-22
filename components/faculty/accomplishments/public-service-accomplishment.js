@@ -19,7 +19,8 @@ function PublicServiceAccomplishment(props){
         description: '',
         type: '',
         startDate: '',
-        endDate: ''
+        endDate: '',
+        proof: ''
     })
     let upm = Object.keys(props.children).map(key => {
         if (props.children[key].type == 'Within UPM'){
@@ -443,7 +444,7 @@ function PublicServiceAccomplishment(props){
                             <div className = "form-row">
                         	<div className = "form-group">
                             		<label htmlFor = "PublicServiceAccomplishmentProofUpdate"> Proof </label>
-                            		<input type = "file" className = "form-control-file" name = "PublicServiceAccomplishmentProofUpdate" onChange = {(e) => handleInputChange("proof", e)} />
+                            		<input type = "file" className = "form-control-file" name = "PublicServiceAccomplishmentProofUpdate" defaultValue = { currData.proof } onChange = {(e) => handleInputChange("proof", e)} />
                         	</div>
                     	    </div>
                         </form>

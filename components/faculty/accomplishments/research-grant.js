@@ -3,35 +3,39 @@ import ResearchGrantForm from './research-grant-form'
 import NameDisplay from '../../../components/name-display'
 
 function ResearchGrant(props){
+    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
+    props.children.pop()
     let content = Object.keys(props.children).map(key => {
-        let res = props.children[key].faculty_researchers;
-        return (
-            <tr>
-                <td>{props.children[key].researchName}</td>
-                <td>
-                    {Object.keys(res).map(auth => {
-                        return (
-                            <a href = "#">{res[auth].faculty_personal_info.firstName}, </a>
-                        );
-                    })}
-                    {props.children[key].nonFacultyResearchers}
-                </td>
-                <td>{props.children[key].granter}</td>
-                <td>{props.children[key].amount}</td>
-                <td>{props.children[key].projectedStart} to {props.children[key].projectedEnd}</td>
-                <td>{props.children[key].actualStart}</td>
-                <td>{props.children[key].actualEnd}</td>
-                <td>{props.children[key].researchProgress}</td>
-                <td>{res[0].proof}</td>
-                <td>{res[0].status}</td>
-                <td>
-                    <div className = "btn-group">
-                        <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
-                        <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
-                    </div>
-                </td>
-            </tr>
-        );
+        if(props.children[key].researchGrantId != null) {
+            let res = props.children[key].faculty_researchers;
+            return (
+                <tr>
+                    <td>{props.children[key].researchName}</td>
+                    <td>
+                        {Object.keys(res).map(auth => {
+                            return (
+                                <a href = "#">{res[auth].faculty_personal_info.firstName}, </a>
+                            );
+                        })}
+                        {props.children[key].nonFacultyResearchers}
+                    </td>
+                    <td>{props.children[key].granter}</td>
+                    <td>{props.children[key].amount}</td>
+                    <td>{props.children[key].projectedStart} to {props.children[key].projectedEnd}</td>
+                    <td>{props.children[key].actualStart}</td>
+                    <td>{props.children[key].actualEnd}</td>
+                    <td>{props.children[key].researchProgress}</td>
+                    <td>{res[0].proof}</td>
+                    <td>{res[0].status}</td>
+                    <td>
+                        <div className = "btn-group">
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            );
+        }
     });
 	return(
 		<div>
