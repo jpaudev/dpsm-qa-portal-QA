@@ -1,32 +1,97 @@
 import Link from 'next/link'
 import TrainingSeminarForm from './training-seminar-form'
 import NameDisplay from '../../../components/name-display'
+import Router from 'next/router'
+import React from 'react'
+
+import downloadProof from '../../../services/faculty/downloadProof'
+import deleteTraining from '../../../services/faculty/accomplishments/deleteTraining'
+import updateTraining from '../../../services/faculty/accomplishments/updateTraining'
 
 function TrainingSeminar(props) {
+    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
+    let deleteTS = 0
+    let editTS = 0
+    const [currData, setData] = React.useState({
+        tsId: 0,
+        role: '',
+        title:'',
+        dateFrom: '',
+        dateTo: '',
+        venue: '',
+        remarks: '',
+        proof: ''
+    })
     let content = Object.keys(props.children).map(key => {
-        return (
-            <tr>
-                <td>{props.children[key].title}</td>
-                <td>{props.children[key].role}</td>
-                <td>{props.children[key].venue}</td>
-                <td>{props.children[key].dateFrom}</td>
-                <td>{props.children[key].dateTo}</td>
-                <td></td>
-                <td>{props.children[key].proof}</td>
-                <td>{props.children[key].status}</td>
-                <td>
-                    <div className = "btn-group">
-                        <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
-                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
-                    </div>
-                </td>
-            </tr>
-        );
+        if(props.children[key].tsId != null) {
+            return (
+                <tr key = {props.children[key].tsId}>
+                    <td>{props.children[key].title}</td>
+                    <td>{props.children[key].role}</td>
+                    <td>{props.children[key].venue}</td>
+                    <td>{props.children[key].dateFrom}</td>
+                    <td>{props.children[key].dateTo}</td>
+                    <td></td>
+                    <td>
+                        <button
+                            type="button"
+                            className="btn btn-primary"
+                            onClick = {() => {
+                                let file = props.children[key].proof
+                                downloadProof(file)
+                            }}
+                        >
+                            Download
+                        </button>
+                        <a
+                            className ="btn btn-info"
+                            href={"http://localhost:3001/" + props.children[key].proof}
+                            style = {{ color: 'white' }}
+                            target="_blank">
+                            Preview
+                        </a>
+                    </td>
+                    <td>{props.children[key].status}</td>
+                    <td>
+                        <div className = "btn-group">
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
+                                    setEdit(props.children.[key].tsId)
+                                    setKey(editTS)
+                                }}>Edit</a>
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar" onClick={() => {
+                                setDelete(props.children.[key].tsId)
+                            }}>Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            );
+        }
     });
+
+    function setEdit(id) {
+        editTS = id
+    }
+
+    function setDelete(id) {
+        deleteTS = id
+    }
+
+    function setKey(x) {
+        Object.keys(props.children).map(key => {
+            if(props.children.[key].tsId == x) {
+                setData(props.children.[key])
+            }
+        });
+    }
+
+    function handleInputChange(id, event) {
+        setData({...currData, [id]: event.target.value});
+    }
+
     return (
         <div>
             <h2 align = "center"> Training/Seminars </h2>
-            <NameDisplay />
+            <NameDisplay>{name}</NameDisplay>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -42,63 +107,15 @@ function TrainingSeminar(props) {
                             <th>Action</th>
                         </tr>
                         {content}
-                        {/*<tr>
-                            <td>Paradigm Shifts in Public Health</td>
-                            <td>Attendee</td>
-                            <td>Hammerstein Ballroom</td>
-                            <td>2020-11-11</td>
-                            <td>2020-11-11</td>
-                            <td></td>
-                            <td><a href = "#">Download proof</a></td>
-                            <td>Pending Approval</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Privacy in the Age of Information</td>
-                            <td>Lecturer</td>
-                            <td>Madison Square Garden</td>
-                            <td>2020-1-14</td>
-                            <td>2020-1-14</td>
-                            <td></td>
-                            <td><a href = "#">Download proof</a></td>
-                            <td>Pending Approval</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>A Primer on String Theory</td>
-                            <td>Lecturer</td>
-                            <td>Full Sail University</td>
-                            <td>2020-4-1</td>
-                            <td>2020-4-1</td>
-                            <td></td>
-                            <td><a href = "#">Download proof</a></td>
-                            <td>Verified</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar">Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar">Delete</a>
-                                </div>
-                            </td>
-                        </tr>*/}
                     </tbody>
                 </table>
             </div>
 
             <div>
-                <TrainingSeminarForm />
+                <TrainingSeminarForm token = { props.token } />
             </div>   
 	
-<div className="modal fade" id="editTrainingSeminar" tabIndex="-1" role="dialog" aria-labelledby="editTrainingSeminarLabel" aria-hidden="true">
+            <div className="modal fade" id="editTrainingSeminar" tabIndex="-1" role="dialog" aria-labelledby="editTrainingSeminarLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -113,44 +130,53 @@ function TrainingSeminar(props) {
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "TrainingSeminarUpdate"> Name of Training/Seminar </label>
-                                    <input className = "form-control" type = "text" name = "TrainingSeminarUpdate" placeholder = "Input training/seminar" />
+                                    <input className = "form-control" type = "text" name = "TrainingSeminarUpdate" defaultValue = { currData.title } onChange = {(e) => handleInputChange("title", e)} placeholder = "Input training/seminar" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "TrainingSeminarRoleUpdate"> Role </label>
-                                    <input className = "form-control" type = "text" name = "TrainingSeminarRoleUpdate" placeholder = "Input role" />
+                                    <input className = "form-control" type = "text" name = "TrainingSeminarRoleUpdate" defaultValue = { currData.role } onChange = {(e) => handleInputChange("role", e)} placeholder = "Input role" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "TrainingSeminarVenueUpdate"> Venue </label>
-                                    <input className = "form-control" type = "text" name = "TrainingSeminarVenueUpdate" placeholder = "Input venue" />
+                                    <input className = "form-control" type = "text" name = "TrainingSeminarVenueUpdate" defaultValue = { currData.venue } onChange = {(e) => handleInputChange("venue", e)} placeholder = "Input venue" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "TrainingSeminarStartDateUpdate"> Start Date </label>
-                                    <input type = "date" className = "form-control" name = "TrainingSeminarStartDateUpdate" />
+                                    <input type = "date" className = "form-control" name = "TrainingSeminarStartDateUpdate" defaultValue = { currData.dateFrom } onChange = {(e) => handleInputChange("dateFrom", e)} />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "TrainingSeminarEndDateUpdate"> End Date </label>
-                                    <input type = "date" className = "form-control" name = "TrainingSeminarEndDateUpdate" />
+                                    <input type = "date" className = "form-control" name = "TrainingSeminarEndDateUpdate" defaultValue = { currData.dateTo } onChange = {(e) => handleInputChange("dateTo", e)} />
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "TrainingSeminarVenueUpdate"> Remarks </label>
+                                    <input className = "form-control" type = "text" name = "TrainingSeminarRemarksUpdate" defaultValue = { currData.remarks } onChange = {(e) => handleInputChange("remarks", e)} placeholder = "Input remarks" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "TrainingSeminarProofUpdate"> Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "TrainingSeminarProofUpdate" />
+                                    <input type = "file" className = "form-control-file" name = "TrainingSeminarProofUpdate" defaultValue = { currData.proof } onChange = {(e) => handleInputChange("proof", e)} />
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
+                        <button type="button" className="btn btn-primary" data-dismiss="modal" onClick = {() => {
+                            updateTraining(currData, props.token)
+                            Router.push('/faculty/accomplishment#public-service-accomplishment', '/')
+                        }}>Save changes</button>
                     </div>
                     </div>
                 </div>
@@ -171,17 +197,16 @@ function TrainingSeminar(props) {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger" data-dismiss="modal">Yes, delete</button>
+                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {() => {
+                            deleteTraining(deleteTS, props.token)
+                            Router.push('/faculty/accomplishment#training-seminar', '/')
+                        }}>Yes, delete</button>
                     </div>
                     </div>
                 </div>
             </div>
-            
-        
-        </div>
-	
-	
+        </div>	
     )
-  }
-  
-  export default TrainingSeminar
+}  
+
+export default TrainingSeminar

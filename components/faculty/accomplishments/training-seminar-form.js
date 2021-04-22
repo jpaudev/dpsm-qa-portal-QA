@@ -1,11 +1,12 @@
 import React from 'react'
 import { Formik, Form, Field } from "formik"
+import Router from 'next/router'
 
 import addTraining from '../../../services/faculty/accomplishments/addTraining'
 
 class TrainingSeminarForm extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			duplicateForms: []
 		}
@@ -20,7 +21,7 @@ class TrainingSeminarForm extends React.Component{
                 <label htmlFor = "TrainingSeminarRole[]"> Role</label>
                 <input className = "form-control" type = "text" name = "TrainingSeminarRole[]" placeholder = "Input training/seminar" />
             </div>
-			<div className = "form-group col-md-3">
+			<div className = "form-group col-md-2">
                 <label htmlFor = "TrainingSeminarVenue[]"> Venue </label>
                 <input className = "form-control" type = "text" name = "TrainingSeminarVenue[]" placeholder = "Input venue" />
             </div>
@@ -36,7 +37,7 @@ class TrainingSeminarForm extends React.Component{
                 <label htmlFor = "TrainingSeminarRemarks[]"> Remarks </label>
                 <input className = "form-control" type = "text" name = "TrainingSeminarRemarks[]" placeholder = "Input remarks" />
             </div>
-			<div className = "form-group col-md-2">
+			<div className = "form-group col-md-4">
                     <label htmlFor = "TrainingSeminarProof[]"> Proof </label>
                     <input type = "file" className = "form-control-file" name = "TrainingSeminarProof[]" />
                 </div>
@@ -69,10 +70,16 @@ class TrainingSeminarForm extends React.Component{
 		return(
             <Formik
                 initialValues={TrainingDetails}
-                onSubmit={async (values) => {await addTraining(values)}}
+                onSubmit={async (values, {resetForm}) => {
+                    let form = document.getElementById('tsForm')
+                    let formData = new FormData(form)
+                    await addTraining(formData, this.props.token)
+                    resetForm()
+                    Router.push('/faculty/accomplishment#training-seminar', '/')
+                }}
             >
                 {({ values, errors, touched, isSubmitting }) => (
-        			<Form>
+        			<Form id = "tsForm">
                         <hr />
                         <div className = "form-row">
                             <div className = "col-auto">
@@ -92,7 +99,7 @@ class TrainingSeminarForm extends React.Component{
                                 <label htmlFor = "TrainingSeminarRole[]"> Role</label>
                                 <Field className = "form-control" type = "text" name = "role" placeholder = "Input training/seminar" />
                             </div>
-                            <div className = "form-group col-md-3">
+                            <div className = "form-group col-md-2">
                                 <label htmlFor = "TrainingSeminarVenue[]"> Venue </label>
                                 <Field className = "form-control" type = "text" name = "venue" placeholder = "Input venue" />
                             </div>
@@ -105,10 +112,10 @@ class TrainingSeminarForm extends React.Component{
                                 <Field type = "date" className = "form-control" name = "dateTo" />
                             </div>
                             <div className = "form-group col-md-8">
-                                <label htmlFor = "TrainingSeminarRemarks[]"> Venue </label>
-                                <Field className = "form-control" type = "text" name = "venue" placeholder = "Input remarks" />
+                                <label htmlFor = "TrainingSeminarRemarks[]"> Remarks </label>
+                                <Field className = "form-control" type = "text" name = "remarks" placeholder = "Input remarks" />
                             </div>
-                            <div className = "form-group col-md-2">
+                            <div className = "form-group col-md-4">
                                 <label htmlFor = "TrainingSeminarProof[]"> Proof </label>
                                 <Field type = "file" className = "form-control-file" name = "proof" />
                             </div>
