@@ -1,6 +1,13 @@
 import Link from 'next/link'
+import { useCookies } from "react-cookie";
 
 function Sidebar(props) {
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+    function handleRemoveCookie() {
+        removeCookie("user");
+    }
+
     let faculty = true
     if(props.role == 2 || props.role == 3) faculty = false
 
@@ -25,8 +32,8 @@ function Sidebar(props) {
                 <div className="list-group">
                     <Link href="/department-activities"><a className = "list-group-item list-group-item-action list-group-item-secondary">Department Activities</a></Link>
                 </div>
-		<div className="list-group">
-                    <Link href="/"><a className = "list-group-item list-group-item-action list-group-item-danger">Log Out</a></Link>
+		        <div className="list-group">
+                    <Link href="/login"><a className = "list-group-item list-group-item-action list-group-item-danger" onClick={handleRemoveCookie}>Log Out</a></Link>
                 </div>
 
 		<style jsx>{`
