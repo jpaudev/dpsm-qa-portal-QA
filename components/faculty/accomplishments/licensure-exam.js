@@ -3,6 +3,7 @@ import LicensureExamForm from './licensure-exam-form'
 import NameDisplay from '../../../components/name-display'
 
 function LicensureExam(props) {
+    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
     let content = Object.keys(props.children).map(key => {
         return (
             <tr>
@@ -24,7 +25,7 @@ function LicensureExam(props) {
     return (
         <div>
         <h2 align = "center"> Licensure Exams </h2>
-        <NameDisplay />
+        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>

@@ -20,13 +20,13 @@ function BasicInfo(props) {
 		<br />
             <div className="tab-content" id="nav-tabContent">
             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                <PersonalInfo token = { props.token.user }>{ props.personalInfo }</PersonalInfo>
+                <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.personalInfo }</PersonalInfo>
             </div>
             <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                <Education token = { props.token.user }>{ props.education }</Education>
+                <Education token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.education }</Education>
             </div>
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
-                <WorkExperience token = { props.token.user }>{ props.workExperience }</WorkExperience>
+                <WorkExperience token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.workExperience }</WorkExperience>
             </div>
             </div>
 	<style jsx>{`
@@ -52,6 +52,10 @@ BasicInfo.getInitialProps = async ({ req, res }) => {
     let education
     let workExperience
     let data
+    let unit
+    let position
+    let employmentType
+
     if (res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
             res.writeHead(301, { Location: "/login" })
@@ -74,6 +78,9 @@ BasicInfo.getInitialProps = async ({ req, res }) => {
         
             const employ = await fetch(url + '/employment', header)
             employment = await employ.json()
+            unit = employment.result.faculty_unit.unit.unit
+            position = employment.result.faculty_employment_infos[0].faculty_employment_position.position
+            employmentType = employment.result.faculty_employment_infos[0].faculty_employment_position.employmentType
             
             const educ = await fetch(url + '/education', header)
             education = await educ.json()
@@ -90,6 +97,9 @@ BasicInfo.getInitialProps = async ({ req, res }) => {
     return { 
         token: token && token,
         data: data,
+        unit,
+        position,
+        employmentType,
         personalInfo: personalInfo.result,
         education: education.result,
         workExperience: workExperience.result

@@ -46,7 +46,7 @@ function PersonalInfo(props) {
     return (
         <div>
         <h2 align = "center"> Personal Information </h2>
-        <NameDisplay>{name}</NameDisplay>
+        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
 		<h6>Required</h6>
 		<Formik
             initialValues={FacultyDetails}

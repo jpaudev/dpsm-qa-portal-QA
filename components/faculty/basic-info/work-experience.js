@@ -69,7 +69,7 @@ function WorkExperience(props){
     return(
         <div>
             <h2 align = "center"> Work Experience </h2>
-            <NameDisplay>{name}</NameDisplay>
+            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
             <h5 align = "center"> Within UP Manila </h5>
             <EmploymentHistory>{props.children[len]}</EmploymentHistory>
             <br />

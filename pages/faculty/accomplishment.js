@@ -7,9 +7,9 @@ import ResearchGrant from '../../components/faculty/accomplishments/research-gra
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
 
-function Accomplishments(props) {
+function Accomplishments(props) { 
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName}>
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName} >
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 		<a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
@@ -23,19 +23,29 @@ function Accomplishments(props) {
 		<br />
         <div className="tab-content" id="nav-tabContent">
     	    <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
-                <PublicServiceAccomplishment token = { props.token.user }>{ props.publicService }</PublicServiceAccomplishment>
+                <PublicServiceAccomplishment token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                    { props.publicService }
+                </PublicServiceAccomplishment>
             </div>
     	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                <Publication token = { props.token.user }>{ props.publications }</Publication>
+                <Publication token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                    { props.publications }
+                </Publication>
             </div>
     	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
-                <TrainingSeminar token = { props.token.user }>{ props.trainingSeminar }</TrainingSeminar>
+                <TrainingSeminar token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                    { props.trainingSeminar }
+                </TrainingSeminar>
             </div>
     	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">
-                <LicensureExam token = { props.token.user }>{ props.licensureExam }</LicensureExam>
+                <LicensureExam token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                    { props.licensureExam }
+                </LicensureExam>
             </div>
     	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                <ResearchGrant token = { props.token.user }>{ props.researchGrant }</ResearchGrant>
+                <ResearchGrant token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                    { props.researchGrant }
+                </ResearchGrant>
             </div>
         </div>
 	<style jsx>{`
@@ -72,6 +82,12 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
         }
     }
 
+    const employment = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/employment', header)
+    const employmentInfo = await employment.json()
+    let unit = employmentInfo.result.faculty_unit.unit.unit
+    let position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
+    let employmentType = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.employmentType
+
     const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
 
@@ -99,6 +115,9 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
     return {
         token: token && token,
         data: data,
+        unit,
+        position,
+        employmentType,
         personalInfo: personalInfo.result,
         publicService: publicService.result,
     	publications: publications.result,

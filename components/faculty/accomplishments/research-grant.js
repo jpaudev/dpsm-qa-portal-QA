@@ -40,7 +40,7 @@ function ResearchGrant(props){
 	return(
 		<div>
             <h2 align = "center"> Research Grants </h2>
-            <NameDisplay />
+            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
 			<div>
 	<table className = "table table-striped table-sm">
 		<tbody>
