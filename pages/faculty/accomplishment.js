@@ -8,8 +8,9 @@ import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
 
 function Accomplishments(props) { 
+    let name = props.personalInfo.lastName + ', ' + props.personalInfo.firstName
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName} >
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={name} >
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 		<a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
@@ -28,22 +29,22 @@ function Accomplishments(props) {
                 </PublicServiceAccomplishment>
             </div>
     	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                <Publication token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                <Publication token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} name={name}>
                     { props.publications }
                 </Publication>
             </div>
     	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
-                <TrainingSeminar token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                <TrainingSeminar token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} name={name}>
                     { props.trainingSeminar }
                 </TrainingSeminar>
             </div>
     	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">
-                <LicensureExam token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                <LicensureExam token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} name={name}>
                     { props.licensureExam }
                 </LicensureExam>
             </div>
     	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                <ResearchGrant token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                <ResearchGrant token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} name={name}>
                     { props.researchGrant }
                 </ResearchGrant>
             </div>
@@ -105,12 +106,6 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
 
 	const rg = await fetch(url + '/research-grant', header)
     const researchGrant = await rg.json()
-
-    publicService.result.push(personalInfo.result)
-    publications.result.push(personalInfo.result)
-    trainingSeminar.result.push(personalInfo.result)
-    licensureExam.result.push(personalInfo.result)
-    researchGrant.result.push(personalInfo.result)
 
     return {
         token: token && token,

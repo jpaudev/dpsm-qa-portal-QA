@@ -9,7 +9,7 @@ import deleteTraining from '../../../services/faculty/accomplishments/deleteTrai
 import updateTraining from '../../../services/faculty/accomplishments/updateTraining'
 
 function TrainingSeminar(props) {
-    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
+    const name = props.name
     let deleteTS = 0
     let editTS = 0
     const [currData, setData] = React.useState({
@@ -22,51 +22,54 @@ function TrainingSeminar(props) {
         remarks: '',
         proof: ''
     })
-    let content = Object.keys(props.children).map(key => {
-        if(props.children[key].tsId != null) {
-            return (
-                <tr key = {props.children[key].tsId}>
-                    <td>{props.children[key].title}</td>
-                    <td>{props.children[key].role}</td>
-                    <td>{props.children[key].venue}</td>
-                    <td>{props.children[key].dateFrom}</td>
-                    <td>{props.children[key].dateTo}</td>
-                    <td></td>
-                    <td>
-                        <button
-                            type="button"
-                            className="btn btn-primary"
-                            onClick = {() => {
-                                let file = props.children[key].proof
-                                downloadProof(file)
-                            }}
-                        >
-                            Download
-                        </button>
-                        <a
-                            className ="btn btn-info"
-                            href={"http://localhost:3001/" + props.children[key].proof}
-                            style = {{ color: 'white' }}
-                            target="_blank">
-                            Preview
-                        </a>
-                    </td>
-                    <td>{props.children[key].status}</td>
-                    <td>
-                        <div className = "btn-group">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
-                                    setEdit(props.children.[key].tsId)
-                                    setKey(editTS)
-                                }}>Edit</a>
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar" onClick={() => {
-                                setDelete(props.children.[key].tsId)
-                            }}>Delete</a>
-                        </div>
-                    </td>
-                </tr>
-            );
-        }
-    });
+    let content 
+    if(props.children != null) {
+        content = Object.keys(props.children).map(key => {
+            if(props.children[key].tsId != null) {
+                return (
+                    <tr key = {props.children[key].tsId}>
+                        <td>{props.children[key].title}</td>
+                        <td>{props.children[key].role}</td>
+                        <td>{props.children[key].venue}</td>
+                        <td>{props.children[key].dateFrom}</td>
+                        <td>{props.children[key].dateTo}</td>
+                        <td></td>
+                        <td>
+                            <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick = {() => {
+                                    let file = props.children[key].proof
+                                    downloadProof(file)
+                                }}
+                            >
+                                Download
+                            </button>
+                            <a
+                                className ="btn btn-info"
+                                href={"http://localhost:3001/" + props.children[key].proof}
+                                style = {{ color: 'white' }}
+                                target="_blank">
+                                Preview
+                            </a>
+                        </td>
+                        <td>{props.children[key].status}</td>
+                        <td>
+                            <div className = "btn-group">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
+                                        setEdit(props.children.[key].tsId)
+                                        setKey(editTS)
+                                    }}>Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar" onClick={() => {
+                                    setDelete(props.children.[key].tsId)
+                                }}>Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                );
+            }
+        });
+    }
 
     function setEdit(id) {
         editTS = id

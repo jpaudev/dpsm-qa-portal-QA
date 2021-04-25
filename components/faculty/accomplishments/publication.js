@@ -3,44 +3,47 @@ import PublicationForm from './publication-form'
 import NameDisplay from '../../../components/name-display'
 
 function Publication(props){
-    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
-    let content = Object.keys(props.children).map(key => {
-        if(props.children[key].publicationId != null) {
-            let pub = props.children[key].faculty_publishers;
-            return (
-                <tr key = {props.children.[key].publicationId}>
-                    <td>{props.children[key].title}</td>
-                    <td>
-                        {Object.keys(pub).map(auth => {
-                            return (
-                                <a href = "#">{pub[auth].faculty_personal_info.firstName}, </a>
-                            );
-                        })}
-                        {props.children[key].nonFacultyAuthors}
-                    </td>
-                    <td>{props.children[key].publicationDate}</td>
-                    <td>{props.children[key].url}</td>
-                    <td>{props.children[key].citation}</td>
-                    <td></td>
-                    <td>
-                        {Object.keys(pub).map(auth => {
-                            if(pub[auth].facultyId == 9) {
+    const name = props.name
+    let content 
+    if(props.children != null) {
+        content = Object.keys(props.children).map(key => {
+            if(props.children[key].publicationId != null) {
+                let pub = props.children[key].faculty_publishers;
+                return (
+                    <tr key = {props.children.[key].publicationId}>
+                        <td>{props.children[key].title}</td>
+                        <td>
+                            {Object.keys(pub).map(auth => {
                                 return (
-                                    pub[auth].status
+                                    <a href = "#">{pub[auth].faculty_personal_info.firstName}, </a>
                                 );
-                            }
-                        })}
-                    </td>
-                    <td>
-                        <div className = "btn-group">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
-                        </div>
-                    </td>
-                </tr>
-            );
-        }
-    });
+                            })}
+                            {props.children[key].nonFacultyAuthors}
+                        </td>
+                        <td>{props.children[key].publicationDate}</td>
+                        <td>{props.children[key].url}</td>
+                        <td>{props.children[key].citation}</td>
+                        <td></td>
+                        <td>
+                            {Object.keys(pub).map(auth => {
+                                if(pub[auth].facultyId == 9) {
+                                    return (
+                                        pub[auth].status
+                                    );
+                                }
+                            })}
+                        </td>
+                        <td>
+                            <div className = "btn-group">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                );
+            }
+        });
+    }
 	return(
 		<div>
             <h2 align = "center"> Publications </h2>

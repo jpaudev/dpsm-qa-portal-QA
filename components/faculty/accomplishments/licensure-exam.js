@@ -3,25 +3,28 @@ import LicensureExamForm from './licensure-exam-form'
 import NameDisplay from '../../../components/name-display'
 
 function LicensureExam(props) {
-    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
-    let content = Object.keys(props.children).map(key => {
-        return (
-            <tr>
-                <td>{props.children[key].examName}</td>
-                <td>{props.children[key].rank}</td>
-                <td>{props.children[key].examDate}</td>
-                <td>{props.children[key].licenseNumber}</td>
-                <td>{props.children[key].proof}</td>
-                <td>{props.children[key].status}</td>
-                <td>
-                    <div className = "btn-group">
-                        <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam">Edit</a>
-                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam">Delete</a>
-                    </div>
-                </td>
-            </tr>
-        );
-    });
+    const name = props.name
+    let content 
+    if(props.children != null) {
+        content = Object.keys(props.children).map(key => {
+            return (
+                <tr>
+                    <td>{props.children[key].examName}</td>
+                    <td>{props.children[key].rank}</td>
+                    <td>{props.children[key].examDate}</td>
+                    <td>{props.children[key].licenseNumber}</td>
+                    <td>{props.children[key].proof}</td>
+                    <td>{props.children[key].status}</td>
+                    <td>
+                        <div className = "btn-group">
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam">Edit</a>
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            );
+        });
+    }
     return (
         <div>
         <h2 align = "center"> Licensure Exams </h2>
