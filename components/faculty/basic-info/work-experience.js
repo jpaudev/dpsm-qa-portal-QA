@@ -9,8 +9,8 @@ import updateWorkExp from '../../../services/faculty/basic-info/updateWorkExp'
 import deleteWorkExp from '../../../services/faculty/basic-info/deleteWorkExp'
 
 function WorkExperience(props){
-    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
-    const len = props.children.length - 2;
+    const name = props.name
+    const len = props.children.length - 1;
     let deleteWork = 0
     let editWork = 0
     const [currData, setData] = React.useState({

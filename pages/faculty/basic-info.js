@@ -23,10 +23,10 @@ function BasicInfo(props) {
                 <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.personalInfo }</PersonalInfo>
             </div>
             <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                <Education token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.education }</Education>
+                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.education }</Education>
             </div>
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
-                <WorkExperience token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.workExperience }</WorkExperience>
+                <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.workExperience }</WorkExperience>
             </div>
             </div>
 	<style jsx>{`
@@ -48,6 +48,7 @@ BasicInfo.getInitialProps = async ({ req, res }) => {
     const token = parseCookies(req)
 
     let personalInfo
+    let name
     let employment
     let education
     let workExperience
@@ -75,7 +76,8 @@ BasicInfo.getInitialProps = async ({ req, res }) => {
         
             const personal = await fetch(url, header)
             personalInfo = await personal.json()
-        
+            name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName + ' ' + personalInfo.result.middleName + ' ' + personalInfo.result.suffix
+
             const employ = await fetch(url + '/employment', header)
             employment = await employ.json()
             unit = employment.result.faculty_unit.unit.unit
@@ -88,15 +90,14 @@ BasicInfo.getInitialProps = async ({ req, res }) => {
             const work = await fetch(url + '/work-exp', header)
             workExperience = await work.json()
         
-            education.result.push(personalInfo.result)
             workExperience.result.push(employment.result)
-            workExperience.result.push(personalInfo.result)
         }
     } 
 
     return { 
         token: token && token,
         data: data,
+        name,
         unit,
         position,
         employmentType,

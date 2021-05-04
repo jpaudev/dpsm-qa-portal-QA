@@ -1,31 +1,31 @@
 import Link from 'next/link'
 function EmploymentHistory(props){
-	let content = Object.keys(props.children).map(key => {
-		if(props.children[key].faculty_employment_position.employmentType == 'ftt') {
+	let content = Object.keys(props.children.faculty_employment_infos).map(key => {
+		if(props.children.faculty_employment_infos[key].faculty_employment_position.employmentType == 'ftt') {
 			return (
-				<tr key = {props.children.[key].employmentInfoId}>
-					<td>{props.children[key].faculty_employment_position.position}</td>
+				<tr key = {props.children.faculty_employment_infos[key].employmentInfoId}>
+					<td>{props.children.faculty_employment_infos[key].faculty_employment_position.position}</td>
 					<td>Full-time (Temporary)</td>
-					<td>{props.children[key].startDate}</td>
-					<td>{props.children[key].endDate}</td>
+					<td>{props.children.faculty_employment_infos[key].startDate}</td>
+					<td>{props.children.faculty_employment_infos[key].endDate}</td>
 				</tr>
 			);
-		} else if(props.children[key].faculty_employment_position.employmentType == 'ftp') {
+		} else if(props.children.faculty_employment_infos[key].faculty_employment_position.employmentType == 'ftp') {
 			return (
-				<tr key = {props.children.[key].employmentInfoId}>
-					<td>{props.children[key].faculty_employment_position.position}</td>
+				<tr key = {props.children.faculty_employment_infos[key].employmentInfoId}>
+					<td>{props.children.faculty_employment_infos[key].faculty_employment_position.position}</td>
 					<td>Full-time (Permanent)</td>
-					<td>{props.children[key].startDate}</td>
-					<td>{props.children[key].endDate}</td>
+					<td>{props.children.faculty_employment_infos[key].startDate}</td>
+					<td>{props.children.faculty_employment_infos[key].endDate}</td>
 				</tr>
 			);
-		} else if(props.children[key].faculty_employment_position.employmentType == 'pt') {
+		} else if(props.children.faculty_employment_infos[key].faculty_employment_position.employmentType == 'pt') {
 			return (
-				<tr key = {props.children.[key].employmentInfoId}>
-					<td>{props.children[key].faculty_employment_position.position}</td>
+				<tr key = {props.children.faculty_employment_infos[key].employmentInfoId}>
+					<td>{props.children.faculty_employment_infos[key].faculty_employment_position.position}</td>
 					<td>Part-time</td>
-					<td>{props.children[key].startDate}</td>
-					<td>{props.children[key].endDate}</td>
+					<td>{props.children.faculty_employment_infos[key].startDate}</td>
+					<td>{props.children.faculty_employment_infos[key].endDate}</td>
 				</tr>
 			);
 		}
