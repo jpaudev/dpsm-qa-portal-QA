@@ -3,13 +3,14 @@ import EducationForm from './education-form'
 import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
 import React from 'react'
+import { Formik, Form, Field } from 'formik'
 
 import downloadProof from '../../../services/faculty/downloadProof'
 import deleteEducation from '../../../services/faculty/basic-info/deleteEducation'
 import updateEducation from '../../../services/faculty/basic-info/updateEducation'
 
 function Education(props) {
-    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
+    const name = props.name
     let deleteEduc = 0
     let editEduc = 0
     const [currData, setData] = React.useState({
@@ -22,76 +23,74 @@ function Education(props) {
         endDate: ''
     })
     let content = Object.keys(props.children).map(key => {
-        if(props.children[key].educInfoId != null) {
-            if(props.children[key].proof) {
-                return (
-                    <tr key = {props.children.[key].educInfoId}>
-                        <td>{props.children[key].institutionSchool}</td>
-                        <td>{props.children[key].degreeType}</td>
-                        <td>{props.children[key].degreeCert}</td>
-                        <td>{props.children[key].majorSpecialization}</td>
-                        <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}</td>
-                        <td>
-                            <div className = "btn-grp">
-                                <button
-                                    type="button"
-                                    className="btn btn-primary"
-                                    onClick = {() => {
-                                        let file = props.children[key].proof
-                                        downloadProof(file)
-                                    }}
-                                >
-                                    Download
-                                </button>
-                                <a
-                                    className ="btn btn-info"
-                                    href={"http://localhost:3001/" + props.children[key].proof}
-                                    style = {{ color: 'white' }}
-                                    target="_blank">
-                                    Preview
-                                </a>
-                            </div>
-                        </td>
-                        <td>{props.children[key].status}</td>
-                        <td>
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
-                                    setEdit(props.children.[key].educInfoId)
-                                    setKey(editEduc)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation" onClick={() => {
-                                    setDelete(props.children.[key].educInfoId)
-                                }}>Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                );
-            } else {
-                return (
-                    <tr key = {props.children.[key].educInfoId} >
-                        <td>{props.children[key].institutionSchool}</td>
-                        <td>{props.children[key].degreeType}</td>
-                        <td>{props.children[key].degreeCert}</td>
-                        <td>{props.children[key].majorSpecialization}</td>
-                        <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}</td>
-                        <td>None</td>
-                        <td>{props.children[key].status}</td>
-                        <td>
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
-                                    setEdit(props.children.[key].educInfoId)
-                                    setKey(editEduc)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation" onClick={() => {
-                                    setDelete(props.children.[key].educInfoId)
-                                }}>Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                );
-            }
+        if(props.children[key].proof) {
+            return (
+                <tr key = {props.children.[key].educInfoId}>
+                    <td>{props.children[key].institutionSchool}</td>
+                    <td>{props.children[key].degreeType}</td>
+                    <td>{props.children[key].degreeCert}</td>
+                    <td>{props.children[key].majorSpecialization}</td>
+                    <td>{props.children[key].startDate}</td>
+                    <td>{props.children[key].endDate}</td>
+                    <td>
+                        <div className = "btn-grp">
+                            <button
+                                type="button"
+                                className="btn btn-primary"
+                                onClick = {() => {
+                                    let file = props.children[key].proof
+                                    downloadProof(file, props.token)
+                                }}
+                            >
+                                Download
+                            </button>
+                            <a
+                                className ="btn btn-info"
+                                href={"http://localhost:3001/" + props.children[key].proof}
+                                style = {{ color: 'white' }}
+                                target="_blank">
+                                Preview
+                            </a>
+                        </div>
+                    </td>
+                    <td>{props.children[key].status}</td>
+                    <td>
+                        <div className = "btn-grp">
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
+                                setEdit(props.children.[key].educInfoId)
+                                setKey(editEduc)
+                            }}>Edit</a>
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation" onClick={() => {
+                                setDelete(props.children.[key].educInfoId)
+                            }}>Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            );
+        } else {
+            return (
+                <tr key = {props.children.[key].educInfoId} >
+                    <td>{props.children[key].institutionSchool}</td>
+                    <td>{props.children[key].degreeType}</td>
+                    <td>{props.children[key].degreeCert}</td>
+                    <td>{props.children[key].majorSpecialization}</td>
+                    <td>{props.children[key].startDate}</td>
+                    <td>{props.children[key].endDate}</td>
+                    <td>None</td>
+                    <td>{props.children[key].status}</td>
+                    <td>
+                        <div className = "btn-grp">
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
+                                setEdit(props.children.[key].educInfoId)
+                                setKey(editEduc)
+                            }}>Edit</a>
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation" onClick={() => {
+                                setDelete(props.children.[key].educInfoId)
+                            }}>Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            );
         }
     });
 
@@ -150,72 +149,84 @@ function Education(props) {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div className="modal-body">
-                        <form id = "editEducForm">
-                            <hr />
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "SchoolEducationHistoryUpdate"> School/Institution </label>
-                                    <input className = "form-control" type = "text" name = "SchoolEducationHistoryUpdate" placeholder = "Input school" value = { currData.institutionSchool } onChange = {(e) => handleInputChange("institutionSchool", e)} required />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree Type </label>
-                                    <select className = "form-control" name = "DegreeTypeEducationalHistoryUpdate" value = { currData.degreeType } onChange = {(e) => handleInputChange("degreeType", e)} >
-                                        <option value = "AA">AA</option>
-                                        <option value = "AS">AS</option>
-                                        <option value = "BA">BA</option>
-                                        <option value = "BS">BS</option>
-                                        <option value = "MA">MA</option>
-                                        <option value = "MS">MS</option>
-                                        <option value = "MD">MD</option>
-                                        <option value = "PhD">PhD</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree/Certification </label>
-                                    <input className = "form-control" type = "text" name = "DegreeEducationalHistoryUpdate" placeholder = "Input degree" value = { currData.degreeCert} onChange = {(e) => handleInputChange("degreeCert", e)} />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "MajorEducationalHistoryUpdate"> Major/Specialization </label>
-                                    <input className = "form-control" type = "text" name = "MajorEducationalHistoryUpdate" placeholder = "Input major" value = { currData.majorSpecialization } onChange = {(e) => handleInputChange("majorSpecialization", e)} />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "StartDateEducationalHistoryUpdate"> Start Date </label>
-                                    <input className = "form-control" type = "date" name = "StartDateEducationalHistoryUpdate" value = { currData.startDate } onChange = {(e) => handleInputChange("startDate", e)} required />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "EndDateEducationalHistoryUpdate"> End Date </label>
-                                    <input className = "form-control" type = "date" name = "EndDateEducationalHistoryUpdate" value = { currData.endDate } onChange = {(e) => handleInputChange("endDate", e)} />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "StartDateEducationalHistoryUpdate"> Add/Edit Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "proof" onChange = {(e) => handleInputChange("proof", e)} />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary" data-dismiss="modal" onClick = {() => {
-                            // let form = document.getElementById('editEducForm')
-                            // let formData = new FormData(form)
-                            // formData.append('educInfoId', currData.educInfoId)
-                            updateEducation(currData, props.token)
+                    <Formik
+                        enableReinitialize
+                        initialValues={currData}
+                        onSubmit={async (values, {resetForm}) => {
+                            let form = document.getElementById('editEducForm')
+                            let formData = new FormData(form)
+                            formData.append('educInfoId', currData.educInfoId)
+                            console.log('test')
+                            await updateEducation(formData, props.token)
+                            // resetForm()
                             Router.push('/faculty/basic-info#educ', '/')
-                        }}>Save changes</button>
-                    </div>
+                        }}
+                    >
+                    {({ values, errors, touched, isSubmitting }) => (
+                        <Form id = "editEducForm">
+                            <div className="modal-body">
+                                {/*form id = "editEducForm">*/}
+                                    <hr />
+                                    <div className = "form-row">
+                                        <div className = "form-group">
+                                            <label htmlFor = "SchoolEducationHistoryUpdate"> School/Institution </label>
+                                            <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" required />
+                                        </div>
+                                    </div>
+                                    <div className = "form-row">
+                                        <div className = "form-group">
+                                            <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree Type </label>
+                                            <Field as = "select" className = "form-control" name = "degreeType" id = "degreeType" >
+                                                <option value = "AA">AA</option>
+                                                <option value = "AS">AS</option>
+                                                <option value = "BA">BA</option>
+                                                <option value = "BS">BS</option>
+                                                <option value = "MA">MA</option>
+                                                <option value = "MS">MS</option>
+                                                <option value = "MD">MD</option>
+                                                <option value = "PhD">PhD</option>
+                                            </Field>
+                                        </div>
+                                    </div>
+                                    <div className = "form-row">
+                                        <div className = "form-group">
+                                            <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree/Certification </label>
+                                            <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
+                                        </div>
+                                    </div>
+                                    <div className = "form-row">
+                                        <div className = "form-group">
+                                            <label htmlFor = "MajorEducationalHistoryUpdate"> Major/Specialization </label>
+                                            <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
+                                        </div>
+                                    </div>
+                                    <div className = "form-row">
+                                        <div className = "form-group">
+                                            <label htmlFor = "StartDateEducationalHistoryUpdate"> Start Date </label>
+                                            <Field className = "form-control" type = "date" name = "startDate" id = "startDate" required />
+                                        </div>
+                                    </div>
+                                    <div className = "form-row">
+                                        <div className = "form-group">
+                                            <label htmlFor = "EndDateEducationalHistoryUpdate"> End Date </label>
+                                            <Field className = "form-control" type = "date" name = "endDate" />
+                                        </div>
+                                    </div>
+                                    <div className = "form-row">
+                                        <div className = "form-group">
+                                            <label htmlFor = "StartDateEducationalHistoryUpdate"> Add/Edit Proof </label>
+                                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
+                                        </div>
+                                    </div>
+                                {/*</form>*/}
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting}>Save changes</button>
+                            </div>
+                        </Form>
+                    )}
+                    </Formik>
                     </div>
                 </div>
             </div>
