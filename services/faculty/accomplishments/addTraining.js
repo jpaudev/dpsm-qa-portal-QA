@@ -12,6 +12,9 @@ export default async function addTraining(formData, token) {
 				}
 				formData.append('facultyId', facultyId)
 				formData.append('status', 'Pending')
+				for (var value of formData.values()) {
+                    console.log(value)
+                }
 				const response = await axios({
 				    method: 'POST',
 				    url: 'http://localhost:3001/api/faculty/accomplishment/add/training-seminar',

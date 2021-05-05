@@ -3,6 +3,7 @@ import PublicServiceAccomplishmentForm from './public-service-accomplishment-for
 import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
 import React from 'react'
+import { Formik, Form, Field } from 'formik'
 
 import downloadProof from '../../../services/faculty/downloadProof'
 import deletePublicService from '../../../services/faculty/accomplishments/deletePublicService'
@@ -19,8 +20,7 @@ function PublicServiceAccomplishment(props){
         description: '',
         type: '',
         startDate: '',
-        endDate: '',
-        proof: ''
+        endDate: ''
     })
     let upm = null
     let pro = null
@@ -321,14 +321,10 @@ function PublicServiceAccomplishment(props){
         });
     }
 
-    function handleInputChange(id, event) {
-        setData({...currData, [id]: event.target.value});
-    }
-
 	return(
 	<div>
 		<h2 align = "center"> Public Service Accomplishments </h2>
-        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
+        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
 		<div>
 		<h5 align = "center">Within UP Manila </h5>
             <table className = "table table-striped table-sm">
@@ -414,54 +410,66 @@ function PublicServiceAccomplishment(props){
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div className="modal-body">
-                        <form>
-                            <hr />
-                            <div className = "form-row">
-                        	<div className = "form-group">
+                    <Formik
+                        enableReinitialize
+                        initialValues={currData}
+                        onSubmit={async (values) => {
+                            let form = document.getElementById('editPSForm')
+                            let formData = new FormData(form)
+                            formData.append('publicServiceId', currData.publicServiceId)
+                            formData.append('type', currData.type)
+                            await updatePublicService(formData, props.token)
+                            Router.reload()
+                        }}
+                    >
+                    {({ values, errors, touched, isSubmitting }) => (
+                        <Form id = "editPSForm">
+                            <div className="modal-body">
+                                <hr />
+                                <div className = "form-row">
+                            	<div className = "form-group">
                             		<label htmlFor = "PublicServicePositionUpdate"> Position/Role </label>
-                            		<input className = "form-control" type = "text" name = "PublicServicePositionUpdate" defaultValue = { currData.position } onChange = {(e) => handleInputChange("position", e)} placeholder = "Input position/role" />
-                        	</div>
-                    	    </div>
-                            <div className = "form-row">
-                        	<div className = "form-group">
+                            		<Field className = "form-control" type = "text" name = "position" id = "position" placeholder = "Input position/role" />
+                            	</div>
+                        	    </div>
+                                <div className = "form-row">
+                            	<div className = "form-group">
                             		<label htmlFor = "PublicServiceOrganizationUpdate"> Organization </label>
-                            		<input className = "form-control" type = "text" name = "PublicServiceOrganizationUpdate" defaultValue = { currData.organization } onChange = {(e) => handleInputChange("organization", e)} placeholder = "Input organization" />
-                       		</div>
-                    	    </div>
-                            <div className = "form-row">
-                        	<div className = "form-group">
+                            		<Field className = "form-control" type = "text" name = "organization" id = "organization" placeholder = "Input organization" />
+                           		</div>
+                        	    </div>
+                                <div className = "form-row">
+                            	<div className = "form-group">
                             		<label htmlFor = "PublicServiceAccomplishmentStartDateUpdate"> Start Date </label>
-                            		<input type = "date" className = "form-control" name = "PublicServiceAccomplishmentStartDateUpdate" defaultValue = { currData.startDate } onChange = {(e) => handleInputChange("startDate", e)} />
-                        	</div>
-                    	    </div>
-                            <div className = "form-row">
-                        	<div className = "form-group">
+                            		<Field type = "date" className = "form-control" name = "startDate" id = "startDate" />
+                            	</div>
+                        	    </div>
+                                <div className = "form-row">
+                            	<div className = "form-group">
                             		<label htmlFor = "PublicServiceAccomplishmentEndDateUpdate"> End Date </label>
-                            		<input type = "date" className = "form-control" name = "PublicServiceAccomplishmentEndDateUpdate" defaultValue = { currData.endDate } onChange = {(e) => handleInputChange("endDate", e)} />
-                        	</div>
-                    	    </div>
-                            <div className = "form-row">
-                        	<div className = "form-group col-md-12">
+                            		<Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
+                            	</div>
+                        	    </div>
+                                <div className = "form-row">
+                            	<div className = "form-group col-md-12">
                             		<label htmlFor = "PublicServiceAccomplishmentDescriptionUpdate"> Description </label>
-                            		<input className = "form-control" type = "text" name = "PublicServiceAccomplishmentDescriptionUpdate" defaultValue = { currData.description } onChange = {(e) => handleInputChange("description", e)} placeholder = "Input description" />
-                        	</div>
-                    	    </div>
-                            <div className = "form-row">
-                        	<div className = "form-group">
+                            		<Field className = "form-control" type = "text" name = "description" id = "description" placeholder = "Input description" />
+                            	</div>
+                        	    </div>
+                                <div className = "form-row">
+                            	<div className = "form-group">
                             		<label htmlFor = "PublicServiceAccomplishmentProofUpdate"> Proof </label>
-                            		<input type = "file" className = "form-control-file" name = "PublicServiceAccomplishmentProofUpdate" defaultValue = { currData.proof } onChange = {(e) => handleInputChange("proof", e)} />
-                        	</div>
-                    	    </div>
-                        </form>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary" data-dismiss="modal" onClick = {() => {
-                            updatePublicService(currData, props.token)
-                            Router.push('/faculty/accomplishment#public-service-accomplishment', '/')
-                        }}>Save changes</button>
-                    </div>
+                            		<Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
+                            	</div>
+                        	    </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting}>Save changes</button>
+                            </div>
+                        </Form>
+                    )}
+                    </Formik>
                     </div>
                 </div>
             </div>

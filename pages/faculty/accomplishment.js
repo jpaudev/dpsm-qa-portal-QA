@@ -24,27 +24,27 @@ function Accomplishments(props) {
 		<br />
         <div className="tab-content" id="nav-tabContent">
     	    <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
-                <PublicServiceAccomplishment token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
                     { props.publicService }
                 </PublicServiceAccomplishment>
             </div>
     	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                <Publication token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} name={name}>
+                <Publication name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
                     { props.publications }
                 </Publication>
             </div>
     	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
-                <TrainingSeminar token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} name={name}>
+                <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
                     { props.trainingSeminar }
                 </TrainingSeminar>
             </div>
     	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">
-                <LicensureExam token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} name={name}>
+                <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
                     { props.licensureExam }
                 </LicensureExam>
             </div>
     	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                <ResearchGrant token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} name={name}>
+                <ResearchGrant name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
                     { props.researchGrant }
                 </ResearchGrant>
             </div>
@@ -73,7 +73,6 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
         }
     } 
     let data = jwt.decode(token.user)
-
     let facultyId = data.facultyId
 
     let url = 'http://localhost:3001/api/faculty/accomplishment/' + facultyId;
@@ -91,6 +90,7 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
 
     const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
+    let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName + ' ' + personalInfo.result.middleName + ' ' + personalInfo.result.suffix
 
     const psa = await fetch(url + '/public-service', header)
     const publicService = await psa.json()
@@ -110,6 +110,7 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
     return {
         token: token && token,
         data: data,
+        name,
         unit,
         position,
         employmentType,

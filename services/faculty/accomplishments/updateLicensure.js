@@ -1,12 +1,12 @@
 import axios from "axios"
 import jwt from 'jsonwebtoken'
 
-export default async function updateEducation(formData, token) {
+export default async function updateLicensure(formData, token) {
 	let cookieData = jwt.decode(token)
     let facultyId = cookieData.facultyId
 	try {
 	    if (token) {
-	        let url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
+	        let url = 'http://localhost:3001/api/faculty/accomplishment/' + facultyId;
 		    let header = {
 		        headers: {
 		            'Authorization': 'Bearer ' + token
@@ -20,7 +20,7 @@ export default async function updateEducation(formData, token) {
             }
 		    const response = await axios({
 			    method: 'PUT',
-			    url: url + '/education',
+			    url: url + '/licensure-exam',
 			    data: formData,
 			    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 		    })	

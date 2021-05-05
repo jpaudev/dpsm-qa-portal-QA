@@ -1,35 +1,31 @@
 import axios from "axios"
+import jwt from 'jsonwebtoken'
 
-export default async function addLicensure(data) {
+export default async function addLicensure(formData, token) {
+	let cookieData = jwt.decode(token)
+    let facultyId = cookieData.facultyId
 	try {
-		let token = null
-		const tokenRes = await axios.post("http://localhost:3001/api/login", {
-			upemail: "jpcristobal1@upm.edu.ph",
-			password: "password"
-		})
-
-		if(tokenRes.data.success) {
-			token = tokenRes.data.result.token
+		if (token) {
 			try {
-				const response = await axios.post("http://localhost:3001/api/faculty/accomplishment/add/licensure-exam",{
-					facultyId: "9",
-					examName: `${data.examName}`,
-		            examDate: `${data.examDate}`,
-		            licenseNumber: `${data.licenseNumber}`,
-		            rank: `${data.rank}`,
-		            proof: `${data.proof}`
-				}, {
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				})
-				if (response.data.success) {
-					console.log(response.data)
-					return response.data
-				} else {
-					console.error(response.message)
-					return response.data
-				}	
+				formData.append('facultyId', facultyId)
+				formData.append('status', 'Pending')
+				for (var value of formData.values()) {
+                    console.log(value)
+                }
+				const response = await axios({
+				    method: 'POST',
+				    url: 'http://localhost:3001/api/faculty/accomplishment/add/licensure-exam',
+				    data: formData,
+				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
+			    })	
+			    .then(function (response) {
+			        //handle success
+			        console.log(response);
+			    })
+			    .catch(function (response) {
+			        //handle error
+			        console.log(response);
+			    });
 			} catch (err) {
 				console.error(err)
 				return err

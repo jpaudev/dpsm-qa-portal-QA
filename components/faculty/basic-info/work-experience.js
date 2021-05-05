@@ -9,8 +9,8 @@ import updateWorkExp from '../../../services/faculty/basic-info/updateWorkExp'
 import deleteWorkExp from '../../../services/faculty/basic-info/deleteWorkExp'
 
 function WorkExperience(props){
-    const name = props.children[props.children.length-1].lastName + ', ' + props.children[props.children.length-1].firstName + ' ' + props.children[props.children.length-1].middleName
-    const len = props.children.length - 2;
+    const name = props.name
+    const len = props.children.length - 1;
     let deleteWork = 0
     let editWork = 0
     const [currData, setData] = React.useState({
@@ -139,7 +139,7 @@ function WorkExperience(props){
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" className="btn btn-primary" data-dismiss="modal" onClick = {() => {
                             updateWorkExp(currData, props.token)
-                            Router.push('/faculty/basic-info#work-exp', '/')
+                            Router.push('/faculty/basic-info#work-exp', '/') 
                         }}>Save changes</button>
                     </div>
                     </div>

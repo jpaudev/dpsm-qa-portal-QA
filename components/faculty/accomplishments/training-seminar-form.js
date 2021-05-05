@@ -74,8 +74,8 @@ class TrainingSeminarForm extends React.Component{
                     let form = document.getElementById('tsForm')
                     let formData = new FormData(form)
                     await addTraining(formData, this.props.token)
-                    resetForm()
-                    Router.push('/faculty/accomplishment#training-seminar', '/')
+                    // resetForm()
+                    // Router.push('/faculty/accomplishment#training-seminar', '/')
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (
@@ -93,31 +93,31 @@ class TrainingSeminarForm extends React.Component{
                         <div className = "form-row">
                             <div className = "form-group col-md-3">
                                 <label htmlFor = "TrainingSeminar[]"> Name of Training/Seminar </label>
-                                <Field className = "form-control" type = "text" name = "title" placeholder = "Input training/seminar" />
+                                <Field className = "form-control" type = "text" name = "title" id = "title" placeholder = "Input training/seminar" />
                             </div>
                             <div className = "form-group col-md-3">
                                 <label htmlFor = "TrainingSeminarRole[]"> Role</label>
-                                <Field className = "form-control" type = "text" name = "role" placeholder = "Input training/seminar" />
+                                <Field className = "form-control" type = "text" name = "role" id = "role" placeholder = "Input training/seminar" />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "TrainingSeminarVenue[]"> Venue </label>
-                                <Field className = "form-control" type = "text" name = "venue" placeholder = "Input venue" />
+                                <Field className = "form-control" type = "text" name = "venue" id = "venue" placeholder = "Input venue" />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "TrainingSeminarStartDate[]"> Start Date </label>
-                                <Field type = "date" className = "form-control" name = "dateFrom" />
+                                <Field type = "date" className = "form-control" name = "dateFrom" id = "dateFrom" />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "TrainingSeminarEndDate[]"> End Date </label>
-                                <Field type = "date" className = "form-control" name = "dateTo" />
+                                <Field type = "date" className = "form-control" name = "dateTo" id = "dateTo" />
                             </div>
                             <div className = "form-group col-md-8">
                                 <label htmlFor = "TrainingSeminarRemarks[]"> Remarks </label>
-                                <Field className = "form-control" type = "text" name = "remarks" placeholder = "Input remarks" />
+                                <Field className = "form-control" type = "text" name = "remarks" id = "remarks" placeholder = "Input remarks" />
                             </div>
                             <div className = "form-group col-md-4">
                                 <label htmlFor = "TrainingSeminarProof[]"> Proof </label>
-                                <Field type = "file" className = "form-control-file" name = "proof" />
+                                <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
                             </div>
                         </div>
                         <div id = "TrainingSeminar">

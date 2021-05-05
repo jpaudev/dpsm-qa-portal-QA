@@ -3,6 +3,7 @@ import TrainingSeminarForm from './training-seminar-form'
 import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
 import React from 'react'
+import { Formik, Form, Field } from 'formik'
 
 import downloadProof from '../../../services/faculty/downloadProof'
 import deleteTraining from '../../../services/faculty/accomplishments/deleteTraining'
@@ -26,6 +27,7 @@ function TrainingSeminar(props) {
     if(props.children != null) {
         content = Object.keys(props.children).map(key => {
             if(props.children[key].tsId != null) {
+                if(props.children[key].proof) {
                 return (
                     <tr key = {props.children[key].tsId}>
                         <td>{props.children[key].title}</td>
@@ -33,7 +35,7 @@ function TrainingSeminar(props) {
                         <td>{props.children[key].venue}</td>
                         <td>{props.children[key].dateFrom}</td>
                         <td>{props.children[key].dateTo}</td>
-                        <td></td>
+                        <td>{props.children[key].remarks}</td>
                         <td>
                             <button
                                 type="button"
@@ -67,6 +69,31 @@ function TrainingSeminar(props) {
                         </td>
                     </tr>
                 );
+            } else {
+                return (
+                    <tr key = {props.children[key].tsId}>
+                        <td>{props.children[key].title}</td>
+                        <td>{props.children[key].role}</td>
+                        <td>{props.children[key].venue}</td>
+                        <td>{props.children[key].dateFrom}</td>
+                        <td>{props.children[key].dateTo}</td>
+                        <td>{props.children[key].remarks}</td>
+                        <td>None</td>
+                        <td>{props.children[key].status}</td>
+                        <td>
+                            <div className = "btn-group">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
+                                        setEdit(props.children.[key].tsId)
+                                        setKey(editTS)
+                                    }}>Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar" onClick={() => {
+                                    setDelete(props.children.[key].tsId)
+                                }}>Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                );
+            }
             }
         });
     }
@@ -87,14 +114,10 @@ function TrainingSeminar(props) {
         });
     }
 
-    function handleInputChange(id, event) {
-        setData({...currData, [id]: event.target.value});
-    }
-
     return (
         <div>
             <h2 align = "center"> Training/Seminars </h2>
-            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
+            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -127,60 +150,72 @@ function TrainingSeminar(props) {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div className="modal-body">
-                        <form>
-                            <hr />
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "TrainingSeminarUpdate"> Name of Training/Seminar </label>
-                                    <input className = "form-control" type = "text" name = "TrainingSeminarUpdate" defaultValue = { currData.title } onChange = {(e) => handleInputChange("title", e)} placeholder = "Input training/seminar" />
+                    <Formik
+                        enableReinitialize
+                        initialValues={currData}
+                        onSubmit={async (values) => {
+                            let form = document.getElementById('editTSForm')
+                            let formData = new FormData(form)
+                            formData.append('tsId', currData.tsId)
+                            await updateTraining(formData, props.token)
+                            Router.reload()
+                            // Router.push('/faculty/accomplishment#training-seminar', '/')
+                        }}
+                    >
+                    {({ values, errors, touched, isSubmitting }) => (
+                        <Form id = "editTSForm">
+                            <div className="modal-body">
+                                <hr />
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "TrainingSeminarUpdate"> Name of Training/Seminar </label>
+                                        <Field className = "form-control" type = "text" name = "title" id = "title" placeholder = "Input training/seminar" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "TrainingSeminarRoleUpdate"> Role </label>
+                                        <Field className = "form-control" type = "text" name = "role" id = "role" placeholder = "Input role" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "TrainingSeminarVenueUpdate"> Venue </label>
+                                        <Field className = "form-control" type = "text" name = "venue" id = "venue" placeholder = "Input venue" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "TrainingSeminarStartDateUpdate"> Start Date </label>
+                                        <Field type = "date" className = "form-control" name = "dateFrom" id = "dateFrom" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "TrainingSeminarEndDateUpdate"> End Date </label>
+                                        <Field type = "date" className = "form-control" name = "dateTo" id = "dateTo" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "TrainingSeminarVenueUpdate"> Remarks </label>
+                                        <Field className = "form-control" type = "text" name = "remarks" id = "remarks" placeholder = "Input remarks" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "TrainingSeminarProofUpdate"> Proof </label>
+                                        <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
+                                    </div>
                                 </div>
                             </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "TrainingSeminarRoleUpdate"> Role </label>
-                                    <input className = "form-control" type = "text" name = "TrainingSeminarRoleUpdate" defaultValue = { currData.role } onChange = {(e) => handleInputChange("role", e)} placeholder = "Input role" />
-                                </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting}>Save changes</button>
                             </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "TrainingSeminarVenueUpdate"> Venue </label>
-                                    <input className = "form-control" type = "text" name = "TrainingSeminarVenueUpdate" defaultValue = { currData.venue } onChange = {(e) => handleInputChange("venue", e)} placeholder = "Input venue" />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "TrainingSeminarStartDateUpdate"> Start Date </label>
-                                    <input type = "date" className = "form-control" name = "TrainingSeminarStartDateUpdate" defaultValue = { currData.dateFrom } onChange = {(e) => handleInputChange("dateFrom", e)} />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "TrainingSeminarEndDateUpdate"> End Date </label>
-                                    <input type = "date" className = "form-control" name = "TrainingSeminarEndDateUpdate" defaultValue = { currData.dateTo } onChange = {(e) => handleInputChange("dateTo", e)} />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "TrainingSeminarVenueUpdate"> Remarks </label>
-                                    <input className = "form-control" type = "text" name = "TrainingSeminarRemarksUpdate" defaultValue = { currData.remarks } onChange = {(e) => handleInputChange("remarks", e)} placeholder = "Input remarks" />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "TrainingSeminarProofUpdate"> Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "TrainingSeminarProofUpdate" defaultValue = { currData.proof } onChange = {(e) => handleInputChange("proof", e)} />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary" data-dismiss="modal" onClick = {() => {
-                            updateTraining(currData, props.token)
-                            Router.push('/faculty/accomplishment#public-service-accomplishment', '/')
-                        }}>Save changes</button>
-                    </div>
+                        </Form>
+                    )}
+                    </Formik>
                     </div>
                 </div>
             </div>
