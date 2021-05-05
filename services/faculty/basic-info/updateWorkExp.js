@@ -12,15 +12,27 @@ export default async function updateWorkExp(data, token) {
 		            'Authorization': 'Bearer ' + token
 		        }
 		    }
-	        try {
-				const response = await axios.put(url + "/work-exp", {
-					workExpId: `${data.workExpId}`,
+		    let bod = null
+		    if(`${data.endDate}` == "") {
+		    	bod = {
+		    		workExpId: `${data.workExpId}`,
+					employerName: `${data.employerName}`,
+					position: `${data.position}`,
+					startDate: `${data.startDate}`,
+					description: `${data.description}`
+		    	}
+		    } else {
+		    	bod = {
+		    		workExpId: `${data.workExpId}`,
 					employerName: `${data.employerName}`,
 					position: `${data.position}`,
 					startDate: `${data.startDate}`,
 					endDate: `${data.endDate}`,
-					description: `${data.description}`,
-				}, {
+					description: `${data.description}`
+		    	}
+		    }
+	        try { 
+				const response = await axios.put(url + "/work-exp", bod, {
 					headers: {
 						Authorization: `Bearer ${token}`
 					}
