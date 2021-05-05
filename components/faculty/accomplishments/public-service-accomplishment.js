@@ -413,7 +413,6 @@ function PublicServiceAccomplishment(props){
                             formData.append('type', currData.type)
                             await updatePublicService(formData, props.token)
                             Router.reload()
-                            // Router.push('/faculty/accomplishment#public-service-accomplishment', '/')
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
