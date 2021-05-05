@@ -43,20 +43,40 @@ function PersonalInfo(props) {
             </div>
         );
     });
+    let res
+    
     return (
         <div>
         <h2 align = "center"> Personal Information </h2>
         <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
-		<h6>Required</h6>
 		<Formik
             initialValues={FacultyDetails}
             onSubmit={async (values, token) => {
-                await updateFaculty(values, props.token)
+                let alert = document.getElementById("alert")
+
+                res = await updateFaculty(values, props.token)
+                if(res.success == true) { 
+                    alert.className ="alert alert-success"
+                    values.message = res.message
+                } else {
+                    alert.className = "alert alert-danger"
+                    if(res.error) values.message = res.error[0].message
+                    else values.message = res.message
+                }
+                
+                alert.setAttribute("style", "visibility: visible");
+                $("#alert").fadeTo(5000, 500).slideUp(500, function(){
+                    $("#alert").slideUp(500);
+                });
                 Router.push('/faculty/basic-info')
             }}
         >
             {({ values, errors, touched, isSubmitting }) => (
                 <Form>
+                    <div role="alert" id="alert">
+                        {values.message}
+                    </div>
+                    <h6>Required</h6>
                     <br />
                     <div className = "form-row">
                         <div className = "form-group col-md-3 required">
@@ -165,6 +185,9 @@ function PersonalInfo(props) {
             h6:before{
                 content: "* ";
                 color: #f00;
+            }
+            #alert {
+                visibility: hidden;
             }
         `}</style>
         </div>     

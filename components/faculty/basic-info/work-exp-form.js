@@ -67,9 +67,23 @@ class WorkExpForm extends React.Component{
 			<Formik
 				initialValues={WorkDetails}
 				onSubmit={async (values, {resetForm}) => {
-					await addWorkExp(values, this.props.token)
+					let alert = document.getElementById("workexpalert")
+					let res = await addWorkExp(values, this.props.token)
+					if(res.success == true) { 
+						alert.className ="alert alert-success"
+						alert.style = "visibility: visible"
+						alert.innerHTML = res.message
+					} else {
+						alert.className = "alert alert-danger"
+						if(res.error) alert.innerHTML = res.error[0].message
+						else alert.innerHTML = res.message
+					}
+					$("#workexpalert").fadeTo(5000, 500).slideUp(500, function(){
+						$("#workexpalert").slideUp(500);
+					});
+					
 					resetForm()
-					Router.push('/faculty/basic-info#work-exp', '/')
+					Router.push('/faculty/basic-info', '/faculty/basic-info')
 				}}
 			>
 				{({ values, errors, touched, isSubmitting }) => (
