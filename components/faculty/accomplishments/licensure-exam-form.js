@@ -1,11 +1,12 @@
 import React from 'react'
 import { Formik, Form, Field } from "formik"
+import Router from 'next/router'
 
 import addLicensure from '../../../services/faculty/accomplishments/addLicensure'
 
 class LicensureExamForm extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			duplicateForms: []
 		}
@@ -60,10 +61,16 @@ class LicensureExamForm extends React.Component{
 		return(
             <Formik
                 initialValues={LicensureDetails}
-                onSubmit={async (values) => {await addLicensure(values)}}
+                onSubmit={async (values, {resetForm}) => {
+                    let form = document.getElementById('licenseForm')
+                    let formData = new FormData(form)
+                    await addLicensure(formData, this.props.token)
+                    resetForm()
+                    Router.push('/faculty/accomplishment#licensure-exam', '/')
+                }}
             >
                 {({ values, errors, touched, isSubmitting }) => (
-                    <Form>
+                    <Form id = "licenseForm">
                         <hr />
                         <div className = "form-row">
                             <div className = "col-auto">
