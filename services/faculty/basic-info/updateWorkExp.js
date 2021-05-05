@@ -13,7 +13,7 @@ export default async function updateWorkExp(data, token) {
 		        }
 		    }
 		    let bod = null
-		    if(`${data.endDate}` == "") {
+		    if(data.endDate == "" || data.endDate == null) {
 		    	bod = {
 		    		workExpId: `${data.workExpId}`,
 					employerName: `${data.employerName}`,
@@ -31,6 +31,7 @@ export default async function updateWorkExp(data, token) {
 					description: `${data.description}`
 		    	}
 		    }
+		    console.log(bod)
 	        try { 
 				const response = await axios.put(url + "/work-exp", bod, {
 					headers: {
