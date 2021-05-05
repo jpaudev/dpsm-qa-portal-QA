@@ -10,7 +10,6 @@ import deleteEducation from '../../../services/faculty/basic-info/deleteEducatio
 import updateEducation from '../../../services/faculty/basic-info/updateEducation'
 
 function Education(props) {
-    const name = props.name
     let deleteEduc = 0
     let editEduc = 0
     const [currData, setData] = React.useState({
@@ -110,14 +109,10 @@ function Education(props) {
         });
     }
 
-    function handleInputChange(id, event) {
-        setData({...currData, [id]: event.target.value});
-    }
-
     return (
         <div>
         <h2 align = "center"> Educational History </h2>
-        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
+        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -152,73 +147,69 @@ function Education(props) {
                     <Formik
                         enableReinitialize
                         initialValues={currData}
-                        onSubmit={async (values, {resetForm}) => {
+                        onSubmit={async (values) => {
                             let form = document.getElementById('editEducForm')
                             let formData = new FormData(form)
                             formData.append('educInfoId', currData.educInfoId)
-                            console.log('test')
                             await updateEducation(formData, props.token)
-                            // resetForm()
                             Router.push('/faculty/basic-info#educ', '/')
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editEducForm">
                             <div className="modal-body">
-                                {/*form id = "editEducForm">*/}
-                                    <hr />
-                                    <div className = "form-row">
-                                        <div className = "form-group">
-                                            <label htmlFor = "SchoolEducationHistoryUpdate"> School/Institution </label>
-                                            <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" required />
-                                        </div>
+                                <hr />
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "SchoolEducationHistoryUpdate"> School/Institution </label>
+                                        <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" required />
                                     </div>
-                                    <div className = "form-row">
-                                        <div className = "form-group">
-                                            <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree Type </label>
-                                            <Field as = "select" className = "form-control" name = "degreeType" id = "degreeType" >
-                                                <option value = "AA">AA</option>
-                                                <option value = "AS">AS</option>
-                                                <option value = "BA">BA</option>
-                                                <option value = "BS">BS</option>
-                                                <option value = "MA">MA</option>
-                                                <option value = "MS">MS</option>
-                                                <option value = "MD">MD</option>
-                                                <option value = "PhD">PhD</option>
-                                            </Field>
-                                        </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree Type </label>
+                                        <Field as = "select" className = "form-control" name = "degreeType" id = "degreeType" >
+                                            <option value = "AA">AA</option>
+                                            <option value = "AS">AS</option>
+                                            <option value = "BA">BA</option>
+                                            <option value = "BS">BS</option>
+                                            <option value = "MA">MA</option>
+                                            <option value = "MS">MS</option>
+                                            <option value = "MD">MD</option>
+                                            <option value = "PhD">PhD</option>
+                                        </Field>
                                     </div>
-                                    <div className = "form-row">
-                                        <div className = "form-group">
-                                            <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree/Certification </label>
-                                            <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
-                                        </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree/Certification </label>
+                                        <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
                                     </div>
-                                    <div className = "form-row">
-                                        <div className = "form-group">
-                                            <label htmlFor = "MajorEducationalHistoryUpdate"> Major/Specialization </label>
-                                            <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
-                                        </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "MajorEducationalHistoryUpdate"> Major/Specialization </label>
+                                        <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
                                     </div>
-                                    <div className = "form-row">
-                                        <div className = "form-group">
-                                            <label htmlFor = "StartDateEducationalHistoryUpdate"> Start Date </label>
-                                            <Field className = "form-control" type = "date" name = "startDate" id = "startDate" required />
-                                        </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "StartDateEducationalHistoryUpdate"> Start Date </label>
+                                        <Field className = "form-control" type = "date" name = "startDate" id = "startDate" required />
                                     </div>
-                                    <div className = "form-row">
-                                        <div className = "form-group">
-                                            <label htmlFor = "EndDateEducationalHistoryUpdate"> End Date </label>
-                                            <Field className = "form-control" type = "date" name = "endDate" />
-                                        </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "EndDateEducationalHistoryUpdate"> End Date </label>
+                                        <Field className = "form-control" type = "date" name = "endDate" id = "endDate" />
                                     </div>
-                                    <div className = "form-row">
-                                        <div className = "form-group">
-                                            <label htmlFor = "StartDateEducationalHistoryUpdate"> Add/Edit Proof </label>
-                                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
-                                        </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "StartDateEducationalHistoryUpdate"> Add/Edit Proof </label>
+                                        <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
                                     </div>
-                                {/*</form>*/}
+                                </div>
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>

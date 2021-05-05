@@ -13,8 +13,8 @@ export default async function updateEducation(formData, token) {
 		        }
 		    }
 		    if(formData.get('proof') == "") {
-					formData.delete('proof')
-				}
+				formData.delete('proof')
+			}
 		    for (var value of formData.values()) {
                 console.log(value)
             }
