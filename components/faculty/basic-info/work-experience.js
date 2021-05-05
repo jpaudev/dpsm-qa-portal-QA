@@ -137,9 +137,10 @@ function WorkExperience(props){
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary" data-dismiss="modal" onClick = {() => {
-                            updateWorkExp(currData, props.token)
-                            Router.push('/faculty/basic-info#work-exp', '/')
+                        <button type="button" className="btn btn-primary" onClick = {async () => {
+                            $('#editWorkExperience').modal('toggle');
+                            await updateWorkExp(currData, props.token)
+                            Router.push('/faculty/basic-info')
                         }}>Save changes</button>
                     </div>
                     </div>
@@ -161,9 +162,10 @@ function WorkExperience(props){
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {() => {
-                            deleteWorkExp(deleteWork, props.token)
-                            Router.push('/faculty/basic-info#work-exp', '/')
+                        <button type="button" className="btn btn-danger" onClick = {async () => {
+                            $('#deleteWorkExperience').modal('toggle');
+                            await deleteWorkExp(deleteWork, props.token)
+                            Router.push('/faculty/basic-info')
                         }}>Yes, delete</button>
                     </div>
                     </div>

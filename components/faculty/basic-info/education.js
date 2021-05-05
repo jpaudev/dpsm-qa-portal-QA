@@ -152,7 +152,7 @@ function Education(props) {
                             let formData = new FormData(form)
                             formData.append('educInfoId', currData.educInfoId)
                             await updateEducation(formData, props.token)
-                            Router.push('/faculty/basic-info#educ', '/')
+                            Router.push('/faculty/basic-info#educ', '/faculty/basic-info')
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
@@ -213,7 +213,9 @@ function Education(props) {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting}>Save changes</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                    $('#editEducation').modal('toggle');
+                                }}>Save changes</button>
                             </div>
                         </Form>
                     )}
@@ -237,9 +239,10 @@ function Education(props) {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {() => {
-                            deleteEducation(deleteEduc, props.token)
-                            Router.push('/faculty/basic-info#educ', '/')
+                        <button type="button" className="btn btn-danger" onClick = {async () => {
+                            $('#deleteEducation').modal('toggle');
+                            await deleteEducation(deleteEduc, props.token)
+                            Router.push('/faculty/basic-info', '/faculty/basic-info')
                         }}>Yes, delete</button>
                     </div>
                     </div>

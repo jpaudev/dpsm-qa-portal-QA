@@ -21,14 +21,18 @@ function Dashboard(props) {
 	}
 }
 
-Dashboard.getInitialProps = async ({ req, res }) => {
-    const token = parseCookies(req)
+export async function getServerSideProps(context) {
+    const token = parseCookies(context.req)
     let data
     let personalInfo
-    if (res) {
+    if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
-            res.writeHead(301, { Location: "/login" })
-            res.end()
+            return {
+                redirect: {
+                    destination: '/login',
+                    permanent: false,
+                },
+            }
         } else {
             data = jwt.decode(token.user)
         
@@ -46,9 +50,11 @@ Dashboard.getInitialProps = async ({ req, res }) => {
     } 
 
     return {
-        token: token && token,
-		data,
-		personalInfo: personalInfo.result
+        props: {
+            token: token && token,
+            data,
+            personalInfo: personalInfo.result
+        }
 	}
 }
   

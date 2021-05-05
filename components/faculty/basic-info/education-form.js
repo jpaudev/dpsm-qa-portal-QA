@@ -90,7 +90,7 @@ class EducationForm extends React.Component{
                     let formData = new FormData(form)
                     await addEducation(formData, this.props.token)
                     resetForm()
-                    Router.push('/faculty/basic-info#educ', '/')
+                    Router.push('/faculty/basic-info')
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (

@@ -52,7 +52,7 @@ function PersonalInfo(props) {
             initialValues={FacultyDetails}
             onSubmit={async (values, token) => {
                 await updateFaculty(values, props.token)
-                Router.reload()
+                Router.push('/faculty/basic-info')
             }}
         >
             {({ values, errors, touched, isSubmitting }) => (
