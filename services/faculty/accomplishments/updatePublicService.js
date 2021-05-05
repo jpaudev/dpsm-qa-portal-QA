@@ -1,7 +1,7 @@
 import axios from "axios"
 import jwt from 'jsonwebtoken'
 
-export default async function updateFaculty(data, token) {
+export default async function updatePublicService(formData, token) {
 	let cookieData = jwt.decode(token)
     let facultyId = cookieData.facultyId
 	try {
@@ -12,62 +12,26 @@ export default async function updateFaculty(data, token) {
 		            'Authorization': 'Bearer ' + token
 		        }
 		    }
-
-		    if (`${data.proof}` != null) {
-		    	try {
-		    		const response = await axios.put(url + "/public-service", {
-						publicServiceId: `${data.publicServiceId}`,
-						type: `${data.type}`,
-						position: `${data.position}`,
-						organization: `${data.organization}`,
-						description: `${data.description}`,
-						startDate: `${data.startDate}`,
-						endDate: `${data.endDate}`,
-						proof: `${data.proof}`,
-					}, {
-						headers: {
-							Authorization: `Bearer ${token}`
-						}
-					})	
-					if (response.data.success) {
-						console.log(response.data)
-						return response.data
-					} else {
-						console.error(response.message)
-						return response.data
-					}	
-		    	} catch (err) {
-					console.error(err)
-					return err
-				}
-		    } else {
-		    	try {
-		    		const response = await axios.put(url + "/public-service", {
-						publicServiceId: `${data.publicServiceId}`,
-						type: `${data.type}`,
-						position: `${data.position}`,
-						organization: `${data.organization}`,
-						description: `${data.description}`,
-						startDate: `${data.startDate}`,
-						endDate: `${data.endDate}`,
-						endDate: `${data.endDate}`,
-					}, {
-						headers: {
-							Authorization: `Bearer ${token}`
-						}
-					})	
-					if (response.data.success) {
-						console.log(response.data)
-						return response.data
-					} else {
-						console.error(response.message)
-						return response.data
-					}	
-		    	} catch (err) {
-					console.error(err)
-					return err
-				}
-		    }
+		    if(formData.get('proof') == "") {
+				formData.delete('proof')
+			}
+		    for (var value of formData.values()) {
+                console.log(value)
+            }
+		    const response = await axios({
+			    method: 'PUT',
+			    url: url + '/public-service',
+			    data: formData,
+			    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
+		    })	
+		    .then(function (response) {
+		        //handle success
+		        console.log(response);
+		    })
+		    .catch(function (response) {
+		        //handle error
+		        console.log(response);
+		    });
 	    } else {
 	        console.log(access.result.message)
 		}
