@@ -13,29 +13,43 @@ function Home(props) {
     )
   }
 
-  Home.getInitialProps = async ({ req, res }) => {
-    const data = parseCookies(req)
+  export async function getServerSideProps(context) {
+    const data = parseCookies(context.req)
   
-  if (res) {
+    if (context.res) {
       if (Object.keys(data).length === 0 && data.constructor === Object) {
-        res.writeHead(301, { Location: "/login" })
-        res.end()
+        return {
+          redirect: {
+              destination: '/login',
+              permanent: false,
+          },
+        }
       } else {
         let token = jwt.decode(data.user)
         let role = token.role
         
         if(role == 1) { // faculty 
-          res.writeHead(301, { Location: "/faculty/basic-info" })
-          res.end()
+          return {
+            redirect: {
+                destination: '/faculty/basic-info',
+                permanent: false,
+            },
+          }
         } else if (role == 2 || role == 3) { // unit head or dept. chair
-          res.writeHead(301, { Location: "/faculty" })
-          res.end()
+          return {
+            redirect: {
+                destination: '/faculty',
+                permanent: false,
+            },
+          }
         }
       }
     }
   
     return {
-      data: data && data,
+      props: {
+        data: data && data
+      }
     }
   }
   

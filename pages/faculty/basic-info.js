@@ -6,14 +6,14 @@ import WorkExperience from '../../components/faculty/basic-info/work-experience'
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
 
-function BasicInfo(props) {
+function BasicInfo(props) { 
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName}>
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.name}>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-                <a className="nav-item nav-link active" id="personal-info-tab" data-toggle="tab" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">Personal Information</a>
-                <a className="nav-item nav-link" id="educ-tab" data-toggle="tab" href="#educ" role="tab" aria-controls="educ" aria-selected="false">Education</a>
-                <a className="nav-item nav-link" id="work-exp-tab" data-toggle="tab" href="#work-exp" role="tab" aria-controls="work-exp" aria-selected="false">Work Experience</a>
+                <a className="nav-item nav-link active" id="personal-info-tab" data-toggle="tab" data-target="#personal-info" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">Personal Information</a>
+                <a className="nav-item nav-link" id="educ-tab" data-toggle="tab" data-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">Education</a>
+                <a className="nav-item nav-link" id="work-exp-tab" data-toggle="tab" data-target="#work-exp" href="#work-exp" role="tab" aria-controls="work-exp" aria-selected="false">Work Experience</a>
             </div>
             </nav>
 		<br />
@@ -44,8 +44,8 @@ function BasicInfo(props) {
     )
   }
 
-BasicInfo.getInitialProps = async ({ req, res }) => {
-    const token = parseCookies(req)
+  export async function getServerSideProps(context) {
+    const token = parseCookies(context.req)
 
     let personalInfo
     let name
@@ -57,10 +57,14 @@ BasicInfo.getInitialProps = async ({ req, res }) => {
     let position
     let employmentType
 
-    if (res) {
+    if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
-            res.writeHead(301, { Location: "/login" })
-            res.end()
+            return {
+                redirect: {
+                    destination: '/login',
+                    permanent: false,
+                },
+            }
         }
         else {
             data = jwt.decode(token.user)
@@ -76,7 +80,7 @@ BasicInfo.getInitialProps = async ({ req, res }) => {
         
             const personal = await fetch(url, header)
             personalInfo = await personal.json()
-            name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName + ' ' + personalInfo.result.middleName + ' ' + personalInfo.result.suffix
+            name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
             const employ = await fetch(url + '/employment', header)
             employment = await employ.json()
@@ -95,15 +99,17 @@ BasicInfo.getInitialProps = async ({ req, res }) => {
     } 
 
     return { 
-        token: token && token,
-        data: data,
-        name,
-        unit,
-        position,
-        employmentType,
-        personalInfo: personalInfo.result,
-        education: education.result,
-        workExperience: workExperience.result
+        props: {
+            token: token && token,
+            data: data,
+            name,
+            unit,
+            position,
+            employmentType,
+            personalInfo: personalInfo.result,
+            education: education.result,
+            workExperience: workExperience.result
+        }
     }
 }
 
