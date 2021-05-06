@@ -112,6 +112,7 @@ function LicensureExam(props) {
         <div>
             <h2 align = "center"> Licensure Exams </h2>
             <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+            <div role="alert" id="licensureexamalert" style={{visibility:"hidden"}}></div>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -149,9 +150,24 @@ function LicensureExam(props) {
                             let form = document.getElementById('editLicForm')
                             let formData = new FormData(form)
                             formData.append('licenseId', currData.licenseId)
-                            await updateLicensure(formData, props.token)
-                            Router.reload()
-                            // Router.push('/faculty/accomplishment#licensure-exam', '/')
+
+                            let alert = document.getElementById("licensureexamalert")
+                            let res = await updateLicensure(formData, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#licensureexamalert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
+                            
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
@@ -191,7 +207,9 @@ function LicensureExam(props) {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting}>Save changes</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                    $('#editLicensureExam').modal('toggle');
+                                }}>Save changes</button>
                             </div>
                         </Form>
                     )}
@@ -215,9 +233,23 @@ function LicensureExam(props) {
                         </div>
                         <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {() => {
-                            deleteLicensure(deleteLic, props.token)
-                            Router.push('/faculty/accomplishment#licensure-exam', '/')
+                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+                            let alert = document.getElementById("licensureexamalert")
+                            let res = await deleteLicensure(deleteLic, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#licensureexamalert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
                         }}>Yes, delete</button>
                     </div>
                     </div>

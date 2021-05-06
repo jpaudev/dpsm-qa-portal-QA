@@ -64,9 +64,24 @@ class LicensureExamForm extends React.Component{
                 onSubmit={async (values, {resetForm}) => {
                     let form = document.getElementById('licenseForm')
                     let formData = new FormData(form)
-                    await addLicensure(formData, this.props.token)
+
+                    let alert = document.getElementById("licensureexamalert")
+                    let res = await addLicensure(formData, this.props.token)
+                    if(res.success == true) { 
+                        alert.className ="alert alert-success"
+                        alert.style = "visibility: visible"
+                        alert.innerHTML = res.message
+                    } else {
+                        alert.className = "alert alert-danger"
+                        if(res.error) alert.innerHTML = res.error[0].message
+                        else alert.innerHTML = res.message
+                    }
+                    $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                        $("#licensureexamalert").slideUp(500);
+                    });
+
                     resetForm()
-                    Router.push('/faculty/accomplishment#licensure-exam', '/')
+                    Router.push('/faculty/accomplishment')                    
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (

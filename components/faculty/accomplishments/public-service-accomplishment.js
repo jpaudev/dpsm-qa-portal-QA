@@ -325,6 +325,7 @@ function PublicServiceAccomplishment(props){
 	<div>
 		<h2 align = "center"> Public Service Accomplishments </h2>
         <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+        <div role="alert" id="publicservicealert" style={{visibility:"hidden"}}></div>
 		<div>
 		<h5 align = "center">Within UP Manila </h5>
             <table className = "table table-striped table-sm">
@@ -418,8 +419,22 @@ function PublicServiceAccomplishment(props){
                             let formData = new FormData(form)
                             formData.append('publicServiceId', currData.publicServiceId)
                             formData.append('type', currData.type)
-                            await updatePublicService(formData, props.token)
-                            Router.reload()
+                            let alert = document.getElementById("publicservicealert")
+                            let res = await updatePublicService(formData, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#publicservicealert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
@@ -465,7 +480,9 @@ function PublicServiceAccomplishment(props){
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting}>Save changes</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                    $('#editPublicService').modal('toggle');
+                                }}>Save changes</button>
                             </div>
                         </Form>
                     )}
@@ -489,9 +506,24 @@ function PublicServiceAccomplishment(props){
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-            			<button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {() => {
-                            deletePublicService(deletePS, props.token)
-                            Router.push('/faculty/accomplishment#public-service-accomplishment', '/')
+            			<button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+                            let alert = document.getElementById("publicservicealert")
+                            let res = await deletePublicService(deletePS, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#publicservicealert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
+                            
                         }}>Yes, delete</button>
                     </div>
                     </div>

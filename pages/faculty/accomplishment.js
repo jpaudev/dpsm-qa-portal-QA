@@ -64,12 +64,16 @@ function Accomplishments(props) {
     )
   }
 
-Accomplishments.getInitialProps = async ({ req, res }) => {
-    const token = parseCookies(req)
-    if (res) {
+  export async function getServerSideProps(context) {
+    const token = parseCookies(context.req)
+    if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
-            res.writeHead(301, { Location: "/login" })
-            res.end()
+            return {
+                redirect: {
+                    destination: '/login',
+                    permanent: false,
+                },
+            }
         }
     } 
     let data = jwt.decode(token.user)
@@ -108,18 +112,20 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
     const researchGrant = await rg.json()
 
     return {
-        token: token && token,
-        data: data,
-        name,
-        unit,
-        position,
-        employmentType,
-        personalInfo: personalInfo.result,
-        publicService: publicService.result,
-    	publications: publications.result,
-    	trainingSeminar: trainingSeminar.result,
-    	licensureExam: licensureExam.result,
-    	researchGrant: researchGrant.result
+        props: {
+            token: token && token,
+            data: data,
+            name,
+            unit,
+            position,
+            employmentType,
+            personalInfo: personalInfo.result,
+            publicService: publicService.result,
+            publications: publications.result,
+            trainingSeminar: trainingSeminar.result,
+            licensureExam: licensureExam.result,
+            researchGrant: researchGrant.result
+        }
     }
 }
   

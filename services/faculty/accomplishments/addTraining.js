@@ -21,14 +21,7 @@ export default async function addTraining(formData, token) {
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })	
-			    .then(function (response) {
-			        //handle success
-			        console.log(response);
-			    })
-			    .catch(function (response) {
-			        //handle error
-			        console.log(response);
-			    });	
+				return response.data
 			} catch (err) {
 				console.error(err)
 				return err
