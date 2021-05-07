@@ -107,6 +107,9 @@ function Education(props) {
             if(props.children.[key].educInfoId == x) {
                 setData(props.children.[key])
             }
+            if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+                setData(currData => ({...currData, endDate: ''}))
+            }
         });
     }
     // let message
