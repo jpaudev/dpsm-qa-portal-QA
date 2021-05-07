@@ -24,7 +24,7 @@ function PersonalInfo(props) {
         suffix: props.children.suffix,
         faculty_dependents: props.children.faculty_dependents
     }
-    let name = props.children.lastName + ', ' + props.children.firstName + ' ' + props.children.middleName
+    let name = props.children.lastName + ', ' + props.children.firstName
     let dependents = Object.keys(props.children.faculty_dependents).map(key => {
         return (
             <div className = "form-row">

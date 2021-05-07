@@ -94,7 +94,7 @@ function Accomplishments(props) {
 
     const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
-    let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName + ' ' + personalInfo.result.middleName + ' ' + personalInfo.result.suffix
+    let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
     const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all', header)
     const faculty = await fac.json()
