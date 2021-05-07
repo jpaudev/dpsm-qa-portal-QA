@@ -111,6 +111,9 @@ function TrainingSeminar(props) {
             if(props.children.[key].tsId == x) {
                 setData(props.children.[key])
             }
+            if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+                setData(currData => ({...currData, endDate: ''}))
+            }
         });
     }
 

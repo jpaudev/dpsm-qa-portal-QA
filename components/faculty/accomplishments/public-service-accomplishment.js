@@ -318,6 +318,9 @@ function PublicServiceAccomplishment(props){
             if(props.children.[key].publicServiceId == x) {
                 setData(props.children.[key])
             }
+            if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+                setData(currData => ({...currData, endDate: ''}))
+            }
         });
     }
 
