@@ -28,7 +28,7 @@ function Accomplishments(props) {
                 </PublicServiceAccomplishment>
             </div>
     	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                <Publication name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
+                <Publication faculty = { props.faculty }name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>
                     { props.publications }
                 </Publication>
             </div>
@@ -91,6 +91,9 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
     const personalInfo = await personal.json()
     let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName + ' ' + personalInfo.result.middleName + ' ' + personalInfo.result.suffix
 
+    const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all', header)
+    const faculty = await fac.json()
+
     const psa = await fetch(url + '/public-service', header)
     const publicService = await psa.json()
 
@@ -113,6 +116,7 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
         unit,
         position,
         employmentType,
+        faculty: faculty.result,
         personalInfo: personalInfo.result,
         publicService: publicService.result,
     	publications: publications.result,

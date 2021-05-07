@@ -6,8 +6,8 @@ import Router from 'next/router'
 import addPublication from '../../../services/faculty/accomplishments/addPublication'
 
 class PublicationForm extends React.Component{
-	constructor(){
-		super()
+	constructor(props){
+		super(props)
 		this.state = {
 			duplicateForms: []
 		}
@@ -46,7 +46,7 @@ class PublicationForm extends React.Component{
 			</div>
 		</div>
 		<div>
-				<PublicationFormAuthor />
+				<PublicationFormAuthor faculty = {this.props.faculty} />
 			</div>
 		<style jsx>{`
 			hr{
@@ -75,13 +75,16 @@ class PublicationForm extends React.Component{
 		return(
 			<Formik
 				initialValues={PublicationDetails}
-                onSubmit={async (values) => {
-                	await addPublication(values)
-                	Router.reload()
+                onSubmit={async (values, {resetForm}) => {
+                	let form = document.getElementById('pubForm')
+                	let formData = new FormData(form)
+                	await addPublication(formData, this.props.token)
+                	// resetForm()
+                	// Router.push('/faculty/accomplishment#publication', '/')
                 }}
 			>
 				{({ values, errors, touched, isSubmitting }) => (
-					<Form>
+					<Form id = "pubForm">
 						<h5> Publications </h5>
 						<hr />
 						<div className = "form-row">
@@ -124,7 +127,7 @@ class PublicationForm extends React.Component{
 							</div>
 						</div>
 						<div>
-							<PublicationFormAuthor />
+							<PublicationFormAuthor faculty = {this.props.faculty} />
 						</div>
 						<div id = "Publication">
 							{this.state.duplicateForms}
