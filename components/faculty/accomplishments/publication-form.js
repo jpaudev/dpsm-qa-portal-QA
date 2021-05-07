@@ -78,9 +78,26 @@ class PublicationForm extends React.Component{
                 onSubmit={async (values, {resetForm}) => {
                 	let form = document.getElementById('pubForm')
                 	let formData = new FormData(form)
-                	await addPublication(formData, this.props.token)
-                	// resetForm()
-                	// Router.push('/faculty/accomplishment#publication', '/')
+
+					let alert = document.getElementById("publicationalert")
+					let res = await addPublication(formData, this.props.token)
+					console.log('res', res);
+					if(res.success == true) { 
+						alert.className ="alert alert-success"
+						alert.style = "visibility: visible"
+						alert.innerHTML = res.message
+					} else {
+						alert.className = "alert alert-danger"
+						if(res.error) values.message = res.error[0].message
+						else values.message = res.message
+					}
+					
+					$("#publicationalert").fadeTo(5000, 500).slideUp(500, function(){
+						$("#publicationalert").slideUp(500);
+					});
+					
+                	resetForm()
+                	Router.push('/faculty/accomplishment')
                 }}
 			>
 				{({ values, errors, touched, isSubmitting }) => (

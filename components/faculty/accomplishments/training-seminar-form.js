@@ -73,9 +73,24 @@ class TrainingSeminarForm extends React.Component{
                 onSubmit={async (values, {resetForm}) => {
                     let form = document.getElementById('tsForm')
                     let formData = new FormData(form)
-                    await addTraining(formData, this.props.token)
-                    // resetForm()
-                    // Router.push('/faculty/accomplishment#training-seminar', '/')
+                    
+                    let alert = document.getElementById("trainingseminaralert")
+                    let res = await addTraining(formData, this.props.token)
+                    if(res.success == true) { 
+                        alert.className ="alert alert-success"
+                        alert.style = "visibility: visible"
+                        alert.innerHTML = res.message
+                    } else {
+                        alert.className = "alert alert-danger"
+                        if(res.error) alert.innerHTML = res.error[0].message
+                        else alert.innerHTML = res.message
+                    }
+                    $("#trainingseminaralert").fadeTo(5000, 500).slideUp(500, function(){
+                        $("#trainingseminaralert").slideUp(500);
+                    });
+
+                    resetForm()
+                    Router.push('/faculty/accomplishment')
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (

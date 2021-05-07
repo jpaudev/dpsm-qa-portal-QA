@@ -86,9 +86,27 @@ class EducationForm extends React.Component{
             <Formik
                 initialValues={EducationDetails}
                 onSubmit={async (values, {resetForm}) => {
+                    let alert = document.getElementById("educalert")
+
                     let form = document.getElementById('educForm')
                     let formData = new FormData(form)
-                    await addEducation(formData, this.props.token)
+
+                    let res = await addEducation(formData, this.props.token)
+                    if(res.success == true) { 
+                        alert.className ="alert alert-success"
+                        alert.style = "visibility: visible"
+                        alert.innerHTML = res.message
+                    } else {
+                        alert.className = "alert alert-danger"
+                        if(res.error) alert.innerHTML = res.error[0].message
+                        else alert.innerHTML = res.message
+                    }
+                    
+                    alert.setAttribute("style", "visibility: visible");
+                    $("#educalert").fadeTo(5000, 500).slideUp(500, function(){
+                        $("#educalert").slideUp(500);
+                    });
+
                     resetForm()
                     Router.push('/faculty/basic-info')
                 }}

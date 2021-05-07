@@ -25,21 +25,14 @@ export default async function addPublication(formData, token) {
 			    		"status": "Pending",
 			    		"proof": formData.get('proof')
 			    	}]
-			    	console.log(bod)
+			    	
 			        const res = await axios({
 			        	method: 'POST',
 					    url: 'http://localhost:3001/api/faculty/accomplishment/add/publisher',
 					    data: bod,
 					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			        })
-			        .then(async function (res) {
-			        	//handle success
-			        	console.log(res);
-			        })
-			        .catch(function (res) {
-				        //handle error
-				        console.log(res);
-				    });
+					return res.data
 			    })
 			    .catch(function (response) {
 			        //handle error

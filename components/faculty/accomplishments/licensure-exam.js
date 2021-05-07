@@ -20,73 +20,77 @@ function LicensureExam(props) {
         rank: '',
         proof: ''
     })
-    let content = Object.keys(props.children).map(key => {
-        if(props.children[key].licenseId != null) {
-            if(props.children[key].proof != null) {
-                return (
-                    <tr key = {props.children[key].licenseId}>
-                        <td>{props.children[key].examName}</td>
-                        <td>{props.children[key].rank}</td>
-                        <td>{props.children[key].examDate}</td>
-                        <td>{props.children[key].licenseNumber}</td>
-                        <td>
-                            <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick = {() => {
-                                    let file = props.children[key].proof
-                                    downloadProof(file, props.token)
-                                }}
-                            >
-                                Download
-                            </button>
-                            <a
-                                className ="btn btn-info"
-                                href={"http://localhost:3001/" + props.children[key].proof}
-                                style = {{ color: 'white' }}
-                                target="_blank">
-                                Preview
-                            </a>
-                        </td>
-                        <td>{props.children[key].status}</td>
-                        <td>
-                            <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
-                                    setEdit(props.children.[key].licenseId)
-                                    setKey(editLic)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
-                                    setDelete(props.children.[key].licenseId)
-                                }}>Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                );
-            } else {
-                return (
-                    <tr key = {props.children[key].licenseId}>
-                        <td>{props.children[key].examName}</td>
-                        <td>{props.children[key].rank}</td>
-                        <td>{props.children[key].examDate}</td>
-                        <td>{props.children[key].licenseNumber}</td>
-                        <td>None</td>
-                        <td>{props.children[key].status}</td>
-                        <td>
-                            <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
-                                    setEdit(props.children.[key].licenseId)
-                                    setKey(editLic)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
-                                    setDelete(props.children.[key].licenseId)
-                                }}>Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                );
+    const name = props.name
+    let content 
+    if(props.children != null) {
+        content = Object.keys(props.children).map(key => {
+            if(props.children[key].licenseId != null) {
+                if(props.children[key].proof != null) {
+                    return (
+                        <tr key = {props.children[key].licenseId}>
+                            <td>{props.children[key].examName}</td>
+                            <td>{props.children[key].rank}</td>
+                            <td>{props.children[key].examDate}</td>
+                            <td>{props.children[key].licenseNumber}</td>
+                            <td>
+                                <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    onClick = {() => {
+                                        let file = props.children[key].proof
+                                        downloadProof(file, props.token)
+                                    }}
+                                >
+                                    Download
+                                </button>
+                                <a
+                                    className ="btn btn-info"
+                                    href={"http://localhost:3001/" + props.children[key].proof}
+                                    style = {{ color: 'white' }}
+                                    target="_blank">
+                                    Preview
+                                </a>
+                            </td>
+                            <td>{props.children[key].status}</td>
+                            <td>
+                                <div className = "btn-group">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
+                                        setEdit(props.children.[key].licenseId)
+                                        setKey(editLic)
+                                    }}>Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
+                                        setDelete(props.children.[key].licenseId)
+                                    }}>Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    );
+                } else {
+                    return (
+                        <tr key = {props.children[key].licenseId}>
+                            <td>{props.children[key].examName}</td>
+                            <td>{props.children[key].rank}</td>
+                            <td>{props.children[key].examDate}</td>
+                            <td>{props.children[key].licenseNumber}</td>
+                            <td>None</td>
+                            <td>{props.children[key].status}</td>
+                            <td>
+                                <div className = "btn-group">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
+                                        setEdit(props.children.[key].licenseId)
+                                        setKey(editLic)
+                                    }}>Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
+                                        setDelete(props.children.[key].licenseId)
+                                    }}>Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    );
+                }
             }
-        }
-    });
+        })
+    }
 
     function setEdit(id) {
         editLic = id
@@ -106,8 +110,9 @@ function LicensureExam(props) {
 
     return (
         <div>
-        <h2 align = "center"> Licensure Exams </h2>
-        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+            <h2 align = "center"> Licensure Exams </h2>
+            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+            <div role="alert" id="licensureexamalert" style={{visibility:"hidden"}}></div>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -145,9 +150,24 @@ function LicensureExam(props) {
                             let form = document.getElementById('editLicForm')
                             let formData = new FormData(form)
                             formData.append('licenseId', currData.licenseId)
-                            await updateLicensure(formData, props.token)
-                            Router.reload()
-                            // Router.push('/faculty/accomplishment#licensure-exam', '/')
+
+                            let alert = document.getElementById("licensureexamalert")
+                            let res = await updateLicensure(formData, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#licensureexamalert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
+                            
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
@@ -187,7 +207,9 @@ function LicensureExam(props) {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting}>Save changes</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                    $('#editLicensureExam').modal('toggle');
+                                }}>Save changes</button>
                             </div>
                         </Form>
                     )}
@@ -199,21 +221,35 @@ function LicensureExam(props) {
             <div className="modal fade" id="deleteLicensureExam" tabIndex="-1" role="dialog" aria-labelledby="deleteLicensureExamLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="deleteLicensureExamLabel">Delete Licensure Exam Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-                        <hr />
-                        <p> Are you sure you want to delete this education information? </p>
-                    </div>
-                    <div className="modal-footer">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="deleteLicensureExamLabel">Delete Licensure Exam Information</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <hr />
+                            <p> Are you sure you want to delete this education information? </p>
+                        </div>
+                        <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {() => {
-                            deleteLicensure(deleteLic, props.token)
-                            Router.push('/faculty/accomplishment#licensure-exam', '/')
+                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+                            let alert = document.getElementById("licensureexamalert")
+                            let res = await deleteLicensure(deleteLic, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#licensureexamalert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
                         }}>Yes, delete</button>
                     </div>
                     </div>

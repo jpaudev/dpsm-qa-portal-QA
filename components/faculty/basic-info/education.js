@@ -92,6 +92,7 @@ function Education(props) {
             );
         }
     });
+    let res
 
     function setEdit(id) {
         editEduc = id
@@ -108,11 +109,14 @@ function Education(props) {
             }
         });
     }
-
+    // let message
     return (
         <div>
-        <h2 align = "center"> Educational History </h2>
-        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+            <h2 align = "center"> Educational History </h2>
+            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+
+            <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
+            
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -131,6 +135,7 @@ function Education(props) {
                     </tbody>
                 </table>
             </div>
+            
             <div>
                 <EducationForm token = { props.token }/>
             </div>   
@@ -148,11 +153,27 @@ function Education(props) {
                         enableReinitialize
                         initialValues={currData}
                         onSubmit={async (values) => {
+                            let alert = document.getElementById("educalert")
+                            
                             let form = document.getElementById('editEducForm')
                             let formData = new FormData(form)
                             formData.append('educInfoId', currData.educInfoId)
-                            await updateEducation(formData, props.token)
-                            Router.push('/faculty/basic-info#educ', '/faculty/basic-info')
+                            
+                            res = await updateEducation(formData, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#educalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#educalert").slideUp(500);
+                            });
+                            Router.push('/faculty/basic-info', '/faculty/basic-info')
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
@@ -240,8 +261,24 @@ function Education(props) {
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
+                            let alert = document.getElementById("educalert")
                             $('#deleteEducation').modal('toggle');
-                            await deleteEducation(deleteEduc, props.token)
+
+                            let res = await deleteEducation(deleteEduc, props.token)
+                            console.log('res', res);
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) values.message = res.error[0].message
+                                else values.message = res.message
+                            }
+                            
+                            $("#educalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#educalert").slideUp(500);
+                            });
                             Router.push('/faculty/basic-info', '/faculty/basic-info')
                         }}>Yes, delete</button>
                     </div>

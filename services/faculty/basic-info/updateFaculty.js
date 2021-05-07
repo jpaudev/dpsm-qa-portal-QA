@@ -31,13 +31,7 @@ export default async function updateFaculty(data, token) {
 						Authorization: `Bearer ${token}`
 					}
 				})
-				if (response.data.success) {
-					console.log(response.data)
-					return response.data
-				} else {
-					console.error(response.message)
-					return response.data
-				}	
+				return response.data	
 			} catch (err) {
 				console.error(err)
 				return err

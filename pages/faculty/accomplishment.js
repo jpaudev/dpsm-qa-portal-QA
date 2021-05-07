@@ -8,8 +8,9 @@ import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
 
 function Accomplishments(props) { 
+    let name = props.personalInfo.lastName + ', ' + props.personalInfo.firstName
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName} >
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={name} >
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 		<a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
@@ -63,12 +64,16 @@ function Accomplishments(props) {
     )
   }
 
-Accomplishments.getInitialProps = async ({ req, res }) => {
-    const token = parseCookies(req)
-    if (res) {
+  export async function getServerSideProps(context) {
+    const token = parseCookies(context.req)
+    if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
-            res.writeHead(301, { Location: "/login" })
-            res.end()
+            return {
+                redirect: {
+                    destination: '/login',
+                    permanent: false,
+                },
+            }
         }
     } 
     let data = jwt.decode(token.user)
@@ -110,19 +115,21 @@ Accomplishments.getInitialProps = async ({ req, res }) => {
     const researchGrant = await rg.json()
 
     return {
-        token: token && token,
-        data: data,
-        name,
-        unit,
-        position,
-        employmentType,
-        faculty: faculty.result,
-        personalInfo: personalInfo.result,
-        publicService: publicService.result,
-    	publications: publications.result,
-    	trainingSeminar: trainingSeminar.result,
-    	licensureExam: licensureExam.result,
-    	researchGrant: researchGrant.result
+        props: {
+            token: token && token,
+            data: data,
+            name,
+            unit,
+            position,
+            employmentType,
+            faculty: faculty.result,
+            personalInfo: personalInfo.result,
+            publicService: publicService.result,
+            publications: publications.result,
+            trainingSeminar: trainingSeminar.result,
+            licensureExam: licensureExam.result,
+            researchGrant: researchGrant.result
+        }
     }
 }
   

@@ -10,6 +10,7 @@ import deleteTraining from '../../../services/faculty/accomplishments/deleteTrai
 import updateTraining from '../../../services/faculty/accomplishments/updateTraining'
 
 function TrainingSeminar(props) {
+    const name = props.name
     let deleteTS = 0
     let editTS = 0
     const [currData, setData] = React.useState({
@@ -22,9 +23,11 @@ function TrainingSeminar(props) {
         remarks: '',
         proof: ''
     })
-    let content = Object.keys(props.children).map(key => {
-        if(props.children[key].tsId != null) {
-            if(props.children[key].proof) {
+    let content 
+    if(props.children != null) {
+        content = Object.keys(props.children).map(key => {
+            if(props.children[key].tsId != null) {
+                if(props.children[key].proof) {
                 return (
                     <tr key = {props.children[key].tsId}>
                         <td>{props.children[key].title}</td>
@@ -91,8 +94,9 @@ function TrainingSeminar(props) {
                     </tr>
                 );
             }
-        }
-    });
+            }
+        });
+    }
 
     function setEdit(id) {
         editTS = id
@@ -114,6 +118,7 @@ function TrainingSeminar(props) {
         <div>
             <h2 align = "center"> Training/Seminars </h2>
             <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+            <div role="alert" id="trainingseminaralert" style={{visibility:"hidden"}}></div>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
@@ -153,9 +158,23 @@ function TrainingSeminar(props) {
                             let form = document.getElementById('editTSForm')
                             let formData = new FormData(form)
                             formData.append('tsId', currData.tsId)
-                            await updateTraining(formData, props.token)
-                            Router.reload()
-                            // Router.push('/faculty/accomplishment#training-seminar', '/')
+                            
+                            let alert = document.getElementById("trainingseminaralert")
+                            let res = await updateTraining(formData, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#trainingseminaralert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#trainingseminaralert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
@@ -207,7 +226,9 @@ function TrainingSeminar(props) {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting}>Save changes</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                    $('#editTrainingSeminar').modal('toggle');
+                                }}>Save changes</button>
                             </div>
                         </Form>
                     )}
@@ -231,9 +252,25 @@ function TrainingSeminar(props) {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {() => {
-                            deleteTraining(deleteTS, props.token)
-                            Router.push('/faculty/accomplishment#training-seminar', '/')
+                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+                            $('#deleteTrainingSeminar').modal('toggle');
+
+                            let alert = document.getElementById("trainingseminaralert")
+                            let res = await deleteTraining(deleteTS, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#trainingseminaralert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#trainingseminaralert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
                         }}>Yes, delete</button>
                     </div>
                     </div>

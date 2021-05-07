@@ -82,9 +82,23 @@ class PublicServiceAccomplishmentForm extends React.Component{
                 onSubmit={async (values, {resetForm}) => {
                     let form = document.getElementById('psForm')
                     let formData = new FormData(form)
-                    await addPublicService(formData, this.props.token)
+                    let alert = document.getElementById("publicservicealert")
+                    let res = await addPublicService(formData, this.props.token)
+                    if(res.success == true) { 
+                        alert.className ="alert alert-success"
+                        alert.style = "visibility: visible"
+                        alert.innerHTML = res.message
+                    } else {
+                        alert.className = "alert alert-danger"
+                        if(res.error) alert.innerHTML = res.error[0].message
+                        else alert.innerHTML = res.message
+                    }
+                    $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
+                        $("#publicservicealert").slideUp(500);
+                    });
+
                     resetForm()
-                    Router.push('/faculty/accomplishment#public-service-accomplishment', '/')
+                    Router.push('/faculty/accomplishment')
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (
