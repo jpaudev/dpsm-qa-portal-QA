@@ -26,7 +26,7 @@ function BasicInfo(props) {
                 <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.education }</Education>
             </div>
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
-                <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.workExperience }</WorkExperience>
+                <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} employment = { props.employment }>{ props.workExperience }</WorkExperience>
             </div>
             </div>
 	<style jsx>{`
@@ -93,8 +93,6 @@ function BasicInfo(props) {
         
             const work = await fetch(url + '/work-exp', header)
             workExperience = await work.json()
-        
-            workExperience.result.push(employment.result)
         }
     } 
 
@@ -108,7 +106,8 @@ function BasicInfo(props) {
             employmentType,
             personalInfo: personalInfo.result,
             education: education.result,
-            workExperience: workExperience.result
+            workExperience: workExperience.result,
+            employment: employment.result
         }
     }
 }

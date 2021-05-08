@@ -10,7 +10,6 @@ import deleteWorkExp from '../../../services/faculty/basic-info/deleteWorkExp'
 
 function WorkExperience(props){
     const name = props.name
-    const len = props.children.length - 1;
     let deleteWork = 0
     let editWork = 0
     const [currData, setData] = React.useState({
@@ -21,30 +20,33 @@ function WorkExperience(props){
         endDate: '',
         description: ''
     })
-    let content = Object.keys(props.children).map(key => {
-        if(props.children[key].workExpId != null) {
-            return (
-                <tr key = {props.children.[key].workExpId}>
-                    <td>{props.children[key].employerName}</td>
-                    <td>{props.children[key].position}</td>
-                    <td>{props.children[key].startDate}</td>
-                    <td>{props.children[key].endDate}</td>
-                    <td>{props.children[key].description}</td>
-                    <td>
-                        <div className = "btn-grp">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience" onClick={() => {
-                                setEdit(props.children.[key].workExpId)
-                                setKey(editWork)
-                            }}>Edit</a>
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteWorkExperience" onClick={() => {
-                                setDelete(props.children.[key].workExpId)
-                            }}>Delete</a>
-                        </div>
-                    </td>
-                </tr>
-            );  
-        }
-    });
+    let content 
+    if(props.children != null) {
+        content = Object.keys(props.children).map(key => {
+            if(props.children[key].workExpId != null) {
+                return (
+                    <tr key = {props.children.[key].workExpId}>
+                        <td>{props.children[key].employerName}</td>
+                        <td>{props.children[key].position}</td>
+                        <td>{props.children[key].startDate}</td>
+                        <td>{props.children[key].endDate}</td>
+                        <td>{props.children[key].description}</td>
+                        <td>
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience" onClick={() => {
+                                    setEdit(props.children.[key].workExpId)
+                                    setKey(editWork)
+                                }}>Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteWorkExperience" onClick={() => {
+                                    setDelete(props.children.[key].workExpId)
+                                }}>Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                );  
+            }
+        });
+    }
 
     function setEdit(id) {
         editWork = id
@@ -72,7 +74,7 @@ function WorkExperience(props){
             <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
             <div role="alert" id="workexpalert" style={{visibility:"hidden"}}></div>
             <h5 align = "center"> Within UP Manila </h5>
-            <EmploymentHistory>{props.children[len]}</EmploymentHistory>
+            <EmploymentHistory>{props.employment}</EmploymentHistory>
             <br />
             <h5 align = "center"> Outside UP Manila </h5>
             <table className = "table table-striped table-sm">
