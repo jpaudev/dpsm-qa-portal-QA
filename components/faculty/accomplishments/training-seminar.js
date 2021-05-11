@@ -27,7 +27,6 @@ function TrainingSeminar(props) {
     if(props.children != null) {
         content = Object.keys(props.children).map(key => {
             if(props.children[key].tsId != null) {
-                if(props.children[key].proof) {
                 return (
                     <tr key = {props.children[key].tsId}>
                         <td>{props.children[key].title}</td>
@@ -37,26 +36,33 @@ function TrainingSeminar(props) {
                         <td>{props.children[key].dateTo}</td>
                         <td>{props.children[key].remarks}</td>
                         <td>
-                            <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick = {() => {
-                                    let file = props.children[key].proof
-                                    downloadProof(file)
-                                }}
-                            >
-                                Download
-                            </button>
-                            <a
-                                className ="btn btn-info"
-                                href={"http://localhost:3001/" + props.children[key].proof}
-                                style = {{ color: 'white' }}
-                                target="_blank">
-                                Preview
-                            </a>
+                            {
+                                props.children[key].proof &&
+                                <div className = "btn-grp">
+                                    <button
+                                        type="button"
+                                        className="btn btn-primary"
+                                        onClick = {() => {
+                                            let file = props.children[key].proof
+                                            downloadProof(file)
+                                        }}
+                                    >
+                                        Download
+                                    </button>
+                                    <a
+                                        className ="btn btn-info"
+                                        href={"http://localhost:3001/" + props.children[key].proof}
+                                        style = {{ color: 'white' }}
+                                        target="_blank">
+                                        Preview
+                                    </a>
+                                </div>
+                            }
                         </td>
                         <td>{props.children[key].status}</td>
                         <td>
+                        {
+                            props.facultyFlag && 
                             <div className = "btn-group">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
                                         setEdit(props.children.[key].tsId)
@@ -66,34 +72,21 @@ function TrainingSeminar(props) {
                                     setDelete(props.children.[key].tsId)
                                 }}>Delete</a>
                             </div>
-                        </td>
-                    </tr>
-                );
-            } else {
-                return (
-                    <tr key = {props.children[key].tsId}>
-                        <td>{props.children[key].title}</td>
-                        <td>{props.children[key].role}</td>
-                        <td>{props.children[key].venue}</td>
-                        <td>{props.children[key].dateFrom}</td>
-                        <td>{props.children[key].dateTo}</td>
-                        <td>{props.children[key].remarks}</td>
-                        <td>None</td>
-                        <td>{props.children[key].status}</td>
-                        <td>
-                            <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
-                                        setEdit(props.children.[key].tsId)
-                                        setKey(editTS)
-                                    }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar" onClick={() => {
-                                    setDelete(props.children.[key].tsId)
-                                }}>Delete</a>
+                        }
+                        {
+                            !props.facultyFlag && 
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Approve</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Reject</a>
                             </div>
+                        }
                         </td>
                     </tr>
-                );
-            }
+                ); 
             }
         });
     }
@@ -141,9 +134,12 @@ function TrainingSeminar(props) {
                 </table>
             </div>
 
-            <div>
-                <TrainingSeminarForm token = { props.token } />
-            </div>   
+            {
+                props.facultyFlag && 
+                <div>
+                    <TrainingSeminarForm token = { props.token } />
+                </div>  
+            } 
 	
             <div className="modal fade" id="editTrainingSeminar" tabIndex="-1" role="dialog" aria-labelledby="editTrainingSeminarLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

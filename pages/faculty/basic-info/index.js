@@ -1,10 +1,10 @@
-import Layout from '../../components/layout'
-import PersonalInfo from '../../components/faculty/basic-info/personal-info'
-import Education from '../../components/faculty/basic-info/education'
-import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
-import WorkExperience from '../../components/faculty/basic-info/work-experience'
+import Layout from '../../../components/layout'
+import PersonalInfo from '../../../components/faculty/basic-info/personal-info'
+import Education from '../../../components/faculty/basic-info/education'
+import EmploymentHistory from '../../../components/faculty/basic-info/employment-history'
+import WorkExperience from '../../../components/faculty/basic-info/work-experience'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies } from "../../../helpers"
 
 function BasicInfo(props) { 
     return (
@@ -23,7 +23,7 @@ function BasicInfo(props) {
                 <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.personalInfo }</PersonalInfo>
             </div>
             <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.education }</Education>
+                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true}>{ props.education }</Education>
             </div>
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
                 <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} employment = { props.employment }>{ props.workExperience }</WorkExperience>

@@ -29,35 +29,45 @@ function PublicServiceAccomplishment(props){
     if(props.children != null) {
         upm = Object.keys(props.children).map(key => {
             if (props.children[key].type == 'Within UPM'){
-                if(props.children[key].proof) {
-                    return(
-                        <tr key = {props.children.[key].publicServiceId}>
-                            <td>{props.children[key].position}</td>
-                            <td>{props.children[key].organization}</td>
-                            <td>{props.children[key].description}</td>
-                            <td>{props.children[key].startDate}</td>
-                            <td>{props.children[key].endDate}</td>
-                            <td>
-                                <button
-                                    type="button"
-                                    className="btn btn-primary"
-                                    onClick = {() => {
-                                        let file = props.children[key].proof
-                                        downloadProof(file)
-                                    }}
-                                >
-                                    Download
-                                </button>
-                                <a
-                                    className ="btn btn-info"
-                                    href={"http://localhost:3001/" + props.children[key].proof}
-                                    style = {{ color: 'white' }}
-                                    target="_blank">
-                                    Preview
-                                </a>
-                            </td>
-                            <td>{props.children[key].status}</td>
-                            <td>
+                return(
+                    <tr key = {props.children.[key].publicServiceId}>
+                        <td>{props.children[key].position}</td>
+                        <td>{props.children[key].organization}</td>
+                        <td>{props.children[key].description}</td>
+                        <td>{props.children[key].startDate}</td>
+                        <td>{props.children[key].endDate}</td>
+                        <td>
+                            {
+                                props.children[key].proof &&
+                                <div className = "btn-grp">
+                                    <button
+                                        type="button"
+                                        className="btn btn-primary"
+                                        onClick = {() => {
+                                            let file = props.children[key].proof
+                                            downloadProof(file)
+                                        }}
+                                    >
+                                        Download
+                                    </button>
+                                    <a
+                                        className ="btn btn-info"
+                                        href={"http://localhost:3001/" + props.children[key].proof}
+                                        style = {{ color: 'white' }}
+                                        target="_blank">
+                                        Preview
+                                    </a>
+                                </div>
+                            }
+                            { 
+                                !props.children[key].proof && 
+                                <div>None</div>
+                            }
+                        </td>
+                        <td>{props.children[key].status}</td>
+                        <td>
+                            {
+                                props.facultyFlag &&
                                 <div className = "btn-group">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
                                         setEdit(props.children.[key].publicServiceId)
@@ -67,46 +77,36 @@ function PublicServiceAccomplishment(props){
                                         setDelete(props.children.[key].publicServiceId)
                                     }}>Delete</a>
                                 </div>
-                            </td>
-                        </tr>
-                    );
-                } else {
-                    return(
-                        <tr key = {props.children.[key].publicServiceId}>
-                            <td>{props.children[key].position}</td>
-                            <td>{props.children[key].organization}</td>
-                            <td>{props.children[key].description}</td>
-                            <td>{props.children[key].startDate}</td>
-                            <td>{props.children[key].endDate}</td>
-                            <td>None</td>
-                            <td>{props.children[key].status}</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
-                                        setKey(editPS)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
-                                    }}>Delete</a>
+                            }
+                            {
+                                !props.facultyFlag &&
+                                <div className = "btn-grp">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Approve</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Reject</a>
                                 </div>
-                            </td>
-                        </tr>
-                    );
-                }
+                            }
+                        </td>
+                    </tr>
+                );
             }
         });
         pro = Object.keys(props.children).map(key => {
             if (props.children[key].type == 'Within Pro'){
-                if(props.children[key].proof) {
-                    return(
-                        <tr key = {props.children.[key].publicServiceId}>
-                            <td>{props.children[key].position}</td>
-                            <td>{props.children[key].organization}</td>
-                            <td>{props.children[key].description}</td>
-                            <td>{props.children[key].startDate}</td>
-                            <td>{props.children[key].endDate}</td>
-                            <td>
+                return(
+                    <tr key = {props.children.[key].publicServiceId}>
+                        <td>{props.children[key].position}</td>
+                        <td>{props.children[key].organization}</td>
+                        <td>{props.children[key].description}</td>
+                        <td>{props.children[key].startDate}</td>
+                        <td>{props.children[key].endDate}</td>
+                        <td>
+                        {
+                            props.children[key].proof &&
+                            <div className = "btn-grp">
                                 <button
                                     type="button"
                                     className="btn btn-primary"
@@ -124,58 +124,56 @@ function PublicServiceAccomplishment(props){
                                     target="_blank">
                                     Preview
                                 </a>
-                            </td>
-                            <td>{props.children[key].status}</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
-                                        setKey(editPS)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
-                                    }}>Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    );
-                } else {
-                    return(
-                        <tr key = {props.children.[key].publicServiceId}>
-                            <td>{props.children[key].position}</td>
-                            <td>{props.children[key].organization}</td>
-                            <td>{props.children[key].description}</td>
-                            <td>{props.children[key].startDate}</td>
-                            <td>{props.children[key].endDate}</td>
-                            <td>None</td>
-                            <td>{props.children[key].status}</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
-                                        setKey(editPS)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
-                                    }}>Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    );
-                }
+                            </div>
+                        }
+                        { 
+                            !props.children[key].proof && 
+                            <div>None</div>
+                        }
+                        </td>
+                        <td>{props.children[key].status}</td>
+                        <td>
+                        {
+                            props.facultyFlag &&
+                            <div className = "btn-group">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                    setEdit(props.children.[key].publicServiceId)
+                                    setKey(editPS)
+                                }}>Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                    setDelete(props.children.[key].publicServiceId)
+                                }}>Delete</a>
+                            </div>
+                        }
+                        {
+                            !props.facultyFlag &&
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Approve</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Reject</a>
+                            </div>
+                        }
+                        </td>
+                    </tr>
+                );
             }
         });
         nat = Object.keys(props.children).map(key => {
             if (props.children[key].type == 'Within Nat'){
-                if(props.children[key].proof) {
-                    return(
-                        <tr key = {props.children.[key].publicServiceId}>
-                            <td>{props.children[key].position}</td>
-                            <td>{props.children[key].organization}</td>
-                            <td>{props.children[key].description}</td>
-                            <td>{props.children[key].startDate}</td>
-                            <td>{props.children[key].endDate}</td>
-                            <td>
+                return(
+                    <tr key = {props.children.[key].publicServiceId}>
+                        <td>{props.children[key].position}</td>
+                        <td>{props.children[key].organization}</td>
+                        <td>{props.children[key].description}</td>
+                        <td>{props.children[key].startDate}</td>
+                        <td>{props.children[key].endDate}</td>
+                        <td>
+                        {
+                            props.children[key].proof &&
+                            <div className = "btn-grp">
                                 <button
                                     type="button"
                                     className="btn btn-primary"
@@ -193,58 +191,56 @@ function PublicServiceAccomplishment(props){
                                     target="_blank">
                                     Preview
                                 </a>
-                            </td>
-                            <td>{props.children[key].status}</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
-                                        setKey(editPS)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
-                                    }}>Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    );
-                } else {
-                    return(
-                        <tr key = {props.children.[key].publicServiceId}>
-                            <td>{props.children[key].position}</td>
-                            <td>{props.children[key].organization}</td>
-                            <td>{props.children[key].description}</td>
-                            <td>{props.children[key].startDate}</td>
-                            <td>{props.children[key].endDate}</td>
-                            <td>None</td>
-                            <td>{props.children[key].status}</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
-                                        setKey(editPS)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
-                                    }}>Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    );
-                }
+                            </div>
+                        }
+                        { 
+                            !props.children[key].proof && 
+                            <div>None</div>
+                        }
+                        </td>
+                        <td>{props.children[key].status}</td>
+                        <td>
+                        {
+                            props.facultyFlag &&
+                            <div className = "btn-group">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                    setEdit(props.children.[key].publicServiceId)
+                                    setKey(editPS)
+                                }}>Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                    setDelete(props.children.[key].publicServiceId)
+                                }}>Delete</a>
+                            </div>
+                        }
+                        {
+                            !props.facultyFlag &&
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Approve</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Reject</a>
+                            </div>
+                        }
+                        </td>
+                    </tr>
+                );
             }
         });
         wor = Object.keys(props.children).map(key => {
             if (props.children[key].type == 'Within Wor'){
-                if(props.children[key].proof) {
-                    return(
-                        <tr key = {props.children.[key].publicServiceId}>
-                            <td>{props.children[key].position}</td>
-                            <td>{props.children[key].organization}</td>
-                            <td>{props.children[key].description}</td>
-                            <td>{props.children[key].startDate}</td>
-                            <td>{props.children[key].endDate}</td>
-                            <td>
+                return(
+                    <tr key = {props.children.[key].publicServiceId}>
+                        <td>{props.children[key].position}</td>
+                        <td>{props.children[key].organization}</td>
+                        <td>{props.children[key].description}</td>
+                        <td>{props.children[key].startDate}</td>
+                        <td>{props.children[key].endDate}</td>
+                        <td>
+                        {
+                            props.children[key].proof &&
+                            <div className = "btn-grp">
                                 <button
                                     type="button"
                                     className="btn btn-primary"
@@ -262,45 +258,41 @@ function PublicServiceAccomplishment(props){
                                     target="_blank">
                                     Preview
                                 </a>
-                            </td>
-                            <td>{props.children[key].status}</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
-                                        setKey(editPS)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
-                                    }}>Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    );
-                } else {
-                    return(
-                        <tr key = {props.children.[key].publicServiceId}>
-                            <td>{props.children[key].position}</td>
-                            <td>{props.children[key].organization}</td>
-                            <td>{props.children[key].description}</td>
-                            <td>{props.children[key].startDate}</td>
-                            <td>{props.children[key].endDate}</td>
-                            <td>None</td>
-                            <td>{props.children[key].status}</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
-                                        setKey(editPS)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
-                                    }}>Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    );
-                }
+                            </div>
+                        }
+                        { 
+                            !props.children[key].proof && 
+                            <div>None</div>
+                        }
+                        </td>
+                        <td>{props.children[key].status}</td>
+                        <td>
+                        {
+                            props.facultyFlag &&
+                            <div className = "btn-group">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                    setEdit(props.children.[key].publicServiceId)
+                                    setKey(editPS)
+                                }}>Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                    setDelete(props.children.[key].publicServiceId)
+                                }}>Delete</a>
+                            </div>
+                        }
+                        {
+                            !props.facultyFlag &&
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Approve</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Reject</a>
+                            </div>
+                        }
+                        </td>
+                    </tr>
+                );
             }
         });
     }
@@ -401,9 +393,12 @@ function PublicServiceAccomplishment(props){
             </table>
             </div>
 
-            <div>
-                <PublicServiceAccomplishmentForm token = { props.token } />
-            </div>   
+            {
+                props.facultyFlag &&
+                <div>
+                    <PublicServiceAccomplishmentForm token = { props.token } />
+                </div>  
+            } 
 		
 		<div className="modal fade" id="editPublicService" tabIndex="-1" role="dialog" aria-labelledby="editPublicServiceLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

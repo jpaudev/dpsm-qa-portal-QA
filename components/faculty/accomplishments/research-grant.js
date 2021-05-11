@@ -6,7 +6,7 @@ function ResearchGrant(props){
     const name = props.name
     let content 
     if(props.children != null) {
-        content = Object.keys(props.children).map(key => {
+        content = Object.keys(props.children).map(key => { 
             if(props.children[key].researchGrantId != null) {
                 let res = props.children[key].faculty_researchers;
                 return (
@@ -14,8 +14,9 @@ function ResearchGrant(props){
                         <td>{props.children[key].researchName}</td>
                         <td>
                             {Object.keys(res).map(auth => {
+                            let link = "/faculty/basic-info/" + res[auth].facultyId
                                 return (
-                                    <a href = "#">{res[auth].faculty_personal_info.firstName}, </a>
+                                    <a href = {link}>{res[auth].faculty_personal_info.lastName},{res[auth].faculty_personal_info.firstName}, </a>
                                 );
                             })}
                             {props.children[key].nonFacultyResearchers}
@@ -26,13 +27,68 @@ function ResearchGrant(props){
                         <td>{props.children[key].actualStart}</td>
                         <td>{props.children[key].actualEnd}</td>
                         <td>{props.children[key].researchProgress}</td>
-                        <td>{res[0].proof}</td>
-                        <td>{res[0].status}</td>
                         <td>
+                            {Object.keys(res).map(auth => {
+                                if(res[auth].facultyId == props.facultyId) {
+                                    if(res[auth].proof) {
+                                        return (
+                                            <div className = "btn-grp">
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-primary"
+                                                    onClick = {() => {
+                                                        let file = res[auth].proof
+                                                        downloadProof(file)
+                                                    }}
+                                                >
+                                                    Download
+                                                </button>
+                                                <a
+                                                    className ="btn btn-info"
+                                                    href={"http://localhost:3001/" + res[auth].proof}
+                                                    style = {{ color: 'white' }}
+                                                    target="_blank">
+                                                    Preview
+                                                </a>
+                                            </div>
+                                        );
+                                    } else {
+                                        return(<div>None</div>)
+                                    }
+                                }
+                            })}
+                        </td>
+                        <td>
+                            {Object.keys(res).map(auth => {
+                                if(res[auth].facultyId == props.facultyId) {
+                                    return (
+                                        res[auth].status
+                                    );
+                                }
+                            })}
+                        </td>
+                        
+                        <td>
+                        {
+                            props.facultyFlag && 
                             <div className = "btn-group">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication">Delete</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication" onClick={() => {
+                                    setDelete(props.children.[key].publicationId)
+                                }}>Delete</a>
                             </div>
+                        }
+                        {
+                            !props.facultyFlag && 
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Approve</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Reject</a>
+                            </div>
+                        }
                         </td>
                     </tr>
                 );
@@ -60,66 +116,15 @@ function ResearchGrant(props){
                 <th>Action</th>
 			</tr>
             {content}
-			<tr>
-				<td>COVID-19 vaccine</td>
-				<td><a href = "#">Steve</a>, Bob, Greg</td>
-				<td>WHO</td>
-				<td>Php100,000,000</td>
-				<td>2019-11-20 to 2021-5-18</td>
-				<td>2019-12-25</td>
-				<td></td>
-				<td>Ongoing</td>
-				<td><a href ="#">Download proof</a></td>
-                <td>Pending Approval</td>
-				<td>
-                    <div className = "btn-group">
-                        <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
-                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant">Delete</a>
-                    </div>
-                </td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>2017-05-26</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-                <td>Pending Approval</td>
-				<td>
-                    <div className = "btn-group">
-                        <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
-                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant">Delete</a>
-                    </div>
-                </td>
-			</tr>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>2010-09-06</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-                <td>Verified</td>
-				<td>
-                    <div className = "btn-group">
-                        <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
-                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant">Delete</a>
-                    </div>
-                </td>
-			</tr>
 		</tbody>
 	</table>	
 	</div>
-	<div>
-		<ResearchGrantForm />
-	</div>
+    { 
+        props.facultyFlag &&
+        <div>
+            <ResearchGrantForm />
+        </div>
+    }
 
 	<div className="modal fade" id="editResearchGrant" tabIndex="-1" role="dialog" aria-labelledby="editResearchGrantLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

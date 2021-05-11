@@ -24,7 +24,6 @@ function Education(props) {
     let content 
     if(props.children != null) {
         content = Object.keys(props.children).map(key => {
-            if(props.children[key].proof) {
                 return (
                     <tr key = {props.children.[key].educInfoId}>
                         <td>{props.children[key].institutionSchool}</td>
@@ -34,65 +33,63 @@ function Education(props) {
                         <td>{props.children[key].startDate}</td>
                         <td>{props.children[key].endDate}</td>
                         <td>
-                            <div className = "btn-grp">
-                                <button
-                                    type="button"
-                                    className="btn btn-primary"
-                                    onClick = {() => {
-                                        let file = props.children[key].proof
-                                        downloadProof(file, props.token)
-                                    }}
-                                >
-                                    Download
-                                </button>
-                                <a
-                                    className ="btn btn-info"
-                                    href={"http://localhost:3001/" + props.children[key].proof}
-                                    style = {{ color: 'white' }}
-                                    target="_blank">
-                                    Preview
-                                </a>
-                            </div>
+                            {
+                                props.children[key].proof &&
+                                <div className = "btn-grp">
+                                    <button
+                                        type="button"
+                                        className="btn btn-primary"
+                                        onClick = {() => {
+                                            let file = props.children[key].proof
+                                            downloadProof(file, props.token)
+                                        }}
+                                    >
+                                        Download
+                                    </button>
+                                    <a
+                                        className ="btn btn-info"
+                                        href={"http://localhost:3001/" + props.children[key].proof}
+                                        style = {{ color: 'white' }}
+                                        target="_blank">
+                                        Preview
+                                    </a>
+                                </div>
+                            }
+                            { 
+                                !props.children[key].proof && 
+                                <div>None</div>
+                            }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td>
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
-                                    setEdit(props.children.[key].educInfoId)
-                                    setKey(editEduc)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation" onClick={() => {
-                                    setDelete(props.children.[key].educInfoId)
-                                }}>Delete</a>
-                            </div>
-                        </td>
+                        {
+                            props.facultyFlag && 
+                            <td>
+                                <div className = "btn-grp">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
+                                        setEdit(props.children.[key].educInfoId)
+                                        setKey(editEduc)
+                                    }}>Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation" onClick={() => {
+                                        setDelete(props.children.[key].educInfoId)
+                                    }}>Delete</a>
+                                </div>
+                            </td>
+                        }
+                        {
+                            !props.facultyFlag && 
+                            <td>
+                                <div className = "btn-grp">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Approve</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Reject</a>
+                                </div>
+                            </td>
+                        }
                     </tr>
                 );
-            } else {
-                return (
-                    <tr key = {props.children.[key].educInfoId} >
-                        <td>{props.children[key].institutionSchool}</td>
-                        <td>{props.children[key].degreeType}</td>
-                        <td>{props.children[key].degreeCert}</td>
-                        <td>{props.children[key].majorSpecialization}</td>
-                        <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}</td>
-                        <td>None</td>
-                        <td>{props.children[key].status}</td>
-                        <td>
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
-                                    setEdit(props.children.[key].educInfoId)
-                                    setKey(editEduc)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation" onClick={() => {
-                                    setDelete(props.children.[key].educInfoId)
-                                }}>Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                );
-            }
         });
     }
     let res
@@ -142,9 +139,12 @@ function Education(props) {
                 </table>
             </div>
             
-            <div>
-                <EducationForm token = { props.token }/>
-            </div>   
+            { 
+                props.facultyFlag && 
+                <div>
+                    <EducationForm token = { props.token }/>
+                </div>   
+            }
 
             <div className="modal fade" id="editEducation" tabIndex="-1" role="dialog" aria-labelledby="editEducationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
@@ -291,6 +291,7 @@ function Education(props) {
                     </div>
                 </div>
             </div>
+        
         </div>
     )
 }

@@ -6,10 +6,10 @@ import { parseCookies } from "../../helpers"
 function Dashboard(props) { 
 	if(props.data.role == 1) {
         Router.push('faculty/basic-info')
-		return (<Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName} />)
+		return (<Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} />)
 	} else if(props.data.role == 2 || props.data.role == 3){
 		return (
-	        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName}>
+	        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name}>
 	        	{/*props*/}
 	            <div className="col-9">
 	                <div className="container">

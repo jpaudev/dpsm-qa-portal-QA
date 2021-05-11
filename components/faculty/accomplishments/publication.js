@@ -5,101 +5,91 @@ import Router from 'next/router'
 
 import deletePublication from '../../../services/faculty/accomplishments/deletePublication'
 
-function Publication(props){
+function Publication(props){  
     let content 
     let deletePub = 0
     if(props.children != null) {
         content = Object.keys(props.children).map(key => {
             let pub = props.children[key].faculty_publishers;
-            if (props.children[key].proof) {
-                return (
-                    <tr key = {props.children.[key].publicationId}>
-                        <td>{props.children[key].title}</td>
-                        <td>
-                            {Object.keys(pub).map(auth => {
-                                return (
-                                    <a href = "#">{pub[auth].faculty_personal_info.firstName}, </a>
-                                );
-                            })}
-                            {props.children[key].nonFacultyAuthors}
-                        </td>
-                        <td>{props.children[key].publicationDate}</td>
-                        <td>{props.children[key].url}</td>
-                        <td>{props.children[key].citation}</td>
-                        <td>
-                            <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick = {() => {
-                                    let file = props.children[key].proof
-                                    downloadProof(file)
-                                }}
-                            >
-                                Download
-                            </button>
-                            <a
-                                className ="btn btn-info"
-                                href={"http://localhost:3001/" + props.children[key].proof}
-                                style = {{ color: 'white' }}
-                                target="_blank">
-                                Preview
-                            </a>
-                        </td>
-                        <td>
-                            {Object.keys(pub).map(auth => {
-                                if(pub[auth].facultyId == 9) {
+            return (
+                <tr key = {props.children.[key].publicationId}>
+                    <td>{props.children[key].title}</td>
+                    <td>
+                        {Object.keys(pub).map(auth => {
+                            let link = "/faculty/basic-info/" + pub[auth].facultyId
+                            return (
+                                <a href = {link}>{pub[auth].faculty_personal_info.lastName},{ pub[auth].faculty_personal_info.firstName}, </a>
+                            );
+                        })}
+                        {props.children[key].nonFacultyAuthors}
+                    </td>
+                    <td>{props.children[key].publicationDate}</td>
+                    <td>{props.children[key].url}</td>
+                    <td>{props.children[key].citation}</td>
+                    <td>
+                        {Object.keys(pub).map(auth => {
+                            if(pub[auth].facultyId == props.facultyId) {
+                                if(pub[auth].proof) {
                                     return (
-                                        pub[auth].status
+                                        <div className = "btn-grp">
+                                            <button
+                                                type="button"
+                                                className="btn btn-primary"
+                                                onClick = {() => {
+                                                    let file = pub[auth].proof
+                                                    downloadProof(file)
+                                                }}
+                                            >
+                                                Download
+                                            </button>
+                                            <a
+                                                className ="btn btn-info"
+                                                href={"http://localhost:3001/" + pub[auth].proof}
+                                                style = {{ color: 'white' }}
+                                                target="_blank">
+                                                Preview
+                                            </a>
+                                        </div>
                                     );
+                                } else {
+                                    return(<div>None</div>)
                                 }
-                            })}
-                        </td>
-                        <td>
-                            <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication" onClick={() => {
-                                    setDelete(props.children.[key].publicationId)
-                                }}>Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                );    
-            } else {
-                return (
-                    <tr key = {props.children.[key].publicationId}>
-                        <td>{props.children[key].title}</td>
-                        <td>
-                            {Object.keys(pub).map(auth => {
+                            }
+                        })}
+                    </td>
+                    <td>
+                        {Object.keys(pub).map(auth => {
+                            if(pub[auth].facultyId == props.facultyId) {
                                 return (
-                                    <a href = "#">{pub[auth].faculty_personal_info.firstName}, </a>
+                                    pub[auth].status
                                 );
-                            })}
-                            {props.children[key].nonFacultyAuthors}
-                        </td>
-                        <td>{props.children[key].publicationDate}</td>
-                        <td>{props.children[key].url}</td>
-                        <td>{props.children[key].citation}</td>
-                        <td></td>
-                        <td>
-                            {Object.keys(pub).map(auth => {
-                                if(pub[auth].facultyId == 9) {
-                                    return (
-                                        <a href = "#">{pub[auth].faculty_personal_info.firstName}, </a>
-                                    );
-                                }
-                            })}
-                        </td>
-                        <td>
-                            <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication" onClick={() => {
-                                    setDelete(props.children.[key].publicationId)
-                                }}>Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                );
-            }
+                            }
+                        })}
+                    </td>
+                    <td>
+                    {
+                        props.facultyFlag && 
+                        <div className = "btn-group">
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication" onClick={() => {
+                                setDelete(props.children.[key].publicationId)
+                            }}>Delete</a>
+                        </div>
+                    }
+                    {
+                        !props.facultyFlag && 
+                        <div className = "btn-grp">
+                            <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                
+                            }}>Approve</a>
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                
+                            }}>Reject</a>
+                        </div>
+                    }
+                    </td>
+                </tr>
+            );    
         });
     }
 
@@ -129,9 +119,12 @@ function Publication(props){
 		</tbody>
 	</table>	
 	</div>
-	<div>
-		<PublicationForm faculty = {props.faculty} token = {props.token} />
-	</div>
+    { 
+        props.facultyFlag && 
+        <div>
+            <PublicationForm faculty = {props.faculty} token = {props.token} />
+        </div>
+    }
 
 	<div className="modal fade" id="editPublication" tabIndex="-1" role="dialog" aria-labelledby="editPublicationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

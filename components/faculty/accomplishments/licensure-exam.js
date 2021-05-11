@@ -25,14 +25,16 @@ function LicensureExam(props) {
     if(props.children != null) {
         content = Object.keys(props.children).map(key => {
             if(props.children[key].licenseId != null) {
-                if(props.children[key].proof != null) {
-                    return (
-                        <tr key = {props.children[key].licenseId}>
-                            <td>{props.children[key].examName}</td>
-                            <td>{props.children[key].rank}</td>
-                            <td>{props.children[key].examDate}</td>
-                            <td>{props.children[key].licenseNumber}</td>
-                            <td>
+                return (
+                    <tr key = {props.children[key].licenseId}>
+                        <td>{props.children[key].examName}</td>
+                        <td>{props.children[key].rank}</td>
+                        <td>{props.children[key].examDate}</td>
+                        <td>{props.children[key].licenseNumber}</td>
+                        <td>
+                        {
+                            props.children[key].proof &&
+                            <div className = "btn-grp">
                                 <button
                                     type="button"
                                     className="btn btn-primary"
@@ -50,44 +52,41 @@ function LicensureExam(props) {
                                     target="_blank">
                                     Preview
                                 </a>
-                            </td>
-                            <td>{props.children[key].status}</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
-                                        setEdit(props.children.[key].licenseId)
-                                        setKey(editLic)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
-                                        setDelete(props.children.[key].licenseId)
-                                    }}>Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    );
-                } else {
-                    return (
-                        <tr key = {props.children[key].licenseId}>
-                            <td>{props.children[key].examName}</td>
-                            <td>{props.children[key].rank}</td>
-                            <td>{props.children[key].examDate}</td>
-                            <td>{props.children[key].licenseNumber}</td>
-                            <td>None</td>
-                            <td>{props.children[key].status}</td>
-                            <td>
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
-                                        setEdit(props.children.[key].licenseId)
-                                        setKey(editLic)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
-                                        setDelete(props.children.[key].licenseId)
-                                    }}>Delete</a>
-                                </div>
-                            </td>
-                        </tr>
-                    );
-                }
+                            </div>
+                        }
+                        { 
+                            !props.children[key].proof && 
+                            <div>None</div>
+                        }
+                        </td>
+                        <td>{props.children[key].status}</td>
+                        <td>
+                        {
+                            props.facultyFlag && 
+                            <div className = "btn-group">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
+                                    setEdit(props.children.[key].licenseId)
+                                    setKey(editLic)
+                                }}>Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
+                                    setDelete(props.children.[key].licenseId)
+                                }}>Delete</a>
+                            </div>
+                        }
+                        {
+                            !props.facultyFlag && 
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Approve</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                    
+                                }}>Reject</a>
+                            </div>
+                        }
+                        </td>
+                    </tr>
+                );
             }
         })
     }
@@ -130,9 +129,12 @@ function LicensureExam(props) {
                 </table>
             </div>
 
-            <div>
-                <LicensureExamForm token = { props.token } />
-            </div>   
+            {
+                props.facultyFlag && 
+                <div>
+                    <LicensureExamForm token = { props.token } />
+                </div>   
+            }
 	
             <div className="modal fade" id="editLicensureExam" tabIndex="-1" role="dialog" aria-labelledby="editLicensureExamLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
