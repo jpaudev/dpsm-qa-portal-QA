@@ -103,6 +103,9 @@ function LicensureExam(props) {
         Object.keys(props.children).map(key => {
             if(props.children.[key].licenseId == x) {
                 setData(props.children.[key])
+                if(props.children.[key].rank == "" || props.children.[key].rank == null) {
+                    setData(currData => ({...currData, rank: ''}))
+                }
             }
         });
     }
@@ -203,7 +206,7 @@ function LicensureExam(props) {
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "LicensureExamProofUpdate"> Proof </label>
-                                        <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
+                                        <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
                                     </div>
                                 </div>
                             </div>

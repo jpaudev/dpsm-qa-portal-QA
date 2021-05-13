@@ -10,6 +10,7 @@ export default async function addPublication(formData, token) {
 				for (var value of formData.values()) {
                     console.log(value)
                 }
+               	let proof = formData.get('proof')
 				const response = await axios({
 				    method: 'POST',
 				    url: 'http://localhost:3001/api/faculty/accomplishment/add/publication',
@@ -19,19 +20,26 @@ export default async function addPublication(formData, token) {
 			    .then(async function (response) {
 			        //handle success
 			        console.log(response);
-			        let bod = [{
+			        let bod = {
 			    		"facultyId": facultyId,
 			    		"publicationId": response.data.result.publicationId,
-			    		"status": "Pending",
-			    		"proof": formData.get('proof')
-			    	}]
-			    	
+			    		"proof": proof
+			    	}
+			    	console.log(bod)
 			        const res = await axios({
 			        	method: 'POST',
 					    url: 'http://localhost:3001/api/faculty/accomplishment/add/publisher',
 					    data: bod,
 					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			        })
+			        .then(function (res) {
+				        //handle success
+				        console.log(res);
+				    })
+					.catch(function (res) {
+				        //handle error
+				        console.log(res);
+				    });
 					return res.data
 			    })
 			    .catch(function (response) {

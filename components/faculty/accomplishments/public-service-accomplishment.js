@@ -309,9 +309,9 @@ function PublicServiceAccomplishment(props){
         Object.keys(props.children).map(key => {
             if(props.children.[key].publicServiceId == x) {
                 setData(props.children.[key])
-            }
-            if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
-                setData(currData => ({...currData, endDate: ''}))
+                if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+                    setData(currData => ({...currData, endDate: ''}))
+                }
             }
         });
     }
