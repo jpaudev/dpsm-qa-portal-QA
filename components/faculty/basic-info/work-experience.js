@@ -58,6 +58,9 @@ function WorkExperience(props){
         Object.keys(props.children).map(key => {
             if(props.children.[key].workExpId == x) {
                 setData(props.children.[key])
+                if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+                    setData(currData => ({...currData, endDate: ''}))
+                }
             }
         });
     }

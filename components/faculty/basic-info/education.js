@@ -106,9 +106,9 @@ function Education(props) {
         Object.keys(props.children).map(key => {
             if(props.children.[key].educInfoId == x) {
                 setData(props.children.[key])
-            }
-            if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
-                setData(currData => ({...currData, endDate: ''}))
+                if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+                    setData(currData => ({...currData, endDate: ''}))
+                }
             }
         });
     }
