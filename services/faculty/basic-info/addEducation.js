@@ -7,6 +7,9 @@ export default async function addEducation(formData, token) {
 	try {
 		if (token) {
 			try {
+				if(formData.get('proof') == "") {
+					formData.delete('proof')
+				}
 				if(formData.get('endDate') == "") {
 					formData.delete('endDate')
 				}

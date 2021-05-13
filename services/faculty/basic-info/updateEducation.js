@@ -15,6 +15,9 @@ export default async function updateEducation(formData, token) {
 		    if(formData.get('proof') == "") {
 				formData.delete('proof')
 			}
+			if(formData.get('endDate') == "") {
+				formData.delete('endDate')
+			}
 		    for (var value of formData.values()) {
                 console.log(value)
             }
