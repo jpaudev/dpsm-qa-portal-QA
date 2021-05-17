@@ -1,10 +1,10 @@
-import Layout from '../../../components/layout'
-import PersonalInfo from '../../../components/faculty/basic-info/personal-info'
-import Education from '../../../components/faculty/basic-info/education'
-import EmploymentHistory from '../../../components/faculty/basic-info/employment-history'
-import WorkExperience from '../../../components/faculty/basic-info/work-experience'
+import Layout from '../../components/layout'
+import PersonalInfo from '../../components/faculty/basic-info/personal-info'
+import Education from '../../components/faculty/basic-info/education'
+import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
+import WorkExperience from '../../components/faculty/basic-info/work-experience'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../../helpers"
+import { parseCookies } from "../../helpers"
 
 function BasicInfo(props) { 
     return (

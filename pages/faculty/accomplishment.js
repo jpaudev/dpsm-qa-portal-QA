@@ -1,11 +1,11 @@
-import Layout from '../../../components/layout'
-import Publication from '../../../components/faculty/accomplishments/publication'
-import PublicServiceAccomplishment from '../../../components/faculty/accomplishments/public-service-accomplishment'
-import LicensureExam from '../../../components/faculty/accomplishments/licensure-exam'
-import TrainingSeminar from '../../../components/faculty/accomplishments/training-seminar'
-import ResearchGrant from '../../../components/faculty/accomplishments/research-grant'
+import Layout from '../../components/layout'
+import Publication from '../../components/faculty/accomplishments/publication'
+import PublicServiceAccomplishment from '../../components/faculty/accomplishments/public-service-accomplishment'
+import LicensureExam from '../../components/faculty/accomplishments/licensure-exam'
+import TrainingSeminar from '../../components/faculty/accomplishments/training-seminar'
+import ResearchGrant from '../../components/faculty/accomplishments/research-grant'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../../helpers"
+import { parseCookies } from "../../helpers"
 
 function Accomplishments(props) { 
     let name = props.personalInfo.lastName + ', ' + props.personalInfo.firstName

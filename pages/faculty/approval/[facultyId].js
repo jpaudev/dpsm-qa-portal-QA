@@ -1,4 +1,5 @@
 import Layout from '../../../components/layout'
+import Education from '../../../components/faculty/basic-info/education'
 import Publication from '../../../components/faculty/accomplishments/publication'
 import PublicServiceAccomplishment from '../../../components/faculty/accomplishments/public-service-accomplishment'
 import LicensureExam from '../../../components/faculty/accomplishments/licensure-exam'
@@ -13,17 +14,21 @@ function Accomplishments(props) {
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} >
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-		<a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
-		<a className="nav-item nav-link" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">Publications</a>
-		<a className="nav-item nav-link" id="training-seminar-tab" data-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">Training/Seminars</a>
-		<a className="nav-item nav-link" id="licensure-exam-tab" data-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">Licensure Exams</a>
-		<a className="nav-item nav-link" id="research-grant-tab" data-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">Research Grants</a>
+                <a className="nav-item nav-link active" id="educ-tab" data-toggle="tab" data-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">Education</a>
+                <a className="nav-item nav-link" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
+                <a className="nav-item nav-link" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">Publications</a>
+                <a className="nav-item nav-link" id="training-seminar-tab" data-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">Training/Seminars</a>
+                <a className="nav-item nav-link" id="licensure-exam-tab" data-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">Licensure Exams</a>
+                <a className="nav-item nav-link" id="research-grant-tab" data-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">Research Grants</a>
             </div>
             </nav>
 		<br />
 		<br />
         <div className="tab-content" id="nav-tabContent">
-    	    <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
+            <div className="tab-pane fade show active" id="educ" role="tabpanel" aria-labelledby="educ-tab">
+                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false}>{ props.education }</Education>
+            </div>
+    	    <div className="tab-pane fade" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
                 <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false}>
                     { props.publicService }
                 </PublicServiceAccomplishment>
@@ -109,6 +114,9 @@ function Accomplishments(props) {
     const personalInfo = await personal.json()
     let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
+    const educ = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/education', header)
+    let education = await educ.json()
+
     const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all', header)
     const faculty = await fac.json()
 
@@ -138,6 +146,7 @@ function Accomplishments(props) {
             pathFacultyId: context.params.facultyId,
             faculty: faculty.result,
             personalInfo: personalInfo.result,
+            education: education.result,
             publicService: publicService.result,
             publications: publications.result,
             trainingSeminar: trainingSeminar.result,
