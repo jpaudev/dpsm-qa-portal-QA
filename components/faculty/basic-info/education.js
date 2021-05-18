@@ -31,7 +31,7 @@ function Education(props) {
                         <td>{props.children[key].degreeCert}</td>
                         <td>{props.children[key].majorSpecialization}</td>
                         <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}</td>
+                        <td>{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
                         <td>
                             {
                                 props.children[key].proof &&
