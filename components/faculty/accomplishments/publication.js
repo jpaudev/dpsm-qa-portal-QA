@@ -93,9 +93,7 @@ function Publication(props){
         });
     }
     else{
-        return(
-            <td colspan = "7">No data available!</td>
-        )
+        content = <td colspan = "7"><p align = "center">No data available!</p></td>
     }
 
     function setDelete(id) {
