@@ -247,7 +247,7 @@ function TrainingSeminar(props) {
                     </div>
                     <div className="modal-body">
                         <hr />
-                        <p> Are you sure you want to delete this education information? </p>
+                        <p> Are you sure you want to delete this training/seminar information? </p>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
