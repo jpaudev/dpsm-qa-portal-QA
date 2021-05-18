@@ -29,7 +29,7 @@ function WorkExperience(props){
                         <td>{props.children[key].employerName}</td>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}</td>
+                        <td>{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
                         <td>{props.children[key].description}</td>
                         <td>
                             <div className = "btn-grp">
