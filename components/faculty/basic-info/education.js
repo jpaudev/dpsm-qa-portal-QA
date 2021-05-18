@@ -92,6 +92,11 @@ function Education(props) {
                 );
         });
     }
+    else{
+        return(
+            <td colspan = "9">No data available!</td>
+        )
+    }
     let res
 
     function setEdit(id) {
