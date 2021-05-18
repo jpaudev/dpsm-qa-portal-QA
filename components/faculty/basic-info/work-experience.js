@@ -48,9 +48,7 @@ function WorkExperience(props){
         });
     }
     else{
-        return(
-            <td colspan = "6">No data available!</td>
-        )
+        content = <td colspan = "6"><p align = "center">No data available!</p></td>
     }
 
     function setEdit(id) {
