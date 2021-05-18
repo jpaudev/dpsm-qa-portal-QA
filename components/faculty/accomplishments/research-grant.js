@@ -96,9 +96,7 @@ function ResearchGrant(props){
         });
     }
     else{
-        return(
-            <td colspan = "10">No data available!</td>
-        )
+        content = <td colspan = "10"><p align = "center">No data available!</p></td>
     }
 	return(
 		<div>
