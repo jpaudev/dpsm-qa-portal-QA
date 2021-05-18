@@ -47,6 +47,11 @@ function WorkExperience(props){
             }
         });
     }
+    else{
+        return(
+            <td colspan = "6">No data available!</td>
+        )
+    }
 
     function setEdit(id) {
         editWork = id
