@@ -91,9 +91,7 @@ function TrainingSeminar(props) {
         });
     }
     else{
-        return(
-            <td colspan = "9">No data available!</td>
-        )
+        content = <td colspan = "9"><p align = "center">No data available!</p></td>
     }
 
     function setEdit(id) {
