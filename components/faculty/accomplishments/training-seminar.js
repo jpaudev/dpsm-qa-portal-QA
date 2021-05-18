@@ -90,6 +90,11 @@ function TrainingSeminar(props) {
             }
         });
     }
+    else{
+        return(
+            <td colspan = "9">No data available!</td>
+        )
+    }
 
     function setEdit(id) {
         editTS = id
