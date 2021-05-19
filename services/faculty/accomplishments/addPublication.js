@@ -16,36 +16,23 @@ export default async function addPublication(formData, token) {
 				    url: 'http://localhost:3001/api/faculty/accomplishment/add/publication',
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
-			    })	
-			    .then(async function (response) {
-			        //handle success
-			        console.log(response);
-			        let bod = {
-			    		"facultyId": facultyId,
-			    		"publicationId": response.data.result.publicationId,
-			    		"proof": proof
-			    	}
-			    	console.log(bod)
-			        const res = await axios({
-			        	method: 'POST',
-					    url: 'http://localhost:3001/api/faculty/accomplishment/add/publisher',
-					    data: bod,
-					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
-			        })
-			        .then(function (res) {
-				        //handle success
-				        console.log(res);
-				    })
-					.catch(function (res) {
-				        //handle error
-				        console.log(res);
-				    });
-					return res.data
 			    })
-			    .catch(function (response) {
-			        //handle error
-			        console.log(response);
-			    });
+				console.log(response)
+				
+				let bodData = new FormData()
+		    	bodData.append('facultyId', facultyId)
+		    	bodData.append('publicationId', response.data.result.publicationId)
+				bodData.append('proof', proof)
+		    	for (var value of bodData.values()) {
+                    console.log(value)
+                }
+		        const res = await axios({
+		        	method: 'POST',
+				    url: 'http://localhost:3001/api/faculty/accomplishment/add/publisher',
+				    data: bodData,
+				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
+		        })
+				return response.data
 			} catch (err) {
 				console.error(err)
 				return err
