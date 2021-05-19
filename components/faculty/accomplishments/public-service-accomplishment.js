@@ -296,9 +296,6 @@ function PublicServiceAccomplishment(props){
             }
         });
     }
-    else{
-        content = <td colspan = "8"><p align = "center">No data available!</p></td>
-    }
 
     function setEdit(id) {
         editPS = id
@@ -338,7 +335,7 @@ function PublicServiceAccomplishment(props){
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                    {upm ? upm : 'Empty'} 
+                    {upm ? upm : <td colspan = "8"><p align = "center">No data available!</p></td>} 
                 </tbody>
             </table>
             </div>
@@ -357,7 +354,7 @@ function PublicServiceAccomplishment(props){
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                    {pro ? pro : 'Empty'}
+                    {pro ? pro : <td colspan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
 		<br />
@@ -374,7 +371,7 @@ function PublicServiceAccomplishment(props){
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                    {nat}
+                    {nat ? nat : <td colspan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
 		<br />
@@ -391,7 +388,7 @@ function PublicServiceAccomplishment(props){
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
-                    {wor}
+                    {wor ? wor : <td colspan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
             </div>
