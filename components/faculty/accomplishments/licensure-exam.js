@@ -90,6 +90,9 @@ function LicensureExam(props) {
             }
         })
     }
+    else {
+        content = <td colspan = "7">No data available!</td>
+    }
 
     function setEdit(id) {
         editLic = id
