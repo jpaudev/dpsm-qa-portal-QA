@@ -8,12 +8,16 @@ class PublicationFormAuthor extends React.Component{
 		}
 	}
 	clone(){
+		let authors = Object.keys(this.props.faculty).map(key => {
+			return (
+				<option value = {this.props.faculty[key].facultyId}>{this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}</option> 
+			);
+		});
 		this.state.duplicateAuthors.push(<div><div className = "form-row">
 			<div className = "form-group col-md-6">
 				<label htmlFor = "PublicationAuthorDPSM[]"> Author (from DPSM) </label>
 				<select className = "form-control col-md-6" name = "PublicationAuthorDPSM[]" required>
-					<option>Cabalo, Francis</option>
-					<option>Yu, Berwin</option>
+					{authors}
 				</select>
 			</div>
 		</div></div>)
@@ -27,6 +31,7 @@ class PublicationFormAuthor extends React.Component{
 
 		})
 	}
+
 	render(){
 		let authors = Object.keys(this.props.faculty).map(key => {
 			return (

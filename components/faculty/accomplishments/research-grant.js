@@ -7,7 +7,7 @@ function ResearchGrant(props){
     let content 
     if(props.children != null) {
         content = Object.keys(props.children).map(key => { 
-            if(props.children[key].researchGrantId != null) {
+            if(props.children[key].researchId != null) {
                 let res = props.children[key].faculty_researchers;
                 return (
                     <tr>

@@ -18,7 +18,7 @@ function Publication(props){
                         {Object.keys(pub).map(auth => {
                             let link = "/faculty/basic-info/" + pub[auth].facultyId
                             return (
-                                <a href = {link}>{pub[auth].faculty_personal_info.lastName},{ pub[auth].faculty_personal_info.firstName}, </a>
+                                <a href = {link}>{pub[auth].faculty_personal_info.firstName + ' ' + pub[auth].faculty_personal_info.lastName + ', '}</a>
                             );
                         })}
                         {props.children[key].nonFacultyAuthors}
