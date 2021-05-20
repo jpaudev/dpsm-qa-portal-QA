@@ -296,9 +296,6 @@ function PublicServiceAccomplishment(props){
             }
         });
     }
-    else {
-        content = <td colspan = "8">No data available!</td>
-    }
 
     function setEdit(id) {
         editPS = id

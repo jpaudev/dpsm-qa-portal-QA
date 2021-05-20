@@ -10,7 +10,7 @@ import { parseCookies } from "../../helpers"
 function Accomplishments(props) { 
     let name = props.personalInfo.lastName + ', ' + props.personalInfo.firstName
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={name} >
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={name} approvalList={props.approvalList}>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 		<a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
@@ -114,6 +114,20 @@ function Accomplishments(props) {
 	const rg = await fetch(url + '/research-grant', header)
     const researchGrant = await rg.json()
 
+    let approvalList
+    let approvalURL = 'http://localhost:3001/api/faculty/approval/' + facultyId
+    if(data.role == 2 || data.role == 3) {
+        if(data.role == 2) {
+            approvalURL += '?unitId=' + data.unitId
+        }
+
+        const approval = await fetch(approvalURL, header)
+        approvalList = await approval.json()
+        approvalList = approvalList.result
+    } else if(data.role == 1) {
+        approvalList = null
+    }
+
     return {
         props: {
             token: token && token,
@@ -128,7 +142,8 @@ function Accomplishments(props) {
             publications: publications.result,
             trainingSeminar: trainingSeminar.result,
             licensureExam: licensureExam.result,
-            researchGrant: researchGrant.result
+            researchGrant: researchGrant.result,
+            approvalList: approvalList,
         }
     }
 }

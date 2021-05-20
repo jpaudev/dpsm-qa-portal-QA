@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { useCookies } from "react-cookie";
 
-function Sidebar(props) {
+function Sidebar(props) { 
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     function handleRemoveCookie() {
@@ -21,6 +21,11 @@ function Sidebar(props) {
                     <Link href="/faculty/accomplishment"><a className = "list-group-item list-group-item-action list-group-item-success">Accomplishment</a></Link>
                     <Link href="/faculty/faculty-load"><a className = "list-group-item list-group-item-action list-group-item-success">Faculty Load</a></Link>
                     <Link href="/faculty/evaluation"><a className = "list-group-item list-group-item-action list-group-item-success ">Peer Evaluation</a></Link>
+                    { !faculty && <Link href="/faculty/approval">
+                        <a className = "list-group-item list-group-item-action list-group-item-success "> 
+                            Pending Approvals&nbsp;<span className="badge badge-danger">{props.approvalList.facultyCount}</span>
+                        </a>
+                    </Link> }
                 </div>
                 </div>
                 <div className="list-group">

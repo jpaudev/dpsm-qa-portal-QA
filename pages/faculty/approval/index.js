@@ -1,26 +1,21 @@
-import Layout from '../../components/layout'
+import Layout from '../../../components/layout'
+import Link from 'next/link'
 import Router from 'next/router'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies } from "../../../helpers"
+import Faculty from "../../../components/faculty/facultyList"
 
-function Dashboard(props) { 
-	if(props.data.role == 1) {
-		return (<Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} />)
-	} else if(props.data.role == 2 || props.data.role == 3){
-		return (
-	        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
-	        	{/*props*/}
-	            <div className="col-9">
-	                <div className="container">
-	                    DASHBOARD
-	                </div>
-	            </div>
-	        </Layout>
-	    )	
-	}
-}
+function FacultyList(props) {
+    return (
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
+			<br />
+			<h2 align="center">Faculties with Pending Approval</h2>
+			<Faculty>{props.approvalList.rows}</Faculty>
+        </Layout>
+    )
+  }
 
-export async function getServerSideProps(context) {
+  export async function getServerSideProps(context) {
     const token = parseCookies(context.req)
     let data
     let personalInfo
@@ -36,7 +31,7 @@ export async function getServerSideProps(context) {
             }
         } else {
             data = jwt.decode(token.user)
-        console.log(data);
+        
             let facultyId = data.facultyId
         
             let header = {
@@ -56,15 +51,14 @@ export async function getServerSideProps(context) {
 
                 const approval = await fetch(approvalURL, header)
                 approvalList = await approval.json()
-                approvalList = approvalList.result
-            } else if(data.role == 1) { console.log('here');
-                return {
-                    redirect: {
-                        destination: '/faculty/basic-info',
-                        permanent: true,
-                    },
-                }
-            }
+            } else {
+				return {
+					redirect: {
+						destination: '/faculty',
+						permanent: true,
+					},
+				}
+			}
         }
     } 
 
@@ -73,9 +67,9 @@ export async function getServerSideProps(context) {
             token: token && token,
             data,
             personalInfo: personalInfo.result,
-            approvalList: approvalList
+            approvalList: approvalList.result,
         }
 	}
 }
   
-export default Dashboard
+  export default FacultyList

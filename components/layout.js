@@ -5,6 +5,8 @@ import Footer from './footer'
 import Content from './content'
 import jwt from 'jsonwebtoken'
 function Layout(props) {
+    let approvalList
+    if(props.approvalList) approvalList = props.approvalList
     return (
         <div className = "container-fluid">
             <Head>
@@ -18,7 +20,7 @@ function Layout(props) {
             </Head>
             <Header facultyId = { props.facultyId } name={ props.name }/>
             <div className = "row" id = "layout_row">
-            <Sidebar role = {props.role} />
+                <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} />
                 <div className="col-10">
                     <div className="container">
                         { props.children }

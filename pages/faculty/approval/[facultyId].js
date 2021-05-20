@@ -8,10 +8,10 @@ import ResearchGrant from '../../../components/faculty/accomplishments/research-
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../../helpers"
 
-function Accomplishments(props) { 
-    let name = props.personalInfo.lastName + ', ' + props.personalInfo.firstName
+function Approval(props) { 
+    
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} >
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                 <a className="nav-item nav-link active" id="educ-tab" data-toggle="tab" data-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">Education</a>
@@ -85,13 +85,16 @@ function Accomplishments(props) {
     
     let userFacultyId = data.facultyId
     let facultyId
-
+    let status = '?status='
+    
     if(context.params.facultyId != userFacultyId && (data.role == 2 || data.role == 3) ) {
         facultyId = context.params.facultyId
+        if(data.role == 2) status += 'Pending'
+        else if(data.role == 3) status += 'Verified'
     } else {
         return {
             redirect: {
-                destination: '/faculty/accomplishment',
+                destination: '/faculty',
                 permanent: true,
             },
         }
@@ -114,26 +117,37 @@ function Accomplishments(props) {
     const personalInfo = await personal.json()
     let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
-    const educ = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/education', header)
+    const educ = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/education' + status, header)
     let education = await educ.json()
 
     const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all', header)
     const faculty = await fac.json()
 
-    const psa = await fetch(url + '/public-service', header)
+    const psa = await fetch(url + '/public-service' + status, header)
     const publicService = await psa.json()
 
-    const pub = await fetch(url + '/publication', header)
+    const pub = await fetch(url + '/publication' + status, header)
     const publications = await pub.json()
 
-    const ts = await fetch(url + '/training-seminar', header)
+    const ts = await fetch(url + '/training-seminar' + status, header)
     const trainingSeminar = await ts.json()
 
-	const le = await fetch(url + '/licensure-exam', header)
+	const le = await fetch(url + '/licensure-exam' + status, header)
     const licensureExam = await le.json()
 
-	const rg = await fetch(url + '/research-grant', header)
+	const rg = await fetch(url + '/research-grant' + status, header)
     const researchGrant = await rg.json()
+
+    let approvalList
+    let approvalURL = 'http://localhost:3001/api/faculty/approval/' + userFacultyId
+    if(data.role == 2 || data.role == 3) {
+        if(data.role == 2) {
+            approvalURL += '?unitId=' + data.unitId
+        }
+
+        const approval = await fetch(approvalURL, header)
+        approvalList = await approval.json()
+    }
 
     return {
         props: {
@@ -151,9 +165,10 @@ function Accomplishments(props) {
             publications: publications.result,
             trainingSeminar: trainingSeminar.result,
             licensureExam: licensureExam.result,
-            researchGrant: researchGrant.result
+            researchGrant: researchGrant.result,
+            approvalList: approvalList.result
         }
     }
 }
   
-export default Accomplishments
+export default Approval
