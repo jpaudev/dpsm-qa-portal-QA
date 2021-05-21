@@ -8,18 +8,49 @@ import ResearchGrant from '../../../components/faculty/accomplishments/research-
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../../helpers"
 
-function Approval(props) { 
-    
+function Approval(props) {
+    let educFlag = false
+    let publicServiceFlag = false
+    let publicationsFlag = false
+    let tsFlag = false
+    let licensureExamFlag = false
+    let rgFlag = false
+
+    if(props.education) educFlag = true
+    if(props.publicService) publicServiceFlag = true
+    if(props.publications.length != 0) publicationsFlag = true
+    if(props.trainingSeminar) tsFlag = true
+    if(props.licensureExam) licensureExamFlag = true
+    if(props.researchGrant != 0) rgFlag = true
+
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-                <a className="nav-item nav-link active" id="educ-tab" data-toggle="tab" data-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">Education</a>
-                <a className="nav-item nav-link" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
-                <a className="nav-item nav-link" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">Publications</a>
-                <a className="nav-item nav-link" id="training-seminar-tab" data-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">Training/Seminars</a>
-                <a className="nav-item nav-link" id="licensure-exam-tab" data-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">Licensure Exams</a>
-                <a className="nav-item nav-link" id="research-grant-tab" data-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">Research Grants</a>
+                <a className="nav-item nav-link active" id="educ-tab" data-toggle="tab" data-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
+                    Education &nbsp;
+                    {educFlag && <span className="badge badge-danger">!</span>}
+                </a>
+                <a className="nav-item nav-link" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">
+                    Public Service Accomplishments &nbsp;
+                    {publicServiceFlag && <span className="badge badge-danger">!</span>}
+                </a>
+                <a className="nav-item nav-link" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">
+                    Publications &nbsp;
+                    {publicationsFlag && <span className="badge badge-danger">!</span>}
+                </a>
+                <a className="nav-item nav-link" id="training-seminar-tab" data-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">
+                    Training/Seminars &nbsp;
+                    {tsFlag && <span className="badge badge-danger">!</span>}
+                </a>
+                <a className="nav-item nav-link" id="licensure-exam-tab" data-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">
+                    Licensure Exams &nbsp;
+                    {licensureExamFlag && <span className="badge badge-danger">!</span>}
+                </a>
+                <a className="nav-item nav-link" id="research-grant-tab" data-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">
+                    Research Grants &nbsp;
+                    {rgFlag && <span className="badge badge-danger">!</span>}
+                </a>
             </div>
             </nav>
 		<br />
