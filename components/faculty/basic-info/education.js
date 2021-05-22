@@ -62,7 +62,7 @@ function Education(props) {
                         </td>
                         <td>{props.children[key].status}</td>
                         {
-                            props.facultyFlag && 
+                            props.facultyFlag && !props.viewFlag &&
                             <td>
                                 <div className = "btn-grp">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
@@ -76,7 +76,7 @@ function Education(props) {
                             </td>
                         }
                         {
-                            !props.facultyFlag && 
+                            !props.facultyFlag && !props.viewFlag && 
                             <td>
                                 <div className = "btn-grp">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
@@ -135,7 +135,7 @@ function Education(props) {
                             <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            {!props.viewFlag && <th>Action</th>}
                         </tr>
                         {content}
                     </tbody>

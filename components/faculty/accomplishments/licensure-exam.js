@@ -62,7 +62,7 @@ function LicensureExam(props) {
                         <td>{props.children[key].status}</td>
                         <td>
                         {
-                            props.facultyFlag && 
+                            props.facultyFlag && !props.viewFlag &&
                             <div className = "btn-group">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
                                     setEdit(props.children.[key].licenseId)
@@ -74,7 +74,7 @@ function LicensureExam(props) {
                             </div>
                         }
                         {
-                            !props.facultyFlag && 
+                            !props.facultyFlag && !props.viewFlag &&
                             <div className = "btn-grp">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
                                     
@@ -128,7 +128,7 @@ function LicensureExam(props) {
                             <th>License Number</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            {!props.viewFlag && <th>Action</th>}
                         </tr>
                         {content}
                     </tbody>

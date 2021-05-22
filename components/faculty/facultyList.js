@@ -5,6 +5,11 @@ function FacultyList(props){ console.log(props.children);
 	let mcsu
 	let physgeo
 	if(props.children != null) {
+		let path
+		if(props.path == "approval") path = '/faculty/approval/'
+		else if(props.path == 'admin') path = 'admin/'
+		else if(props.path == 'info') path = '/faculty/view/'
+
 		chem = Object.keys(props.children).map(key => {
 			if (props.children[key].unitId == 1) { 
 				let faculty = props.children[key].faculty_units
@@ -14,7 +19,7 @@ function FacultyList(props){ console.log(props.children);
 					let facultyId = faculty[index].facultyId
 					let forApprovalCount = faculty[index].forApprovalCount
 					return (
-						<a href = {`/faculty/approval/${encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light" forApproval={faculty[index].faculty_personal_info}>
+						<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light" forApproval={faculty[index].faculty_personal_info}>
 							{surname}, {firstName} 
 							<span className="badge badge-danger">{forApprovalCount}</span>
 						</a>	
@@ -41,7 +46,7 @@ function FacultyList(props){ console.log(props.children);
 					let facultyId = faculty[index].facultyId
 					let forApprovalCount = faculty[index].forApprovalCount
 					return (
-						<a href = {`/faculty/approval/${encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
+						<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
 							{surname}, {firstName} 
 							<span className="badge badge-danger">{forApprovalCount}</span>
 						</a>	
@@ -68,7 +73,7 @@ function FacultyList(props){ console.log(props.children);
 					let facultyId = faculty[index].facultyId
 					let forApprovalCount = faculty[index].forApprovalCount
 					return (
-						<a href = {`/faculty/approval/${encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
+						<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
 							{surname}, {firstName} 
 							<span className="badge badge-danger">{forApprovalCount}</span>
 						</a>	

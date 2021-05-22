@@ -70,7 +70,7 @@ function ResearchGrant(props){
                         
                         <td>
                         {
-                            props.facultyFlag && 
+                            props.facultyFlag && !props.viewFlag &&
                             <div className = "btn-group">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
                                 <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication" onClick={() => {
@@ -79,7 +79,7 @@ function ResearchGrant(props){
                             </div>
                         }
                         {
-                            !props.facultyFlag && 
+                            !props.facultyFlag && !props.viewFlag &&
                             <div className = "btn-grp">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
                                     
@@ -116,7 +116,7 @@ function ResearchGrant(props){
 				<th>Research Progress</th>
 				<th>Proof</th>
 				<th>Status</th>
-                <th>Action</th>
+                {!props.viewFlag && <th>Action</th>}
 			</tr>
             {content}
 		</tbody>

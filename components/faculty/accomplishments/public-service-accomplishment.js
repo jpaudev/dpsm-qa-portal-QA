@@ -65,31 +65,34 @@ function PublicServiceAccomplishment(props){
                             }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td>
-                            {
-                                props.facultyFlag &&
-                                <div className = "btn-group">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
-                                        setKey(editPS)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
-                                    }}>Delete</a>
-                                </div>
-                            }
-                            {
-                                !props.facultyFlag &&
-                                <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                        
-                                    }}>Approve</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                        
-                                    }}>Reject</a>
-                                </div>
-                            }
-                        </td>
+                        {
+                            !props.viewFlag &&
+                            <td>
+                                {
+                                    props.facultyFlag &&
+                                    <div className = "btn-group">
+                                        <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                            setEdit(props.children.[key].publicServiceId)
+                                            setKey(editPS)
+                                        }}>Edit</a>
+                                        <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                            setDelete(props.children.[key].publicServiceId)
+                                        }}>Delete</a>
+                                    </div>
+                                }
+                                {
+                                    !props.facultyFlag &&
+                                    <div className = "btn-grp">
+                                        <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                            
+                                        }}>Approve</a>
+                                        <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                            
+                                        }}>Reject</a>
+                                    </div>
+                                }
+                            </td>
+                        }
                     </tr>
                 );
             }
@@ -132,31 +135,34 @@ function PublicServiceAccomplishment(props){
                         }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td>
                         {
-                            props.facultyFlag &&
-                            <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                    setEdit(props.children.[key].publicServiceId)
-                                    setKey(editPS)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                    setDelete(props.children.[key].publicServiceId)
-                                }}>Delete</a>
-                            </div>
+                            !props.viewFlag && 
+                            <td>
+                            {
+                                props.facultyFlag &&
+                                <div className = "btn-group">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                        setEdit(props.children.[key].publicServiceId)
+                                        setKey(editPS)
+                                    }}>Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                        setDelete(props.children.[key].publicServiceId)
+                                    }}>Delete</a>
+                                </div>
+                            }
+                            {
+                                !props.facultyFlag &&
+                                <div className = "btn-grp">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Approve</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Reject</a>
+                                </div>
+                            }
+                            </td>
                         }
-                        {
-                            !props.facultyFlag &&
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                    
-                                }}>Approve</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                    
-                                }}>Reject</a>
-                            </div>
-                        }
-                        </td>
                     </tr>
                 );
             }
@@ -199,31 +205,34 @@ function PublicServiceAccomplishment(props){
                         }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td>
                         {
-                            props.facultyFlag &&
-                            <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                    setEdit(props.children.[key].publicServiceId)
-                                    setKey(editPS)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                    setDelete(props.children.[key].publicServiceId)
-                                }}>Delete</a>
-                            </div>
+                            !props.viewFlag &&
+                            <td>
+                            {
+                                props.facultyFlag &&
+                                <div className = "btn-group">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                        setEdit(props.children.[key].publicServiceId)
+                                        setKey(editPS)
+                                    }}>Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                        setDelete(props.children.[key].publicServiceId)
+                                    }}>Delete</a>
+                                </div>
+                            }
+                            {
+                                !props.facultyFlag &&
+                                <div className = "btn-grp">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Approve</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Reject</a>
+                                </div>
+                            }
+                            </td>
                         }
-                        {
-                            !props.facultyFlag &&
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                    
-                                }}>Approve</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                    
-                                }}>Reject</a>
-                            </div>
-                        }
-                        </td>
                     </tr>
                 );
             }
@@ -266,31 +275,34 @@ function PublicServiceAccomplishment(props){
                         }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td>
                         {
-                            props.facultyFlag &&
-                            <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                    setEdit(props.children.[key].publicServiceId)
-                                    setKey(editPS)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                    setDelete(props.children.[key].publicServiceId)
-                                }}>Delete</a>
-                            </div>
+                            !props.viewFlag &&
+                            <td>
+                            {
+                                props.facultyFlag &&
+                                <div className = "btn-group">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                        setEdit(props.children.[key].publicServiceId)
+                                        setKey(editPS)
+                                    }}>Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                        setDelete(props.children.[key].publicServiceId)
+                                    }}>Delete</a>
+                                </div>
+                            }
+                            {
+                                !props.facultyFlag &&
+                                <div className = "btn-grp">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Approve</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
+                                        
+                                    }}>Reject</a>
+                                </div>
+                            }
+                            </td>
                         }
-                        {
-                            !props.facultyFlag &&
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                    
-                                }}>Approve</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                    
-                                }}>Reject</a>
-                            </div>
-                        }
-                        </td>
                     </tr>
                 );
             }
@@ -333,7 +345,7 @@ function PublicServiceAccomplishment(props){
                         <th>End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        {!props.viewFlag && <th>Action</th>}
                     </tr>
                     {upm ? upm : <td colspan = "8"><p align = "center">No data available!</p></td>} 
                 </tbody>
@@ -352,7 +364,7 @@ function PublicServiceAccomplishment(props){
                         <th>End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        {!props.viewFlag && <th>Action</th>}
                     </tr>
                     {pro ? pro : <td colspan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
@@ -369,7 +381,7 @@ function PublicServiceAccomplishment(props){
                         <th>End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        {!props.viewFlag && <th>Action</th>}
                     </tr>
                     {nat ? nat : <td colspan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
@@ -386,7 +398,7 @@ function PublicServiceAccomplishment(props){
                         <th>End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
-                        <th>Action</th>
+                        {!props.viewFlag && <th>Action</th>}
                     </tr>
                     {wor ? wor : <td colspan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>

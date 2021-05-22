@@ -7,10 +7,11 @@ import Faculty from "../../../components/faculty/facultyList"
 
 function FacultyList(props) {
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
+        <Layout userId={props.data.userId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
 			<br />
-			<h2 align="center">Faculties with Pending Approval</h2>
-			<Faculty path="approval">{props.approvalList.rows}</Faculty>
+			<h2 align="center">Faculty List</h2>
+            <br />
+            <Faculty path="info">{props.facultyList}</Faculty>
         </Layout>
     )
   }
@@ -18,8 +19,9 @@ function FacultyList(props) {
   export async function getServerSideProps(context) {
     const token = parseCookies(context.req)
     let data
-    let personalInfo
+    let facultyList
     let approvalList
+    let unitId = ''
 
     if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
@@ -31,7 +33,6 @@ function FacultyList(props) {
             }
         } else {
             data = jwt.decode(token.user)
-        
             let facultyId = data.facultyId
         
             let header = {
@@ -39,9 +40,13 @@ function FacultyList(props) {
                     'Authorization': 'Bearer ' + token.user
                 }
             }
+
+            if(data.role == 2) {
+                unitId += '?unitId=' + data.unitId
+            }
             
-            const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
-            personalInfo = await personal.json()
+            const faculty = await fetch('http://localhost:3001/api/faculty/basic-info' + unitId, header)
+            facultyList = await faculty.json()
 
             let approvalURL = 'http://localhost:3001/api/faculty/approval/' + facultyId
             if(data.role == 2 || data.role == 3) {
@@ -51,14 +56,11 @@ function FacultyList(props) {
 
                 const approval = await fetch(approvalURL, header)
                 approvalList = await approval.json()
-            } else {
-				return {
-					redirect: {
-						destination: '/faculty',
-						permanent: true,
-					},
-				}
+                approvalList = approvalList.result
+            } else if(data.role == 1) {
+				approvalList = null
 			}
+
         }
     } 
 
@@ -66,8 +68,8 @@ function FacultyList(props) {
         props: {
             token: token && token,
             data,
-            personalInfo: personalInfo.result,
-            approvalList: approvalList.result,
+            facultyList: facultyList.result,
+            approvalList
         }
 	}
 }

@@ -62,7 +62,7 @@ function TrainingSeminar(props) {
                         <td>{props.children[key].status}</td>
                         <td>
                         {
-                            props.facultyFlag && 
+                            props.facultyFlag && !props.viewFlag &&
                             <div className = "btn-group">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
                                         setEdit(props.children.[key].tsId)
@@ -74,7 +74,7 @@ function TrainingSeminar(props) {
                             </div>
                         }
                         {
-                            !props.facultyFlag && 
+                            !props.facultyFlag && !props.viewFlag &&
                             <div className = "btn-grp">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
                                     
@@ -130,7 +130,7 @@ function TrainingSeminar(props) {
                             <th>Remarks</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            {!props.viewFlag && <th>Action</th>}
                         </tr>
                         {content}
                     </tbody>
