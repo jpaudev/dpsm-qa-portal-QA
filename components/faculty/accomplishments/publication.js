@@ -2,12 +2,25 @@ import Link from 'next/link'
 import PublicationForm from './publication-form'
 import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
+import React from 'react'
+import { Formik, Form, Field } from 'formik'
 
+import downloadProof from '../../../services/faculty/downloadProof'
 import deletePublication from '../../../services/faculty/accomplishments/deletePublication'
+import updatePublication from '../../../services/faculty/accomplishments/updatePublication'
 
 function Publication(props){  
     let content 
     let deletePub = 0
+    let editPub = 0
+    const [currData, setData] = React.useState({
+        publicationId: 0,
+        title: '',
+        publicationDate:'',
+        citation: '',
+        url: '',
+        nonFacultyAuthors: ''
+    })
     if(props.children != null) {
         content = Object.keys(props.children).map(key => {
             let pub = props.children[key].faculty_publishers;
@@ -70,7 +83,10 @@ function Publication(props){
                     {
                         props.facultyFlag && 
                         <div className = "btn-group">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editPublication" onClick={() => {
+                                setEdit(props.children.[key].publicationId)
+                                setKey(editPub)
+                            }}>Edit</a>
                             <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication" onClick={() => {
                                 setDelete(props.children.[key].publicationId)
                             }}>Delete</a>
@@ -96,8 +112,20 @@ function Publication(props){
         content = <td colspan = "7">No data available!</td>
     }
 
+    function setEdit(id) {
+        editPub = id
+    }
+
     function setDelete(id) {
         deletePub = id
+    }
+
+    function setKey(x) {
+        Object.keys(props.children).map(key => {
+            if(props.children.[key].publicationId == x) {
+                setData(props.children.[key])
+            }
+        });
     }
 
 	return(
@@ -106,30 +134,30 @@ function Publication(props){
             <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
             <div className ="alert alert-success" role="alert" id="publicationalert" style={{visibility:"hidden"}}></div>
 			<div>
-	<table className = "table table-striped table-sm">
-		<tbody>
-			<tr>
-				<th>Publication</th>
-				<th>Author/s</th>
-				<th>Publication Date</th>
-				<th>URL</th>
-				<th>Citation</th>
-				<th>Proof</th>
-				<th>Status</th>
-                <th>Action</th>
-			</tr>
-            {content}
-		</tbody>
-	</table>	
-	</div>
-    { 
-        props.facultyFlag && 
-        <div>
-            <PublicationForm faculty = {props.faculty} token = {props.token} />
-        </div>
-    }
+        	<table className = "table table-striped table-sm">
+        		<tbody>
+        			<tr>
+        				<th>Publication</th>
+        				<th>Author/s</th>
+        				<th>Publication Date</th>
+        				<th>URL</th>
+        				<th>Citation</th>
+        				<th>Proof</th>
+        				<th>Status</th>
+                        <th>Action</th>
+        			</tr>
+                    {content}
+        		</tbody>
+        	</table>	
+        	</div>
+            { 
+                props.facultyFlag && 
+                <div>
+                    <PublicationForm faculty = {props.faculty} token = {props.token} />
+                </div>
+            }
 
-	<div className="modal fade" id="editPublication" tabIndex="-1" role="dialog" aria-labelledby="editPublicationLabel" aria-hidden="true">
+	       <div className="modal fade" id="editPublication" tabIndex="-1" role="dialog" aria-labelledby="editPublicationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -138,57 +166,88 @@ function Publication(props){
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div className="modal-body">
-                        <form>
-                            <hr />
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "PublicationUpdate"> Publication </label>
-                                    <input className = "form-control" type = "text" name = "PublicationUpdate" placeholder = "Input publication name/title" />
+                    <Formik
+                        enableReinitialize
+                        initialValues={currData}
+                        onSubmit={async (values) => {
+                            let form = document.getElementById('editPubForm')
+                            let formData = new FormData(form)
+                            formData.append('publicationId', currData.publicationId)
+                            let alert = document.getElementById("publicationalert")
+                            let res = await updatePublication(formData, props.token)
+                            console.log("test")
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#publicationalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#publicationalert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
+                        }}
+                    >
+                    {({ values, errors, touched, isSubmitting }) => (
+                        <Form id = "editPubForm">
+                            <div className="modal-body">
+                                <hr />
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "PublicationUpdate"> Publication </label>
+                                        <Field className = "form-control" type = "text" name = "title" placeholder = "Input publication name/title" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "PublicationCitationUpdate"> Citation </label>
+                                        <Field className = "form-control" type = "text" name = "citation" placeholder = "Input full citation for publication" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "PublicationURLUpdate"> URL </label>
+                                        <Field className = "form-control" type = "text" name = "url" placeholder = "Input publication URL" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "PublishDateUpdate"> Date Published </label>
+                                        <Field type = "date" className = "form-control" name = "publicationDate" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "PublicationAuthorNonDPSMUpdate"> Authors (non-DPSM) </label>
+                                        <Field className = "form-control" type = "text" name = "nonFacultyAuthors" placeholder = "Input all authors outside DPSM (separate names with commas)" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "PublicationAuthorDPSMUpdate"> Authors (DPSM) </label>
+                                        <input className = "form-control" type = "text" name = "PublicationAuthorDPSMUpdate" placeholder = "Input author (must be part of DPSM)" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "PublicationProofUpdate"> Proof </label>
+                                        <Field type = "file" className = "form-control-file" name = "proof" value={undefined} />
+                                    </div>
                                 </div>
                             </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "PublicationCitationUpdate"> Citation </label>
-                                    <input className = "form-control" type = "text" name = "PublicationCitationUpdate" placeholder = "Input full citation for publication" />
-                                </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary"  disabled = {isSubmitting} onClick = {() => {
+                                    $('#editPublication').modal('toggle');
+                                }}>Save changes</button>
                             </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "PublicationURLUpdate"> URL </label>
-                                    <input className = "form-control" type = "text" name = "PublicationURLUpdate" placeholder = "Input publication URL" />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "PublishDateUpdate"> Date Published </label>
-                                    <input type = "date" className = "form-control" name = "PublishDateUpdate" />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "PublicationAuthorNonDPSMUpdate"> Authors (non-DPSM) </label>
-                                    <input className = "form-control" type = "text" name = "PublicationAuthorNonDPSMUpdate" placeholder = "Input all authors outside DPSM (separate names with commas)" />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "PublicationAuthorDPSMUpdate"> Authors (DPSM) </label>
-                                    <input className = "form-control" type = "text" name = "PublicationAuthorDPSMUpdate" placeholder = "Input author (must be part of DPSM)" />
-                                </div>
-                            </div>
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "PublicationProofUpdate"> Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "PublicationProofUpdate" />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
-                    </div>
+                        </Form>
+                    )}
+                    </Formik>
                     </div>
                 </div>
             </div>
