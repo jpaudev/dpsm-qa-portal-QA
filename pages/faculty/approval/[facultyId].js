@@ -18,10 +18,10 @@ function Approval(props) {
 
     if(props.education) educFlag = true
     if(props.publicService) publicServiceFlag = true
-    if(props.publications.length != 0) publicationsFlag = true
+    if(props.publications && props.publications.length != 0) publicationsFlag = true
     if(props.trainingSeminar) tsFlag = true
     if(props.licensureExam) licensureExamFlag = true
-    if(props.researchGrant != 0) rgFlag = true
+    if(props.researchGrant && props.researchGrant.length != 0) rgFlag = true
 
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
@@ -57,10 +57,10 @@ function Approval(props) {
 		<br />
         <div className="tab-content" id="nav-tabContent">
             <div className="tab-pane fade show active" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false}>{ props.education }</Education>
+                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} facultyId={props.pathFacultyId}>{ props.education }</Education>
             </div>
     	    <div className="tab-pane fade" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
-                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false}>
+                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} facultyId={props.pathFacultyId}>
                     { props.publicService }
                 </PublicServiceAccomplishment>
             </div>
@@ -70,12 +70,12 @@ function Approval(props) {
                 </Publication>
             </div>
     	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
-                <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false}>
+                <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} facultyId={props.pathFacultyId}>
                     { props.trainingSeminar }
                 </TrainingSeminar>
             </div>
     	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">
-                <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false}>
+                <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} facultyId={props.pathFacultyId}>
                     { props.licensureExam }
                 </LicensureExam>
             </div>

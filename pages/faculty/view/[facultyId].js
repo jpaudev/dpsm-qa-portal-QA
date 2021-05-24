@@ -13,20 +13,7 @@ import FacultySET from '../../../components/unit-head/faculty-list/SET/SET'
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../../helpers"
 
-function Approval(props) {
-    let educFlag = false
-    let publicServiceFlag = false
-    let publicationsFlag = false
-    let tsFlag = false
-    let licensureExamFlag = false
-    let rgFlag = false
-
-    if(props.education) educFlag = true
-    if(props.publicService) publicServiceFlag = true
-    if(props.publications.length != 0) publicationsFlag = true
-    if(props.trainingSeminar) tsFlag = true
-    if(props.licensureExam) licensureExamFlag = true
-    if(props.researchGrant != 0) rgFlag = true
+function ViewFaculty(props) {
 
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
@@ -214,4 +201,4 @@ function Approval(props) {
     }
 }
   
-export default Approval
+export default ViewFaculty
