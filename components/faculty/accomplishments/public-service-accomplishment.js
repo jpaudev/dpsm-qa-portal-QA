@@ -8,11 +8,14 @@ import { Formik, Form, Field } from 'formik'
 import downloadProof from '../../../services/faculty/downloadProof'
 import deletePublicService from '../../../services/faculty/accomplishments/deletePublicService'
 import updatePublicService from '../../../services/faculty/accomplishments/updatePublicService'
+import approvePublicService from '../../../services/faculty/accomplishments/approvePublicService'
 
 function PublicServiceAccomplishment(props){
     const name = props.name
     let deletePS = 0
     let editPS = 0
+    let approvePSA = 0
+
     const [currData, setData] = React.useState({
         publicServiceId: 0,
         position: '',
@@ -83,11 +86,11 @@ function PublicServiceAccomplishment(props){
                                 {
                                     !props.facultyFlag &&
                                     <div className = "btn-grp">
-                                        <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                            
+                                        <a className="btn btn-info" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                            setApprove(props.children[key].publicServiceId)
                                         }}>Approve</a>
-                                        <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                            
+                                        <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                            setApprove(props.children[key].publicServiceId)
                                         }}>Reject</a>
                                     </div>
                                 }
@@ -153,11 +156,11 @@ function PublicServiceAccomplishment(props){
                             {
                                 !props.facultyFlag &&
                                 <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                        
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                        setApprove(props.children[key].publicServiceId)
                                     }}>Approve</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                        
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                        setApprove(props.children[key].publicServiceId)
                                     }}>Reject</a>
                                 </div>
                             }
@@ -223,11 +226,11 @@ function PublicServiceAccomplishment(props){
                             {
                                 !props.facultyFlag &&
                                 <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                        
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                        setApprove(props.children[key].publicServiceId)
                                     }}>Approve</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                        
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                        setApprove(props.children[key].publicServiceId)
                                     }}>Reject</a>
                                 </div>
                             }
@@ -293,11 +296,11 @@ function PublicServiceAccomplishment(props){
                             {
                                 !props.facultyFlag &&
                                 <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                        
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                        setApprove(props.children[key].publicServiceId)
                                     }}>Approve</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                        
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                        setApprove(props.children[key].publicServiceId)
                                     }}>Reject</a>
                                 </div>
                             }
@@ -315,6 +318,10 @@ function PublicServiceAccomplishment(props){
 
     function setDelete(id) {
         deletePS = id
+    }
+
+    function setApprove(id) {
+        approvePSA = id
     }
 
     function setKey(x) {
@@ -413,135 +420,180 @@ function PublicServiceAccomplishment(props){
             } 
 		
 		<div className="modal fade" id="editPublicService" tabIndex="-1" role="dialog" aria-labelledby="editPublicServiceLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="editPublicServiceLabel">Update Public Service Accomplishment Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <Formik
-                        enableReinitialize
-                        initialValues={currData}
-                        onSubmit={async (values) => {
-                            let form = document.getElementById('editPSForm')
-                            let formData = new FormData(form)
-                            formData.append('publicServiceId', currData.publicServiceId)
-                            formData.append('type', currData.type)
-                            let alert = document.getElementById("publicservicealert")
-                            let res = await updatePublicService(formData, props.token)
-                            if(res.success == true) { 
-                                alert.className ="alert alert-success"
-                                alert.style = "visibility: visible"
-                                alert.innerHTML = res.message
-                            } else {
-                                alert.className = "alert alert-danger"
-                                if(res.error) alert.innerHTML = res.error[0].message
-                                else alert.innerHTML = res.message
-                            }
-                            $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
-                                $("#publicservicealert").slideUp(500);
-                            });
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="editPublicServiceLabel">Update Public Service Accomplishment Information</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <Formik
+                    enableReinitialize
+                    initialValues={currData}
+                    onSubmit={async (values) => {
+                        let form = document.getElementById('editPSForm')
+                        let formData = new FormData(form)
+                        formData.append('publicServiceId', currData.publicServiceId)
+                        formData.append('type', currData.type)
+                        let alert = document.getElementById("publicservicealert")
+                        let res = await updatePublicService(formData, props.token)
+                        if(res.success == true) { 
+                            alert.className ="alert alert-success"
+                            alert.style = "visibility: visible"
+                            alert.innerHTML = res.message
+                        } else {
+                            alert.className = "alert alert-danger"
+                            if(res.error) alert.innerHTML = res.error[0].message
+                            else alert.innerHTML = res.message
+                        }
+                        $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
+                            $("#publicservicealert").slideUp(500);
+                        });
 
-                            Router.push('/faculty/accomplishment')
-                        }}
-                    >
-                    {({ values, errors, touched, isSubmitting }) => (
-                        <Form id = "editPSForm">
-                            <div className="modal-body">
-                                <hr />
-                                <div className = "form-row">
-                            	<div className = "form-group">
-                            		<label htmlFor = "PublicServicePositionUpdate"> Position/Role </label>
-                            		<Field className = "form-control" type = "text" name = "position" id = "position" placeholder = "Input position/role" />
-                            	</div>
-                        	    </div>
-                                <div className = "form-row">
-                            	<div className = "form-group">
-                            		<label htmlFor = "PublicServiceOrganizationUpdate"> Organization </label>
-                            		<Field className = "form-control" type = "text" name = "organization" id = "organization" placeholder = "Input organization" />
-                           		</div>
-                        	    </div>
-                                <div className = "form-row">
-                            	<div className = "form-group">
-                            		<label htmlFor = "PublicServiceAccomplishmentStartDateUpdate"> Start Date </label>
-                            		<Field type = "date" className = "form-control" name = "startDate" id = "startDate" />
-                            	</div>
-                        	    </div>
-                                <div className = "form-row">
-                            	<div className = "form-group">
-                            		<label htmlFor = "PublicServiceAccomplishmentEndDateUpdate"> End Date </label>
-                            		<Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
-                            	</div>
-                        	    </div>
-                                <div className = "form-row">
-                            	<div className = "form-group col-md-12">
-                            		<label htmlFor = "PublicServiceAccomplishmentDescriptionUpdate"> Description </label>
-                            		<Field className = "form-control" type = "text" name = "description" id = "description" placeholder = "Input description" />
-                            	</div>
-                        	    </div>
-                                <div className = "form-row">
-                            	<div className = "form-group">
-                            		<label htmlFor = "PublicServiceAccomplishmentProofUpdate"> Proof </label>
-                            		<Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
-                            	</div>
-                        	    </div>
+                        Router.push('/faculty/accomplishment')
+                    }}
+                >
+                {({ values, errors, touched, isSubmitting }) => (
+                    <Form id = "editPSForm">
+                        <div className="modal-body">
+                            <hr />
+                            <div className = "form-row">
+                            <div className = "form-group">
+                                <label htmlFor = "PublicServicePositionUpdate"> Position/Role </label>
+                                <Field className = "form-control" type = "text" name = "position" id = "position" placeholder = "Input position/role" />
                             </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
-                                    $('#editPublicService').modal('toggle');
-                                }}>Save changes</button>
                             </div>
-                        </Form>
-                    )}
-                    </Formik>
-                    </div>
+                            <div className = "form-row">
+                            <div className = "form-group">
+                                <label htmlFor = "PublicServiceOrganizationUpdate"> Organization </label>
+                                <Field className = "form-control" type = "text" name = "organization" id = "organization" placeholder = "Input organization" />
+                            </div>
+                            </div>
+                            <div className = "form-row">
+                            <div className = "form-group">
+                                <label htmlFor = "PublicServiceAccomplishmentStartDateUpdate"> Start Date </label>
+                                <Field type = "date" className = "form-control" name = "startDate" id = "startDate" />
+                            </div>
+                            </div>
+                            <div className = "form-row">
+                            <div className = "form-group">
+                                <label htmlFor = "PublicServiceAccomplishmentEndDateUpdate"> End Date </label>
+                                <Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
+                            </div>
+                            </div>
+                            <div className = "form-row">
+                            <div className = "form-group col-md-12">
+                                <label htmlFor = "PublicServiceAccomplishmentDescriptionUpdate"> Description </label>
+                                <Field className = "form-control" type = "text" name = "description" id = "description" placeholder = "Input description" />
+                            </div>
+                            </div>
+                            <div className = "form-row">
+                            <div className = "form-group">
+                                <label htmlFor = "PublicServiceAccomplishmentProofUpdate"> Proof </label>
+                                <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
+                            </div>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                $('#editPublicService').modal('toggle');
+                            }}>Save changes</button>
+                        </div>
+                    </Form>
+                )}
+                </Formik>
                 </div>
             </div>
+        </div>
         
-            <div className="modal fade" id="deletePublicService" tabIndex="-1" role="dialog" aria-labelledby="deletePublicServiceLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="deletePublicServiceLabel">Delete Public Service Accomplishment Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-                        <hr />
-                        <p> Are you sure you want to delete this public service accomplishment information? </p>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-            			<button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
-                            let alert = document.getElementById("publicservicealert")
-                            let res = await deletePublicService(deletePS, props.token)
-                            if(res.success == true) { 
-                                alert.className ="alert alert-success"
-                                alert.style = "visibility: visible"
-                                alert.innerHTML = res.message
-                            } else {
-                                alert.className = "alert alert-danger"
-                                if(res.error) alert.innerHTML = res.error[0].message
-                                else alert.innerHTML = res.message
-                            }
-                            $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
-                                $("#publicservicealert").slideUp(500);
-                            });
-
-                            Router.push('/faculty/accomplishment')
-                            
-                        }}>Yes, delete</button>
-                    </div>
-                    </div>
+        <div className="modal fade" id="deletePublicService" tabIndex="-1" role="dialog" aria-labelledby="deletePublicServiceLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="deletePublicServiceLabel">Delete Public Service Accomplishment Information</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-        
+                <div className="modal-body">
+                    <hr />
+                    <p> Are you sure you want to delete this public service accomplishment information? </p>
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                    <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+                        let alert = document.getElementById("publicservicealert")
+                        let res = await deletePublicService(deletePS, props.token)
+                        if(res.success == true) { 
+                            alert.className ="alert alert-success"
+                            alert.style = "visibility: visible"
+                            alert.innerHTML = res.message
+                        } else {
+                            alert.className = "alert alert-danger"
+                            if(res.error) alert.innerHTML = res.error[0].message
+                            else alert.innerHTML = res.message
+                        }
+                        $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
+                            $("#publicservicealert").slideUp(500);
+                        });
+
+                        Router.push('/faculty/accomplishment')
+                        
+                    }}>Yes, delete</button>
+                </div>
+                </div>
+            </div>
+    
+    </div>
+
+        <div className="modal fade" id="approvePublicService" tabIndex="-1" role="dialog" aria-labelledby="approvePublicServiceLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="approvePublicServiceLabel">Approve Public Service Information</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div className="modal-body">
+                    <hr />
+                    <p> Are you sure you want to approve this public service information? </p>
+                </div>
+                <div className="modal-footer">
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                    <button type="button" className="btn btn-danger" onClick = {async () => {
+                        let alert = document.getElementById("publicservicealert")
+                        $('#approvePublicService').modal('toggle');
+                        
+                        let formData = new FormData()
+                        formData.append('publicServiceId', approvePSA)
+                        
+                        let res = await approvePublicService(formData, true, props.facultyId, props.token)
+                        console.log('res', res);
+                        if(res.success == true) { 
+                            alert.className ="alert alert-success"
+                            alert.style = "visibility: visible"
+                            alert.innerHTML = res.message
+                        } else {
+                            alert.className = "alert alert-danger"
+                            alert.style = "visibility: visible"
+                            if(res.error) alert.innerHTML = res.error[0].message
+                            else alert.innerHTML = res.message
+                        }
+                        
+                        $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
+                            $("#publicservicealert").slideUp(500);
+                        });
+                        Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                    }}>Yes, approve</button>
+                </div>
+                </div>
+            </div>
         </div>
 
-            </div>
+        </div>
     )
 }
 

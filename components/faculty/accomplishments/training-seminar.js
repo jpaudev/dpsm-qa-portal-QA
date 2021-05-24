@@ -8,11 +8,14 @@ import { Formik, Form, Field } from 'formik'
 import downloadProof from '../../../services/faculty/downloadProof'
 import deleteTraining from '../../../services/faculty/accomplishments/deleteTraining'
 import updateTraining from '../../../services/faculty/accomplishments/updateTraining'
+import approveTraining from '../../../services/faculty/accomplishments/approveTraining'
 
 function TrainingSeminar(props) {
     const name = props.name
     let deleteTS = 0
     let editTS = 0
+    let approveTS = 0
+
     const [currData, setData] = React.useState({
         tsId: 0,
         role: '',
@@ -76,11 +79,11 @@ function TrainingSeminar(props) {
                         {
                             !props.facultyFlag && !props.viewFlag &&
                             <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                    
+                                <a className="btn btn-info" data-toggle="modal" data-target="#approveTrainingSeminar" onClick={() => {
+                                    setApprove(props.children[key].tsId)
                                 }}>Approve</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                    
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#rejectTrainingSeminar" onClick={() => {
+                                    setApprove(props.children[key].tsId)
                                 }}>Reject</a>
                             </div>
                         }
@@ -100,6 +103,10 @@ function TrainingSeminar(props) {
 
     function setDelete(id) {
         deleteTS = id
+    }
+
+    function setApprove(id) {
+        approveTS = id
     }
 
     function setKey(x) {
@@ -278,6 +285,52 @@ function TrainingSeminar(props) {
                     </div>
                 </div>
             </div>
+        
+            <div className="modal fade" id="approveTrainingSeminar" tabIndex="-1" role="dialog" aria-labelledby="approveTrainingSeminarLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="approveTrainingSeminarLabel">Approve Training/Seminar Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <hr />
+                        <p> Are you sure you want to approve this training/seminar information? </p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-danger" onClick = {async () => {
+                            let alert = document.getElementById("trainingseminaralert")
+                            $('#approveTrainingSeminar').modal('toggle');
+                            
+                            let formData = new FormData()
+                            formData.append('tsId', approveTS)
+                            
+                            let res = await approveTraining(formData, true, props.facultyId, props.token)
+                            console.log('res', res);
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                alert.style = "visibility: visible"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#trainingseminaralert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#trainingseminaralert").slideUp(500);
+                            });
+                            Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                        }}>Yes, approve</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
         </div>	
     )
 }  

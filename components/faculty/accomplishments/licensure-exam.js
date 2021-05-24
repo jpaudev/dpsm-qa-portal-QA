@@ -8,10 +8,13 @@ import { Formik, Form, Field } from 'formik'
 import downloadProof from '../../../services/faculty/downloadProof'
 import updateLicensure from '../../../services/faculty/accomplishments/updateLicensure'
 import deleteLicensure from '../../../services/faculty/accomplishments/deleteLicensure'
+import approveLicense from '../../../services/faculty/accomplishments/approveLicense'
 
 function LicensureExam(props) {
     let deleteLic = 0
     let editLic = 0
+    let approveLic = 0
+
     const [currData, setData] = React.useState({
         licenseId: 0,
         examName: '',
@@ -76,11 +79,11 @@ function LicensureExam(props) {
                         {
                             !props.facultyFlag && !props.viewFlag &&
                             <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                    
+                                <a className="btn btn-info" data-toggle="modal" data-target="#approveLicense" onClick={() => {
+                                    setApprove(props.children[key].licenseId)
                                 }}>Approve</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                    
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#rejectLicense" onClick={() => {
+                                    setApprove(props.children[key].licenseId)
                                 }}>Reject</a>
                             </div>
                         }
@@ -100,6 +103,10 @@ function LicensureExam(props) {
 
     function setDelete(id) {
         deleteLic = id
+    }
+
+    function setApprove(id) {
+        approveLic = id
     }
 
     function setKey(x) {
@@ -264,7 +271,51 @@ function LicensureExam(props) {
                 </div>
             </div>
             
-        
+            <div className="modal fade" id="approveLicense" tabIndex="-1" role="dialog" aria-labelledby="approveLicenseLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="approveLicenseLabel">Approve Licensure Exam Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <hr />
+                        <p> Are you sure you want to approve this licensure exam information? </p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-danger" onClick = {async () => {
+                            let alert = document.getElementById("licensureexamalert")
+                            $('#approveLicense').modal('toggle');
+                            
+                            let formData = new FormData()
+                            formData.append('licenseId', approveLic)
+                            
+                            let res = await approveLicense(formData, true, props.facultyId, props.token)
+                            console.log('res', res);
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                alert.style = "visibility: visible"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#licensureexamalert").slideUp(500);
+                            });
+                            Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                        }}>Yes, approve</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 	
 	
