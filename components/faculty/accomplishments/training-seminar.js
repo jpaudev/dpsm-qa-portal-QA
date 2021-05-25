@@ -47,7 +47,7 @@ function TrainingSeminar(props) {
                                         className="btn btn-primary"
                                         onClick = {() => {
                                             let file = props.children[key].proof
-                                            downloadProof(file)
+                                            downloadProof(file, props.token)
                                         }}
                                     >
                                         Download

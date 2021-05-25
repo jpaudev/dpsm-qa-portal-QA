@@ -162,11 +162,11 @@ function PersonalInfo(props) {
                             <Field className = "form-control" type = "tel" name = "emergencyContactNumber" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.emergencyContactNumber } disabled={!props.facultyFlag} required />
                         </div>
                     </div>
-                    <h5 align = "center"> Dependents </h5>
-                    {dependents}
+                    {/*<h5 align = "center"> Dependents </h5>*/}
+                    {/*{dependents}*/}
                     <br />
                     { props.facultyFlag && <button type = "submit" className = "btn btn-primary" disabled = {isSubmitting}> Update </button> }
-                    { props.facultyFlag && <PersonalInfoDependents /> }
+                    {/*{ props.facultyFlag && <PersonalInfoDependents /> }*/}
                     <br />
                 </Form>
             )}
