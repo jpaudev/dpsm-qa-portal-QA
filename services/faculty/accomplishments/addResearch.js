@@ -1,50 +1,41 @@
 import axios from "axios"
+import jwt from 'jsonwebtoken'
 
-export default async function addResearch(data) {
+export default async function addResearch(formData, token) {
+	let cookieData = jwt.decode(token)
+    let facultyId = cookieData.facultyId
 	try {
-		let token = null
-		const tokenRes = await axios.post("http://localhost:3001/api/login", {
-			upemail: "jpcristobal1@upm.edu.ph",
-			password: "password"
-		})
-
-		if(tokenRes.data.success) {
-			token = tokenRes.data.result.token
-			let bod = {
-				researchName: `${data.researchName}`,
-				granter: `${data.granter}`,
-				amount: `${data.amount}`,
-				projectedStart: `${data.projectedStart}`,
-				projectedEnd: `${data.projectedEnd}`,
-				actualStart: `${data.actualStart}`,
-				actualEnd: `${data.actualEnd}`,
-				researchProgress: `${data.researchProgress}`,
-				nonFacultyResearchers: `${data.nonFacultyResearchers}`
-			}
+		if (token) {
 			try {
-				console.log(bod)
-				const response = await axios.post("http://localhost:3001/api/faculty/accomplishment/add/research-grant", {
-					researchName: `${data.researchName}`,
-					granter: `${data.granter}`,
-					amount: `${data.amount}`,
-					projectedStart: `${data.projectedStart}`,
-					projectedEnd: `${data.projectedEnd}`,
-					actualStart: `${data.actualStart}`,
-					actualEnd: `${data.actualEnd}`,
-					researchProgress: `${data.researchProgress}`,
-					nonFacultyResearchers: `${data.nonFacultyResearchers}`
-				}, {
-					headers: {
-						Authorization: `Bearer ${token}`
-					}
-				})
-				if (response.data.success) {
-					console.log(response.data)
-					return response.data
-				} else {
-					console.error(response.message)
-					return response.data
-				}	
+				for (var value of formData.values()) {
+                    console.log(value)
+                }
+               	let proof = formData.get('proof')
+				const response = await axios({
+				    method: 'POST',
+				    url: 'http://localhost:3001/api/faculty/accomplishment/add/research-grant',
+				    data: formData,
+				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
+			    })
+				console.log(response)
+				
+				let bodData = new FormData()
+		    	bodData.append('facultyId', facultyId)
+		    	bodData.append('researchId', response.data.result.researchId)
+				bodData.append('proof', proof)
+				for (var key of bodData.keys()) {
+                    console.log(key)
+                }
+		    	for (var value of bodData.values()) {
+                    console.log(value)
+                }
+		        const res = await axios({
+		        	method: 'POST',
+				    url: 'http://localhost:3001/api/faculty/accomplishment/add/researcher',
+				    data: bodData,
+				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
+		        })
+				return response.data
 			} catch (err) {
 				console.error(err)
 				return err

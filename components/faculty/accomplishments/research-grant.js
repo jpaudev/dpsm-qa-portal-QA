@@ -1,13 +1,17 @@
 import Link from 'next/link'
 import ResearchGrantForm from './research-grant-form'
 import NameDisplay from '../../../components/name-display'
+import Router from 'next/router'
+
+import downloadProof from '../../../services/faculty/downloadProof'
+import deleteResearch from '../../../services/faculty/accomplishments/deleteResearch'
 
 function ResearchGrant(props){
-    const name = props.name
     let content 
+    let deleteRes = 0
     if(props.children != null) {
         content = Object.keys(props.children).map(key => { 
-            if(props.children[key].researchGrantId != null) {
+            if(props.children[key].researchId != null) {
                 let res = props.children[key].faculty_researchers;
                 return (
                     <tr>
@@ -72,9 +76,9 @@ function ResearchGrant(props){
                         {
                             props.facultyFlag && 
                             <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editPublication">Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication" onClick={() => {
-                                    setDelete(props.children.[key].publicationId)
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant" onClick={() => {
+                                    setDelete(props.children.[key].researchId)
                                 }}>Delete</a>
                             </div>
                         }
@@ -99,11 +103,16 @@ function ResearchGrant(props){
         content = <td colspan = "10">No data available!</td>
     }
 
+    function setDelete(id) {
+        deleteRes = id
+    }
+
 	return(
 		<div>
             <h2 align = "center"> Research Grants </h2>
-            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
-			<div>
+            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+			<div className ="alert alert-success" role="alert" id="researchalert" style={{visibility:"hidden"}}></div>
+            <div>
 	<table className = "table table-striped table-sm">
 		<tbody>
 			<tr>
@@ -126,7 +135,7 @@ function ResearchGrant(props){
     { 
         props.facultyFlag &&
         <div>
-            <ResearchGrantForm />
+            <ResearchGrantForm faculty = {props.faculty} token = {props.token} />
         </div>
     }
 
@@ -229,11 +238,32 @@ function ResearchGrant(props){
                     </div>
                     <div className="modal-body">
                         <hr />
-                        <p> Are you sure you want to delete this education information? </p>
+                        <p> Are you sure you want to delete this research grant information? </p>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger">Yes, delete</button>
+                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+                            $('#deleteResearchGrant').modal('toggle');
+                            
+                            let alert = document.getElementById("researchalert")
+                            let res = await deleteResearch(deleteRes, props.token)
+                            console.log('res', res);
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) values.message = res.error[0].message
+                                else values.message = res.message
+                            }
+                            
+                            $("#publicationalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#publicationalert").slideUp(500);
+                            });
+                            
+                            Router.push('/faculty/accomplishment')
+                        }}>Yes, delete</button>
                     </div>
                     </div>
                 </div>

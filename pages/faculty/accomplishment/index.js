@@ -44,7 +44,7 @@ function Accomplishments(props) {
                 </LicensureExam>
             </div>
     	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                <ResearchGrant name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true} facultyId={props.data.facultyId}>
+                <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true} facultyId={props.data.facultyId}>
                     { props.researchGrant }
                 </ResearchGrant>
             </div>
@@ -113,6 +113,7 @@ function Accomplishments(props) {
 
 	const rg = await fetch(url + '/research-grant', header)
     const researchGrant = await rg.json()
+    console.log(researchGrant)
 
     return {
         props: {
