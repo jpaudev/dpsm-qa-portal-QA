@@ -68,6 +68,7 @@ function PublicServiceAccomplishment(props){
                             }
                         </td>
                         <td>{props.children[key].status}</td>
+                        <td>{props.children[key].approverRemarks || 'None'}</td>
                         {
                             !props.viewFlag &&
                             <td>
@@ -138,6 +139,7 @@ function PublicServiceAccomplishment(props){
                         }
                         </td>
                         <td>{props.children[key].status}</td>
+                        <td>{props.children[key].approverRemarks || 'None'}</td>
                         {
                             !props.viewFlag && 
                             <td>
@@ -208,6 +210,7 @@ function PublicServiceAccomplishment(props){
                         }
                         </td>
                         <td>{props.children[key].status}</td>
+                        <td>{props.children[key].approverRemarks || 'None'}</td>
                         {
                             !props.viewFlag &&
                             <td>
@@ -278,6 +281,7 @@ function PublicServiceAccomplishment(props){
                         }
                         </td>
                         <td>{props.children[key].status}</td>
+                        <td>{props.children[key].approverRemarks || 'None'}</td>
                         {
                             !props.viewFlag &&
                             <td>
@@ -352,6 +356,7 @@ function PublicServiceAccomplishment(props){
                         <th>End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
+                        <th>Approver Remarks</th>
                         {!props.viewFlag && <th>Action</th>}
                     </tr>
                     {upm ? upm : <td colspan = "8"><p align = "center">No data available!</p></td>} 
@@ -371,6 +376,7 @@ function PublicServiceAccomplishment(props){
                         <th>End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
+                        <th>Approver Remarks</th>
                         {!props.viewFlag && <th>Action</th>}
                     </tr>
                     {pro ? pro : <td colspan = "8"><p align = "center">No data available!</p></td>}
@@ -388,6 +394,7 @@ function PublicServiceAccomplishment(props){
                         <th>End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
+                        <th>Approver Remarks</th>
                         {!props.viewFlag && <th>Action</th>}
                     </tr>
                     {nat ? nat : <td colspan = "8"><p align = "center">No data available!</p></td>}
@@ -405,6 +412,7 @@ function PublicServiceAccomplishment(props){
                         <th>End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
+                        <th>Approver Remarks</th>
                         {!props.viewFlag && <th>Action</th>}
                     </tr>
                     {wor ? wor : <td colspan = "8"><p align = "center">No data available!</p></td>}
@@ -571,7 +579,6 @@ function PublicServiceAccomplishment(props){
                         formData.append('publicServiceId', approvePSA)
                         
                         let res = await approvePublicService(formData, true, props.facultyId, props.token)
-                        console.log('res', res);
                         if(res.success == true) { 
                             alert.className ="alert alert-success"
                             alert.style = "visibility: visible"
@@ -593,6 +600,68 @@ function PublicServiceAccomplishment(props){
             </div>
         </div>
 
+        <div className="modal fade" id="rejectPublicService" tabIndex="-1" role="dialog" aria-labelledby="rejectPublicServiceLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="rejectPublicServiceLabel">Reject Public Service Information</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <Formik
+                    enableReinitialize
+                    initialValues={currData}
+                    onSubmit={async (values) => {
+                        let alert = document.getElementById("publicservicealert")
+                        $('#rejectPublicService').modal('toggle');
+                        
+                        let form = document.getElementById('rejectPublicServiceForm')
+                        let formData = new FormData(form)
+                        formData.append('publicServiceId', approvePSA)
+                        
+                        let res = await approvePublicService(formData, false, props.facultyId, props.token)
+                        if(res.success == true) { 
+                            alert.className ="alert alert-success"
+                            alert.style = "visibility: visible"
+                            alert.innerHTML = res.message
+                        } else {
+                            alert.className = "alert alert-danger"
+                            alert.style = "visibility: visible"
+                            if(res.error) alert.innerHTML = res.error[0].message
+                            else alert.innerHTML = res.message
+                        }
+                        
+                        $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
+                            $("#publicservicealert").slideUp(500);
+                        });
+                        Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                    }}
+                >
+                {({ values, errors, touched, isSubmitting }) => (
+                    <Form id = "rejectPublicServiceForm">
+                        <div className="modal-body">
+                            <hr />
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
+                                    <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                $('#rejectPublicService').modal('toggle');
+                            }}>Save changes</button>
+                        </div>
+                    </Form>
+                )}
+                </Formik>
+                </div>
+            </div>
+        </div>
+    
         </div>
     )
 }

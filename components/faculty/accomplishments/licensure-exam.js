@@ -63,6 +63,7 @@ function LicensureExam(props) {
                         }
                         </td>
                         <td>{props.children[key].status}</td>
+                        <td>{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         {
                             props.facultyFlag && !props.viewFlag &&
@@ -135,6 +136,7 @@ function LicensureExam(props) {
                             <th>License Number</th>
                             <th>Proof</th>
                             <th>Status</th>
+                            <th>Approver Remarks</th>
                             {!props.viewFlag && <th>Action</th>}
                         </tr>
                         {content}
@@ -294,7 +296,6 @@ function LicensureExam(props) {
                             formData.append('licenseId', approveLic)
                             
                             let res = await approveLicense(formData, true, props.facultyId, props.token)
-                            console.log('res', res);
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
                                 alert.style = "visibility: visible"
@@ -315,6 +316,69 @@ function LicensureExam(props) {
                     </div>
                 </div>
             </div>
+
+            <div className="modal fade" id="rejectLicense" tabIndex="-1" role="dialog" aria-labelledby="rejectLicenseLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="rejectLicenseLabel">Reject Licensure Exam Information</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <Formik
+                    enableReinitialize
+                    initialValues={currData}
+                    onSubmit={async (values) => {
+                        let alert = document.getElementById("licensureexamalert")
+                        $('#rejectLicense').modal('toggle');
+                        
+                        let form = document.getElementById('rejectLicenseForm')
+                        let formData = new FormData(form)
+                        formData.append('licenseId', approveLic)
+                        
+                        let res = await approveLicense(formData, false, props.facultyId, props.token)
+                        if(res.success == true) { 
+                            alert.className ="alert alert-success"
+                            alert.style = "visibility: visible"
+                            alert.innerHTML = res.message
+                        } else {
+                            alert.className = "alert alert-danger"
+                            alert.style = "visibility: visible"
+                            if(res.error) alert.innerHTML = res.error[0].message
+                            else alert.innerHTML = res.message
+                        }
+                        
+                        $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                            $("#licensureexamalert").slideUp(500);
+                        });
+                        Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                    }}
+                >
+                {({ values, errors, touched, isSubmitting }) => (
+                    <Form id = "rejectLicenseForm">
+                        <div className="modal-body">
+                            <hr />
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
+                                    <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                $('#rejectLicense').modal('toggle');
+                            }}>Save changes</button>
+                        </div>
+                    </Form>
+                )}
+                </Formik>
+                </div>
+            </div>
+        </div>
+    
 
         </div>
 	

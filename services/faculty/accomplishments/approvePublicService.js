@@ -24,7 +24,6 @@ export default async function approvePublicService(formData, approveFlag, facult
 					data: formData,
 					headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 				})	
-				console.log('resp', response);
 				return response.data
 			}  catch (err) {
 				console.error(err)
