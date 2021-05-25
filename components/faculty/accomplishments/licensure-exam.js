@@ -317,7 +317,7 @@ function LicensureExam(props) {
                 </div>
             </div>
 
-            <div className="modal fade" id="rejectLicense" tabIndex="-1" role="dialog" aria-labelledby="rejectLicenseLabel" aria-hidden="true">
+        <div className="modal fade" id="rejectLicense" tabIndex="-1" role="dialog" aria-labelledby="rejectLicenseLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
