@@ -102,7 +102,6 @@ class PublicationForm extends React.Component{
 			>
 				{({ values, errors, touched, isSubmitting }) => (
 					<Form id = "pubForm">
-						<h5> Publications </h5>
 						<hr />
 						<div className = "form-row">
 							<div className = "col-auto">

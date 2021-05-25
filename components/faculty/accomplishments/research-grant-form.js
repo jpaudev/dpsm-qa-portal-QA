@@ -123,6 +123,7 @@ class ResearchGrantForm extends React.Component{
 			>
 				{({ values, errors, touched, isSubmitting }) => (
 					<Form id = "resForm">
+						<hr />
 						<div className = "form-row">
 							<div className = "col-auto">
 								<button type = "button" className = "btn btn-primary" id = "AddResearchGrant" onClick = {() => this.clone()}> Add Research </button>

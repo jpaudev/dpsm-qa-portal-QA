@@ -346,6 +346,69 @@ function Education(props) {
                     </div>
                 </div>
             </div>
+
+            <div className="modal fade" id="rejectEducation" tabIndex="-1" role="dialog" aria-labelledby="rejectEducationLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="rejectEducationLabel">Reject Education Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <Formik
+                        enableReinitialize
+                        initialValues={currData}
+                        onSubmit={async (values) => {
+                            let alert = document.getElementById("educalert")
+                            $('#rejectEducation').modal('toggle');
+                            
+                            let form = document.getElementById('rejectEducForm')
+                            let formData = new FormData(form)
+                            formData.append('educInfoId', approveEduc)
+                            
+                            let res = await approveEducation(formData, false, props.facultyId, props.token)
+                            console.log('res', res);
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                alert.style = "visibility: visible"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#educalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#educalert").slideUp(500);
+                            });
+                            Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                        }}
+                    >
+                    {({ values, errors, touched, isSubmitting }) => (
+                        <Form id = "rejectEducForm">
+                            <div className="modal-body">
+                                <hr />
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
+                                        <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                    $('#rejectEducation').modal('toggle');
+                                }}>Save changes</button>
+                            </div>
+                        </Form>
+                    )}
+                    </Formik>
+                    </div>
+                </div>
+            </div>
         
         </div>
     )

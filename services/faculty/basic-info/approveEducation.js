@@ -13,6 +13,9 @@ export default async function approveEducation(formData, approveFlag, facultyId,
 		}
 	} else status = 'Rejected'
 	formData.append('status', status)
+	for (var value of formData.values()) {
+        console.log(value)
+    }
 
 	try {
 		if (token) {
