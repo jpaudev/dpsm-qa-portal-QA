@@ -36,7 +36,7 @@ function ResearchGrant(props){
                             {Object.keys(res).map(auth => {
                             let link = "/faculty/basic-info/" + res[auth].facultyId
                                 return (
-                                    <a href = {link}>{res[auth].faculty_personal_info.lastName},{res[auth].faculty_personal_info.firstName}, </a>
+                                    <a href = {link}>{res[auth].faculty_personal_info.firstName + ' ' + res[auth].faculty_personal_info.lastName}, </a>
                                 );
                             })}
                             {props.children[key].nonFacultyResearchers}
@@ -58,7 +58,7 @@ function ResearchGrant(props){
                                                     className="btn btn-primary"
                                                     onClick = {() => {
                                                         let file = res[auth].proof
-                                                        downloadProof(file)
+                                                        downloadProof(file, props.token)
                                                     }}
                                                 >
                                                     Download
@@ -304,8 +304,6 @@ function ResearchGrant(props){
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
-                            $('#deleteResearchGrant').modal('toggle');
-                            
                             let alert = document.getElementById("researchalert")
                             let res = await deleteResearch(deleteRes, props.token)
                             console.log('res', res);

@@ -7,9 +7,13 @@ export default async function addPublication(formData, token) {
 	try {
 		if (token) {
 			try {
-				for (var value of formData.values()) {
-                    console.log(value)
+				let authors = []
+				for (var pair of formData.entries()) {
+                    if(pair[0] == 'PublicationAuthorDPSM[]' && pair[1] != facultyId) {
+                    	authors.push(pair[1])
+                    }
                 }
+
                	let proof = formData.get('proof')
 				const response = await axios({
 				    method: 'POST',
@@ -17,21 +21,28 @@ export default async function addPublication(formData, token) {
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })
-				console.log(response)
 				
 				let bodData = new FormData()
 		    	bodData.append('facultyId', facultyId)
 		    	bodData.append('publicationId', response.data.result.publicationId)
 				bodData.append('proof', proof)
-		    	for (var value of bodData.values()) {
-                    console.log(value)
-                }
 		        const res = await axios({
 		        	method: 'POST',
 				    url: 'http://localhost:3001/api/faculty/accomplishment/add/publisher',
 				    data: bodData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 		        })
+		        bodData.delete('proof')
+
+				for(var value of authors) {
+		        	bodData.set('facultyId', value)
+		        	const auth = await axios({
+			        	method: 'POST',
+					    url: 'http://localhost:3001/api/faculty/accomplishment/add/publisher',
+					    data: bodData,
+					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
+			        })
+		        }
 				return response.data
 			} catch (err) {
 				console.error(err)

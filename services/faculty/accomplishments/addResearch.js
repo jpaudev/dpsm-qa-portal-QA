@@ -7,8 +7,11 @@ export default async function addResearch(formData, token) {
 	try {
 		if (token) {
 			try {
-				for (var value of formData.values()) {
-                    console.log(value)
+				let researchers = []
+				for (var pair of formData.entries()) {
+                    if(pair[0] == 'ResearchAuthorDPSM[]' && pair[1] != facultyId) {
+                    	researchers.push(pair[1])
+                    }
                 }
                	let proof = formData.get('proof')
 				const response = await axios({
@@ -23,18 +26,23 @@ export default async function addResearch(formData, token) {
 		    	bodData.append('facultyId', facultyId)
 		    	bodData.append('researchId', response.data.result.researchId)
 				bodData.append('proof', proof)
-				for (var key of bodData.keys()) {
-                    console.log(key)
-                }
-		    	for (var value of bodData.values()) {
-                    console.log(value)
-                }
 		        const res = await axios({
 		        	method: 'POST',
 				    url: 'http://localhost:3001/api/faculty/accomplishment/add/researcher',
 				    data: bodData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 		        })
+		        bodData.delete('proof')
+
+		        for(var value of researchers) {
+		        	bodData.set('facultyId', value)
+		        	const auth = await axios({
+			        	method: 'POST',
+					    url: 'http://localhost:3001/api/faculty/accomplishment/add/researcher',
+					    data: bodData,
+					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
+			        })
+		        }
 				return response.data
 			} catch (err) {
 				console.error(err)

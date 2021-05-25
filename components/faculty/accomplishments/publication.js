@@ -50,7 +50,7 @@ function Publication(props){
                                                 className="btn btn-primary"
                                                 onClick = {() => {
                                                     let file = pub[auth].proof
-                                                    downloadProof(file)
+                                                    downloadProof(file, props.token)
                                                 }}
                                             >
                                                 Download
@@ -227,12 +227,6 @@ function Publication(props){
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
-                                        <label htmlFor = "PublicationAuthorDPSMUpdate"> Authors (DPSM) </label>
-                                        <input className = "form-control" type = "text" name = "PublicationAuthorDPSMUpdate" placeholder = "Input author (must be part of DPSM)" />
-                                    </div>
-                                </div>
-                                <div className = "form-row">
-                                    <div className = "form-group">
                                         <label htmlFor = "PublicationProofUpdate"> Proof </label>
                                         <Field type = "file" className = "form-control-file" name = "proof" value={undefined} />
                                     </div>
@@ -267,8 +261,6 @@ function Publication(props){
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
-                            $('#deletePublication').modal('toggle');
-                            
                             let alert = document.getElementById("publicationalert")
                             let res = await deletePublication(deletePub, props.token)
                             console.log('res', res);
@@ -278,8 +270,8 @@ function Publication(props){
                                 alert.innerHTML = res.message
                             } else {
                                 alert.className = "alert alert-danger"
-                                if(res.error) values.message = res.error[0].message
-                                else values.message = res.message
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
                             }
                             
                             $("#publicationalert").fadeTo(5000, 500).slideUp(500, function(){
