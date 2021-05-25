@@ -8,10 +8,13 @@ import { Formik, Form, Field } from 'formik'
 import downloadProof from '../../../services/faculty/downloadProof'
 import deleteEducation from '../../../services/faculty/basic-info/deleteEducation'
 import updateEducation from '../../../services/faculty/basic-info/updateEducation'
+import approveEducation from '../../../services/faculty/basic-info/approveEducation'
 
-function Education(props) {
+function Education(props) { 
     let deleteEduc = 0
     let editEduc = 0
+    let approveEduc = 0
+
     const [currData, setData] = React.useState({
         educInfoId: 0,
         institutionSchool: '',
@@ -62,7 +65,7 @@ function Education(props) {
                         </td>
                         <td>{props.children[key].status}</td>
                         {
-                            props.facultyFlag && 
+                            props.facultyFlag && !props.viewFlag &&
                             <td>
                                 <div className = "btn-grp">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
@@ -76,14 +79,14 @@ function Education(props) {
                             </td>
                         }
                         {
-                            !props.facultyFlag && 
+                            !props.facultyFlag && !props.viewFlag && 
                             <td>
                                 <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                        
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#approveEducation" onClick={() => {
+                                        setApprove(props.children[key].educInfoId)
                                     }}>Approve</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                        
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#rejectEducation" onClick={() => {
+                                        setApprove(props.children[key].educInfoId)
                                     }}>Reject</a>
                                 </div>
                             </td>
@@ -92,8 +95,8 @@ function Education(props) {
                 );
         });
     }
-    else {
-        content = <td colspan = "9">No data available!</td>
+    else{
+        content = <td colspan = "9"><p align = "center">No data available!</p></td>
     }
     let res
 
@@ -103,6 +106,10 @@ function Education(props) {
 
     function setDelete(id) {
         deleteEduc = id
+    }
+
+    function setApprove(id) {
+        approveEduc = id
     }
 
     function setKey(x) {
@@ -135,7 +142,7 @@ function Education(props) {
                             <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            {!props.viewFlag && <th>Action</th>}
                         </tr>
                         {content}
                     </tbody>
@@ -290,6 +297,51 @@ function Education(props) {
                             });
                             Router.push('/faculty/basic-info', '/faculty/basic-info')
                         }}>Yes, delete</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div className="modal fade" id="approveEducation" tabIndex="-1" role="dialog" aria-labelledby="approveEducationLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="approveEducationLabel">Approve Education Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <hr />
+                        <p> Are you sure you want to approve this education information? </p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-danger" onClick = {async () => {
+                            let alert = document.getElementById("educalert")
+                            $('#approveEducation').modal('toggle');
+                            
+                            let formData = new FormData()
+                            formData.append('educInfoId', approveEduc)
+                            
+                            let res = await approveEducation(formData, true, props.facultyId, props.token)
+                            console.log('res', res);
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                alert.style = "visibility: visible"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#educalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#educalert").slideUp(500);
+                            });
+                            Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                        }}>Yes, approve</button>
                     </div>
                     </div>
                 </div>

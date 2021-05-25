@@ -31,24 +31,27 @@ function WorkExperience(props){
                         <td>{props.children[key].startDate}</td>
                         <td>{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
                         <td>{props.children[key].description}</td>
-                        <td>
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience" onClick={() => {
-                                    setEdit(props.children.[key].workExpId)
-                                    setKey(editWork)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteWorkExperience" onClick={() => {
-                                    setDelete(props.children.[key].workExpId)
-                                }}>Delete</a>
-                            </div>
-                        </td>
+                        {
+                            !props.viewFlag &&
+                            <td>
+                                <div className = "btn-grp">
+                                    <a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience" onClick={() => {
+                                        setEdit(props.children.[key].workExpId)
+                                        setKey(editWork)
+                                    }}>Edit</a>
+                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteWorkExperience" onClick={() => {
+                                        setDelete(props.children.[key].workExpId)
+                                    }}>Delete</a>
+                                </div>
+                            </td>
+                        }
                     </tr>
                 );  
             }
         });
     }
-    else {
-        content = <td colspan = "6">No data available!</td>
+    else{
+        content = <td colspan = "6"><p align = "center">No data available!</p></td>
     }
 
     function setEdit(id) {
@@ -91,14 +94,17 @@ function WorkExperience(props){
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Description</th>
-                    <th>Action</th>
+                    {!props.viewFlag && <th>Action</th>}
                 </tr>
                 {content}
             </tbody>
             </table>
-            <div>
-                <WorkExpForm token = { props.token }/>
-            </div>
+            {
+                !props.viewFlag &&
+                <div>
+                    <WorkExpForm token = { props.token }/>
+                </div>
+            }
 
             <div className="modal fade" id="editWorkExperience" tabIndex="-1" role="dialog" aria-labelledby="editWorkExperienceLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

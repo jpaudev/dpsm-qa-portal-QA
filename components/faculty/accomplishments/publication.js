@@ -81,7 +81,7 @@ function Publication(props){
                     </td>
                     <td>
                     {
-                        props.facultyFlag && 
+                        props.facultyFlag && !props.viewFlag &&
                         <div className = "btn-group">
                             <a className="btn btn-info" data-toggle="modal" data-target="#editPublication" onClick={() => {
                                 setEdit(props.children.[key].publicationId)
@@ -93,7 +93,7 @@ function Publication(props){
                         </div>
                     }
                     {
-                        !props.facultyFlag && 
+                        !props.facultyFlag && !props.viewFlag &&
                         <div className = "btn-grp">
                             <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
                                 
@@ -108,8 +108,8 @@ function Publication(props){
             );    
         });
     }
-    else {
-        content = <td colspan = "7">No data available!</td>
+    else{
+        content = <td colspan = "7"><p align = "center">No data available!</p></td>
     }
 
     function setEdit(id) {
@@ -134,28 +134,28 @@ function Publication(props){
             <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
             <div className ="alert alert-success" role="alert" id="publicationalert" style={{visibility:"hidden"}}></div>
 			<div>
-        	<table className = "table table-striped table-sm">
-        		<tbody>
-        			<tr>
-        				<th>Publication</th>
-        				<th>Author/s</th>
-        				<th>Publication Date</th>
-        				<th>URL</th>
-        				<th>Citation</th>
-        				<th>Proof</th>
-        				<th>Status</th>
-                        <th>Action</th>
-        			</tr>
-                    {content}
-        		</tbody>
-        	</table>	
-        	</div>
-            { 
-                props.facultyFlag && 
-                <div>
-                    <PublicationForm faculty = {props.faculty} token = {props.token} />
-                </div>
-            }
+	<table className = "table table-striped table-sm">
+		<tbody>
+			<tr>
+				<th>Publication</th>
+				<th>Author/s</th>
+				<th>Publication Date</th>
+				<th>URL</th>
+				<th>Citation</th>
+				<th>Proof</th>
+				<th>Status</th>
+                {!props.viewFlag && <th>Action</th>}
+			</tr>
+            {content}
+		</tbody>
+	</table>	
+	</div>
+    { 
+        props.facultyFlag && 
+        <div>
+            <PublicationForm faculty = {props.faculty} token = {props.token} />
+        </div>
+    }
 
 	       <div className="modal fade" id="editPublication" tabIndex="-1" role="dialog" aria-labelledby="editPublicationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

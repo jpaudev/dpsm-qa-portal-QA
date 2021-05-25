@@ -5,6 +5,8 @@ import Footer from './footer'
 import Content from './content'
 import jwt from 'jsonwebtoken'
 function Layout(props) {
+    let approvalList
+    if(props.approvalList) approvalList = props.approvalList
     return (
         <div className = "container-fluid">
             <Head>
@@ -16,9 +18,9 @@ function Layout(props) {
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </Head>
-            <Header facultyId = { props.facultyId } name={ props.name }/>
+            <Header name={ props.name }/>
             <div className = "row" id = "layout_row">
-            <Sidebar role = {props.role} />
+                <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} />
                 <div className="col-10">
                     <div className="container">
                         { props.children }

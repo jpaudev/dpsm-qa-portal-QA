@@ -5,9 +5,9 @@ import NameDisplay from '../../components/name-display'
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
 
-function FacultyLoad(props) {
+function FacultyLoad(props) { 
     return (
-        <Layout userId={props.userId} facultyId={props.facultyId} role={props.role} name={props.personalInfo.lastName + ', ' + props.personalInfo.firstName}>
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
 		<br />
 		<h2 align = "center"> Faculty Load </h2>
 		<NameDisplay />
@@ -62,9 +62,24 @@ function FacultyLoad(props) {
 	const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
 
+	let approvalList
+    let approvalURL = 'http://localhost:3001/api/faculty/approval/' + facultyId
+    if(data.role == 2 || data.role == 3) {
+        if(data.role == 2) {
+            approvalURL += '?unitId=' + data.unitId
+        }
+
+        const approval = await fetch(approvalURL, header)
+        approvalList = await approval.json()
+        approvalList = approvalList.result
+    } else if(data.role == 1) {
+        approvalList = null
+    }
+
 	return {
 		data,
-		personalInfo: personalInfo.result
+		personalInfo: personalInfo.result,
+		approvalList
 	}
 }
   

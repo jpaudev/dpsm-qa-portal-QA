@@ -30,15 +30,15 @@ function PersonalInfo(props) {
             <div className = "form-row">
                 <div className = "form-group col-md-4 required"> 
                     <label className = "control-label" htmlFor = "Dependent"> Name of Dependent </label>
-                    <input className = "form-control" type = "text" name = "name" defaultValue = { props.children.faculty_dependents[key].name } required />
+                    <input className = "form-control" type = "text" name = "name" defaultValue = { props.children.faculty_dependents[key].name } disabled={!props.facultyFlag} required />
                 </div>
                 <div className = "form-group col-md-4 required">
                     <label className = "control-label" htmlFor = "DependentDateOfBirth"> Date of Birth </label>
-                    <input className = "form-control" type = "date" name = "birthDate" defaultValue = { props.children.faculty_dependents[key].birthDate } required />
+                    <input className = "form-control" type = "date" name = "birthDate" defaultValue = { props.children.faculty_dependents[key].birthDate } disabled={!props.facultyFlag} required />
                 </div>
                 <div className = "form-group col-md-4 required">
                     <label className = "control-label" htmlFor = "DependentRelationship[]"> Relationship to User </label>
-                    <input className = "form-control" type = "text" name = "relationship" defaultValue = { props.children.faculty_dependents[key].relationship } required />
+                    <input className = "form-control" type = "text" name = "relationship" defaultValue = { props.children.faculty_dependents[key].relationship } disabled={!props.facultyFlag} required />
                 </div>
             </div>
         );
@@ -76,7 +76,7 @@ function PersonalInfo(props) {
                     <div role="alert" id="alert">
                         {values.message}
                     </div>
-                    <h6>Required</h6>
+                    {props.facultyFlag && <h6>Required</h6>}
                     <br />
                     <div className = "form-row">
                         <div className = "form-group col-md-3 required">
@@ -85,15 +85,15 @@ function PersonalInfo(props) {
                         </div>
                         <div className = "form-group col-md-3">
                             <label htmlFor = "MiddleName"> Middle Name </label>
-                            <Field className = "form-control" type = "text" name = "middleName" defaultValue = { props.children.middleName } />
+                            <Field className = "form-control" type = "text" name = "middleName" defaultValue = { props.children.middleName } disabled={!props.facultyFlag} />
                         </div>
                         <div className = "form-group col-md-3 required">
                             <label className = "control-label" htmlFor = "LastName"> Last Name </label>
-                            <Field className = "form-control" type = "text" name = "lastName" defaultValue = { props.children.lastName } required />
+                            <Field className = "form-control" type = "text" name = "lastName" defaultValue = { props.children.lastName } disabled={!props.facultyFlag} required />
                         </div>
                         <div className = "form-group col-md-3">
                             <label className = "control-label" htmlFor = "Suffix"> Suffix </label>
-                            <Field className = "form-control" type = "text" name = "suffix" defaultValue = { props.children.suffix } />
+                            <Field className = "form-control" type = "text" name = "suffix" defaultValue = { props.children.suffix } disabled={!props.facultyFlag} />
                         </div>
                     </div>
                     <div className = "form-row">
@@ -116,16 +116,16 @@ function PersonalInfo(props) {
                     <br />
                     <div className = "form-group required">
                         <label className = "control-label" htmlFor = "PresentAddress"> Present Address </label>
-                        <Field className = "form-control" type = "text" name = "presentAddress" defaultValue = { props.children.presentAddress } required />
+                        <Field className = "form-control" type = "text" name = "presentAddress" defaultValue = { props.children.presentAddress } disabled={!props.facultyFlag} required />
                     </div>
                     <div className = "form-group required">
                         <label className = "control-label" htmlFor = "PermanentAddress"> Permanent Address </label>
-                        <Field className = "form-control" type = "text" name = "permanentAddress" defaultValue = { props.children.permanentAddress } required />
+                        <Field className = "form-control" type = "text" name = "permanentAddress" defaultValue = { props.children.permanentAddress } disabled={!props.facultyFlag} required />
                     </div>
                     <div className = "form-row">
                         <div className = "form-group col-md-6 required">
                             <label className = "control-label" htmlFor ="CivilStatus"> Civil Status </label>
-                            <Field as = "select" className = "form-control" name = "civilStatus" defaultValue = { props.children.civilStatus } required>
+                            <Field as = "select" className = "form-control" name = "civilStatus" defaultValue = { props.children.civilStatus } disabled={!props.facultyFlag} required>
                                 <option value = "single">Single</option>
                                 <option value = "married">Married</option>
                                 <option value = "separated">Separated (Legally)</option>
@@ -135,44 +135,38 @@ function PersonalInfo(props) {
                         </div>
                         <div className = "form-group col-md-6">
                                 <label htmlFor = "Religion"> Religion </label>
-                                <Field className = "form-control" type = "text" name = "religion" defaultValue = { props.children.religion } required />
+                                <Field className = "form-control" type = "text" name = "religion" defaultValue = { props.children.religion } disabled={!props.facultyFlag} required />
                         </div>
                     </div>
                     <div className = "form-row">
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Landline) </label>
-                            <Field className = "form-control" type = "tel" name = "landline" pattern = "[0-9]{8}" defaultValue = { props.children.landline } required />
+                            <Field className = "form-control" type = "tel" name = "landline" pattern = "[0-9]{8}" defaultValue = { props.children.landline } disabled={!props.facultyFlag} required />
                         </div>
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Mobile) </label>
-                            <Field className = "form-control" type = "tel" name = "mobile" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.mobile } required />
+                            <Field className = "form-control" type = "tel" name = "mobile" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.mobile } disabled={!props.facultyFlag} required />
                         </div>
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "EmailAddressAlt"> Personal E-mail Address </label>
-                            <Field className = "form-control" type = "email" name = "emailAddressAlt" defaultValue = { props.children.email } />
+                            <Field className = "form-control" type = "email" name = "emailAddressAlt" defaultValue = { props.children.email } disabled={!props.facultyFlag} />
                         </div>
                     </div>
                     <div className = "form-row">
                         <div className = "form-group col-md-6 required">
                             <label className = "control-label" htmlFor = "EmergencyContact"> Emergency Contact </label>
-                            <Field className = "form-control" type = "text" name = "emergencyContactPerson" defaultValue = { props.children.emergencyContactPerson } required />
+                            <Field className = "form-control" type = "text" name = "emergencyContactPerson" defaultValue = { props.children.emergencyContactPerson } disabled={!props.facultyFlag} required />
                         </div>
                         <div className = "form-group col-md-6 required">
                             <label className = "control-label" htmlFor = "EmergencyContactNumber"> Emergency Contact Number </label>
-                            <Field className = "form-control" type = "tel" name = "emergencyContactNumber" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.emergencyContactNumber } required />
+                            <Field className = "form-control" type = "tel" name = "emergencyContactNumber" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.emergencyContactNumber } disabled={!props.facultyFlag} required />
                         </div>
                     </div>
                     <h5 align = "center"> Dependents </h5>
                     {dependents}
                     <br />
-                    <button 
-                        type = "submit" 
-                        className = "btn btn-primary"
-                        disabled = {isSubmitting}
-                    > 
-                        Update
-                    </button>
-                    <PersonalInfoDependents />
+                    { props.facultyFlag && <button type = "submit" className = "btn btn-primary" disabled = {isSubmitting}> Update </button> }
+                    { props.facultyFlag && <PersonalInfoDependents /> }
                     <br />
                 </Form>
             )}
