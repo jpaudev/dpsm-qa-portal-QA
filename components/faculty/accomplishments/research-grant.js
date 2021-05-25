@@ -2,13 +2,29 @@ import Link from 'next/link'
 import ResearchGrantForm from './research-grant-form'
 import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
+import React from 'react'
+import { Formik, Form, Field } from 'formik'
 
 import downloadProof from '../../../services/faculty/downloadProof'
 import deleteResearch from '../../../services/faculty/accomplishments/deleteResearch'
+import updateResearch from '../../../services/faculty/accomplishments/updateResearch'
 
 function ResearchGrant(props){
     let content 
     let deleteRes = 0
+    let editRes = 0
+    const [currData, setData] = React.useState({
+        researchId: 0,
+        researchName: '',
+        granter:'',
+        amount: '',
+        projectedStart: '',
+        projectedEnd: '',
+        actualStart: '',
+        actualEnd: '',
+        researchProgress: '',
+        nonFacultyResearchers: ''
+    })
     if(props.children != null) {
         content = Object.keys(props.children).map(key => { 
             if(props.children[key].researchId != null) {
@@ -76,7 +92,10 @@ function ResearchGrant(props){
                         {
                             props.facultyFlag && !props.viewFlag &&
                             <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant">Edit</a>
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant" onClick={() => {
+                                    setEdit(props.children.[key].researchId)
+                                    setKey(editRes)
+                                }}>Edit</a>
                                 <a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant" onClick={() => {
                                     setDelete(props.children.[key].researchId)
                                 }}>Delete</a>
@@ -103,8 +122,20 @@ function ResearchGrant(props){
         content = <td colspan = "10"><p align = "center">No data available!</p></td>
     }
 
+    function setEdit(id) {
+        editRes = id
+    }
+
     function setDelete(id) {
         deleteRes = id
+    }
+
+    function setKey(x) {
+        Object.keys(props.children).map(key => {
+            if(props.children.[key].researchId == x) {
+                setData(props.children.[key])
+            }
+        });
     }
 
 	return(
@@ -139,70 +170,96 @@ function ResearchGrant(props){
         </div>
     }
 
-	<div className="modal fade" id="editResearchGrant" tabIndex="-1" role="dialog" aria-labelledby="editResearchGrantLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="editResearchGrantLabel">Update Research Grant Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-                        <form>
+        <div className="modal fade" id="editResearchGrant" tabIndex="-1" role="dialog" aria-labelledby="editResearchGrantLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="editResearchGrantLabel">Update Research Grant Information</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <Formik
+                    enableReinitialize
+                    initialValues={currData}
+                    onSubmit={async (values) => {
+                        let form = document.getElementById('editResForm')
+                        let formData = new FormData(form)
+                        formData.append('researchId', currData.researchId)
+                        let alert = document.getElementById("researchalert")
+                        let res = await updateResearch(formData, props.token)
+                        if(res.success == true) { 
+                            alert.className ="alert alert-success"
+                            alert.style = "visibility: visible"
+                            alert.innerHTML = res.message
+                        } else {
+                            alert.className = "alert alert-danger"
+                            if(res.error) alert.innerHTML = res.error[0].message
+                            else alert.innerHTML = res.message
+                        }
+                        $("#researchalert").fadeTo(5000, 500).slideUp(500, function(){
+                            $("#researchalert").slideUp(500);
+                        });
+
+                        Router.push('/faculty/accomplishment')
+                    }}
+                >
+                {({ values, errors, touched, isSubmitting }) => (
+                    <Form id = "editResForm">
+                        <div className="modal-body">
                             <hr />
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchUpdate"> Research Project </label>
-                                    <input className = "form-control" type = "text" name = "ResearchUpdate" placeholder = "Input research name" />
+                                    <Field className = "form-control" type = "text" name = "researchName" placeholder = "Input research name" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchSponsorUpdate"> Sponsor </label>
-                                    <input className = "form-control" type = "text" name = "ResearchSponsorUpdate" placeholder = "Input sponsor" />
+                                    <Field className = "form-control" type = "text" name = "granter" placeholder = "Input sponsor" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchAmountUpdate"> Amount </label>
-                                    <input className = "form-control" type = "text" name = "ResearchAmountUpdate" placeholder = "Input amount" />
+                                    <Field className = "form-control" type = "text" name = "amount" placeholder = "Input amount" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchStartDateUpdate"> Start Date (Actual) </label>
-                                    <input type = "date" className = "form-control" name = "ResearchStartDateUpdate" />
+                                    <Field type = "date" className = "form-control" name = "actualStart" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchEndDateUpdate"> End Date (Actual) </label>
-                                    <input type = "date" className = "form-control" name = "ResearchEndDateUpdate" />
+                                    <Field type = "date" className = "form-control" name = "actualEnd" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchProjectedStartDateUpdate"> Start Date (Projected) </label>
-                                    <input type = "date" className = "form-control" name = "ResearchProjectedStartDateUpdate" />
+                                    <Field type = "date" className = "form-control" name = "projectedStart" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchProjectedEndDateUpdate"> End Date (Projected) </label>
-                                    <input type = "date" className = "form-control" name = "ResearchProjectedEndDateUpdate" />
+                                    <Field type = "date" className = "form-control" name = "projectedEnd" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchProgressUpdate"> Progress </label>
-                                    <input className = "form-control" type = "text" name = "ResearchProgressUpdate" placeholder = "Input progress" />
+                                    <Field className = "form-control" type = "text" name = "researchProgress" placeholder = "Input progress" />
                                 </div>
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchAuthorNonDPSMUpdate"> Authors (non-DPSM) </label>
-                                    <input className = "form-control" type = "text" name = "ResearchAuthorNonDPSMUpdate" placeholder = "Input all authors outside DPSM (separate names with commas)" />
+                                    <Field className = "form-control" type = "text" name = "nonFacultyResearchers" placeholder = "Input all authors outside DPSM (separate names with commas)" />
                                 </div>
                             </div>
                             <div className = "form-row">
@@ -214,18 +271,22 @@ function ResearchGrant(props){
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchProofUpdate"> Proof </label>
-                                    <input type = "file" className = "form-control-file" name = "ResearchProofUpdate" />
+                                    <Field type = "file" className = "form-control-file" name = "proof"  value={undefined} />
                                 </div>
                             </div>
-                        </form>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
-                    </div>
-                    </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                $('#editResearchGrant').modal('toggle');
+                            }}>Save changes</button>
+                        </div>
+                    </Form>
+                )}
+                </Formik>
                 </div>
             </div>
+        </div>
         
             <div className="modal fade" id="deleteResearchGrant" tabIndex="-1" role="dialog" aria-labelledby="deleteResearchGrantLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

@@ -175,7 +175,6 @@ function Publication(props){
                             formData.append('publicationId', currData.publicationId)
                             let alert = document.getElementById("publicationalert")
                             let res = await updatePublication(formData, props.token)
-                            console.log("test")
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
                                 alert.style = "visibility: visible"
@@ -241,7 +240,7 @@ function Publication(props){
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary"  disabled = {isSubmitting} onClick = {() => {
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#editPublication').modal('toggle');
                                 }}>Save changes</button>
                             </div>
