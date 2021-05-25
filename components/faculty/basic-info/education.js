@@ -64,6 +64,7 @@ function Education(props) {
                             }
                         </td>
                         <td>{props.children[key].status}</td>
+                        <td>{props.children[key].approverRemarks || 'None'}</td>
                         {
                             props.facultyFlag && !props.viewFlag &&
                             <td>
@@ -142,6 +143,7 @@ function Education(props) {
                             <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
+                            <th>Approver Remarks</th>
                             {!props.viewFlag && <th>Action</th>}
                         </tr>
                         {content}
@@ -281,7 +283,6 @@ function Education(props) {
                             $('#deleteEducation').modal('toggle');
 
                             let res = await deleteEducation(deleteEduc, props.token)
-                            console.log('res', res);
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
                                 alert.style = "visibility: visible"
@@ -325,7 +326,6 @@ function Education(props) {
                             formData.append('educInfoId', approveEduc)
                             
                             let res = await approveEducation(formData, true, props.facultyId, props.token)
-                            console.log('res', res);
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
                                 alert.style = "visibility: visible"
@@ -368,7 +368,6 @@ function Education(props) {
                             formData.append('educInfoId', approveEduc)
                             
                             let res = await approveEducation(formData, false, props.facultyId, props.token)
-                            console.log('res', res);
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
                                 alert.style = "visibility: visible"

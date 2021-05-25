@@ -13,9 +13,6 @@ export default async function approveEducation(formData, approveFlag, facultyId,
 		}
 	} else status = 'Rejected'
 	formData.append('status', status)
-	for (var value of formData.values()) {
-        console.log(value)
-    }
 
 	try {
 		if (token) {
@@ -27,7 +24,6 @@ export default async function approveEducation(formData, approveFlag, facultyId,
 					data: formData,
 					headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 				})	
-				console.log('resp', response);
 				return response.data
 			}  catch (err) {
 				console.error(err)
