@@ -18,9 +18,7 @@ export default async function updateLicensure(formData, token) {
 			if(formData.get('rank') == "") {
 				formData.set('rank', '')
 			}
-		    for (var value of formData.values()) {
-                console.log(value)
-            }
+		    
 		    const response = await axios({
 			    method: 'PUT',
 			    url: url + '/licensure-exam',

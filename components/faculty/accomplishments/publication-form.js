@@ -27,7 +27,7 @@ class PublicationForm extends React.Component{
 
 					let alert = document.getElementById("publicationalert")
 					let res = await addPublication(formData, this.props.token)
-					console.log('res', res);
+					
 					if(res.success == true) { 
 						alert.className ="alert alert-success"
 						alert.style = "visibility: visible"

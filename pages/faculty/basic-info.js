@@ -7,12 +7,24 @@ import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
 
 function BasicInfo(props) { 
+    let educRejected = false
+    props.education.every((e) => {
+        if(e.status == 'Rejected') {
+            educRejected = true 
+            return false
+        }
+        return true
+    })
+    
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.name} approvalList={props.approvalList}>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                 <a className="nav-item nav-link active" id="personal-info-tab" data-toggle="tab" data-target="#personal-info" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">Personal Information</a>
-                <a className="nav-item nav-link" id="educ-tab" data-toggle="tab" data-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">Education</a>
+                <a className="nav-item nav-link" id="educ-tab" data-toggle="tab" data-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
+                    Education &nbsp;
+                    {educRejected && <span className="badge badge-danger">!</span>}
+                </a>
                 <a className="nav-item nav-link" id="work-exp-tab" data-toggle="tab" data-target="#work-exp" href="#work-exp" role="tab" aria-controls="work-exp" aria-selected="false">Work Experience</a>
             </div>
             </nav>

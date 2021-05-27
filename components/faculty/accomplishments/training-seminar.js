@@ -309,7 +309,7 @@ function TrainingSeminar(props) {
                             formData.append('tsId', approveTS)
                             
                             let res = await approveTraining(formData, true, props.facultyId, props.token)
-                            console.log('res', res);
+                            
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
                                 alert.style = "visibility: visible"

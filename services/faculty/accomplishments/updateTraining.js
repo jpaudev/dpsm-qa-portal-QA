@@ -15,9 +15,6 @@ export default async function updateTraining(formData, token) {
 		    if(formData.get('proof') == "") {
 				formData.delete('proof')
 			}
-		    for (var value of formData.values()) {
-                console.log(value)
-            }
 		    const response = await axios({
 			    method: 'PUT',
 			    url: url + '/training-seminar',

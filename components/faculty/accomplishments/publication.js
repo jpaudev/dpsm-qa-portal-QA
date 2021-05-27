@@ -263,7 +263,7 @@ function Publication(props){
                         <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
                             let alert = document.getElementById("publicationalert")
                             let res = await deletePublication(deletePub, props.token)
-                            console.log('res', res);
+                            
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
                                 alert.style = "visibility: visible"

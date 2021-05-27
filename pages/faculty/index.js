@@ -36,7 +36,7 @@ export async function getServerSideProps(context) {
             }
         } else {
             data = jwt.decode(token.user)
-        console.log(data);
+        
             let facultyId = data.facultyId
         
             let header = {
@@ -57,7 +57,7 @@ export async function getServerSideProps(context) {
                 const approval = await fetch(approvalURL, header)
                 approvalList = await approval.json()
                 approvalList = approvalList.result
-            } else if(data.role == 1) { console.log('here');
+            } else if(data.role == 1) { 
                 return {
                     redirect: {
                         destination: '/faculty/basic-info',

@@ -12,9 +12,7 @@ export default async function addPublicService(formData, token) {
 				}
 				formData.append('facultyId', facultyId)
 				formData.append('status', 'Pending')
-				for (var value of formData.values()) {
-                    console.log(value)
-                }
+
 				const response = await axios({
 				    method: 'POST',
 				    url: 'http://localhost:3001/api/faculty/accomplishment/add/public-service',

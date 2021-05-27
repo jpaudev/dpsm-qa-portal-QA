@@ -9,16 +9,81 @@ import { parseCookies } from "../../helpers"
 
 function Accomplishments(props) { 
     let name = props.personalInfo.lastName + ', ' + props.personalInfo.firstName
+
+    let psaRejected = false
+    props.publicService.every((e) => {
+        if(e.status == 'Rejected') {
+            psaRejected = true 
+            return false
+        }
+        return true
+    })
+
+    let publicationRejected = false
+    props.publications.forEach((e) => {
+        e.faculty_publishers.every((i) => {
+            if(i.status == 'Rejected') {
+                publicationRejected = true 
+                return false
+            }
+            return true
+        })
+    })
+
+    let tsRejected = false
+    props.trainingSeminar.every((e) => {
+        if(e.status == 'Rejected') {
+            tsRejected = true 
+            return false
+        }
+        return true
+    })
+
+    let licensureRejected = false
+    props.licensureExam.every((e) => {
+        if(e.status == 'Rejected') {
+            licensureRejected = true 
+            return false
+        }
+        return true
+    })
+
+    let rgRejected = false
+    props.researchGrant.forEach((i) => {
+        e.faculty_researchers.every((e) => {
+            if(i.status == 'Rejected') {
+                rgRejected = true 
+                return false
+            }
+            return true
+        })
+    })
+
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={name} approvalList={props.approvalList}>
             <nav>
-            <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-		<a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
-		<a className="nav-item nav-link" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">Publications</a>
-		<a className="nav-item nav-link" id="training-seminar-tab" data-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">Training/Seminars</a>
-		<a className="nav-item nav-link" id="licensure-exam-tab" data-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">Licensure Exams</a>
-		<a className="nav-item nav-link" id="research-grant-tab" data-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">Research Grants</a>
-            </div>
+                <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
+                    <a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">
+                        Public Service Accomplishments &nbsp;
+                        {psaRejected && <span className="badge badge-danger">!</span>}
+                    </a>
+                    <a className="nav-item nav-link" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">
+                        Publications &nbsp;
+                        {publicationRejected && <span className="badge badge-danger">!</span>}
+                    </a>
+                    <a className="nav-item nav-link" id="training-seminar-tab" data-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">
+                        Training/Seminars &nbsp;
+                        {tsRejected && <span className="badge badge-danger">!</span>}
+                    </a>
+                    <a className="nav-item nav-link" id="licensure-exam-tab" data-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">
+                        Licensure Exams &nbsp;
+                        {licensureRejected && <span className="badge badge-danger">!</span>}
+                    </a>
+                    <a className="nav-item nav-link" id="research-grant-tab" data-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">
+                        Research Grants &nbsp;
+                        {rgRejected && <span className="badge badge-danger">!</span>}
+                    </a>
+                </div>
             </nav>
 		<br />
 		<br />
@@ -113,7 +178,6 @@ function Accomplishments(props) {
 
 	const rg = await fetch(url + '/research-grant', header)
     const researchGrant = await rg.json()
-    console.log(researchGrant)
 
     let approvalList
     let approvalURL = 'http://localhost:3001/api/faculty/approval/' + facultyId

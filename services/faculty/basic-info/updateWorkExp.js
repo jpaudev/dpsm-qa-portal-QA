@@ -31,7 +31,7 @@ export default async function updateWorkExp(data, token) {
 					description: `${data.description}`
 		    	}
 		    }
-		    console.log(bod)
+		    
 	        try { 
 				const response = await axios.put(url + "/work-exp", bod, {
 					headers: {

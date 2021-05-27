@@ -1,13 +1,13 @@
 import Link from 'next/link'
 
-function FacultyList(props){ console.log(props.children);
+function FacultyList(props){ 
 	let chem
 	let mcsu
 	let physgeo
 	if(props.children != null) {
 		let path
 		if(props.path == "approval") path = '/faculty/approval/'
-		else if(props.path == 'admin') path = 'admin/'
+		else if(props.path == 'admin') path = '/admin/'
 		else if(props.path == 'info') path = '/faculty/view/'
 
 		chem = Object.keys(props.children).map(key => {

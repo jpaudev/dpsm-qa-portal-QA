@@ -18,9 +18,6 @@ export default async function updatePublicService(formData, token) {
 			if(formData.get('endDate') == "") {
 				formData.delete('endDate')
 			}
-		    for (var value of formData.values()) {
-                console.log(value)
-            }
 		    const response = await axios({
 			    method: 'PUT',
 			    url: url + '/public-service',

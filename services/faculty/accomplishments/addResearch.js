@@ -20,7 +20,6 @@ export default async function addResearch(formData, token) {
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })
-				console.log(response)
 				
 				let bodData = new FormData()
 		    	bodData.append('facultyId', facultyId)
