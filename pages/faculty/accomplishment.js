@@ -49,8 +49,8 @@ function Accomplishments(props) {
     })
 
     let rgRejected = false
-    props.researchGrant.forEach((i) => {
-        e.faculty_researchers.every((e) => {
+    props.researchGrant.forEach((e) => {
+        e.faculty_researchers.every((i) => {
             if(i.status == 'Rejected') {
                 rgRejected = true 
                 return false

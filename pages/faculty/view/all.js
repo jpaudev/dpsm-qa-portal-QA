@@ -11,7 +11,7 @@ function FacultyList(props) {
 			<br />
 			<h2 align="center">Faculty List</h2>
             <br />
-            <Faculty path="info">{props.facultyList}</Faculty>
+            <Faculty path="info" role={props.data.role} >{props.facultyList}</Faculty>
         </Layout>
     )
   }

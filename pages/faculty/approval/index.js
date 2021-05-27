@@ -43,14 +43,16 @@ function FacultyList(props) {
             const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
             personalInfo = await personal.json()
 
-            let approvalURL = 'http://localhost:3001/api/faculty/approval/' + facultyId
             if(data.role == 2 || data.role == 3) {
+                let approvalURL = 'http://localhost:3001/api/faculty/approval/' + facultyId
                 if(data.role == 2) {
                     approvalURL += '?unitId=' + data.unitId
                 }
 
                 const approval = await fetch(approvalURL, header)
                 approvalList = await approval.json()
+
+
             } else {
 				return {
 					redirect: {
