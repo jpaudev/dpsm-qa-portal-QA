@@ -225,82 +225,9 @@ function Table ({columns, data}){
  
 
 // configure columns, populate cells, render table
- function EmploymentAnalyticsTable() {
+ function EmploymentAnalyticsTable(props) {
    const data = React.useMemo(
-     () => [
-       {
-         col1: <a href = "">Cena, John</a>,
-         col2: 'Professor 1',
-	 col3: 'Tenured',
-	 col4: 'Full-time'
-       },
-       {
-         col1: <a href = "">Stark, Anthony</a>,
-         col2: 'Lecturer 1',
-	 col3: 'Temporary',
-	 col4: 'Part-time'
-       },
-       {
-         col1: <a href = "">Nelson, Kent</a>,
-         col2: 'Instructor 1',
-	 col3: 'Temporary',
-	 col4: 'Part-time'
-       },
-       {
-         col1: <a href = "">Parker, Peter</a>,
-         col2: 'Associate Professor 1',
-	 col3: 'Tenured',
-	 col4: 'Full-time'
-       },
-       {
-         col1: <a href = "">Omega, Kenny</a>,
-         col2: 'Assistant Professor 1',
-	 col3: 'Temporary',
-	 col4: 'Full-time'
-       },
-       {
-         col1: <a href = "">Wilson, Sam</a>,
-         col2: 'Senior Lecturer 1',
-	 col3: 'Tenured',
-	 col4: 'Part-time'
-       },
-       {
-         col1: <a href = "">Naito, Tetsuya</a>,
-         col2: 'Professor 2',
-	 col3: 'Tenured',
-	 col4: 'Full-time'
-       },
-       {
-         col1: <a href = "">Sakurai, Masahiro</a>,
-         col2: 'Associate Professor 2',
-	 col3: 'Temporary',
-	 col4: 'Part-time'
-       },
-       {
-         col1: <a href = "">Reyes, Jaime</a>,
-         col2: 'Lecturer 2',
-	 col3: 'Temporary',
-	 col4: 'Part-time'
-       },
-       {
-         col1: <a href = "">Steve</a>,
-         col2: 'Assistant Professor 3',
-	 col3: 'Temporary',
-	 col4: 'Full-time'
-       },
-       {
-         col1: <a href = "">Hedgehog, Sonic the</a>,
-         col2: 'Senior Lecturer 2',
-	 col3: 'Tenured',
-	 col4: 'Part-time'
-       },
-       {
-         col1: <a href = "">Odinsdottir, Angela</a>,
-         col2: 'Professor 5',
-	 col3: 'Tenured',
-	 col4: 'Full-time'
-       }
-     ],
+     () => props.data,
      []
    )
  

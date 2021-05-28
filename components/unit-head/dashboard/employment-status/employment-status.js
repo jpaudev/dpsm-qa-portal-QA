@@ -1,7 +1,43 @@
 import EmploymentAnalyticsTable from '../../../../components/unit-head/dashboard/employment-status/employment_dashboard_table'
 import EmploymentDashboardGraph from '../../../../components/unit-head/dashboard/employment-status/employment_dashboard_graph'
 
-function EmploymentStatus(){
+function EmploymentStatus(props){
+	let empList = props.children
+	let tableData = []
+	
+	empList.forEach((e) => {
+		if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftt') {
+			tableData.push({
+				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
+				col3: 'Full-time',
+				col4: 'Tenured',
+				col5: e.faculty_employment_infos[0].startDate,
+				col6: e.faculty_employment_infos[0].endDate
+			})
+		}
+		if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftp') {
+			tableData.push({
+				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
+				col3: 'Full-time',
+				col4: 'Permanent',
+				col5: e.faculty_employment_infos[0].startDate,
+				col6: e.faculty_employment_infos[0].endDate
+			})
+		}
+		if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'pt') {
+			tableData.push({
+				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
+				col3: 'Part-time',
+				col4: '',
+				col5: e.faculty_employment_infos[0].startDate,
+				col6: e.faculty_employment_infos[0].endDate
+			})
+		}
+	})
+
 	return(
 		<div>
 			<br />
@@ -36,7 +72,7 @@ function EmploymentStatus(){
             		</nav>
 	    		<div className="tab-content" id="nav-tabContent">
 	    			<div className="tab-pane fade show active" id="employment-graph" role="tabpanel" aria-labelledby="employment-graph-tab"><EmploymentDashboardGraph /></div>
-	    			<div className="tab-pane fade" id="employment-table" role="tabpanel" aria-labelledby="employment-table-tab"><EmploymentAnalyticsTable /></div>
+	    			<div className="tab-pane fade" id="employment-table" role="tabpanel" aria-labelledby="employment-table-tab"><EmploymentAnalyticsTable data={tableData} /></div>
             		</div>
                 
 		<style jsx>{`
