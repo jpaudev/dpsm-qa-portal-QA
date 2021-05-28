@@ -225,94 +225,9 @@ function Table ({columns, data}){
  
 
 // configure columns, populate cells, render table
- function AccomplishmentAnalyticsTable() {
+ function AccomplishmentAnalyticsTable(props) {
    const data = React.useMemo(
-     () => [
-       {
-         col1: <a href = "">Cena, John</a>,
-         col2: 'Attended Seminar',
-	 col3: 'Training/Seminars',
-	 col4: '2021-01-01',
-	 col5: '2021-01-20'
-       },
-       {
-         col1: <a href = "">Stark, Anthony</a>,
-         col2: 'Published Journal',
-	 col3: 'Publications',
-	 col4: '2020-04-01',
-	 col5: '2021-06-01'
-       },
-       {
-         col1: <a href = "">Nelson, Kent</a>,
-         col2: 'Published Book',
-	 col3: 'Publications',
-	 col4: '2021-03-02',
-	 col5: '2021-04-01'
-       },
-       {
-         col1: <a href = "">Parker, Peter</a>,
-         col2: 'Conducted Training',
-	 col3: 'Training/Seminars',
-	 col4: '2021-01-26',
-	 col5: '2021-02-01'
-       },
-       {
-         col1: <a href = "">Omega, Kenny</a>,
-         col2: 'Government Project',
-	 col3: 'Public Service',
-	 col4: '2021-05-06',
-	 col5: '2021-07-01'
-       },
-       {
-         col1: <a href = "">Wilson, Sam</a>,
-         col2: 'Medical Research',
-	 col3: 'Research Grants',
-	 col4: '2021-12-11',
-	 col5: '2022-01-01'
-       },
-       {
-         col1: <a href = "">Naito, Tetsuya</a>,
-         col2: 'Global Initiative',
-	 col3: 'Public Service',
-	 col4: '2020-01-02',
-	 col5: '2020-01-10'
-       },
-       {
-         col1: <a href = "">Sakurai, Masahiro</a>,
-         col2: 'Charity Work',
-	 col3: 'Public Service',
-	 col4: '2021-03-07',
-	 col5: '2021-04-01'
-       },
-       {
-         col1: <a href = "">Reyes, Jaime</a>,
-         col2: 'CERN Research',
-	 col3: 'Research Grants',
-	 col4: '2021-04-15',
-	 col5: '2021-04-21'
-       },
-       {
-         col1: <a href = "">Steve</a>,
-         col2: 'Spoke at Seminar',
-	 col3: 'Training/Seminars',
-	 col4: '2021-06-13',
-	 col5: '2021-06-15'
-       },
-       {
-         col1: <a href = "">Hedgehog, Sonic the</a>,
-         col2: 'Published Dissertation',
-	 col3: 'Publications',
-	 col4: '2011-07-23',
-	 col5: '2011-08-01'
-       },
-       {
-         col1: <a href = "">Odinsdottir, Angela</a>,
-         col2: 'Published Thesis',
-	 col3: 'Publications',
-	 col4: '2021-01-17',
-	 col5: '2021-01-20'
-       }
-     ],
+     () => props.data,
      []
    )
  
