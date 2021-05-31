@@ -27,7 +27,7 @@ function Dashboard(props) {
                     <div className="tab-pane fade show active" id="accomplishment-count" role="tabpanel" aria-labelledby="accomplishment-count-tab"><AccomplishmentCount>{props.accompList}</AccomplishmentCount></div>
                     <div className="tab-pane fade" id="employment-status" role="tabpanel" aria-labelledby="employment-status-tab"><EmploymentStatus>{props.empList}</EmploymentStatus></div>
 			    {/*<div className="tab-pane fade" id="SET-score" role="tabpanel" aria-labelledby="SET-score-tab"><SETResults /></div>*/}
-				    <div className="tab-pane fade" id="degree" role="tabpanel" aria-labelledby="degree-tab"><DegreeCount /></div>
+				    <div className="tab-pane fade" id="degree" role="tabpanel" aria-labelledby="degree-tab"><DegreeCount>{props.educList}</DegreeCount></div>
                 </div>
                 
 			<style jsx>{`
@@ -55,6 +55,7 @@ export async function getServerSideProps(context) {
     let approvalList
     let accompList
     let empList
+    let educList
 
     if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
@@ -81,10 +82,14 @@ export async function getServerSideProps(context) {
             let approvalURL = 'http://localhost:3001/api/faculty/approval/' + facultyId
             let accompURL = 'http://localhost:3001/api/faculty/reports/accomplishment'
             let empURL = 'http://localhost:3001/api/faculty/reports/employment'
+            let educURL = 'http://localhost:3001/api/faculty/reports/education'
+            
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
                     approvalURL += '?unitId=' + data.unitId
                     accompURL += '?unitId=' + data.unitId
+                    empURL += '?unitId=' + data.unitId
+                    educURL += '?unitId=' + data.unitId
                 }
 
                 const approval = await fetch(approvalURL, header)
@@ -98,6 +103,10 @@ export async function getServerSideProps(context) {
                 const empReports = await fetch(empURL, header)
                 empList = await empReports.json()
                 empList = empList.result
+
+                const educReports = await fetch(educURL, header)
+                educList = await educReports.json()
+                educList = educList.result
             } else if(data.role == 1) { 
                 return {
                     redirect: {
@@ -116,7 +125,8 @@ export async function getServerSideProps(context) {
             personalInfo: personalInfo.result,
             approvalList: approvalList,
             accompList,
-            empList
+            empList,
+            educList
         }
 	}
 }
