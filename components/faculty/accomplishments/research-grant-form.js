@@ -55,7 +55,7 @@ class ResearchGrantForm extends React.Component{
 						<hr />
 						<br />
 						<div className = "form-row">
-							<div className = "form-group col-md-2">
+							<div className = "form-group col-md-6">
 								<label htmlFor = "Research[]"> Research Project </label>
 								<Field className = "form-control" type = "text" name = "researchName" placeholder = "Input research name" />
 							</div>
@@ -68,17 +68,9 @@ class ResearchGrantForm extends React.Component{
 								<Field className = "form-control" type = "text" name = "amount" placeholder = "Input amount" />
 							</div>
 							<div className = "form-group col-md-2">
-								<label htmlFor = "ResearchStartDate[]"> Start Date (Actual) </label>
-								<Field type = "date" className = "form-control" name = "actualStart" />
-							</div>
-							<div className = "form-group col-md-2">
-								<label htmlFor = "ResearchEndDate[]"> End Date (Actual) </label>
-								<Field type = "date" className = "form-control" name = "actualEnd" />
-							</div>
-							<div className = "form-group col-md-2">
-	                            <label htmlFor = "ResearchProof[]"> Proof </label>
-	                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
-	                        </div>
+	                            				<label htmlFor = "ResearchProof[]"> Proof </label>
+	                            				<Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
+	                       				 </div>
 						</div>
 						<div className = "form-row">
 							<div className = "form-group col-md-12">
@@ -95,12 +87,20 @@ class ResearchGrantForm extends React.Component{
 								<label htmlFor = "ResearchProjectedEndDate[]"> End Date (Projected) </label>
 								<Field type = "date" className = "form-control" name = "projectedEnd" />
 							</div>
+							<div className = "form-group col-md-2">
+								<label htmlFor = "ResearchStartDate[]"> Start Date (Actual) </label>
+								<Field type = "date" className = "form-control" name = "actualStart" />
+							</div>
+							<div className = "form-group col-md-2">
+								<label htmlFor = "ResearchEndDate[]"> End Date (Actual) </label>
+								<Field type = "date" className = "form-control" name = "actualEnd" />
+							</div>
 							<div className = "form-group col-md-4"> 
 								<label htmlFor = "ResearchProgress[]"> Research Progress </label>
 								<Field as = "select" className = "form-control" name = "researchProgress" required>
-	                                <option value = "Ongoing">Ongoing</option>
-	                                <option value = "Completed">Completed</option>
-	                            </Field>
+	                                				<option value = "Ongoing">Ongoing</option>
+	                                				<option value = "Completed">Completed</option>
+	                            				</Field>
 							</div>
 						</div>
 						<div>
