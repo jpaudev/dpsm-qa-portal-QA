@@ -22,9 +22,9 @@ function Dashboard(props) {
             		</nav>
 	    		<div className="tab-content" id="nav-tabContent">
 	    			<div className="tab-pane fade show active" id="accomplishment-count" role="tabpanel" aria-labelledby="accomplishment-count-tab"><AccomplishmentCount /></div>
-				<div className="tab-pane fade" id="employment-status" role="tabpanel" aria-labelledby="employment-status-tab">{/*<EmploymentStatus />*/}</div>
-	    			<div className="tab-pane fade" id="SET-score" role="tabpanel" aria-labelledby="SET-score-tab">{/*<SETResults />*/}</div>
-				<div className="tab-pane fade" id="degree" role="tabpanel" aria-labelledby="degree-tab">{/*<DegreeCount />*/}</div>
+				<div className="tab-pane fade" id="employment-status" role="tabpanel" aria-labelledby="employment-status-tab"><EmploymentStatus /></div>
+	    			<div className="tab-pane fade" id="SET-score" role="tabpanel" aria-labelledby="SET-score-tab"><SETResults /></div>
+				<div className="tab-pane fade" id="degree" role="tabpanel" aria-labelledby="degree-tab"><DegreeCount /></div>
             		</div>
                 
 			<style jsx>{`
