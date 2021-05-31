@@ -27,7 +27,7 @@ function BasicInfo(props) {
                     {educRejected && <span className="badge badge-danger">!</span>}
                 </a>
                 <a className="nav-item nav-link" id="work-exp-tab" data-toggle="tab" data-target="#work-exp" href="#work-exp" role="tab" aria-controls="work-exp" aria-selected="false">Work Experience</a>
-		<a className="nav-item nav-link" id="teaching-philosophy-tab" data-toggle="tab" href="#teaching-philosophy" role="tab" aria-controls="teaching-philosophy" aria-selected="false">Teaching Philosophy</a>     
+		     {/*<a className="nav-item nav-link" id="teaching-philosophy-tab" data-toggle="tab" href="#teaching-philosophy" role="tab" aria-controls="teaching-philosophy" aria-selected="false">Teaching Philosophy</a>*/}     
             </div>
             </nav>
 		<br />
@@ -42,9 +42,9 @@ function BasicInfo(props) {
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
                 <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} employment = { props.employment }>{ props.workExperience }</WorkExperience>
             </div>
-	    <div className="tab-pane fade" id="teaching-philosophy" role="tabpanel" aria-labelledby="teaching-philosophy-tab">
+		     {/*<div className="tab-pane fade" id="teaching-philosophy" role="tabpanel" aria-labelledby="teaching-philosophy-tab">
 		<TeachingPhilosophy />
-	    </div>
+	    </div>*/}
             </div>
 	<style jsx>{`
 		a.nav-item:focus{
