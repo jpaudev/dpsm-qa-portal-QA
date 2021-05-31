@@ -162,6 +162,12 @@ function PersonalInfo(props) {
                             <Field className = "form-control" type = "tel" name = "emergencyContactNumber" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.emergencyContactNumber } disabled={!props.facultyFlag} required />
                         </div>
                     </div>
+		    <div className = "form-row">
+			    <div className = "form-group required">
+                            	<label className = "control-label" htmlFor = "Philosophy"> Teaching Philosophy </label>
+			    	<textarea className = "form-control" id = "Philosophy" name = "Philosophy" rows = "8" cols = "50" placeholder = "Write down your teaching philosophy here" required />
+			    </div>
+		    </div>
                     {/*<h5 align = "center"> Dependents </h5>*/}
                     {/*{dependents}*/}
                     <br />
