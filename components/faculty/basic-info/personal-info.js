@@ -98,7 +98,7 @@ function PersonalInfo(props) {
                     </div>
                     <div className = "form-row">
                         <div className = "form-group col-md-4 required">
-                            <label className = "control-label" htmlFor = "Sex"> Sex </label>
+                            <label className = "control-label" htmlFor = "Sex"> Sex (at birth) </label>
                             <select className = "form-control" name = "Sex" value = { props.children.gender } disabled required>
                                 <option value = "male">Male</option>
                                 <option value = "female">Female</option>

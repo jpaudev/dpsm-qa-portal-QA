@@ -54,10 +54,12 @@ class EducationForm extends React.Component{
                         <hr />
                         <br />
                         <div className = "form-row">
-                            <div className = "form-group col-md-2">
+                            <div className = "form-group col-md-12">
                                 <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
                                 <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" />
                             </div>
+                        </div>
+                        <div className = "form-row">
                             <div className = "form-group col-md-4">
                                 <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
                                 <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
@@ -81,20 +83,20 @@ class EducationForm extends React.Component{
                                     </Field>
                             </div>
                             </div>
-                            <div className = "form-row">
-                            <div className = "form-group col-md-2">
-                                <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
-                                <Field type = "date" className = "form-control" name = "startDate" id = "startDate" />
-                            </div>
-                            <div className = "form-group col-md-2">
-                                <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
-                                <Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
-                            </div>
-                            <div className = "form-group col-md-2">
-                                <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
-                                <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
-                            </div>
-                        </div>
+                         <div className = "form-row">
+                                <div className = "form-group col-md-2">
+                                    <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
+                                    <Field type = "date" className = "form-control" name = "startDate" id = "startDate" />
+                                </div>
+                                <div className = "form-group col-md-2">
+                                    <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
+                                    <Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
+                                </div>
+                                <div className = "form-group col-md-2">
+                                    <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
+                                    <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
+                                </div>
+                         </div>
                         <br />
                         <button
                             type = "submit"
