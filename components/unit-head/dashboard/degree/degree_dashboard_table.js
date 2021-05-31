@@ -225,82 +225,9 @@ function Table ({columns, data}){
  
 
 // configure columns, populate cells, render table
- function DegreeAnalyticsTable() {
+ function DegreeAnalyticsTable(props) {
    const data = React.useMemo(
-     () => [
-       {
-         col1: <a href = "">Cena, John</a>,
-         col2: 'Computer Science',
-	 col3: 'BS',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Stark, Anthony</a>,
-         col2: 'Mechanical Engineering',
-	 col3: 'BS',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Nelson, Kent</a>,
-         col2: 'Mathematics',
-	 col3: 'MS',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Parker, Peter</a>,
-         col2: 'Biochemistry',
-	 col3: 'PhD',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Omega, Kenny</a>,
-         col2: 'Media Communications',
-	 col3: 'BA',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Wilson, Sam</a>,
-         col2: 'Ornithology',
-	 col3: 'BS',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Naito, Tetsuya</a>,
-         col2: 'Journalism',
-	 col3: 'BA',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Sakurai, Masahiro</a>,
-         col2: 'Accounting',
-	 col3: 'BS',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Reyes, Jaime</a>,
-         col2: 'Applied Physics',
-	 col3: 'MS',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Steve</a>,
-         col2: 'Theoretical Physics',
-	 col3: 'PhD',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Hedgehog, Sonic the</a>,
-         col2: 'Economics',
-	 col3: 'BS',
-	 col4: '2021-01-01'
-       },
-       {
-         col1: <a href = "">Odinsdottir, Angela</a>,
-         col2: 'Fine Arts',
-	 col3: 'BA',
-	 col4: '2021-01-01'
-       }
-     ],
+     () => props.data,
      []
    )
  
