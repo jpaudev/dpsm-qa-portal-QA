@@ -3,11 +3,28 @@ import EmploymentDashboardGraph from '../../../../components/unit-head/dashboard
 
 function EmploymentStatus(props){
 	let empList = props.children
+
+	let chemfttCount = 0
+	let chemftpCount = 0
+	let chemptCount = 0
+
+	let mcsufttCount = 0
+	let mcsuftpCount = 0
+	let mcsuptCount = 0
+
+	let p6GeofttCount = 0
+	let p6GeoftpCount = 0
+	let p6GeoptCount = 0
+
 	let tableData = []
 	
-	empList.forEach((e) => {
+	empList.forEach(async (e) => {
 		if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftt') {
-			tableData.push({
+			if(e.faculty_unit.unitId == 1) chemfttCount++
+			else if(e.faculty_unit.unitId == 2) mcsufttCount++
+			else if(e.faculty_unit.unitId == 3) p6GeofttCount++
+
+			await tableData.push({
 				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
 				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
 				col3: 'Full-time',
@@ -17,7 +34,11 @@ function EmploymentStatus(props){
 			})
 		}
 		if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftp') {
-			tableData.push({
+			if(e.faculty_unit.unitId == 1) chemftpCount++
+			else if(e.faculty_unit.unitId == 2) mcsuftpCount++
+			else if(e.faculty_unit.unitId == 3) p6GeoftpCount++
+
+			await tableData.push({
 				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
 				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
 				col3: 'Full-time',
@@ -27,7 +48,11 @@ function EmploymentStatus(props){
 			})
 		}
 		if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'pt') {
-			tableData.push({
+			if(e.faculty_unit.unitId == 1) chemptCount++
+			else if(e.faculty_unit.unitId == 2) mcsuptCount++
+			else if(e.faculty_unit.unitId == 3) p6GeoptCount++
+
+			await tableData.push({
 				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
 				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
 				col3: 'Part-time',
@@ -37,6 +62,36 @@ function EmploymentStatus(props){
 			})
 		}
 	})
+
+	const graphData = [
+		{
+		  "EmploymentStatus": "Part-time",
+		  "MCSU": mcsuptCount,
+		  "MCSUColor": "hsl(109, 70%, 50%)",
+		  "Chem": chemptCount,
+		  "ChemColor": "hsl(151, 70%, 50%)",
+		  "Physics/Geology": p6GeoptCount,
+		  "Physics/GeologyColor": "hsl(177, 70%, 50%)",
+		},
+		{
+		  "EmploymentStatus": "Full-time (Temporary)",
+		  "MCSU": mcsufttCount,
+		  "hot dogColor": "hsl(67, 70%, 50%)",
+		  "Chem": chemfttCount,
+		  "ChemColor": "hsl(215, 70%, 50%)",
+		  "Physics/Geology": p6GeofttCount,
+		  "Physics/GeologyColor": "hsl(244, 70%, 50%)",
+		},
+		{
+		  "EmploymentStatus": "Full-time (Tenured)",
+		  "MCSU": mcsuftpCount,
+		  "hot dogColor": "hsl(234, 70%, 50%)",
+		  "Chem": chemftpCount,
+		  "ChemColor": "hsl(302, 70%, 50%)",
+		  "Physics/Geology": p6GeoftpCount,
+		  "Physics/GeologyColor": "hsl(178, 70%, 50%)",
+		}
+	]
 
 	return(
 		<div>
@@ -71,7 +126,7 @@ function EmploymentStatus(props){
             			</div>
             		</nav>
 	    		<div className="tab-content" id="nav-tabContent">
-	    			<div className="tab-pane fade show active" id="employment-graph" role="tabpanel" aria-labelledby="employment-graph-tab"><EmploymentDashboardGraph /></div>
+	    			<div className="tab-pane fade show active" id="employment-graph" role="tabpanel" aria-labelledby="employment-graph-tab"><EmploymentDashboardGraph data={graphData} /></div>
 	    			<div className="tab-pane fade" id="employment-table" role="tabpanel" aria-labelledby="employment-table-tab"><EmploymentAnalyticsTable data={tableData} /></div>
             		</div>
                 

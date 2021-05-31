@@ -13,9 +13,7 @@ import React from 'react'
 
 class AccomplishmentDashboardGraph extends React.Component{
   render(){
-    
-
-		return(
+	return(
 		<div id = "graph" style = {{height: 700}}>
 			<ResponsiveBar
         data={this.props.data}

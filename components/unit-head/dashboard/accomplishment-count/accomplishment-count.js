@@ -43,10 +43,10 @@ function AccomplishmentCount(props){
     });
 
 	let tableData = []
-    accompList.forEach((e) => {
+    accompList.forEach(async (e) => {
 		if(e.faculty_public_services) {
-			e.faculty_public_services.forEach((i) => {
-				tableData.push({
+			await e.faculty_public_services.forEach(async (i) => {
+				await tableData.push({
 					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
 					col2: i.position + ' - ' + i.organization,
 					col3: 'Public Service',
@@ -56,8 +56,8 @@ function AccomplishmentCount(props){
 			})
 		} 
 		if(e.faculty_publishers) {
-			e.faculty_publishers.forEach((i) => {
-				tableData.push({
+			e.faculty_publishers.forEach(async (i) => {
+				await tableData.push({
 					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
 					col2: i.faculty_publication.title,
 					col3: 'Publication',
@@ -67,8 +67,8 @@ function AccomplishmentCount(props){
 			})
 		} 
 		if(e.faculty_training_seminars) {
-			e.faculty_training_seminars.forEach((i) => {
-				tableData.push({
+			e.faculty_training_seminars.forEach(async (i) => {
+				await tableData.push({
 					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
 					col2: i.role + ' - ' + i.title,
 					col3: 'Training/Seminar',
@@ -78,8 +78,8 @@ function AccomplishmentCount(props){
 			})
 		}
 		if(e.faculty_researchers) {
-			e.faculty_researchers.forEach((i) => {
-				tableData.push({
+			e.faculty_researchers.forEach(async (i) => {
+				await tableData.push({
 					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
 					col2: i.faculty_research_grant.researchName,
 					col3: 'Research Grant',
@@ -90,7 +90,7 @@ function AccomplishmentCount(props){
 		} 
 	})
 
-	const data = [
+	const graphData = [
 		{
 		  "AccomplishmentType": "Public Service",
 		  "MCSU": mcsuPSACount,
@@ -162,7 +162,7 @@ function AccomplishmentCount(props){
             			</div>
             		</nav>
 	    		<div className="tab-content" id="nav-tabContent">
-	    			<div className="tab-pane fade show active" id="graph" role="tabpanel" aria-labelledby="graph-tab"><AccomplishmentDashboardGraph data={data} /></div>
+	    			<div className="tab-pane fade show active" id="graph" role="tabpanel" aria-labelledby="graph-tab"><AccomplishmentDashboardGraph data={graphData} /></div>
 	    			<div className="tab-pane fade" id="table" role="tabpanel" aria-labelledby="table-tab"><AccomplishmentAnalyticsTable data={tableData} /></div>
             		</div>
                 
