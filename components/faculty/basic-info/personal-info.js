@@ -22,7 +22,8 @@ function PersonalInfo(props) {
         emergencyContactPerson: props.children.emergencyContactPerson,
         emergencyContactNumber: props.children.emergencyContactNumber,
         suffix: props.children.suffix,
-        faculty_dependents: props.children.faculty_dependents
+        faculty_dependents: props.children.faculty_dependents,
+        philosophy: props.children.teachingPhilosophy
     }
     let name = props.children.lastName + ', ' + props.children.firstName
     let dependents = Object.keys(props.children.faculty_dependents).map(key => {
@@ -134,8 +135,8 @@ function PersonalInfo(props) {
                             </Field>
                         </div>
                         <div className = "form-group col-md-6">
-                                <label htmlFor = "Religion"> Religion </label>
-                                <Field className = "form-control" type = "text" name = "religion" defaultValue = { props.children.religion } disabled={!props.facultyFlag} required />
+                            <label htmlFor = "Religion"> Religion </label>
+                            <Field className = "form-control" type = "text" name = "religion" defaultValue = { props.children.religion } disabled={!props.facultyFlag} required />
                         </div>
                     </div>
                     <div className = "form-row">
@@ -162,12 +163,12 @@ function PersonalInfo(props) {
                             <Field className = "form-control" type = "tel" name = "emergencyContactNumber" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { props.children.emergencyContactNumber } disabled={!props.facultyFlag} required />
                         </div>
                     </div>
-		    <div className = "form-row">
-			    <div className = "form-group required">
-                            	<label className = "control-label" htmlFor = "Philosophy"> Teaching Philosophy </label>
-			    	<textarea className = "form-control" id = "Philosophy" name = "Philosophy" rows = "8" cols = "50" placeholder = "Write down your teaching philosophy here" required />
-			    </div>
-		    </div>
+                    <div className = "form-row">
+                        <div className = "form-group col-md-12 required">
+                            <label className = "control-label" htmlFor = "philosophy"> Teaching Philosophy </label>
+                            <Field className = "form-control" component = "textarea" rows = {5} name = "philosophy" defaultValue = { props.children.teachingPhilosophy } disabled={!props.facultyFlag} required />
+                        </div>
+                    </div>
                     {/*<h5 align = "center"> Dependents </h5>*/}
                     {/*{dependents}*/}
                     <br />

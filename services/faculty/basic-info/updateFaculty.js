@@ -16,6 +16,7 @@ export default async function updateFaculty(data, token) {
 				const response = await axios.put(url + "/personal", {
 					lastName: `${data.lastName}`,
 					middleName: `${data.middleName}`,
+					suffix: `${data.suffix}`,
 					permanentAddress: `${data.permanentAddress}`,
 					presentAddress: `${data.presentAddress}`,
 					mobile: `${data.mobile}`,
@@ -25,7 +26,7 @@ export default async function updateFaculty(data, token) {
 					religion: `${data.religion}`,
 					emergencyContactPerson: `${data.emergencyContactPerson}`,
 	  				emergencyContactNumber: `${data.emergencyContactNumber}`,
-	  				suffix: `${data.suffix}`
+					teachingPhilosophy: `${data.philosophy}`,
 				}, {
 					headers: {
 						Authorization: `Bearer ${token}`
