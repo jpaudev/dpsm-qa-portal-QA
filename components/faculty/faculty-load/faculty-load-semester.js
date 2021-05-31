@@ -10,6 +10,7 @@ function FacultyLoadSemester() {
 					<th>Time</th>
 					<th>Hours Per Week</th>
 					<th>Number of Students</th>
+					<th>Syllabus</th>
 					<th>SET Results</th>
 					<th>Number of Units</th>
 				</tr>
@@ -23,6 +24,7 @@ function FacultyLoadSemester() {
 					<td>7AM-10AM</td>
 					<td>3</td>
 					<td>700</td>
+					<td><button className = "btn btn-info">Add Syllabus</button></td>
 					<td><a href = "#">View spreadsheet</a></td>
 					<td>3</td>
 				</tr>
@@ -34,6 +36,7 @@ function FacultyLoadSemester() {
 					<td>7AM-10AM</td>
 					<td>3</td>
 					<td>700</td>
+					<td><button className = "btn btn-info">Add Syllabus</button></td>
 					<td><a href = "#">View spreadsheet</a></td>
 					<td>3</td>
 				</tr>
