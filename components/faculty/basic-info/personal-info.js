@@ -10,47 +10,9 @@ import updateFaculty from '../../../services/faculty/basic-info/updateFaculty'
 import addFaculty from '../../../services/admin/addFaculty'
 
 function PersonalInfo(props) {
-<<<<<<< HEAD
-    let FacultyDetails = {
-        lastName: props.children.lastName,
-        middleName: props.children.middleName,
-        permanentAddress: props.children.permanentAddress,
-        presentAddress: props.children.presentAddress,
-        mobile: props.children.mobile,
-        landline: props.children.landline,
-        email: props.children.email,
-        civilStatus: props.children.civilStatus,
-        religion: props.children.religion,
-        emergencyContactPerson: props.children.emergencyContactPerson,
-        emergencyContactNumber: props.children.emergencyContactNumber,
-        suffix: props.children.suffix,
-        faculty_dependents: props.children.faculty_dependents,
-        philosophy: props.children.teachingPhilosophy
-    }
-    let name = props.children.lastName + ', ' + props.children.firstName
-    let dependents = Object.keys(props.children.faculty_dependents).map(key => {
-        return (
-            <div className = "form-row">
-                <div className = "form-group col-md-4 required"> 
-                    <label className = "control-label" htmlFor = "Dependent"> Name of Dependent </label>
-                    <input className = "form-control" type = "text" name = "name" defaultValue = { props.children.faculty_dependents[key].name } disabled={!props.facultyFlag} required />
-                </div>
-                <div className = "form-group col-md-4 required">
-                    <label className = "control-label" htmlFor = "DependentDateOfBirth"> Date of Birth </label>
-                    <input className = "form-control" type = "date" name = "birthDate" defaultValue = { props.children.faculty_dependents[key].birthDate } disabled={!props.facultyFlag} required />
-                </div>
-                <div className = "form-group col-md-4 required">
-                    <label className = "control-label" htmlFor = "DependentRelationship[]"> Relationship to User </label>
-                    <input className = "form-control" type = "text" name = "relationship" defaultValue = { props.children.faculty_dependents[key].relationship } disabled={!props.facultyFlag} required />
-                </div>
-            </div>
-        );
-    });
-=======
     let FacultyDetails
     let name
     let dependents
->>>>>>> 1586fe66a49999bced9cab989b7141e0078d5955
     let res
     if(props.children != null) {
         FacultyDetails = {
@@ -69,7 +31,8 @@ function PersonalInfo(props) {
             emergencyContactPerson: props.children.emergencyContactPerson,
             emergencyContactNumber: props.children.emergencyContactNumber,
             suffix: props.children.suffix,
-            faculty_dependents: props.children.faculty_dependents
+            faculty_dependents: props.children.faculty_dependents,
+            philosophy: props.children.teachingPhilosophy
         }
         name = props.children.lastName + ', ' + props.children.firstName
         dependents = Object.keys(props.children.faculty_dependents).map(key => {
@@ -113,7 +76,8 @@ function PersonalInfo(props) {
             upemail: '',
             unit: '',
             employmentPosition: '',
-            startDate: ''
+            startDate: '',
+            philosophy: ''
         }
     }
 
