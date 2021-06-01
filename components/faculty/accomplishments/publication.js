@@ -8,11 +8,14 @@ import { Formik, Form, Field } from 'formik'
 import downloadProof from '../../../services/faculty/downloadProof'
 import deletePublication from '../../../services/faculty/accomplishments/deletePublication'
 import updatePublication from '../../../services/faculty/accomplishments/updatePublication'
+import approvePublication from '../../../services/faculty/accomplishments/approvePublication'
 
-function Publication(props){  
+function Publication(props){
+    console.log(props.children)
     let content 
     let deletePub = 0
     let editPub = 0
+    let approvePub = 0
     const [currData, setData] = React.useState({
         publicationId: 0,
         title: '',
@@ -95,11 +98,11 @@ function Publication(props){
                     {
                         !props.facultyFlag && !props.viewFlag &&
                         <div className = "btn-grp">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#" onClick={() => {
-                                
+                            <a className="btn btn-info" data-toggle="modal" data-target="#approvePublication" onClick={() => {
+                                setApprove(props.children[key].publicationId)
                             }}>Approve</a>
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#" onClick={() => {
-                                
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublication" onClick={() => {
+                                setApprove(props.children[key].publicationId)
                             }}>Reject</a>
                         </div>
                     }
@@ -119,6 +122,11 @@ function Publication(props){
     function setDelete(id) {
         deletePub = id
     }
+
+    function setApprove(id) {
+        approvePub = id
+    }
+
 
     function setKey(x) {
         Object.keys(props.children).map(key => {
@@ -283,8 +291,113 @@ function Publication(props){
                     </div>
                     </div>
                 </div>
-            </div>		
+            </div>
 
+            <div className="modal fade" id="approvePublication" tabIndex="-1" role="dialog" aria-labelledby="approvePublicationLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="approvePublicationLabel">Approve Publication Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div className="modal-body">
+                        <hr />
+                        <p> Are you sure you want to approve this publication information? </p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-danger" onClick = {async () => {
+                            let alert = document.getElementById("publicationalert")
+                            $('#approvePublication').modal('toggle');
+                            
+                            let formData = new FormData()
+                            formData.append('publicationId', approvePub)
+                            
+                            let res = await approvePublication(formData, true, props.facultyId, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                alert.style = "visibility: visible"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#publicationalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#publicationalert").slideUp(500);
+                            });
+                            Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                        }}>Yes, approve</button>
+                    </div>
+                    </div>
+                </div>
+            </div> 
+
+            <div className="modal fade" id="rejectPublication" tabIndex="-1" role="dialog" aria-labelledby="rejectPublicationLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="rejectPublicationLabel">Reject Publication Information</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <Formik
+                        enableReinitialize
+                        initialValues={currData}
+                        onSubmit={async (values) => {
+                            let alert = document.getElementById("publicationalert")
+                            $('#rejectPublication').modal('toggle');
+                            
+                            let form = document.getElementById('rejectPubForm')
+                            let formData = new FormData(form)
+                            formData.append('publicationId', approvePub)
+                            
+                            let res = await approvePublication(formData, false, props.facultyId, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                alert.style = "visibility: visible"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#licensureexamalert").slideUp(500);
+                            });
+                            Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                        }}
+                    >
+                    {({ values, errors, touched, isSubmitting }) => (
+                        <Form id = "rejectPubForm">
+                            <div className="modal-body">
+                                <hr />
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
+                                        <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                    $('#rejectPublication').modal('toggle');
+                                }}>Save changes</button>
+                            </div>
+                        </Form>
+                    )}
+                    </Formik>
+                    </div>
+                </div>
+            </div>
 
 		</div>
 	)
