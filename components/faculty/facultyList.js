@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-function FacultyList(props){ console.log(props.children);
+function FacultyList(props){
 	let chem
 	let mcsu
 	let physgeo
