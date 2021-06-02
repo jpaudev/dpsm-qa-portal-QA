@@ -74,8 +74,8 @@ function PersonalInfo(props) {
             suffix: '',
             faculty_dependents: '',
             upemail: '',
-            unit: '',
-            employmentPosition: '',
+            unit: '1',
+            employmentPosition: '1',
             startDate: '',
             philosophy: ''
         }
@@ -88,7 +88,6 @@ function PersonalInfo(props) {
 		<Formik
             initialValues={FacultyDetails}
             onSubmit={async (values, token) => {
-                // console.log(values)
                 if (props.clerkFlag) {
                     res = await addFaculty(values, props.token)
                 } else {
@@ -110,8 +109,13 @@ function PersonalInfo(props) {
                 $("#alert").fadeTo(5000, 500).slideUp(500, function(){
                     $("#alert").slideUp(500);
                 });
-                if (props.clerkFlag) {
+                if (props.clerkFlag) {                    
                     Router.push('/admin/faculty')
+                    if(res.success == true) {
+                        window.setTimeout(function(){
+                            window.location.href = "/admin";
+                        }, 5000);
+                    }
                 }
                 else {
                     Router.push('/faculty/basic-info') 
@@ -182,13 +186,13 @@ function PersonalInfo(props) {
                         </div>
                         <div className = "form-group col-md-6">
                                 <label htmlFor = "Religion"> Religion </label>
-                                <Field className = "form-control" type = "text" name = "religion" defaultValue = { FacultyDetails.religion } disabled={!props.facultyFlag && !props.clerkFlag} required />
+                                <Field className = "form-control" type = "text" name = "religion" defaultValue = { FacultyDetails.religion } disabled={!props.facultyFlag && !props.clerkFlag} />
                         </div>
                     </div>
                     <div className = "form-row">
-                        <div className = "form-group col-md-4 required">
+                        <div className = "form-group col-md-4">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Landline) </label>
-                            <Field className = "form-control" type = "tel" name = "landline" pattern = "[0-9]{8}" defaultValue = { FacultyDetails.landline } disabled={!props.facultyFlag && !props.clerkFlag} required />
+                            <Field className = "form-control" type = "tel" name = "landline" pattern = "[0-9]{8}" defaultValue = { FacultyDetails.landline } disabled={!props.facultyFlag && !props.clerkFlag} />
                         </div>
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Mobile) </label>

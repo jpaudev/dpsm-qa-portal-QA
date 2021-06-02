@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken'
 
 export default async function addFaculty(data, token) {
 	let cookieData = jwt.decode(token)
-	console.log(cookieData)
+	
 	try {
 	    if (token) {	      
 	        let url = 'http://localhost:3001/api/user/add';
@@ -33,33 +33,15 @@ export default async function addFaculty(data, token) {
 						civilStatus: `${data.civilStatus}`,
 						religion: `${data.religion}`,
 						emergencyContactPerson: `${data.emergencyContactPerson}`,
-		  				emergencyContactNumber: `${data.emergencyContactNumber}`
-		  			}
+		  				emergencyContactNumber: `${data.emergencyContactNumber}`,
+						teachingPhilosophy: `${data.philosophy}`
+		  			},
+					"unitId": `${data.unit}`,
+					"employmentPositionId": `${data.employmentPosition}`,
+					"startDate": `${data.startDate}`
 		  		}
+				
 				const response = await axios.post(url, body)
-				let facultyId = response.data.result.facultyId
-
-				// const unit = await axios({
-				// 	method: 'POST',
-				// 	url: 'http://localhost:3001/api/faculty/basic-info/add/unit',
-				// 	data: {
-				// 		"facultyId": facultyId,
-				// 		"unitId": `${data.unit}`
-				// 	},
-				// 	headers: header
-				// })	
-
-				// url = 'http://localhost:3001/api/faculty/basic-info/add/employment';
-				// const employ = await axios.post(url, {
-				// 	"facultyId": facultyId,
-				// 	"employmentPositionId": `${data.employmentPosition}`,
-				// 	"startDate": `${data.startDate}`
-				// }, {
-				// 	headers: {
-				// 		Authorization: `Bearer ${token}`
-				// 	}
-				// })
-
 				return response.data
 			} catch (err) {
 				console.error(err)
