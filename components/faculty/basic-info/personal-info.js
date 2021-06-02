@@ -14,11 +14,13 @@ function PersonalInfo(props) {
     let name
     let dependents
     let res
+    let positions = []
     if(props.children != null) {
         FacultyDetails = {
             firstName: props.children.firstName,
             lastName: props.children.lastName,
             middleName: props.children.middleName,
+            gender: props.children.gender,
             dateOfBirth: props.children.dateOfBirth,
             placeOfBirth: props.children.placeOfBirth,
             permanentAddress: props.children.permanentAddress,
@@ -59,7 +61,7 @@ function PersonalInfo(props) {
             firstName: '',
             lastName: '',
             middleName: '',
-            gender: '',
+            gender: 'Male',
             dateOfBirth: '',
             placeOfBirth: '',
             permanentAddress: '',
@@ -79,6 +81,12 @@ function PersonalInfo(props) {
             startDate: '',
             philosophy: ''
         }
+
+        props.positions.forEach(key => {
+            positions.push(
+                <option value = {key.employmentPositionId}>{key.position}</option>    
+            )
+        });
     }
 
     return (
@@ -243,12 +251,7 @@ function PersonalInfo(props) {
                                 <div className = "form-group col-md-3 required">
                                     <label className = "control-label" htmlFor = "EmploymentPosition"> Employment Position </label>
                                     <Field as = "select" className = "form-control" name = "employmentPosition" defaultValue = { FacultyDetails.employmentPosition } required>
-                                        <option value = "1">Instructor 1</option>
-                                        <option value = "8">Assistant Professor 1</option>
-                                        <option value = "22">Associate Professor 1</option>
-                                        <option value = "29">Professor 1</option>
-                                        <option value = "41">Lecturer 1</option>
-                                        <option value = "43">Senior Lecturer 1</option>
+                                        {positions}
                                     </Field>
                                 </div>
                                 <div className = "form-group col-md-3 required">

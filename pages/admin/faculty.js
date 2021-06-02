@@ -12,7 +12,7 @@ function BasicInfo(props) {
 		<br />
 		<br />
             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                <PersonalInfo facultyFlag={false} clerkFlag={true} token = {props.token.user} />
+                <PersonalInfo facultyFlag={false} clerkFlag={true} token = {props.token.user} positions={props.positionsList} />
             </div>
 	<style jsx>{`
 		a.nav-item:focus{
@@ -34,6 +34,7 @@ function BasicInfo(props) {
     
     let name
     let data
+    let positionsList = null
     let approvalList
 
     if (context.res) {
@@ -57,7 +58,7 @@ function BasicInfo(props) {
             }
 
             let approvalURL = 'http://localhost:3001/api/faculty/approval/' + facultyId
-            if(data.role == 2 || data.role == 3 || data.role == 5) {
+            if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
                     approvalURL += '?unitId=' + data.unitId
                 }
@@ -65,7 +66,12 @@ function BasicInfo(props) {
                 const approval = await fetch(approvalURL, header)
                 approvalList = await approval.json()
                 approvalList = approvalList.result
-            } else if(data.role == 1) {
+            } else if(data.role == 1 || data.role == 5) {
+                if(data.role == 5) {
+                    const positions = await fetch('http://localhost:3001/api/faculty/basic-info/employment/positions', header)
+                    positionsList = await positions.json()
+                    positionsList = positionsList.result
+                }
 				approvalList = null
 			}
         }
@@ -76,6 +82,7 @@ function BasicInfo(props) {
             token: token && token,
             data: data,
             approvalList: approvalList,
+            positionsList
         }
     }
 }
