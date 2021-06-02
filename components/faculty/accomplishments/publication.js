@@ -11,7 +11,6 @@ import updatePublication from '../../../services/faculty/accomplishments/updateP
 import approvePublication from '../../../services/faculty/accomplishments/approvePublication'
 
 function Publication(props){
-    console.log(props.children)
     let content 
     let deletePub = 0
     let editPub = 0
@@ -24,19 +23,21 @@ function Publication(props){
         url: '',
         nonFacultyAuthors: ''
     })
-    if(props.children != null) {
+    if(props.children != null) { 
         content = Object.keys(props.children).map(key => {
             let pub = props.children[key].faculty_publishers;
+            let dpsmauth = []
+            
+            pub.forEach((auth) => {
+                let link = "/faculty/view/" + auth.facultyId
+                dpsmauth.push(<a href = {link}>{auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', '}</a>)    
+            })
+
             return (
                 <tr key = {props.children.[key].publicationId}>
                     <td>{props.children[key].title}</td>
-                    <td>
-                        {Object.keys(pub).map(auth => {
-                            let link = "/faculty/basic-info/" + pub[auth].facultyId
-                            return (
-                                <a href = {link}>{pub[auth].faculty_personal_info.firstName + ' ' + pub[auth].faculty_personal_info.lastName + ', '}</a>
-                            );
-                        })}
+                    <td>                        
+                        { dpsmauth } 
                         {props.children[key].nonFacultyAuthors}
                     </td>
                     <td>{props.children[key].publicationDate}</td>
@@ -369,8 +370,8 @@ function Publication(props){
                                 else alert.innerHTML = res.message
                             }
                             
-                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
-                                $("#licensureexamalert").slideUp(500);
+                            $("#publicationalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#publicationalert").slideUp(500);
                             });
                             Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
                         }}
