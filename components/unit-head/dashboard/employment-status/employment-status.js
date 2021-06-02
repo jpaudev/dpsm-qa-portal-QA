@@ -28,7 +28,7 @@ function EmploymentStatus(props){
 				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
 				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
 				col3: 'Full-time',
-				col4: 'Tenured',
+				col4: 'Temporary',
 				col5: e.faculty_employment_infos[0].startDate,
 				col6: e.faculty_employment_infos[0].endDate
 			})
@@ -83,7 +83,7 @@ function EmploymentStatus(props){
 		  "Physics/GeologyColor": "hsl(244, 70%, 50%)",
 		},
 		{
-		  "EmploymentStatus": "Full-time (Tenured)",
+		  "EmploymentStatus": "Full-time (Permanent)",
 		  "MCSU": mcsuftpCount,
 		  "hot dogColor": "hsl(234, 70%, 50%)",
 		  "Chem": chemftpCount,

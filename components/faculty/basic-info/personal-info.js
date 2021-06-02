@@ -212,7 +212,7 @@ function PersonalInfo(props) {
                     <div className = "form-row">
                         <div className = "form-group col-md-12 required">
                             <label className = "control-label" htmlFor = "philosophy"> Teaching Philosophy </label>
-                            <Field className = "form-control" component = "textarea" rows = {5} name = "philosophy" defaultValue = { props.children.teachingPhilosophy } disabled={!props.facultyFlag} required />
+                            <Field className = "form-control" component = "textarea" rows = {5} name = "philosophy" defaultValue = { FacultyDetails.philosophy } disabled={!props.facultyFlag && !props.clerkFlag} required />
                         </div>
                     </div>
                     {/*<h5 align = "center"> Dependents </h5>*/}

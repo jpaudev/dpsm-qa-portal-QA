@@ -11,53 +11,63 @@ function Accomplishments(props) {
     let name = props.personalInfo.lastName + ', ' + props.personalInfo.firstName
 
     let psaRejected = false
-    props.publicService.every((e) => {
-        if(e.status == 'Rejected') {
-            psaRejected = true 
-            return false
-        }
-        return true
-    })
+    if(props.publicService != null) {
+        props.publicService.every((e) => {
+            if(e.status == 'Rejected') {
+                psaRejected = true 
+                return false
+            }
+            return true
+        })    
+    }
 
     let publicationRejected = false
-    props.publications.forEach((e) => {
-        e.faculty_publishers.every((i) => {
-            if(i.status == 'Rejected') {
-                publicationRejected = true 
-                return false
-            }
-            return true
+    if(props.publications != null) {
+        props.publications.forEach((e) => {
+            e.faculty_publishers.every((i) => {
+                if(i.status == 'Rejected') {
+                    publicationRejected = true 
+                    return false
+                }
+                return true
+            })
         })
-    })
+    }
 
     let tsRejected = false
-    props.trainingSeminar.every((e) => {
-        if(e.status == 'Rejected') {
-            tsRejected = true 
-            return false
-        }
-        return true
-    })
-
-    let licensureRejected = false
-    props.licensureExam.every((e) => {
-        if(e.status == 'Rejected') {
-            licensureRejected = true 
-            return false
-        }
-        return true
-    })
-
-    let rgRejected = false
-    props.researchGrant.forEach((e) => {
-        e.faculty_researchers.every((i) => {
-            if(i.status == 'Rejected') {
-                rgRejected = true 
+    if(props.trainingSeminar != null) {
+        props.trainingSeminar.every((e) => {
+            if(e.status == 'Rejected') {
+                tsRejected = true 
                 return false
             }
             return true
         })
-    })
+    }
+
+    let licensureRejected = false
+    if(props.licensureExam != null) {
+        props.licensureExam.every((e) => {
+            if(e.status == 'Rejected') {
+                licensureRejected = true 
+                return false
+            }
+            return true
+        })
+    }
+
+    let rgRejected = false
+    if(props.researchGrant != null) {
+        props.researchGrant.forEach((e) => {
+            e.faculty_researchers.every((i) => {
+                if(i.status == 'Rejected') {
+                    rgRejected = true 
+                    return false
+                }
+                return true
+            })
+        })
+    }
 
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={name} approvalList={props.approvalList}>
