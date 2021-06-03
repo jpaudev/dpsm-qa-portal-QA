@@ -35,6 +35,7 @@ function Sidebar(props) {
                         </a>
                     </Link> }
                     { staff && <Link href="/admin"><a className = "list-group-item list-group-item-action list-group-item-success ">Faculty List</a></Link> }
+		    <Link href ="/faculty/role-assignment"><a className = "list-group-item list-group-item-action list-group-item-success">Role Assignment</a></Link>
                 </div>
                 </div>
                 <div className="list-group">
