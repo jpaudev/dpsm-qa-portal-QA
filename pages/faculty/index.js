@@ -12,7 +12,7 @@ function Dashboard(props) {
 		return (<Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} />)
 	} else if(props.data.role == 2 || props.data.role == 3){
 		return (
-	        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
+	        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
 	            <div className="col-9">
 	                <div className="container">
 	                    <nav>
@@ -56,6 +56,7 @@ export async function getServerSideProps(context) {
     let accompList
     let empList
     let educList
+    let roleAssignmentFlag = false
 
     if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
@@ -83,6 +84,7 @@ export async function getServerSideProps(context) {
             let accompURL = 'http://localhost:3001/api/faculty/reports/accomplishment'
             let empURL = 'http://localhost:3001/api/faculty/reports/employment'
             let educURL = 'http://localhost:3001/api/faculty/reports/education'
+            let roleAssignmentURL = 'http://localhost:3001/api/faculty/basic-info/unit/assignment'
             
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
@@ -90,6 +92,7 @@ export async function getServerSideProps(context) {
                     accompURL += '?unitId=' + data.unitId
                     empURL += '?unitId=' + data.unitId
                     educURL += '?unitId=' + data.unitId
+                    roleAssignmentURL += '?unitId=' + data.unitId
                 }
 
                 const approval = await fetch(approvalURL, header)
@@ -107,6 +110,23 @@ export async function getServerSideProps(context) {
                 const educReports = await fetch(educURL, header)
                 educList = await educReports.json()
                 educList = educList.result
+
+                const roleAssignments = await fetch(roleAssignmentURL, header)
+                let roleAssignmentList = await roleAssignments.json()
+                roleAssignmentList = roleAssignmentList.result
+                if(data.role == 2) {
+                    if(roleAssignmentList[0].faculty_unit_assignment) {
+                        if(roleAssignmentList[0].faculty_unit_assignment.approverRemarks != null) roleAssignmentFlag = true
+                    }
+                } else if(data.role == 3) {
+                    roleAssignmentList.every((e) => {
+                        if(e.faculty_unit_assignment != null && !e.faculty_unit_assignment.approverRemarks) {
+                            roleAssignmentFlag = true 
+                            return false
+                        }
+                        return true
+                    })    
+                }
             } else if(data.role == 1) { 
                 return {
                     redirect: {
@@ -126,7 +146,8 @@ export async function getServerSideProps(context) {
             approvalList: approvalList,
             accompList,
             empList,
-            educList
+            educList,
+            roleAssignmentFlag
         }
 	}
 }

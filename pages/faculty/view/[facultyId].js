@@ -16,7 +16,7 @@ import { parseCookies } from "../../../helpers"
 function ViewFaculty(props) {
 
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
 				<a className="nav-item nav-link active" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic Information</a>
@@ -168,13 +168,34 @@ function ViewFaculty(props) {
 
     let approvalList
     let approvalURL = 'http://localhost:3001/api/faculty/approval/' + userFacultyId
+
+    let roleAssignmentFlag = false
+    let roleAssignmentURL = 'http://localhost:3001/api/faculty/basic-info/unit/assignment'
     if(data.role == 2 || data.role == 3) {
         if(data.role == 2) {
             approvalURL += '?unitId=' + data.unitId
+            roleAssignmentURL += '?unitId=' + data.unitId
         }
 
         const approval = await fetch(approvalURL, header)
         approvalList = await approval.json()
+
+        const roleAssignments = await fetch(roleAssignmentURL, header)
+        let roleAssignmentList = await roleAssignments.json()
+        roleAssignmentList = roleAssignmentList.result
+        if(data.role == 2) {
+            if(roleAssignmentList[0].faculty_unit_assignment) {
+                if(roleAssignmentList[0].faculty_unit_assignment.approverRemarks != null) roleAssignmentFlag = true
+            }
+        } else if(data.role == 3) {
+            roleAssignmentList.every((e) => {
+                if(e.faculty_unit_assignment != null && !e.faculty_unit_assignment.approverRemarks) {
+                    roleAssignmentFlag = true 
+                    return false
+                }
+                return true
+            })    
+        }
     }
 
     return {
@@ -196,7 +217,8 @@ function ViewFaculty(props) {
             trainingSeminar: trainingSeminar.result,
             licensureExam: licensureExam.result,
             researchGrant: researchGrant.result,
-            approvalList: approvalList.result
+            approvalList: approvalList.result,
+            roleAssignmentFlag
         }
     }
 }

@@ -20,7 +20,7 @@ function Layout(props) {
             </Head>
             <Header name={ props.name }/>
             <div className = "row" id = "layout_row">
-                <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} />
+                <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} roleAssignment={props.roleAssignmentFlag} />
                 <div className="col-10">
                     <div className="container">
                         { props.children }

@@ -23,7 +23,7 @@ function Sidebar(props) {
                 <div className="list-group">
 			<a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" href = "#facultyMenu" aria-controls = "facultyMenu"> Faculty </a>
                 <div id = "facultyMenu" className = "collapse show">
-                    { !staff && !faculty && <Link href="/unit-head"><a className = "list-group-item list-group-item-action list-group-item-success">Dashboard</a></Link> }
+                    { !staff && !faculty && <Link href="/faculty"><a className = "list-group-item list-group-item-action list-group-item-success">Dashboard</a></Link> }
                     { !staff && <Link href="/faculty/basic-info"><a className = "list-group-item list-group-item-action list-group-item-success">Basic Information</a></Link> }
                     { !staff && <Link href="/faculty/accomplishment"><a className = "list-group-item list-group-item-action list-group-item-success">Accomplishment</a></Link> }
                     { !staff && <Link href="/faculty/faculty-load"><a className = "list-group-item list-group-item-action list-group-item-success">Faculty Load</a></Link> }
@@ -35,7 +35,16 @@ function Sidebar(props) {
                         </a>
                     </Link> }
                     { staff && <Link href="/admin"><a className = "list-group-item list-group-item-action list-group-item-success ">Faculty List</a></Link> }
-		    <Link href ="/faculty/role-assignment"><a className = "list-group-item list-group-item-action list-group-item-success">Role Assignment</a></Link>
+		            { !staff && !faculty && props.roleAssignment && <Link href ="/faculty/role-assignment">
+                        <a className = "list-group-item list-group-item-action list-group-item-success">
+                            Role Assignment &nbsp;<span className="badge badge-danger">!</span>
+                        </a>
+                    </Link> }
+                    { !staff && !faculty && !props.roleAssignment && <Link href ="/faculty/role-assignment">
+                        <a className = "list-group-item list-group-item-action list-group-item-success">
+                            Role Assignment
+                        </a>
+                    </Link> }
                 </div>
                 </div>
                 <div className="list-group">
