@@ -9,13 +9,15 @@ import { parseCookies } from "../../helpers"
 
 function BasicInfo(props) { 
     let educRejected = false
-    props.education.every((e) => {
-        if(e.status == 'Rejected') {
-            educRejected = true 
-            return false
-        }
-        return true
-    })
+    if(props.education != null) {
+        props.education.every((e) => {
+            if(e.status == 'Rejected') {
+                educRejected = true 
+                return false
+            }
+            return true
+        })    
+    }
     
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
