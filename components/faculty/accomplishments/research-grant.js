@@ -124,7 +124,7 @@ function ResearchGrant(props){
         });
     }
     else{
-        content = <td colspan = "10"><p align = "center">No data available!</p></td>
+        content = <td colSpan = "10"><p align = "center">No data available!</p></td>
     }
 
     function setEdit(id) {

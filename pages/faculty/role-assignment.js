@@ -23,7 +23,9 @@ function RoleAssignment(props) {
             	<div className="tab-pane fade show active" id="unit-head" role="tabpanel" aria-labelledby="unit-head-tab">
                     <AssignUnitHead token={props.token.user} role={props.data.role} facultyListInfo={props.facultyListInfo}>{props.roleAssignmentList}</AssignUnitHead>
                 </div>
-            	<div className="tab-pane fade" id="admin-clerk" role="tabpanel" aria-labelledby="admin-clerk-tab"><AssignAdminClerk /></div>
+            	<div className="tab-pane fade" id="admin-clerk" role="tabpanel" aria-labelledby="admin-clerk-tab">
+                    <AssignAdminClerk token={props.token.user} role={props.data.role}>{props.clerkAssignmentList}</AssignAdminClerk>
+                </div>
             	<div className="tab-pane fade" id="dept-chair" role="tabpanel" aria-labelledby="dept-chair-tab"><AssignDeptChair /></div>
             </div>
 	<style jsx>{`
@@ -52,6 +54,7 @@ function RoleAssignment(props) {
     let roleAssignmentFlag = false
 	let roleAssignmentList
     let facultyListInfo
+    let clerkAssignmentList
 
     if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
@@ -80,6 +83,7 @@ function RoleAssignment(props) {
             let empURL = 'http://localhost:3001/api/faculty/reports/employment'
             let educURL = 'http://localhost:3001/api/faculty/reports/education'
             let roleAssignmentURL = 'http://localhost:3001/api/faculty/basic-info/unit/assignment'
+            let clerkAssignmentURL = 'http://localhost:3001/api/user/admin'
             
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
@@ -109,6 +113,11 @@ function RoleAssignment(props) {
                 const roleAssignments = await fetch(roleAssignmentURL, header)
                 roleAssignmentList = await roleAssignments.json()
 				roleAssignmentList = roleAssignmentList.result
+
+                const clerkAssignments = await fetch(clerkAssignmentURL, header)
+                clerkAssignmentList = await clerkAssignments.json()
+				clerkAssignmentList = clerkAssignmentList.result
+
                 if(data.role == 2) {
                     if(roleAssignmentList[0].faculty_unit_assignment) {
                         if(roleAssignmentList[0].faculty_unit_assignment.approverRemarks != null) roleAssignmentFlag = true
@@ -149,7 +158,8 @@ function RoleAssignment(props) {
             educList,
             roleAssignmentFlag,
 			roleAssignmentList,
-            facultyListInfo: facultyListInfo || null
+            facultyListInfo: facultyListInfo || null,
+            clerkAssignmentList
         }
 	}
 }

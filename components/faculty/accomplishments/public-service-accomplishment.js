@@ -359,7 +359,7 @@ function PublicServiceAccomplishment(props){
                         <th>Approver Remarks</th>
                         {!props.viewFlag && <th>Action</th>}
                     </tr>
-                    {upm ? upm : <td colspan = "8"><p align = "center">No data available!</p></td>} 
+                    {upm ? upm : <td colSpan = "8"><p align = "center">No data available!</p></td>} 
                 </tbody>
             </table>
             </div>
@@ -379,7 +379,7 @@ function PublicServiceAccomplishment(props){
                         <th>Approver Remarks</th>
                         {!props.viewFlag && <th>Action</th>}
                     </tr>
-                    {pro ? pro : <td colspan = "8"><p align = "center">No data available!</p></td>}
+                    {pro ? pro : <td colSpan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
 		<br />
@@ -397,7 +397,7 @@ function PublicServiceAccomplishment(props){
                         <th>Approver Remarks</th>
                         {!props.viewFlag && <th>Action</th>}
                     </tr>
-                    {nat ? nat : <td colspan = "8"><p align = "center">No data available!</p></td>}
+                    {nat ? nat : <td colSpan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
 		<br />
@@ -415,7 +415,7 @@ function PublicServiceAccomplishment(props){
                         <th>Approver Remarks</th>
                         {!props.viewFlag && <th>Action</th>}
                     </tr>
-                    {wor ? wor : <td colspan = "8"><p align = "center">No data available!</p></td>}
+                    {wor ? wor : <td colSpan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
             </div>

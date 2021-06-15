@@ -153,7 +153,7 @@ function AssignUnitHead(props) {
                     )
                 })
             } else {
-                content = <tr><td colspan = "4"><p align = "center">No data available!</p></td></tr>
+                content = <tr><td colSpan = "4"><p align = "center">No data available!</p></td></tr>
             }
         }        
     } 

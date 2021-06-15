@@ -113,7 +113,7 @@ function Publication(props){
         });
     }
     else{
-        content = <td colspan = "7"><p align = "center">No data available!</p></td>
+        content = <td colSpan = "7"><p align = "center">No data available!</p></td>
     }
 
     function setEdit(id) {
