@@ -21,52 +21,54 @@ function DegreeCount(props) {
 
 	let tableData = []
 
-	educList.forEach(async (e) => { 
-		await e.faculty_education_infos.forEach(async (i) => { 
-			
-
-			if(i.degreeType == 'BS' || i.degreeType == 'BA') {
-				if(e.faculty_unit.unitId == 1) {
-					chemBSCount++
-				} else if(e.faculty_unit.unitId == 2) {
-					mcsuBSCount++
-				} else if(e.faculty_unit.unitId == 3) {
-					p6GeoBSCount++
+	if(educList) {
+		educList.forEach(async (e) => { 
+			await e.faculty_education_infos.forEach(async (i) => { 
+				
+	
+				if(i.degreeType == 'BS' || i.degreeType == 'BA') {
+					if(e.faculty_unit.unitId == 1) {
+						chemBSCount++
+					} else if(e.faculty_unit.unitId == 2) {
+						mcsuBSCount++
+					} else if(e.faculty_unit.unitId == 3) {
+						p6GeoBSCount++
+					}
+				} else if(i.degreeType == 'MA' || i.degreeType == 'MS') {
+					if(e.faculty_unit.unitId == 1) {
+						chemMACount++
+					} else if(e.faculty_unit.unitId == 2) {
+						mcsuMACount++
+					} else if(e.faculty_unit.unitId == 3) {
+						p6GeoMACount++
+					}
+				} else if(i.degreeType == 'PhD') {
+					if(e.faculty_unit.unitId == 1) {
+						chemPHDCount++
+					} else if(e.faculty_unit.unitId == 2) {
+						mcsuPHDCount++
+					} else if(e.faculty_unit.unitId == 3) {
+						p6GeoPHDCount++
+					}
+				} else {
+					if(e.faculty_unit.unitId == 1) {
+						chemOthersCount++
+					} else if(e.faculty_unit.unitId == 2) {
+						mcsuOthersCount++
+					} else if(e.faculty_unit.unitId == 3) {
+						p6GeoOthersCount++
+					}
 				}
-			} else if(i.degreeType == 'MA' || i.degreeType == 'MS') {
-				if(e.faculty_unit.unitId == 1) {
-					chemMACount++
-				} else if(e.faculty_unit.unitId == 2) {
-					mcsuMACount++
-				} else if(e.faculty_unit.unitId == 3) {
-					p6GeoMACount++
-				}
-			} else if(i.degreeType == 'PhD') {
-				if(e.faculty_unit.unitId == 1) {
-					chemPHDCount++
-				} else if(e.faculty_unit.unitId == 2) {
-					mcsuPHDCount++
-				} else if(e.faculty_unit.unitId == 3) {
-					p6GeoPHDCount++
-				}
-			} else {
-				if(e.faculty_unit.unitId == 1) {
-					chemOthersCount++
-				} else if(e.faculty_unit.unitId == 2) {
-					mcsuOthersCount++
-				} else if(e.faculty_unit.unitId == 3) {
-					p6GeoOthersCount++
-				}
-			}
-
-			await tableData.push({
-				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-				col2: i.degreeCert,
-			  	col3: i.degreeType,
-			  	col4: i.endDate
+	
+				await tableData.push({
+					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+					col2: i.degreeCert,
+					  col3: i.degreeType,
+					  col4: i.endDate
+				})
 			})
 		})
-	})
+	}
 
 	const graphData = [
 		{

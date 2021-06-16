@@ -19,76 +19,79 @@ function AccomplishmentCount(props){
 	let p6GeoPubCount = 0
 	let p6GeoRGCount = 0
 
-    Object.keys(accompList).map(key => {
-      if(accompList[key].faculty_unit.unitId == 1) {
-        chemPSACount += accompList[key].faculty_public_services.length
-        chemTSCount += accompList[key].faculty_training_seminars.length
-		chemPubCount += accompList[key].faculty_publishers.length
-		chemRGCount += accompList[key].faculty_researchers.length
-      }
-	  else if(accompList[key].faculty_unit.unitId == 2) {
-        mcsuPSACount += accompList[key].faculty_public_services.length
-        mcsuTSCount += accompList[key].faculty_training_seminars.length
-		mcsuPubCount += accompList[key].faculty_publishers.length
-		mcsuRGCount += accompList[key].faculty_researchers.length
-      }
-	  else if(accompList[key].faculty_unit.unitId == 3) {
-        p6GeoPSACount += accompList[key].faculty_public_services.length
-        p6GeoTSCount += accompList[key].faculty_training_seminars.length
-		p6GeoPubCount += accompList[key].faculty_publishers.length
-		p6GeoRGCount += accompList[key].faculty_researchers.length
-      }
-
-	  
-    });
-
 	let tableData = []
-    accompList.forEach(async (e) => {
-		if(e.faculty_public_services) {
-			await e.faculty_public_services.forEach(async (i) => {
-				await tableData.push({
-					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-					col2: i.position + ' - ' + i.organization,
-					col3: 'Public Service',
-					col4: i.startDate,
-					col5: i.endDate
+
+	if(accompList != null) {
+		Object.keys(accompList).map(key => {
+		  if(accompList[key].faculty_unit.unitId == 1) {
+			chemPSACount += accompList[key].faculty_public_services.length
+			chemTSCount += accompList[key].faculty_training_seminars.length
+			chemPubCount += accompList[key].faculty_publishers.length
+			chemRGCount += accompList[key].faculty_researchers.length
+		  }
+		  else if(accompList[key].faculty_unit.unitId == 2) {
+			mcsuPSACount += accompList[key].faculty_public_services.length
+			mcsuTSCount += accompList[key].faculty_training_seminars.length
+			mcsuPubCount += accompList[key].faculty_publishers.length
+			mcsuRGCount += accompList[key].faculty_researchers.length
+		  }
+		  else if(accompList[key].faculty_unit.unitId == 3) {
+			p6GeoPSACount += accompList[key].faculty_public_services.length
+			p6GeoTSCount += accompList[key].faculty_training_seminars.length
+			p6GeoPubCount += accompList[key].faculty_publishers.length
+			p6GeoRGCount += accompList[key].faculty_researchers.length
+		  }
+	
+		  
+		});
+	
+		accompList.forEach(async (e) => {
+			if(e.faculty_public_services) {
+				await e.faculty_public_services.forEach(async (i) => {
+					await tableData.push({
+						col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+						col2: i.position + ' - ' + i.organization,
+						col3: 'Public Service',
+						col4: i.startDate,
+						col5: i.endDate
+					})
 				})
-			})
-		} 
-		if(e.faculty_publishers) {
-			e.faculty_publishers.forEach(async (i) => {
-				await tableData.push({
-					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-					col2: i.faculty_publication.title,
-					col3: 'Publication',
-					col4: i.faculty_publication.publicationDate,
-					col5: 'None'
+			} 
+			if(e.faculty_publishers) {
+				e.faculty_publishers.forEach(async (i) => {
+					await tableData.push({
+						col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+						col2: i.faculty_publication.title,
+						col3: 'Publication',
+						col4: i.faculty_publication.publicationDate,
+						col5: 'None'
+					})
 				})
-			})
-		} 
-		if(e.faculty_training_seminars) {
-			e.faculty_training_seminars.forEach(async (i) => {
-				await tableData.push({
-					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-					col2: i.role + ' - ' + i.title,
-					col3: 'Training/Seminar',
-					col4: i.dateFrom,
-					col5: i.dateTo
+			} 
+			if(e.faculty_training_seminars) {
+				e.faculty_training_seminars.forEach(async (i) => {
+					await tableData.push({
+						col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+						col2: i.role + ' - ' + i.title,
+						col3: 'Training/Seminar',
+						col4: i.dateFrom,
+						col5: i.dateTo
+					})
 				})
-			})
-		}
-		if(e.faculty_researchers) {
-			e.faculty_researchers.forEach(async (i) => {
-				await tableData.push({
-					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-					col2: i.faculty_research_grant.researchName,
-					col3: 'Research Grant',
-					col4: i.faculty_research_grant.actualStart,
-					col5: i.faculty_research_grant.actualEnd
+			}
+			if(e.faculty_researchers) {
+				e.faculty_researchers.forEach(async (i) => {
+					await tableData.push({
+						col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+						col2: i.faculty_research_grant.researchName,
+						col3: 'Research Grant',
+						col4: i.faculty_research_grant.actualStart,
+						col5: i.faculty_research_grant.actualEnd
+					})
 				})
-			})
-		} 
-	})
+			} 
+		})
+	}
 
 	const graphData = [
 		{
