@@ -1,7 +1,8 @@
 import Layout from '../../components/layout'
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
-import AssignUnitHead from '../../components/dept-chair/role-assignment/assign-unit-head'
+import AssignUnitHead from '../../components/unit-head/assign-unit-head'
+import ApproveUnitHead from '../../components/dept-chair/role-assignment/approve-unit-head'
 import AssignAdminClerk from '../../components/dept-chair/role-assignment/assign-admin-clerk'
 import AssignDeptChair from '../../components/dept-chair/role-assignment/assign-dept-chair'
 
@@ -20,9 +21,16 @@ function RoleAssignment(props) {
 		<br />
 		<br />
             <div className="tab-content" id="nav-tabContent">
-            	<div className="tab-pane fade show active" id="unit-head" role="tabpanel" aria-labelledby="unit-head-tab">
-                    <AssignUnitHead token={props.token.user} role={props.data.role} facultyListInfo={props.facultyListInfo}>{props.roleAssignmentList}</AssignUnitHead>
-                </div>
+                { props.data.role == 2 && 
+                    <div className="tab-pane fade show active" id="unit-head" role="tabpanel" aria-labelledby="unit-head-tab">
+                        <AssignUnitHead token={props.token.user} role={props.data.role} facultyListInfo={props.facultyListInfo}>{props.roleAssignmentList}</AssignUnitHead>
+                    </div>
+                }
+                { props.data.role == 3 && 
+                    <div className="tab-pane fade show active" id="unit-head" role="tabpanel" aria-labelledby="unit-head-tab">
+                        <ApproveUnitHead token={props.token.user} role={props.data.role}>{props.roleAssignmentList}</ApproveUnitHead>
+                    </div>
+                }
             	<div className="tab-pane fade" id="admin-clerk" role="tabpanel" aria-labelledby="admin-clerk-tab">
                     <AssignAdminClerk token={props.token.user} role={props.data.role}>{props.clerkAssignmentList}</AssignAdminClerk>
                 </div>
@@ -119,21 +127,13 @@ function RoleAssignment(props) {
 				clerkAssignmentList = clerkAssignmentList.result
 
                 if(data.role == 2) {
-                    if(roleAssignmentList[0].faculty_unit_assignment) {
-                        if(roleAssignmentList[0].faculty_unit_assignment.approverRemarks != null) roleAssignmentFlag = true
-                    }
+                    if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
 
-                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info?unitId=' + data.unitId, header)
+                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId, header)
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result[0].faculty_units
-                } else if(data.role == 3) {
-                    roleAssignmentList.every((e) => {
-                        if(e.faculty_unit_assignment != null && !e.faculty_unit_assignment.approverRemarks) {
-                            roleAssignmentFlag = true 
-                            return false
-                        }
-                        return true
-                    })  
+                } else if(data.role == 3 && roleAssignmentList) {
+                    roleAssignmentFlag = true 
                 }
 				
             } else if(data.role == 1) { 

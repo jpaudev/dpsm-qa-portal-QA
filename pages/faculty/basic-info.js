@@ -44,9 +44,6 @@ function BasicInfo(props) {
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
                 <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} employment = { props.employment }>{ props.workExperience }</WorkExperience>
             </div>
-		     {/*<div className="tab-pane fade" id="teaching-philosophy" role="tabpanel" aria-labelledby="teaching-philosophy-tab">
-		<TeachingPhilosophy />
-	    </div>*/}
             </div>
 	<style jsx>{`
 		a.nav-item:focus{
@@ -131,17 +128,9 @@ function BasicInfo(props) {
                 let roleAssignmentList = await roleAssignments.json()
                 roleAssignmentList = roleAssignmentList.result
                 if(data.role == 2) {
-                    if(roleAssignmentList[0].faculty_unit_assignment) {
-                        if(roleAssignmentList[0].faculty_unit_assignment.approverRemarks != null) roleAssignmentFlag = true
-                    }
-                } else if(data.role == 3) {
-                    roleAssignmentList.every((e) => {
-                        if(e.faculty_unit_assignment != null && !e.faculty_unit_assignment.approverRemarks) {
-                            roleAssignmentFlag = true 
-                            return false
-                        }
-                        return true
-                    })    
+                    if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
+                } else if(data.role == 3 && roleAssignmentList) {
+                    roleAssignmentFlag = true 
                 }
             } else if(data.role == 1) {
 				approvalList = null

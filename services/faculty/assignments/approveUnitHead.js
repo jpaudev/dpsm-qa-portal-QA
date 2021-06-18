@@ -25,9 +25,14 @@ export default async function approveUnitHead(currentUser, incomingUser, unitId,
 					})	
 					if(response.data.success == true) {
 						let url = 'http://localhost:3001/api/faculty/basic-info/unit/' + unitId;
-						const response = await axios.delete(url, {
+						const response = await axios({
+							method: 'PUT',
+							url: url,
+							data: {
+								incomingUnitHead: null
+							},
 							headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}
-						})	
+						})
 					}
 					return response.data
 				}
