@@ -3,7 +3,6 @@ import { Formik, Form, Field } from 'formik'
 import updateUnitAssignment from '../../services/faculty/assignments/updateUnitAssignment'
 
 function AssignUnitHead(props) {
-    let content
     let faculty
 
     if(props.children != null) { 

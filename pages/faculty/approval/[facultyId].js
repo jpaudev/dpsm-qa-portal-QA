@@ -151,7 +151,7 @@ function Approval(props) {
     const educ = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/education' + status, header)
     let education = await educ.json()
 
-    const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all', header)
+    const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
     const faculty = await fac.json()
 
     const psa = await fetch(url + '/public-service' + status, header)

@@ -171,7 +171,7 @@ function Accomplishments(props) {
     const personalInfo = await personal.json()
     let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
-    const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all', header)
+    const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
     const faculty = await fac.json()
 
     const psa = await fetch(url + '/public-service', header)

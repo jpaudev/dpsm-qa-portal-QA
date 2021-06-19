@@ -148,7 +148,7 @@ function ViewFaculty(props) {
     const work = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/work-exp', header)
     let workExperience = await work.json()
 
-    const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all', header)
+    const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
     const faculty = await fac.json()
 
     const psa = await fetch(url + '/public-service' + status, header)

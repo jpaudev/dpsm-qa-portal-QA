@@ -12,7 +12,9 @@ function RoleAssignment(props) {
             { props.data.role == 3 &&
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-                    <a className="nav-item nav-link active" id="unit-head-tab" data-toggle="tab" href="#unit-head" role="tab" aria-controls="unit-head" aria-selected="true">Unit Head Assignment</a>
+                    <a className="nav-item nav-link active" id="unit-head-tab" data-toggle="tab" href="#unit-head" role="tab" aria-controls="unit-head" aria-selected="true">
+                        Unit Head Assignment {props.roleAssignmentFlag && <span className="badge badge-danger">!</span>}
+                    </a>
                     <a className="nav-item nav-link" id="admin-clerk-tab" data-toggle="tab" href="#admin-clerk" role="tab" aria-controls="admin-clerk" aria-selected="false">Admin Clerk Assignment</a>
                     <a className="nav-item nav-link" id="dept-chair-tab" data-toggle="tab" href="#dept-chair" role="tab" aria-controls="dept-chair" aria-selected="false">Department Chair Assignment</a>
                 </div>
@@ -34,7 +36,9 @@ function RoleAssignment(props) {
             	<div className="tab-pane fade" id="admin-clerk" role="tabpanel" aria-labelledby="admin-clerk-tab">
                     <AssignAdminClerk token={props.token.user} role={props.data.role}>{props.clerkAssignmentList}</AssignAdminClerk>
                 </div>
-            	<div className="tab-pane fade" id="dept-chair" role="tabpanel" aria-labelledby="dept-chair-tab"><AssignDeptChair /></div>
+            	<div className="tab-pane fade" id="dept-chair" role="tabpanel" aria-labelledby="dept-chair-tab">
+                    <AssignDeptChair token={props.token.user} role={props.data.role}>{props.facultyListInfo}</AssignDeptChair>
+                </div>
             </div>
 	<style jsx>{`
 		a.nav-item:focus{
@@ -133,7 +137,11 @@ function RoleAssignment(props) {
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result[0].faculty_units
                 } else if(data.role == 3 && roleAssignmentList) {
-                    roleAssignmentFlag = true 
+                    roleAssignmentFlag = true
+
+                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
+                    facultyListInfo = await faculty.json()
+                    facultyListInfo = facultyListInfo.result
                 }
 				
             } else if(data.role == 1) { 
