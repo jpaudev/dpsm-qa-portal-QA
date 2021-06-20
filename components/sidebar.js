@@ -56,7 +56,10 @@ function Sidebar(props) {
                 <div className="list-group">
                     <Link href="/department-activities"><a className = "list-group-item list-group-item-action list-group-item-secondary">Department Activities</a></Link>
                 </div>
-		        <div className="list-group">
+		<div className="list-group">
+                    <Link href="/change-password"><a className = "list-group-item list-group-item-action list-group-item-danger">Change Password</a></Link>
+                </div>
+		<div className="list-group">
                     <Link href="/login"><a className = "list-group-item list-group-item-action list-group-item-danger" onClick={handleRemoveCookie}>Log Out</a></Link>
                 </div>
 
