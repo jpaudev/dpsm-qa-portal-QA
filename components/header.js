@@ -16,7 +16,7 @@ function Header(props) {
 				<p align = "center"> Currently Logged In: </p>
 			</div>
 			<div className = "card-block">
-				<Link href = "/faculty/basic-info"><p align = "center"><a> {props.name} </a></p></Link>
+				<Link href = "/settings/change-password"><p align = "center"><a> {props.name} </a></p></Link>
 			</div>
 		</div>
             </nav>

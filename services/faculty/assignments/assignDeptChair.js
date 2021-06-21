@@ -6,7 +6,7 @@ export default async function assignDeptChair(incomingDeptChair, token) {
         if (token) {
             let cookieData = jwt.decode(token)
             let userId = cookieData.userId
-            console.log(userId);
+            
 			let url = 'http://localhost:3001/api/user/' + userId;
             const response = await axios({
                 method: 'PUT',
