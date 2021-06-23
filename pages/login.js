@@ -24,7 +24,13 @@ function Login() {
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </Head>
-	<div className = "jumbotron">
+	<div className = "jumbotron" id = "logo">
+		<h3> DPSM QA PORTAL </h3>
+		<br />
+		<br />
+		<center><img src="/dpsm-seal.png" width="113" height="113" alt="DPSM-QA-Portal" /></center>
+	</div>
+	<div className = "jumbotron" id = "login">
           <Formik
             initialValues={loginDetails}
             onSubmit={async (values) => {
@@ -95,6 +101,15 @@ function Login() {
 
   			display: flex;
   			align-items: center;
+		}
+		.jumbotron#login{
+			background-color:#600;
+		}
+		.jumbotron#logo{
+			background-color: #01942b;
+		}
+		label{
+			color:#fff;
 		}
     #alert {
       visibility: hidden;
