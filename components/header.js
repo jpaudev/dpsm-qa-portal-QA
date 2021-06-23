@@ -9,7 +9,7 @@ function Header(props) {
                             <img src="/dpsm-seal.png" width="70" height="70" className="d-inline-block align-top" alt="DPSM-QA-Portal" />
                         </a>
                     </span>
-		<h3> DPSM-HRIS </h3>
+		<h3> DPSM QA PORTAL </h3>
 		
 		<div className = "card ml-auto">
 			<div className = "card-header">
