@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import WorkExpForm from './work-exp-form'
 import EmploymentHistory from './employment-history'
+import EmploymentForm from './employment-form'
 import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
 import React from 'react'
+import { Formik, Form, Field } from "formik"
 
 import updateWorkExp from '../../../services/faculty/basic-info/updateWorkExp'
 import deleteWorkExp from '../../../services/faculty/basic-info/deleteWorkExp'
@@ -21,6 +23,7 @@ function WorkExperience(props){
         description: ''
     })
     let content 
+
     if(props.children != null) {
         content = Object.keys(props.children).map(key => {
             if(props.children[key].workExpId != null) {
@@ -51,7 +54,7 @@ function WorkExperience(props){
         });
     }
     else{
-        content = <td colspan = "6"><p align = "center">No data available!</p></td>
+        content = <td colSpan = "6"><p align = "center">No data available!</p></td>
     }
 
     function setEdit(id) {
@@ -83,7 +86,7 @@ function WorkExperience(props){
             <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
             <div role="alert" id="workexpalert" style={{visibility:"hidden"}}></div>
             <h5 align = "center"> Within UP Manila </h5>
-            <EmploymentHistory>{props.employment}</EmploymentHistory>
+            <EmploymentHistory role={props.role} token={props.token} facultyId={props.facultyId}>{props.employment}</EmploymentHistory>
             <br />
             <h5 align = "center"> Outside UP Manila </h5>
             <table className = "table table-striped table-sm">
@@ -100,9 +103,18 @@ function WorkExperience(props){
             </tbody>
             </table>
             {
-                !props.viewFlag &&
+                !props.viewFlag && props.role != 5 &&
                 <div>
                     <WorkExpForm token = { props.token }/>
+                </div>
+            }
+            {
+                props.role && props.role == 5 &&
+                <div>
+                    <hr />
+                    <h3 align ="center"> Add Faculty Employment </h3>
+                    <EmploymentForm token={props.token} facultyId={props.facultyId} positionsList={props.positionsList}/>
+
                 </div>
             }
 

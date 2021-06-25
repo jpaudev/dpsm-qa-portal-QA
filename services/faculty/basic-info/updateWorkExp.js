@@ -7,11 +7,6 @@ export default async function updateWorkExp(data, token) {
 	try {
 	    if (token) {
 	        let url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
-		    let header = {
-		        headers: {
-		            'Authorization': 'Bearer ' + token
-		        }
-		    }
 		    let bod = null
 		    if(data.endDate == "" || data.endDate == null) {
 		    	bod = {
