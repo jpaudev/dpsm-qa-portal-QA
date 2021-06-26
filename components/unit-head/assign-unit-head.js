@@ -35,7 +35,7 @@ function AssignUnitHead(props) {
                         <tr key = {props.children.unitId}>
                             <td>
                                 <form>
-                                    <select name="faculty" id="faculty" onChange={async () => {
+                                    <select name="faculty" className = "form-control" id="faculty" onChange={async () => {
                                         let alert = document.getElementById("assignalert")
 
                                         let incomingUnitHead = document.getElementById('faculty').value

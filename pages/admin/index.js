@@ -11,7 +11,6 @@ function FacultyList(props) {
 			<br />
 			<h2 align="center">Faculty List</h2>
             <Link href = "/admin/faculty"><button type="button" className="btn btn-primary float-right">Add Faculty</button></Link>
-	    <Link href = "/admin/update-faculty-employment"><button type="button" className="btn btn-info float-right">Update Faculty Employment</button></Link>
             <br />
             <Faculty path="admin">{props.facultyList}</Faculty>
         </Layout>
