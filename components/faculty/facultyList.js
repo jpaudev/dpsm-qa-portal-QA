@@ -50,6 +50,11 @@ function FacultyList(props){
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
 						<table className = "table">
+							<tr>
+								<th>Name</th>
+								<th>Status</th>
+								<th></th>
+							</tr>
 							{facultyList}
 						</table>
 					</div>
@@ -97,6 +102,11 @@ function FacultyList(props){
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
 						<table className = "table">
+							<tr>
+								<th>Name</th>
+								<th>Status</th>
+								<th></th>
+							</tr>
 							{facultyList}
 						</table>
 					</div>
@@ -144,6 +154,11 @@ function FacultyList(props){
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
 						<table className = "table">
+							<tr>
+								<th>Name</th>
+								<th>Status</th>
+								<th></th>
+							</tr>
 							{facultyList}
 						</table>
 					</div>
