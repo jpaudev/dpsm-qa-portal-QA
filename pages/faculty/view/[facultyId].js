@@ -8,7 +8,7 @@ import LicensureExam from '../../../components/faculty/accomplishments/licensure
 import TrainingSeminar from '../../../components/faculty/accomplishments/training-seminar'
 import ResearchGrant from '../../../components/faculty/accomplishments/research-grant'
 import Evaluation from '../../../components/unit-head/faculty-list/evaluation/evaluation'
-import FacultySET from '../../../components/unit-head/faculty-list/SET/SET'
+import FacultyLoader from '../../components/faculty/faculty-load/faculty-load'
 
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../../helpers"
@@ -76,7 +76,7 @@ function ViewFaculty(props) {
                     <Evaluation />
                 </div>
                 <div className="tab-pane fade" id="SET" role="tabpanel" aria-labelledby="SET-tab">
-                    <FacultySET />
+                    <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyId={props.pathFacultyId} name={props.data.name} facultyFlag={true} clerkFlag={false}>{ props.facultyLoad }</FacultyLoader>
                 </div>
             </div>
 
