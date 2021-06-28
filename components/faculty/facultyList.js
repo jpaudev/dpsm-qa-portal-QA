@@ -22,20 +22,41 @@ function FacultyList(props){
 					let lastUpdated
 					if(faculty[index].faculty_personal_info.faculty_updates && faculty[index].faculty_personal_info.faculty_updates[0]) lastUpdated = faculty[index].faculty_personal_info.faculty_updates[0].updatedAt.split('T')[0]
 					return (
-						<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light" forApproval={faculty[index].faculty_personal_info}>
-							{surname}, {firstName} 
-							&nbsp; <span className="badge badge-danger">{forApprovalCount}</span>
-							{ props.path == 'info' && props.role == 3 && lastUpdated && ` (Last Updated: ${lastUpdated})` }
-						</a>	
+						<tr>
+							<td>
+								<div className = "list-group">
+									<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light" forApproval={faculty[index].faculty_personal_info}>
+										{surname}, {firstName} 
+										&nbsp; <span className="badge badge-danger">{forApprovalCount}</span>
+										{ props.path == 'info' && props.role == 3 && lastUpdated && ` (Last Updated: ${lastUpdated})` }
+									</a>	
+								</div>
+							</td>
+							<td>
+								<select className = "form-control">
+									<option>Active</option>
+									<option>Inactive</option>
+								</select>
+							</td>
+							<td>
+								<button className = "btn btn-primary">Approve</button>
+								<button className = "btn btn-danger">Reject</button>
+							</td>
+						</tr>
 					)
 				})
 
 				return (
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
-						<div className = "list-group">
+						<table className = "table">
+							<tr>
+								<th>Name</th>
+								<th>Status</th>
+								<th></th>
+							</tr>
 							{facultyList}
-						</div>
+						</table>
 					</div>
 				); 
 			}
@@ -53,20 +74,41 @@ function FacultyList(props){
 					let lastUpdated
 					if(faculty[index].faculty_personal_info.faculty_updates && faculty[index].faculty_personal_info.faculty_updates[0]) lastUpdated = faculty[index].faculty_personal_info.faculty_updates[0].updatedAt.split('T')[0]
 					return (
-						<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
-							{surname}, {firstName} 
-							&nbsp; <span className="badge badge-danger">{forApprovalCount}</span>
-							{ props.path == 'info' && props.role == 3 && lastUpdated && ` (Last Updated: ${lastUpdated})` }
-						</a>	
+						<tr>
+							<td>
+								<div className = "list-group">
+									<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
+										{surname}, {firstName} 
+										&nbsp; <span className="badge badge-danger">{forApprovalCount}</span>
+										{ props.path == 'info' && props.role == 3 && lastUpdated && ` (Last Updated: ${lastUpdated})` }
+									</a>	
+								</div>
+							</td>
+							<td>
+								<select className = "form-control">
+									<option>Active</option>
+									<option>Inactive</option>
+								</select>
+							</td>
+							<td>
+								<button className = "btn btn-primary">Approve</button>
+								<button className = "btn btn-danger">Reject</button>
+							</td>
+						</tr>
 					)
 				})
 
 				return (
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
-						<div className = "list-group">
+						<table className = "table">
+							<tr>
+								<th>Name</th>
+								<th>Status</th>
+								<th></th>
+							</tr>
 							{facultyList}
-						</div>
+						</table>
 					</div>
 				); 
 			}
@@ -84,20 +126,41 @@ function FacultyList(props){
 					let lastUpdated
 					if(faculty[index].faculty_personal_info.faculty_updates && faculty[index].faculty_personal_info.faculty_updates[0]) lastUpdated = faculty[index].faculty_personal_info.faculty_updates[0].updatedAt.split('T')[0]
 					return (
-						<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
-							{surname}, {firstName} 
-							&nbsp; <span className="badge badge-danger">{forApprovalCount}</span>
-							{ props.path == 'info' && props.role == 3 && lastUpdated && ` (Last Updated: ${lastUpdated})` }
-						</a>	
+						<tr>
+							<td>
+								<div className = "list-group">
+									<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
+										{surname}, {firstName} 
+										&nbsp; <span className="badge badge-danger">{forApprovalCount}</span>
+										{ props.path == 'info' && props.role == 3 && lastUpdated && ` (Last Updated: ${lastUpdated})` }
+									</a>	
+								</div>
+							</td>
+							<td>
+								<select className = "form-control">
+									<option>Active</option>
+									<option>Inactive</option>
+								</select>
+							</td>
+							<td>
+								<button className = "btn btn-primary">Approve</button>
+								<button className = "btn btn-danger">Reject</button>
+							</td>
+						</tr>
 					)
 				})
 
 				return (
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
-						<div className = "list-group">
+						<table className = "table">
+							<tr>
+								<th>Name</th>
+								<th>Status</th>
+								<th></th>
+							</tr>
 							{facultyList}
-						</div>
+						</table>
 					</div>
 				); 
 			}

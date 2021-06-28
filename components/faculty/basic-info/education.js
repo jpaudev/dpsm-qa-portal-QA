@@ -176,8 +176,7 @@ function Education(props) {
                             let form = document.getElementById('editEducForm')
                             let formData = new FormData(form)
                             formData.append('educInfoId', currData.educInfoId)
-                            
-                            res = await updateEducation(formData, props.token)
+                            let res = await updateEducation(formData, props.token)
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
                                 alert.style = "visibility: visible"

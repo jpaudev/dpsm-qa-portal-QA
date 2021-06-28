@@ -3,6 +3,7 @@ import { Formik, Form, Field } from 'formik'
 import Router from 'next/router'
 
 import deleteClerk from '../../../services/faculty/assignments/deleteClerk'
+import ClerkForm from './clerk-form'
 
 function AssignAdminClerk(props) { 
     let content 
@@ -48,20 +49,8 @@ function AssignAdminClerk(props) {
             </table>
         </div>
         <br />
-		
-		<form>
-		<div className = "form-row">
-			<div className = "form-group col-md-6">
-                            <label htmlFor = "LicensureExam[]"> Name </label>
-                            <input className = "form-control" type = "text" name = "AdminClerkName" placeholder = "Input name" />
-                        </div>
-			<div className = "form-group col-md-6">
-                            <label htmlFor = "LicensureExamRank[]"> UP Email Address </label>
-                            <input className = "form-control" type = "email" name = "AdminClerkEmail" placeholder = "Input UP Email" />
-                        </div>
-		</div>
-		<button className = "btn btn-primary">Add Clerk</button>
-		</form>
+
+        <ClerkForm token = { props.token }/>
 
         <div className="modal fade" id="deleteClerk" tabIndex="-1" role="dialog" aria-labelledby="deleteClerkLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
@@ -80,7 +69,7 @@ function AssignAdminClerk(props) {
                     <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
                     <button type="button" className="btn btn-danger" onClick = {async () => {
                         let alert = document.getElementById("clerkalert")
-                        $('#deleteClerk').modal('toggle'); console.log(clerkId);
+                        $('#deleteClerk').modal('toggle'); 
 
                         let res = await deleteClerk(clerkId, props.token)
                         if(res.success == true) { 

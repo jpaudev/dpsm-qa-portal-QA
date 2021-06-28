@@ -40,7 +40,7 @@ function BasicInfo(props) {
                             <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} viewFlag={true}>{ props.education }</Education>
                         </div>
                         <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
-                            <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} employment = { props.employment } viewFlag={true}>{ props.workExperience }</WorkExperience>
+                            <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} employment = { props.employment } viewFlag={true} role={props.data.role} facultyId={props.pathFacultyId} positionsList={props.positionsList}>{ props.workExperience }</WorkExperience>
                         </div>
                     </div>
                 </div>
@@ -117,6 +117,7 @@ function BasicInfo(props) {
     let licensureExam
     let researchGrant
     let facultyLoad
+    let positionsList
 
     if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
@@ -147,8 +148,10 @@ function BasicInfo(props) {
                 const employment = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/employment', header)
                 employmentInfo = await employment.json()
                 unit = employmentInfo.result.faculty_unit.unit.unit
-                position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
-                employmentType = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.employmentType
+                if(employmentInfo.result.faculty_employment_infos[0]) {
+                    position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
+                    employmentType = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.employmentType
+                }
 
                 const load = await fetch('http://localhost:3001/api/faculty/load/' + facultyId, header)
                 facultyLoad = await load.json()
@@ -173,6 +176,10 @@ function BasicInfo(props) {
 
                 const rg = await fetch('http://localhost:3001/api/faculty/accomplishment/' + facultyId + '/research-grant', header)
                 researchGrant = await rg.json()
+
+                const positions = await fetch('http://localhost:3001/api/faculty/basic-info/employment/positions', header)
+                positionsList = await positions.json()
+                positionsList = positionsList.result
             } else {
                 return {
                     redirect: {
@@ -192,10 +199,10 @@ function BasicInfo(props) {
             name,
             personalInfo: personalInfo.result,
             unit,
-            position,
-            employmentType,
             facultyLoad: facultyLoad.result,
             pathFacultyId: context.params.facultyId,
+            position: position || null,
+            employmentType: employmentType || null,
             education: education.result,
             employment: employmentInfo.result,
             workExperience: workExperience.result,
@@ -204,6 +211,8 @@ function BasicInfo(props) {
             trainingSeminar: trainingSeminar.result,
             licensureExam: licensureExam.result,
             researchGrant: researchGrant.result,
+            pathFacultyId: context.params.facultyId,
+            positionsList
         }
     }
 }

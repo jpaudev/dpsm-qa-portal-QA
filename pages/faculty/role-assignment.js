@@ -1,7 +1,8 @@
 import Layout from '../../components/layout'
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
-import AssignUnitHead from '../../components/dept-chair/role-assignment/assign-unit-head'
+import AssignUnitHead from '../../components/unit-head/assign-unit-head'
+import ApproveUnitHead from '../../components/dept-chair/role-assignment/approve-unit-head'
 import AssignAdminClerk from '../../components/dept-chair/role-assignment/assign-admin-clerk'
 import AssignDeptChair from '../../components/dept-chair/role-assignment/assign-dept-chair'
 
@@ -11,7 +12,9 @@ function RoleAssignment(props) {
             { props.data.role == 3 &&
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-                    <a className="nav-item nav-link active" id="unit-head-tab" data-toggle="tab" href="#unit-head" role="tab" aria-controls="unit-head" aria-selected="true">Unit Head Assignment</a>
+                    <a className="nav-item nav-link active" id="unit-head-tab" data-toggle="tab" href="#unit-head" role="tab" aria-controls="unit-head" aria-selected="true">
+                        Unit Head Assignment {props.roleAssignmentFlag && <span className="badge badge-danger">!</span>}
+                    </a>
                     <a className="nav-item nav-link" id="admin-clerk-tab" data-toggle="tab" href="#admin-clerk" role="tab" aria-controls="admin-clerk" aria-selected="false">Admin Clerk Assignment</a>
                     <a className="nav-item nav-link" id="dept-chair-tab" data-toggle="tab" href="#dept-chair" role="tab" aria-controls="dept-chair" aria-selected="false">Department Chair Assignment</a>
                 </div>
@@ -20,13 +23,22 @@ function RoleAssignment(props) {
 		<br />
 		<br />
             <div className="tab-content" id="nav-tabContent">
-            	<div className="tab-pane fade show active" id="unit-head" role="tabpanel" aria-labelledby="unit-head-tab">
-                    <AssignUnitHead token={props.token.user} role={props.data.role} facultyListInfo={props.facultyListInfo}>{props.roleAssignmentList}</AssignUnitHead>
-                </div>
+                { props.data.role == 2 && 
+                    <div className="tab-pane fade show active" id="unit-head" role="tabpanel" aria-labelledby="unit-head-tab">
+                        <AssignUnitHead token={props.token.user} role={props.data.role} facultyListInfo={props.facultyListInfo}>{props.roleAssignmentList}</AssignUnitHead>
+                    </div>
+                }
+                { props.data.role == 3 && 
+                    <div className="tab-pane fade show active" id="unit-head" role="tabpanel" aria-labelledby="unit-head-tab">
+                        <ApproveUnitHead token={props.token.user} role={props.data.role}>{props.roleAssignmentList}</ApproveUnitHead>
+                    </div>
+                }
             	<div className="tab-pane fade" id="admin-clerk" role="tabpanel" aria-labelledby="admin-clerk-tab">
                     <AssignAdminClerk token={props.token.user} role={props.data.role}>{props.clerkAssignmentList}</AssignAdminClerk>
                 </div>
-            	<div className="tab-pane fade" id="dept-chair" role="tabpanel" aria-labelledby="dept-chair-tab"><AssignDeptChair /></div>
+            	<div className="tab-pane fade" id="dept-chair" role="tabpanel" aria-labelledby="dept-chair-tab">
+                    <AssignDeptChair token={props.token.user} role={props.data.role}>{props.facultyListInfo}</AssignDeptChair>
+                </div>
             </div>
 	<style jsx>{`
 		a.nav-item:focus{
@@ -119,21 +131,17 @@ function RoleAssignment(props) {
 				clerkAssignmentList = clerkAssignmentList.result
 
                 if(data.role == 2) {
-                    if(roleAssignmentList[0].faculty_unit_assignment) {
-                        if(roleAssignmentList[0].faculty_unit_assignment.approverRemarks != null) roleAssignmentFlag = true
-                    }
+                    if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
 
-                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info?unitId=' + data.unitId, header)
+                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId, header)
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result[0].faculty_units
-                } else if(data.role == 3) {
-                    roleAssignmentList.every((e) => {
-                        if(e.faculty_unit_assignment != null && !e.faculty_unit_assignment.approverRemarks) {
-                            roleAssignmentFlag = true 
-                            return false
-                        }
-                        return true
-                    })  
+                } else if(data.role == 3 && roleAssignmentList) {
+                    roleAssignmentFlag = true
+
+                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
+                    facultyListInfo = await faculty.json()
+                    facultyListInfo = facultyListInfo.result
                 }
 				
             } else if(data.role == 1) { 

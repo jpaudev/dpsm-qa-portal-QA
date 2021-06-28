@@ -151,7 +151,7 @@ function Approval(props) {
     const educ = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/education' + status, header)
     let education = await educ.json()
 
-    const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all', header)
+    const fac = await fetch('http://localhost:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
     const faculty = await fac.json()
 
     const psa = await fetch(url + '/public-service' + status, header)
@@ -187,17 +187,9 @@ function Approval(props) {
         let roleAssignmentList = await roleAssignments.json()
         roleAssignmentList = roleAssignmentList.result
         if(data.role == 2) {
-            if(roleAssignmentList[0].faculty_unit_assignment) {
-                if(roleAssignmentList[0].faculty_unit_assignment.approverRemarks != null) roleAssignmentFlag = true
-            }
-        } else if(data.role == 3) {
-            roleAssignmentList.every((e) => {
-                if(e.faculty_unit_assignment != null && !e.faculty_unit_assignment.approverRemarks) {
-                    roleAssignmentFlag = true 
-                    return false
-                }
-                return true
-            })    
+            if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
+        } else if(data.role == 3 && roleAssignmentList) {
+            roleAssignmentFlag = true 
         }
     }
 

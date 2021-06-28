@@ -65,17 +65,9 @@ function FacultyList(props) {
                 let roleAssignmentList = await roleAssignments.json()
                 roleAssignmentList = roleAssignmentList.result
                 if(data.role == 2) {
-                    if(roleAssignmentList[0].faculty_unit_assignment) {
-                        if(roleAssignmentList[0].faculty_unit_assignment.approverRemarks != null) roleAssignmentFlag = true
-                    }
-                } else if(data.role == 3) {
-                    roleAssignmentList.every((e) => {
-                        if(e.faculty_unit_assignment != null && !e.faculty_unit_assignment.approverRemarks) {
-                            roleAssignmentFlag = true 
-                            return false
-                        }
-                        return true
-                    })    
+                    if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
+                } else if(data.role == 3 && roleAssignmentList) {
+                    roleAssignmentFlag = true 
                 }
             } else if(data.role == 1) {
 				approvalList = null

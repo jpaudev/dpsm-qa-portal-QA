@@ -18,50 +18,52 @@ function EmploymentStatus(props){
 
 	let tableData = []
 	
-	empList.forEach(async (e) => {
-		if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftt') {
-			if(e.faculty_unit.unitId == 1) chemfttCount++
-			else if(e.faculty_unit.unitId == 2) mcsufttCount++
-			else if(e.faculty_unit.unitId == 3) p6GeofttCount++
-
-			await tableData.push({
-				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
-				col3: 'Full-time',
-				col4: 'Temporary',
-				col5: e.faculty_employment_infos[0].startDate,
-				col6: e.faculty_employment_infos[0].endDate
-			})
-		}
-		if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftp') {
-			if(e.faculty_unit.unitId == 1) chemftpCount++
-			else if(e.faculty_unit.unitId == 2) mcsuftpCount++
-			else if(e.faculty_unit.unitId == 3) p6GeoftpCount++
-
-			await tableData.push({
-				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
-				col3: 'Full-time',
-				col4: 'Permanent',
-				col5: e.faculty_employment_infos[0].startDate,
-				col6: e.faculty_employment_infos[0].endDate
-			})
-		}
-		if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'pt') {
-			if(e.faculty_unit.unitId == 1) chemptCount++
-			else if(e.faculty_unit.unitId == 2) mcsuptCount++
-			else if(e.faculty_unit.unitId == 3) p6GeoptCount++
-
-			await tableData.push({
-				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
-				col3: 'Part-time',
-				col4: '',
-				col5: e.faculty_employment_infos[0].startDate,
-				col6: e.faculty_employment_infos[0].endDate
-			})
-		}
-	})
+	if(empList) {
+		empList.forEach(async (e) => {
+			if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftt') {
+				if(e.faculty_unit.unitId == 1) chemfttCount++
+				else if(e.faculty_unit.unitId == 2) mcsufttCount++
+				else if(e.faculty_unit.unitId == 3) p6GeofttCount++
+	
+				await tableData.push({
+					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+					col2: e.faculty_employment_infos[0].faculty_employment_position.position,
+					col3: 'Full-time',
+					col4: 'Temporary',
+					col5: e.faculty_employment_infos[0].startDate,
+					col6: e.faculty_employment_infos[0].endDate
+				})
+			}
+			if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftp') {
+				if(e.faculty_unit.unitId == 1) chemftpCount++
+				else if(e.faculty_unit.unitId == 2) mcsuftpCount++
+				else if(e.faculty_unit.unitId == 3) p6GeoftpCount++
+	
+				await tableData.push({
+					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+					col2: e.faculty_employment_infos[0].faculty_employment_position.position,
+					col3: 'Full-time',
+					col4: 'Permanent',
+					col5: e.faculty_employment_infos[0].startDate,
+					col6: e.faculty_employment_infos[0].endDate
+				})
+			}
+			if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'pt') {
+				if(e.faculty_unit.unitId == 1) chemptCount++
+				else if(e.faculty_unit.unitId == 2) mcsuptCount++
+				else if(e.faculty_unit.unitId == 3) p6GeoptCount++
+	
+				await tableData.push({
+					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+					col2: e.faculty_employment_infos[0].faculty_employment_position.position,
+					col3: 'Part-time',
+					col4: '',
+					col5: e.faculty_employment_infos[0].startDate,
+					col6: e.faculty_employment_infos[0].endDate
+				})
+			}
+		})
+	}
 
 	const graphData = [
 		{

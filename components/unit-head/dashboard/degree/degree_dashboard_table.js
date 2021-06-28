@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { useTable, useGroupBy, useExpanded, useSortBy, useFilters, usePagination } from 'react-table'
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 
 // default search box filter
 function DefaultColumnFilter({
@@ -84,7 +85,15 @@ function Table ({columns, data}){
 
  return(
 <div>
-   <table className = "table table-striped" {...getTableProps()}>
+    <br />
+    <ReactHTMLTableToExcel
+				id="test-table-xls-button"
+				className="btn btn-primary float-right"
+				table="degreeTable"
+				filename="degree"
+				buttonText="Download as XLS"/>
+    <br />
+   <table className = "table table-striped" {...getTableProps()} id="degreeTable">
        <thead>
          {headerGroups.map(headerGroup => (
            <tr {...headerGroup.getHeaderGroupProps()}>
