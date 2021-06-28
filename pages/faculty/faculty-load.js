@@ -1,37 +1,17 @@
 import Layout from '../../components/layout'
 import Link from 'next/link'
-import FacultyLoadSemester from '../../components/faculty/faculty-load/faculty-load-semester'
+import FacultyLoader from '../../components/faculty/faculty-load/faculty-load'
 import NameDisplay from '../../components/name-display'
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
 
-function FacultyLoad(props) { 
+function FacultyLoad(props) {
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
 		<br />
-		<h2 align = "center"> Faculty Load </h2>
-		<NameDisplay />
-            <div className="list-group">
-		<a className = "list-group-item list-group-item-action list-group-item-secondary" href = "#evaluation_ay20202021" data-toggle = "collapse" aria-controls = "evaluation_ay20202021">AY 2020-2021</a>
-            	<div className="list-group collapse" id = "evaluation_ay20202021">
-                	<a className = "list-group-item list-group-item-action list-group-item-info" href = "#facultyloadsem1ay20202021" data-toggle = "collapse" aria-controls = "facultyloadsem1ay20202021">1st Semester, AY 2020-2021</a>
-			<div id = "facultyloadsem1ay20202021" className = "jumbotron collapse">
-				<FacultyLoadSemester />
-			</div>
-		</div>
-		<a className = "list-group-item list-group-item-action list-group-item-secondary" href = "#evaluation_ay20192020" data-toggle = "collapse" aria-controls = "evaluation_ay20192020">AY 2019-2020</a>
-		<div className="list-group collapse" id = "evaluation_ay20192020">
-                	<a className = "list-group-item list-group-item-action list-group-item-info">Midterm, AY 2019-2020</a>
-			<a className = "list-group-item list-group-item-action list-group-item-info">2nd Semester, 2019-2020</a>
-			<a className = "list-group-item list-group-item-action list-group-item-info">1st Semester, 2019-2020</a>
-		</div>
-		<a className = "list-group-item list-group-item-action list-group-item-secondary" href = "#evaluation_ay20182019" data-toggle = "collapse" aria-controls = "evaluation_ay20182019">AY 2018-2019</a>
-		<div className="list-group collapse" id = "evaluation_ay20182019">
-                	<a className = "list-group-item list-group-item-action list-group-item-info">Midterm, AY 2018-2019</a>
-			<a className = "list-group-item list-group-item-action list-group-item-info">2nd Semester, 2018-2019</a>
-			<a className = "list-group-item list-group-item-action list-group-item-info">1st Semester, 2018-2019</a>
-		</div>
-            </div>
+		<FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyId={props.data.facultyId} name={props.data.name} facultyFlag={true} clerkFlag={false}>
+			{props.facultyLoad}
+		</FacultyLoader>
 	    <style jsx>{`
 			.list-group-item-info{
 				text-indent:5%;
@@ -41,26 +21,40 @@ function FacultyLoad(props) {
     )
   }
 
-  FacultyLoad.getInitialProps = async ({ req, res }) => {
-	const token = parseCookies(req)
-    if (res) {
+  export async function getServerSideProps(context) {
+	const token = parseCookies(context.req)
+    if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
-            res.writeHead(301, { Location: "/login" })
-            res.end()
+            return {
+                redirect: {
+                    destination: '/login',
+                    permanent: false,
+                },
+            }
         }
     } 
     let data = jwt.decode(token.user)
-
     let facultyId = data.facultyId
 
-	let header = {
+    let header = {
         headers: {
             'Authorization': 'Bearer ' + token.user
         }
     }
-	
+
 	const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
+
+	const load = await fetch('http://localhost:3001/api/faculty/load/' + facultyId, header)
+    const facultyLoad = await load.json()    
+
+    let url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
+
+    const employ = await fetch(url + '/employment', header)
+    let employment = await employ.json()
+    let unit = employment.result.faculty_unit.unit.unit
+    let position = employment.result.faculty_employment_infos[0].faculty_employment_position.position
+    let employmentType = employment.result.faculty_employment_infos[0].faculty_employment_position.employmentType
 
 	let roleAssignmentFlag = false
 	let approvalList
@@ -89,11 +83,18 @@ function FacultyLoad(props) {
     }
 
 	return {
-		data,
-		personalInfo: personalInfo.result,
-		approvalList,
-		roleAssignmentFlag
-	}
+		props: {
+			unit,
+			position,
+			employmentType,
+			token,
+			data,
+			facultyLoad: facultyLoad.result,
+			personalInfo: personalInfo.result,
+			approvalList,
+			roleAssignmentFlag
+		}
+	}	
 }
   
 export default FacultyLoad

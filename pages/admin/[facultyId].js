@@ -8,12 +8,12 @@ import LicensureExam from '../../components/faculty/accomplishments/licensure-ex
 import TrainingSeminar from '../../components/faculty/accomplishments/training-seminar'
 import ResearchGrant from '../../components/faculty/accomplishments/research-grant'
 import Evaluation from '../../components/unit-head/faculty-list/evaluation/evaluation'
-import FacultySET from '../../components/unit-head/faculty-list/SET/SET'
+import FacultyLoader from '../../components/faculty/faculty-load/faculty-load'
 
 import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
 
-function BasicInfo(props) { 
+function BasicInfo(props) {
     return (
         <Layout userId={props.data.userId} role={props.data.role} name={props.data.name}>
             <nav>
@@ -21,7 +21,7 @@ function BasicInfo(props) {
 				<a className="nav-item nav-link active" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic Information</a>
 				<a className="nav-item nav-link" id="accomplishments-tab" data-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">Accomplishments</a>
 				<a className="nav-item nav-link" id="evaluation-tab" data-toggle="tab" href="#evaluation" role="tab" aria-controls="evaluation" aria-selected="false">Peer Evaluation</a>
-				<a className="nav-item nav-link" id="SET-tab" data-toggle="tab" href="#SET" role="tab" aria-controls="SET" aria-selected="false">SET</a>
+				<a className="nav-item nav-link" id="faculty-load-tab" data-toggle="tab" href="#faculty-load" role="tab" aria-controls="faculty-load" aria-selected="false">Faculty Load</a>
             </div>
             <div className="tab-content" id="nav-tabContent-main">
 	    		<div className="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="basic-info-tab">
@@ -74,8 +74,8 @@ function BasicInfo(props) {
                 <div className="tab-pane fade" id="evaluation" role="tabpanel" aria-labelledby="evaluation-tab">
                     <Evaluation />
                 </div>
-                <div className="tab-pane fade" id="SET" role="tabpanel" aria-labelledby="SET-tab">
-                    <FacultySET />
+                <div className="tab-pane fade" id="faculty-load" role="tabpanel" aria-labelledby="faculty-load-tab">
+                    <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} facultyId={props.pathFacultyId} clerkFlag={true} viewFlag={true}>{ props.facultyLoad }</FacultyLoader>
                 </div>
             </div>
 
@@ -117,6 +117,7 @@ function BasicInfo(props) {
     let licensureExam
     let researchGrant
     let positionsList
+    let facultyLoad
 
     if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
@@ -151,6 +152,9 @@ function BasicInfo(props) {
                     position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
                     employmentType = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.employmentType
                 }
+
+                const load = await fetch('http://localhost:3001/api/faculty/load/' + facultyId, header)
+                facultyLoad = await load.json()
 
                 const educ = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId + '/education', header)
                 education = await educ.json()
@@ -197,6 +201,8 @@ function BasicInfo(props) {
             unit,
             position: position || null,
             employmentType: employmentType || null,
+            facultyLoad: facultyLoad.result,
+            pathFacultyId: context.params.facultyId,
             education: education.result,
             employment: employmentInfo.result,
             workExperience: workExperience.result,
