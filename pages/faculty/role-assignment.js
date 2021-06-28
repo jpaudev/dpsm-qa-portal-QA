@@ -7,6 +7,7 @@ import AssignAdminClerk from '../../components/dept-chair/role-assignment/assign
 import AssignDeptChair from '../../components/dept-chair/role-assignment/assign-dept-chair'
 
 function RoleAssignment(props) {
+    console.log(props)
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
             { props.data.role == 3 &&
@@ -136,8 +137,9 @@ function RoleAssignment(props) {
                     const faculty = await fetch('http://localhost:3001/api/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId, header)
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result[0].faculty_units
-                } else if(data.role == 3 && roleAssignmentList) {
-                    roleAssignmentFlag = true
+                } else if(data.role == 3) {
+                    if(roleAssignmentList)
+                        roleAssignmentFlag = true
 
                     const faculty = await fetch('http://localhost:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
                     facultyListInfo = await faculty.json()
