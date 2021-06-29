@@ -31,7 +31,7 @@ function Sidebar(props) {
                     { !staff && !faculty && <Link href="/faculty/view/all"><a className = "list-group-item list-group-item-action list-group-item-success ">Faculty List</a></Link> }
                     { !staff && !faculty && <Link href="/faculty/approval">
                         <a className = "list-group-item list-group-item-action list-group-item-success "> 
-                            Pending Approvals &nbsp;<span className="badge badge-danger">{props.approvalList.facultyCount}</span>
+                            Pending Approvals &nbsp;{props.approvalList.facultyCount > 0 && <span className="badge badge-danger">{props.approvalList.facultyCount}</span>}
                         </a>
                     </Link> }
                     { staff && <Link href="/admin"><a className = "list-group-item list-group-item-action list-group-item-success ">Faculty List</a></Link> }

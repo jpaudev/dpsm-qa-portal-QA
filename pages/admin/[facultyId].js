@@ -116,8 +116,13 @@ function BasicInfo(props) {
     let trainingSeminar
     let licensureExam
     let researchGrant
+<<<<<<< HEAD
     let positionsList
     let facultyLoad
+=======
+    let facultyLoad
+    let positionsList
+>>>>>>> fe230232202f0036b0d1663f617adb8ba95482af
 
     if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
@@ -199,10 +204,10 @@ function BasicInfo(props) {
             name,
             personalInfo: personalInfo.result,
             unit,
-            position: position || null,
-            employmentType: employmentType || null,
             facultyLoad: facultyLoad.result,
             pathFacultyId: context.params.facultyId,
+            position: position || null,
+            employmentType: employmentType || null,
             education: education.result,
             employment: employmentInfo.result,
             workExperience: workExperience.result,

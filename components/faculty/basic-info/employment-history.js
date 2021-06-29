@@ -166,8 +166,8 @@ function EmploymentHistory(props){
                                 alert.innerHTML = res.message
                             } else {
                                 alert.className = "alert alert-danger"
-                                if(res.error) values.message = res.error[0].message
-                                else values.message = res.message
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
                             }
                             
                             $("#employmentalert").fadeTo(5000, 500).slideUp(500, function(){

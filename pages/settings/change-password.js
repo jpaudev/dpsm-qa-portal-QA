@@ -91,13 +91,13 @@ function ChangePassword(props) {
                     } else if(data.role == 3 && roleAssignmentList) {
                         roleAssignmentFlag = true 
                     }
-                } else if(data.role == 1) { 
-                    return {
-                        redirect: {
-                            destination: '/faculty/basic-info',
-                            permanent: true,
-                        },
-                    }
+                // } else if(data.role == 1) { 
+                //     return {
+                //         redirect: {
+                //             destination: '/faculty/basic-info',
+                //             permanent: true,
+                //         },
+                //     }
                 }
             }
         }
@@ -109,21 +109,22 @@ function ChangePassword(props) {
                 token: token && token,
                 data,
                 personalInfo: personalInfo.result,
-                approvalList: approvalList,
-                accompList,
-                empList,
-                educList,
+                approvalList: approvalList || null,
+                accompList: accompList || null,
+                empList: empList || null,
+                educList: educList || null,
                 roleAssignmentFlag
+            }
+        }
+    } else {
+        return {
+            props: {
+                token: token && token,
+                data
             }
         }
     }
 
-    return {
-        props: {
-            token: token && token,
-            data
-        }
-    }
 }
 
   export default ChangePassword
