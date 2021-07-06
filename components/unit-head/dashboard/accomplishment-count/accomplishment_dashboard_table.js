@@ -10,7 +10,7 @@ function DefaultColumnFilter({
   const count = preFilteredRows.length
 
   return (
-    <input className = "form-control col-md-6"
+    <input className = "form-control col-md-12"
       value={filterValue || ''}
       onChange={e => {
         setFilter(e.target.value || undefined) // Set undefined to remove the filter entirely
@@ -37,7 +37,7 @@ function SelectColumnFilter({
 
   // Render a multi-select box
   return (
-    <select className = "form-control col-md-6"
+    <select className = "form-control col-md-12"
       value={filterValue}
       onChange={e => {
         setFilter(e.target.value || undefined)
@@ -106,8 +106,8 @@ function Table ({columns, data}){
 		 <span>
                     {column.isSorted
                       ? column.isSortedDesc
-                        ? ' 🔽'
-                        : ' 🔼'
+                        ? '(Descending Order)'
+                        : '(Ascending Order)'
                       : ' (click to sort)'}
                   </span>
 		  <div>{column.canFilter ? column.render('Filter') : null}</div>
@@ -227,6 +227,13 @@ function Table ({columns, data}){
           ))}
         </select>
       </div>
+      <style jsx>{`
+		table{
+			display: block;
+			overflow: x;
+			white-space: nowrap;
+		}
+	`}</style>
 </div>
  )
   
@@ -243,7 +250,7 @@ function Table ({columns, data}){
    const columns = React.useMemo(
      () => [
        {
-         Header: 'Name',
+         Header: 'Name of Faculty',
 	 Footer: '',
          accessor: 'col1', // accessor is the "key" in the data,
 	 aggregate: 'count',
@@ -273,7 +280,7 @@ function Table ({columns, data}){
 	 sortBy: 'datetime',
 	 aggregate: 'count',
          Aggregated: ({ value }) => `${value} Entries`,
-	 Filter: DefaultColumnFilter
+	 disableFilters: true
        },
        {
          Header: 'End Date',
@@ -282,7 +289,7 @@ function Table ({columns, data}){
 	 sortBy: 'datetime',
 	 aggregate: 'count',
          Aggregated: ({ value }) => `${value} Entries`,
-	 Filter: DefaultColumnFilter
+	 disableFilters: true
        }
      ],
      []
