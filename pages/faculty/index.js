@@ -24,10 +24,10 @@ function Dashboard(props) {
             			</div>
             		</nav>
 	    		<div className="tab-content" id="nav-tabContent">
-                    <div className="tab-pane fade show active" id="accomplishment-count" role="tabpanel" aria-labelledby="accomplishment-count-tab"><AccomplishmentCount>{props.accompList}</AccomplishmentCount></div>
-                    <div className="tab-pane fade" id="employment-status" role="tabpanel" aria-labelledby="employment-status-tab"><EmploymentStatus>{props.empList}</EmploymentStatus></div>
+                    <div className="tab-pane fade show active" id="accomplishment-count" role="tabpanel" aria-labelledby="accomplishment-count-tab"><AccomplishmentCount role={props.data.role} queryList={props.queryList}>{props.accompList}</AccomplishmentCount></div>
+                    <div className="tab-pane fade" id="employment-status" role="tabpanel" aria-labelledby="employment-status-tab"><EmploymentStatus role={props.data.role}>{props.empList}</EmploymentStatus></div>
 			    {/*<div className="tab-pane fade" id="SET-score" role="tabpanel" aria-labelledby="SET-score-tab"><SETResults /></div>*/}
-				    <div className="tab-pane fade" id="degree" role="tabpanel" aria-labelledby="degree-tab"><DegreeCount>{props.educList}</DegreeCount></div>
+				    <div className="tab-pane fade" id="degree" role="tabpanel" aria-labelledby="degree-tab"><DegreeCount role={props.data.role}>{props.educList}</DegreeCount></div>
                 </div>
                 
 			<style jsx>{`
@@ -48,7 +48,7 @@ function Dashboard(props) {
 	}
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context) { 
     const token = parseCookies(context.req)
     let data
     let personalInfo
@@ -57,6 +57,7 @@ export async function getServerSideProps(context) {
     let empList
     let educList
     let roleAssignmentFlag = false
+    let queryList
 
     if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
@@ -93,6 +94,23 @@ export async function getServerSideProps(context) {
                     empURL += '?unitId=' + data.unitId
                     educURL += '?unitId=' + data.unitId
                     roleAssignmentURL += '?unitId=' + data.unitId
+                } else if(data.role == 3 && context.query) {
+                    if(context.query.accomplishment == 1) {
+                        accompURL += '?'
+                        if(context.query.unitId && context.query.unitId != 0) accompURL += 'unitId=' + context.query.unitId
+						if(context.query.startDate) accompURL += '&startDate=' + context.query.startDate
+						if(context.query.endDate) accompURL += '&endDate=' + context.query.endDate
+                    } else if(context.query.employment == 1) {
+                        empURL += '?'
+                        if(context.query.unitId) empURL += 'unitId=' + context.query.unitId
+						if(context.query.startDate) empURL += '&startDate=' + context.query.startDate
+						if(context.query.endDate) empURL += '&endDate=' + context.query.endDate
+                    } else if(context.query.degree == 1) {
+                        educURL += '?'
+                        if(context.query.unitId) educURL += 'unitId=' + context.query.unitId
+						if(context.query.startDate) educURL += '&startDate=' + context.query.startDate
+						if(context.query.endDate) educURL += '&endDate=' + context.query.endDate
+                    }
                 }
 
                 const approval = await fetch(approvalURL, header)
@@ -139,7 +157,8 @@ export async function getServerSideProps(context) {
             accompList,
             empList,
             educList,
-            roleAssignmentFlag
+            roleAssignmentFlag,
+            queryList: context.query
         }
 	}
 }

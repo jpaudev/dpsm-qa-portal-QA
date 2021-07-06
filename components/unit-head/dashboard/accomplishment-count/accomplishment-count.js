@@ -1,7 +1,8 @@
 import AccomplishmentAnalyticsTable from '../../../../components/unit-head/dashboard/accomplishment-count/accomplishment_dashboard_table'
 import AccomplishmentDashboardGraph from '../../../../components/unit-head/dashboard/accomplishment-count/accomplishment_dashboard_graph'
+import Router from 'next/router'
 
-function AccomplishmentCount(props){
+function AccomplishmentCount(props){ 
 	let accompList = props.children
     
     let chemPSACount = 0
@@ -20,6 +21,10 @@ function AccomplishmentCount(props){
 	let p6GeoRGCount = 0
 
 	let tableData = []
+
+	let queryUnitId
+	let queryStartDate
+	let queryEndDate
 
 	if(accompList != null) {
 		Object.keys(accompList).map(key => {
@@ -41,56 +46,55 @@ function AccomplishmentCount(props){
 			p6GeoPubCount += accompList[key].faculty_publishers.length
 			p6GeoRGCount += accompList[key].faculty_researchers.length
 		  }
-	
-		  
+
+		  if(accompList[key].faculty_public_services.length > 0) {
+			accompList[key].faculty_public_services.forEach(async (i) => {
+				await tableData.push({
+					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(accompList[key].facultyId)}`}>{accompList[key].lastName + ', ' + accompList[key].firstName}</a>,
+					col2: i.position + ' - ' + i.organization,
+					col3: 'Public Service',
+					col4: i.startDate,
+					col5: i.endDate
+				})
+			})
+		  }
+
+		  if(accompList[key].faculty_publishers.length > 0) {
+			accompList[key].faculty_publishers.forEach(async (i) => {
+				await tableData.push({
+					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(accompList[key].facultyId)}`}>{accompList[key].lastName + ', ' + accompList[key].firstName}</a>,
+					col2: i.faculty_publication.title,
+					col3: 'Publication',
+					col4: i.faculty_publication.publicationDate,
+					col5: i.faculty_publication.publicationDate
+				})
+			})
+		  }
+
+		  if(accompList[key].faculty_training_seminars.length > 0) {
+			accompList[key].faculty_training_seminars.forEach(async (i) => {
+				await tableData.push({
+					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(accompList[key].facultyId)}`}>{accompList[key].lastName + ', ' + accompList[key].firstName}</a>,
+					col2: i.role + ' - ' + i.title,
+					col3: 'Training/Seminar',
+					col4: i.dateFrom,
+					col5: i.dateTo
+				})
+			})
+		  }
+
+		  if(accompList[key].faculty_researchers.length > 0) {
+			accompList[key].faculty_researchers.forEach(async (i) => {
+				await tableData.push({
+					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(accompList[key].facultyId)}`}>{accompList[key].lastName + ', ' + accompList[key].firstName}</a>,
+					col2: i.faculty_research_grant.researchName,
+					col3: 'Research Grant',
+					col4: i.faculty_research_grant.actualStart,
+					col5: i.faculty_research_grant.actualEnd
+				})
+			})
+		  }
 		});
-	
-		accompList.forEach(async (e) => {
-			if(e.faculty_public_services) {
-				await e.faculty_public_services.forEach(async (i) => {
-					await tableData.push({
-						col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-						col2: i.position + ' - ' + i.organization,
-						col3: 'Public Service',
-						col4: i.startDate,
-						col5: i.endDate
-					})
-				})
-			} 
-			if(e.faculty_publishers) {
-				e.faculty_publishers.forEach(async (i) => {
-					await tableData.push({
-						col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-						col2: i.faculty_publication.title,
-						col3: 'Publication',
-						col4: i.faculty_publication.publicationDate,
-						col5: 'None'
-					})
-				})
-			} 
-			if(e.faculty_training_seminars) {
-				e.faculty_training_seminars.forEach(async (i) => {
-					await tableData.push({
-						col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-						col2: i.role + ' - ' + i.title,
-						col3: 'Training/Seminar',
-						col4: i.dateFrom,
-						col5: i.dateTo
-					})
-				})
-			}
-			if(e.faculty_researchers) {
-				e.faculty_researchers.forEach(async (i) => {
-					await tableData.push({
-						col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-						col2: i.faculty_research_grant.researchName,
-						col3: 'Research Grant',
-						col4: i.faculty_research_grant.actualStart,
-						col5: i.faculty_research_grant.actualEnd
-					})
-				})
-			} 
-		})
 	}
 
 	const graphData = [
@@ -136,28 +140,58 @@ function AccomplishmentCount(props){
 		<div>
 			<br />
 			<h3 align = "center">Accomplishment Count</h3>
-			<div className = "form-group col-md-4 required">
-					<label className = "control-label" htmlFor ="DeptUnit"> Department Unit </label>
-                    			<select className = "form-control" name = "DeptUnit" required>
-						<option>All</option>
-						<option>Mathematics and Computing Sciences Unit</option>
-						<option>Chemistry Unit</option>
-						<option>Physics and Geology Unit</option>
-					</select>
-                	</div>
+			
 			<div className = "form-row">
-                    		<div className = "form-group col-md-4 required">
-					<label className = "control-label" htmlFor ="StartTimePeriod"> From  </label>
-                    			<input className = "form-control" type = "date" name = "StartTimePeriod" required />
-                		</div>
+				{
+					props.role == 3 && 
+					<div className = "form-group col-md-3">
+						<label className = "control-label" htmlFor ="DeptUnit"> Department Unit </label>
+						<select className = "form-control" name = "DeptUnit" id="DeptUnit" defaultValue={props.queryList.unitId}>
+							<option value="0">All</option>
+							<option value="1">Chemistry Unit</option>
+							<option value="2">Mathematics and Computing Sciences Unit</option>
+							<option value="3">Physics and Geology Unit</option>
+						</select>
+					</div>
+				}
 
-				<div className = "form-group col-md-4 required">
+				<div className = "form-group col-md-3">
+					<label className = "control-label" htmlFor ="StartTimePeriod"> From  </label>
+					<input className = "form-control" type = "date" name = "StartTimePeriod" id="StartTimePeriod" defaultValue={props.queryList.startDate} />
+				</div>
+
+				<div className = "form-group col-md-3">
 					<label className = "control-label" htmlFor ="EndTimePeriod"> To </label>
-                    			<input className = "form-control" type = "date" name = "EndTimePeriod" required />
-                		</div>
+					<input className = "form-control" type = "date" name = "EndTimePeriod" id="EndTimePeriod" defaultValue={props.queryList.endDate}/>
+				</div>
+				
+				<div className = "form-group col-md-3">
+					<br/>
+					<button className = "btn btn-info" onClick={() => {
+						let unitId = document.getElementById('DeptUnit').value
+						let startDate = document.getElementById('StartTimePeriod').value
+						let endDate = document.getElementById('EndTimePeriod').value
+
+						let url = '/faculty'
+						let query = {
+							accomplishment: 1
+						}
+						if(unitId && unitId != 0) query.unitId = unitId
+						if(startDate) query.startDate = startDate
+						if(endDate) query.endDate = endDate
+
+						Router.push({
+							pathname: url,
+							query
+						})
+						
+						window.setTimeout(function(){
+                            window.location.reload()
+                        }, 1000);
+					}}> Filter</button>
+				</div>
 			</div>
 
-			<button className = "btn btn-info"> Change Time Period</button>
 			<nav>
             			<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 					<a className="nav-item nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Overview</a>

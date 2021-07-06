@@ -116,13 +116,8 @@ function BasicInfo(props) {
     let trainingSeminar
     let licensureExam
     let researchGrant
-<<<<<<< HEAD
     let positionsList
     let facultyLoad
-=======
-    let facultyLoad
-    let positionsList
->>>>>>> fe230232202f0036b0d1663f617adb8ba95482af
 
     if (context.res) {
         if (Object.keys(token).length === 0 && token.constructor === Object) {
