@@ -1,5 +1,6 @@
 import DegreeAnalyticsTable from '../../../../components/unit-head/dashboard/degree/degree_dashboard_table'
 import DegreeDashboardGraph from '../../../../components/unit-head/dashboard/degree/degree_dashboard_graph'
+import Router from 'next/router'
 
 function DegreeCount(props) {
 	let educList = props.children
@@ -109,32 +110,71 @@ function DegreeCount(props) {
 		}
 	  ]
 
+	let unitId
+	let startDate
+	let endDate
+
+	if(props.queryList.degree == 1) {
+		unitId = props.queryList.unitId
+		startDate = props.queryList.startDate
+		endDate = props.queryList.endDate
+	}
 	return(
 		<div>
 			<br />
 			<h3 align = "center">Attained Degrees</h3>
-			<div className = "form-group col-md-4 required">
-					<label className = "control-label" htmlFor ="DeptUnit"> Department Unit </label>
-                    			<select className = "form-control" name = "DeptUnit" required>
-						<option>All</option>
-						<option>Mathematics and Computing Sciences Unit</option>
-						<option>Chemistry Unit</option>
-						<option>Physics and Geology Unit</option>
-					</select>
-                	</div>
-			<div className = "form-row">
-                    		<div className = "form-group col-md-4 required">
-					<label className = "control-label" htmlFor ="StartTimePeriod"> From  </label>
-                    			<input className = "form-control" type = "date" name = "StartTimePeriod" required />
-                		</div>
 
-				<div className = "form-group col-md-4 required">
-					<label className = "control-label" htmlFor ="EndTimePeriod"> To </label>
-                    			<input className = "form-control" type = "date" name = "EndTimePeriod" required />
-                		</div>
+			<div className = "form-row">
+				{
+					props.role == 3 && 
+					<div className = "form-group col-md-3">
+						<label className = "control-label" htmlFor ="DegreeDeptUnit"> Department Unit </label>
+						<select className = "form-control" name = "DegreeDeptUnit" id="DegreeDeptUnit" defaultValue={unitId}>
+							<option value="0">All</option>
+							<option value="1">Chemistry Unit</option>
+							<option value="2">Mathematics and Computing Sciences Unit</option>
+							<option value="3">Physics and Geology Unit</option>
+						</select>
+					</div>
+				}
+
+				<div className = "form-group col-md-3">
+					<label className = "control-label" htmlFor ="DegreeStartTimePeriod"> From  </label>
+					<input className = "form-control" type = "date" name = "DegreeStartTimePeriod" id="DegreeStartTimePeriod" defaultValue={startDate} />
+				</div>
+
+				<div className = "form-group col-md-3">
+					<label className = "control-label" htmlFor ="DegreeEndTimePeriod"> To </label>
+					<input className = "form-control" type = "date" name = "DegreeEndTimePeriod" id="DegreeEndTimePeriod" defaultValue={endDate}/>
+				</div>
+				
+				<div className = "form-group col-md-3">
+					<br/>
+					<button className = "btn btn-info" onClick={() => {
+						let unitId = document.getElementById('DegreeDeptUnit').value
+						let startDate = document.getElementById('DegreeStartTimePeriod').value
+						let endDate = document.getElementById('DegreeEndTimePeriod').value
+
+						let url = '/faculty'
+						let query = {
+							degree: 1
+						}
+						if(unitId && unitId != 0) query.unitId = unitId
+						if(startDate) query.startDate = startDate
+						if(endDate) query.endDate = endDate
+
+						Router.push({
+							pathname: url,
+							query
+						})
+						
+						window.setTimeout(function(){
+                            window.location.reload()
+                        }, 1000);
+					}}> Filter</button>
+				</div>
 			</div>
 
-			<button className = "btn btn-info"> Change Time Period</button>
 			<nav>
             			<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 					<a className="nav-item nav-link" id="degree-graph-tab" data-toggle="tab" href="#degree-graph" role="tab" aria-controls="degree-graph" aria-selected="false">Overview</a>

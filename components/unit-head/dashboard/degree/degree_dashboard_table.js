@@ -88,7 +88,7 @@ function Table ({columns, data}){
     <br />
     <ReactHTMLTableToExcel
 				id="test-table-xls-button"
-				className="btn btn-primary float-right"
+				className="btn btn-primary mb-2"
 				table="degreeTable"
 				filename="degree"
 				buttonText="Download as XLS"/>

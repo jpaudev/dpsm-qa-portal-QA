@@ -22,9 +22,9 @@ function AccomplishmentCount(props){
 
 	let tableData = []
 
-	let queryUnitId
-	let queryStartDate
-	let queryEndDate
+	let unitId
+	let startDate
+	let endDate
 
 	if(accompList != null) {
 		Object.keys(accompList).map(key => {
@@ -136,6 +136,12 @@ function AccomplishmentCount(props){
 		}
 	  ]
 
+	if(props.queryList.accomplishment == 1) {
+		unitId = props.queryList.unitId
+		startDate = props.queryList.startDate
+		endDate = props.queryList.endDate
+	}
+
 	return(
 		<div>
 			<br />
@@ -146,7 +152,7 @@ function AccomplishmentCount(props){
 					props.role == 3 && 
 					<div className = "form-group col-md-3">
 						<label className = "control-label" htmlFor ="DeptUnit"> Department Unit </label>
-						<select className = "form-control" name = "DeptUnit" id="DeptUnit" defaultValue={props.queryList.unitId}>
+						<select className = "form-control" name = "DeptUnit" id="DeptUnit" defaultValue={unitId}>
 							<option value="0">All</option>
 							<option value="1">Chemistry Unit</option>
 							<option value="2">Mathematics and Computing Sciences Unit</option>
@@ -157,12 +163,12 @@ function AccomplishmentCount(props){
 
 				<div className = "form-group col-md-3">
 					<label className = "control-label" htmlFor ="StartTimePeriod"> From  </label>
-					<input className = "form-control" type = "date" name = "StartTimePeriod" id="StartTimePeriod" defaultValue={props.queryList.startDate} />
+					<input className = "form-control" type = "date" name = "StartTimePeriod" id="StartTimePeriod" defaultValue={startDate} />
 				</div>
 
 				<div className = "form-group col-md-3">
 					<label className = "control-label" htmlFor ="EndTimePeriod"> To </label>
-					<input className = "form-control" type = "date" name = "EndTimePeriod" id="EndTimePeriod" defaultValue={props.queryList.endDate}/>
+					<input className = "form-control" type = "date" name = "EndTimePeriod" id="EndTimePeriod" defaultValue={endDate}/>
 				</div>
 				
 				<div className = "form-group col-md-3">
