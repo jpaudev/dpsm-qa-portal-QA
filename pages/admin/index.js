@@ -12,7 +12,7 @@ function FacultyList(props) {
 			<h2 align="center">Faculty List</h2>
             <Link href = "/admin/faculty"><button type="button" className="btn btn-primary float-right">Add Faculty</button></Link>
             <br />
-            <Faculty path="admin">{props.facultyList}</Faculty>
+            <Faculty path="admin" role={props.data.role}>{props.facultyList}</Faculty>
         </Layout>
     )
   }
