@@ -12,7 +12,6 @@ export default async function addEmployment(data, token, facultyId) {
 			if(`${data.endDate}`) {
                 bod.endDate = `${data.endDate}`
 			}
-            console.log(bod);
 			try {
 				const response = await axios.post("http://localhost:3001/api/faculty/basic-info/add/employment", bod, {
 					headers: {
