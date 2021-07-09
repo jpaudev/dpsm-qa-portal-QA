@@ -41,6 +41,9 @@ function FacultyList(props){
 					
 					let lastUpdated
 					if(faculty[index].faculty_personal_info.faculty_update) lastUpdated = faculty[index].faculty_personal_info.faculty_update.updatedAt.split('T')[0]
+
+					let statusClass = 'disabled btn '
+					faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
 					return (
 						<tr key={faculty[index].faculty_personal_info.user.userId}>
 							<td>
@@ -52,7 +55,8 @@ function FacultyList(props){
 									</a>	
 								</div>
 							</td>
-							<td>{faculty[index].faculty_personal_info.user.status}</td>
+
+							<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
 							<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
 							{
 								props.role == 5 &&
@@ -98,6 +102,9 @@ function FacultyList(props){
 					
 					let lastUpdated
 					if(faculty[index].faculty_personal_info.faculty_update) lastUpdated = faculty[index].faculty_personal_info.faculty_update.updatedAt.split('T')[0]
+
+					let statusClass = 'disabled btn '
+					faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
 					return (
 						<tr key={faculty[index].faculty_personal_info.user.userId}>
 							<td>
@@ -109,7 +116,7 @@ function FacultyList(props){
 									</a>	
 								</div>
 							</td>
-							<td>{faculty[index].faculty_personal_info.user.status}</td>
+							<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
 							<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
 							{
 								props.role == 5 &&
@@ -155,6 +162,9 @@ function FacultyList(props){
 					
 					let lastUpdated
 					if(faculty[index].faculty_personal_info.faculty_update) lastUpdated = faculty[index].faculty_personal_info.faculty_update.updatedAt.split('T')[0]
+
+					let statusClass = 'disabled btn '
+					faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
 					return (
 						<tr key={faculty[index].faculty_personal_info.user.userId}>
 							<td>
@@ -166,7 +176,7 @@ function FacultyList(props){
 									</a>	
 								</div>
 							</td>
-							<td>{faculty[index].faculty_personal_info.user.status}</td>
+							<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
 							<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
 							{
 								props.role == 5 &&
