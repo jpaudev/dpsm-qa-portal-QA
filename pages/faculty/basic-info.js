@@ -36,13 +36,13 @@ function BasicInfo(props) {
 		<br />
             <div className="tab-content" id="nav-tabContent">
             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true}>{ props.personalInfo }</PersonalInfo>
+                <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true}>{ props.personalInfo }</PersonalInfo>
             </div>
             <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true}>{ props.education }</Education>
+                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true}>{ props.education }</Education>
             </div>
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
-                <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} employment = { props.employment }>{ props.workExperience }</WorkExperience>
+                <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employment = { props.employment }>{ props.workExperience }</WorkExperience>
             </div>
             </div>
 	<style jsx>{`
@@ -71,7 +71,6 @@ function BasicInfo(props) {
     let data
     let unit
     let position
-    let employmentType
     let approvalList
     let roleAssignmentFlag = false
 
@@ -102,9 +101,9 @@ function BasicInfo(props) {
 
             const employ = await fetch(url + '/employment', header)
             employment = await employ.json()
+            console.log(employment);
             unit = employment.result.faculty_unit.unit.unit
             position = employment.result.faculty_employment_infos[0].faculty_employment_position.position
-            employmentType = employment.result.faculty_employment_infos[0].faculty_employment_position.employmentType
             
             const educ = await fetch(url + '/education', header)
             education = await educ.json()
@@ -145,7 +144,6 @@ function BasicInfo(props) {
             name,
             unit,
             position,
-            employmentType,
             personalInfo: personalInfo.result,
             education: education.result,
             workExperience: workExperience.result,

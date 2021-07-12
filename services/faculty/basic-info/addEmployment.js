@@ -7,7 +7,9 @@ export default async function addEmployment(data, token, facultyId) {
 			let bod = {
                 facultyId: `${facultyId}`,
                 employmentPositionId: `${data.employmentPositionId}`,
-                startDate: `${data.startDate}`
+                status: `${data.status}`,
+				category: `${data.category}`,
+				startDate: `${data.startDate}`
             }
 			if(`${data.endDate}`) {
                 bod.endDate = `${data.endDate}`

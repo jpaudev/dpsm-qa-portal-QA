@@ -342,7 +342,7 @@ function PublicServiceAccomplishment(props){
 	return(
 	<div>
 		<h2 align = "center"> Public Service Accomplishments </h2>
-        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+        <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
         <div role="alert" id="publicservicealert" style={{visibility:"hidden"}}></div>
 		<div>
 		<h5 align = "center">Within UP Manila </h5>

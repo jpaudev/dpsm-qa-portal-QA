@@ -150,7 +150,7 @@ function ResearchGrant(props){
 	return(
 		<div>
             <h2 align = "center"> Research Grants </h2>
-            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+            <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
 			<div className ="alert alert-success" role="alert" id="researchalert" style={{visibility:"hidden"}}></div>
             <div>
 	<table className = "table table-striped table-sm">

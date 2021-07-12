@@ -9,7 +9,7 @@ function FacultyLoad(props) {
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
 		<br />
-		<FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyId={props.data.facultyId} name={props.data.name} facultyFlag={true} clerkFlag={false}>
+		<FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.data.facultyId} name={props.data.name} facultyFlag={true} clerkFlag={false}>
 			{props.facultyLoad}
 		</FacultyLoader>
 	    <style jsx>{`
@@ -54,7 +54,6 @@ function FacultyLoad(props) {
     let employment = await employ.json()
     let unit = employment.result.faculty_unit.unit.unit
     let position = employment.result.faculty_employment_infos[0].faculty_employment_position.position
-    let employmentType = employment.result.faculty_employment_infos[0].faculty_employment_position.employmentType
 
 	let roleAssignmentFlag = false
 	let approvalList
@@ -86,7 +85,6 @@ function FacultyLoad(props) {
 		props: {
 			unit,
 			position,
-			employmentType,
 			token,
 			data,
 			facultyLoad: facultyLoad.result,

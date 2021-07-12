@@ -127,7 +127,7 @@ function Education(props) {
     return (
         <div>
             <h2 align = "center"> Educational History </h2>
-            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{props.name}</NameDisplay>
+            <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
 
             <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
             

@@ -1,67 +1,50 @@
 import EmploymentAnalyticsTable from '../../../../components/unit-head/dashboard/employment-status/employment_dashboard_table'
 import EmploymentDashboardGraph from '../../../../components/unit-head/dashboard/employment-status/employment_dashboard_graph'
+import Router from 'next/router'
 
 function EmploymentStatus(props){
 	let empList = props.children
 
-	let chemfttCount = 0
-	let chemftpCount = 0
+	let chemftCount = 0
 	let chemptCount = 0
+	let chemlecCount = 0
 
-	let mcsufttCount = 0
-	let mcsuftpCount = 0
+	let mcsuftCount = 0
 	let mcsuptCount = 0
+	let mcsulecCount = 0
 
-	let p6GeofttCount = 0
-	let p6GeoftpCount = 0
+	let p6GeoftCount = 0
 	let p6GeoptCount = 0
+	let p6GeolecCount = 0
 
 	let tableData = []
+
+	let unitId
+	let startDate
+	let endDate
 	
 	if(empList) {
 		empList.forEach(async (e) => {
-			if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftt') {
-				if(e.faculty_unit.unitId == 1) chemfttCount++
-				else if(e.faculty_unit.unitId == 2) mcsufttCount++
-				else if(e.faculty_unit.unitId == 3) p6GeofttCount++
-	
-				await tableData.push({
-					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-					col2: e.faculty_employment_infos[0].faculty_employment_position.position,
-					col3: 'Full-time',
-					col4: 'Temporary',
-					col5: e.faculty_employment_infos[0].startDate,
-					col6: e.faculty_employment_infos[0].endDate
-				})
-			}
-			if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'ftp') {
-				if(e.faculty_unit.unitId == 1) chemftpCount++
-				else if(e.faculty_unit.unitId == 2) mcsuftpCount++
-				else if(e.faculty_unit.unitId == 3) p6GeoftpCount++
-	
-				await tableData.push({
-					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-					col2: e.faculty_employment_infos[0].faculty_employment_position.position,
-					col3: 'Full-time',
-					col4: 'Permanent',
-					col5: e.faculty_employment_infos[0].startDate,
-					col6: e.faculty_employment_infos[0].endDate
-				})
-			}
-			if(e.faculty_employment_infos[0].faculty_employment_position.employmentType == 'pt') {
+			if(e.faculty_employment_infos[0].status == 'Full-time') {
+				if(e.faculty_unit.unitId == 1) chemftCount++
+				else if(e.faculty_unit.unitId == 2) mcsuftCount++
+				else if(e.faculty_unit.unitId == 3) p6GeoftCount++
+			} else if(e.faculty_employment_infos[0].status == 'Lecturer') {
+				if(e.faculty_unit.unitId == 1) chemlecCount++
+				else if(e.faculty_unit.unitId == 2) mcsulecCount++
+				else if(e.faculty_unit.unitId == 3) p6GeolecCount++
+			} else if(e.faculty_employment_infos[0].status == 'Part-time') {
 				if(e.faculty_unit.unitId == 1) chemptCount++
 				else if(e.faculty_unit.unitId == 2) mcsuptCount++
 				else if(e.faculty_unit.unitId == 3) p6GeoptCount++
-	
-				await tableData.push({
-					col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
-					col2: e.faculty_employment_infos[0].faculty_employment_position.position,
-					col3: 'Part-time',
-					col4: '',
-					col5: e.faculty_employment_infos[0].startDate,
-					col6: e.faculty_employment_infos[0].endDate
-				})
 			}
+
+			await tableData.push({
+				col1: <a href = {`${'/faculty/view/' + encodeURIComponent(e.facultyId)}`}>{e.lastName + ', ' + e.firstName}</a>,
+				col2: e.faculty_employment_infos[0].faculty_employment_position.position,
+				col3: e.faculty_employment_infos[0].status,
+				col4: e.faculty_employment_infos[0].category
+			})
 		})
 	}
 
@@ -76,61 +59,95 @@ function EmploymentStatus(props){
 		  "Physics/GeologyColor": "hsl(177, 70%, 50%)",
 		},
 		{
-		  "EmploymentStatus": "Full-time (Temporary)",
-		  "MCSU": mcsufttCount,
+		  "EmploymentStatus": "Full-time",
+		  "MCSU": mcsuftCount,
 		  "hot dogColor": "hsl(67, 70%, 50%)",
-		  "Chem": chemfttCount,
+		  "Chem": chemftCount,
 		  "ChemColor": "hsl(215, 70%, 50%)",
-		  "Physics/Geology": p6GeofttCount,
+		  "Physics/Geology": p6GeoftCount,
 		  "Physics/GeologyColor": "hsl(244, 70%, 50%)",
 		},
 		{
-		  "EmploymentStatus": "Full-time (Permanent)",
-		  "MCSU": mcsuftpCount,
+		  "EmploymentStatus": "Lecturer",
+		  "MCSU": mcsulecCount,
 		  "hot dogColor": "hsl(234, 70%, 50%)",
-		  "Chem": chemftpCount,
+		  "Chem": chemlecCount,
 		  "ChemColor": "hsl(302, 70%, 50%)",
-		  "Physics/Geology": p6GeoftpCount,
+		  "Physics/Geology": p6GeolecCount,
 		  "Physics/GeologyColor": "hsl(178, 70%, 50%)",
 		}
 	]
+	
+	if(props.queryList.employment == 1) {
+		unitId = props.queryList.unitId
+		startDate = props.queryList.startDate
+		endDate = props.queryList.endDate
+	}
 
 	return(
 		<div>
 			<br />
 			<h3 align = "center">Employment Status</h3>
-			<div className = "form-group col-md-4 required">
-					<label className = "control-label" htmlFor ="DeptUnit"> Department Unit </label>
-                    			<select className = "form-control" name = "DeptUnit" required>
-						<option>All</option>
-						<option>Mathematics and Computing Sciences Unit</option>
-						<option>Chemistry Unit</option>
-						<option>Physics and Geology Unit</option>
-					</select>
-                	</div>
 			<div className = "form-row">
-                    		<div className = "form-group col-md-4 required">
-					<label className = "control-label" htmlFor ="StartTimePeriod"> From  </label>
-                    			<input className = "form-control" type = "date" name = "StartTimePeriod" required />
-                		</div>
+				{
+					props.role == 3 &&
+					<div className = "form-group col-md-3">
+						<label className = "control-label" htmlFor ="EmpDeptUnit"> Department Unit </label>
+						<select className = "form-control" name = "EmpDeptUnit" id="EmpDeptUnit" defaultValue={unitId}>
+							<option value="0">All</option>
+							<option value="1">Chemistry Unit</option>
+							<option value="2">Mathematics and Computing Sciences Unit</option>
+							<option value="3">Physics and Geology Unit</option>
+						</select>
+					</div>
+				}
+				<div className = "form-group col-md-3">
+					<label className = "control-label" htmlFor ="EmpStartTimePeriod"> From  </label>
+					<input className = "form-control" type = "date" name = "EmpStartTimePeriod" id="EmpStartTimePeriod" defaultValue={startDate} />
+				</div>
 
-				<div className = "form-group col-md-4 required">
-					<label className = "control-label" htmlFor ="EndTimePeriod"> To </label>
-                    			<input className = "form-control" type = "date" name = "EndTimePeriod" required />
-                		</div>
+				<div className = "form-group col-md-3">
+					<label className = "control-label" htmlFor ="EmpEndTimePeriod"> To </label>
+					<input className = "form-control" type = "date" name = "EmpEndTimePeriod" id="EmpEndTimePeriod" defaultValue={endDate}/>
+				</div>
+				
+				<div className = "form-group col-md-3">
+					<br/>
+					<button className = "btn btn-info" onClick={() => {
+						let unitId = document.getElementById('EmpDeptUnit').value
+						let startDate = document.getElementById('EmpStartTimePeriod').value
+						let endDate = document.getElementById('EmpEndTimePeriod').value
+
+						let url = '/faculty'
+						let query = {
+							employment: 1
+						}
+						if(unitId && unitId != 0) query.unitId = unitId
+						if(startDate) query.startDate = startDate
+						if(endDate) query.endDate = endDate
+
+						Router.push({
+							pathname: url,
+							query
+						})
+						
+						window.setTimeout(function(){
+                            window.location.reload()
+                        }, 1000);
+					}}> Filter</button>
+				</div>
 			</div>
 
-			<button className = "btn btn-info"> Change Time Period</button>
 			<nav>
-            			<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
+				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 					<a className="nav-item nav-link" id="employment-graph-tab" data-toggle="tab" href="#employment-graph" role="tab" aria-controls="employment-graph" aria-selected="false">Overview</a>
 					<a className="nav-item nav-link" id="employment-table-tab" data-toggle="tab" href="#employment-table" role="tab" aria-controls="employment-table" aria-selected="false">Full List</a>
-            			</div>
-            		</nav>
-	    		<div className="tab-content" id="nav-tabContent">
-	    			<div className="tab-pane fade show active" id="employment-graph" role="tabpanel" aria-labelledby="employment-graph-tab"><EmploymentDashboardGraph data={graphData} /></div>
-	    			<div className="tab-pane fade" id="employment-table" role="tabpanel" aria-labelledby="employment-table-tab"><EmploymentAnalyticsTable data={tableData} /></div>
-            		</div>
+				</div>
+			</nav>
+			<div className="tab-content" id="nav-tabContent">
+				<div className="tab-pane fade show active" id="employment-graph" role="tabpanel" aria-labelledby="employment-graph-tab"><EmploymentDashboardGraph data={graphData} /></div>
+				<div className="tab-pane fade" id="employment-table" role="tabpanel" aria-labelledby="employment-table-tab"><EmploymentAnalyticsTable data={tableData} /></div>
+			</div>
                 
 		<style jsx>{`
 			a.nav-item:focus{

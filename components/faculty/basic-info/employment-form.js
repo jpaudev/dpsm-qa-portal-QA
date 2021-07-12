@@ -60,6 +60,23 @@ class EmploymentForm extends React.Component{
                                     {positions}
                                 </Field>
                             </div>
+							<div className = "form-group col-md-3">
+                                <label htmlFor = "Status[]"> Status *</label>
+                                <Field as = "select" className = "form-control" name = "status" id = "status" required>
+                                    <option value="0">-- SELECT STATUS --</option>
+                                    <option value="Full-time">Full-time</option>
+									<option value="Part-time">Part-time</option>
+									<option value="Lecturer">Lecturer</option>
+                                </Field>
+                            </div>
+							<div className = "form-group col-md-3">
+                                <label htmlFor = "Category[]"> Category *</label>
+                                <Field as = "select" className = "form-control" name = "category" id = "category" required>
+                                    <option value="0">-- SELECT CATEGORY --</option>
+									<option value="Permanent">Permanent</option>
+									<option value="Temporary">Temporary</option>
+                                </Field>
+                            </div>
                             <div className = "form-group col-md-3">
                                 <label htmlFor = "StartDateEmployment[]"> Start Date *</label>
                                 <Field type = "date" className = "form-control" name = "startDate" required />

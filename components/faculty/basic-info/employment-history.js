@@ -20,18 +20,8 @@ function EmploymentHistory(props){
 			return (
 				<tr key = {props.children.faculty_employment_infos[key].employmentInfoId}>
 					<td>{props.children.faculty_employment_infos[key].faculty_employment_position.position}</td>
-					{
-						props.children.faculty_employment_infos[key].faculty_employment_position.employmentType == 'ftt' &&
-						<td>Full-time (Temporary)</td>
-					}
-					{
-						props.children.faculty_employment_infos[key].faculty_employment_position.employmentType == 'ftp' &&
-						<td>Full-time (Permanent)</td>
-					}
-					{
-						props.children.faculty_employment_infos[key].faculty_employment_position.employmentType == 'pt' &&
-						<td>Part-time</td>
-					}
+                    <td>{props.children.faculty_employment_infos[key].status}</td>
+                    <td>{props.children.faculty_employment_infos[key].category}</td>
 					<td>{props.children.faculty_employment_infos[key].startDate}</td>
 					<td>{props.children.faculty_employment_infos[key].endDate || 'Present'}</td>
 					{
@@ -78,7 +68,8 @@ function EmploymentHistory(props){
 				<tbody>
 					<tr>
 						<th>Position</th>
-						<th>Type</th>
+						<th>Status</th>
+                        <th>Category</th>
 						<th>Start Date</th>
 						<th>End Date</th>
 						{ props.role == 5 && <th>Action</th> }

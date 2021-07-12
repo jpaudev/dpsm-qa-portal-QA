@@ -99,27 +99,27 @@ function Accomplishments(props) {
 		<br />
         <div className="tab-content" id="nav-tabContent">
     	    <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
-                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true}>
+                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true}>
                     { props.publicService }
                 </PublicServiceAccomplishment>
             </div>
     	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true} facultyId={props.data.facultyId}>
+                <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true} facultyId={props.data.facultyId}>
                     { props.publications }
                 </Publication>
             </div>
     	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
-                <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true}>
+                <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true}>
                     { props.trainingSeminar }
                 </TrainingSeminar>
             </div>
     	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">
-                <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true}>
+                <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true}>
                     { props.licensureExam }
                 </LicensureExam>
             </div>
     	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={true} facultyId={props.data.facultyId}>
+                <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true} facultyId={props.data.facultyId}>
                     { props.researchGrant }
                 </ResearchGrant>
             </div>
@@ -165,7 +165,6 @@ function Accomplishments(props) {
     const employmentInfo = await employment.json()
     let unit = employmentInfo.result.faculty_unit.unit.unit
     let position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
-    let employmentType = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.employmentType
 
     const personal = await fetch('http://localhost:3001/api/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
@@ -223,7 +222,6 @@ function Accomplishments(props) {
             name,
             unit,
             position,
-            employmentType,
             faculty: faculty.result,
             personalInfo: personalInfo.result,
             publicService: publicService.result,

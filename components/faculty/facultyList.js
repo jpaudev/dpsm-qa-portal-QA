@@ -38,14 +38,17 @@ function FacultyList(props){
 					let firstName = faculty[index].faculty_personal_info.firstName
 					let facultyId = faculty[index].facultyId
 					let forApprovalCount = faculty[index].forApprovalCount
+					let statusClass
 					
 					let lastUpdated
 					if(faculty[index].faculty_personal_info.faculty_update) lastUpdated = faculty[index].faculty_personal_info.faculty_update.updatedAt.split('T')[0]
 
-					let statusClass = 'disabled btn '
-					faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
+					if(props.path != 'approval') {
+						statusClass = 'disabled btn '
+						faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
+					}
 					return (
-						<tr key={faculty[index].faculty_personal_info.user.userId}>
+						<tr>
 							<td>
 								<div className = "list-group">
 									<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light" forApproval={faculty[index].faculty_personal_info}>
@@ -56,8 +59,14 @@ function FacultyList(props){
 								</div>
 							</td>
 
-							<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
-							<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
+							{
+								props.path != 'approval' &&
+								<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
+							}
+							{
+								props.path != 'approval' &&
+								<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
+							}
 							{
 								props.role == 5 &&
 								<td>
@@ -77,8 +86,14 @@ function FacultyList(props){
 						<table className = "table">
 							<tr>
 								<th>Name</th>
+								{
+								props.path != 'approval' &&
 								<th>Status</th>
+								}
+								{
+								props.path != 'approval' &&
 								<th>Remarks</th>
+								}
 								{
 									props.role == 5 &&
 									<th>Action</th>
@@ -99,14 +114,17 @@ function FacultyList(props){
 					let firstName = faculty[index].faculty_personal_info.firstName
 					let facultyId = faculty[index].facultyId
 					let forApprovalCount = faculty[index].forApprovalCount
+					let statusClass
 					
 					let lastUpdated
 					if(faculty[index].faculty_personal_info.faculty_update) lastUpdated = faculty[index].faculty_personal_info.faculty_update.updatedAt.split('T')[0]
 
-					let statusClass = 'disabled btn '
-					faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
+					if(props.path != 'approval') {
+						statusClass = 'disabled btn '
+						faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
+					}
 					return (
-						<tr key={faculty[index].faculty_personal_info.user.userId}>
+						<tr>
 							<td>
 								<div className = "list-group">
 									<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
@@ -116,8 +134,14 @@ function FacultyList(props){
 									</a>	
 								</div>
 							</td>
-							<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
-							<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
+							{
+								props.path != 'approval' &&
+								<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
+							}
+							{
+								props.path != 'approval' &&
+								<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
+							}
 							{
 								props.role == 5 &&
 								<td>
@@ -137,8 +161,14 @@ function FacultyList(props){
 						<table className = "table">
 							<tr>
 								<th>Name</th>
+								{
+								props.path != 'approval' &&
 								<th>Status</th>
+								}
+								{
+								props.path != 'approval' &&
 								<th>Remarks</th>
+								}
 								{
 									props.role == 5 &&
 									<th>Action</th>
@@ -159,14 +189,17 @@ function FacultyList(props){
 					let firstName = faculty[index].faculty_personal_info.firstName
 					let facultyId = faculty[index].facultyId
 					let forApprovalCount = faculty[index].forApprovalCount
+					let statusClass
 					
 					let lastUpdated
 					if(faculty[index].faculty_personal_info.faculty_update) lastUpdated = faculty[index].faculty_personal_info.faculty_update.updatedAt.split('T')[0]
 
-					let statusClass = 'disabled btn '
-					faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
+					if(props.path != 'approval') {
+						statusClass = 'disabled btn '
+						faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
+					}
 					return (
-						<tr key={faculty[index].faculty_personal_info.user.userId}>
+						<tr>
 							<td>
 								<div className = "list-group">
 									<a href = {`${path + encodeURIComponent(facultyId)}`} className = "list-group-item list-group-item-action list-group-item-light">
@@ -176,8 +209,14 @@ function FacultyList(props){
 									</a>	
 								</div>
 							</td>
-							<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
-							<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
+							{
+								props.path != 'approval' &&
+								<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
+							}
+							{
+								props.path != 'approval' &&
+								<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
+							}
 							{
 								props.role == 5 &&
 								<td>
@@ -197,8 +236,14 @@ function FacultyList(props){
 						<table className = "table">
 							<tr>
 								<th>Name</th>
+								{
+								props.path != 'approval' &&
 								<th>Status</th>
+								}
+								{
+								props.path != 'approval' &&
 								<th>Remarks</th>
+								}
 								{
 									props.role == 5 &&
 									<th>Action</th>

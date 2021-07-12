@@ -92,7 +92,7 @@ function PersonalInfo(props) {
     return (
         <div>
         <h2 align = "center"> Personal Information </h2>
-        <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
+        <NameDisplay unit = {props.unit} position={props.position}>{name}</NameDisplay>
 		<Formik
             initialValues={FacultyDetails}
             onSubmit={async (values, token) => {

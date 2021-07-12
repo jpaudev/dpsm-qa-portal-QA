@@ -83,7 +83,7 @@ function WorkExperience(props){
     return(
         <div>
             <h2 align = "center"> Work Experience </h2>
-            <NameDisplay unit = {props.unit} position={props.position} employmentType={props.employmentType}>{name}</NameDisplay>
+            <NameDisplay unit = {props.unit} position={props.position}>{name}</NameDisplay>
             <div role="alert" id="workexpalert" style={{visibility:"hidden"}}></div>
             <h5 align = "center"> Within UP Manila </h5>
             <EmploymentHistory role={props.role} token={props.token} facultyId={props.facultyId}>{props.employment}</EmploymentHistory>

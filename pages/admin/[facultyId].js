@@ -34,13 +34,13 @@ function BasicInfo(props) {
                     </nav>
 				    <div className="tab-content" id="nav-tabContent-basic-info">
                         <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                            <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType}>{ props.personalInfo }</PersonalInfo>
+                            <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position}>{ props.personalInfo }</PersonalInfo>
                         </div>
                         <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                            <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} viewFlag={true}>{ props.education }</Education>
+                            <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} viewFlag={true}>{ props.education }</Education>
                         </div>
                         <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
-                            <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} employment = { props.employment } viewFlag={true} role={props.data.role} facultyId={props.pathFacultyId} positionsList={props.positionsList}>{ props.workExperience }</WorkExperience>
+                            <WorkExperience name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employment = { props.employment } viewFlag={true} role={props.data.role} facultyId={props.pathFacultyId} positionsList={props.positionsList}>{ props.workExperience }</WorkExperience>
                         </div>
                     </div>
                 </div>
@@ -56,18 +56,18 @@ function BasicInfo(props) {
                     </nav>
                     <div className="tab-content" id="nav-tabContent-accomplishment">
                         <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
-                            <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} viewFlag={true}>{ props.publicService }</PublicServiceAccomplishment>
+                            <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} viewFlag={true}>{ props.publicService }</PublicServiceAccomplishment>
                         </div>
                         <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                            <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true}>{ props.publications }</Publication></div>
+                            <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true}>{ props.publications }</Publication></div>
                         <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
-                            <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} viewFlag={true}>{ props.trainingSeminar }</TrainingSeminar>
+                            <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} viewFlag={true}>{ props.trainingSeminar }</TrainingSeminar>
                         </div>
                         <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">
-                            <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} viewFlag={true}>{ props.licensureExam }</LicensureExam>
+                            <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} viewFlag={true}>{ props.licensureExam }</LicensureExam>
                         </div>
                         <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                            <ResearchGrant name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true}>{ props.researchGrant }</ResearchGrant>
+                            <ResearchGrant name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true}>{ props.researchGrant }</ResearchGrant>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@ function BasicInfo(props) {
                     <Evaluation />
                 </div>
                 <div className="tab-pane fade" id="faculty-load" role="tabpanel" aria-labelledby="faculty-load-tab">
-                    <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} employmentType={props.employmentType} facultyFlag={false} facultyId={props.pathFacultyId} clerkFlag={true} viewFlag={true}>{ props.facultyLoad }</FacultyLoader>
+                    <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId} clerkFlag={true} viewFlag={true}>{ props.facultyLoad }</FacultyLoader>
                 </div>
             </div>
 
@@ -106,7 +106,6 @@ function BasicInfo(props) {
     let name
     let unit
     let position
-    let employmentType
     let data
     let employmentInfo
     let education
@@ -150,7 +149,6 @@ function BasicInfo(props) {
                 unit = employmentInfo.result.faculty_unit.unit.unit
                 if(employmentInfo.result.faculty_employment_infos[0]) {
                     position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
-                    employmentType = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.employmentType
                 }
 
                 const load = await fetch('http://localhost:3001/api/faculty/load/' + facultyId, header)
@@ -202,7 +200,6 @@ function BasicInfo(props) {
             facultyLoad: facultyLoad.result,
             pathFacultyId: context.params.facultyId,
             position: position || null,
-            employmentType: employmentType || null,
             education: education.result,
             employment: employmentInfo.result,
             workExperience: workExperience.result,
