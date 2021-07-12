@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 import { parseCookies } from "../../helpers"
 import AccomplishmentCount from '../../components/unit-head/dashboard/accomplishment-count/accomplishment-count'
 import EmploymentStatus from '../../components/unit-head/dashboard/employment-status/employment-status'
-import SETResults from '../../components/unit-head/dashboard/SET-results/SET-results'
+// import SETResults from '../../components/unit-head/dashboard/SET-results/SET-results'
 import DegreeCount from '../../components/unit-head/dashboard/degree/degree'
 
 function Dashboard(props) { 

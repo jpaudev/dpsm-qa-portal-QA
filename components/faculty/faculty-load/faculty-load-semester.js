@@ -212,6 +212,7 @@ function FacultyLoadSemester(props) {
                                     <div className = "form-group">
                                         <label htmlFor = "setResults"> Add SET Results </label>
                                         <Field type = "file" className = "form-control-file" name = "setResults" id = "setResults" value={undefined} />
+                                        <Field type = "hidden" className = "form-control" name = "syllabus" value="" />
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +262,7 @@ function FacultyLoadSemester(props) {
                             $("#loadalert").fadeTo(5000, 500).slideUp(500, function(){
                                 $("#loadalert").slideUp(500);
                             });
-                            // Router.push('/faculty/faculty-load', '/faculty/faculty-load')
+                            Router.push('/faculty/faculty-load', '/faculty/faculty-load')
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
@@ -271,6 +272,9 @@ function FacultyLoadSemester(props) {
                                     <div className = "form-group">
                                         <label htmlFor = "syllabus"> Add Syllabus </label>
                                         <Field type = "file" className = "form-control-file" name = "syllabus" id = "syllabus" value={undefined} />
+                                        <Field type = "hidden" className = "form-control" name = "subject" />
+                                        <Field type = "hidden" className = "form-control" name = "section" />
+                                        <Field type = "hidden" className = "form-control" name = "setResults" />
                                     </div>
                                 </div>
                             </div>

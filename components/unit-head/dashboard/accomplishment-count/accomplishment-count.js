@@ -174,7 +174,11 @@ function AccomplishmentCount(props){
 				<div className = "form-group col-md-3">
 					<br/>
 					<button className = "btn btn-info" onClick={() => {
-						let unitId = document.getElementById('DeptUnit').value
+						let unitId
+
+						if(props.role ==3) {
+							unitId = document.getElementById('DeptUnit').value
+						}
 						let startDate = document.getElementById('StartTimePeriod').value
 						let endDate = document.getElementById('EndTimePeriod').value
 
