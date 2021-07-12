@@ -79,7 +79,9 @@ function PersonalInfo(props) {
             unit: '1',
             employmentPosition: '1',
             startDate: '',
-            philosophy: ''
+            philosophy: '',
+            status: '',
+            category: ''
         }
 
         props.positions.forEach(key => {
@@ -249,6 +251,23 @@ function PersonalInfo(props) {
                                     </Field>
                                 </div>
                                 <div className = "form-group col-md-3 required">
+                                    <label className = "control-label" htmlFor ="Status"> Status </label>
+                                    <Field as = "select" className = "form-control" name = "status" defaultValue = { FacultyDetails.status } required>
+                                        <option value = "Full-time">Full-time</option>
+                                        <option value = "Part-time">Part-time</option>
+                                        <option value = "Lecturer">Lecturer</option>
+                                    </Field>
+                                </div>
+                                <div className = "form-group col-md-3 required">
+                                    <label className = "control-label" htmlFor ="Category"> Category </label>
+                                    <Field as = "select" className = "form-control" name = "category" defaultValue = { FacultyDetails.category } required>
+                                        <option value = "Permanent">Permanent</option>
+                                        <option value = "Temporary">Temporary</option>
+                                    </Field>
+                                </div>
+                            </div>
+                            <div className = "form-row">
+                                <div className = "form-group col-md-3 required">
                                     <label className = "control-label" htmlFor = "EmploymentPosition"> Employment Position </label>
                                     <Field as = "select" className = "form-control" name = "employmentPosition" defaultValue = { FacultyDetails.employmentPosition } required>
                                         {positions}
@@ -259,6 +278,7 @@ function PersonalInfo(props) {
                                     <Field className = "form-control" type = "date" name = "startDate" defaultValue = { FacultyDetails.StartDate } required />
                                 </div>
                             </div>
+
                         </div>
                     }
 

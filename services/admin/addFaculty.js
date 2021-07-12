@@ -38,6 +38,8 @@ export default async function addFaculty(data, token) {
 		  			},
 					"unitId": `${data.unit}`,
 					"employmentPositionId": `${data.employmentPosition}`,
+					"status": `${data.status}`,
+					"category": `${data.category}`,
 					"startDate": `${data.startDate}`
 		  		}
 				
