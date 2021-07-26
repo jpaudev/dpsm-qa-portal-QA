@@ -133,14 +133,14 @@ function RoleAssignment(props) {
                 if(data.role == 2) {
                     if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
 
-                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId, header)
+                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId + '&status=ft', header)
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result[0].faculty_units
                 } else if(data.role == 3) {
                     if(roleAssignmentList)
                         roleAssignmentFlag = true
 
-                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
+                    const faculty = await fetch('http://localhost:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId + '&status=ft', header)
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result
                 }
