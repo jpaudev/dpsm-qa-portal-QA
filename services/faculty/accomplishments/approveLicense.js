@@ -11,7 +11,10 @@ export default async function approveLicense(formData, approveFlag, facultyId, t
 		} else if(cookieData.role == 3) {
 			status = 'Approved'
 		}
-	} else status = 'Rejected'
+	} else {
+		status = 'Rejected'
+		formData.set('approverRemarks', cookieData.name + ': ' + formData.get('approverRemarks'))
+	}
 	formData.append('status', status)
 
 	try {
