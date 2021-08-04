@@ -1,5 +1,6 @@
 import Router from 'next/router'
 import assignDeptChair from '../../../services/faculty/assignments/assignDeptChair'
+import Select from 'react-select'
 
 function AssignDeptChair(props) { 
     let faculty
@@ -20,12 +21,13 @@ function AssignDeptChair(props) {
             <div className ="alert alert-success" role="alert" id="deptchairalert" style={{visibility:"hidden"}}></div>
             <br />
             <div className = "jumbotron">
-                <div className = "form-group col-md-6">
+                <div className = "form-group col-md-8">
                     <label htmlFor = "deptChair"> Select New Department Chair </label>
-                    <select className = "form-control" name = "deptChair" id="deptChair" required>
+			<Select className = "col-md-8" name = "deptChair" id = "deptChair" options = {faculty} required />
+			{/*<select className = "form-control" name = "deptChair" id="deptChair" required>
                         <option value="0" key = "0">-- SELECT FACULTY --</option>
                         {faculty}
-                </select>
+                </select>*/}
                 </div>
                 <button className = "btn btn-danger" data-toggle="modal" data-target="#assignDeptChair">Assign New Department Chair</button>
             </div>
