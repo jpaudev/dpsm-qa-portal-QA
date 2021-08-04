@@ -282,8 +282,8 @@ function PersonalInfo(props) {
                         </div>
                     }
 
-                    { props.facultyFlag && <button type = "submit" className = "btn btn-primary" disabled = {isSubmitting}> Update </button> }
-                    { props.clerkFlag && <button type = "submit" className = "btn btn-primary" disabled = {isSubmitting}> Add Faculty </button> }
+                    { props.facultyFlag && <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}> Update </button> }
+                    { props.clerkFlag && <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}> Add Faculty </button> }
                     {/*{ props.facultyFlag && <PersonalInfoDependents /> }*/}
                     <br />
                 </Form>
