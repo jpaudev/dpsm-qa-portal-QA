@@ -87,7 +87,7 @@ class EmploymentForm extends React.Component{
                             </div>
                         </div>
                         <br />
-                        <button type = "submit" className = "btn btn-primary" disabled = {isSubmitting}>Submit</button>
+                        <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}>Submit</button>
                     </Form>
 				)}
 			</Formik>
