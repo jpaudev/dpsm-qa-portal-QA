@@ -1,4 +1,5 @@
 import React from 'react'
+import Select from 'react-select'
 
 class ResearchGrantFormAuthor extends React.Component{
 	constructor(props){
@@ -38,17 +39,18 @@ class ResearchGrantFormAuthor extends React.Component{
 			);
 		});
 		return(<div>
-			<div className = "btn-group btn-group-sm col-md-2">
+		       {/*<div className = "btn-group btn-group-sm col-md-2">
 				<button type = "button" className = "btn btn-primary" id = "AddAuthor" onClick = {() => this.clone()}> Add Researcher </button>
 				<button type = "button" className = "btn btn-danger" id = "RemoveAuthor" onClick = {() => this.remove()}> Remove a Row </button>
-			</div>
+			</div>*/{
 			<div className = "form-row">
-			<div className = "form-group col-md-6">
-				<label htmlFor = "ResearchAuthorDPSM[]"> Researcher (from DPSM) </label>
-				<select className = "form-control col-md-6" name = "ResearchAuthorDPSM[]" required>
-					{authors}
-				</select>
-			</div>
+				<div className = "form-group col-md-6">
+					<label htmlFor = "ResearchAuthorDPSM[]"> Researchers (from DPSM) </label>
+					<Select className = "col-md-12" name = "ResearchAuthorDPSM[]" isMulti options = {authors} required />
+					{/*<select className = "form-control col-md-6" name = "ResearchAuthorDPSM[]" required>
+						{authors}
+					</select>*/}
+				</div>
 		</div>
 		<div>
 				{this.state.duplicateAuthors}
