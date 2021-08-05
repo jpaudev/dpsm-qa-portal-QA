@@ -55,6 +55,12 @@ function BasicInfo(props) {
 		a.active{
 			background-color:#78b6c2;
 		}
+		a#personal-info-tab.active{
+			background-color:#78b6c2;
+		}
+		nav{
+			background-color:#aaa;
+		}
 	`}</style>
         </Layout>
     )
