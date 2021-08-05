@@ -74,7 +74,7 @@ function Accomplishments(props) {
             <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">
-                        Public Service Accomplishments &nbsp;
+                        Public Service &nbsp;
                         {psaRejected && <span className="badge badge-danger">!</span>}
                     </a>
                     <a className="nav-item nav-link" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">
