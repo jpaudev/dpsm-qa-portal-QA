@@ -42,7 +42,7 @@ class ResearchGrantFormAuthor extends React.Component{
 		       {/*<div className = "btn-group btn-group-sm col-md-2">
 				<button type = "button" className = "btn btn-primary" id = "AddAuthor" onClick = {() => this.clone()}> Add Researcher </button>
 				<button type = "button" className = "btn btn-danger" id = "RemoveAuthor" onClick = {() => this.remove()}> Remove a Row </button>
-			</div>*/{
+			</div>*/}
 			<div className = "form-row">
 				<div className = "form-group col-md-6">
 					<label htmlFor = "ResearchAuthorDPSM[]"> Researchers (from DPSM) </label>
