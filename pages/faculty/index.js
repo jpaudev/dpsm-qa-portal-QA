@@ -40,6 +40,12 @@ function Dashboard(props) {
 				a.active{
 					background-color:#78b6c2;
 				}
+				a#accomplishment-count-tab.active{
+					background-color:#78b6c2;
+				}
+				nav{
+					background-color:#aaa;
+				}
 			`}</style>
 	                </div>
 	            </div>
