@@ -61,8 +61,13 @@ function TrainingSeminar(props) {
                                     </a>
                                 </div>
                             }
+                            { 
+                                !props.children[key].proof && 
+                                <div>None</div>
+                            }
                         </td>
                         <td>{props.children[key].status}</td>
+                        <td>{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         {
                             props.facultyFlag && !props.viewFlag &&
@@ -137,6 +142,7 @@ function TrainingSeminar(props) {
                             <th>Remarks</th>
                             <th>Proof</th>
                             <th>Status</th>
+                            <th>Approver Remarks</th>
                             {!props.viewFlag && <th>Action</th>}
                         </tr>
                         {content}

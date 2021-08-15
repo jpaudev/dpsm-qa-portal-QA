@@ -7,11 +7,7 @@ export default async function updateEducation(formData, token) {
 	try {
 	    if (token) {
 	        let url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
-		    let header = {
-		        headers: {
-		            'Authorization': 'Bearer ' + token
-		        }
-		    }
+
 		    if(formData.get('proof') == "") {
 				formData.delete('proof')
 			}
