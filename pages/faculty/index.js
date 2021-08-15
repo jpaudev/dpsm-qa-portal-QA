@@ -13,7 +13,7 @@ function Dashboard(props) {
 	} else if(props.data.role == 2 || props.data.role == 3){
 		return (
 	        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
-	            <div className="col-9">
+
 	                <div className="container">
 	                    <nav>
             			<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
@@ -48,7 +48,7 @@ function Dashboard(props) {
 				}
 			`}</style>
 	                </div>
-	            </div>
+
 	        </Layout>
 	    )	
 	}
