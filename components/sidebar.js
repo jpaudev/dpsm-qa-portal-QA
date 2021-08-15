@@ -4,9 +4,6 @@ import { useRouter } from 'next/router'
 
 function Sidebar(props) { 
     const router = useRouter()
-    const {
-    	query: { menu },
-    } = router
 
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
@@ -29,25 +26,25 @@ function Sidebar(props) {
                 <div className="list-group">
 			<a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" href = "#facultyMenu" aria-controls = "facultyMenu"> Faculty </a>
                 <div id = "facultyMenu" className = "collapse show">
-                    { !staff && !faculty && <Link href={{ pathname: "/faculty", query: { menu: "active" } }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty" ?  menu  : "inactive" }>Dashboard</a></Link> }
-                    { !staff && <Link href={{ pathname: "/faculty/basic-info", query: { menu: "active" } }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/basic-info" ?  menu  : "inactive" }>Basic Information</a></Link> }
-                    { !staff && <Link href={{ pathname: "/faculty/accomplishment", query: { menu: "active" } }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/accomplishment" ?  menu  : "inactive" }>Accomplishment</a></Link> }
-                    { !staff && <Link href={{ pathname: "/faculty/faculty-load", query: { menu: "active" } }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/faculty-load" ?  menu  : "inactive" }>Faculty Load</a></Link> }
-                    { !staff && <Link href={{ pathname: "/faculty/evaluation", query: { menu: "active" } }}><a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/evaluation" ?  menu  : "inactive" }>Peer Evaluation</a></Link> }
-                    { !staff && !faculty && <Link href={{ pathname: "/faculty/view/all", query: { menu: "active" } }}><a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/view/all" ?  menu  : "inactive" }>Faculty List</a></Link> }
-                    { !staff && !faculty && <Link href={{ pathname: "/faculty/approval", query: { menu: "active" } }}>
-                        <a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/approval" ?  menu  : "inactive" }> 
+                    { !staff && !faculty && <Link href={{ pathname: "/faculty" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty" ?  "active"  : "inactive" }>Dashboard</a></Link> }
+                    { !staff && <Link href={{ pathname: "/faculty/basic-info" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/basic-info" ?  "active"  : "inactive" }>Basic Information</a></Link> }
+                    { !staff && <Link href={{ pathname: "/faculty/accomplishment" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>Accomplishment</a></Link> }
+                    { !staff && <Link href={{ pathname: "/faculty/faculty-load" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/faculty-load" ?  "active"  : "inactive" }>Faculty Load</a></Link> }
+                    { !staff && <Link href={{ pathname: "/faculty/evaluation" }}><a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/evaluation" ?  "active"  : "inactive" }>Peer Evaluation</a></Link> }
+                    { !staff && !faculty && <Link href={{ pathname: "/faculty/view/all" }}><a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/view/all" ?  "active"  : "inactive" }>Faculty List</a></Link> }
+                    { !staff && !faculty && <Link href={{ pathname: "/faculty/approval" }}>
+                        <a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" }> 
                             Pending Approvals &nbsp;{props.approvalList.facultyCount > 0 && <span className="badge badge-danger">{props.approvalList.facultyCount}</span>}
                         </a>
                     </Link> }
-                    { staff && <Link href={{ pathname: "/admin", query: { menu: "active" } }}><a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/admin" ?  menu  : "inactive" }>Faculty List</a></Link> }
-		            { !staff && !faculty && props.roleAssignment && <Link href ={{ pathname: "/faculty/role-assignment", query: { menu: "active" } }}>
-                        <a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/role-assignment" ?  menu  : "inactive" }>
+                    { staff && <Link href={{ pathname: "/admin" }}><a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/admin" ?  "active"  : "inactive" }>Faculty List</a></Link> }
+		            { !staff && !faculty && props.roleAssignment && <Link href ={{ pathname: "/faculty/role-assignment" }}>
+                        <a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/role-assignment" ?  "active"  : "inactive" }>
                             Role Assignment &nbsp;<span className="badge badge-danger">!</span>
                         </a>
                     </Link> }
-                    { !staff && !faculty && !props.roleAssignment && <Link href ={{ pathname: "/faculty/role-assignment", query: { menu: "active" } }}>
-                        <a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/role-assignment" ?  menu  : "inactive" }>
+                    { !staff && !faculty && !props.roleAssignment && <Link href ={{ pathname: "/faculty/role-assignment" }}>
+                        <a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/role-assignment" ?  "active"  : "inactive" }>
                             Role Assignment
                         </a>
                     </Link> }
