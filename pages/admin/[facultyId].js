@@ -91,6 +91,21 @@ function BasicInfo(props) {
 		a.active{
 			background-color:#78b6c2;
 		}
+		a#basic-info-tab.active{
+			background-color:#78b6c2;
+		}
+		a#personal-info-tab.active{
+			background-color:#78b6c2;
+		}
+		a#public-service-accomplishment-tab.active{
+			background-color:#78b6c2;
+		}
+		nav{
+			background-color:#aaa;
+		}
+		nav#nav-tab-main{
+			background-color:#999;
+		}
         .list-group-item-info{
             text-indent:5%;
         }

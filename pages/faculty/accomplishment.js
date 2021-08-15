@@ -134,6 +134,12 @@ function Accomplishments(props) {
 		a.active{
 			background-color:#78b6c2;
 		}
+		a#public-service-accomplishment-tab.active{
+			background-color:#78b6c2;
+		}
+		nav{
+			background-color:#aaa;
+		}
 	`}</style>
         </Layout>
     )
