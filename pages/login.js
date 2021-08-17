@@ -15,7 +15,7 @@ function Login() {
 
   const [cookie, setCookie] = useCookies(["user"])
     return (
-        <div className = "d-flex justify-content-center">
+        <div className = "d-flex justify-content-center" style = {{ backgroundImage: "url(kbblur.jpg)" }}>
 		<Head>
                 <title>DPSM-QA-PORTAL</title>
                 {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link> */}
