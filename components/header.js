@@ -6,7 +6,7 @@ function Header(props) {
             <nav className="navbar navbar-expand-lg">
                     <span className="navbar-text">
                         <a className="navbar-brand">
-                            <img src="/dpsm-seal.png" width="150" height="150" className="d-inline-block align-top" alt="DPSM-QA-Portal" />
+                            <img src="/dpsm-seal.png" width="186" height="150" className="d-inline-block align-top" alt="DPSM-QA-Portal" />
                         </a>
                     </span>
 		<h2> DPSM QA PORTAL </h2>
