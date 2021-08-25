@@ -28,7 +28,7 @@ function Login() {
 		<h3> DPSM QA PORTAL </h3>
 		<br />
 		<br />
-		<center><img src="/dpsm-seal.png" width="115" height="115" alt="DPSM-QA-Portal" /></center>
+		<center><img src="/dpsm-seal.png" width="142" height="115" alt="DPSM-QA-Portal" /></center>
 		<br />
 		<br />
 	</div>
