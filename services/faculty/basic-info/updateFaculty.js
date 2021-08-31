@@ -6,7 +6,7 @@ export default async function updateFaculty(data, token) {
     let facultyId = cookieData.facultyId
 	try {
 	    if (token) {	      
-	        let url = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId;
+	        let url = 'http://agila.upm.edu.ph:3000/api/faculty/basic-info/' + facultyId;
 		    let header = {
 		        headers: {
 		            'Authorization': 'Bearer ' + token

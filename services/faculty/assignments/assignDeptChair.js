@@ -7,7 +7,7 @@ export default async function assignDeptChair(incomingDeptChair, token) {
             let cookieData = jwt.decode(token)
             let userId = cookieData.userId
             
-			let url = 'http://agila.upm.edu.ph:3001/api/user/' + userId;
+			let url = 'http://agila.upm.edu.ph:3000/api/user/' + userId;
             const response = await axios({
                 method: 'PUT',
                 url: url,
@@ -17,7 +17,7 @@ export default async function assignDeptChair(incomingDeptChair, token) {
                 headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}
             })	
             if(response.data.success == true) {
-                let url = 'http://agila.upm.edu.ph:3001/api/user/' + incomingDeptChair;
+                let url = 'http://agila.upm.edu.ph:3000/api/user/' + incomingDeptChair;
                 const response = await axios({
                     method: 'PUT',
                     url: url,

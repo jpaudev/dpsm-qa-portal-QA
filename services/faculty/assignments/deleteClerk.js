@@ -5,7 +5,7 @@ export default async function deleteClerk(userId, token) {
 	try {
 		if (token) {
 			try {
-				const response = await axios.delete("http://agila.upm.edu.ph:3001/api/user/admin/" + userId, {
+				const response = await axios.delete("http://agila.upm.edu.ph:3000/api/user/admin/" + userId, {
 					headers: {
 						Authorization: `Bearer ${token}`
 					}

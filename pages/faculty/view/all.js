@@ -46,11 +46,11 @@ function FacultyList(props) {
                 unitId += '?unitId=' + data.unitId
             }
             
-            const faculty = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info' + unitId, header)
+            const faculty = await fetch('http://agila.upm.edu.ph:3000/api/faculty/basic-info' + unitId, header)
             facultyList = await faculty.json()
 
-            let approvalURL = 'http://agila.upm.edu.ph:3001/api/faculty/approval/' + facultyId
-            let roleAssignmentURL = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/unit/assignment'
+            let approvalURL = 'http://agila.upm.edu.ph:3000/api/faculty/approval/' + facultyId
+            let roleAssignmentURL = 'http://agila.upm.edu.ph:3000/api/faculty/basic-info/unit/assignment'
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
                     approvalURL += '?unitId=' + data.unitId

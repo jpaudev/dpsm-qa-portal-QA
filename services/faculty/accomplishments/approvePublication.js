@@ -20,7 +20,7 @@ export default async function approvePublication(formData, approveFlag, facultyI
 	try {
 		if (token) {
 			try {
-				let url = 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId;
+				let url = 'http://agila.upm.edu.ph:3000/api/faculty/accomplishment/' + facultyId;
 				const response = await axios({
 					method: 'PUT',
 					url: url + '/publisher',

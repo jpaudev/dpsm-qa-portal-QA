@@ -87,15 +87,15 @@ function RoleAssignment(props) {
                 }
             }
             
-            const personal = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId, header)
+            const personal = await fetch('http://agila.upm.edu.ph:3000/api/faculty/basic-info/' + facultyId, header)
             personalInfo = await personal.json()
 
-            let approvalURL = 'http://agila.upm.edu.ph:3001/api/faculty/approval/' + facultyId
-            let accompURL = 'http://agila.upm.edu.ph:3001/api/faculty/reports/accomplishment'
-            let empURL = 'http://agila.upm.edu.ph:3001/api/faculty/reports/employment'
-            let educURL = 'http://agila.upm.edu.ph:3001/api/faculty/reports/education'
-            let roleAssignmentURL = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/unit/assignment'
-            let clerkAssignmentURL = 'http://agila.upm.edu.ph:3001/api/user/admin'
+            let approvalURL = 'http://agila.upm.edu.ph:3000/api/faculty/approval/' + facultyId
+            let accompURL = 'http://agila.upm.edu.ph:3000/api/faculty/reports/accomplishment'
+            let empURL = 'http://agila.upm.edu.ph:3000/api/faculty/reports/employment'
+            let educURL = 'http://agila.upm.edu.ph:3000/api/faculty/reports/education'
+            let roleAssignmentURL = 'http://agila.upm.edu.ph:3000/api/faculty/basic-info/unit/assignment'
+            let clerkAssignmentURL = 'http://agila.upm.edu.ph:3000/api/user/admin'
             
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
@@ -133,7 +133,7 @@ function RoleAssignment(props) {
                 if(data.role == 2) {
                     if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
 
-                    const faculty = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId, header)
+                    const faculty = await fetch('http://agila.upm.edu.ph:3000/api/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId, header)
 
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result[0].faculty_units
@@ -141,7 +141,7 @@ function RoleAssignment(props) {
                     if(roleAssignmentList)
                         roleAssignmentFlag = true
 
-                    const faculty = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
+                    const faculty = await fetch('http://agila.upm.edu.ph:3000/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result
                 }
