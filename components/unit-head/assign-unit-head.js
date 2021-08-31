@@ -2,18 +2,20 @@ import Router from 'next/router'
 import { Formik, Form, Field } from 'formik'
 import updateUnitAssignment from '../../services/faculty/assignments/updateUnitAssignment'
 
-function AssignUnitHead(props) {
+function AssignUnitHead(props) { 
     let faculty
 
     if(props.children != null) { 
         faculty = Object.keys(props.facultyListInfo).map(key => {
             let selected = false
-            if(props.facultyListInfo[key].facultyId == props.children.incomingUnitHead) {selected = true}
-            return(
-                <option value={props.facultyListInfo[key].facultyId} selected={selected}>
-                    {props.facultyListInfo[key].faculty_personal_info.lastName + ', ' + props.facultyListInfo[key].faculty_personal_info.firstName}
-                </option>
-            )
+            if(props.facultyListInfo[key].faculty_personal_info) {
+                if(props.facultyListInfo[key].facultyId == props.children.incomingUnitHead) {selected = true}
+                return(
+                    <option value={props.facultyListInfo[key].facultyId} selected={selected}>
+                        {props.facultyListInfo[key].faculty_personal_info.lastName + ', ' + props.facultyListInfo[key].faculty_personal_info.firstName}
+                    </option>
+                )
+            }
         })
     }
 

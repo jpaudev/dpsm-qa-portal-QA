@@ -36,7 +36,7 @@ function BasicInfo(props) {
 		<br />
             <div className="tab-content" id="nav-tabContent">
             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true}>{ props.personalInfo }</PersonalInfo>
+                <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true} email={props.data.upemail}>{ props.personalInfo }</PersonalInfo>
             </div>
             <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
                 <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={true}>{ props.education }</Education>
@@ -54,6 +54,12 @@ function BasicInfo(props) {
 		}
 		a.active{
 			background-color:#78b6c2;
+		}
+		a#personal-info-tab.active{
+			background-color:#78b6c2;
+		}
+		nav{
+			background-color:#aaa;
 		}
 	`}</style>
         </Layout>
@@ -101,7 +107,7 @@ function BasicInfo(props) {
 
             const employ = await fetch(url + '/employment', header)
             employment = await employ.json()
-            console.log(employment);
+            
             unit = employment.result.faculty_unit.unit.unit
             position = employment.result.faculty_employment_infos[0].faculty_employment_position.position
             

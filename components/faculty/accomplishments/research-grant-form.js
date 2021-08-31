@@ -82,6 +82,9 @@ class ResearchGrantForm extends React.Component{
 								<Field className = "form-control" type = "text" name = "nonFacultyResearchers" placeholder = "Input all authors outside DPSM (separate names with commas)" />
 							</div>
 						</div>
+						<div>
+							<ResearchGrantFormAuthor faculty = {this.props.faculty} />
+						</div>
 						<div className = "form-row">
 							<div className = "form-group col-md-2">
 								<label htmlFor = "ResearchProjectedStartDate[]"> Start Date (Projected) </label>
@@ -107,13 +110,10 @@ class ResearchGrantForm extends React.Component{
 	                            				</Field>
 							</div>
 						</div>
-						<div>
-							<ResearchGrantFormAuthor faculty = {this.props.faculty} />
-						</div>
 						<br />
 						<button
 							type = "submit"
-							className = "btn btn-primary"
+							className = "btn btn-primary col-md-12"
 							disabled = {isSubmitting}
 						>
 							Submit

@@ -75,7 +75,7 @@ class LicensureExamForm extends React.Component{
                         <br />
                         <button
                             type = "submit"
-                            className = "btn btn-primary"
+                            className = "btn btn-primary col-md-12"
                             disabled = {isSubmitting}
                         >
                             Submit

@@ -92,7 +92,15 @@ function ResearchGrant(props){
                                 }
                             })}
                         </td>
-                        
+                        <td>
+                            {Object.keys(res).map(auth => {
+                                if(res[auth].facultyId == props.facultyId) {
+                                    return (
+                                        res[auth].approverRemarks || 'None'
+                                    );
+                                }
+                            })}
+                        </td>
                         <td>
                         {
                             props.facultyFlag && !props.viewFlag &&
@@ -166,6 +174,7 @@ function ResearchGrant(props){
 				<th>Research Progress</th>
 				<th>Proof</th>
 				<th>Status</th>
+                <th>Approver Remarks</th>
                 {!props.viewFlag && <th>Action</th>}
 			</tr>
             {content}

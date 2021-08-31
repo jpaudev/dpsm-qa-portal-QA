@@ -7,11 +7,7 @@ export default async function updateLicensure(formData, token) {
 	try {
 	    if (token) {
 	        let url = 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId;
-		    let header = {
-		        headers: {
-		            'Authorization': 'Bearer ' + token
-		        }
-		    }
+
 		    if(formData.get('proof') == "") {
 				formData.delete('proof')
 			}
@@ -25,6 +21,7 @@ export default async function updateLicensure(formData, token) {
 			    data: formData,
 			    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 		    })	
+			
 			return response.data
 	    } else {
 	        console.log(access.result.message)

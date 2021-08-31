@@ -56,7 +56,7 @@ function ChangePassword(props) {
                         }
                     }} />
                 </div>
-                <button type="button" className = "btn btn-primary" onClick = {async (e) => {
+                <button type="button" className = "btn btn-primary col-md-12" onClick = {async (e) => {
                             let alert = document.getElementById("changepassalert")
                             
                             if(!validated) e.preventDefault()

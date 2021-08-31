@@ -77,9 +77,14 @@ function Publication(props){
                     <td>
                         {Object.keys(pub).map(auth => {
                             if(pub[auth].facultyId == props.facultyId) {
-                                return (
-                                    pub[auth].status
-                                );
+                                return (pub[auth].status);
+                            }
+                        })}
+                    </td>
+                    <td>
+                        {Object.keys(pub).map(auth => {
+                            if(pub[auth].facultyId == props.facultyId) {
+                                return (pub[auth].approverRemarks || 'None');
                             }
                         })}
                     </td>
@@ -153,6 +158,7 @@ function Publication(props){
 				<th>Citation</th>
 				<th>Proof</th>
 				<th>Status</th>
+                <th>Approver Remarks</th>
                 {!props.viewFlag && <th>Action</th>}
 			</tr>
             {content}

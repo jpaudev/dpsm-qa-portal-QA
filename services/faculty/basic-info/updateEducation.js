@@ -6,12 +6,9 @@ export default async function updateEducation(formData, token) {
     let facultyId = cookieData.facultyId
 	try {
 	    if (token) {
+
 	        let url = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId;
-		    let header = {
-		        headers: {
-		            'Authorization': 'Bearer ' + token
-		        }
-		    }
+
 		    if(formData.get('proof') == "") {
 				formData.delete('proof')
 			}

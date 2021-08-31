@@ -134,6 +134,7 @@ function RoleAssignment(props) {
                     if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
 
                     const faculty = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId, header)
+
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result[0].faculty_units
                 } else if(data.role == 3) {

@@ -1,4 +1,5 @@
 import React from 'react'
+import Select from 'react-select'
 
 class PublicationFormAuthor extends React.Component{
 	constructor(props){
@@ -39,16 +40,17 @@ class PublicationFormAuthor extends React.Component{
 			);
 		});
 		return(<div>
-			<div className = "btn-group btn-group-sm col-md-2">
+		       {/*<div className = "btn-group btn-group-sm col-md-2">
 				<button type = "button" className = "btn btn-primary" id = "AddAuthor" onClick = {() => this.clone()}> Add DPSM Author </button>
 				<button type = "button" className = "btn btn-danger" id = "RemoveAuthor" onClick = {() => this.remove()}> Remove a Row </button>
-			</div>
+			</div>*/}
 			<div className = "form-row">
-				<div className = "form-group col-md-6">
-					<label htmlFor = "PublicationAuthorDPSM[]"> Author (from DPSM) </label>
-					<select className = "form-control col-md-6" name = "PublicationAuthorDPSM[]" required>
+				<div className = "form-group col-md-12">
+					<label htmlFor = "PublicationAuthorDPSM[]"> Authors (from DPSM) </label>
+					<Select className = "col-md-12" name = "PublicationAuthorDPSM[]" isMulti options = {authors} required />
+					{/*<select className = "form-control col-md-6" name = "PublicationAuthorDPSM[]" required>
 						{authors}
-					</select>
+					</select>*/}
 				</div>
 			</div>
 		<div>

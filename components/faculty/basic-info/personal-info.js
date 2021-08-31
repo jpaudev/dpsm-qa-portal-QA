@@ -9,7 +9,7 @@ import { parseCookies } from "../../../helpers"
 import updateFaculty from '../../../services/faculty/basic-info/updateFaculty'
 import addFaculty from '../../../services/admin/addFaculty'
 
-function PersonalInfo(props) {
+function PersonalInfo(props) { 
     let FacultyDetails
     let name
     let dependents
@@ -28,6 +28,7 @@ function PersonalInfo(props) {
             mobile: props.children.mobile,
             landline: props.children.landline,
             email: props.children.email,
+            upemail: props.email,
             civilStatus: props.children.civilStatus,
             religion: props.children.religion,
             emergencyContactPerson: props.children.emergencyContactPerson,
@@ -200,17 +201,21 @@ function PersonalInfo(props) {
                         </div>
                     </div>
                     <div className = "form-row">
-                        <div className = "form-group col-md-4">
+                        <div className = "form-group col-md-3">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Landline) </label>
                             <Field className = "form-control" type = "tel" name = "landline" pattern = "[0-9]{8}" defaultValue = { FacultyDetails.landline } disabled={!props.facultyFlag && !props.clerkFlag} />
                         </div>
-                        <div className = "form-group col-md-4 required">
+                        <div className = "form-group col-md-3 required">
                             <label className = "control-label" htmlFor = "ContactNumber"> Contact Number (Mobile) </label>
                             <Field className = "form-control" type = "tel" name = "mobile" pattern = "[0]{1}[9]{1}[0-9]{9}" defaultValue = { FacultyDetails.mobile } disabled={!props.facultyFlag && !props.clerkFlag} required />
                         </div>
-                        <div className = "form-group col-md-4 required">
+                        <div className = "form-group col-md-3 required">
                             <label className = "control-label" htmlFor = "EmailAddressAlt"> Personal E-mail Address </label>
                             <Field className = "form-control" type = "email" name = "email" defaultValue = { FacultyDetails.email } disabled={!props.facultyFlag && !props.clerkFlag} />
+                        </div>
+                        <div className = "form-group col-md-3">
+                            <label className = "control-label" htmlFor = "UPEmail"> UP E-mail </label>
+                            <Field className = "form-control" type = "email" name = "upemail" defaultValue = { FacultyDetails.email } disabled="true" />
                         </div>
                     </div>
                     <div className = "form-row">
@@ -282,8 +287,8 @@ function PersonalInfo(props) {
                         </div>
                     }
 
-                    { props.facultyFlag && <button type = "submit" className = "btn btn-primary" disabled = {isSubmitting}> Update </button> }
-                    { props.clerkFlag && <button type = "submit" className = "btn btn-primary" disabled = {isSubmitting}> Add Faculty </button> }
+                    { props.facultyFlag && <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}> Update </button> }
+                    { props.clerkFlag && <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}> Add Faculty </button> }
                     {/*{ props.facultyFlag && <PersonalInfoDependents /> }*/}
                     <br />
                 </Form>
