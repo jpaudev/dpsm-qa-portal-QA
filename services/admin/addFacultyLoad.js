@@ -12,7 +12,7 @@ export default async function addFacultyLoad(formData, token) {
 				}
 				const response = await axios({
 				    method: 'POST',
-				    url: 'http://localhost:3001/api/faculty/load',
+				    url: 'http://agila.upm.edu.ph:3001/api/faculty/load',
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })	

@@ -50,7 +50,7 @@ function LicensureExam(props) {
                                 </button>
                                 <a
                                     className ="btn btn-info"
-                                    href={"http://localhost:3001/" + props.children[key].proof}
+                                    href={"http://agila.upm.edu.ph:3001/" + props.children[key].proof}
                                     style = {{ color: 'white' }}
                                     target="_blank">
                                     Preview

@@ -7,7 +7,7 @@ export default async function deleteResearch(data, token) {
 	try {
 		if(token) {
 			try {
-				const response = await axios.delete("http://localhost:3001/api/faculty/accomplishment/" + facultyId + "/researcher", {
+				const response = await axios.delete("http://agila.upm.edu.ph:3001/api/faculty/accomplishment/" + facultyId + "/researcher", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

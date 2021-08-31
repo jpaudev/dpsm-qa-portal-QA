@@ -6,7 +6,7 @@ export default async function updateUnitAssignment(updatedUser, unitId, token) {
 			let response
 			if(updatedUser == '0') updatedUser = null
 
-			let url = 'http://localhost:3001/api/faculty/basic-info/unit/' + unitId;
+			let url = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/unit/' + unitId;
 			response = await axios({
 				method: 'PUT',
 				url: url,

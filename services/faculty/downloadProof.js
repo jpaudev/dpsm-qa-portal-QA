@@ -8,7 +8,7 @@ export default async function downloadProof(data, token) {
 		if (token) {
 			try {
 				const response = await axios({
-					url: `http://localhost:3001/api/download/${data}`,
+					url: `http://agila.upm.edu.ph:3001/api/download/${data}`,
 					method: 'GET',
 					headers: { Authorization: `Bearer ${token}` },
 					responseType: 'blob'

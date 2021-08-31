@@ -88,7 +88,7 @@ function BasicInfo(props) {
         
             let facultyId = data.facultyId
             
-            let url = 'http://localhost:3001/api/faculty/basic-info/' + facultyId;
+            let url = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId;
             let header = {
                 headers: {
                     'Authorization': 'Bearer ' + token.user
@@ -111,8 +111,8 @@ function BasicInfo(props) {
             const work = await fetch(url + '/work-exp', header)
             workExperience = await work.json()
 
-            let approvalURL = 'http://localhost:3001/api/faculty/approval/' + facultyId
-            let roleAssignmentURL = 'http://localhost:3001/api/faculty/basic-info/unit/assignment'
+            let approvalURL = 'http://agila.upm.edu.ph:3001/api/faculty/approval/' + facultyId
+            let roleAssignmentURL = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/unit/assignment'
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
                     approvalURL += '?unitId=' + data.unitId

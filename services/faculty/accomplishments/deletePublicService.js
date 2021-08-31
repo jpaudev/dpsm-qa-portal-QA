@@ -7,7 +7,7 @@ export default async function deletePublicService(data, token) {
 	try {
 		if(token) {
 			try {
-				const response = await axios.delete("http://localhost:3001/api/faculty/accomplishment/" + facultyId + "/public-service", {
+				const response = await axios.delete("http://agila.upm.edu.ph:3001/api/faculty/accomplishment/" + facultyId + "/public-service", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

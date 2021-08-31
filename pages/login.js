@@ -37,7 +37,7 @@ function Login() {
               try {
                 
                 let token = null
-                const tokenRes = await axios.post("http://localhost:3001/api/login", {
+                const tokenRes = await axios.post("http://agila.upm.edu.ph:3001/api/login", {
                   upemail: `${values.username}`,
                   password: `${values.password}`
                 })

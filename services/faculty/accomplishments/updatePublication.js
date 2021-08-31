@@ -6,7 +6,7 @@ export default async function updatePublication(formData, token) {
     let facultyId = cookieData.facultyId
 	try {
 	    if (token) {
-	        let url = 'http://localhost:3001/api/faculty/accomplishment/' + facultyId;
+	        let url = 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId;
 		    let header = {
 		        headers: {
 		            'Authorization': 'Bearer ' + token

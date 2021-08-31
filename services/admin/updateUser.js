@@ -3,7 +3,7 @@ import axios from "axios"
 export default async function updateUser(data, token) {
 	try {
         if (token) {
-			let url = 'http://localhost:3001/api/user/' + `${data.userId}`;
+			let url = 'http://agila.upm.edu.ph:3001/api/user/' + `${data.userId}`;
             const response = await axios({
                 method: 'PUT',
                 url: url,

@@ -16,7 +16,7 @@ export default async function addResearch(formData, token) {
                	let proof = formData.get('proof')
 				const response = await axios({
 				    method: 'POST',
-				    url: 'http://localhost:3001/api/faculty/accomplishment/add/research-grant',
+				    url: 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/add/research-grant',
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })
@@ -27,7 +27,7 @@ export default async function addResearch(formData, token) {
 				bodData.append('proof', proof)
 		        const res = await axios({
 		        	method: 'POST',
-				    url: 'http://localhost:3001/api/faculty/accomplishment/add/researcher',
+				    url: 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/add/researcher',
 				    data: bodData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 		        })
@@ -37,7 +37,7 @@ export default async function addResearch(formData, token) {
 		        	bodData.set('facultyId', value)
 		        	const auth = await axios({
 			        	method: 'POST',
-					    url: 'http://localhost:3001/api/faculty/accomplishment/add/researcher',
+					    url: 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/add/researcher',
 					    data: bodData,
 					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			        })
