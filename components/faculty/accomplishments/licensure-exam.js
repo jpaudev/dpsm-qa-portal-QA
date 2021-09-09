@@ -1,74 +1,157 @@
 import Link from 'next/link'
 import LicensureExamForm from './licensure-exam-form'
+import NameDisplay from '../../../components/name-display'
+import Router from 'next/router'
+import React from 'react'
+import { Formik, Form, Field } from 'formik'
 
-function LicensureExam() {
+import downloadProof from '../../../services/faculty/downloadProof'
+import updateLicensure from '../../../services/faculty/accomplishments/updateLicensure'
+import deleteLicensure from '../../../services/faculty/accomplishments/deleteLicensure'
+import approveLicense from '../../../services/faculty/accomplishments/approveLicense'
+
+function LicensureExam(props) {
+    let deleteLic = 0
+    let editLic = 0
+    let approveLic = 0
+
+    const [currData, setData] = React.useState({
+        licenseId: 0,
+        examName: '',
+        examDate:'',
+        licenseNumber: '',
+        rank: '',
+        proof: ''
+    })
+    const name = props.name
+    let content 
+    if(props.children != null) {
+        content = Object.keys(props.children).map(key => {
+            if(props.children[key].licenseId != null) {
+                return (
+                    <tr key = {props.children[key].licenseId}>
+                        <td>{props.children[key].examName}</td>
+                        <td>{props.children[key].rank == 0 ? 'N/A' : props.children[key].rank}</td>
+                        <td>{props.children[key].examDate}</td>
+                        <td>{props.children[key].licenseNumber}</td>
+                        <td>
+                        {
+                            props.children[key].proof &&
+                            <div className = "btn-grp">
+                                <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    onClick = {() => {
+                                        let file = props.children[key].proof
+                                        downloadProof(file, props.token)
+                                    }}
+                                >
+                                    Download
+                                </button>
+                                <a
+                                    className ="btn btn-info"
+                                    href={"http://agila.upm.edu.ph:3001/" + props.children[key].proof}
+                                    style = {{ color: 'white' }}
+                                    target="_blank">
+                                    Preview
+                                </a>
+                            </div>
+                        }
+                        { 
+                            !props.children[key].proof && 
+                            <div>None</div>
+                        }
+                        </td>
+                        <td>{props.children[key].status}</td>
+                        <td>{props.children[key].approverRemarks || 'None'}</td>
+                        <td>
+                        {
+                            props.facultyFlag && !props.viewFlag &&
+                            <div className = "btn-group">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
+                                    setEdit(props.children.[key].licenseId)
+                                    setKey(editLic)
+                                }}>Edit</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
+                                    setDelete(props.children.[key].licenseId)
+                                }}>Delete</a>
+                            </div>
+                        }
+                        {
+                            !props.facultyFlag && !props.viewFlag &&
+                            <div className = "btn-grp">
+                                <a className="btn btn-info" data-toggle="modal" data-target="#approveLicense" onClick={() => {
+                                    setApprove(props.children[key].licenseId)
+                                }}>Approve</a>
+                                <a className="btn btn-danger" data-toggle="modal" data-target="#rejectLicense" onClick={() => {
+                                    setApprove(props.children[key].licenseId)
+                                }}>Reject</a>
+                            </div>
+                        }
+                        </td>
+                    </tr>
+                );
+            }
+        })
+    }
+    else{
+        content = <td colSpan = "7"><p align = "center">No data available!</p></td>
+    }
+
+    function setEdit(id) {
+        editLic = id
+    }
+
+    function setDelete(id) {
+        deleteLic = id
+    }
+
+    function setApprove(id) {
+        approveLic = id
+    }
+
+    function setKey(x) {
+        Object.keys(props.children).map(key => {
+            if(props.children.[key].licenseId == x) {
+                setData(props.children.[key])
+                if(props.children.[key].rank == "" || props.children.[key].rank == null) {
+                    setData(currData => ({...currData, rank: ''}))
+                }
+            }
+        });
+    }
+
     return (
         <div>
-	    <h3 align = "center"> Licensure Exams: <u>Cena, John</u> </h3>
-	    <br />
+            <h2 align = "center"> Licensure Exams </h2>
+            <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
+            <div role="alert" id="licensureexamalert" style={{visibility:"hidden"}}></div>
             <div>
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
-			    <th>Exam Name</th>
+                            <th>Exam Name</th>
                             <th>Rank</th>
                             <th>Date</th>
-			    <th>License Number</th>
+                            <th>License Number</th>
                             <th>Proof</th>
                             <th>Status</th>
-		   	    <th>Action</th>
+                            <th>Approver Remarks</th>
+                            {!props.viewFlag && <th>Action</th>}
                         </tr>
-                        <tr>
-			    <td>Mechanical Engineering</td>
-                            <td>3</td>
-                            <td>2020-11-11</td>
-			    <td>0000-0000</td>
-                            <td><a href = "#">Download proof</a></td>
-			    <td>Pending Approval</td>
-                            <td>
-				<div className = "btn-group">
-					<a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam">Edit</a>
-					<a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam">Delete</a>
-				</div>
-			    </td>
-                        </tr>
-                        <tr>
-			    <td>Pharmacy</td>
-                            <td>8</td>
-                            <td>2020-1-14</td>
-			    <td>1111-1111</td>
-                            <td><a href = "#">Download proof</a></td>
-			    <td>Pending Approval</td>
-                            <td>
-				<div className = "btn-group">
-					<a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam">Edit</a>
-					<a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam">Delete</a>
-				</div>
-			    </td>
-                        </tr>
-                        <tr>
-			    <td>Chemistry</td>
-                            <td>1</td>
-                            <td>2020-4-1</td>
-			    <td>2222-2222</td>
-                            <td><a href = "#">Download proof</a></td>
-                            <td>Verified</td>
-			    <td>
-				<div className = "btn-group">
-					<a className="btn btn-info disabled" data-toggle="modal" data-target="#editLicensureExam">Edit</a>
-					<a className="btn btn-danger disabled" data-toggle="modal" data-target="#deleteLicensureExam">Delete</a>
-				</div>
-			    </td>
-                        </tr>
+                        {content}
                     </tbody>
                 </table>
             </div>
 
-            <div>
-                <LicensureExamForm />
-            </div>   
+            {
+                props.facultyFlag && 
+                <div>
+                    <LicensureExamForm token = { props.token } />
+                </div>   
+            }
 	
-<div className="modal fade" id="editLicensureExam" tabIndex="-1" role="dialog" aria-labelledby="editLicensureExamLabel" aria-hidden="true">
+            <div className="modal fade" id="editLicensureExam" tabIndex="-1" role="dialog" aria-labelledby="editLicensureExamLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
@@ -77,45 +160,77 @@ function LicensureExam() {
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div className="modal-body">
-                        <form>
-                            <hr />
-                            <div className = "form-row">
-                        	<div className = "form-group">
-                            		<label htmlFor = "LicensureExamUpdate"> Licensure Exam </label>
-                            		<input className = "form-control" type = "text" name = "LicensureExamUpdate" placeholder = "Input licensure exam" />
-                        	</div>
-                    	    </div>
-                            <div className = "form-row">
-                        	<div className = "form-group">
-                            		<label htmlFor = "LicensureExamDateUpdate"> Date </label>
-                            		<input type = "date" className = "form-control" name = "LicensureExamDateUpdate" />
-                        	</div>
-                    	    </div>
-                            <div className = "form-row">
-                        	<div className = "form-group">
-                            		<label htmlFor = "LicensureExamRankUpdate"> Rank </label>
-                            		<input className = "form-control" type = "text" name = "LicensureExamRankUpdate" placeholder = "Input rank" />
-                        	</div>
-                    	    </div>
-                            <div className = "form-row">
-                        	<div className = "form-group">
-                            		<label htmlFor = "LicenseNumberUpdate"> License Number </label>
-                            		<input className = "form-control" type = "text" name = "LicenseNumberUpdate" placeholder = "Input licensure number" />
-                        	</div>
-                    	    </div>
-                            <div className = "form-row">
-                        	<div className = "form-group">
-                            		<label htmlFor = "LicensureExamProofUpdate"> Proof </label>
-                            		<input type = "file" className = "form-control-file" name = "LicensureExamProofUpdate" />
-                        	</div>
-                    	    </div>
-                        </form>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Save changes</button>
-                    </div>
+                    <Formik
+                        enableReinitialize
+                        initialValues={currData}
+                        onSubmit={async (values) => {
+                            let form = document.getElementById('editLicForm')
+                            let formData = new FormData(form)
+                            formData.append('licenseId', currData.licenseId)
+
+                            let alert = document.getElementById("licensureexamalert")
+                            let res = await updateLicensure(formData, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#licensureexamalert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
+                            
+                        }}
+                    >
+                    {({ values, errors, touched, isSubmitting }) => (
+                        <Form id = "editLicForm">
+                            <div className="modal-body">
+                                <hr />
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "LicensureExamUpdate"> Licensure Exam </label>
+                                        <Field className = "form-control" type = "text" name = "examName" id = "examName" placeholder = "Input licensure exam" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "LicensureExamDateUpdate"> Date </label>
+                                        <Field type = "date" className = "form-control" name = "examDate" id = "examDate" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "LicensureExamRankUpdate"> Rank </label>
+                                        <Field className = "form-control" type = "text" name = "rank" id = "rank" placeholder = "Input rank" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "LicenseNumeberUpdate"> License Number </label>
+                                        <Field className = "form-control" type = "text" name = "licenseNumber" id = "licenseNumber" placeholder = "Input licensure number" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "LicensureExamProofUpdate"> Proof </label>
+                                        <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary" data-dismiss="modal" disabled = {isSubmitting} onClick = {() => {
+                                    $('#editLicensureExam').modal('toggle');
+                                }}>Save changes</button>
+                            </div>
+                        </Form>
+                    )}
+                    </Formik>
                     </div>
                 </div>
             </div>
@@ -123,25 +238,147 @@ function LicensureExam() {
             <div className="modal fade" id="deleteLicensureExam" tabIndex="-1" role="dialog" aria-labelledby="deleteLicensureExamLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="deleteLicensureExamLabel">Delete Licensure Exam Information</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <hr />
+                            <p> Are you sure you want to delete this education information? </p>
+                        </div>
+                        <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+                            let alert = document.getElementById("licensureexamalert")
+                            let res = await deleteLicensure(deleteLic, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#licensureexamalert").slideUp(500);
+                            });
+
+                            Router.push('/faculty/accomplishment')
+                        }}>Yes, delete</button>
+                    </div>
+                    </div>
+                </div>
+            </div>            
+            <div className="modal fade" id="approveLicense" tabIndex="-1" role="dialog" aria-labelledby="approveLicenseLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="deleteLicensureExamLabel">Delete Licensure Exam Information</h5>
+                        <h5 className="modal-title" id="approveLicenseLabel">Approve Licensure Exam Information</h5>
                         <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div className="modal-body">
                         <hr />
-                        <p> Are you sure you want to delete this education information? </p>
+                        <p> Are you sure you want to approve this licensure exam information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-			<button type="button" className="btn btn-danger">Yes, delete</button>
+                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-danger" onClick = {async () => {
+                            let alert = document.getElementById("licensureexamalert")
+                            $('#approveLicense').modal('toggle');
+                            
+                            let formData = new FormData()
+                            formData.append('licenseId', approveLic)
+                            
+                            let res = await approveLicense(formData, true, props.facultyId, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                alert.style = "visibility: visible"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#licensureexamalert").slideUp(500);
+                            });
+                            Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                        }}>Yes, approve</button>
                     </div>
                     </div>
                 </div>
             </div>
-            
-        
+
+        <div className="modal fade" id="rejectLicense" tabIndex="-1" role="dialog" aria-labelledby="rejectLicenseLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title" id="rejectLicenseLabel">Reject Licensure Exam Information</h5>
+                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <Formik
+                    enableReinitialize
+                    initialValues={currData}
+                    onSubmit={async (values) => {
+                        let alert = document.getElementById("licensureexamalert")
+                        $('#rejectLicense').modal('toggle');
+                        
+                        let form = document.getElementById('rejectLicenseForm')
+                        let formData = new FormData(form)
+                        formData.append('licenseId', approveLic)
+                        
+                        let res = await approveLicense(formData, false, props.facultyId, props.token)
+                        if(res.success == true) { 
+                            alert.className ="alert alert-success"
+                            alert.style = "visibility: visible"
+                            alert.innerHTML = res.message
+                        } else {
+                            alert.className = "alert alert-danger"
+                            alert.style = "visibility: visible"
+                            if(res.error) alert.innerHTML = res.error[0].message
+                            else alert.innerHTML = res.message
+                        }
+                        
+                        $("#licensureexamalert").fadeTo(5000, 500).slideUp(500, function(){
+                            $("#licensureexamalert").slideUp(500);
+                        });
+                        Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                    }}
+                >
+                {({ values, errors, touched, isSubmitting }) => (
+                    <Form id = "rejectLicenseForm">
+                        <div className="modal-body">
+                            <hr />
+                            <div className = "form-row">
+                                <div className = "form-group">
+                                    <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
+                                    <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />
+                                </div>
+                            </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                $('#rejectLicense').modal('toggle');
+                            }}>Save changes</button>
+                        </div>
+                    </Form>
+                )}
+                </Formik>
+                </div>
+            </div>
+        </div>
+    
+
         </div>
 	
 	

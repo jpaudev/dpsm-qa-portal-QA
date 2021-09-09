@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/dpsmzfbe/public_html/dpsm-qa-portal/
+    - /bin/cp -R * $DEPLOYPATH
