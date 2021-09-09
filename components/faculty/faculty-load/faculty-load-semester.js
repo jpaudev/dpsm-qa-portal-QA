@@ -42,7 +42,7 @@ function FacultyLoadSemester(props) {
                         <div className = "btn-grp">
                             <a
                                 className ="btn btn-info"
-                                href={"http://agila.upm.edu.ph:3000/" + props.records[key].syllabus}
+                                href={"http://agila.upm.edu.ph:3001/" + props.records[key].syllabus}
                                 style = {{ color: 'white' }}
                                 target="_blank">
                                 View
@@ -77,7 +77,7 @@ function FacultyLoadSemester(props) {
                             </button>
                             <a
                                 className ="btn btn-info"
-                                href={"http://agila.upm.edu.ph:3000/" + props.records[key].setResults}
+                                href={"http://agila.upm.edu.ph:3001/" + props.records[key].setResults}
                                 style = {{ color: 'white' }}
                                 target="_blank">
                                 Preview
@@ -105,7 +105,7 @@ function FacultyLoadSemester(props) {
                             </button>
                             <a
                                 className ="btn btn-info"
-                                href={"http://agila.upm.edu.ph:3000/" + props.records[key].setResults}
+                                href={"http://agila.upm.edu.ph:3001/" + props.records[key].setResults}
                                 style = {{ color: 'white' }}
                                 target="_blank">
                                 Preview

@@ -20,7 +20,7 @@ export default async function approveLicense(formData, approveFlag, facultyId, t
 	try {
 		if (token) {
 			try {
-				let url = 'http://agila.upm.edu.ph:3000/api/faculty/accomplishment/' + facultyId;
+				let url = 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId;
 				const response = await axios({
 					method: 'PUT',
 					url: url + '/licensure-exam',

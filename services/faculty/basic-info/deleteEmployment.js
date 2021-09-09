@@ -4,7 +4,7 @@ export default async function deleteEmployment(data, token, facultyId) {
 	try {
 		if (token) {
 			try {
-				const response = await axios.delete("http://agila.upm.edu.ph:3000/api/faculty/basic-info/" + facultyId + "/employment", {
+				const response = await axios.delete("http://agila.upm.edu.ph:3001/api/faculty/basic-info/" + facultyId + "/employment", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

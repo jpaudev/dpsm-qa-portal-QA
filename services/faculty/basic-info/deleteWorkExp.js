@@ -7,7 +7,7 @@ export default async function deleteWorkExp(data, token) {
 	try {
 		if (token) {
 			try {
-				const response = await axios.delete("http://agila.upm.edu.ph:3000/api/faculty/basic-info/" + facultyId + "/work-exp", {
+				const response = await axios.delete("http://agila.upm.edu.ph:3001/api/faculty/basic-info/" + facultyId + "/work-exp", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

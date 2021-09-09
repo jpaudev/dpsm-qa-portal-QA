@@ -148,7 +148,7 @@ function BasicInfo(props) {
             if(context.params.facultyId) {
                 let facultyId = context.params.facultyId
                 
-                let url = 'http://agila.upm.edu.ph:3000/api/faculty/basic-info/' + facultyId;
+                let url = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId;
                 let header = {
                     headers: {
                         'Authorization': 'Bearer ' + token.user
@@ -159,38 +159,38 @@ function BasicInfo(props) {
                 personalInfo = await personal.json()
                 name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
-                const employment = await fetch('http://agila.upm.edu.ph:3000/api/faculty/basic-info/' + facultyId + '/employment', header)
+                const employment = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId + '/employment', header)
                 employmentInfo = await employment.json()
                 unit = employmentInfo.result.faculty_unit.unit.unit
                 if(employmentInfo.result.faculty_employment_infos[0]) {
                     position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
                 }
 
-                const load = await fetch('http://agila.upm.edu.ph:3000/api/faculty/load/' + facultyId, header)
+                const load = await fetch('http://agila.upm.edu.ph:3001/api/faculty/load/' + facultyId, header)
                 facultyLoad = await load.json()
 
-                const educ = await fetch('http://agila.upm.edu.ph:3000/api/faculty/basic-info/' + facultyId + '/education', header)
+                const educ = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId + '/education', header)
                 education = await educ.json()
 
-                const work = await fetch('http://agila.upm.edu.ph:3000/api/faculty/basic-info/' + facultyId + '/work-exp', header)
+                const work = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId + '/work-exp', header)
                 workExperience = await work.json()
 
-                const psa = await fetch('http://agila.upm.edu.ph:3000/api/faculty/accomplishment/' + facultyId + '/public-service', header)
+                const psa = await fetch('http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId + '/public-service', header)
                 publicService = await psa.json()
 
-                const pub = await fetch('http://agila.upm.edu.ph:3000/api/faculty/accomplishment/' + facultyId + '/publication', header)
+                const pub = await fetch('http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId + '/publication', header)
                 publications = await pub.json()
 
-                const ts = await fetch('http://agila.upm.edu.ph:3000/api/faculty/accomplishment/' + facultyId + '/training-seminar', header)
+                const ts = await fetch('http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId + '/training-seminar', header)
                 trainingSeminar = await ts.json()
 
-                const le = await fetch('http://agila.upm.edu.ph:3000/api/faculty/accomplishment/' + facultyId + '/licensure-exam', header)
+                const le = await fetch('http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId + '/licensure-exam', header)
                 licensureExam = await le.json()
 
-                const rg = await fetch('http://agila.upm.edu.ph:3000/api/faculty/accomplishment/' + facultyId + '/research-grant', header)
+                const rg = await fetch('http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId + '/research-grant', header)
                 researchGrant = await rg.json()
 
-                const positions = await fetch('http://agila.upm.edu.ph:3000/api/faculty/basic-info/employment/positions', header)
+                const positions = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/employment/positions', header)
                 positionsList = await positions.json()
                 positionsList = positionsList.result
             } else {

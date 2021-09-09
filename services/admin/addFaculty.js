@@ -6,7 +6,7 @@ export default async function addFaculty(data, token) {
 	
 	try {
 	    if (token) {	      
-	        let url = 'http://agila.upm.edu.ph:3000/api/user/add';
+	        let url = 'http://agila.upm.edu.ph:3001/api/user/add';
 		    let header = {
 		        headers: {
 		            'Authorization': 'Bearer ' + token

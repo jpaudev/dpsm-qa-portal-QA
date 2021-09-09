@@ -15,7 +15,7 @@ export default async function addEmployment(data, token, facultyId) {
                 bod.endDate = `${data.endDate}`
 			}
 			try {
-				const response = await axios.post("http://agila.upm.edu.ph:3000/api/faculty/basic-info/add/employment", bod, {
+				const response = await axios.post("http://agila.upm.edu.ph:3001/api/faculty/basic-info/add/employment", bod, {
 					headers: {
 						Authorization: `Bearer ${token}`
 					}

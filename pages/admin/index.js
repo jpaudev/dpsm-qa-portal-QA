@@ -39,7 +39,7 @@ function FacultyList(props) {
                 }
             }
             
-            const faculty = await fetch('http://agila.upm.edu.ph:3000/api/faculty/basic-info', header)
+            const faculty = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info', header)
             facultyList = await faculty.json()
 
         }

@@ -7,7 +7,7 @@ export default async function deleteLicensure(data, token) {
 	try {
 		if(token) {
 			try {
-				const response = await axios.delete("http://agila.upm.edu.ph:3000/api/faculty/accomplishment/" + facultyId + "/licensure-exam", {
+				const response = await axios.delete("http://agila.upm.edu.ph:3001/api/faculty/accomplishment/" + facultyId + "/licensure-exam", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

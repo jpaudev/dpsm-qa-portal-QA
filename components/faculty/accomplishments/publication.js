@@ -61,7 +61,7 @@ function Publication(props){
                                             </button>
                                             <a
                                                 className ="btn btn-info"
-                                                href={"http://agila.upm.edu.ph:3000/" + pub[auth].proof}
+                                                href={"http://agila.upm.edu.ph:3001/" + pub[auth].proof}
                                                 style = {{ color: 'white' }}
                                                 target="_blank">
                                                 Preview

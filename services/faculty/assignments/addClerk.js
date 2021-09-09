@@ -10,7 +10,7 @@ export default async function addClerk(formData, token) {
 				
 				const response = await axios({
 				    method: 'POST',
-				    url: 'http://agila.upm.edu.ph:3000/api/user/add',
+				    url: 'http://agila.upm.edu.ph:3001/api/user/add',
 				    data: formData,
 				    headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}
 			    })	

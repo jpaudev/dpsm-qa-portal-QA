@@ -4,7 +4,7 @@ export default async function comparePassword(password, userId, token) {
 	try {
         if (token) {
 
-			let url = 'http://agila.upm.edu.ph:3000/api/user/validate-password';
+			let url = 'http://agila.upm.edu.ph:3001/api/user/validate-password';
             const response = await axios({
                 method: 'POST',
                 url: url,

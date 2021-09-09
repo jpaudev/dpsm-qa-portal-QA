@@ -7,7 +7,7 @@ export default async function deletePublication(data, token) {
 	try {
 		if(token) {
 			try {
-				const response = await axios.delete("http://agila.upm.edu.ph:3000/api/faculty/accomplishment/" + facultyId + "/publisher", {
+				const response = await axios.delete("http://agila.upm.edu.ph:3001/api/faculty/accomplishment/" + facultyId + "/publisher", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},
