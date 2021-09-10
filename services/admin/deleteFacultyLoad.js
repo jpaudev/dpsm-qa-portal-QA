@@ -5,7 +5,7 @@ export default async function deleteFacultyLoad(data, token, facultyId) {
 	try {
 		if (token) {
 			try {
-				const response = await axios.delete("http://agila.upm.edu.ph:3001/api/faculty/load/" + facultyId, {
+				const response = await axios.delete("https://api.dpsmqaportal.com/api/faculty/load/" + facultyId, {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

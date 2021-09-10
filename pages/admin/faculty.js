@@ -57,7 +57,7 @@ function BasicInfo(props) {
                 }
             }
 
-            let approvalURL = 'http://agila.upm.edu.ph:3001/api/faculty/approval/' + facultyId
+            let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
                     approvalURL += '?unitId=' + data.unitId
@@ -68,7 +68,7 @@ function BasicInfo(props) {
                 approvalList = approvalList.result
             } else if(data.role == 1 || data.role == 5) {
                 if(data.role == 5) {
-                    const positions = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/employment/positions', header)
+                    const positions = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/employment/positions', header)
                     positionsList = await positions.json()
                     positionsList = positionsList.result
                 }

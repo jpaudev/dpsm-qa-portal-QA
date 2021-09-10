@@ -18,7 +18,7 @@ export default async function addTraining(formData, token) {
 				
 				const response = await axios({
 				    method: 'POST',
-				    url: 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/add/training-seminar',
+				    url: 'https://api.dpsmqaportal.com/api/faculty/accomplishment/add/training-seminar',
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })	

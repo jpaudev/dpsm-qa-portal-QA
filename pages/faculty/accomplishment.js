@@ -160,23 +160,23 @@ function Accomplishments(props) {
     let data = jwt.decode(token.user)
     let facultyId = data.facultyId
 
-    let url = 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/' + facultyId;
+    let url = 'https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId;
     let header = {
         headers: {
             'Authorization': 'Bearer ' + token.user
         }
     }
 
-    const employment = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId + '/employment', header)
+    const employment = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId + '/employment', header)
     const employmentInfo = await employment.json()
     let unit = employmentInfo.result.faculty_unit.unit.unit
     let position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
 
-    const personal = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId, header)
+    const personal = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
     let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
-    const fac = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
+    const fac = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
     const faculty = await fac.json()
 
     const psa = await fetch(url + '/public-service', header)
@@ -197,8 +197,8 @@ function Accomplishments(props) {
     let roleAssignmentFlag = false
 
     let approvalList
-    let approvalURL = 'http://agila.upm.edu.ph:3001/api/faculty/approval/' + facultyId
-    let roleAssignmentURL = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/unit/assignment'
+    let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
+    let roleAssignmentURL = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/assignment'
     if(data.role == 2 || data.role == 3) {
         if(data.role == 2) {
             approvalURL += '?unitId=' + data.unitId

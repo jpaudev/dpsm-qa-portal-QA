@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 export default async function updateFacultyLoad(formData, token, facultyId) {
 	try {
 	    if (token) {
-	        let url = 'http://agila.upm.edu.ph:3001/api/faculty/load/' + facultyId;
+	        let url = 'https://api.dpsmqaportal.com/api/faculty/load/' + facultyId;
 		    if(formData.get('setResults') == "") {
 				formData.delete('setResults')
 			}

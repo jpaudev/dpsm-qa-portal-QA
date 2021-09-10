@@ -42,13 +42,13 @@ function FacultyLoad(props) {
         }
     }
 
-	const personal = await fetch('http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId, header)
+	const personal = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
 
-	const load = await fetch('http://agila.upm.edu.ph:3001/api/faculty/load/' + facultyId, header)
+	const load = await fetch('https://api.dpsmqaportal.com/api/faculty/load/' + facultyId, header)
     const facultyLoad = await load.json()    
 
-    let url = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId;
+    let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
 
     const employ = await fetch(url + '/employment', header)
     let employment = await employ.json()
@@ -57,8 +57,8 @@ function FacultyLoad(props) {
 
 	let roleAssignmentFlag = false
 	let approvalList
-    let approvalURL = 'http://agila.upm.edu.ph:3001/api/faculty/approval/' + facultyId
-	let roleAssignmentURL = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/unit/assignment'
+    let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
+	let roleAssignmentURL = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/assignment'
     if(data.role == 2 || data.role == 3) {
         if(data.role == 2) {
             approvalURL += '?unitId=' + data.unitId

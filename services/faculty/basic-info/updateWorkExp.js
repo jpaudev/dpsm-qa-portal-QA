@@ -6,7 +6,7 @@ export default async function updateWorkExp(data, token) {
     let facultyId = cookieData.facultyId
 	try {
 	    if (token) {
-	        let url = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId;
+	        let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
 		    let bod = null
 		    if(data.endDate == "" || data.endDate == null) {
 		    	bod = {

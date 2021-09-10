@@ -20,7 +20,7 @@ export default async function approveEducation(formData, approveFlag, facultyId,
 	try {
 		if (token) {
 			try {
-				let url = 'http://agila.upm.edu.ph:3001/api/faculty/basic-info/' + facultyId;
+				let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
 				const response = await axios({
 					method: 'PUT',
 					url: url + '/education',

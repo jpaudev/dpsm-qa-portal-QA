@@ -12,7 +12,7 @@ export default async function addLicensure(formData, token) {
 				
 				const response = await axios({
 				    method: 'POST',
-				    url: 'http://agila.upm.edu.ph:3001/api/faculty/accomplishment/add/licensure-exam',
+				    url: 'https://api.dpsmqaportal.com/api/faculty/accomplishment/add/licensure-exam',
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })	

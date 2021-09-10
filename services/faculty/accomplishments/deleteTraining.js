@@ -7,7 +7,7 @@ export default async function deleteTraining(data, token) {
 	try {
 		if(token) {
 			try {
-				const response = await axios.delete("http://agila.upm.edu.ph:3001/api/faculty/accomplishment/" + facultyId + "/training-seminar", {
+				const response = await axios.delete("https://api.dpsmqaportal.com/api/faculty/accomplishment/" + facultyId + "/training-seminar", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

@@ -54,7 +54,7 @@ function TrainingSeminar(props) {
                                     </button>
                                     <a
                                         className ="btn btn-info"
-                                        href={"http://agila.upm.edu.ph:3001/" + props.children[key].proof}
+                                        href={"https://api.dpsmqaportal.com/" + props.children[key].proof}
                                         style = {{ color: 'white' }}
                                         target="_blank">
                                         Preview
