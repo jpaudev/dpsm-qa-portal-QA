@@ -131,7 +131,7 @@ function Education(props) {
 
             <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
             
-            <div>
+            <div className = "table-responsive">
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
