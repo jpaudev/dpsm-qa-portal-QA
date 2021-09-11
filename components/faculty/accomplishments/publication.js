@@ -147,7 +147,7 @@ function Publication(props){
             <h2 align = "center"> Publications </h2>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div className ="alert alert-success" role="alert" id="publicationalert" style={{visibility:"hidden"}}></div>
-			<div>
+			<div className = "table-responsive">
 	<table className = "table table-striped table-sm">
 		<tbody>
 			<tr>
