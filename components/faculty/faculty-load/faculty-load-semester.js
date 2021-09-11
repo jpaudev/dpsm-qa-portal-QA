@@ -133,6 +133,7 @@ function FacultyLoadSemester(props) {
 	});
 	return(
 		<div>
+			<div className = "table-responsive">
 			<table className = "table table-sm">
 				<thead>
 					<tr>
@@ -156,6 +157,7 @@ function FacultyLoadSemester(props) {
 					</tr>
 				</tfoot>*/}
 			</table>
+			</div>
 
 			<div className="modal fade" id="editClass" tabIndex="-1" role="dialog" aria-labelledby="editClassLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
