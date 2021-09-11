@@ -346,6 +346,7 @@ function PublicServiceAccomplishment(props){
         <div role="alert" id="publicservicealert" style={{visibility:"hidden"}}></div>
 		<div>
 		<h5 align = "center">Within UP Manila </h5>
+	<div className = "table-responsive">
             <table className = "table table-striped table-sm">
                 <tbody>
                     <tr>
@@ -362,10 +363,12 @@ function PublicServiceAccomplishment(props){
                     {upm ? upm : <td colSpan = "8"><p align = "center">No data available!</p></td>} 
                 </tbody>
             </table>
+	</div>
             </div>
             <div>
 		<br />
 		<h5 align = "center"> Contributions to Profession </h5>
+	<div className = "table-responsive">
             <table className = "table table-striped table-sm">
                 <tbody>
                     <tr>
@@ -382,8 +385,10 @@ function PublicServiceAccomplishment(props){
                     {pro ? pro : <td colSpan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
+	</div>
 		<br />
 		<h5 align = "center"> Contributions to the Nation </h5>
+	<div className = "table-responsive">
             <table className = "table table-striped table-sm">
                 <tbody>
                     <tr>
@@ -400,8 +405,10 @@ function PublicServiceAccomplishment(props){
                     {nat ? nat : <td colSpan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
+	</div>
 		<br />
 		<h5 align = "center"> Contributions to the World </h5>
+	<div className = "table-responsive">
             <table className = "table table-striped table-sm">
                 <tbody>
                     <tr>
@@ -418,6 +425,7 @@ function PublicServiceAccomplishment(props){
                     {wor ? wor : <td colSpan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
+	</div>
             </div>
 
             {
