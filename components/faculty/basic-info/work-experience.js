@@ -89,19 +89,21 @@ function WorkExperience(props){
             <EmploymentHistory role={props.role} token={props.token} facultyId={props.facultyId}>{props.employment}</EmploymentHistory>
             <br />
             <h5 align = "center"> Outside UP Manila </h5>
-            <table className = "table table-striped table-sm">
-            <tbody>
-                <tr key = "headers">
-                    <th>Employer</th>
-                    <th>Position</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Description</th>
-                    {!props.viewFlag && <th>Action</th>}
-                </tr>
-                {content}
-            </tbody>
-            </table>
+            <div className = "table-responsive">
+                <table className = "table table-striped table-sm">
+                    <tbody>
+                        <tr key = "headers">
+                            <th>Employer</th>
+                            <th>Position</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Description</th>
+                        {!props.viewFlag && <th>Action</th>}
+                    </tr>
+                    {content}
+                   </tbody>
+                </table>
+            </div>
             {
                 !props.viewFlag && props.role != 5 &&
                 <div>
