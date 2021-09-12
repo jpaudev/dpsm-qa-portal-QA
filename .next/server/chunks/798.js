@@ -550,6 +550,7 @@ function Education(props) {
         visibility: "hidden"
       }
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: "table-responsive",
       children: /*#__PURE__*/jsx_runtime_.jsx("table", {
         className: "table table-striped table-sm",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {

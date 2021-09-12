@@ -240,25 +240,28 @@ function FacultyLoadSemester(props) {
     }, props.records[key].recordId);
   });
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-    children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("table", {
-      className: "table table-sm",
-      children: [/*#__PURE__*/jsx_runtime_.jsx("thead", {
-        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
-          children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "Subject"
-          }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "Section"
-          }), !props.clerkFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "Syllabus"
-          }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "SET"
-          }), props.clerkFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "Action"
-          })]
-        })
-      }), /*#__PURE__*/jsx_runtime_.jsx("tbody", {
-        children: content
-      })]
+    children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: "table-responsive",
+      children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("table", {
+        className: "table table-sm",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("thead", {
+          children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+            children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Subject"
+            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Section"
+            }), !props.clerkFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Syllabus"
+            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "SET"
+            }), props.clerkFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Action"
+            })]
+          })
+        }), /*#__PURE__*/jsx_runtime_.jsx("tbody", {
+          children: content
+        })]
+      })
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
       className: "modal fade",
       id: "editClass",

@@ -43,14 +43,14 @@ function BasicInfo(props) {
     name: props.data.name,
     approvalList: props.approvalList,
     children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {
-      className: "jsx-3469655085"
+      className: "jsx-216710277"
     }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {
-      className: "jsx-3469655085"
+      className: "jsx-216710277"
     }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
       id: "personal-info",
       role: "tabpanel",
       "aria-labelledby": "personal-info-tab",
-      className: "jsx-3469655085" + " " + "tab-pane fade show active",
+      className: "jsx-216710277" + " " + "tab-pane fade show active",
       children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_basic_info_personal_info__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
         facultyFlag: false,
         clerkFlag: true,
@@ -58,8 +58,8 @@ function BasicInfo(props) {
         positions: props.positionsList
       })
     }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-      id: "3469655085",
-      children: ["a.nav-item.jsx-3469655085:focus{background-color:#78b6c2;}", "a.nav-item.jsx-3469655085:hover{background-color:#78b6c2;}", "a.active.jsx-3469655085{background-color:#78b6c2;}"]
+      id: "216710277",
+      children: ["a.nav-item.jsx-216710277:focus{background-color:#78b6c2;}", "a.nav-item.jsx-216710277:hover{background-color:#78b6c2;}", "a.active.jsx-216710277{background-color:#78b6c2;}", ".tab-pane.active.jsx-216710277{background-color:#fff;}"]
     })]
   });
 }

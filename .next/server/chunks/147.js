@@ -189,6 +189,7 @@ function EmploymentHistory(props) {
         visibility: "hidden"
       }
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: "table-responsive",
       children: /*#__PURE__*/jsx_runtime_.jsx("table", {
         className: "table table-striped table-sm",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
@@ -1942,24 +1943,27 @@ function WorkExperience(props) {
     }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("h5", {
       align: "center",
       children: " Outside UP Manila "
-    }), /*#__PURE__*/jsx_runtime_.jsx("table", {
-      className: "table table-striped table-sm",
-      children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
-        children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
-          children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "Employer"
-          }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "Position"
-          }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "Start Date"
-          }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "End Date"
-          }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "Description"
-          }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
-            children: "Action"
-          })]
-        }, "headers"), content]
+    }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: "table-responsive",
+      children: /*#__PURE__*/jsx_runtime_.jsx("table", {
+        className: "table table-striped table-sm",
+        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
+          children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+            children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Employer"
+            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Position"
+            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Start Date"
+            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "End Date"
+            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Description"
+            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Action"
+            })]
+          }, "headers"), content]
+        })
       })
     }), !props.viewFlag && props.role != 5 && /*#__PURE__*/jsx_runtime_.jsx("div", {
       children: /*#__PURE__*/jsx_runtime_.jsx(work_exp_form, {

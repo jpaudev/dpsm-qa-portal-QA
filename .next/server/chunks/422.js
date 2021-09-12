@@ -146,19 +146,22 @@ function FacultyList(props) {
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("h4", {
             align: "center",
             children: [" ", props.children[key].unit, " "]
-          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("table", {
-            className: "table",
-            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
-              children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Name"
-              }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Status"
-              }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Remarks"
-              }), props.role == 5 && /*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Action"
-              })]
-            }), facultyList]
+          }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+            className: "table-responsive",
+            children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("table", {
+              className: "table",
+              children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+                children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Name"
+                }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Status"
+                }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Remarks"
+                }), props.role == 5 && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Action"
+                })]
+              }), facultyList]
+            })
           })]
         });
       }
@@ -219,19 +222,22 @@ function FacultyList(props) {
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("h4", {
             align: "center",
             children: [" ", props.children[key].unit, " "]
-          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("table", {
-            className: "table",
-            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
-              children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Name"
-              }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Status"
-              }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Remarks"
-              }), props.role == 5 && /*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Action"
-              })]
-            }), facultyList]
+          }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+            className: "table-responsive",
+            children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("table", {
+              className: "table",
+              children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+                children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Name"
+                }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Status"
+                }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Remarks"
+                }), props.role == 5 && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Action"
+                })]
+              }), facultyList]
+            })
           })]
         });
       }
@@ -292,19 +298,22 @@ function FacultyList(props) {
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("h4", {
             align: "center",
             children: [" ", props.children[key].unit, " "]
-          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("table", {
-            className: "table",
-            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
-              children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Name"
-              }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Status"
-              }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Remarks"
-              }), props.role == 5 && /*#__PURE__*/jsx_runtime_.jsx("th", {
-                children: "Action"
-              })]
-            }), facultyList]
+          }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+            className: "table-responsive",
+            children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("table", {
+              className: "table",
+              children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+                children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Name"
+                }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Status"
+                }), props.path != 'approval' && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Remarks"
+                }), props.role == 5 && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                  children: "Action"
+                })]
+              }), facultyList]
+            })
           })]
         });
       }

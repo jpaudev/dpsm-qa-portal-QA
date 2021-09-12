@@ -472,6 +472,7 @@ function LicensureExam(props) {
         visibility: "hidden"
       }
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: "table-responsive",
       children: /*#__PURE__*/jsx_runtime_.jsx("table", {
         className: "table table-striped table-sm",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
@@ -1681,140 +1682,152 @@ function PublicServiceAccomplishment(props) {
       children: [/*#__PURE__*/jsx_runtime_.jsx("h5", {
         align: "center",
         children: "Within UP Manila "
-      }), /*#__PURE__*/jsx_runtime_.jsx("table", {
-        className: "table table-striped table-sm",
-        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
-          children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
-            children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Position/Role"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Organization"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Description"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Start Date"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "End Date"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Proof"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Status"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Approver Remarks"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Action"
+      }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+        className: "table-responsive",
+        children: /*#__PURE__*/jsx_runtime_.jsx("table", {
+          className: "table table-striped table-sm",
+          children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
+            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+              children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Position/Role"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Organization"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Description"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Start Date"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "End Date"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Proof"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Status"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Approver Remarks"
+              }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Action"
+              })]
+            }), upm ? upm : /*#__PURE__*/jsx_runtime_.jsx("td", {
+              colSpan: "8",
+              children: /*#__PURE__*/jsx_runtime_.jsx("p", {
+                align: "center",
+                children: "No data available!"
+              })
             })]
-          }), upm ? upm : /*#__PURE__*/jsx_runtime_.jsx("td", {
-            colSpan: "8",
-            children: /*#__PURE__*/jsx_runtime_.jsx("p", {
-              align: "center",
-              children: "No data available!"
-            })
-          })]
+          })
         })
       })]
     }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
       children: [/*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("h5", {
         align: "center",
         children: " Contributions to Profession "
-      }), /*#__PURE__*/jsx_runtime_.jsx("table", {
-        className: "table table-striped table-sm",
-        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
-          children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
-            children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Position/Role"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Organization"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Description"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Start Date"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "End Date"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Proof"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Status"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Approver Remarks"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Action"
+      }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+        className: "table-responsive",
+        children: /*#__PURE__*/jsx_runtime_.jsx("table", {
+          className: "table table-striped table-sm",
+          children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
+            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+              children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Position/Role"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Organization"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Description"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Start Date"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "End Date"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Proof"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Status"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Approver Remarks"
+              }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Action"
+              })]
+            }), pro ? pro : /*#__PURE__*/jsx_runtime_.jsx("td", {
+              colSpan: "8",
+              children: /*#__PURE__*/jsx_runtime_.jsx("p", {
+                align: "center",
+                children: "No data available!"
+              })
             })]
-          }), pro ? pro : /*#__PURE__*/jsx_runtime_.jsx("td", {
-            colSpan: "8",
-            children: /*#__PURE__*/jsx_runtime_.jsx("p", {
-              align: "center",
-              children: "No data available!"
-            })
-          })]
+          })
         })
       }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("h5", {
         align: "center",
         children: " Contributions to the Nation "
-      }), /*#__PURE__*/jsx_runtime_.jsx("table", {
-        className: "table table-striped table-sm",
-        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
-          children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
-            children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Position/Role"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Organization"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Description"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Start Date"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "End Date"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Proof"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Status"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Approver Remarks"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Action"
+      }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+        className: "table-responsive",
+        children: /*#__PURE__*/jsx_runtime_.jsx("table", {
+          className: "table table-striped table-sm",
+          children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
+            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+              children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Position/Role"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Organization"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Description"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Start Date"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "End Date"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Proof"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Status"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Approver Remarks"
+              }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Action"
+              })]
+            }), nat ? nat : /*#__PURE__*/jsx_runtime_.jsx("td", {
+              colSpan: "8",
+              children: /*#__PURE__*/jsx_runtime_.jsx("p", {
+                align: "center",
+                children: "No data available!"
+              })
             })]
-          }), nat ? nat : /*#__PURE__*/jsx_runtime_.jsx("td", {
-            colSpan: "8",
-            children: /*#__PURE__*/jsx_runtime_.jsx("p", {
-              align: "center",
-              children: "No data available!"
-            })
-          })]
+          })
         })
       }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("h5", {
         align: "center",
         children: " Contributions to the World "
-      }), /*#__PURE__*/jsx_runtime_.jsx("table", {
-        className: "table table-striped table-sm",
-        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
-          children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
-            children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Position/Role"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Organization"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Description"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Start Date"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "End Date"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Proof"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Status"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Approver Remarks"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Action"
+      }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+        className: "table-responsive",
+        children: /*#__PURE__*/jsx_runtime_.jsx("table", {
+          className: "table table-striped table-sm",
+          children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
+            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+              children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Position/Role"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Organization"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Description"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Start Date"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "End Date"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Proof"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Status"
+              }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Approver Remarks"
+              }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+                children: "Action"
+              })]
+            }), wor ? wor : /*#__PURE__*/jsx_runtime_.jsx("td", {
+              colSpan: "8",
+              children: /*#__PURE__*/jsx_runtime_.jsx("p", {
+                align: "center",
+                children: "No data available!"
+              })
             })]
-          }), wor ? wor : /*#__PURE__*/jsx_runtime_.jsx("td", {
-            colSpan: "8",
-            children: /*#__PURE__*/jsx_runtime_.jsx("p", {
-              align: "center",
-              children: "No data available!"
-            })
-          })]
+          })
         })
       })]
     }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -2858,6 +2871,7 @@ function Publication(props) {
         visibility: "hidden"
       }
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: "table-responsive",
       children: /*#__PURE__*/jsx_runtime_.jsx("table", {
         className: "table table-striped table-sm",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
@@ -3991,6 +4005,7 @@ function ResearchGrant(props) {
         visibility: "hidden"
       }
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: "table-responsive",
       children: /*#__PURE__*/jsx_runtime_.jsx("table", {
         className: "table table-striped table-sm",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
@@ -5017,6 +5032,7 @@ function TrainingSeminar(props) {
         visibility: "hidden"
       }
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: "table-responsive",
       children: /*#__PURE__*/jsx_runtime_.jsx("table", {
         className: "table table-striped table-sm",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {

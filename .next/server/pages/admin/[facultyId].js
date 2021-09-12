@@ -53,11 +53,11 @@ function BasicInfo(props) {
     role: props.data.role,
     name: props.data.name,
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("nav", {
-      className: "jsx-2678173964",
+      className: "jsx-1555767141",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         id: "nav-tab-main",
         role: "tablist",
-        className: "jsx-2678173964" + " " + "nav nav-tabs nav-fill nav-justified",
+        className: "jsx-1555767141" + " " + "nav nav-tabs nav-fill nav-justified",
         children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
           id: "basic-info-tab",
           "data-toggle": "tab",
@@ -65,7 +65,7 @@ function BasicInfo(props) {
           role: "tab",
           "aria-controls": "basic-info",
           "aria-selected": "true",
-          className: "jsx-2678173964" + " " + "nav-item nav-link active",
+          className: "jsx-1555767141" + " " + "nav-item nav-link active",
           children: "Basic Information"
         }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
           id: "accomplishments-tab",
@@ -74,7 +74,7 @@ function BasicInfo(props) {
           role: "tab",
           "aria-controls": "accomplishments",
           "aria-selected": "false",
-          className: "jsx-2678173964" + " " + "nav-item nav-link",
+          className: "jsx-1555767141" + " " + "nav-item nav-link",
           children: "Accomplishments"
         }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
           id: "evaluation-tab",
@@ -83,7 +83,7 @@ function BasicInfo(props) {
           role: "tab",
           "aria-controls": "evaluation",
           "aria-selected": "false",
-          className: "jsx-2678173964" + " " + "nav-item nav-link",
+          className: "jsx-1555767141" + " " + "nav-item nav-link",
           children: "Peer Evaluation"
         }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
           id: "faculty-load-tab",
@@ -92,23 +92,23 @@ function BasicInfo(props) {
           role: "tab",
           "aria-controls": "faculty-load",
           "aria-selected": "false",
-          className: "jsx-2678173964" + " " + "nav-item nav-link",
+          className: "jsx-1555767141" + " " + "nav-item nav-link",
           children: "Faculty Load"
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
         id: "nav-tabContent-main",
-        className: "jsx-2678173964" + " " + "tab-content",
+        className: "jsx-1555767141" + " " + "tab-content",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
           id: "basic-info",
           role: "tabpanel",
           "aria-labelledby": "basic-info-tab",
-          className: "jsx-2678173964" + " " + "tab-pane fade show active",
+          className: "jsx-1555767141" + " " + "tab-pane fade show active",
           children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("nav", {
-            className: "jsx-2678173964",
+            className: "jsx-1555767141",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               id: "nav-tab-basic-info",
               role: "tablist",
-              className: "jsx-2678173964" + " " + "nav nav-tabs nav-fill nav-justified",
+              className: "jsx-1555767141" + " " + "nav nav-tabs nav-fill nav-justified",
               children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                 id: "personal-info-tab",
                 "data-toggle": "tab",
@@ -116,7 +116,7 @@ function BasicInfo(props) {
                 role: "tab",
                 "aria-controls": "personal-info",
                 "aria-selected": "true",
-                className: "jsx-2678173964" + " " + "nav-item nav-link active",
+                className: "jsx-1555767141" + " " + "nav-item nav-link active",
                 children: "Personal Information"
               }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                 id: "educ-tab",
@@ -125,7 +125,7 @@ function BasicInfo(props) {
                 role: "tab",
                 "aria-controls": "educ",
                 "aria-selected": "false",
-                className: "jsx-2678173964" + " " + "nav-item nav-link",
+                className: "jsx-1555767141" + " " + "nav-item nav-link",
                 children: "Education"
               }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                 id: "work-exp-tab",
@@ -134,18 +134,18 @@ function BasicInfo(props) {
                 role: "tab",
                 "aria-controls": "work-exp",
                 "aria-selected": "false",
-                className: "jsx-2678173964" + " " + "nav-item nav-link",
+                className: "jsx-1555767141" + " " + "nav-item nav-link",
                 children: "Work Experience"
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             id: "nav-tabContent-basic-info",
-            className: "jsx-2678173964" + " " + "tab-content",
+            className: "jsx-1555767141" + " " + "tab-content",
             children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
               id: "personal-info",
               role: "tabpanel",
               "aria-labelledby": "personal-info-tab",
-              className: "jsx-2678173964" + " " + "tab-pane fade show active",
+              className: "jsx-1555767141" + " " + "tab-pane fade show active",
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_basic_info_personal_info__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
                 token: props.token.user,
                 unit: props.unit,
@@ -156,7 +156,7 @@ function BasicInfo(props) {
               id: "educ",
               role: "tabpanel",
               "aria-labelledby": "educ-tab",
-              className: "jsx-2678173964" + " " + "tab-pane fade",
+              className: "jsx-1555767141" + " " + "tab-pane fade",
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_basic_info_education__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
                 name: props.name,
                 token: props.token.user,
@@ -170,7 +170,7 @@ function BasicInfo(props) {
               id: "work-exp",
               role: "tabpanel",
               "aria-labelledby": "work-exp-tab",
-              className: "jsx-2678173964" + " " + "tab-pane fade",
+              className: "jsx-1555767141" + " " + "tab-pane fade",
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_basic_info_work_experience__WEBPACK_IMPORTED_MODULE_5__/* .default */ .Z, {
                 name: props.name,
                 token: props.token.user,
@@ -189,13 +189,13 @@ function BasicInfo(props) {
           id: "accomplishments",
           role: "tabpanel",
           "aria-labelledby": "accomplishments-tab",
-          className: "jsx-2678173964" + " " + "tab-pane fade",
+          className: "jsx-1555767141" + " " + "tab-pane fade",
           children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("nav", {
-            className: "jsx-2678173964",
+            className: "jsx-1555767141",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
               id: "nav-tab-accomplishment",
               role: "tablist",
-              className: "jsx-2678173964" + " " + "nav nav-tabs nav-fill nav-justified",
+              className: "jsx-1555767141" + " " + "nav nav-tabs nav-fill nav-justified",
               children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                 id: "public-service-accomplishment-tab",
                 "data-toggle": "tab",
@@ -203,7 +203,7 @@ function BasicInfo(props) {
                 role: "tab",
                 "aria-controls": "public-service-accomplishment",
                 "aria-selected": "true",
-                className: "jsx-2678173964" + " " + "nav-item nav-link active",
+                className: "jsx-1555767141" + " " + "nav-item nav-link active",
                 children: "Public Service Accomplishments"
               }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                 id: "publication-tab",
@@ -212,7 +212,7 @@ function BasicInfo(props) {
                 role: "tab",
                 "aria-controls": "publication",
                 "aria-selected": "false",
-                className: "jsx-2678173964" + " " + "nav-item nav-link",
+                className: "jsx-1555767141" + " " + "nav-item nav-link",
                 children: "Publications"
               }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                 id: "training-seminar-tab",
@@ -221,7 +221,7 @@ function BasicInfo(props) {
                 role: "tab",
                 "aria-controls": "training-seminar",
                 "aria-selected": "false",
-                className: "jsx-2678173964" + " " + "nav-item nav-link",
+                className: "jsx-1555767141" + " " + "nav-item nav-link",
                 children: "Training/Seminars"
               }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                 id: "licensure-exam-tab",
@@ -230,7 +230,7 @@ function BasicInfo(props) {
                 role: "tab",
                 "aria-controls": "licensure-exam",
                 "aria-selected": "false",
-                className: "jsx-2678173964" + " " + "nav-item nav-link",
+                className: "jsx-1555767141" + " " + "nav-item nav-link",
                 children: "Licensure Exams"
               }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
                 id: "research-grant-tab",
@@ -239,18 +239,18 @@ function BasicInfo(props) {
                 role: "tab",
                 "aria-controls": "research-grant",
                 "aria-selected": "false",
-                className: "jsx-2678173964" + " " + "nav-item nav-link",
+                className: "jsx-1555767141" + " " + "nav-item nav-link",
                 children: "Research Grants"
               })]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
             id: "nav-tabContent-accomplishment",
-            className: "jsx-2678173964" + " " + "tab-content",
+            className: "jsx-1555767141" + " " + "tab-content",
             children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
               id: "public-service-accomplishment",
               role: "tabpanel",
               "aria-labelledby": "public-service-accomplishment-tab",
-              className: "jsx-2678173964" + " " + "tab-pane fade show active",
+              className: "jsx-1555767141" + " " + "tab-pane fade show active",
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_accomplishments_public_service_accomplishment__WEBPACK_IMPORTED_MODULE_7__/* .default */ .Z, {
                 name: props.name,
                 token: props.token.user,
@@ -264,7 +264,7 @@ function BasicInfo(props) {
               id: "publication",
               role: "tabpanel",
               "aria-labelledby": "publication-tab",
-              className: "jsx-2678173964" + " " + "tab-pane fade",
+              className: "jsx-1555767141" + " " + "tab-pane fade",
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_accomplishments_publication__WEBPACK_IMPORTED_MODULE_6__/* .default */ .Z, {
                 faculty: props.faculty,
                 name: props.name,
@@ -280,7 +280,7 @@ function BasicInfo(props) {
               id: "training-seminar",
               role: "tabpanel",
               "aria-labelledby": "training-seminar-tab",
-              className: "jsx-2678173964" + " " + "tab-pane fade",
+              className: "jsx-1555767141" + " " + "tab-pane fade",
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_accomplishments_training_seminar__WEBPACK_IMPORTED_MODULE_9__/* .default */ .Z, {
                 name: props.name,
                 token: props.token.user,
@@ -294,7 +294,7 @@ function BasicInfo(props) {
               id: "licensure-exam",
               role: "tabpanel",
               "aria-labelledby": "licensure-exam-tab",
-              className: "jsx-2678173964" + " " + "tab-pane fade",
+              className: "jsx-1555767141" + " " + "tab-pane fade",
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_accomplishments_licensure_exam__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, {
                 name: props.name,
                 token: props.token.user,
@@ -308,7 +308,7 @@ function BasicInfo(props) {
               id: "research-grant",
               role: "tabpanel",
               "aria-labelledby": "research-grant-tab",
-              className: "jsx-2678173964" + " " + "tab-pane fade",
+              className: "jsx-1555767141" + " " + "tab-pane fade",
               children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_accomplishments_research_grant__WEBPACK_IMPORTED_MODULE_10__/* .default */ .Z, {
                 name: props.name,
                 token: props.token.user,
@@ -325,13 +325,13 @@ function BasicInfo(props) {
           id: "evaluation",
           role: "tabpanel",
           "aria-labelledby": "evaluation-tab",
-          className: "jsx-2678173964" + " " + "tab-pane fade",
+          className: "jsx-1555767141" + " " + "tab-pane fade",
           children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_unit_head_faculty_list_evaluation_evaluation__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, {})
         }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
           id: "faculty-load",
           role: "tabpanel",
           "aria-labelledby": "faculty-load-tab",
-          className: "jsx-2678173964" + " " + "tab-pane fade",
+          className: "jsx-1555767141" + " " + "tab-pane fade",
           children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_faculty_load_faculty_load__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, {
             name: props.name,
             token: props.token.user,
@@ -346,8 +346,8 @@ function BasicInfo(props) {
         })]
       })]
     }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
-      id: "2678173964",
-      children: ["a.nav-item.jsx-2678173964:focus{background-color:#78b6c2;}", "a.nav-item.jsx-2678173964:hover{background-color:#78b6c2;}", "a.active.jsx-2678173964{background-color:#78b6c2;}", "a#basic-info-tab.active.jsx-2678173964{background-color:#78b6c2;}", "a#personal-info-tab.active.jsx-2678173964{background-color:#78b6c2;}", "a#public-service-accomplishment-tab.active.jsx-2678173964{background-color:#78b6c2;}", "nav.jsx-2678173964{background-color:#aaa;}", "nav#nav-tab-main.jsx-2678173964{background-color:#999;}", ".list-group-item-info.jsx-2678173964{text-indent:5%;}"]
+      id: "1555767141",
+      children: ["a.nav-item.jsx-1555767141:focus{background-color:#78b6c2;}", "a.nav-item.jsx-1555767141:hover{background-color:#78b6c2;}", "a.active.jsx-1555767141{background-color:#78b6c2;}", "a#basic-info-tab.active.jsx-1555767141{background-color:#78b6c2;}", "a#personal-info-tab.active.jsx-1555767141{background-color:#78b6c2;}", "a#public-service-accomplishment-tab.active.jsx-1555767141{background-color:#78b6c2;}", "nav.jsx-1555767141{background-color:#aaa;}", "nav#nav-tab-main.jsx-1555767141{background-color:#999;}", ".tab-pane.active.jsx-1555767141{background-color:#fff;}", ".list-group-item-info.jsx-1555767141{text-indent:5%;}"]
     })]
   });
 }
