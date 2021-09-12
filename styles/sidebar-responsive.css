@@ -1,0 +1,16 @@
+@media screen and (max-width: 1165px) {
+  #sidebar {
+    float: left;
+    width: 250px;
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 1164px) {
+  #sidebar {
+    float: none;
+    position: relative;
+    width: 100%;
+    padding: 15px;
+  }
+}
