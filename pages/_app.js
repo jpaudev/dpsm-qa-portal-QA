@@ -2,6 +2,7 @@ import Router from 'next/router';
 import NProgress from 'nprogress'; //nprogress module
 import '../styles/nprogress.css'; //styles of nprogress
 import '../styles/layout-height.css';
+import '../styles/sidebar.responsive.css';
 import { CookiesProvider } from 'react-cookie'
 
 //Binding events. 
