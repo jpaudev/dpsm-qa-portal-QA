@@ -22,7 +22,7 @@ function Sidebar(props) {
     }
 
     return (
-        <div className="col-2">
+        <div id="sidebar">
                 <div className="list-group">
 			<a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" data-target = "#facultyMenu" aria-controls = "facultyMenu"> Faculty </a>
                 <div id = "facultyMenu" className = "collapse show">
@@ -64,7 +64,7 @@ function Sidebar(props) {
                 </div>
 
 		<style jsx>{`
-			.col-2 {
+			#sidebar {
   				background-color: #017823;
 			}
 			.list-group-item-success{
