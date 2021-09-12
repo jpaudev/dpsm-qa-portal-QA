@@ -126,7 +126,7 @@ function LicensureExam(props) {
             <h2 align = "center"> Licensure Exams </h2>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="licensureexamalert" style={{visibility:"hidden"}}></div>
-            <div>
+            <div className = "table-responsive">
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>

@@ -63,7 +63,7 @@ function EmploymentHistory(props){
 	return(
 		<div>
 			<div className ="alert alert-success" role="alert" id="employmentalert" style={{visibility:"hidden"}}></div>
-			<div>
+			<div className = "table-responsive">
 			<table className = "table table-striped table-sm">
 				<tbody>
 					<tr>
