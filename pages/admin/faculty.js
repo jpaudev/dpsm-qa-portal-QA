@@ -24,6 +24,9 @@ function BasicInfo(props) {
 		a.active{
 			background-color:#78b6c2;
 		}
+		.tab-pane.active{
+			background-color: #fff;
+		}
 	`}</style>
         </Layout>
     )

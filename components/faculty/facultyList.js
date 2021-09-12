@@ -83,6 +83,7 @@ function FacultyList(props){
 				return (
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
+						<div className = "table-responsive">
 						<table className = "table">
 							<tr>
 								<th>Name</th>
@@ -101,6 +102,7 @@ function FacultyList(props){
 							</tr>
 							{facultyList}
 						</table>
+						</div>
 					</div>
 				); 
 			}
@@ -158,6 +160,7 @@ function FacultyList(props){
 				return (
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
+						<div className = "table-responsive">
 						<table className = "table">
 							<tr>
 								<th>Name</th>
@@ -176,6 +179,7 @@ function FacultyList(props){
 							</tr>
 							{facultyList}
 						</table>
+						</div>
 					</div>
 				); 
 			}
@@ -233,6 +237,7 @@ function FacultyList(props){
 				return (
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
+						<div className = "table-responsive">
 						<table className = "table">
 							<tr>
 								<th>Name</th>
@@ -251,6 +256,7 @@ function FacultyList(props){
 							</tr>
 							{facultyList}
 						</table>
+						</div>
 					</div>
 				); 
 			}
