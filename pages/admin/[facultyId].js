@@ -106,6 +106,9 @@ function BasicInfo(props) {
 		nav#nav-tab-main{
 			background-color:#999;
 		}
+		.tab-pane.active{
+			background-color #fff;
+		}
         .list-group-item-info{
             text-indent:5%;
         }
