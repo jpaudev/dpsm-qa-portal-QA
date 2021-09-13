@@ -1,6 +1,14 @@
 import Link from 'next/link'
 
 function Header(props) {
+	let roleName = ""
+	switch(props.role){
+		case 1: roleName = props.role + "Faculty";
+		case 2: roleName = props.role + "Unit Head";
+		case 3: roleName = "Department Chair";
+		default: roleName = "Admin Clerk";
+	}
+	
     return (
         <div className="row">
             <nav className="navbar navbar-expand-lg">
@@ -12,7 +20,7 @@ function Header(props) {
 		<h2> DPSM QA PORTAL </h2>
 		
 		<div className = "ml-auto">
-			<h5> Currently Logged In: <Link href = "/settings/change-password"><a> {props.name} </a></Link> </h5>
+			<h5> Currently Logged In: <Link href = "/settings/change-password"><a> {props.name}, {roleName} </a></Link> </h5>
 		</div>
             </nav>
 		<style jsx>{`
