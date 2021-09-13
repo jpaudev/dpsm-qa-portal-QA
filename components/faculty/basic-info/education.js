@@ -29,10 +29,10 @@ function Education(props) {
         content = Object.keys(props.children).map(key => {
                 return (
                     <tr key = {props.children.[key].educInfoId}>
-                        <td>{props.children[key].institutionSchool}</td>
                         <td>{props.children[key].degreeType}</td>
                         <td>{props.children[key].degreeCert}</td>
                         <td>{props.children[key].majorSpecialization}</td>
+                        <td>{props.children[key].institutionSchool}</td>
                         <td>{props.children[key].startDate}</td>
                         <td>{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
                         <td>
@@ -135,10 +135,10 @@ function Education(props) {
                 <table className = "table table-striped table-sm">
                     <tbody>
                         <tr>
-                            <th>Institution/School</th>
-                            <th>Degree Type</th>
                             <th>Degree/Certification</th>
+                            <th>Degree Type</th>
                             <th>Major/Specialization</th>
+                            <th>Institution/School</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Proof</th>
