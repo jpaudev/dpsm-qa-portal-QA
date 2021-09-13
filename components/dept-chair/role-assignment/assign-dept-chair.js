@@ -6,13 +6,16 @@ function AssignDeptChair(props) {
     let faculty
 
     if(props.children != null) {
-        faculty = Object.keys(props.children).map(key => {
-            return(
+        faculty = Object.keys(props.children).map(key => 
+		[
+			{value: this.props.faculty[key].facultyId, label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}
+		]
+	   {/*return(
                 <option value={props.children[key].userId} key = {props.children[key].userId}>
                     {props.children[key].lastName + ', ' + props.children[key].firstName}
                 </option>
-            )
-        })
+            )*/}
+        )
     }
     
     return (
