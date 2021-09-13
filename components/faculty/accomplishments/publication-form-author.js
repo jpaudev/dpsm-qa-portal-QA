@@ -34,15 +34,14 @@ class PublicationFormAuthor extends React.Component{
 	}
 
 	render(){
-		let authors = Object.keys(this.props.faculty).map(key => {
-			[{
-				value: this.props.faculty[key].facultyId,
-			 	label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
-			}]
+		let authors = Object.keys(this.props.faculty).map(key => 
+			[
+				{value: this.props.faculty[key].facultyId, label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}
+			]
 			{/*return (
 				<option value = {this.props.faculty[key].facultyId}>{this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}</option> 
 			);*/}
-		});
+		);
 		return(<div>
 		       {/*<div className = "btn-group btn-group-sm col-md-2">
 				<button type = "button" className = "btn btn-primary" id = "AddAuthor" onClick = {() => this.clone()}> Add DPSM Author </button>
