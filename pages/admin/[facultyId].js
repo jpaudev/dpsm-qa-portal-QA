@@ -17,7 +17,7 @@ function BasicInfo(props) {
     return (
         <Layout userId={props.data.userId} role={props.data.role} name={props.data.name}>
             <nav>
-            <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
+            <div className="nav nav-tabs nav-justified flex-column flex-md-row" id="nav-tab-main" role="tablist">
 				<a className="nav-item nav-link active" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic Information</a>
 				<a className="nav-item nav-link" id="accomplishments-tab" data-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">Accomplishments</a>
 				<a className="nav-item nav-link" id="evaluation-tab" data-toggle="tab" href="#evaluation" role="tab" aria-controls="evaluation" aria-selected="false">Peer Evaluation</a>
@@ -26,7 +26,7 @@ function BasicInfo(props) {
             <div className="tab-content" id="nav-tabContent-main">
 	    		<div className="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="basic-info-tab">
 				    <nav>
-           				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-basic-info" role="tablist">
+           				<div className="nav nav-tabs nav-justified flex-column flex-md-row" id="nav-tab-basic-info" role="tablist">
                             <a className="nav-item nav-link active" id="personal-info-tab" data-toggle="tab" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">Personal Information</a>
                             <a className="nav-item nav-link" id="educ-tab" data-toggle="tab" href="#educ" role="tab" aria-controls="educ" aria-selected="false">Education</a>
                             <a className="nav-item nav-link" id="work-exp-tab" data-toggle="tab" href="#work-exp" role="tab" aria-controls="work-exp" aria-selected="false">Work Experience</a>
@@ -46,7 +46,7 @@ function BasicInfo(props) {
                 </div>
                 <div className="tab-pane fade" id="accomplishments" role="tabpanel" aria-labelledby="accomplishments-tab">
                     <nav>
-                        <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-accomplishment" role="tablist">
+                        <div className="nav nav-tabs nav-justified flex-column flex-md-row" id="nav-tab-accomplishment" role="tablist">
                             <a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">Public Service Accomplishments</a>
                             <a className="nav-item nav-link" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">Publications</a>
                             <a className="nav-item nav-link" id="training-seminar-tab" data-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">Training/Seminars</a>
