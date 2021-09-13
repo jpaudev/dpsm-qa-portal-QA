@@ -82,32 +82,33 @@ function BasicInfo(props) {
             </nav>
 
     <style jsx>{`
-		a.nav-item:focus{
+		#nav-tab-main a.nav-item:focus{
 			background-color:#78b6c2;
 		}
-		a.nav-item:hover{
+		#nav-tab-main a.nav-item:hover{
 			background-color:#78b6c2;
 		}
-		a.active{
+		#nav-tab-main a.nav-item .active{
 			background-color:#78b6c2;
 		}
-		a#basic-info-tab.active{
-			background-color:#78b6c2;
+		a.nav-item{
+			background-color: #aaa;
 		}
-		a#personal-info-tab.active{
-			background-color:#78b6c2;
+		#nav-tabContent-main a.nav-item{
+			background-color: #78b6c2;
 		}
-		a#public-service-accomplishment-tab.active{
-			background-color:#78b6c2;
+		#nav-tabContent-main a.nav-item .active{
+			background-color: #5486b8;
 		}
-		nav{
-			background-color:#aaa;
+		#nav-tabContent-main a.nav-item:focus{
+			background-color:#5486b8;
 		}
-		nav#nav-tab-main{
-			background-color:#999;
+		#nav-tabContent-main a.nav-item:hover{
+			background-color:#5486b8;
 		}
-		.tab-pane.active{
-			background-color #fff;
+		.tab-pane.active
+		{
+			background-color: #000;
 		}
         .list-group-item-info{
             text-indent:5%;
