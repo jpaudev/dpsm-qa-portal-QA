@@ -35,9 +35,13 @@ class PublicationFormAuthor extends React.Component{
 
 	render(){
 		let authors = Object.keys(this.props.faculty).map(key => {
-			return (
+			[{
+				value: this.props.faculty[key].facultyId,
+			 	label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
+			}]
+			{/*return (
 				<option value = {this.props.faculty[key].facultyId}>{this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}</option> 
-			);
+			);*/}
 		});
 		return(<div>
 		       {/*<div className = "btn-group btn-group-sm col-md-2">
