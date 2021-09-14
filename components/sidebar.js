@@ -23,7 +23,7 @@ function Sidebar(props) {
 
     return (
         <div id="sidebar">
-                <div className="list-group">
+                <div className="list-group col-12">
 			<a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" data-target = "#facultyMenu" aria-controls = "facultyMenu"> Faculty </a>
                 <div id = "facultyMenu" className = "collapse show">
                     { !staff && !faculty && <Link href={{ pathname: "/faculty" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty" ?  "active"  : "inactive" }>Dashboard</a></Link> }
@@ -50,16 +50,16 @@ function Sidebar(props) {
                     </Link> }
                 </div>
                 </div>
-                <div className="list-group">
+                <div className="list-group col-12">
                     <Link href="/student"><a className = "list-group-item list-group-item-action list-group-item-secondary">Student</a></Link>
                 </div>
-                <div className="list-group">
+                <div className="list-group col-12">
                     <Link href="/alumni"><a className = "list-group-item list-group-item-action list-group-item-secondary">Alumni</a></Link>
                 </div>
-                <div className="list-group">
+                <div className="list-group col-12">
                     <Link href="/department-activities"><a className = "list-group-item list-group-item-action list-group-item-secondary">Department Activities</a></Link>
                 </div>
-		        <div className="list-group">
+		        <div className="list-group col-12">
                     <Link href="/login"><a className = "list-group-item list-group-item-action list-group-item-danger" onClick={handleRemoveCookie}>Log Out</a></Link>
                 </div>
 
