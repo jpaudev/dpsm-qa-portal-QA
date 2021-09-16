@@ -215,6 +215,8 @@ function Education(props) {
                                             <option value = "MS">MS</option>
                                             <option value = "MD">MD</option>
                                             <option value = "PhD">PhD</option>
+                                            <option value = "DEng">DEng</option>
+                                            <option value = "DrPH">DrPH</option>
                                         </Field>
                                     </div>
                                 </div>

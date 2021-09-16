@@ -60,15 +60,6 @@ class EducationForm extends React.Component{
                             </div>
                         </div>
                         <div className = "form-row">
-                            <div className = "form-group col-md-4">
-                                <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
-                                <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
-                            </div>
-
-                            <div className = "form-group col-md-4">
-                                <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
-                                <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
-                            </div>
                             <div className = "form-group col-md-2 required">
                                 <label className = "control-label" htmlFor ="DegreeType"> Degree Type </label>
                                     <Field as = "select" className = "form-control" name = "degreeType" id = "degreeType" required>
@@ -80,9 +71,20 @@ class EducationForm extends React.Component{
                                         <option value = "MS">MS</option>
                                         <option value = "MD">MD</option>
                                         <option value = "PhD">PhD</option>
+                                        <option value = "DEng">DEng</option>
+                                        <option value = "DrPH">DrPH</option>
                                     </Field>
                             </div>
+                            <div className = "form-group col-md-4">
+                                <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
+                                <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
                             </div>
+
+                            <div className = "form-group col-md-4">
+                                <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
+                                <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
+                            </div>
+                        </div>
                          <div className = "form-row">
                                 <div className = "form-group col-md-2">
                                     <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
