@@ -1,0 +1,1 @@
+{"ast":null,"code":"import { useCookies } from \"react-cookie\";\nexport default (async (req, res) => {\n  const [cookie, setCookie, removeCookie] = useCookies([\"user\"]);\n  res.removeHeader('Set-Cookie');\n  removeCookie('user');\n  res.writeHead(302, {\n    Location: '/login'\n  });\n  res.end();\n});","map":null,"metadata":{},"sourceType":"module"}
