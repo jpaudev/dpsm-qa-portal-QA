@@ -2,19 +2,21 @@ import Router from 'next/router'
 import assignDeptChair from '../../../services/faculty/assignments/assignDeptChair'
 import Select from 'react-select'
 
-function AssignDeptChair(props) { 
+function AssignDeptChair(props) {
     let faculty
 
     if(props.children != null) {
         faculty = Object.keys(props.children).map(key => 
-		[
-			{value: this.props.faculty[key].userId, label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}
-		]
-	   {/*return(
-                <option value={props.children[key].userId} key = {props.children[key].userId}>
-                    {props.children[key].lastName + ', ' + props.children[key].firstName}
-                </option>
-            )*/}
+		// [
+		// 	{value: this.props.faculty[key].userId, label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}
+		// ]
+            {
+                return(
+                    <option value={props.children[key].userId} key = {props.children[key].userId}>
+                        {props.children[key].lastName + ', ' + props.children[key].firstName}
+                    </option>
+                )
+            }
         )
     }
     

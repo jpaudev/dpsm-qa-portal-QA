@@ -145,7 +145,7 @@ function PersonalInfo(props) {
                     <div className = "form-row">
                         <div className = "form-group col-md-3 required">
                             <label className = "control-label" htmlFor = "FirstName"> First Name </label>
-                            <Field className = "form-control" type = "text" name = "firstName" defaultValue = { FacultyDetails.firstName } disabled={!props.clerkFlag} required />
+                            <Field className = "form-control" type = "text" name = "firstName" defaultValue = { FacultyDetails.firstName } disabled={!props.facultyFlag && !props.clerkFlag} required />
                         </div>
                         <div className = "form-group col-md-3">
                             <label htmlFor = "MiddleName"> Middle Name </label>

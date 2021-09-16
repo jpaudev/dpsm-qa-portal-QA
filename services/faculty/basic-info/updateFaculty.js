@@ -1,19 +1,16 @@
 import axios from "axios"
 import jwt from 'jsonwebtoken'
 
-export default async function updateFaculty(data, token) {
+export default async function updateFaculty(data, token) { console.log(data.firstName)
 	let cookieData = jwt.decode(token)
     let facultyId = cookieData.facultyId
 	try {
 	    if (token) {	      
 	        let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
-		    let header = {
-		        headers: {
-		            'Authorization': 'Bearer ' + token
-		        }
-		    }
+		    
 	        try {
 				const response = await axios.put(url + "/personal", {
+					firstName: `${data.firstName}`, 
 					lastName: `${data.lastName}`,
 					middleName: `${data.middleName}`,
 					suffix: `${data.suffix}`,

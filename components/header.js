@@ -20,7 +20,7 @@ function Header(props) {
 		<h2> DPSM QA PORTAL </h2>
 		
 		<div className = "ml-auto">
-			<h5> Currently Logged In: <Link href = "/settings/change-password"><a> {props.name}, {roleName} </a></Link> </h5>
+			<h5> Currently Logged In: <Link href = "/settings/change-password"><a> {props.name} ({roleName}) </a></Link> </h5>
 		</div>
             </nav>
 		<style jsx>{`
