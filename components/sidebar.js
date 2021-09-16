@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useCookies } from "react-cookie";
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 function Sidebar(props) { 
@@ -21,8 +22,16 @@ function Sidebar(props) {
         } 
     }
 
+    const [isActive, setActive] = useState("false")
+
+    const handleToggle = () => {
+    	setActive(!isActive)
+    }
+
     return (
         <div id="sidebar">
+	    <div className = "alert alert-info col-12 d-lg-none text-center" onClick = {handleToggle}> Main Menu </div>
+            <div id = "menu" className = {isActive ? null : "d-none d-lg-block"}>
                 <div className="list-group col-12">
 			<a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" data-target = "#facultyMenu" aria-controls = "facultyMenu"> Faculty </a>
                 <div id = "facultyMenu" className = "collapse show">
@@ -64,7 +73,7 @@ function Sidebar(props) {
                 </div>
 
 		<style jsx>{`
-			#sidebar {
+			#menu {
   				background-color: #017823;
 			}
 			.list-group-item-success{
@@ -75,7 +84,8 @@ function Sidebar(props) {
 				color: #fff;
 			}
 		`}</style>
-            </div>           
+            </div>
+	</div>					    
     )
   }
   
