@@ -1,18 +1,26 @@
 #sidebar {
 	float: left;
-    	padding: 15px;
+	height: 100%;
+}
+#menu{
+	padding: 15px;
+	height: 100%;
 }
 #layout_content
 {
 	float: right;
+	height: 100%;
 	width: 100%;
 	overflow-x: scroll;
 }
-
 @media screen and (max-width: 768px) {
   #sidebar {
     float: none;
     width: 100%;
+    height: auto;
+  }
+  #menu{
+    height: auto;
   }
   #layout_content {
     float: none;

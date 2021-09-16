@@ -108,7 +108,7 @@ function BasicInfo(props) {
 		}
 		.tab-pane.active
 		{
-			background-color: #000;
+			background-color: #fff;
 		}
         .list-group-item-info{
             text-indent:5%;
