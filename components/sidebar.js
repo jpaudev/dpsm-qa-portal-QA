@@ -30,8 +30,8 @@ function Sidebar(props) {
 
     return (
         <div id="sidebar">
-	    <div className = "alert alert-info col-12 d-lg-none text-center" onClick = {handleToggle}> Main Menu </div>
-            <div id = "menu" className = {isActive ? null : "d-none d-lg-block"}>
+	    <div className = "alert alert-info col-12 d-md-none text-center" onClick = {handleToggle}> Main Menu </div>
+            <div id = "menu" className = {isActive ? null : "d-none d-md-block"}>
                 <div className="list-group col-12">
 			<a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" data-target = "#facultyMenu" aria-controls = "facultyMenu"> Faculty </a>
                 <div id = "facultyMenu" className = "collapse show">
