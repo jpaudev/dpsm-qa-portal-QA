@@ -1,6 +1,8 @@
 #sidebar {
 	float: left;
-    	padding: 15px;
+}
+#menu{
+	padding: 15px;
 }
 #layout_content
 {
@@ -8,7 +10,6 @@
 	width: 100%;
 	overflow-x: scroll;
 }
-
 @media screen and (max-width: 768px) {
   #sidebar {
     float: none;
