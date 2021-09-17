@@ -12,18 +12,18 @@ function FacultyList(props){
 	const [currData, setData] = React.useState({
 		userId: 0,
         status: '',
-        remarks: ''
+        remarks: '',
+		facultyName: ''
     })
 
+	let remarksStyle 
+	
 	function handleInputChange(id, event) {
 		setData({...currData, [id]: event.target.value});
-		if(id == 'status') {
-			if(event.target.value == 'Inactive') 
-				document.getElementById("remarksrow").style = "visibility: visible"
-			else document.getElementById("remarksrow").style = "visibility: hidden"
-		}
 	}
 
+	currData.status == 'Inactive' ? remarksStyle = 'visible' : remarksStyle = 'hidden'
+	
 	if(props.children != null) {
 		let path
 		if(props.path == "approval") path = '/faculty/approval/'
@@ -271,10 +271,12 @@ function FacultyList(props){
 				let faculty = props.children[key].faculty_units
 				await Object.keys(faculty).map(async index => {
 					if(faculty[index].faculty_personal_info.user.userId == x) { 
+						
 						await setData({
 							userId: x,
 							status: faculty[index].faculty_personal_info.user.status,
-							remarks: faculty[index].faculty_personal_info.user.remarks
+							remarks: faculty[index].faculty_personal_info.user.remarks,
+							facultyName: faculty[index].faculty_personal_info.lastName + ', ' + faculty[index].faculty_personal_info.firstName
 						})
 					}
 				})
@@ -301,8 +303,8 @@ function FacultyList(props){
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="editStatus">Update Faculty Status</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <h5 className="modal-title" id="editStatus">Update Faculty Status - {currData.facultyName}</h5>
+                        <button type="button" className="close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -318,8 +320,9 @@ function FacultyList(props){
 									</select>
 								</div>
 							</div>
-                            <div className = "form-row" id="remarksrow">
-                            	<div className = "form-group">
+							
+							<div className = "form-row" id="remarksrow" style={{visibility: remarksStyle}}>
+								<div className = "form-group">
 									<label htmlFor = "Remarks"> Remarks </label>
 									<select className = "form-control" name="Remarks" id="Remarks" value = { currData.remarks || ''} onChange = {(e) => handleInputChange("remarks", e)}>
 										<option value="">-- SELECT REMARKS --</option>
@@ -327,8 +330,9 @@ function FacultyList(props){
 										<option value="Resigned">Resigned</option>
 										<option value="On Leave">On Leave</option>
 									</select>
-                				</div>
-                            </div>
+								</div>
+							</div>
+							
                         </form>
                     </div>
                     <div className="modal-footer">
