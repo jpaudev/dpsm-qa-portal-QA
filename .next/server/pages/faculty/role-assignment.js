@@ -850,7 +850,10 @@ function AssignDeptChair(props) {
   let faculty;
 
   if (props.children != null) {
-    faculty = Object.keys(props.children).map(key => {
+    faculty = Object.keys(props.children).map(key => // [
+    // 	{value: this.props.faculty[key].userId, label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}
+    // ]
+    {
       return /*#__PURE__*/jsx_runtime_.jsx("option", {
         value: props.children[key].userId,
         children: props.children[key].lastName + ', ' + props.children[key].firstName

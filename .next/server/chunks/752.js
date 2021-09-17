@@ -47,7 +47,8 @@ function Layout(props) {
         src: "https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
       })]
     }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_header__WEBPACK_IMPORTED_MODULE_2__/* .default */ .Z, {
-      name: props.name
+      name: props.name,
+      role: props.role
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
       className: "row",
       id: "layout_row",
@@ -57,11 +58,9 @@ function Layout(props) {
         facultyId: props.facultyId,
         roleAssignment: props.roleAssignmentFlag
       }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-        className: "col-10",
-        children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-          className: "container",
-          children: props.children
-        })
+        className: "col",
+        id: "layout_content",
+        children: props.children
       })]
     })]
   });

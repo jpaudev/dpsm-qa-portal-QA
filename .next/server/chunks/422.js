@@ -30,6 +30,7 @@ var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_)
 async function updateUser(data, token) {
   try {
     if (token) {
+      if (data.status == 'Active') data.remarks = '';
       let url = 'https://api.dpsmqaportal.com/api/user/' + `${data.userId}`;
       const response = await external_axios_default()({
         method: 'PUT',
@@ -73,18 +74,18 @@ function FacultyList(props) {
   const [currData, setData] = external_react_default().useState({
     userId: 0,
     status: '',
-    remarks: ''
+    remarks: '',
+    facultyName: ''
   });
+  let remarksStyle;
 
   function handleInputChange(id, event) {
     setData(_objectSpread(_objectSpread({}, currData), {}, {
       [id]: event.target.value
     }));
-
-    if (id == 'status') {
-      if (event.target.value == 'Inactive') document.getElementById("remarksrow").style = "visibility: visible";else document.getElementById("remarksrow").style = "visibility: hidden";
-    }
   }
+
+  currData.status == 'Inactive' ? remarksStyle = 'visible' : remarksStyle = 'hidden';
 
   if (props.children != null) {
     let path;
@@ -331,7 +332,8 @@ function FacultyList(props) {
             await setData({
               userId: x,
               status: faculty[index].faculty_personal_info.user.status,
-              remarks: faculty[index].faculty_personal_info.user.remarks
+              remarks: faculty[index].faculty_personal_info.user.remarks,
+              facultyName: faculty[index].faculty_personal_info.lastName + ', ' + faculty[index].faculty_personal_info.firstName
             });
           }
         });
@@ -366,14 +368,13 @@ function FacultyList(props) {
           className: "modal-content",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "modal-header",
-            children: [/*#__PURE__*/jsx_runtime_.jsx("h5", {
+            children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("h5", {
               className: "modal-title",
               id: "editStatus",
-              children: "Update Faculty Status"
+              children: ["Update Faculty Status - ", currData.facultyName]
             }), /*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
               className: "close",
-              "data-dismiss": "modal",
               "aria-label": "Close",
               children: /*#__PURE__*/jsx_runtime_.jsx("span", {
                 "aria-hidden": "true",
@@ -408,6 +409,9 @@ function FacultyList(props) {
               }), /*#__PURE__*/jsx_runtime_.jsx("div", {
                 className: "form-row",
                 id: "remarksrow",
+                style: {
+                  visibility: remarksStyle
+                },
                 children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                   className: "form-group",
                   children: [/*#__PURE__*/jsx_runtime_.jsx("label", {

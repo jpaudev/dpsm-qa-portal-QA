@@ -144,30 +144,6 @@ class EducationForm extends (external_react_default()).Component {
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
           className: "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-4",
-            children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
-              htmlFor: "DegreeEducationalHistory[]",
-              children: " Degree/Certification "
-            }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
-              className: "form-control",
-              type: "text",
-              name: "degreeCert",
-              id: "degreeCert",
-              placeholder: "Input degree"
-            })]
-          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-4",
-            children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
-              htmlFor: "MajorEducationalHistory[]",
-              children: " Major/Specialization "
-            }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
-              className: "form-control",
-              type: "text",
-              name: "majorSpecialization",
-              id: "majorSpecialization",
-              placeholder: "Input major"
-            })]
-          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "form-group col-md-2 required",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               className: "control-label",
@@ -203,7 +179,37 @@ class EducationForm extends (external_react_default()).Component {
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "PhD",
                 children: "PhD"
+              }), /*#__PURE__*/jsx_runtime_.jsx("option", {
+                value: "DEng",
+                children: "DEng"
+              }), /*#__PURE__*/jsx_runtime_.jsx("option", {
+                value: "DrPH",
+                children: "DrPH"
               })]
+            })]
+          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            className: "form-group col-md-4",
+            children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
+              htmlFor: "DegreeEducationalHistory[]",
+              children: " Degree/Certification "
+            }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
+              className: "form-control",
+              type: "text",
+              name: "degreeCert",
+              id: "degreeCert",
+              placeholder: "Input degree"
+            })]
+          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            className: "form-group col-md-4",
+            children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
+              htmlFor: "MajorEducationalHistory[]",
+              children: " Major/Specialization "
+            }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
+              className: "form-control",
+              type: "text",
+              name: "majorSpecialization",
+              id: "majorSpecialization",
+              placeholder: "Input major"
             })]
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -409,13 +415,13 @@ function Education(props) {
     content = Object.keys(props.children).map(key => {
       return /*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
         children: [/*#__PURE__*/jsx_runtime_.jsx("td", {
-          children: props.children[key].institutionSchool
-        }), /*#__PURE__*/jsx_runtime_.jsx("td", {
           children: props.children[key].degreeType
         }), /*#__PURE__*/jsx_runtime_.jsx("td", {
           children: props.children[key].degreeCert
         }), /*#__PURE__*/jsx_runtime_.jsx("td", {
           children: props.children[key].majorSpecialization
+        }), /*#__PURE__*/jsx_runtime_.jsx("td", {
+          children: props.children[key].institutionSchool
         }), /*#__PURE__*/jsx_runtime_.jsx("td", {
           children: props.children[key].startDate
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
@@ -556,13 +562,13 @@ function Education(props) {
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
             children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Institution/School"
+              children: "Degree/Certification"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Degree Type"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
-              children: "Degree/Certification"
-            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Major/Specialization"
+            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              children: "Institution/School"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Start Date"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
@@ -696,6 +702,12 @@ function Education(props) {
                       }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                         value: "PhD",
                         children: "PhD"
+                      }), /*#__PURE__*/jsx_runtime_.jsx("option", {
+                        value: "DEng",
+                        children: "DEng"
+                      }), /*#__PURE__*/jsx_runtime_.jsx("option", {
+                        value: "DrPH",
+                        children: "DrPH"
                       })]
                     })]
                   })

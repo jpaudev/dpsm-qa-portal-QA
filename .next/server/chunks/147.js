@@ -580,20 +580,17 @@ var external_jsonwebtoken_default = /*#__PURE__*/__webpack_require__.n(external_
 
 
 async function updateFaculty(data, token) {
+  console.log(data.firstName);
   let cookieData = external_jsonwebtoken_default().decode(token);
   let facultyId = cookieData.facultyId;
 
   try {
     if (token) {
       let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
-      let header = {
-        headers: {
-          'Authorization': 'Bearer ' + token
-        }
-      };
 
       try {
         const response = await external_axios_default().put(url + "/personal", {
+          firstName: `${data.firstName}`,
           lastName: `${data.lastName}`,
           middleName: `${data.middleName}`,
           suffix: `${data.suffix}`,
@@ -887,7 +884,7 @@ function PersonalInfo(props) {
               type: "text",
               name: "firstName",
               defaultValue: FacultyDetails.firstName,
-              disabled: !props.clerkFlag,
+              disabled: !props.facultyFlag && !props.clerkFlag,
               required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -1078,7 +1075,7 @@ function PersonalInfo(props) {
               className: "form-control",
               type: "tel",
               name: "landline",
-              pattern: "[0-9]{8}",
+              pattern: "[0-9]{10}",
               defaultValue: FacultyDetails.landline,
               disabled: !props.facultyFlag && !props.clerkFlag
             })]

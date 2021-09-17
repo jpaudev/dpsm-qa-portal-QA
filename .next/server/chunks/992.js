@@ -2318,12 +2318,13 @@ class PublicationFormAuthor extends (external_react_default()).Component {
   }
 
   render() {
-    let authors = Object.keys(this.props.faculty).map(key => {
-      return /*#__PURE__*/jsx_runtime_.jsx("option", {
-        value: this.props.faculty[key].facultyId,
-        children: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
-      });
-    });
+    let authors = Object.keys(this.props.faculty).map(key => [{
+      value: this.props.faculty[key].facultyId,
+      label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
+    }] // {/*return (
+    // 	<option value = {this.props.faculty[key].facultyId}>{this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}</option> 
+    // );*/}
+    );
     return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
       children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
         className: "form-row",

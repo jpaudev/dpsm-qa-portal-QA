@@ -41,6 +41,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
  //styles of nprogress
 
 
+
  //Binding events. 
 
 router_default().events.on('routeChangeStart', () => external_nprogress_default().start());
