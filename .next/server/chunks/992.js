@@ -2283,48 +2283,37 @@ class PublicationFormAuthor extends (external_react_default()).Component {
     this.state = {
       duplicateAuthors: []
     };
-  }
+  } // clone(){
+  // 	let authors = Object.keys(this.props.faculty).map(key => {
+  // 		return (
+  // 			<option value = {this.props.faculty[key].facultyId}>{this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}</option> 
+  // 		);
+  // 	});
+  // 	this.state.duplicateAuthors.push(<div><div className = "form-row">
+  // 		<div className = "form-group col-md-6">
+  // 			<label htmlFor = "PublicationAuthorDPSM[]"> Author (from DPSM) </label>
+  // 			<select className = "form-control col-md-6" name = "PublicationAuthorDPSM[]" required>
+  // 				{authors}
+  // 			</select>
+  // 		</div>
+  // 	</div></div>)
+  // 	this.setState({
+  // 	})
+  // }
+  // remove(){
+  // 	this.state.duplicateAuthors.pop()
+  // 	this.setState({
+  // 	})
+  // }
 
-  clone() {
-    let authors = Object.keys(this.props.faculty).map(key => {
-      return /*#__PURE__*/jsx_runtime_.jsx("option", {
-        value: this.props.faculty[key].facultyId,
-        children: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
-      });
-    });
-    this.state.duplicateAuthors.push( /*#__PURE__*/jsx_runtime_.jsx("div", {
-      children: /*#__PURE__*/jsx_runtime_.jsx("div", {
-        className: "form-row",
-        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-group col-md-6",
-          children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
-            htmlFor: "PublicationAuthorDPSM[]",
-            children: " Author (from DPSM) "
-          }), /*#__PURE__*/jsx_runtime_.jsx("select", {
-            className: "form-control col-md-6",
-            name: "PublicationAuthorDPSM[]",
-            required: true,
-            children: authors
-          })]
-        })
-      })
-    }));
-    this.setState({});
-  }
-
-  remove() {
-    this.state.duplicateAuthors.pop();
-    this.setState({});
-  }
 
   render() {
-    let authors = Object.keys(this.props.faculty).map(key => [{
-      value: this.props.faculty[key].facultyId,
-      label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
-    }] // {/*return (
-    // 	<option value = {this.props.faculty[key].facultyId}>{this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}</option> 
-    // );*/}
-    );
+    let authors = Object.keys(this.props.faculty).map(key => {
+      return {
+        value: this.props.faculty[key].facultyId,
+        label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
+      };
+    });
     return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
       children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
         className: "form-row",
@@ -3347,46 +3336,36 @@ class ResearchGrantFormAuthor extends (external_react_default()).Component {
     this.state = {
       duplicateAuthors: []
     };
-  }
+  } // clone(){
+  // 	let authors = Object.keys(this.props.faculty).map(key => {
+  // 		return (
+  // 			<option value = {this.props.faculty[key].facultyId}>{this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}</option> 
+  // 		);
+  // 	});
+  // 	this.state.duplicateAuthors.push(<div><div className = "form-row">
+  // 		<div className = "form-group col-md-6">
+  // 			<label htmlFor = "ResearchAuthorDPSM[]"> Researcher (from DPSM) </label>
+  // 			<select className = "form-control col-md-6" name = "ResearchAuthorDPSM[]" required>
+  // 				{authors}
+  // 			</select>
+  // 		</div>
+  // 	</div></div>)
+  // 	this.setState({
+  // 	})
+  // }
+  // remove(){
+  // 	this.state.duplicateAuthors.pop()
+  // 	this.setState({
+  // 	})
+  // }
 
-  clone() {
-    let authors = Object.keys(this.props.faculty).map(key => {
-      return /*#__PURE__*/jsx_runtime_.jsx("option", {
-        value: this.props.faculty[key].facultyId,
-        children: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
-      });
-    });
-    this.state.duplicateAuthors.push( /*#__PURE__*/jsx_runtime_.jsx("div", {
-      children: /*#__PURE__*/jsx_runtime_.jsx("div", {
-        className: "form-row",
-        children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-group col-md-6",
-          children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
-            htmlFor: "ResearchAuthorDPSM[]",
-            children: " Researcher (from DPSM) "
-          }), /*#__PURE__*/jsx_runtime_.jsx("select", {
-            className: "form-control col-md-6",
-            name: "ResearchAuthorDPSM[]",
-            required: true,
-            children: authors
-          })]
-        })
-      })
-    }));
-    this.setState({});
-  }
-
-  remove() {
-    this.state.duplicateAuthors.pop();
-    this.setState({});
-  }
 
   render() {
     let authors = Object.keys(this.props.faculty).map(key => {
-      return /*#__PURE__*/jsx_runtime_.jsx("option", {
+      return {
         value: this.props.faculty[key].facultyId,
-        children: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
-      });
+        label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName
+      };
     });
     return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
       children: [/*#__PURE__*/jsx_runtime_.jsx("div", {

@@ -5,8 +5,8 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/xpFcRD68LJFXnGQRdEwQE/_buildManifest.js",
-    "static/xpFcRD68LJFXnGQRdEwQE/_ssgManifest.js"
+    "static/CrMwD5XIlJlQmm1T4W4I0/_buildManifest.js",
+    "static/CrMwD5XIlJlQmm1T4W4I0/_ssgManifest.js"
   ],
   "pages": {
     "/": [
@@ -53,7 +53,7 @@
       "static/chunks/513-5816656c914d18149fda.js",
       "static/chunks/291-18c1135310c172fd8cca.js",
       "static/chunks/790-f61e74d9a9268ebf7063.js",
-      "static/chunks/992-57c1b09bbab399cdfc26.js",
+      "static/chunks/992-6b8599a7d782aa3d6c5c.js",
       "static/chunks/147-fe1de1c73e47c1465eb6.js",
       "static/chunks/187-acb252bc3651f8f4ccf3.js",
       "static/chunks/pages/admin/[facultyId]-b3abbfe5a555112f2091.js"
@@ -100,7 +100,7 @@
       "static/chunks/669-2d551d5bb5003913405e.js",
       "static/chunks/513-5816656c914d18149fda.js",
       "static/chunks/291-18c1135310c172fd8cca.js",
-      "static/chunks/992-57c1b09bbab399cdfc26.js",
+      "static/chunks/992-6b8599a7d782aa3d6c5c.js",
       "static/chunks/pages/faculty/accomplishment-3b35be93bd93786b1f16.js"
     ],
     "/faculty/approval": [
@@ -125,7 +125,7 @@
       "static/chunks/513-5816656c914d18149fda.js",
       "static/chunks/291-18c1135310c172fd8cca.js",
       "static/chunks/790-f61e74d9a9268ebf7063.js",
-      "static/chunks/992-57c1b09bbab399cdfc26.js",
+      "static/chunks/992-6b8599a7d782aa3d6c5c.js",
       "static/chunks/pages/faculty/approval/[facultyId]-ac65468827449817e6a1.js"
     ],
     "/faculty/basic-info": [
@@ -172,7 +172,7 @@
       "static/chunks/669-2d551d5bb5003913405e.js",
       "static/chunks/513-5816656c914d18149fda.js",
       "static/chunks/291-18c1135310c172fd8cca.js",
-      "static/chunks/pages/faculty/role-assignment-2da6ea305d307a5509ed.js"
+      "static/chunks/pages/faculty/role-assignment-13b747117fbcd36f6ea8.js"
     ],
     "/faculty/view/[facultyId]": [
       "static/chunks/webpack-277c75ec70a3d22a400d.js",
@@ -185,7 +185,7 @@
       "static/chunks/513-5816656c914d18149fda.js",
       "static/chunks/291-18c1135310c172fd8cca.js",
       "static/chunks/790-f61e74d9a9268ebf7063.js",
-      "static/chunks/992-57c1b09bbab399cdfc26.js",
+      "static/chunks/992-6b8599a7d782aa3d6c5c.js",
       "static/chunks/147-fe1de1c73e47c1465eb6.js",
       "static/chunks/187-acb252bc3651f8f4ccf3.js",
       "static/chunks/pages/faculty/view/[facultyId]-90fc71f5b79de9d6c6ea.js"
