@@ -53,15 +53,16 @@ class EducationForm extends React.Component{
                     <Form id = "educForm">
                         <hr />
                         <br />
+                        <h6>Required</h6>
                         <div className = "form-row">
                             <div className = "form-group col-md-12">
-                                <label htmlFor = "SchoolEducationalHistory[]"> School/Institution </label>
-                                <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" />
+                                <label htmlFor = "SchoolEducationalHistory[]" className = "required-label"> School/Institution </label>
+                                <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" required />
                             </div>
                         </div>
                         <div className = "form-row">
                             <div className = "form-group col-md-2 required">
-                                <label className = "control-label" htmlFor ="DegreeType"> Degree Type </label>
+                                <label className = "control-label" htmlFor ="DegreeType" className = "required-label"> Degree Type </label>
                                     <Field as = "select" className = "form-control" name = "degreeType" id = "degreeType" required>
                                         <option value = "AA">AA</option>
                                         <option value = "AS">AS</option>
@@ -76,27 +77,27 @@ class EducationForm extends React.Component{
                                     </Field>
                             </div>
                             <div className = "form-group col-md-4">
-                                <label htmlFor = "DegreeEducationalHistory[]"> Degree/Certification </label>
-                                <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
+                                <label htmlFor = "DegreeEducationalHistory[]" className = "required-label"> Degree/Certification </label>
+                                <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" required />
                             </div>
 
                             <div className = "form-group col-md-4">
-                                <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
-                                <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
+                                <label htmlFor = "MajorEducationalHistory[]" className = "required-label"> Major/Specialization </label>
+                                <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" required />
                             </div>
                         </div>
                          <div className = "form-row">
                                 <div className = "form-group col-md-2">
-                                    <label htmlFor = "StartDateEducationalHistory[]"> Start Date </label>
-                                    <Field type = "date" className = "form-control" name = "startDate" id = "startDate" />
+                                    <label htmlFor = "StartDateEducationalHistory[]" className = "required-label"> Start Date </label>
+                                    <Field type = "date" className = "form-control" name = "startDate" id = "startDate" required />
                                 </div>
                                 <div className = "form-group col-md-2">
                                     <label htmlFor = "EndDateEducationalHistory[]"> End Date </label>
                                     <Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
                                 </div>
                                 <div className = "form-group col-md-2">
-                                    <label htmlFor = "ProofEducationalHistory[]"> Proof </label>
-                                    <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
+                                    <label htmlFor = "ProofEducationalHistory[]" className = "required-label"> Proof </label>
+                                    <Field type = "file" className = "form-control-file" name = "proof" id = "proof" required />
                                 </div>
                          </div>
                         <br />
@@ -109,6 +110,16 @@ class EducationForm extends React.Component{
                         </button>
                     </Form>
                 )}
+                <style jsx>{`
+		label.required-label:after{
+			content: "*";
+			color: #f00;
+		}
+		h6:before{
+			content: "* ";
+			color: #f00;
+		}
+	`}</style>
             </Formik>
         )
     }
