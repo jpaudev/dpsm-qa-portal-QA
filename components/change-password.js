@@ -9,10 +9,11 @@ function ChangePassword(props) {
         <div>
             <br />
             <h4 align = "center"> Change Password </h4>
+            <h6>Required</h6>
             <div className ="alert alert-success" role="alert" id="changepassalert" style={{visibility:"hidden"}}></div>
             <form>
                 <div className = "form-group col-md-6">
-                    <label htmlFor="old-password">Current Password:</label>
+                    <label htmlFor="old-password" className = "required-label">Current Password:</label>
                     <input className = "form-control" type="password" id="old-password" name="old-password" required onBlur={async () => {
                         let alert = document.getElementById("changepassalert")
 
@@ -32,11 +33,11 @@ function ChangePassword(props) {
                     }} />
                 </div>
                 <div className = "form-group col-md-6">
-                    <label htmlFor="new-password">New Password:</label>
+                    <label htmlFor="new-password" className = "required-label">New Password:</label>
                     <input className = "form-control" type="password" id="new-password" name="new-password" required />
                 </div>
                 <div className = "form-group col-md-6">
-                    <label htmlFor="confirm-new-password">Confirm New Password:</label>
+                    <label htmlFor="confirm-new-password" className = "required-label">Confirm New Password:</label>
                     <input className = "form-control" type="password" id="confirm-new-password" name="confirm-new-password" required onChange={async () => {
                         let alert = document.getElementById("changepassalert")
                             
@@ -83,6 +84,16 @@ function ChangePassword(props) {
                             
                         }}>Change Password</button>
             </form>
+            <style jsx>{`
+		label.required-label:after{
+			content: "*";
+			color: #f00;
+		}
+		h6:before{
+			content: "* ";
+			color: #f00;
+		}
+	`}</style>
         </div>
     )
     
