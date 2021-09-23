@@ -16,13 +16,21 @@ function FacultyList(props){
 		facultyName: ''
     })
 
-	let remarksStyle 
+	let activeRemarksStyle
+	let inactiveRemarksStyle 
 	
 	function handleInputChange(id, event) {
-		setData({...currData, [id]: event.target.value});
+		if(id == 'status') setData({...currData, [id]: event.target.value, ['remarks']: ''});
+		else setData({...currData, [id]: event.target.value});
 	}
 
-	currData.status == 'Inactive' ? remarksStyle = 'visible' : remarksStyle = 'hidden'
+	if(currData.status == 'Inactive') {
+		activeRemarksStyle = 'none'
+		inactiveRemarksStyle = 'block'; 
+	 } else {
+		activeRemarksStyle = 'block'
+		inactiveRemarksStyle = 'none'
+	 } 
 	
 	if(props.children != null) {
 		let path
@@ -304,7 +312,7 @@ function FacultyList(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="editStatus">Update Faculty Status - {currData.facultyName}</h5>
-                        <button type="button" className="close" aria-label="Close">
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -321,14 +329,23 @@ function FacultyList(props){
 								</div>
 							</div>
 							
-							<div className = "form-row" id="remarksrow" style={{visibility: remarksStyle}}>
+							<div className = "form-row" id="activeremarksrow" style={{display: activeRemarksStyle}}>
+								<div className = "form-group">
+									<label htmlFor = "Remarks"> Remarks </label>
+									<select className = "form-control" name="Remarks" id="Remarks" value = { currData.remarks || ''} onChange = {(e) => handleInputChange("remarks", e)}>
+										<option value="">-- SELECT REMARKS --</option>
+										<option value="On Leave">On Leave</option>
+									</select>
+								</div>
+							</div>
+
+							<div className = "form-row" id="inactiveremarksrow" style={{display: inactiveRemarksStyle}}>
 								<div className = "form-group">
 									<label htmlFor = "Remarks"> Remarks </label>
 									<select className = "form-control" name="Remarks" id="Remarks" value = { currData.remarks || ''} onChange = {(e) => handleInputChange("remarks", e)}>
 										<option value="">-- SELECT REMARKS --</option>
 										<option value="Retired">Retired</option>
 										<option value="Resigned">Resigned</option>
-										<option value="On Leave">On Leave</option>
 									</select>
 								</div>
 							</div>
