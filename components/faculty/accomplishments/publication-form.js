@@ -50,14 +50,15 @@ class PublicationForm extends React.Component{
 					<Form id = "pubForm">
 						<hr />
 						<br />
+						<h6>Required</h6>
 						<div className = "form-row">
 							<div className = "form-group col-md-6">
-								<label htmlFor = "Publication[]"> Publication </label>
-								<Field className = "form-control" type = "text" name = "title" placeholder = "Input publication name/title" />
+								<label htmlFor = "Publication[]" className = "required-label"> Publication </label>
+								<Field className = "form-control" type = "text" name = "title" placeholder = "Input publication name/title" required />
 							</div>
 							<div className = "form-group col-md-6">
-								<label htmlFor = "PublicationCitation[]"> Citation </label>
-								<Field className = "form-control" type = "text" name = "citation" placeholder = "Input full citation for publication" />
+								<label htmlFor = "PublicationCitation[]" className = "required-label"> Citation </label>
+								<Field className = "form-control" type = "text" name = "citation" placeholder = "Input full citation for publication" required />
 							</div>
 						</div>
 						<div className = "form-row">
@@ -66,12 +67,12 @@ class PublicationForm extends React.Component{
 								<Field className = "form-control" type = "text" name = "url" placeholder = "Input publication URL" />
 							</div>
 							<div className = "form-group col-md-3">
-								<label htmlFor = "PublishDate[]"> Date Published </label>
-								<Field type = "date" className = "form-control" name = "publicationDate" />
+								<label htmlFor = "PublishDate[]" className = "required-label"> Date Published </label>
+								<Field type = "date" className = "form-control" name = "publicationDate" required />
 							</div>
 							<div className = "form-group col-md-3">
-	                            <label htmlFor = "PublicationProof[]"> Proof </label>
-	                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
+	                            <label htmlFor = "PublicationProof[]" className = "required-label"> Proof </label>
+	                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof" required />
 	                        </div>
 						</div>
 						<div className = "form-row">
@@ -93,6 +94,16 @@ class PublicationForm extends React.Component{
 						</button>
 					</Form>
 				)}
+				<style jsx>{`
+		label.required-label:after{
+			content: "*";
+			color: #f00;
+		}
+		h6:before{
+			content: "* ";
+			color: #f00;
+		}
+	`}</style>
 			</Formik>
 		)
 	}
