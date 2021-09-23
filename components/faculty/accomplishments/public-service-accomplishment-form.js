@@ -96,9 +96,7 @@ class PublicServiceAccomplishmentForm extends React.Component{
                         Submit
                     </button>
                     <hr />
-                </Form>
-                )}
-		<style jsx>{`
+			<style jsx>{`
 		label.required-label:after{
 			content: "*";
 			color: #f00;
@@ -108,6 +106,9 @@ class PublicServiceAccomplishmentForm extends React.Component{
 			color: #f00;
 		}
 	`}</style>
+                </Form>
+                )}
+		
             </Formik>
         )
     }
