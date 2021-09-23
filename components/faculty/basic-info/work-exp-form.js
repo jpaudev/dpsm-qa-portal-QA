@@ -62,7 +62,7 @@ class WorkExpForm extends React.Component{
 						<div className = "form-row">
 							<div className = "form-group col-md-3">
 								<label htmlFor = "StartDateWorkExperience[]" className = "required-label"> Start Date </label>
-								<Field type = "date" className = "form-control" name = "startDate" / required>
+								<Field type = "date" className = "form-control" name = "startDate" required />
 							</div>
 							<div className = "form-group col-md-3">
 								<label htmlFor = "EndDateWorkExperience[]"> End Date </label>
