@@ -68,9 +68,7 @@ class ClerkForm extends React.Component{
                         >
                             Add Clerk
                         </button>
-                    </Form>
-                )}
-                <style jsx>{`
+			<style jsx>{`
 		label.required-label:after{
 			content: "*";
 			color: #f00;
@@ -80,6 +78,9 @@ class ClerkForm extends React.Component{
 			color: #f00;
 		}
 	`}</style>
+                    </Form>
+                )}
+                
             </Formik>
         )
     }
