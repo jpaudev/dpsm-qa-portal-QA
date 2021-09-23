@@ -42,19 +42,13 @@ class PublicationFormAuthor extends React.Component{
 		return(<div>
 			<div className = "form-row">
 				<div className = "form-group col-md-12">
-					<label htmlFor = "PublicationAuthorDPSM[]" className = "required-label"> Authors (from DPSM) </label>
-					<Select className = "col-md-12" name = "PublicationAuthorDPSM[]" isMulti options = {authors} required />
+					<label htmlFor = "PublicationAuthorDPSM[]"> Authors (from DPSM) </label>
+					<Select className = "col-md-12" name = "PublicationAuthorDPSM[]" isMulti options = {authors} />
 				</div>
 			</div>
 		<div>
 				{this.state.duplicateAuthors}
 		</div>
-		<style jsx>{`
-		label.required-label:after{
-			content: "*";
-			color: #f00;
-		}
-	`}</style>
 		</div>
 		)
 	}
