@@ -50,26 +50,27 @@ class LicensureExamForm extends React.Component{
                     <Form id = "licenseForm">
                         <hr />
                         <br />
+			<h6>Required</h6>
                         <div className = "form-row">
                             <div className = "form-group col-md-2">
-                                <label htmlFor = "LicensureExam[]"> Licensure Exam </label>
-                                <Field className = "form-control" type = "text" name = "examName" placeholder = "Input licensure exam" />
+                                <label htmlFor = "LicensureExam[]" className = "required-label"> Licensure Exam </label>
+                                <Field className = "form-control" type = "text" name = "examName" placeholder = "Input licensure exam" required />
                             </div>
                             <div className = "form-group col-md-2">
-                                <label htmlFor = "LicensureExamDate[]"> Date </label>
-                                <Field type = "date" className = "form-control" name = "examDate" />
+                                <label htmlFor = "LicensureExamDate[]" className = "required-label"> Date </label>
+                                <Field type = "date" className = "form-control" name = "examDate" required />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "LicensureExamRank[]"> Rank </label>
                                 <Field className = "form-control" type = "text" name = "rank" placeholder = "Input rank" />
                             </div>
                             <div className = "form-group col-md-2">
-                                <label htmlFor = "LicenseNumber[]"> License Number </label>
-                                <Field className = "form-control" type = "text" name = "licenseNumber" placeholder = "Input licensure number" />
+                                <label htmlFor = "LicenseNumber[]" className = "required-label"> License Number </label>
+                                <Field className = "form-control" type = "text" name = "licenseNumber" placeholder = "Input licensure number" required />
                             </div>
                             <div className = "form-group col-md-2">
-                                <label htmlFor = "LicensureExamProof[]"> Proof </label>
-                                <Field type = "file" className = "form-control-file" name = "proof" />
+                                <label htmlFor = "LicensureExamProof[]" className = "required-label"> Proof </label>
+                                <Field type = "file" className = "form-control-file" name = "proof" required />
                             </div>
                         </div>
                         <br />
@@ -82,6 +83,16 @@ class LicensureExamForm extends React.Component{
                         </button>
                     </Form>
                 )}
+		<style jsx>{`
+		label.required-label:after{
+			content: "*";
+			color: #f00;
+		}
+		h6:before{
+			content: "* ";
+			color: #f00;
+		}
+	`}</style>
             </Formik>
 		)
 	}
