@@ -87,9 +87,7 @@ class TrainingSeminarForm extends React.Component{
                         >
                             Submit
                         </button>
-                    </Form>
-                )}
-		<style jsx>{`
+			<style jsx>{`
 		label.required-label:after{
 			content: "*";
 			color: #f00;
@@ -99,6 +97,9 @@ class TrainingSeminarForm extends React.Component{
 			color: #f00;
 		}
 	`}</style>
+                    </Form>
+                )}
+		
             </Formik>                        
 		)
 	}
