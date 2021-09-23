@@ -89,9 +89,7 @@ class EmploymentForm extends React.Component{
                         </div>
                         <br />
                         <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}>Submit</button>
-                    </Form>
-				)}
-				<style jsx>{`
+			<style jsx>{`
 		label.required-label:after{
 			content: "*";
 			color: #f00;
@@ -101,6 +99,9 @@ class EmploymentForm extends React.Component{
 			color: #f00;
 		}
 	`}</style>
+                    </Form>
+				)}
+				
 			</Formik>
 		)
 	}
