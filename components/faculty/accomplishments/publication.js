@@ -151,11 +151,11 @@ function Publication(props){
 	<table className = "table table-striped table-sm">
 		<tbody>
 			<tr>
-				<th>Publication</th>
-				<th>Author/s</th>
+				<th className = "widen">Publication</th>
+				<th className = "widen" >Author/s</th>
 				<th>Publication Date</th>
 				<th>URL</th>
-				<th>Citation</th>
+				<th className = "widen">Citation</th>
 				<th>Proof</th>
 				<th>Status</th>
                 <th>Approver Remarks</th>
@@ -405,7 +405,11 @@ function Publication(props){
                     </div>
                 </div>
             </div>
-
+		<style jsx>{`
+			th.widen{
+				width: 30%;
+			}
+		`}</style>
 		</div>
 	)
 }
