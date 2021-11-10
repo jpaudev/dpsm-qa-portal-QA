@@ -20,7 +20,36 @@ export default async function updatePublication(formData, token) {
 			    url: url + '/publication',
 			    data: formData,
 			    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
-		    })	
+		    })
+		    let bodData
+		    for(var pair of formData.entries()) {
+		    	if(pair[0] == 'add_auth') {
+		    		bodData = new FormData()
+		    		bodData.append('facultyId', pair[1])
+		    		bodData.append('publicationId', formData.get('publicationId'))
+		    		bodData.append('status', 'Pending')
+
+		    		const auth = await axios({
+			        	method: 'POST',
+					    url: 'https://api.dpsmqaportal.com/api/faculty/accomplishment/add/publisher',
+					    data: bodData,
+					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
+			        })
+		    	}
+            }
+
+            for(var pair of formData.entries()) {
+		    	if(pair[0] == 'rem_auth') {
+		    		const auth = await axios.delete("https://api.dpsmqaportal.com/api/faculty/accomplishment/" + pair[1] + "/publisher", {
+						headers: {
+							Authorization: `Bearer ${token}`
+						},
+						data: {
+							publicationId: `${formData.get('publicationId')}`
+						}
+					})
+		    	}
+            }
 		    console.log(response.data)
 			return response.data
 	    } else {
