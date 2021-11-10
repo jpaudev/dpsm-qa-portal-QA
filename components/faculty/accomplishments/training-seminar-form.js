@@ -48,22 +48,23 @@ class TrainingSeminarForm extends React.Component{
         			<Form id = "tsForm">
                         <hr />
                         <br />
+			<h6>Required</h6>
                         <div className = "form-row">
                             <div className = "form-group col-md-3">
-                                <label htmlFor = "TrainingSeminar[]"> Name of Training/Seminar </label>
-                                <Field className = "form-control" type = "text" name = "title" id = "title" placeholder = "Input training/seminar" />
+                                <label htmlFor = "TrainingSeminar[]" className = "required-label"> Name of Training/Seminar </label>
+                                <Field className = "form-control" type = "text" name = "title" id = "title" placeholder = "Input training/seminar" required />
                             </div>
                             <div className = "form-group col-md-3">
-                                <label htmlFor = "TrainingSeminarRole[]"> Role</label>
-                                <Field className = "form-control" type = "text" name = "role" id = "role" placeholder = "Input training/seminar" />
+                                <label htmlFor = "TrainingSeminarRole[]" className = "required-label"> Role</label>
+                                <Field className = "form-control" type = "text" name = "role" id = "role" placeholder = "Input role in training/seminar" required />
                             </div>
                             <div className = "form-group col-md-2">
-                                <label htmlFor = "TrainingSeminarVenue[]"> Venue </label>
-                                <Field className = "form-control" type = "text" name = "venue" id = "venue" placeholder = "Input venue" />
+                                <label htmlFor = "TrainingSeminarVenue[]" className = "required-label"> Venue </label>
+                                <Field className = "form-control" type = "text" name = "venue" id = "venue" placeholder = "Input venue" required />
                             </div>
                             <div className = "form-group col-md-2">
-                                <label htmlFor = "TrainingSeminarStartDate[]"> Start Date </label>
-                                <Field type = "date" className = "form-control" name = "dateFrom" id = "dateFrom" />
+                                <label htmlFor = "TrainingSeminarStartDate[]" className = "required-label"> Start Date </label>
+                                <Field type = "date" className = "form-control" name = "dateFrom" id = "dateFrom" required />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "TrainingSeminarEndDate[]"> End Date </label>
@@ -74,8 +75,8 @@ class TrainingSeminarForm extends React.Component{
                                 <Field className = "form-control" type = "text" name = "remarks" id = "remarks" placeholder = "Input remarks" />
                             </div>
                             <div className = "form-group col-md-4">
-                                <label htmlFor = "TrainingSeminarProof[]"> Proof </label>
-                                <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
+                                <label htmlFor = "TrainingSeminarProof[]" className = "required-label"> Proof </label>
+                                <Field type = "file" className = "form-control-file" name = "proof" id = "proof" required />
                             </div>
                         </div>
                         <br />
@@ -86,8 +87,19 @@ class TrainingSeminarForm extends React.Component{
                         >
                             Submit
                         </button>
+			<style jsx>{`
+		label.required-label:after{
+			content: "*";
+			color: #f00;
+		}
+		h6:before{
+			content: "* ";
+			color: #f00;
+		}
+	`}</style>
                     </Form>
                 )}
+		
             </Formik>                        
 		)
 	}

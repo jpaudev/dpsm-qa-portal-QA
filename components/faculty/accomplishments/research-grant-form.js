@@ -55,26 +55,27 @@ class ResearchGrantForm extends React.Component{
 					<Form id = "resForm">
 						<hr />
 						<br />
+						<h6>Required</h6>
 						<div className = "form-row">
 							<div className = "form-group col-md-12">
-								<label htmlFor = "Research[]"> Research Project </label>
-								<Field className = "form-control" type = "text" name = "researchName" placeholder = "Input research name" />
+								<label htmlFor = "Research[]" className = "required-label"> Research Project </label>
+								<Field className = "form-control" type = "text" name = "researchName" placeholder = "Input research name" required />
 							</div>
 						</div>
 						<div className = "form-row">
 							<div className = "form-group col-md-12"> 
-								<label htmlFor = "ResearchSponsor[]"> Sponsor </label>
-								<Field className = "form-control" type = "text" name = "granter" placeholder = "Input sponsor" />
+								<label htmlFor = "ResearchSponsor[]" className = "required-label"> Sponsor </label>
+								<Field className = "form-control" type = "text" name = "granter" placeholder = "Input sponsor" required />
 							</div>
 						</div>
 						<div className = "form-row">
 							<div className = "form-group col-md-6"> 
-								<label htmlFor = "ResearchAmount[]"> Amount </label>
-								<Field className = "form-control" type = "text" name = "amount" placeholder = "Input amount" />
+								<label htmlFor = "ResearchAmount[]" className = "required-label"> Amount </label>
+								<Field className = "form-control" type = "text" name = "amount" placeholder = "Input amount" required />
 							</div>
 							<div className = "form-group col-md-6">
-	                            				<label htmlFor = "ResearchProof[]"> Proof </label>
-	                            				<Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
+	                            				<label htmlFor = "ResearchProof[]" className = "required-label"> Proof </label>
+	                            				<Field type = "file" className = "form-control-file" name = "proof" id = "proof" required />
 	                       				 </div>
 						</div>
 						<div className = "form-row">
@@ -88,23 +89,23 @@ class ResearchGrantForm extends React.Component{
 						</div>
 						<div className = "form-row">
 							<div className = "form-group col-md-2">
-								<label htmlFor = "ResearchProjectedStartDate[]"> Start Date (Projected) </label>
-								<Field type = "date" className = "form-control" name = "projectedStart" />
+								<label htmlFor = "ResearchProjectedStartDate[]" className = "required-label"> Start Date (Projected) </label>
+								<Field type = "date" className = "form-control" name = "projectedStart" required />
 							</div>
 							<div className = "form-group col-md-2">
-								<label htmlFor = "ResearchProjectedEndDate[]"> End Date (Projected) </label>
-								<Field type = "date" className = "form-control" name = "projectedEnd" />
+								<label htmlFor = "ResearchProjectedEndDate[]" className = "required-label"> End Date (Projected) </label>
+								<Field type = "date" className = "form-control" name = "projectedEnd" required />
 							</div>
 							<div className = "form-group col-md-2">
-								<label htmlFor = "ResearchStartDate[]"> Start Date (Actual) </label>
-								<Field type = "date" className = "form-control" name = "actualStart" />
+								<label htmlFor = "ResearchStartDate[]" className = "required-label"> Start Date (Actual) </label>
+								<Field type = "date" className = "form-control" name = "actualStart" required />
 							</div>
 							<div className = "form-group col-md-2">
 								<label htmlFor = "ResearchEndDate[]"> End Date (Actual) </label>
 								<Field type = "date" className = "form-control" name = "actualEnd" />
 							</div>
 							<div className = "form-group col-md-4"> 
-								<label htmlFor = "ResearchProgress[]"> Research Progress </label>
+								<label htmlFor = "ResearchProgress[]" className = "required-label"> Research Progress </label>
 								<Field as = "select" className = "form-control" name = "researchProgress" required>
 	                                				<option value = "Ongoing">Ongoing</option>
 	                                				<option value = "Completed">Completed</option>
@@ -119,8 +120,19 @@ class ResearchGrantForm extends React.Component{
 						>
 							Submit
 						</button>
+						<style jsx>{`
+		label.required-label:after{
+			content: "*";
+			color: #f00;
+		}
+		h6:before{
+			content: "* ";
+			color: #f00;
+		}
+	`}</style>
 					</Form>
 				)}
+				
 			</Formik>
 		)
 	}

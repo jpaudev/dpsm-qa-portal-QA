@@ -44,14 +44,15 @@ class WorkExpForm extends React.Component{
 					<Form>
 						<hr />
 						<br />
+						<h6>Required</h6>
 						<div className = "form-row">
 							<div className = "form-group col-md-3">
-								<label htmlFor = "EmployerWorkExperience[]"> Employer </label>
-								<Field className = "form-control" type = "text" name = "employerName" placeholder = "Input name of employer" />
+								<label htmlFor = "EmployerWorkExperience[]" className = "required-label"> Employer </label>
+								<Field className = "form-control" type = "text" name = "employerName" placeholder = "Input name of employer" required />
 							</div>
 							<div className = "form-group col-md-3">
-								<label htmlFor = "PositionWorkExperience[]"> Title/Position </label>
-								<Field className = "form-control" type = "text" name = "position" placeholder = "Input position" />
+								<label htmlFor = "PositionWorkExperience[]" className = "required-label"> Title/Position </label>
+								<Field className = "form-control" type = "text" name = "position" placeholder = "Input position" required />
 							</div>
 							<div className = "form-group col-md-6">
 								<label htmlFor = "DescriptionWorkExperience[]"> Description </label>
@@ -60,8 +61,8 @@ class WorkExpForm extends React.Component{
 						</div>
 						<div className = "form-row">
 							<div className = "form-group col-md-3">
-								<label htmlFor = "StartDateWorkExperience[]"> Start Date </label>
-								<Field type = "date" className = "form-control" name = "startDate" />
+								<label htmlFor = "StartDateWorkExperience[]" className = "required-label"> Start Date </label>
+								<Field type = "date" className = "form-control" name = "startDate" required />
 							</div>
 							<div className = "form-group col-md-3">
 								<label htmlFor = "EndDateWorkExperience[]"> End Date </label>
@@ -76,8 +77,19 @@ class WorkExpForm extends React.Component{
 						>
 							Submit
 						</button>
+						<style jsx>{`
+		label.required-label:after{
+			content: "*";
+			color: #f00;
+		}
+		h6:before{
+			content: "* ";
+			color: #f00;
+		}
+	`}</style>
 					</Form>
 				)}
+				
 			</Formik>
 		)
 	}

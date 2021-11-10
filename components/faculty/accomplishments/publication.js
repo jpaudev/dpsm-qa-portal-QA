@@ -4,6 +4,7 @@ import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
 import React from 'react'
 import { Formik, Form, Field } from 'formik'
+import Select from 'react-select'
 
 import downloadProof from '../../../services/faculty/downloadProof'
 import deletePublication from '../../../services/faculty/accomplishments/deletePublication'
@@ -21,8 +22,17 @@ function Publication(props){
         publicationDate:'',
         citation: '',
         url: '',
-        nonFacultyAuthors: ''
+        nonFacultyAuthors: '',
+        faculty_publishers: [],
+        og_auth: []
     })
+    let authors = Object.keys(props.faculty).map(key => {
+        return(
+            {value: props.faculty[key].facultyId, label: props.faculty[key].lastName + ', ' + props.faculty[key].firstName}
+        );
+    });
+    let faculty_publishers = []
+    
     if(props.children != null) { 
         content = Object.keys(props.children).map(key => {
             let pub = props.children[key].faculty_publishers;
@@ -92,7 +102,7 @@ function Publication(props){
                     {
                         props.facultyFlag && !props.viewFlag &&
                         <div className = "btn-group">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#editPublication" onClick={() => {
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editPublication" onClick={async () => {
                                 setEdit(props.children.[key].publicationId)
                                 setKey(editPub)
                             }}>Edit</a>
@@ -133,13 +143,36 @@ function Publication(props){
         approvePub = id
     }
 
-
-    function setKey(x) {
-        Object.keys(props.children).map(key => {
+    async function setKey(x) { 
+        await Object.keys(props.children).map(async key => {
             if(props.children.[key].publicationId == x) {
-                setData(props.children.[key])
+                await props.children.[key].faculty_publishers.forEach(async (e) => {
+                    await authors.forEach(async (fp, index) => {
+                        if(fp.value == e.facultyId) {
+                            await faculty_publishers.push(fp)
+                        }
+                    })
+                })
+
+                let temp = {
+                    citation: props.children[key].citation,
+                    faculty_publishers: faculty_publishers,
+                    nonFacultyAuthors: props.children[key].nonFacultyAuthors,
+                    publicationDate: props.children[key].publicationDate,
+                    publicationId: props.children[key].publicationId,
+                    title: props.children[key].title,
+                    url: props.children[key].url,
+                    og_auth: faculty_publishers
+                }
+                await setData(temp)
             }
         });
+
+        return faculty_publishers
+    }
+
+    const handleChange = (e) => {
+        setData(currData => ({...currData, faculty_publishers: e}))
     }
 
 	return(
@@ -151,11 +184,11 @@ function Publication(props){
 	<table className = "table table-striped table-sm">
 		<tbody>
 			<tr>
-				<th>Publication</th>
-				<th>Author/s</th>
+				<th className = "widen">Publication</th>
+				<th className = "widen" >Author/s</th>
 				<th>Publication Date</th>
 				<th>URL</th>
-				<th>Citation</th>
+				<th className = "widen">Citation</th>
 				<th>Proof</th>
 				<th>Status</th>
                 <th>Approver Remarks</th>
@@ -182,13 +215,34 @@ function Publication(props){
                         </button>
                     </div>
                     <Formik
-                        enableReinitialize
+                        enableReinitialize={true}
                         initialValues={currData}
                         onSubmit={async (values) => {
                             let form = document.getElementById('editPubForm')
                             let formData = new FormData(form)
                             formData.append('publicationId', currData.publicationId)
                             let alert = document.getElementById("publicationalert")
+                            let existing = []
+                            currData.og_auth.forEach(x => {
+                                existing.push(x.value)
+                            })
+                            
+                            let temp_pub = formData.getAll('faculty_publishers').map(x => Number(x))
+                            let rem_og = await existing.filter(x => !temp_pub.includes(x))
+                            let add_pub = await temp_pub.filter(x => !existing.includes(x))
+
+                            if(add_pub.length > 0) {
+                                add_pub.forEach((x) => {
+                                    formData.append('add_auth', x)
+                                })
+                            }
+
+                            if(rem_og.length > 0) {
+                                rem_og.forEach((x) => {
+                                    formData.append('rem_auth', x)
+                                })
+                            }
+
                             let res = await updatePublication(formData, props.token)
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
@@ -202,11 +256,11 @@ function Publication(props){
                             $("#publicationalert").fadeTo(5000, 500).slideUp(500, function(){
                                 $("#publicationalert").slideUp(500);
                             });
-
+                            
                             Router.push('/faculty/accomplishment')
                         }}
                     >
-                    {({ values, errors, touched, isSubmitting }) => (
+                    {({ values, errors, touched, isSubmitting, setFieldValue }) => (
                         <Form id = "editPubForm">
                             <div className="modal-body">
                                 <hr />
@@ -232,6 +286,18 @@ function Publication(props){
                                     <div className = "form-group">
                                         <label htmlFor = "PublishDateUpdate"> Date Published </label>
                                         <Field type = "date" className = "form-control" name = "publicationDate" />
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "PublicationAuthorDPSMUpdate"> Authors (DPSM) </label>
+                                        <Select
+                                            name = "faculty_publishers"
+                                            isMulti
+                                            options = {authors}
+                                            value = {currData.faculty_publishers}
+                                            onChange = {event => handleChange(event)}
+                                        />
                                     </div>
                                 </div>
                                 <div className = "form-row">
@@ -405,7 +471,11 @@ function Publication(props){
                     </div>
                 </div>
             </div>
-
+		<style jsx>{`
+			th.widen{
+				width: 30%;
+			}
+		`}</style>
 		</div>
 	)
 }

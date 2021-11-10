@@ -49,13 +49,14 @@ class ClerkForm extends React.Component{
                     <Form id = "clerkForm">
                         <hr />
                         <br />
+                        <h6>Required</h6>
                         <div className = "form-row">
                             <div className = "form-group col-md-6">
-                                <label htmlFor = "ClerkName[]"> Name </label>
+                                <label htmlFor = "ClerkName[]" className = "required-label"> Name </label>
                                 <input className = "form-control" type = "text" name = "name" placeholder = "Input name" required />
                             </div>
                             <div className = "form-group col-md-6">
-                                <label htmlFor = "ClerkEmail[]"> UP Email Address </label>
+                                <label htmlFor = "ClerkEmail[]" className = "required-label"> UP Email Address </label>
                                 <input className = "form-control" type = "email" name = "upemail" placeholder = "Input UP Email" required />
                             </div>
                         </div>
@@ -67,8 +68,19 @@ class ClerkForm extends React.Component{
                         >
                             Add Clerk
                         </button>
+			<style jsx>{`
+		label.required-label:after{
+			content: "*";
+			color: #f00;
+		}
+		h6:before{
+			content: "* ";
+			color: #f00;
+		}
+	`}</style>
                     </Form>
                 )}
+                
             </Formik>
         )
     }

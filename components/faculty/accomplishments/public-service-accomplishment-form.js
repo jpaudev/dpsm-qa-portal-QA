@@ -49,31 +49,32 @@ class PublicServiceAccomplishmentForm extends React.Component{
                 <Form id = "psForm">
                     <hr />
                     <br />
+		    <h6>Required</h6>
                     <div className = "form-row">
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServicePosition[]"> Position/Role </label>
-                            <Field className = "form-control" type = "text" name = "position" id = "position" placeholder = "Input position/role" />
+                            <label htmlFor = "PublicServicePosition[]" className = "required-label"> Position/Role </label>
+                            <Field className = "form-control" type = "text" name = "position" id = "position" placeholder = "Input position/role" required />
                         </div>
                     <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceOrganization[]"> Organization </label>
-                            <Field className = "form-control" type = "text" name = "organization" id = "organization" placeholder = "Input organization" />
+                            <label htmlFor = "PublicServiceOrganization[]" className = "required-label"> Organization </label>
+                            <Field className = "form-control" type = "text" name = "organization" id = "organization" placeholder = "Input organization" required />
                         </div>
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceAccomplishmentStartDate[]"> Start Date </label>
-                            <Field type = "date" className = "form-control" name = "startDate" id = "startDate" />
+                            <label htmlFor = "PublicServiceAccomplishmentStartDate[]" className = "required-label"> Start Date </label>
+                            <Field type = "date" className = "form-control" name = "startDate" id = "startDate" required />
                         </div>
                         <div className = "form-group col-md-2">
                             <label htmlFor = "PublicServiceAccomplishmentEndDate[]"> End Date </label>
                             <Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
                         </div>
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceAccomplishmentProof[]"> Proof </label>
-                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
+                            <label htmlFor = "PublicServiceAccomplishmentProof[]" className = "required-label"> Proof </label>
+                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof" required />
                         </div>
                     </div>
                     <div className = "form-row">
                     <div className = "form-group col-md-4">
-                        <label htmlFor = "PublicServiceAccomplishmentType[]"> Type of Contribution </label>
+                        <label htmlFor = "PublicServiceAccomplishmentType[]" className = "required-label"> Type of Contribution </label>
                         <Field as = "select" className = "form-control" name = "type" id = "type" required>
                             <option value = "Within UPM">Within UPM</option>
                             <option value = "Within Pro">Contribution to the Profession</option>
@@ -95,8 +96,19 @@ class PublicServiceAccomplishmentForm extends React.Component{
                         Submit
                     </button>
                     <hr />
+			<style jsx>{`
+		label.required-label:after{
+			content: "*";
+			color: #f00;
+		}
+		h6:before{
+			content: "* ";
+			color: #f00;
+		}
+	`}</style>
                 </Form>
                 )}
+		
             </Formik>
         )
     }

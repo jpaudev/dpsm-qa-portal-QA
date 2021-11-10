@@ -3,7 +3,6 @@ import axios from "axios"
 export default async function updateUser(data, token) {
 	try {
         if (token) { 
-            if(data.status == 'Active') data.remarks = ''
 			let url = 'https://api.dpsmqaportal.com/api/user/' + `${data.userId}`;
             const response = await axios({
                 method: 'PUT',

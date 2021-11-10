@@ -29,8 +29,8 @@ function Education(props) {
         content = Object.keys(props.children).map(key => {
                 return (
                     <tr key = {props.children.[key].educInfoId}>
-                        <td>{props.children[key].degreeType}</td>
                         <td>{props.children[key].degreeCert}</td>
+                        <td>{props.children[key].degreeType}</td>
                         <td>{props.children[key].majorSpecialization}</td>
                         <td>{props.children[key].institutionSchool}</td>
                         <td>{props.children[key].startDate}</td>
