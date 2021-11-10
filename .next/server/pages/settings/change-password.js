@@ -42,6 +42,9 @@ var helpers = __webpack_require__(4750);
 // EXTERNAL MODULE: external "jsonwebtoken"
 var external_jsonwebtoken_ = __webpack_require__(9722);
 var external_jsonwebtoken_default = /*#__PURE__*/__webpack_require__.n(external_jsonwebtoken_);
+// EXTERNAL MODULE: external "styled-jsx/style"
+var style_ = __webpack_require__(3289);
+var style_default = /*#__PURE__*/__webpack_require__.n(style_);
 // EXTERNAL MODULE: external "next/router"
 var router_ = __webpack_require__(6731);
 var router_default = /*#__PURE__*/__webpack_require__.n(router_);
@@ -104,27 +107,36 @@ async function updatePassword(password, userId, token) {
 
 
 
+
 function ChangePassword(props) {
   let validated;
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-    children: [/*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("h4", {
+    className: "jsx-371132353",
+    children: [/*#__PURE__*/jsx_runtime_.jsx("br", {
+      className: "jsx-371132353"
+    }), /*#__PURE__*/jsx_runtime_.jsx("h4", {
       align: "center",
+      className: "jsx-371132353",
       children: " Change Password "
+    }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+      className: "jsx-371132353",
+      children: "Required"
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-      className: "alert alert-success",
       role: "alert",
       id: "changepassalert",
       style: {
         visibility: "hidden"
-      }
+      },
+      className: "jsx-371132353" + " " + "alert alert-success"
     }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("form", {
+      className: "jsx-371132353",
       children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-        className: "form-group col-md-6",
+        className: "jsx-371132353" + " " + "form-group col-md-6",
         children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
           htmlFor: "old-password",
+          className: "jsx-371132353" + " " + "required-label",
           children: "Current Password:"
         }), /*#__PURE__*/jsx_runtime_.jsx("input", {
-          className: "form-control",
           type: "password",
           id: "old-password",
           name: "old-password",
@@ -143,27 +155,29 @@ function ChangePassword(props) {
               alert.innerHTML = 'The current password is incorrect';
               setValidate(false);
             }
-          }
+          },
+          className: "jsx-371132353" + " " + "form-control"
         })]
       }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-        className: "form-group col-md-6",
+        className: "jsx-371132353" + " " + "form-group col-md-6",
         children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
           htmlFor: "new-password",
+          className: "jsx-371132353" + " " + "required-label",
           children: "New Password:"
         }), /*#__PURE__*/jsx_runtime_.jsx("input", {
-          className: "form-control",
           type: "password",
           id: "new-password",
           name: "new-password",
-          required: true
+          required: true,
+          className: "jsx-371132353" + " " + "form-control"
         })]
       }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-        className: "form-group col-md-6",
+        className: "jsx-371132353" + " " + "form-group col-md-6",
         children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
           htmlFor: "confirm-new-password",
+          className: "jsx-371132353" + " " + "required-label",
           children: "Confirm New Password:"
         }), /*#__PURE__*/jsx_runtime_.jsx("input", {
-          className: "form-control",
           type: "password",
           id: "confirm-new-password",
           name: "confirm-new-password",
@@ -182,11 +196,11 @@ function ChangePassword(props) {
               alert.style = "visibility: hidden";
               setValidate(true);
             }
-          }
+          },
+          className: "jsx-371132353" + " " + "form-control"
         })]
       }), /*#__PURE__*/jsx_runtime_.jsx("button", {
         type: "button",
-        className: "btn btn-primary col-md-12",
         onClick: async e => {
           let alert = document.getElementById("changepassalert");
           if (!validated) e.preventDefault();else {
@@ -208,8 +222,12 @@ function ChangePassword(props) {
             }
           }
         },
+        className: "jsx-371132353" + " " + "btn btn-primary col-md-12",
         children: "Change Password"
       })]
+    }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+      id: "371132353",
+      children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
     })]
   });
 

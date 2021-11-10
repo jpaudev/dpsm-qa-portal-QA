@@ -564,6 +564,7 @@ async function addClerk(formData, token) {
 
 
 
+
 class ClerkForm extends (external_react_default()).Component {
   constructor(props) {
     super(props);
@@ -607,38 +608,52 @@ class ClerkForm extends (external_react_default()).Component {
         isSubmitting
       }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
         id: "clerkForm",
-        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+          className: "jsx-371132353",
+          children: "Required"
+        }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-6",
+            className: "jsx-371132353" + " " + "form-group col-md-6",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ClerkName[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Name "
             }), /*#__PURE__*/jsx_runtime_.jsx("input", {
-              className: "form-control",
               type: "text",
               name: "name",
               placeholder: "Input name",
-              required: true
+              required: true,
+              className: "jsx-371132353" + " " + "form-control"
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-6",
+            className: "jsx-371132353" + " " + "form-group col-md-6",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ClerkEmail[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " UP Email Address "
             }), /*#__PURE__*/jsx_runtime_.jsx("input", {
-              className: "form-control",
               type: "email",
               name: "upemail",
               placeholder: "Input UP Email",
-              required: true
+              required: true,
+              className: "jsx-371132353" + " " + "form-control"
             })]
           })]
-        }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
-          className: "btn btn-primary",
           disabled: isSubmitting,
+          className: "jsx-371132353" + " " + "btn btn-primary",
           children: "Add Clerk"
+        }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+          id: "371132353",
+          children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
         })]
       })
     });

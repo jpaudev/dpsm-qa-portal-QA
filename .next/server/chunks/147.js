@@ -580,7 +580,6 @@ var external_jsonwebtoken_default = /*#__PURE__*/__webpack_require__.n(external_
 
 
 async function updateFaculty(data, token) {
-  console.log(data.firstName);
   let cookieData = external_jsonwebtoken_default().decode(token);
   let facultyId = cookieData.facultyId;
 
@@ -1340,6 +1339,9 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
+// EXTERNAL MODULE: external "styled-jsx/style"
+var style_ = __webpack_require__(3289);
+var style_default = /*#__PURE__*/__webpack_require__.n(style_);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
@@ -1409,6 +1411,7 @@ async function addWorkExp(data, token) {
 
 
 
+
 class WorkExpForm extends (external_react_default()).Component {
   constructor(props) {
     super(props);
@@ -1451,34 +1454,46 @@ class WorkExpForm extends (external_react_default()).Component {
         touched,
         isSubmitting
       }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
-        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+          className: "jsx-371132353",
+          children: "Required"
+        }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "EmployerWorkExperience[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Employer "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "employerName",
-              placeholder: "Input name of employer"
+              placeholder: "Input name of employer",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PositionWorkExperience[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Title/Position "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "position",
-              placeholder: "Input position"
+              placeholder: "Input position",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-6",
+            className: "jsx-371132353" + " " + "form-group col-md-6",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "DescriptionWorkExperience[]",
+              className: "jsx-371132353",
               children: " Description "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
@@ -1488,21 +1503,24 @@ class WorkExpForm extends (external_react_default()).Component {
             })]
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "StartDateWorkExperience[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Start Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
               className: "form-control",
-              name: "startDate"
+              name: "startDate",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "EndDateWorkExperience[]",
+              className: "jsx-371132353",
               children: " End Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
@@ -1510,11 +1528,16 @@ class WorkExpForm extends (external_react_default()).Component {
               name: "endDate"
             })]
           })]
-        }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
-          className: "btn btn-primary col-md-12",
           disabled: isSubmitting,
+          className: "jsx-371132353" + " " + "btn btn-primary col-md-12",
           children: "Submit"
+        }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+          id: "371132353",
+          children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
         })]
       })
     });
@@ -1561,6 +1584,7 @@ async function addEmployment(data, token, facultyId) {
   }
 }
 ;// CONCATENATED MODULE: ./components/faculty/basic-info/employment-form.js
+
 
 
 
@@ -1619,13 +1643,21 @@ class EmploymentForm extends (external_react_default()).Component {
         touched,
         isSubmitting
       }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
-        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+          className: "jsx-371132353",
+          children: "Required"
+        }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "Position[]",
-              children: " Position *"
+              className: "jsx-371132353" + " " + "required-label",
+              children: " Position "
             }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Field, {
               as: "select",
               className: "form-control",
@@ -1634,14 +1666,16 @@ class EmploymentForm extends (external_react_default()).Component {
               required: true,
               children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "0",
+                className: "jsx-371132353",
                 children: "-- SELECT POSITION --"
               }, "0"), positions]
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "Status[]",
-              children: " Status *"
+              className: "jsx-371132353" + " " + "required-label",
+              children: " Status "
             }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Field, {
               as: "select",
               className: "form-control",
@@ -1650,23 +1684,28 @@ class EmploymentForm extends (external_react_default()).Component {
               required: true,
               children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "0",
+                className: "jsx-371132353",
                 children: "-- SELECT STATUS --"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Full-time",
+                className: "jsx-371132353",
                 children: "Full-time"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Part-time",
+                className: "jsx-371132353",
                 children: "Part-time"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Lecturer",
+                className: "jsx-371132353",
                 children: "Lecturer"
               })]
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "Category[]",
-              children: " Category *"
+              className: "jsx-371132353" + " " + "required-label",
+              children: " Category "
             }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Field, {
               as: "select",
               className: "form-control",
@@ -1675,19 +1714,24 @@ class EmploymentForm extends (external_react_default()).Component {
               required: true,
               children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "0",
+                className: "jsx-371132353",
                 children: "-- SELECT CATEGORY --"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Permanent",
+                className: "jsx-371132353",
                 children: "Permanent"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Temporary",
+                className: "jsx-371132353",
                 children: "Temporary"
               })]
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "required-label",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "StartDateEmployment[]",
+              className: "jsx-371132353",
               children: " Start Date *"
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
@@ -1696,9 +1740,10 @@ class EmploymentForm extends (external_react_default()).Component {
               required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "EndDateEmployment[]",
+              className: "jsx-371132353",
               children: " End Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
@@ -1706,11 +1751,16 @@ class EmploymentForm extends (external_react_default()).Component {
               name: "endDate"
             })]
           })]
-        }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
-          className: "btn btn-primary col-md-12",
           disabled: isSubmitting,
+          className: "jsx-371132353" + " " + "btn btn-primary col-md-12",
           children: "Submit"
+        }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+          id: "371132353",
+          children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
         })]
       })
     });

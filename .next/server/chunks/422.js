@@ -30,7 +30,6 @@ var external_axios_default = /*#__PURE__*/__webpack_require__.n(external_axios_)
 async function updateUser(data, token) {
   try {
     if (token) {
-      if (data.status == 'Active') data.remarks = '';
       let url = 'https://api.dpsmqaportal.com/api/user/' + `${data.userId}`;
       const response = await external_axios_default()({
         method: 'PUT',
@@ -77,15 +76,25 @@ function FacultyList(props) {
     remarks: '',
     facultyName: ''
   });
-  let remarksStyle;
+  let activeRemarksStyle;
+  let inactiveRemarksStyle;
 
   function handleInputChange(id, event) {
-    setData(_objectSpread(_objectSpread({}, currData), {}, {
+    if (id == 'status') setData(_objectSpread(_objectSpread({}, currData), {}, {
+      [id]: event.target.value,
+      ['remarks']: ''
+    }));else setData(_objectSpread(_objectSpread({}, currData), {}, {
       [id]: event.target.value
     }));
   }
 
-  currData.status == 'Inactive' ? remarksStyle = 'visible' : remarksStyle = 'hidden';
+  if (currData.status == 'Inactive') {
+    activeRemarksStyle = 'none';
+    inactiveRemarksStyle = 'block';
+  } else {
+    activeRemarksStyle = 'block';
+    inactiveRemarksStyle = 'none';
+  }
 
   if (props.children != null) {
     let path;
@@ -375,6 +384,7 @@ function FacultyList(props) {
             }), /*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
               className: "close",
+              "data-dismiss": "modal",
               "aria-label": "Close",
               children: /*#__PURE__*/jsx_runtime_.jsx("span", {
                 "aria-hidden": "true",
@@ -408,9 +418,35 @@ function FacultyList(props) {
                 })
               }), /*#__PURE__*/jsx_runtime_.jsx("div", {
                 className: "form-row",
-                id: "remarksrow",
+                id: "activeremarksrow",
                 style: {
-                  visibility: remarksStyle
+                  display: activeRemarksStyle
+                },
+                children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+                  className: "form-group",
+                  children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
+                    htmlFor: "Remarks",
+                    children: " Remarks "
+                  }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("select", {
+                    className: "form-control",
+                    name: "Remarks",
+                    id: "Remarks",
+                    value: currData.remarks || '',
+                    onChange: e => handleInputChange("remarks", e),
+                    children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
+                      value: "",
+                      children: "-- SELECT REMARKS --"
+                    }), /*#__PURE__*/jsx_runtime_.jsx("option", {
+                      value: "On Leave",
+                      children: "On Leave"
+                    })]
+                  })]
+                })
+              }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+                className: "form-row",
+                id: "inactiveremarksrow",
+                style: {
+                  display: inactiveRemarksStyle
                 },
                 children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                   className: "form-group",
@@ -432,9 +468,6 @@ function FacultyList(props) {
                     }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                       value: "Resigned",
                       children: "Resigned"
-                    }), /*#__PURE__*/jsx_runtime_.jsx("option", {
-                      value: "On Leave",
-                      children: "On Leave"
                     })]
                   })]
                 })

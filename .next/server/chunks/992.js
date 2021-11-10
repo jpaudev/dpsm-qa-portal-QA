@@ -16,6 +16,9 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
+// EXTERNAL MODULE: external "styled-jsx/style"
+var style_ = __webpack_require__(3289);
+var style_default = /*#__PURE__*/__webpack_require__.n(style_);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
@@ -63,6 +66,7 @@ async function addLicensure(formData, token) {
   }
 }
 ;// CONCATENATED MODULE: ./components/faculty/accomplishments/licensure-exam-form.js
+
 
 
 
@@ -118,33 +122,45 @@ class LicensureExamForm extends (external_react_default()).Component {
         isSubmitting
       }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
         id: "licenseForm",
-        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+          className: "jsx-371132353",
+          children: "Required"
+        }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "LicensureExam[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Licensure Exam "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "examName",
-              placeholder: "Input licensure exam"
+              placeholder: "Input licensure exam",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "LicensureExamDate[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
               className: "form-control",
-              name: "examDate"
+              name: "examDate",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "LicensureExamRank[]",
+              className: "jsx-371132353",
               children: " Rank "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
@@ -153,32 +169,41 @@ class LicensureExamForm extends (external_react_default()).Component {
               placeholder: "Input rank"
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "LicenseNumber[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " License Number "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "licenseNumber",
-              placeholder: "Input licensure number"
+              placeholder: "Input licensure number",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "LicensureExamProof[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
-              name: "proof"
+              name: "proof",
+              required: true
             })]
           })]
-        }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
-          className: "btn btn-primary col-md-12",
           disabled: isSubmitting,
+          className: "jsx-371132353" + " " + "btn btn-primary col-md-12",
           children: "Submit"
+        }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+          id: "371132353",
+          children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
         })]
       })
     });
@@ -918,6 +943,9 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
+// EXTERNAL MODULE: external "styled-jsx/style"
+var style_ = __webpack_require__(3289);
+var style_default = /*#__PURE__*/__webpack_require__.n(style_);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
@@ -976,6 +1004,7 @@ async function addPublicService(formData, token) {
 
 
 
+
 class PublicServiceAccomplishmentForm extends (external_react_default()).Component {
   constructor(props) {
     super(props);
@@ -1023,47 +1052,61 @@ class PublicServiceAccomplishmentForm extends (external_react_default()).Compone
         isSubmitting
       }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
         id: "psForm",
-        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+          className: "jsx-371132353",
+          children: "Required"
+        }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicServicePosition[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Position/Role "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "position",
               id: "position",
-              placeholder: "Input position/role"
+              placeholder: "Input position/role",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicServiceOrganization[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Organization "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "organization",
               id: "organization",
-              placeholder: "Input organization"
+              placeholder: "Input organization",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicServiceAccomplishmentStartDate[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Start Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
               className: "form-control",
               name: "startDate",
-              id: "startDate"
+              id: "startDate",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicServiceAccomplishmentEndDate[]",
+              className: "jsx-371132353",
               children: " End Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
@@ -1072,23 +1115,26 @@ class PublicServiceAccomplishmentForm extends (external_react_default()).Compone
               id: "endDate"
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicServiceAccomplishmentProof[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof"
+              id: "proof",
+              required: true
             })]
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-4",
+            className: "jsx-371132353" + " " + "form-group col-md-4",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicServiceAccomplishmentType[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Type of Contribution "
             }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Field, {
               as: "select",
@@ -1098,22 +1144,27 @@ class PublicServiceAccomplishmentForm extends (external_react_default()).Compone
               required: true,
               children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Within UPM",
+                className: "jsx-371132353",
                 children: "Within UPM"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Within Pro",
+                className: "jsx-371132353",
                 children: "Contribution to the Profession"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Within Nat",
+                className: "jsx-371132353",
                 children: "Contribution to the Nation"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Within Wor",
+                className: "jsx-371132353",
                 children: "Contribution to the World"
               })]
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-6",
+            className: "jsx-371132353" + " " + "form-group col-md-6",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicServiceAccomplishmentDescription[]",
+              className: "jsx-371132353",
               children: " Description "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
@@ -1123,12 +1174,19 @@ class PublicServiceAccomplishmentForm extends (external_react_default()).Compone
               placeholder: "Input description"
             })]
           })]
-        }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
-          className: "btn btn-primary col-md-12",
           disabled: isSubmitting,
+          className: "jsx-371132353" + " " + "btn btn-primary col-md-12",
           children: "Submit"
-        }), /*#__PURE__*/jsx_runtime_.jsx("hr", {})]
+        }), /*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+          id: "371132353",
+          children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
+        })]
       })
     });
   }
@@ -2263,6 +2321,9 @@ __webpack_require__.d(__webpack_exports__, {
 
 // EXTERNAL MODULE: external "react/jsx-runtime"
 var jsx_runtime_ = __webpack_require__(5282);
+// EXTERNAL MODULE: external "styled-jsx/style"
+var style_ = __webpack_require__(3289);
+var style_default = /*#__PURE__*/__webpack_require__.n(style_);
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
 // EXTERNAL MODULE: external "react"
@@ -2326,8 +2387,7 @@ class PublicationFormAuthor extends (external_react_default()).Component {
             className: "col-md-12",
             name: "PublicationAuthorDPSM[]",
             isMulti: true,
-            options: authors,
-            required: true
+            options: authors
           })]
         })
       }), /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -2426,6 +2486,7 @@ async function addPublication(formData, token) {
 
 
 
+
 class PublicationForm extends (external_react_default()).Component {
   constructor(props) {
     super(props);
@@ -2471,37 +2532,49 @@ class PublicationForm extends (external_react_default()).Component {
         isSubmitting
       }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
         id: "pubForm",
-        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+          className: "jsx-371132353",
+          children: "Required"
+        }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-6",
+            className: "jsx-371132353" + " " + "form-group col-md-6",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "Publication[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Publication "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "title",
-              placeholder: "Input publication name/title"
+              placeholder: "Input publication name/title",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-6",
+            className: "jsx-371132353" + " " + "form-group col-md-6",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicationCitation[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Citation "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "citation",
-              placeholder: "Input full citation for publication"
+              placeholder: "Input full citation for publication",
+              required: true
             })]
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicationURL[]",
+              className: "jsx-371132353",
               children: " URL "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
@@ -2510,33 +2583,38 @@ class PublicationForm extends (external_react_default()).Component {
               placeholder: "Input publication URL"
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublishDate[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Date Published "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
               className: "form-control",
-              name: "publicationDate"
+              name: "publicationDate",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicationProof[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof"
+              id: "proof",
+              required: true
             })]
           })]
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-12",
+            className: "jsx-371132353" + " " + "form-group col-md-12",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicationAuthorNonDPSM[]",
+              className: "jsx-371132353",
               children: " Authors (non-DPSM) "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
@@ -2546,14 +2624,20 @@ class PublicationForm extends (external_react_default()).Component {
             })]
           })
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+          className: "jsx-371132353",
           children: /*#__PURE__*/jsx_runtime_.jsx(publication_form_author, {
             faculty: this.props.faculty
           })
-        }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
-          className: "btn btn-primary col-md-12",
           disabled: isSubmitting,
+          className: "jsx-371132353" + " " + "btn btn-primary col-md-12",
           children: "Submit"
+        }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+          id: "371132353",
+          children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
         })]
       })
     });
@@ -2624,6 +2708,39 @@ async function updatePublication(formData, token) {
           Authorization: `Bearer ${token}`
         }
       });
+      let bodData;
+
+      for (var pair of formData.entries()) {
+        if (pair[0] == 'add_auth') {
+          bodData = new FormData();
+          bodData.append('facultyId', pair[1]);
+          bodData.append('publicationId', formData.get('publicationId'));
+          bodData.append('status', 'Pending');
+          const auth = await external_axios_default()({
+            method: 'POST',
+            url: 'https://api.dpsmqaportal.com/api/faculty/accomplishment/add/publisher',
+            data: bodData,
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              Authorization: `Bearer ${token}`
+            }
+          });
+        }
+      }
+
+      for (var pair of formData.entries()) {
+        if (pair[0] == 'rem_auth') {
+          const auth = await external_axios_default().delete("https://api.dpsmqaportal.com/api/faculty/accomplishment/" + pair[1] + "/publisher", {
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+            data: {
+              publicationId: `${formData.get('publicationId')}`
+            }
+          });
+        }
+      }
+
       console.log(response.data);
       return response.data;
     } else {
@@ -2683,6 +2800,15 @@ async function approvePublication(formData, approveFlag, facultyId, token) {
 
 
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
 
 
 
@@ -2703,8 +2829,17 @@ function Publication(props) {
     publicationDate: '',
     citation: '',
     url: '',
-    nonFacultyAuthors: ''
+    nonFacultyAuthors: '',
+    faculty_publishers: [],
+    og_auth: []
   });
+  let authors = Object.keys(props.faculty).map(key => {
+    return {
+      value: props.faculty[key].facultyId,
+      label: props.faculty[key].lastName + ', ' + props.faculty[key].firstName
+    };
+  });
+  let faculty_publishers = [];
 
   if (props.children != null) {
     content = Object.keys(props.children).map(key => {
@@ -2778,7 +2913,7 @@ function Publication(props) {
               className: "btn btn-info",
               "data-toggle": "modal",
               "data-target": "#editPublication",
-              onClick: () => {
+              onClick: async () => {
                 setEdit(props.children[key].publicationId);
                 setKey(editPub);
               },
@@ -2837,87 +2972,126 @@ function Publication(props) {
     approvePub = id;
   }
 
-  function setKey(x) {
-    Object.keys(props.children).map(key => {
+  async function setKey(x) {
+    await Object.keys(props.children).map(async key => {
       if (props.children[key].publicationId == x) {
-        setData(props.children[key]);
+        await props.children[key].faculty_publishers.forEach(async e => {
+          await authors.forEach(async (fp, index) => {
+            if (fp.value == e.facultyId) {
+              await faculty_publishers.push(fp);
+            }
+          });
+        });
+        let temp = {
+          citation: props.children[key].citation,
+          faculty_publishers: faculty_publishers,
+          nonFacultyAuthors: props.children[key].nonFacultyAuthors,
+          publicationDate: props.children[key].publicationDate,
+          publicationId: props.children[key].publicationId,
+          title: props.children[key].title,
+          url: props.children[key].url,
+          og_auth: faculty_publishers
+        };
+        await setData(temp);
       }
     });
+    return faculty_publishers;
   }
 
+  const handleChange = e => {
+    setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+      faculty_publishers: e
+    }));
+  };
+
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+    className: "jsx-3325321127",
     children: [/*#__PURE__*/jsx_runtime_.jsx("h2", {
       align: "center",
+      className: "jsx-3325321127",
       children: " Publications "
     }), /*#__PURE__*/jsx_runtime_.jsx(name_display/* default */.Z, {
       unit: props.unit,
       position: props.position,
       children: props.name
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-      className: "alert alert-success",
       role: "alert",
       id: "publicationalert",
       style: {
         visibility: "hidden"
-      }
+      },
+      className: "jsx-3325321127" + " " + "alert alert-success"
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-      className: "table-responsive",
+      className: "jsx-3325321127" + " " + "table-responsive",
       children: /*#__PURE__*/jsx_runtime_.jsx("table", {
-        className: "table table-striped table-sm",
+        className: "jsx-3325321127" + " " + "table table-striped table-sm",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("tbody", {
+          className: "jsx-3325321127",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
+            className: "jsx-3325321127",
             children: [/*#__PURE__*/jsx_runtime_.jsx("th", {
+              className: "jsx-3325321127" + " " + "widen",
               children: "Publication"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              className: "jsx-3325321127" + " " + "widen",
               children: "Author/s"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              className: "jsx-3325321127",
               children: "Publication Date"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              className: "jsx-3325321127",
               children: "URL"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              className: "jsx-3325321127" + " " + "widen",
               children: "Citation"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              className: "jsx-3325321127",
               children: "Proof"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              className: "jsx-3325321127",
               children: "Status"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
+              className: "jsx-3325321127",
               children: "Approver Remarks"
             }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+              className: "jsx-3325321127",
               children: "Action"
             })]
           }), content]
         })
       })
     }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("div", {
+      className: "jsx-3325321127",
       children: /*#__PURE__*/jsx_runtime_.jsx(publication_form, {
         faculty: props.faculty,
         token: props.token
       })
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-      className: "modal fade",
       id: "editPublication",
       tabIndex: "-1",
       role: "dialog",
       "aria-labelledby": "editPublicationLabel",
       "aria-hidden": "true",
+      className: "jsx-3325321127" + " " + "modal fade",
       children: /*#__PURE__*/jsx_runtime_.jsx("div", {
-        className: "modal-dialog",
         role: "document",
+        className: "jsx-3325321127" + " " + "modal-dialog",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "modal-content",
+          className: "jsx-3325321127" + " " + "modal-content",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "modal-header",
+            className: "jsx-3325321127" + " " + "modal-header",
             children: [/*#__PURE__*/jsx_runtime_.jsx("h5", {
-              className: "modal-title",
               id: "editPublicationLabel",
+              className: "jsx-3325321127" + " " + "modal-title",
               children: "Update Publication Information"
             }), /*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
-              className: "close",
               "data-dismiss": "modal",
               "aria-label": "Close",
+              className: "jsx-3325321127" + " " + "close",
               children: /*#__PURE__*/jsx_runtime_.jsx("span", {
                 "aria-hidden": "true",
+                className: "jsx-3325321127",
                 children: "\xD7"
               })
             })]
@@ -2929,6 +3103,26 @@ function Publication(props) {
               let formData = new FormData(form);
               formData.append('publicationId', currData.publicationId);
               let alert = document.getElementById("publicationalert");
+              let existing = [];
+              currData.og_auth.forEach(x => {
+                existing.push(x.value);
+              });
+              let temp_pub = formData.getAll('faculty_publishers').map(x => Number(x));
+              let rem_og = await existing.filter(x => !temp_pub.includes(x));
+              let add_pub = await temp_pub.filter(x => !existing.includes(x));
+
+              if (add_pub.length > 0) {
+                add_pub.forEach(x => {
+                  formData.append('add_auth', x);
+                });
+              }
+
+              if (rem_og.length > 0) {
+                rem_og.forEach(x => {
+                  formData.append('rem_auth', x);
+                });
+              }
+
               let res = await updatePublication(formData, props.token);
 
               if (res.success == true) {
@@ -2949,17 +3143,21 @@ function Publication(props) {
               values,
               errors,
               touched,
-              isSubmitting
+              isSubmitting,
+              setFieldValue
             }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
               id: "editPubForm",
               children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                className: "modal-body",
-                children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("div", {
-                  className: "form-row",
+                className: "jsx-3325321127" + " " + "modal-body",
+                children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+                  className: "jsx-3325321127"
+                }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+                  className: "jsx-3325321127" + " " + "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                    className: "form-group",
+                    className: "jsx-3325321127" + " " + "form-group",
                     children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
                       htmlFor: "PublicationUpdate",
+                      className: "jsx-3325321127",
                       children: " Publication "
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       className: "form-control",
@@ -2969,11 +3167,12 @@ function Publication(props) {
                     })]
                   })
                 }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-                  className: "form-row",
+                  className: "jsx-3325321127" + " " + "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                    className: "form-group",
+                    className: "jsx-3325321127" + " " + "form-group",
                     children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
                       htmlFor: "PublicationCitationUpdate",
+                      className: "jsx-3325321127",
                       children: " Citation "
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       className: "form-control",
@@ -2983,11 +3182,12 @@ function Publication(props) {
                     })]
                   })
                 }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-                  className: "form-row",
+                  className: "jsx-3325321127" + " " + "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                    className: "form-group",
+                    className: "jsx-3325321127" + " " + "form-group",
                     children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
                       htmlFor: "PublicationURLUpdate",
+                      className: "jsx-3325321127",
                       children: " URL "
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       className: "form-control",
@@ -2997,11 +3197,12 @@ function Publication(props) {
                     })]
                   })
                 }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-                  className: "form-row",
+                  className: "jsx-3325321127" + " " + "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                    className: "form-group",
+                    className: "jsx-3325321127" + " " + "form-group",
                     children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
                       htmlFor: "PublishDateUpdate",
+                      className: "jsx-3325321127",
                       children: " Date Published "
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       type: "date",
@@ -3010,11 +3211,28 @@ function Publication(props) {
                     })]
                   })
                 }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-                  className: "form-row",
+                  className: "jsx-3325321127" + " " + "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                    className: "form-group",
+                    className: "jsx-3325321127" + " " + "form-group",
+                    children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
+                      htmlFor: "PublicationAuthorDPSMUpdate",
+                      className: "jsx-3325321127",
+                      children: " Authors (DPSM) "
+                    }), /*#__PURE__*/jsx_runtime_.jsx((external_react_select_default()), {
+                      name: "faculty_publishers",
+                      isMulti: true,
+                      options: authors,
+                      value: currData.faculty_publishers,
+                      onChange: event => handleChange(event)
+                    })]
+                  })
+                }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+                  className: "jsx-3325321127" + " " + "form-row",
+                  children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+                    className: "jsx-3325321127" + " " + "form-group",
                     children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
                       htmlFor: "PublicationAuthorNonDPSMUpdate",
+                      className: "jsx-3325321127",
                       children: " Authors (non-DPSM) "
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       className: "form-control",
@@ -3024,11 +3242,12 @@ function Publication(props) {
                     })]
                   })
                 }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-                  className: "form-row",
+                  className: "jsx-3325321127" + " " + "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                    className: "form-group",
+                    className: "jsx-3325321127" + " " + "form-group",
                     children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
                       htmlFor: "PublicationProofUpdate",
+                      className: "jsx-3325321127",
                       children: " Proof "
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       type: "file",
@@ -3039,19 +3258,19 @@ function Publication(props) {
                   })
                 })]
               }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                className: "modal-footer",
+                className: "jsx-3325321127" + " " + "modal-footer",
                 children: [/*#__PURE__*/jsx_runtime_.jsx("button", {
                   type: "button",
-                  className: "btn btn-secondary",
                   "data-dismiss": "modal",
+                  className: "jsx-3325321127" + " " + "btn btn-secondary",
                   children: "Close"
                 }), /*#__PURE__*/jsx_runtime_.jsx("button", {
                   type: "submit",
-                  className: "btn btn-primary",
                   disabled: isSubmitting,
                   onClick: () => {
                     $('#editPublication').modal('toggle');
                   },
+                  className: "jsx-3325321127" + " " + "btn btn-primary",
                   children: "Save changes"
                 })]
               })]
@@ -3060,48 +3279,51 @@ function Publication(props) {
         })
       })
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-      className: "modal fade",
       id: "deletePublication",
       tabIndex: "-1",
       role: "dialog",
       "aria-labelledby": "deletePublicationLabel",
       "aria-hidden": "true",
+      className: "jsx-3325321127" + " " + "modal fade",
       children: /*#__PURE__*/jsx_runtime_.jsx("div", {
-        className: "modal-dialog",
         role: "document",
+        className: "jsx-3325321127" + " " + "modal-dialog",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "modal-content",
+          className: "jsx-3325321127" + " " + "modal-content",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "modal-header",
+            className: "jsx-3325321127" + " " + "modal-header",
             children: [/*#__PURE__*/jsx_runtime_.jsx("h5", {
-              className: "modal-title",
               id: "deletePublicationLabel",
+              className: "jsx-3325321127" + " " + "modal-title",
               children: "Delete Publication Information"
             }), /*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
-              className: "close",
               "data-dismiss": "modal",
               "aria-label": "Close",
+              className: "jsx-3325321127" + " " + "close",
               children: /*#__PURE__*/jsx_runtime_.jsx("span", {
                 "aria-hidden": "true",
+                className: "jsx-3325321127",
                 children: "\xD7"
               })
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "modal-body",
-            children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("p", {
+            className: "jsx-3325321127" + " " + "modal-body",
+            children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+              className: "jsx-3325321127"
+            }), /*#__PURE__*/jsx_runtime_.jsx("p", {
+              className: "jsx-3325321127",
               children: " Are you sure you want to delete this publication information? "
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "modal-footer",
+            className: "jsx-3325321127" + " " + "modal-footer",
             children: [/*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
-              className: "btn btn-secondary",
               "data-dismiss": "modal",
+              className: "jsx-3325321127" + " " + "btn btn-secondary",
               children: "No, don't delete"
             }), /*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
-              className: "btn btn-danger",
               "data-dismiss": "modal",
               onClick: async () => {
                 let alert = document.getElementById("publicationalert");
@@ -3121,54 +3343,58 @@ function Publication(props) {
                 });
                 router_default().push('/faculty/accomplishment');
               },
+              className: "jsx-3325321127" + " " + "btn btn-danger",
               children: "Yes, delete"
             })]
           })]
         })
       })
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-      className: "modal fade",
       id: "approvePublication",
       tabIndex: "-1",
       role: "dialog",
       "aria-labelledby": "approvePublicationLabel",
       "aria-hidden": "true",
+      className: "jsx-3325321127" + " " + "modal fade",
       children: /*#__PURE__*/jsx_runtime_.jsx("div", {
-        className: "modal-dialog",
         role: "document",
+        className: "jsx-3325321127" + " " + "modal-dialog",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "modal-content",
+          className: "jsx-3325321127" + " " + "modal-content",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "modal-header",
+            className: "jsx-3325321127" + " " + "modal-header",
             children: [/*#__PURE__*/jsx_runtime_.jsx("h5", {
-              className: "modal-title",
               id: "approvePublicationLabel",
+              className: "jsx-3325321127" + " " + "modal-title",
               children: "Approve Publication Information"
             }), /*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
-              className: "close",
               "data-dismiss": "modal",
               "aria-label": "Close",
+              className: "jsx-3325321127" + " " + "close",
               children: /*#__PURE__*/jsx_runtime_.jsx("span", {
                 "aria-hidden": "true",
+                className: "jsx-3325321127",
                 children: "\xD7"
               })
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "modal-body",
-            children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("p", {
+            className: "jsx-3325321127" + " " + "modal-body",
+            children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+              className: "jsx-3325321127"
+            }), /*#__PURE__*/jsx_runtime_.jsx("p", {
+              className: "jsx-3325321127",
               children: " Are you sure you want to approve this publication information? "
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "modal-footer",
+            className: "jsx-3325321127" + " " + "modal-footer",
             children: [/*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
-              className: "btn btn-secondary",
               "data-dismiss": "modal",
+              className: "jsx-3325321127" + " " + "btn btn-secondary",
               children: "No, don't approve"
             }), /*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
-              className: "btn btn-danger",
               onClick: async () => {
                 let alert = document.getElementById("publicationalert");
                 $('#approvePublication').modal('toggle');
@@ -3191,36 +3417,38 @@ function Publication(props) {
                 });
                 router_default().push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId);
               },
+              className: "jsx-3325321127" + " " + "btn btn-danger",
               children: "Yes, approve"
             })]
           })]
         })
       })
     }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-      className: "modal fade",
       id: "rejectPublication",
       tabIndex: "-1",
       role: "dialog",
       "aria-labelledby": "rejectPublicationLabel",
       "aria-hidden": "true",
+      className: "jsx-3325321127" + " " + "modal fade",
       children: /*#__PURE__*/jsx_runtime_.jsx("div", {
-        className: "modal-dialog",
         role: "document",
+        className: "jsx-3325321127" + " " + "modal-dialog",
         children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "modal-content",
+          className: "jsx-3325321127" + " " + "modal-content",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "modal-header",
+            className: "jsx-3325321127" + " " + "modal-header",
             children: [/*#__PURE__*/jsx_runtime_.jsx("h5", {
-              className: "modal-title",
               id: "rejectPublicationLabel",
+              className: "jsx-3325321127" + " " + "modal-title",
               children: "Reject Publication Information"
             }), /*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
-              className: "close",
               "data-dismiss": "modal",
               "aria-label": "Close",
+              className: "jsx-3325321127" + " " + "close",
               children: /*#__PURE__*/jsx_runtime_.jsx("span", {
                 "aria-hidden": "true",
+                className: "jsx-3325321127",
                 children: "\xD7"
               })
             })]
@@ -3258,13 +3486,16 @@ function Publication(props) {
             }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
               id: "rejectPubForm",
               children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                className: "modal-body",
-                children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("div", {
-                  className: "form-row",
+                className: "jsx-3325321127" + " " + "modal-body",
+                children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+                  className: "jsx-3325321127"
+                }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+                  className: "jsx-3325321127" + " " + "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                    className: "form-group",
+                    className: "jsx-3325321127" + " " + "form-group",
                     children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
                       htmlFor: "RejectionRemarks",
+                      className: "jsx-3325321127",
                       children: " Reason/Remarks for Rejection "
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       className: "form-control",
@@ -3276,19 +3507,19 @@ function Publication(props) {
                   })
                 })]
               }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-                className: "modal-footer",
+                className: "jsx-3325321127" + " " + "modal-footer",
                 children: [/*#__PURE__*/jsx_runtime_.jsx("button", {
                   type: "button",
-                  className: "btn btn-secondary",
                   "data-dismiss": "modal",
+                  className: "jsx-3325321127" + " " + "btn btn-secondary",
                   children: "Close"
                 }), /*#__PURE__*/jsx_runtime_.jsx("button", {
                   type: "submit",
-                  className: "btn btn-primary",
                   disabled: isSubmitting,
                   onClick: () => {
                     $('#rejectPublication').modal('toggle');
                   },
+                  className: "jsx-3325321127" + " " + "btn btn-primary",
                   children: "Save changes"
                 })]
               })]
@@ -3296,6 +3527,9 @@ function Publication(props) {
           })]
         })
       })
+    }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+      id: "3325321127",
+      children: ["th.widen.jsx-3325321127{width:30%;}"]
     })]
   });
 }
@@ -3318,6 +3552,9 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
+// EXTERNAL MODULE: external "styled-jsx/style"
+var style_ = __webpack_require__(3289);
+var style_default = /*#__PURE__*/__webpack_require__.n(style_);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
@@ -3479,6 +3716,7 @@ async function addResearch(formData, token) {
 
 
 
+
 class ResearchGrantForm extends (external_react_default()).Component {
   constructor(props) {
     super(props);
@@ -3528,65 +3766,81 @@ class ResearchGrantForm extends (external_react_default()).Component {
         isSubmitting
       }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
         id: "resForm",
-        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("div", {
-          className: "form-row",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+          className: "jsx-371132353",
+          children: "Required"
+        }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+          className: "jsx-371132353" + " " + "form-row",
           children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-12",
+            className: "jsx-371132353" + " " + "form-group col-md-12",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "Research[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Research Project "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "researchName",
-              placeholder: "Input research name"
+              placeholder: "Input research name",
+              required: true
             })]
           })
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-12",
+            className: "jsx-371132353" + " " + "form-group col-md-12",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchSponsor[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Sponsor "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "granter",
-              placeholder: "Input sponsor"
+              placeholder: "Input sponsor",
+              required: true
             })]
           })
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-6",
+            className: "jsx-371132353" + " " + "form-group col-md-6",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchAmount[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Amount "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "amount",
-              placeholder: "Input amount"
+              placeholder: "Input amount",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-6",
+            className: "jsx-371132353" + " " + "form-group col-md-6",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchProof[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof"
+              id: "proof",
+              required: true
             })]
           })]
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-12",
+            className: "jsx-371132353" + " " + "form-group col-md-12",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchAuthorNonDPSM[]",
+              className: "jsx-371132353",
               children: " Researchers (non-DPSM) "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
@@ -3596,45 +3850,53 @@ class ResearchGrantForm extends (external_react_default()).Component {
             })]
           })
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+          className: "jsx-371132353",
           children: /*#__PURE__*/jsx_runtime_.jsx(research_grant_form_author, {
             faculty: this.props.faculty
           })
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchProjectedStartDate[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Start Date (Projected) "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
               className: "form-control",
-              name: "projectedStart"
+              name: "projectedStart",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchProjectedEndDate[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " End Date (Projected) "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
               className: "form-control",
-              name: "projectedEnd"
+              name: "projectedEnd",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchStartDate[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Start Date (Actual) "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
               className: "form-control",
-              name: "actualStart"
+              name: "actualStart",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchEndDate[]",
+              className: "jsx-371132353",
               children: " End Date (Actual) "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
@@ -3642,9 +3904,10 @@ class ResearchGrantForm extends (external_react_default()).Component {
               name: "actualEnd"
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-4",
+            className: "jsx-371132353" + " " + "form-group col-md-4",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchProgress[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Research Progress "
             }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Field, {
               as: "select",
@@ -3653,18 +3916,25 @@ class ResearchGrantForm extends (external_react_default()).Component {
               required: true,
               children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Ongoing",
+                className: "jsx-371132353",
                 children: "Ongoing"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Completed",
+                className: "jsx-371132353",
                 children: "Completed"
               })]
             })]
           })]
-        }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
-          className: "btn btn-primary col-md-12",
           disabled: isSubmitting,
+          className: "jsx-371132353" + " " + "btn btn-primary col-md-12",
           children: "Submit"
+        }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+          id: "371132353",
+          children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
         })]
       })
     });
@@ -3735,6 +4005,39 @@ async function updateResearch(formData, token) {
           Authorization: `Bearer ${token}`
         }
       });
+      let bodData;
+
+      for (var pair of formData.entries()) {
+        if (pair[0] == 'add_res') {
+          bodData = new FormData();
+          bodData.append('facultyId', pair[1]);
+          bodData.append('researchId', formData.get('researchId'));
+          bodData.append('status', 'Pending');
+          const auth = await external_axios_default()({
+            method: 'POST',
+            url: 'https://api.dpsmqaportal.com/api/faculty/accomplishment/add/researcher',
+            data: bodData,
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              Authorization: `Bearer ${token}`
+            }
+          });
+        }
+      }
+
+      for (var pair of formData.entries()) {
+        if (pair[0] == 'rem_res') {
+          const auth = await external_axios_default().delete("https://api.dpsmqaportal.com/api/faculty/accomplishment/" + pair[1] + "/researcher", {
+            headers: {
+              Authorization: `Bearer ${token}`
+            },
+            data: {
+              researchId: `${formData.get('researchId')}`
+            }
+          });
+        }
+      }
+
       console.log(response.data);
       return response.data;
     } else {
@@ -3793,6 +4096,14 @@ async function approveResearchGrant(formData, approveFlag, facultyId, token) {
 
 
 
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 
 
 
@@ -3818,8 +4129,17 @@ function ResearchGrant(props) {
     actualStart: '',
     actualEnd: '',
     researchProgress: '',
-    nonFacultyResearchers: ''
+    nonFacultyResearchers: '',
+    faculty_researchers: [],
+    og_auth: []
   });
+  let authors = Object.keys(props.faculty).map(key => {
+    return {
+      value: props.faculty[key].facultyId,
+      label: props.faculty[key].lastName + ', ' + props.faculty[key].firstName
+    };
+  });
+  let faculty_researchers = [];
 
   if (props.children != null) {
     content = Object.keys(props.children).map(key => {
@@ -3961,13 +4281,41 @@ function ResearchGrant(props) {
     approveRG = id;
   }
 
-  function setKey(x) {
-    Object.keys(props.children).map(key => {
+  async function setKey(x) {
+    await Object.keys(props.children).map(async key => {
       if (props.children[key].researchId == x) {
-        setData(props.children[key]);
+        await props.children[key].faculty_researchers.forEach(async e => {
+          await authors.forEach(async (fp, index) => {
+            if (fp.value == e.facultyId) {
+              await faculty_researchers.push(fp);
+            }
+          });
+        });
+        let temp = {
+          researchId: props.children[key].researchId,
+          researchName: props.children[key].researchName,
+          granter: props.children[key].granter,
+          amount: props.children[key].amount,
+          projectedStart: props.children[key].projectedStart,
+          projectedEnd: props.children[key].projectedEnd,
+          actualStart: props.children[key].actualStart,
+          actualEnd: props.children[key].actualEnd,
+          researchProgress: props.children[key].researchProgress,
+          nonFacultyResearchers: props.children[key].nonFacultyResearchers,
+          faculty_researchers: faculty_researchers,
+          og_auth: faculty_researchers
+        };
+        await setData(temp);
       }
     });
+    return faculty_researchers;
   }
+
+  const handleChange = e => {
+    setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+      faculty_researchers: e
+    }));
+  };
 
   return /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
     children: [/*#__PURE__*/jsx_runtime_.jsx("h2", {
@@ -4059,6 +4407,26 @@ function ResearchGrant(props) {
               let formData = new FormData(form);
               formData.append('researchId', currData.researchId);
               let alert = document.getElementById("researchalert");
+              let existing = [];
+              currData.og_auth.forEach(x => {
+                existing.push(x.value);
+              });
+              let temp_res = formData.getAll('faculty_researchers').map(x => Number(x));
+              let rem_og = await existing.filter(x => !temp_res.includes(x));
+              let add_res = await temp_res.filter(x => !existing.includes(x));
+
+              if (add_res.length > 0) {
+                add_res.forEach(x => {
+                  formData.append('add_res', x);
+                });
+              }
+
+              if (rem_og.length > 0) {
+                rem_og.forEach(x => {
+                  formData.append('rem_res', x);
+                });
+              }
+
               let res = await updateResearch(formData, props.token);
 
               if (res.success == true) {
@@ -4197,13 +4565,14 @@ function ResearchGrant(props) {
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                     className: "form-group",
                     children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
-                      htmlFor: "ResearchAuthorNonDPSMUpdate",
-                      children: " Authors (non-DPSM) "
-                    }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
-                      className: "form-control",
-                      type: "text",
-                      name: "nonFacultyResearchers",
-                      placeholder: "Input all authors outside DPSM (separate names with commas)"
+                      htmlFor: "ResearchAuthorDPSMUpdate",
+                      children: " Authors (DPSM) "
+                    }), /*#__PURE__*/jsx_runtime_.jsx((external_react_select_default()), {
+                      name: "faculty_researchers",
+                      isMulti: true,
+                      options: authors,
+                      value: currData.faculty_researchers,
+                      onChange: event => handleChange(event)
                     })]
                   })
                 }), /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -4211,13 +4580,13 @@ function ResearchGrant(props) {
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                     className: "form-group",
                     children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
-                      htmlFor: "ResearchAuthorDPSMUpdate",
-                      children: " Authors (DPSM) "
-                    }), /*#__PURE__*/jsx_runtime_.jsx("input", {
+                      htmlFor: "ResearchAuthorNonDPSMUpdate",
+                      children: " Authors (non-DPSM) "
+                    }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       className: "form-control",
                       type: "text",
-                      name: "ResearchAuthorDPSMUpdate",
-                      placeholder: "Input author (must be from DPSM)"
+                      name: "nonFacultyResearchers",
+                      placeholder: "Input all authors outside DPSM (separate names with commas)"
                     })]
                   })
                 }), /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -4515,6 +4884,9 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
+// EXTERNAL MODULE: external "styled-jsx/style"
+var style_ = __webpack_require__(3289);
+var style_default = /*#__PURE__*/__webpack_require__.n(style_);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
@@ -4577,6 +4949,7 @@ async function addTraining(formData, token) {
 
 
 
+
 class TrainingSeminarForm extends (external_react_default()).Component {
   constructor(props) {
     super(props);
@@ -4623,59 +4996,75 @@ class TrainingSeminarForm extends (external_react_default()).Component {
         isSubmitting
       }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
         id: "tsForm",
-        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+          className: "jsx-371132353",
+          children: "Required"
+        }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "TrainingSeminar[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Name of Training/Seminar "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "title",
               id: "title",
-              placeholder: "Input training/seminar"
+              placeholder: "Input training/seminar",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-3",
+            className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "TrainingSeminarRole[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Role"
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "role",
               id: "role",
-              placeholder: "Input training/seminar"
+              placeholder: "Input role in training/seminar",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "TrainingSeminarVenue[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Venue "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "venue",
               id: "venue",
-              placeholder: "Input venue"
+              placeholder: "Input venue",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "TrainingSeminarStartDate[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Start Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
               className: "form-control",
               name: "dateFrom",
-              id: "dateFrom"
+              id: "dateFrom",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "TrainingSeminarEndDate[]",
+              className: "jsx-371132353",
               children: " End Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
@@ -4684,9 +5073,10 @@ class TrainingSeminarForm extends (external_react_default()).Component {
               id: "dateTo"
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-8",
+            className: "jsx-371132353" + " " + "form-group col-md-8",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "TrainingSeminarRemarks[]",
+              className: "jsx-371132353",
               children: " Remarks "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
@@ -4696,22 +5086,29 @@ class TrainingSeminarForm extends (external_react_default()).Component {
               placeholder: "Input remarks"
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-4",
+            className: "jsx-371132353" + " " + "form-group col-md-4",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "TrainingSeminarProof[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof"
+              id: "proof",
+              required: true
             })]
           })]
-        }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
-          className: "btn btn-primary col-md-12",
           disabled: isSubmitting,
+          className: "jsx-371132353" + " " + "btn btn-primary col-md-12",
           children: "Submit"
+        }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+          id: "371132353",
+          children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
         })]
       })
     });

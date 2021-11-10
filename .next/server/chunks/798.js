@@ -16,6 +16,9 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(5282);
 // EXTERNAL MODULE: ./node_modules/next/link.js
 var next_link = __webpack_require__(1664);
+// EXTERNAL MODULE: external "styled-jsx/style"
+var style_ = __webpack_require__(3289);
+var style_default = /*#__PURE__*/__webpack_require__.n(style_);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(9297);
 var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
@@ -78,6 +81,7 @@ async function addEducation(formData, token) {
 
 
 
+
 class EducationForm extends (external_react_default()).Component {
   constructor(props) {
     super(props);
@@ -126,28 +130,38 @@ class EducationForm extends (external_react_default()).Component {
         isSubmitting
       }) => /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Form, {
         id: "educForm",
-        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("div", {
-          className: "form-row",
+        children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("h6", {
+          className: "jsx-371132353",
+          children: "Required"
+        }), /*#__PURE__*/jsx_runtime_.jsx("div", {
+          className: "jsx-371132353" + " " + "form-row",
           children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-12",
+            className: "jsx-371132353" + " " + "form-group col-md-12",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "SchoolEducationalHistory[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " School/Institution "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "institutionSchool",
               id: "institutionSchool",
-              placeholder: "Input school"
+              placeholder: "Input school",
+              required: true
             })]
           })
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2 required",
+            className: "jsx-371132353" + " " + "form-group col-md-2 required",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               className: "control-label",
               htmlFor: "DegreeType",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Degree Type "
             }), /*#__PURE__*/(0,jsx_runtime_.jsxs)(external_formik_.Field, {
               as: "select",
@@ -157,78 +171,95 @@ class EducationForm extends (external_react_default()).Component {
               required: true,
               children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "AA",
+                className: "jsx-371132353",
                 children: "AA"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "AS",
+                className: "jsx-371132353",
                 children: "AS"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "BA",
+                className: "jsx-371132353",
                 children: "BA"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "BS",
+                className: "jsx-371132353",
                 children: "BS"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "MA",
+                className: "jsx-371132353",
                 children: "MA"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "MS",
+                className: "jsx-371132353",
                 children: "MS"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "MD",
+                className: "jsx-371132353",
                 children: "MD"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "PhD",
+                className: "jsx-371132353",
                 children: "PhD"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "DEng",
+                className: "jsx-371132353",
                 children: "DEng"
               }), /*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "DrPH",
+                className: "jsx-371132353",
                 children: "DrPH"
               })]
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-4",
+            className: "jsx-371132353" + " " + "form-group col-md-4",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "DegreeEducationalHistory[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Degree/Certification "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "degreeCert",
               id: "degreeCert",
-              placeholder: "Input degree"
+              placeholder: "Input degree",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-4",
+            className: "jsx-371132353" + " " + "form-group col-md-4",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "MajorEducationalHistory[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Major/Specialization "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               className: "form-control",
               type: "text",
               name: "majorSpecialization",
               id: "majorSpecialization",
-              placeholder: "Input major"
+              placeholder: "Input major",
+              required: true
             })]
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-          className: "form-row",
+          className: "jsx-371132353" + " " + "form-row",
           children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "StartDateEducationalHistory[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Start Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
               className: "form-control",
               name: "startDate",
-              id: "startDate"
+              id: "startDate",
+              required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "EndDateEducationalHistory[]",
+              className: "jsx-371132353",
               children: " End Date "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "date",
@@ -237,22 +268,29 @@ class EducationForm extends (external_react_default()).Component {
               id: "endDate"
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
-            className: "form-group col-md-2",
+            className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ProofEducationalHistory[]",
+              className: "jsx-371132353" + " " + "required-label",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof"
+              id: "proof",
+              required: true
             })]
           })]
-        }), /*#__PURE__*/jsx_runtime_.jsx("br", {}), /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), /*#__PURE__*/jsx_runtime_.jsx("br", {
+          className: "jsx-371132353"
+        }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
-          className: "btn btn-primary col-md-12",
           disabled: isSubmitting,
+          className: "jsx-371132353" + " " + "btn btn-primary col-md-12",
           children: "Submit"
+        }), /*#__PURE__*/jsx_runtime_.jsx((style_default()), {
+          id: "371132353",
+          children: ["label.required-label.jsx-371132353:after{content:\"*\";color:#f00;}", "h6.jsx-371132353:before{content:\"* \";color:#f00;}"]
         })]
       })
     });
@@ -415,9 +453,9 @@ function Education(props) {
     content = Object.keys(props.children).map(key => {
       return /*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
         children: [/*#__PURE__*/jsx_runtime_.jsx("td", {
-          children: props.children[key].degreeType
-        }), /*#__PURE__*/jsx_runtime_.jsx("td", {
           children: props.children[key].degreeCert
+        }), /*#__PURE__*/jsx_runtime_.jsx("td", {
+          children: props.children[key].degreeType
         }), /*#__PURE__*/jsx_runtime_.jsx("td", {
           children: props.children[key].majorSpecialization
         }), /*#__PURE__*/jsx_runtime_.jsx("td", {
