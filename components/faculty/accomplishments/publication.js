@@ -26,11 +26,14 @@ function Publication(props){
         faculty_publishers: [],
         og_auth: []
     })
-    let authors = Object.keys(props.faculty).map(key => {
-        return(
-            {value: props.faculty[key].facultyId, label: props.faculty[key].lastName + ', ' + props.faculty[key].firstName}
-        );
-    });
+    let authors 
+    if(props.faculty) {
+    authors = Object.keys(props.faculty).map(key => {
+            return(
+                {value: props.faculty[key].facultyId, label: props.faculty[key].lastName + ', ' + props.faculty[key].firstName}
+            );
+        });
+    }    
     let faculty_publishers = []
     
     if(props.children != null) { 
@@ -71,7 +74,7 @@ function Publication(props){
                                             </button>
                                             <a
                                                 className ="btn btn-info"
-                                                href={"https://api.dpsmqaportal.com/" + pub[auth].proof}
+                                                href={"https://localhost:3001/uploads/" + pub[auth].proof}
                                                 style = {{ color: 'white' }}
                                                 target="_blank">
                                                 Preview
