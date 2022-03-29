@@ -60,7 +60,7 @@ function Approval(props) {
                 <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId}>{ props.education }</Education>
             </div>
     	    <div className="tab-pane fade" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
-                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId}>
+                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} clerkFlag={false} facultyId={props.pathFacultyId}>
                     { props.publicService }
                 </PublicServiceAccomplishment>
             </div>
@@ -80,7 +80,7 @@ function Approval(props) {
                 </LicensureExam>
             </div>
     	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                <ResearchGrant name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId}>
+                <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} clerkFlag={false} facultyId={props.pathFacultyId}>
                     { props.researchGrant }
                 </ResearchGrant>
             </div>
