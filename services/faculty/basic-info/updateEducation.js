@@ -7,7 +7,7 @@ export default async function updateEducation(formData, token) {
 	try {
 	    if (token) {
 
-	        let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
+	        let url = process.env.API_URL + '/faculty/basic-info/' + facultyId;
 
 		    if(formData.get('proof') == "") {
 				formData.delete('proof')

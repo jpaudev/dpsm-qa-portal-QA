@@ -22,13 +22,14 @@ function Education(props) {
         degreeCert: '',
         majorSpecialization: '',
         startDate: '',
-        endDate: ''
+        endDate: '',
+        proof: ''
     })
     let content 
     if(props.children != null) {
         content = Object.keys(props.children).map(key => {
                 return (
-                    <tr key = {props.children.[key].educInfoId}>
+                    <tr key = {props.children[key].educInfoId}>
                         <td>{props.children[key].degreeCert}</td>
                         <td>{props.children[key].degreeType}</td>
                         <td>{props.children[key].majorSpecialization}</td>
@@ -51,7 +52,7 @@ function Education(props) {
                                     </button>
                                     <a
                                         className ="btn btn-info"
-                                        href={"https://api.dpsmqaportal.com/" + props.children[key].proof}
+                                        href={process.env.UPLOADS_URL + props.children[key].proof}
                                         style = {{ color: 'white' }}
                                         target="_blank">
                                         Preview
@@ -70,11 +71,11 @@ function Education(props) {
                             <td>
                                 <div className = "btn-grp">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
-                                        setEdit(props.children.[key].educInfoId)
+                                        setEdit(props.children[key].educInfoId)
                                         setKey(editEduc)
                                     }}>Edit</a>
                                     <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation" onClick={() => {
-                                        setDelete(props.children.[key].educInfoId)
+                                        setDelete(props.children[key].educInfoId)
                                     }}>Delete</a>
                                 </div>
                             </td>
@@ -115,9 +116,9 @@ function Education(props) {
 
     function setKey(x) {
         Object.keys(props.children).map(key => {
-            if(props.children.[key].educInfoId == x) {
-                setData(props.children.[key])
-                if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+            if(props.children[key].educInfoId == x) {
+                setData(props.children[key])
+                if(props.children[key].endDate == "" || props.children[key].endDate == null) {
                     setData(currData => ({...currData, endDate: ''}))
                 }
             }
@@ -246,8 +247,8 @@ function Education(props) {
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
-                                        <label htmlFor = "StartDateEducationalHistoryUpdate"> Add/Edit Proof </label>
-                                        <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
+                                        <label for = "proof" > Add/Edit Proof {currData.endDate} {currData.proof.name}</label>
+                                        <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={currData.proof.name} />
                                     </div>
                                 </div>
                             </div>

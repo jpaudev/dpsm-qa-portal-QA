@@ -2,7 +2,7 @@ import Layout from '../../components/layout'
 import Link from 'next/link'
 import Router from 'next/router'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies, isExpired } from "../../helpers"
 import Faculty from "../../components/faculty/facultyList"
 
 function FacultyList(props) {
@@ -23,10 +23,10 @@ function FacultyList(props) {
     let facultyList
 
     if (context.res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             return {
                 redirect: {
-                    destination: '/login',
+                    destination: '/',
                     permanent: false,
                 },
             }
@@ -39,7 +39,7 @@ function FacultyList(props) {
                 }
             }
             
-            const faculty = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info', header)
+            const faculty = await fetch(process.env.API_URL + '/faculty/basic-info', header)
             facultyList = await faculty.json()
 
         }

@@ -4,7 +4,7 @@ export default async function comparePassword(password, userId, token) {
 	try {
         if (token) {
 
-			let url = 'https://api.dpsmqaportal.com/api/user/validate-password';
+			let url = process.env.API_URL + '/user/validate-password';
             const response = await axios({
                 method: 'POST',
                 url: url,

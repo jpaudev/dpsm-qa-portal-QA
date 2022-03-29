@@ -7,7 +7,7 @@ export default async function deleteLicensure(data, token) {
 	try {
 		if(token) {
 			try {
-				const response = await axios.delete("https://api.dpsmqaportal.com/api/faculty/accomplishment/" + facultyId + "/licensure-exam", {
+				const response = await axios.delete(process.env.API_URL + "/faculty/accomplishment/" + facultyId + "/licensure-exam", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

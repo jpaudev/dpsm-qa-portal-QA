@@ -6,7 +6,7 @@ export default async function addFaculty(data, token) {
 	
 	try {
 	    if (token) {	      
-	        let url = 'https://api.dpsmqaportal.com/api/user/add';
+	        let url = process.env.API_URL + '/user/add';
 		    let header = {
 		        headers: {
 		            'Authorization': 'Bearer ' + token

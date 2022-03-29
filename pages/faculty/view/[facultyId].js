@@ -11,7 +11,7 @@ import Evaluation from '../../../components/unit-head/faculty-list/evaluation/ev
 import FacultyLoader from '../../../components/faculty/faculty-load/faculty-load'
 
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../../helpers"
+import { parseCookies, isExpired } from "../../../helpers"
 
 function ViewFaculty(props) {
 
@@ -114,7 +114,7 @@ function ViewFaculty(props) {
   export async function getServerSideProps(context) {
     const token = parseCookies(context.req)
     if (context.res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             return {
                 redirect: {
                     destination: '/login',
@@ -140,29 +140,29 @@ function ViewFaculty(props) {
         }
     }
 
-    let url = 'https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId;
+    let url = process.env.API_URL + '/faculty/accomplishment/' + facultyId;
     let header = {
         headers: {
             'Authorization': 'Bearer ' + token.user
         }
     }
 
-    const employment = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId + '/employment', header)
+    const employment = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId + '/employment', header)
     const employmentInfo = await employment.json()
     let unit = employmentInfo.result.faculty_unit.unit.unit
     let position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
 
-    const personal = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId, header)
+    const personal = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
     let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
-    const educ = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId + '/education' + status, header)
+    const educ = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId + '/education' + status, header)
     let education = await educ.json()
 
-    const work = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId + '/work-exp', header)
+    const work = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId + '/work-exp', header)
     let workExperience = await work.json()
 
-    const fac = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
+    const fac = await fetch(process.env.API_URL + '/faculty/basic-info/list/all?facultyId=' + facultyId, header)
     const faculty = await fac.json()
 
     const psa = await fetch(url + '/public-service' + status, header)
@@ -181,10 +181,10 @@ function ViewFaculty(props) {
     const researchGrant = await rg.json()
 
     let approvalList
-    let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + userFacultyId
+    let approvalURL = process.env.API_URL + '/faculty/approval/' + userFacultyId
 
     let roleAssignmentFlag = false
-    let roleAssignmentURL = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/assignment'
+    let roleAssignmentURL = process.env.API_URL + '/faculty/basic-info/unit/assignment'
     if(data.role == 2 || data.role == 3) {
         if(data.role == 2) {
             approvalURL += '?unitId=' + data.unitId

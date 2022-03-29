@@ -6,7 +6,7 @@ export default async function updateLicensure(formData, token) {
     let facultyId = cookieData.facultyId
 	try {
 	    if (token) {
-	        let url = 'https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId;
+	        let url = process.env.API_URL + '/faculty/accomplishment/' + facultyId;
 
 		    if(formData.get('proof') == "") {
 				formData.delete('proof')

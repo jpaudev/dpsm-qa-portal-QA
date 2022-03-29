@@ -33,7 +33,7 @@ function PublicServiceAccomplishment(props){
         upm = Object.keys(props.children).map(key => {
             if (props.children[key].type == 'Within UPM'){
                 return(
-                    <tr key = {props.children.[key].publicServiceId}>
+                    <tr key = {props.children[key].publicServiceId}>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].organization}</td>
                         <td>{props.children[key].description}</td>
@@ -55,7 +55,7 @@ function PublicServiceAccomplishment(props){
                                     </button>
                                     <a
                                         className ="btn btn-info"
-                                        href={"https://api.dpsmqaportal.com/" + props.children[key].proof}
+                                        href={process.env.UPLOADS_URL + props.children[key].proof}
                                         style = {{ color: 'white' }}
                                         target="_blank">
                                         Preview
@@ -76,11 +76,11 @@ function PublicServiceAccomplishment(props){
                                     props.facultyFlag &&
                                     <div className = "btn-group">
                                         <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                            setEdit(props.children.[key].publicServiceId)
+                                            setEdit(props.children[key].publicServiceId)
                                             setKey(editPS)
                                         }}>Edit</a>
                                         <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                            setDelete(props.children.[key].publicServiceId)
+                                            setDelete(props.children[key].publicServiceId)
                                         }}>Delete</a>
                                     </div>
                                 }
@@ -104,7 +104,7 @@ function PublicServiceAccomplishment(props){
         pro = Object.keys(props.children).map(key => {
             if (props.children[key].type == 'Within Pro'){
                 return(
-                    <tr key = {props.children.[key].publicServiceId}>
+                    <tr key = {props.children[key].publicServiceId}>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].organization}</td>
                         <td>{props.children[key].description}</td>
@@ -126,7 +126,7 @@ function PublicServiceAccomplishment(props){
                                 </button>
                                 <a
                                     className ="btn btn-info"
-                                    href={"https://api.dpsmqaportal.com/" + props.children[key].proof}
+                                    href={process.env.UPLOADS_URL + props.children[key].proof}
                                     style = {{ color: 'white' }}
                                     target="_blank">
                                     Preview
@@ -147,11 +147,11 @@ function PublicServiceAccomplishment(props){
                                 props.facultyFlag &&
                                 <div className = "btn-group">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
+                                        setEdit(props.children[key].publicServiceId)
                                         setKey(editPS)
                                     }}>Edit</a>
                                     <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
+                                        setDelete(props.children[key].publicServiceId)
                                     }}>Delete</a>
                                 </div>
                             }
@@ -175,7 +175,7 @@ function PublicServiceAccomplishment(props){
         nat = Object.keys(props.children).map(key => {
             if (props.children[key].type == 'Within Nat'){
                 return(
-                    <tr key = {props.children.[key].publicServiceId}>
+                    <tr key = {props.children[key].publicServiceId}>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].organization}</td>
                         <td>{props.children[key].description}</td>
@@ -197,7 +197,7 @@ function PublicServiceAccomplishment(props){
                                 </button>
                                 <a
                                     className ="btn btn-info"
-                                    href={"https://api.dpsmqaportal.com/" + props.children[key].proof}
+                                    href={process.env.UPLOADS_URL + props.children[key].proof}
                                     style = {{ color: 'white' }}
                                     target="_blank">
                                     Preview
@@ -218,11 +218,11 @@ function PublicServiceAccomplishment(props){
                                 props.facultyFlag &&
                                 <div className = "btn-group">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
+                                        setEdit(props.children[key].publicServiceId)
                                         setKey(editPS)
                                     }}>Edit</a>
                                     <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
+                                        setDelete(props.children[key].publicServiceId)
                                     }}>Delete</a>
                                 </div>
                             }
@@ -246,7 +246,7 @@ function PublicServiceAccomplishment(props){
         wor = Object.keys(props.children).map(key => {
             if (props.children[key].type == 'Within Wor'){
                 return(
-                    <tr key = {props.children.[key].publicServiceId}>
+                    <tr key = {props.children[key].publicServiceId}>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].organization}</td>
                         <td>{props.children[key].description}</td>
@@ -268,7 +268,7 @@ function PublicServiceAccomplishment(props){
                                 </button>
                                 <a
                                     className ="btn btn-info"
-                                    href={"https://api.dpsmqaportal.com/" + props.children[key].proof}
+                                    href={process.env.UPLOADS_URL + props.children[key].proof}
                                     style = {{ color: 'white' }}
                                     target="_blank">
                                     Preview
@@ -289,11 +289,11 @@ function PublicServiceAccomplishment(props){
                                 props.facultyFlag &&
                                 <div className = "btn-group">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#editPublicService" onClick={() => {
-                                        setEdit(props.children.[key].publicServiceId)
+                                        setEdit(props.children[key].publicServiceId)
                                         setKey(editPS)
                                     }}>Edit</a>
                                     <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
-                                        setDelete(props.children.[key].publicServiceId)
+                                        setDelete(props.children[key].publicServiceId)
                                     }}>Delete</a>
                                 </div>
                             }
@@ -330,9 +330,9 @@ function PublicServiceAccomplishment(props){
 
     function setKey(x) {
         Object.keys(props.children).map(key => {
-            if(props.children.[key].publicServiceId == x) {
-                setData(props.children.[key])
-                if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+            if(props.children[key].publicServiceId == x) {
+                setData(props.children[key])
+                if(props.children[key].endDate == "" || props.children[key].endDate == null) {
                     setData(currData => ({...currData, endDate: ''}))
                 }
             }

@@ -39,7 +39,7 @@ function Login() {
               try {
                 
                 let token = null
-                const tokenRes = await axios.post("https://api.dpsmqaportal.com/api/login", {
+                const tokenRes = await axios.post(process.env.API_URL + "/login", {
                   upemail: `${values.username}`,
                   password: `${values.password}`
                 })
@@ -63,8 +63,8 @@ function Login() {
                   window.alert('something wrong')
                 }
               } catch (err) {
-                console.error(err.response.data.errors.[0].message)
-                errorMessage = err.response.data.errors.[0].message
+                console.error(err.response.data.errors[0].message)
+                errorMessage = err.response.data.errors[0].message
                 let alert = document.getElementById("alert")
                 alert.setAttribute("style", "visibility: visible");
                 values.username=""

@@ -20,7 +20,7 @@ export default async function approvePublication(formData, approveFlag, facultyI
 	try {
 		if (token) {
 			try {
-				let url = 'https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId;
+				let url = process.env.API_URL + '/faculty/accomplishment/' + facultyId;
 				const response = await axios({
 					method: 'PUT',
 					url: url + '/publisher',

@@ -4,7 +4,7 @@ export default async function deleteEmployment(data, token, facultyId) {
 	try {
 		if (token) {
 			try {
-				const response = await axios.delete("https://api.dpsmqaportal.com/api/faculty/basic-info/" + facultyId + "/employment", {
+				const response = await axios.delete(process.env.API_URL + "/faculty/basic-info/" + facultyId + "/employment", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

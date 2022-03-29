@@ -6,7 +6,7 @@ export default async function updateFaculty(data, token) {
     let facultyId = cookieData.facultyId
 	try {
 	    if (token) {	      
-	        let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
+	        let url = process.env.API_URL + '/faculty/basic-info/' + facultyId;
 		    
 	        try {
 				const response = await axios.put(url + "/personal", {

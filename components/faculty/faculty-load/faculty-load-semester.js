@@ -42,7 +42,7 @@ function FacultyLoadSemester(props) {
                         <div className = "btn-grp">
                             <a
                                 className ="btn btn-info"
-                                href={"https://api.dpsmqaportal.com/" + props.records[key].syllabus}
+                                href={process.env.UPLOADS_URL + props.records[key].syllabus}
                                 style = {{ color: 'white' }}
                                 target="_blank">
                                 View
@@ -77,7 +77,7 @@ function FacultyLoadSemester(props) {
                             </button>
                             <a
                                 className ="btn btn-info"
-                                href={"https://api.dpsmqaportal.com/" + props.records[key].setResults}
+                                href={process.env.UPLOADS_URL + props.records[key].setResults}
                                 style = {{ color: 'white' }}
                                 target="_blank">
                                 Preview
@@ -105,7 +105,7 @@ function FacultyLoadSemester(props) {
                             </button>
                             <a
                                 className ="btn btn-info"
-                                href={"https://api.dpsmqaportal.com/" + props.records[key].setResults}
+                                href={process.env.UPLOADS_URL + props.records[key].setResults}
                                 style = {{ color: 'white' }}
                                 target="_blank">
                                 Preview

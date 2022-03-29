@@ -4,7 +4,7 @@ import { Formik, Form, Field } from "formik"
 import axios from "axios"
 import Router from 'next/router'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../helpers"
+import { parseCookies, isExpired } from "../helpers"
 
 function Home(props) {
     return (
@@ -17,7 +17,7 @@ function Home(props) {
     const data = parseCookies(context.req)
   
     if (context.res) {
-      if (Object.keys(data).length === 0 && data.constructor === Object) {
+      if (isExpired(data.user) || Object.keys(data).length === 0 && data.constructor === Object) {
         return {
           redirect: {
               destination: '/login',
@@ -25,23 +25,21 @@ function Home(props) {
           },
         }
       } else {
-        let token = jwt.decode(data.user)
         let role = token.role
-        
-        if(role == 1) { // faculty 
-          return {
-            redirect: {
-                destination: '/faculty/basic-info',
-                permanent: false,
-            },
-          }
-        } else if (role == 2 || role == 3) { // unit head or dept. chair
-          return {
-            redirect: {
-                destination: '/faculty',
-                permanent: false,
-            },
-          }
+
+        let destination = ''
+        switch(role) {
+          case 1: destination = '/faculty/basic-info'; break;
+          case 2: destination = '/faculty'; break;
+          case 3: destination = '/faculty'; break;
+          case 5: destination = '/admin'; break;
+        }
+
+        return {
+          redirect: {
+              destination,
+              permanent: false,
+          },
         }
       }
     }

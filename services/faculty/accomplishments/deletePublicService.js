@@ -7,7 +7,7 @@ export default async function deletePublicService(data, token) {
 	try {
 		if(token) {
 			try {
-				const response = await axios.delete("https://api.dpsmqaportal.com/api/faculty/accomplishment/" + facultyId + "/public-service", {
+				const response = await axios.delete(process.env.API_URL + "/faculty/accomplishment/" + facultyId + "/public-service", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

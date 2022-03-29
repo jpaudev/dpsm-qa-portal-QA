@@ -15,7 +15,7 @@ export default async function addPublicService(formData, token) {
 
 				const response = await axios({
 				    method: 'POST',
-				    url: 'https://api.dpsmqaportal.com/api/faculty/accomplishment/add/public-service',
+				    url: process.env.API_URL + '/faculty/accomplishment/add/public-service',
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })	

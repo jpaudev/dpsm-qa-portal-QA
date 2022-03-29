@@ -1,7 +1,7 @@
 import Layout from '../../components/layout'
 import Router from 'next/router'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies, isExpired } from "../../helpers"
 import AccomplishmentCount from '../../components/unit-head/dashboard/accomplishment-count/accomplishment-count'
 import EmploymentStatus from '../../components/unit-head/dashboard/employment-status/employment-status'
 // import SETResults from '../../components/unit-head/dashboard/SET-results/SET-results'
@@ -15,6 +15,9 @@ function Dashboard(props) {
 	        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
 
 	                <div className="container">
+                        <br />
+                        <button className = "btn btn-info">Download All Faculty Information</button>
+                        <br />
 	                    <nav>
             			<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                             <a className="nav-item nav-link" id="accomplishment-count-tab" data-toggle="tab" href="#accomplishment-count" role="tab" aria-controls="accomplishment-count" aria-selected="false">Accomplishment Count</a>
@@ -66,7 +69,7 @@ export async function getServerSideProps(context) {
     let queryList
 
     if (context.res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             return {
                 redirect: {
                     destination: '/login',
@@ -84,14 +87,14 @@ export async function getServerSideProps(context) {
                 }
             }
             
-            const personal = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId, header)
+            const personal = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId, header)
             personalInfo = await personal.json()
 
-            let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
-            let accompURL = 'https://api.dpsmqaportal.com/api/faculty/reports/accomplishment'
-            let empURL = 'https://api.dpsmqaportal.com/api/faculty/reports/employment'
-            let educURL = 'https://api.dpsmqaportal.com/api/faculty/reports/education'
-            let roleAssignmentURL = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/assignment'
+            let approvalURL = process.env.API_URL + '/faculty/approval/' + facultyId
+            let accompURL = process.env.API_URL + '/faculty/reports/accomplishment'
+            let empURL = process.env.API_URL + '/faculty/reports/employment'
+            let educURL = process.env.API_URL + '/faculty/reports/education'
+            let roleAssignmentURL = process.env.API_URL + '/faculty/basic-info/unit/assignment'
             
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {

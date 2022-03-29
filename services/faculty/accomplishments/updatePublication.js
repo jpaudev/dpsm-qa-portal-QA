@@ -6,7 +6,7 @@ export default async function updatePublication(formData, token) {
     let facultyId = cookieData.facultyId
 	try {
 	    if (token) {
-	        let url = 'https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId;
+	        let url = process.env.API_URL + '/faculty/accomplishment/' + facultyId;
 		    let header = {
 		        headers: {
 		            'Authorization': 'Bearer ' + token
@@ -31,7 +31,7 @@ export default async function updatePublication(formData, token) {
 
 		    		const auth = await axios({
 			        	method: 'POST',
-					    url: 'https://api.dpsmqaportal.com/api/faculty/accomplishment/add/publisher',
+					    url: process.env.API_URL + '/faculty/accomplishment/add/publisher',
 					    data: bodData,
 					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			        })
@@ -40,7 +40,7 @@ export default async function updatePublication(formData, token) {
 
             for(var pair of formData.entries()) {
 		    	if(pair[0] == 'rem_auth') {
-		    		const auth = await axios.delete("https://api.dpsmqaportal.com/api/faculty/accomplishment/" + pair[1] + "/publisher", {
+		    		const auth = await axios.delete(process.env.API_URL + "/faculty/accomplishment/" + pair[1] + "/publisher", {
 						headers: {
 							Authorization: `Bearer ${token}`
 						},
