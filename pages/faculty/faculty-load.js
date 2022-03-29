@@ -3,13 +3,13 @@ import Link from 'next/link'
 import FacultyLoader from '../../components/faculty/faculty-load/faculty-load'
 import NameDisplay from '../../components/name-display'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies, isExpired } from "../../helpers"
 
 function FacultyLoad(props) {
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
 		<br />
-		<FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.data.facultyId} name={props.data.name} facultyFlag={true} clerkFlag={false}>
+		<FacultyLoader name = { props.data.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.data.facultyId} facultyFlag={true} clerkFlag={false}>
 			{props.facultyLoad}
 		</FacultyLoader>
 	    <style jsx>{`
@@ -24,7 +24,7 @@ function FacultyLoad(props) {
   export async function getServerSideProps(context) {
 	const token = parseCookies(context.req)
     if (context.res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             return {
                 redirect: {
                     destination: '/login',
@@ -42,13 +42,13 @@ function FacultyLoad(props) {
         }
     }
 
-	const personal = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId, header)
+	const personal = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
 
-	const load = await fetch('https://api.dpsmqaportal.com/api/faculty/load/' + facultyId, header)
+	const load = await fetch(process.env.API_URL + '/faculty/load/' + facultyId, header)
     const facultyLoad = await load.json()    
 
-    let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
+    let url = process.env.API_URL + '/faculty/basic-info/' + facultyId;
 
     const employ = await fetch(url + '/employment', header)
     let employment = await employ.json()
@@ -57,8 +57,8 @@ function FacultyLoad(props) {
 
 	let roleAssignmentFlag = false
 	let approvalList
-    let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
-	let roleAssignmentURL = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/assignment'
+    let approvalURL = process.env.API_URL + '/faculty/approval/' + facultyId
+	let roleAssignmentURL = process.env.API_URL + '/faculty/basic-info/unit/assignment'
     if(data.role == 2 || data.role == 3) {
         if(data.role == 2) {
             approvalURL += '?unitId=' + data.unitId

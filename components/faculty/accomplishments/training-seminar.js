@@ -54,7 +54,7 @@ function TrainingSeminar(props) {
                                     </button>
                                     <a
                                         className ="btn btn-info"
-                                        href={"https://api.dpsmqaportal.com/" + props.children[key].proof}
+                                        href={process.env.UPLOADS_URL + props.children[key].proof}
                                         style = {{ color: 'white' }}
                                         target="_blank">
                                         Preview

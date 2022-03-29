@@ -7,7 +7,7 @@ export default async function assignDeptChair(incomingDeptChair, token) {
             let cookieData = jwt.decode(token)
             let userId = cookieData.userId
             
-			let url = 'https://api.dpsmqaportal.com/api/user/' + userId;
+			let url = process.env.API_URL + '/user/' + userId;
             const response = await axios({
                 method: 'PUT',
                 url: url,
@@ -17,7 +17,7 @@ export default async function assignDeptChair(incomingDeptChair, token) {
                 headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}
             })	
             if(response.data.success == true) {
-                let url = 'https://api.dpsmqaportal.com/api/user/' + incomingDeptChair;
+                let url = process.env.API_URL + '/user/' + incomingDeptChair;
                 const response = await axios({
                     method: 'PUT',
                     url: url,

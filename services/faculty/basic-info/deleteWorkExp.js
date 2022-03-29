@@ -7,7 +7,7 @@ export default async function deleteWorkExp(data, token) {
 	try {
 		if (token) {
 			try {
-				const response = await axios.delete("https://api.dpsmqaportal.com/api/faculty/basic-info/" + facultyId + "/work-exp", {
+				const response = await axios.delete(process.env.API_URL + "/faculty/basic-info/" + facultyId + "/work-exp", {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},

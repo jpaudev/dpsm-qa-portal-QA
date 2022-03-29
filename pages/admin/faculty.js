@@ -4,7 +4,7 @@ import Education from '../../components/faculty/basic-info/education'
 import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies, isExpired } from "../../helpers"
 
 function BasicInfo(props) { 
     return (
@@ -41,7 +41,7 @@ function BasicInfo(props) {
     let approvalList
 
     if (context.res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             return {
                 redirect: {
                     destination: '/login',
@@ -60,7 +60,7 @@ function BasicInfo(props) {
                 }
             }
 
-            let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
+            let approvalURL = process.env.API_URL + '/faculty/approval/' + facultyId
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
                     approvalURL += '?unitId=' + data.unitId
@@ -71,7 +71,7 @@ function BasicInfo(props) {
                 approvalList = approvalList.result
             } else if(data.role == 1 || data.role == 5) {
                 if(data.role == 5) {
-                    const positions = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/employment/positions', header)
+                    const positions = await fetch(process.env.API_URL + '/faculty/basic-info/employment/positions', header)
                     positionsList = await positions.json()
                     positionsList = positionsList.result
                 }

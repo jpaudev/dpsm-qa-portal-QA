@@ -1,6 +1,6 @@
 import Layout from '../../components/layout'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies, isExpired } from "../../helpers"
 import AssignUnitHead from '../../components/unit-head/assign-unit-head'
 import ApproveUnitHead from '../../components/dept-chair/role-assignment/approve-unit-head'
 import AssignAdminClerk from '../../components/dept-chair/role-assignment/assign-admin-clerk'
@@ -69,7 +69,7 @@ function RoleAssignment(props) {
     let clerkAssignmentList
 
     if (context.res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             return {
                 redirect: {
                     destination: '/login',
@@ -87,15 +87,15 @@ function RoleAssignment(props) {
                 }
             }
             
-            const personal = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId, header)
+            const personal = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId, header)
             personalInfo = await personal.json()
 
-            let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
-            let accompURL = 'https://api.dpsmqaportal.com/api/faculty/reports/accomplishment'
-            let empURL = 'https://api.dpsmqaportal.com/api/faculty/reports/employment'
-            let educURL = 'https://api.dpsmqaportal.com/api/faculty/reports/education'
-            let roleAssignmentURL = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/assignment'
-            let clerkAssignmentURL = 'https://api.dpsmqaportal.com/api/user/admin'
+            let approvalURL = process.env.API_URL + '/faculty/approval/' + facultyId
+            let accompURL = process.env.API_URL + '/faculty/reports/accomplishment'
+            let empURL = process.env.API_URL + '/faculty/reports/employment'
+            let educURL = process.env.API_URL + '/faculty/reports/education'
+            let roleAssignmentURL = process.env.API_URL + '/faculty/basic-info/unit/assignment'
+            let clerkAssignmentURL = process.env.API_URL + '/user/admin'
             
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
@@ -133,7 +133,7 @@ function RoleAssignment(props) {
                 if(data.role == 2) {
                     if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
 
-                    const faculty = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId, header)
+                    const faculty = await fetch(process.env.API_URL + '/faculty/basic-info?unitId=' + data.unitId + '&facultyId=' + facultyId, header)
 
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result[0].faculty_units
@@ -141,7 +141,7 @@ function RoleAssignment(props) {
                     if(roleAssignmentList)
                         roleAssignmentFlag = true
 
-                    const faculty = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/list/all?facultyId=' + facultyId, header)
+                    const faculty = await fetch(process.env.API_URL + '/faculty/basic-info/list/all?facultyId=' + facultyId, header)
                     facultyListInfo = await faculty.json()
                     facultyListInfo = facultyListInfo.result
                 }

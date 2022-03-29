@@ -6,7 +6,7 @@ export default async function updateUnitAssignment(updatedUser, unitId, token) {
 			let response
 			if(updatedUser == '0') updatedUser = null
 
-			let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/' + unitId;
+			let url = process.env.API_URL + '/faculty/basic-info/unit/' + unitId;
 			response = await axios({
 				method: 'PUT',
 				url: url,

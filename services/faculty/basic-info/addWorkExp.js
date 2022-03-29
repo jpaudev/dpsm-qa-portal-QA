@@ -26,7 +26,7 @@ export default async function addWorkExp(data, token) {
 				}
 			}
 			try {
-				const response = await axios.post("https://api.dpsmqaportal.com/api/faculty/basic-info/add/work-exp", bod, {
+				const response = await axios.post(process.env.API_URL + "/faculty/basic-info/add/work-exp", bod, {
 					headers: {
 						Authorization: `Bearer ${token}`
 					}

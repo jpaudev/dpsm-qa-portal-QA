@@ -1,5 +1,5 @@
 import Layout from '../../components/layout'
-import { parseCookies } from "../../helpers"
+import { parseCookies, isExpired } from "../../helpers"
 import jwt from 'jsonwebtoken'
 import ChangePasswordComponent from '../../components/change-password'
 
@@ -30,7 +30,7 @@ function ChangePassword(props) {
     let roleAssignmentFlag = false
 
     if (context.res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             return {
                 redirect: {
                     destination: '/login',
@@ -49,14 +49,14 @@ function ChangePassword(props) {
                     }
                 }
                 
-                const personal = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId, header)
+                const personal = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId, header)
                 personalInfo = await personal.json()
     
-                let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
-                let accompURL = 'https://api.dpsmqaportal.com/api/faculty/reports/accomplishment'
-                let empURL = 'https://api.dpsmqaportal.com/api/faculty/reports/employment'
-                let educURL = 'https://api.dpsmqaportal.com/api/faculty/reports/education'
-                let roleAssignmentURL = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/assignment'
+                let approvalURL = process.env.API_URL + '/faculty/approval/' + facultyId
+                let accompURL = process.env.API_URL + '/faculty/reports/accomplishment'
+                let empURL = process.env.API_URL + '/faculty/reports/employment'
+                let educURL = process.env.API_URL + '/faculty/reports/education'
+                let roleAssignmentURL = process.env.API_URL + '/faculty/basic-info/unit/assignment'
                 
                 if(data.role == 2 || data.role == 3) {
                     if(data.role == 2) {

@@ -5,7 +5,7 @@ import EmploymentHistory from '../../components/faculty/basic-info/employment-hi
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
 import TeachingPhilosophy from '../../components/faculty/basic-info/teaching-philosophy'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies, isExpired } from "../../helpers"
 
 function BasicInfo(props) { 
     let educRejected = false
@@ -81,7 +81,7 @@ function BasicInfo(props) {
     let roleAssignmentFlag = false
 
     if (context.res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             return {
                 redirect: {
                     destination: '/login',
@@ -94,7 +94,7 @@ function BasicInfo(props) {
         
             let facultyId = data.facultyId
             
-            let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
+            let url = process.env.API_URL + '/faculty/basic-info/' + facultyId;
             let header = {
                 headers: {
                     'Authorization': 'Bearer ' + token.user
@@ -117,8 +117,8 @@ function BasicInfo(props) {
             const work = await fetch(url + '/work-exp', header)
             workExperience = await work.json()
 
-            let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
-            let roleAssignmentURL = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/assignment'
+            let approvalURL = process.env.API_URL + '/faculty/approval/' + facultyId
+            let roleAssignmentURL = process.env.API_URL + '/faculty/basic-info/unit/assignment'
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
                     approvalURL += '?unitId=' + data.unitId

@@ -10,7 +10,7 @@ export default async function addClerk(formData, token) {
 				
 				const response = await axios({
 				    method: 'POST',
-				    url: 'https://api.dpsmqaportal.com/api/user/add',
+				    url: process.env.API_URL + '/user/add',
 				    data: formData,
 				    headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}
 			    })	

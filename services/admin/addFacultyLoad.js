@@ -12,7 +12,7 @@ export default async function addFacultyLoad(formData, token) {
 				}
 				const response = await axios({
 				    method: 'POST',
-				    url: 'https://api.dpsmqaportal.com/api/faculty/load',
+				    url: process.env.API_URL + '/faculty/load',
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })	

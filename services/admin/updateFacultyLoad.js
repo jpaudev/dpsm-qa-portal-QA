@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 export default async function updateFacultyLoad(formData, token, facultyId) {
 	try {
 	    if (token) {
-	        let url = 'https://api.dpsmqaportal.com/api/faculty/load/' + facultyId;
+	        let url = process.env.API_URL + '/faculty/load/' + facultyId;
 		    if(formData.get('setResults') == "") {
 				formData.delete('setResults')
 			}

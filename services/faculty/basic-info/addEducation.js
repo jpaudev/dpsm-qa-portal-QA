@@ -18,7 +18,7 @@ export default async function addEducation(formData, token) {
 				
 				const response = await axios({
 				    method: 'POST',
-				    url: 'https://api.dpsmqaportal.com/api/faculty/basic-info/add/education',
+				    url: process.env.API_URL + '/faculty/basic-info/add/education',
 				    data: formData,
 				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			    })	

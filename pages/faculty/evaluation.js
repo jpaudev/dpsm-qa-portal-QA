@@ -3,7 +3,7 @@ import EvaluationSemester from '../../components/faculty/evaluation/evaluation-s
 import NameDisplay from '../../components/name-display'
 import Link from 'next/link'
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies, isExpired } from "../../helpers"
 
 function Evaluation(props) {
     return (
@@ -39,7 +39,7 @@ function Evaluation(props) {
 Evaluation.getInitialProps = async ({ req, res }) => {
     const token = parseCookies(req)
     if (res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             res.writeHead(301, { Location: "/login" })
             res.end()
         }
@@ -54,13 +54,13 @@ Evaluation.getInitialProps = async ({ req, res }) => {
         }
     }
 
-	const personal = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId, header)
+	const personal = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
 
     let roleAssignmentFlag = false
 	let approvalList
-    let approvalURL = 'https://api.dpsmqaportal.com/api/faculty/approval/' + facultyId
-    let roleAssignmentURL = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/assignment'
+    let approvalURL = process.env.API_URL + '/faculty/approval/' + facultyId
+    let roleAssignmentURL = process.env.API_URL + '/faculty/basic-info/unit/assignment'
     if(data.role == 2 || data.role == 3) {
         if(data.role == 2) {
             approvalURL += '?unitId=' + data.unitId

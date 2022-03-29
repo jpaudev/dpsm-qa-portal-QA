@@ -11,7 +11,7 @@ import Evaluation from '../../components/unit-head/faculty-list/evaluation/evalu
 import FacultyLoader from '../../components/faculty/faculty-load/faculty-load'
 
 import jwt from 'jsonwebtoken'
-import { parseCookies } from "../../helpers"
+import { parseCookies, isExpired } from "../../helpers"
 
 function BasicInfo(props) {
     return (
@@ -67,7 +67,7 @@ function BasicInfo(props) {
                             <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} viewFlag={true}>{ props.licensureExam }</LicensureExam>
                         </div>
                         <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                            <ResearchGrant name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true}>{ props.researchGrant }</ResearchGrant>
+                            <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true}>{ props.researchGrant }</ResearchGrant>
                         </div>
                     </div>
                 </div>
@@ -129,6 +129,7 @@ function BasicInfo(props) {
     let employmentInfo
     let education
     let workExperience
+    let faculty
     let publicService
     let publications
     let trainingSeminar
@@ -138,7 +139,7 @@ function BasicInfo(props) {
     let facultyLoad
 
     if (context.res) {
-        if (Object.keys(token).length === 0 && token.constructor === Object) {
+        if (isExpired(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
             return {
                 redirect: {
                     destination: '/login',
@@ -152,7 +153,7 @@ function BasicInfo(props) {
             if(context.params.facultyId) {
                 let facultyId = context.params.facultyId
                 
-                let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId;
+                let url = process.env.API_URL + '/faculty/basic-info/' + facultyId;
                 let header = {
                     headers: {
                         'Authorization': 'Bearer ' + token.user
@@ -163,38 +164,41 @@ function BasicInfo(props) {
                 personalInfo = await personal.json()
                 name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
-                const employment = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId + '/employment', header)
+                const employment = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId + '/employment', header)
                 employmentInfo = await employment.json()
                 unit = employmentInfo.result.faculty_unit.unit.unit
                 if(employmentInfo.result.faculty_employment_infos[0]) {
                     position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
                 }
 
-                const load = await fetch('https://api.dpsmqaportal.com/api/faculty/load/' + facultyId, header)
+                const load = await fetch(process.env.API_URL + '/faculty/load/' + facultyId, header)
                 facultyLoad = await load.json()
 
-                const educ = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId + '/education', header)
+                const educ = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId + '/education', header)
                 education = await educ.json()
 
-                const work = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/' + facultyId + '/work-exp', header)
+                const work = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId + '/work-exp', header)
                 workExperience = await work.json()
 
-                const psa = await fetch('https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId + '/public-service', header)
+                const fac = await fetch(process.env.API_URL + '/faculty/basic-info/list/all?facultyId=' + facultyId, header)
+                faculty = await fac.json()
+
+                const psa = await fetch(process.env.API_URL + '/faculty/accomplishment/' + facultyId + '/public-service', header)
                 publicService = await psa.json()
 
-                const pub = await fetch('https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId + '/publication', header)
+                const pub = await fetch(process.env.API_URL + '/faculty/accomplishment/' + facultyId + '/publication', header)
                 publications = await pub.json()
 
-                const ts = await fetch('https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId + '/training-seminar', header)
+                const ts = await fetch(process.env.API_URL + '/faculty/accomplishment/' + facultyId + '/training-seminar', header)
                 trainingSeminar = await ts.json()
 
-                const le = await fetch('https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId + '/licensure-exam', header)
+                const le = await fetch(process.env.API_URL + '/faculty/accomplishment/' + facultyId + '/licensure-exam', header)
                 licensureExam = await le.json()
 
-                const rg = await fetch('https://api.dpsmqaportal.com/api/faculty/accomplishment/' + facultyId + '/research-grant', header)
+                const rg = await fetch(process.env.API_URL + '/faculty/accomplishment/' + facultyId + '/research-grant', header)
                 researchGrant = await rg.json()
 
-                const positions = await fetch('https://api.dpsmqaportal.com/api/faculty/basic-info/employment/positions', header)
+                const positions = await fetch(process.env.API_URL + '/faculty/basic-info/employment/positions', header)
                 positionsList = await positions.json()
                 positionsList = positionsList.result
             } else {
@@ -218,6 +222,7 @@ function BasicInfo(props) {
             unit,
             facultyLoad: facultyLoad.result,
             pathFacultyId: context.params.facultyId,
+            faculty: faculty.result,
             position: position || null,
             education: education.result,
             employment: employmentInfo.result,

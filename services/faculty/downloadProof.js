@@ -8,7 +8,7 @@ export default async function downloadProof(data, token) {
 		if (token) {
 			try {
 				const response = await axios({
-					url: `https://api.dpsmqaportal.com/api/download/${data}`,
+					url: process.env.API_URL + `/download/${data}`,
 					method: 'GET',
 					headers: { Authorization: `Bearer ${token}` },
 					responseType: 'blob'

@@ -4,7 +4,7 @@ export default async function approveUnitHead(currentUser, incomingUser, unitId,
 	try {
 		if (token) {
 			if(!remarks) {
-				let url = 'https://api.dpsmqaportal.com/api/user/' + currentUser;
+				let url = process.env.API_URL + '/user/' + currentUser;
 				const response = await axios({
 					method: 'PUT',
 					url: url,
@@ -14,7 +14,7 @@ export default async function approveUnitHead(currentUser, incomingUser, unitId,
 					headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}
 				})	
 				if(response.data.success == true) {
-					let url = 'https://api.dpsmqaportal.com/api/user/' + incomingUser;
+					let url = process.env.API_URL + '/user/' + incomingUser;
 					const response = await axios({
 						method: 'PUT',
 						url: url,
@@ -24,7 +24,7 @@ export default async function approveUnitHead(currentUser, incomingUser, unitId,
 						headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}
 					})	
 					if(response.data.success == true) {
-						let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/' + unitId;
+						let url = process.env.API_URL + '/faculty/basic-info/unit/' + unitId;
 						const response = await axios({
 							method: 'PUT',
 							url: url,
@@ -37,7 +37,7 @@ export default async function approveUnitHead(currentUser, incomingUser, unitId,
 					return response.data
 				}
 			} else {
-				let url = 'https://api.dpsmqaportal.com/api/faculty/basic-info/unit/' + unitId;
+				let url = process.env.API_URL + '/faculty/basic-info/unit/' + unitId;
 				const response = await axios({
 					method: 'PUT',
 					url: url,
