@@ -1,9 +1,3 @@
-import Link from 'next/link'
-import Head from 'next/head'
-import { Formik, Form, Field } from "formik"
-import axios from "axios"
-import Router from 'next/router'
-import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../helpers"
 
 function Home(props) {

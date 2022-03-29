@@ -42,7 +42,7 @@ function Publication(props){
             let dpsmauth = []
             
             pub.forEach((auth) => {
-                let link = props.facultyFlag ? "/faculty/view/" + auth.facultyId : "/admin/" + auth.facultyId
+                let link = !props.clerkFlag ? "/faculty/view/" + auth.facultyId : "/admin/" + auth.facultyId
                 dpsmauth.push(<a href = {link}>{auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', '}</a>)    
             })
 

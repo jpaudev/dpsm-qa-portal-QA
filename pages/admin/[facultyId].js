@@ -59,7 +59,7 @@ function BasicInfo(props) {
                             <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} viewFlag={true}>{ props.publicService }</PublicServiceAccomplishment>
                         </div>
                         <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                            <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true}>{ props.publications }</Publication></div>
+                            <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true} clerkFlag={true} >{ props.publications }</Publication></div>
                         <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
                             <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} viewFlag={true}>{ props.trainingSeminar }</TrainingSeminar>
                         </div>
@@ -67,7 +67,7 @@ function BasicInfo(props) {
                             <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} viewFlag={true}>{ props.licensureExam }</LicensureExam>
                         </div>
                         <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                            <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true}>{ props.researchGrant }</ResearchGrant>
+                            <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId} viewFlag={true} clerkFlag={true} >{ props.researchGrant }</ResearchGrant>
                         </div>
                     </div>
                 </div>
