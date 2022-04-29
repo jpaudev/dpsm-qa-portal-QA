@@ -322,7 +322,7 @@ function Publication(props){
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
-                                    $('#editPublication').modal('toggle');
+                                    $('#editPublication').modal('hide');
                                 }}>Save changes</button>
                             </div>
                         </Form>
