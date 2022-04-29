@@ -28,22 +28,21 @@ function WorkExperience(props){
         content = Object.keys(props.children).map(key => {
             if(props.children[key].workExpId != null) {
                 return (
-                    <tr key = {props.children.[key].workExpId}>
+                    <tr key = {props.children[key].workExpId}>
                         <td>{props.children[key].employerName}</td>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].startDate}</td>
                         <td>{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
                         <td>{props.children[key].description}</td>
-                        {
-                            !props.viewFlag &&
+                        { props.editable &&
                             <td>
                                 <div className = "btn-grp">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience" onClick={() => {
-                                        setEdit(props.children.[key].workExpId)
+                                        setEdit(props.children[key].workExpId)
                                         setKey(editWork)
                                     }}>Edit</a>
                                     <a className="btn btn-danger" data-toggle="modal" data-target="#deleteWorkExperience" onClick={() => {
-                                        setDelete(props.children.[key].workExpId)
+                                        setDelete(props.children[key].workExpId)
                                     }}>Delete</a>
                                 </div>
                             </td>
@@ -67,9 +66,9 @@ function WorkExperience(props){
 
     function setKey(x) {
         Object.keys(props.children).map(key => {
-            if(props.children.[key].workExpId == x) {
-                setData(props.children.[key])
-                if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+            if(props.children[key].workExpId == x) {
+                setData(props.children[key])
+                if(props.children[key].endDate == "" || props.children[key].endDate == null) {
                     setData(currData => ({...currData, endDate: ''}))
                 }
             }
@@ -98,20 +97,18 @@ function WorkExperience(props){
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Description</th>
-                        {!props.viewFlag && <th>Action</th>}
+                            <th>Action</th>
                     </tr>
                     {content}
                    </tbody>
                 </table>
             </div>
-            {
-                !props.viewFlag && props.role != 5 &&
+            { props.editable &&
                 <div>
                     <WorkExpForm token = { props.token }/>
                 </div>
             }
-            {
-                props.role && props.role == 5 &&
+            { props.role == 5 &&
                 <div>
                     <hr />
                     <h3 align ="center"> Add Faculty Employment </h3>

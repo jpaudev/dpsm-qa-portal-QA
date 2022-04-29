@@ -43,8 +43,17 @@ function ResearchGrant(props){
             let dpsmauth = []
 
             res.forEach((auth) => {
-                let link = !props.clerkFlag ? "/faculty/view/" + auth.facultyId : "/admin/" + auth.facultyId
-                dpsmauth.push(<a href = {link}>{auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', '}</a>)    
+                let link
+                let name = auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', '
+                if(auth.facultyId == props.facultyId || props.role == 1) {
+                    dpsmauth.push(name)
+                } else if(props.role == 5) {
+                    link = "/admin/" + auth.facultyId
+                    dpsmauth.push(<a href = {link}>{name}</a>)
+                } else if(props.role == 2 || props.role == 3) {
+                    link = "/faculty/view/" + auth.facultyId
+                    dpsmauth.push(<a href = {link}>{name}</a>)
+                } 
             })
 
             if(props.children[key].researchId != null) {
@@ -112,20 +121,18 @@ function ResearchGrant(props){
                             })}
                         </td>
                         <td>
-                        {
-                            props.facultyFlag && !props.viewFlag &&
+                        { props.editable &&
                             <div className = "btn-group">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#editResearchGrant" onClick={() => {
-                                    setEdit(props.children.[key].researchId)
+                                    setEdit(props.children[key].researchId)
                                     setKey(editRes)
                                 }}>Edit</a>
                                 <a className="btn btn-danger" data-toggle="modal" data-target="#deleteResearchGrant" onClick={() => {
-                                    setDelete(props.children.[key].researchId)
+                                    setDelete(props.children[key].researchId)
                                 }}>Delete</a>
                             </div>
                         }
-                        {
-                            !props.facultyFlag && !props.viewFlag &&
+                        { props.approver &&
                             <div className = "btn-grp">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#approveResearchGrant" onClick={() => {
                                     setApprove(props.children[key].researchId)
@@ -159,8 +166,8 @@ function ResearchGrant(props){
 
     async function setKey(x) {
         await Object.keys(props.children).map(async key => {
-            if(props.children.[key].researchId == x) {
-                await props.children.[key].faculty_researchers.forEach(async (e) => {
+            if(props.children[key].researchId == x) {
+                await props.children[key].faculty_researchers.forEach(async (e) => {
                     await authors.forEach(async (fp, index) => {
                         if(fp.value == e.facultyId) {
                             await faculty_researchers.push(fp)
@@ -213,14 +220,13 @@ function ResearchGrant(props){
 				<th>Proof</th>
 				<th>Status</th>
                 <th>Approver Remarks</th>
-                {!props.viewFlag && <th>Action</th>}
+                { (props.editable || props.approver) && <th>Action</th>}
 			</tr>
             {content}
 		</tbody>
 	</table>	
 	</div>
-    { 
-        props.facultyFlag &&
+    { props.editable &&
         <div>
             <ResearchGrantForm faculty = {props.faculty} token = {props.token} />
         </div>

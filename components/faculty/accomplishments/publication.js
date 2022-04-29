@@ -39,8 +39,17 @@ function Publication(props){
             let dpsmauth = []
             
             pub.forEach((auth) => {
-                let link = !props.clerkFlag ? "/faculty/view/" + auth.facultyId : "/admin/" + auth.facultyId
-                dpsmauth.push(<a href = {link}>{auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', '}</a>)    
+                let link
+                let name = auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', '
+                if(auth.facultyId == props.facultyId || props.role == 1) {
+                    dpsmauth.push(name)
+                } else if(props.role == 5) {
+                    link = "/admin/" + auth.facultyId
+                    dpsmauth.push(<a href = {link}>{name}</a>)
+                } else if(props.role == 2 || props.role == 3) {
+                    link = "/faculty/view/" + auth.facultyId
+                    dpsmauth.push(<a href = {link}>{name}</a>)
+                } 
             })
 
             return (
@@ -99,20 +108,18 @@ function Publication(props){
                         })}
                     </td>
                     <td>
-                    {
-                        props.facultyFlag && !props.viewFlag &&
+                    { props.editable &&
                         <div className = "btn-group">
                             <a className="btn btn-info" data-toggle="modal" data-target="#editPublication" onClick={async () => {
-                                setEdit(props.children.[key].publicationId)
+                                setEdit(props.children[key].publicationId)
                                 setKey(editPub)
                             }}>Edit</a>
                             <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication" onClick={() => {
-                                setDelete(props.children.[key].publicationId)
+                                setDelete(props.children[key].publicationId)
                             }}>Delete</a>
                         </div>
                     }
-                    {
-                        !props.facultyFlag && !props.viewFlag &&
+                    { props.approver &&
                         <div className = "btn-grp">
                             <a className="btn btn-info" data-toggle="modal" data-target="#approvePublication" onClick={() => {
                                 setApprove(props.children[key].publicationId)
@@ -145,8 +152,8 @@ function Publication(props){
 
     async function setKey(x) { 
         await Object.keys(props.children).map(async key => {
-            if(props.children.[key].publicationId == x) {
-                await props.children.[key].faculty_publishers.forEach(async (e) => {
+            if(props.children[key].publicationId == x) {
+                await props.children[key].faculty_publishers.forEach(async (e) => {
                     await authors.forEach(async (fp, index) => {
                         if(fp.value == e.facultyId) {
                             await faculty_publishers.push(fp)
@@ -192,14 +199,13 @@ function Publication(props){
 				<th>Proof</th>
 				<th>Status</th>
                 <th>Approver Remarks</th>
-                {!props.viewFlag && <th>Action</th>}
+                { (props.editable || props.approver) && <th>Action</th>}
 			</tr>
             {content}
 		</tbody>
 	</table>	
 	</div>
-    { 
-        props.facultyFlag && 
+    { props.editable && 
         <div>
             <PublicationForm faculty = {props.faculty} token = {props.token} />
         </div>

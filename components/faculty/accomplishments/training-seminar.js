@@ -69,8 +69,7 @@ function TrainingSeminar(props) {
                         <td>{props.children[key].status}</td>
                         <td>{props.children[key].approverRemarks || 'None'}</td>
                         <td>
-                        {
-                            props.facultyFlag && !props.viewFlag &&
+                        { props.editable &&
                             <div className = "btn-group">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
                                         setEdit(props.children.[key].tsId)
@@ -81,8 +80,7 @@ function TrainingSeminar(props) {
                                 }}>Delete</a>
                             </div>
                         }
-                        {
-                            !props.facultyFlag && !props.viewFlag &&
+                        { props.approver &&
                             <div className = "btn-grp">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#approveTrainingSeminar" onClick={() => {
                                     setApprove(props.children[key].tsId)
@@ -144,15 +142,14 @@ function TrainingSeminar(props) {
                             <th>Proof</th>
                             <th>Status</th>
                             <th>Approver Remarks</th>
-                            {!props.viewFlag && <th>Action</th>}
+                            { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                         {content}
                     </tbody>
                 </table>	
             </div>
 
-            {
-                props.facultyFlag && 
+            { props.editable && 
                 <div>
                     <TrainingSeminarForm token = { props.token } />
                 </div>  

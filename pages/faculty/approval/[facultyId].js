@@ -57,30 +57,30 @@ function Approval(props) {
 		<br />
         <div className="tab-content" id="nav-tabContent">
             <div className="tab-pane fade show active" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId}>{ props.education }</Education>
+                <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} approver={true} facultyId={props.pathFacultyId}>{ props.education }</Education>
             </div>
     	    <div className="tab-pane fade" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
-                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} clerkFlag={false} facultyId={props.pathFacultyId}>
+                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} approver={true} facultyId={props.pathFacultyId}>
                     { props.publicService }
                 </PublicServiceAccomplishment>
             </div>
     	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId}>
+                <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} approver={true} facultyId={props.pathFacultyId}>
                     { props.publications }
                 </Publication>
             </div>
     	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
-                <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId}>
+                <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} approver={true} facultyId={props.pathFacultyId}>
                     { props.trainingSeminar }
                 </TrainingSeminar>
             </div>
     	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">
-                <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} facultyId={props.pathFacultyId}>
+                <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} approver={true} facultyId={props.pathFacultyId}>
                     { props.licensureExam }
                 </LicensureExam>
             </div>
     	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyFlag={false} clerkFlag={false} facultyId={props.pathFacultyId}>
+                <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} approver={true} facultyId={props.pathFacultyId}>
                     { props.researchGrant }
                 </ResearchGrant>
             </div>
