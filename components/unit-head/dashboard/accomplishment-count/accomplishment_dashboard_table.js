@@ -241,11 +241,8 @@ function Table ({columns, data}){
  
 
 // configure columns, populate cells, render table
- function AccomplishmentAnalyticsTable(props) {
-   const data = React.useMemo(
-     () => props.data,
-     []
-   )
+ function AccomplishmentAnalyticsTable(props) { 
+   const data = props.data
  
    const columns = React.useMemo(
      () => [

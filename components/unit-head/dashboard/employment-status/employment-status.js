@@ -131,10 +131,6 @@ function EmploymentStatus(props){
 							pathname: url,
 							query
 						})
-						
-						window.setTimeout(function(){
-                            window.location.reload()
-                        }, 1000);
 					}}> Filter</button>
 				</div>
 			</div>

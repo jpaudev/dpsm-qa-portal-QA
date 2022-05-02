@@ -1,4 +1,5 @@
 import { parseCookies, isExpired } from "../helpers"
+import jwt from 'jsonwebtoken'
 
 function Home(props) {
     return (
@@ -19,6 +20,8 @@ function Home(props) {
           },
         }
       } else {
+        
+        const token = jwt.decode(data.user)
         let role = token.role
 
         let destination = ''

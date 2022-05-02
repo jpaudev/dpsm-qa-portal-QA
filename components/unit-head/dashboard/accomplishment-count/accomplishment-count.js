@@ -194,24 +194,20 @@ function AccomplishmentCount(props){
 							pathname: url,
 							query
 						})
-						
-						window.setTimeout(function(){
-                            window.location.reload()
-                        }, 1000);
 					}}> Filter</button>
 				</div>
 			</div>
 
 			<nav>
-            			<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
+				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 					<a className="nav-item nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Overview</a>
 					<a className="nav-item nav-link" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="false">Full List</a>
-            			</div>
-            		</nav>
-	    		<div className="tab-content" id="nav-tabContent">
-	    			<div className="tab-pane fade show active" id="graph" role="tabpanel" aria-labelledby="graph-tab"><AccomplishmentDashboardGraph data={graphData} /></div>
-	    			<div className="tab-pane fade" id="table" role="tabpanel" aria-labelledby="table-tab"><AccomplishmentAnalyticsTable data={tableData} /></div>
-            		</div>
+				</div>
+			</nav>
+			<div className="tab-content" id="nav-tabContent">
+				<div className="tab-pane fade show active" id="graph" role="tabpanel" aria-labelledby="graph-tab"><AccomplishmentDashboardGraph data={graphData} /></div>
+				<div className="tab-pane fade" id="table" role="tabpanel" aria-labelledby="table-tab"><AccomplishmentAnalyticsTable data={tableData} /></div>
+			</div>
                 
 		<style jsx>{`
 			a.nav-item:focus{
