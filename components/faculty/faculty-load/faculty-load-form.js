@@ -67,11 +67,11 @@ class FacultyLoadForm extends React.Component{
                             <Field className = "form-control" type = "hidden" name = "facultyId" value = {this.props.facultyId} />
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "Subject"> Subject </label>
-                                <Field className = "form-control" type = "text" name = "subject" placeholder = "Input subject" />
+                                <Field className = "form-control" type = "text" name = "subject" placeholder = "Input subject" required />
                             </div>
                             <div className = "form-group col-md-2">
                                 <label htmlFor = "Section"> Section </label>
-                                <Field className = "form-control" type = "text" name = "section" placeholder = "Input section" />
+                                <Field className = "form-control" type = "text" name = "section" placeholder = "Input section" required />
                             </div>
                             <div className = "form-group col-md-3">
                                 <label htmlFor = "Semester"> Semester </label>
