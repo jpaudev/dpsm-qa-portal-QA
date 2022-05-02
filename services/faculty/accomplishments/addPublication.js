@@ -13,13 +13,19 @@ export default async function addPublication(formData, token) {
                     	authors.push(pair[1])
                     }
                 }
+                
+                if(formData.get('url') == ''){
+                	formData.delete('url')	
+                }
+                formData.append('facultyId', facultyId)
+				formData.append('status', 'Pending')
 
                	let proof = formData.get('proof')
 				const response = await axios({
 				    method: 'POST',
 				    url: process.env.API_URL + '/faculty/accomplishment/add/publication',
 				    data: formData,
-				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
+				    headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}
 			    })
 				
 				let bodData = new FormData()
