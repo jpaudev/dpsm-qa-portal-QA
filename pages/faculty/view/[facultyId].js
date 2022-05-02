@@ -73,6 +73,9 @@ function ViewFaculty(props) {
             nav#nav-tab-main{
                 background-color:#999;
             }
+	    .tab-content{
+	    	background-color:#fff;
+	    }
         `}</style>
             </Layout>
         )
@@ -170,6 +173,9 @@ function ViewFaculty(props) {
             nav#nav-tab-main{
                 background-color:#999;
             }
+	    .tab-content{
+	    	background-color:#fff;
+	    }
         `}</style>
             </Layout>
         )
