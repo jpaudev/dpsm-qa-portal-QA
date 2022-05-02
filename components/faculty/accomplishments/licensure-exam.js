@@ -221,7 +221,7 @@ function LicensureExam(props) {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary" data-dismiss="modal" disabled = {isSubmitting} onClick = {() => {
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#editLicensureExam').modal('toggle');
                                 }}>Save changes</button>
                             </div>
