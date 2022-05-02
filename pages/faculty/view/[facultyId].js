@@ -21,7 +21,7 @@ function ViewFaculty(props) {
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
                     <a className="nav-item nav-link active" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic Information</a>
                     <a className="nav-item nav-link" id="accomplishments-tab" data-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">Accomplishments</a>
-                    <a className="nav-item nav-link" id="evaluation-tab" data-toggle="tab" href="#evaluation" role="tab" aria-controls="evaluation" aria-selected="false">Peer Evaluation</a>
+	{/*<a className="nav-item nav-link" id="evaluation-tab" data-toggle="tab" href="#evaluation" role="tab" aria-controls="evaluation" aria-selected="false">Peer Evaluation</a>*/}
                     <a className="nav-item nav-link" id="SET-tab" data-toggle="tab" href="#SET" role="tab" aria-controls="SET" aria-selected="false">Faculty Load</a>
                 </div>
                 <div className="tab-content" id="nav-tabContent-main">
@@ -73,6 +73,9 @@ function ViewFaculty(props) {
             nav#nav-tab-main{
                 background-color:#999;
             }
+	    .tab-content{
+	    	background-color:#fff;
+	    }
         `}</style>
             </Layout>
         )
@@ -83,7 +86,7 @@ function ViewFaculty(props) {
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
                     <a className="nav-item nav-link active" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic Information</a>
                     <a className="nav-item nav-link" id="accomplishments-tab" data-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">Accomplishments</a>
-                    <a className="nav-item nav-link" id="evaluation-tab" data-toggle="tab" href="#evaluation" role="tab" aria-controls="evaluation" aria-selected="false">Peer Evaluation</a>
+{/*<a className="nav-item nav-link" id="evaluation-tab" data-toggle="tab" href="#evaluation" role="tab" aria-controls="evaluation" aria-selected="false">Peer Evaluation</a>*/}
                     <a className="nav-item nav-link" id="SET-tab" data-toggle="tab" href="#SET" role="tab" aria-controls="SET" aria-selected="false">Faculty Load</a>
                 </div>
                 <div className="tab-content" id="nav-tabContent-main">
@@ -135,9 +138,9 @@ function ViewFaculty(props) {
                             </div>
                         </div>
                     </div>
-                    <div className="tab-pane fade" id="evaluation" role="tabpanel" aria-labelledby="evaluation-tab">
+		{/*<div className="tab-pane fade" id="evaluation" role="tabpanel" aria-labelledby="evaluation-tab">
                         <Evaluation />
-                    </div>
+                    </div>*/}
                     <div className="tab-pane fade" id="SET" role="tabpanel" aria-labelledby="SET-tab">
                         <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.pathFacultyId}>{ props.facultyLoad }</FacultyLoader>
                     </div>
@@ -170,6 +173,9 @@ function ViewFaculty(props) {
             nav#nav-tab-main{
                 background-color:#999;
             }
+	    .tab-content{
+	    	background-color:#fff;
+	    }
         `}</style>
             </Layout>
         )

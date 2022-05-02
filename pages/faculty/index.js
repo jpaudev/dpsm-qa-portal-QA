@@ -10,7 +10,7 @@ import DegreeCount from '../../components/unit-head/dashboard/degree/degree'
 function Dashboard(props) { 
 	if(props.data.role == 1) {
 		return (<Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} />)
-	} else if(props.data.role == 2 || props.data.role == 3){
+	} else if(props.data.role == 2 || props.data.role == 3){ 
 		return (
 	        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
 
@@ -99,29 +99,35 @@ export async function getServerSideProps(context) {
             if(data.role == 2 || data.role == 3) {
                 if(data.role == 2) {
                     approvalURL += '?unitId=' + data.unitId
+                    roleAssignmentURL += '?unitId=' + data.unitId
+
                     accompURL += '?unitId=' + data.unitId
                     empURL += '?unitId=' + data.unitId
                     educURL += '?unitId=' + data.unitId
-                    roleAssignmentURL += '?unitId=' + data.unitId
-                } else if(data.role == 3 && context.query) {
+                } else if(data.role == 3) {
                     if(context.query.accomplishment == 1) {
                         accompURL += '?'
                         if(context.query.unitId && context.query.unitId != 0) accompURL += 'unitId=' + context.query.unitId
-						if(context.query.startDate) accompURL += '&startDate=' + context.query.startDate
-						if(context.query.endDate) accompURL += '&endDate=' + context.query.endDate
                     } else if(context.query.employment == 1) {
                         empURL += '?'
                         if(context.query.unitId) empURL += 'unitId=' + context.query.unitId
-						if(context.query.startDate) empURL += '&startDate=' + context.query.startDate
-						if(context.query.endDate) empURL += '&endDate=' + context.query.endDate
                     } else if(context.query.degree == 1) {
                         educURL += '?'
                         if(context.query.unitId) educURL += 'unitId=' + context.query.unitId
-						if(context.query.startDate) educURL += '&startDate=' + context.query.startDate
-						if(context.query.endDate) educURL += '&endDate=' + context.query.endDate
                     }
                 }
 
+                if(context.query.accomplishment == 1) {
+                    if(context.query.startDate) accompURL += '&startDate=' + context.query.startDate
+                    if(context.query.endDate) accompURL += '&endDate=' + context.query.endDate
+                } else if(context.query.employment == 1) {
+                    if(context.query.startDate) empURL += '&startDate=' + context.query.startDate
+                    if(context.query.endDate) empURL += '&endDate=' + context.query.endDate
+                } else if(context.query.degree == 1) {
+                    if(context.query.startDate) educURL += '&startDate=' + context.query.startDate
+                    if(context.query.endDate) educURL += '&endDate=' + context.query.endDate
+                }
+                
                 const approval = await fetch(approvalURL, header)
                 approvalList = await approval.json()
                 approvalList = approvalList.result
@@ -141,8 +147,9 @@ export async function getServerSideProps(context) {
                 const roleAssignments = await fetch(roleAssignmentURL, header)
                 let roleAssignmentList = await roleAssignments.json()
                 roleAssignmentList = roleAssignmentList.result
+
                 if(data.role == 2) {
-                    if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
+                    if(roleAssignmentList && roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
                 } else if(data.role == 3 && roleAssignmentList) {
                     roleAssignmentFlag = true 
                 }
@@ -163,7 +170,7 @@ export async function getServerSideProps(context) {
             data,
             personalInfo: personalInfo.result,
             approvalList: approvalList,
-            accompList,
+            accompList: accompList,
             empList,
             educList: educList || null,
             roleAssignmentFlag,

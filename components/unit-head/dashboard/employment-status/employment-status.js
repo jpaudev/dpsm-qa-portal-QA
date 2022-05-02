@@ -114,7 +114,8 @@ function EmploymentStatus(props){
 				<div className = "form-group col-md-3">
 					<br/>
 					<button className = "btn btn-info" onClick={() => {
-						let unitId = document.getElementById('EmpDeptUnit').value
+						let unitId 
+						if(props.role==3) unitId = document.getElementById('EmpDeptUnit').value
 						let startDate = document.getElementById('EmpStartTimePeriod').value
 						let endDate = document.getElementById('EmpEndTimePeriod').value
 
