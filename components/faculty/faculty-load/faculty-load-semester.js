@@ -19,77 +19,90 @@ function FacultyLoadSemester(props) {
     })
 	let deleteClass = 0
 	let editClass = 0
-	function setDelete(id) {
-        deleteClass = id
-    }
-    function setEdit(id) {
-        editClass = id
-    }
-    function setKey(x) {
-        Object.keys(props.records).map(key => {
-            if(props.records[key].recordId == x) {
-                setData(props.records[key])
-            }
-        });
-    }
-    let ctr = 0
+
     const [currData, setData] = React.useState({
         recordId: 0,
         subject: '',
         section: '',
-        setResults: '',
+        semester: '',
+        academicYear: '',
         syllabus: ''
     })
 
-	let content = Object.keys(props.records).map(key => {
-		ctr++
-		return (
-			<tr key = {props.records[key].recordId}>
-				<td>{props.records[key].subject}</td>
-				<td>{props.records[key].section}</td>
-                <td>{props.records[key].semester}</td>
-                <td>{props.records[key].academicYear}</td>
-				<td>
-					{
-						props.records[key].syllabus &&
-                        <div className = "btn-grp">
-                            <a
-                                className ="btn btn-info"
-                                href={process.env.UPLOADS_URL + props.records[key].syllabus}
-                                style = {{ color: 'white' }}
-                                target="_blank">
-                                View
-                            </a>
-                            {!props.role==5 && 
-                                <a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
-                                    setEdit(props.records[key].recordId)
-                                    setKey(editClass)
-                                }}>Edit</a>
-                            }
+    let ctr = 0
+
+	let content 
+    if(props.records !=null) {
+        content = Object.keys(props.records).map(key => {
+    		ctr++
+    		return (
+    			<tr key = {props.records[key].recordId}>
+    				<td>{props.records[key].subject}</td>
+    				<td>{props.records[key].section}</td>
+                    <td>{props.records[key].semester}</td>
+                    <td>{props.records[key].academicYear}</td>
+    				<td>
+    					{
+    						props.records[key].syllabus &&
+                            <div className = "btn-grp">
+                                <a
+                                    className ="btn btn-info"
+                                    href={process.env.UPLOADS_URL + props.records[key].syllabus}
+                                    style = {{ color: 'white' }}
+                                    target="_blank">
+                                    View
+                                </a>
+                                {!props.role==5 && 
+                                    <a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
+                                        setEdit(props.records[key].recordId)
+                                        setKey(editClass)
+                                    }}>Edit</a>
+                                }
+                            </div>
+    					}
+    					{
+    						!props.records[key].syllabus &&
+    						<a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
+                            	setEdit(props.records[key].recordId)
+                                setKey(editClass)
+                            }}>Add Syllabus</a>
+    					}
+    				</td>
+    				{props.role==5 && <td>
+    					<div className = "btn-group">
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editClass" onClick={() => {
+                            	setEdit(props.records[key].recordId)
+                                setKey(editClass)
+                            }}>Edit</a>
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteClass" onClick={() => {
+                                setDelete(props.records[key].recordId)
+                            }}>Delete</a>
                         </div>
-					}
-					{
-						!props.records[key].syllabus &&
-						<a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
-                        	setEdit(props.records[key].recordId)
-                            setKey(editClass)
-                        }}>Add Syllabus</a>
-					}
-				</td>
-				{props.role==5 && <td>
-					<div className = "btn-group">
-                        <a className="btn btn-info" data-toggle="modal" data-target="#editClass" onClick={() => {
-                        	setEdit(props.records[key].recordId)
-                            setKey(editClass)
-                        }}>Edit</a>
-                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteClass" onClick={() => {
-                            setDelete(props.records[key].recordId)
-                        }}>Delete</a>
-                    </div>
-				</td>}
-			</tr>
-		)
-	});
+    				</td>}
+    			</tr>
+    		)
+    	});
+    } else {
+        content = <td colSpan = "9"><p align = "center">No data available!</p></td>
+    }
+
+    function setDelete(id) {
+        deleteClass = id
+    }
+
+    function setEdit(id) {
+        editClass = id
+    }
+    
+    function setKey(x) {
+        Object.keys(props.records).map(key => {
+            if(props.records[key].recordId == x) {
+                setData(props.records[key])
+                console.log(currData)
+            }
+        });
+    }
+
 	return(
 		<div>
 			<div className = "table-responsive">
@@ -128,7 +141,6 @@ function FacultyLoadSemester(props) {
                             let form = document.getElementById('editClassForm')
                             let formData = new FormData(form)
                             formData.append('recordId', currData.recordId)
-                            
                             let res = await updateFacultyLoad(formData, props.token, props.facultyId)
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
@@ -149,22 +161,23 @@ function FacultyLoadSemester(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editClassForm">
                             <div className="modal-body">
+                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "subject"> Subject </label>
-                                        <Field className = "form-control" type = "text" name = "subject" placeholder = "Input subject" />
+                                        <Field className = "form-control" type = "text" name = "subject" id = "subject" placeholder = "Input subject" />
                                     </div>
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "section"> Section </label>
-                                        <Field className = "form-control" type = "text" name = "section" placeholder = "Input section" />
+                                        <Field className = "form-control" type = "text" name = "section" id= "section" placeholder = "Input section" />
                                     </div>
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "semester"> Semester </label>
-                                        <Field as = "select" className = "form-control" name = "semester" required>
+                                        <Field as = "select" className = "form-control" name = "semester" id = "semester" required>
                                             <option value = "1st">1st Semester</option>
                                             <option value = "2nd">2nd Semester</option>
                                             <option value = "Midyear">Mid-Year</option>
@@ -174,7 +187,7 @@ function FacultyLoadSemester(props) {
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "Year"> Academic Year </label>
-                                        <Field as = "select" className = "form-control" name = "academicYear" required>
+                                        <Field as = "select" className = "form-control" name = "academicYear" id = "academicYear" required>
                                             {options}
                                         </Field>
                                     </div>
