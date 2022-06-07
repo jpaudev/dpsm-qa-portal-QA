@@ -315,6 +315,11 @@ function PublicServiceAccomplishment(props){
                 if(props.children[key].endDate == "" || props.children[key].endDate == null) {
                     setData(currData => ({...currData, endDate: ''}))
                 }
+                if(props.children[key].proof) {
+                    setData(currData => ({...currData, proof: props.children[key].proof}))
+                } else {
+                    setData(currData => ({...currData, proof: 'None'}))
+                }
             }
         });
     }
@@ -485,7 +490,7 @@ function PublicServiceAccomplishment(props){
                             </div>
                             <div className = "form-row">
                             <div className = "form-group">
-                                <label htmlFor = "PublicServiceAccomplishmentProofUpdate"> Proof </label>
+                                <label htmlFor = "PublicServiceAccomplishmentProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                 <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
                             </div>
                             </div>
