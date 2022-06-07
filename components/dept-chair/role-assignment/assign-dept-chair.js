@@ -1,17 +1,27 @@
 import Router from 'next/router'
 import assignDeptChair from '../../../services/faculty/assignments/assignDeptChair'
-import Select from 'react-select'
+// import Select from 'react-select'
 
 function AssignDeptChair(props) {
     let faculty
     if(props.children != null) {
-        faculty = Object.keys(props.children).map(key => {
-            return(
-                {value: props.children[key].facultyId, label: props.children[key].lastName + ', ' + props.children[key].firstName}
-            );
-        });
+        faculty = Object.keys(props.children).map(key => 
+            {
+                return(
+                    <option value={props.children[key].userId} key = {props.children[key].userId}>
+                        {props.children[key].lastName + ', ' + props.children[key].firstName}
+                    </option>
+                )
+            }
+        )        
+
+        // faculty = Object.keys(props.children).map(key => {
+        //     return(
+        //         {value: props.children[key].facultyId, label: props.children[key].lastName + ', ' + props.children[key].firstName}
+        //     );
+        // });
     }
-    
+
     return (
         <div>
             <h2 align = "center"> Department Chair Assignment </h2>
@@ -20,7 +30,16 @@ function AssignDeptChair(props) {
             <div className = "jumbotron">
                 <div className = "form-group col-md-8">
                     <label htmlFor = "deptChair"> Select New Department Chair </label>
-			<Select className = "col-md-8" name = "deptChair" id = "deptChair" options = {faculty} required />
+			        {/* <Select
+                        className = "col-md-8"
+                        name = "deptChair"
+                        id = "deptChair"
+                        options = {faculty}
+                        required />*/}
+                    <select className = "form-control" name = "deptChair" id="deptChair" required>
+                        <option value="0" key = "0">-- SELECT FACULTY --</option>
+                        {faculty}
+                    </select>
                 </div>
                 <button className = "btn btn-danger" data-toggle="modal" data-target="#assignDeptChair">Assign New Department Chair</button>
             </div>
@@ -51,6 +70,7 @@ function AssignDeptChair(props) {
                             $('#assignDeptChair').modal('toggle');
 
                             let incomingDeptChair = document.getElementById('deptChair').value
+                            // console.log(incomingDeptChair)
 
                             if(incomingDeptChair != 0) {
                                 let res = await assignDeptChair(incomingDeptChair, props.token)

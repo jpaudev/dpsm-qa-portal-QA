@@ -66,8 +66,7 @@ function Education(props) {
                         </td>
                         <td>{props.children[key].status}</td>
                         <td>{props.children[key].approverRemarks || 'None'}</td>
-                        {
-                            props.facultyFlag && !props.viewFlag &&
+                        { props.editable &&
                             <td>
                                 <div className = "btn-grp">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
@@ -80,8 +79,7 @@ function Education(props) {
                                 </div>
                             </td>
                         }
-                        {
-                            !props.facultyFlag && !props.viewFlag && 
+                        { props.approver && 
                             <td>
                                 <div className = "btn-grp">
                                     <a className="btn btn-info" data-toggle="modal" data-target="#approveEducation" onClick={() => {
@@ -145,15 +143,14 @@ function Education(props) {
                             <th>Proof</th>
                             <th>Status</th>
                             <th>Approver Remarks</th>
-                            {!props.viewFlag && <th>Action</th>}
+                            { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                         {content}
                     </tbody>
                 </table>
             </div>
             
-            { 
-                props.facultyFlag && 
+            { props.editable && 
                 <div>
                     <EducationForm token = { props.token }/>
                 </div>   

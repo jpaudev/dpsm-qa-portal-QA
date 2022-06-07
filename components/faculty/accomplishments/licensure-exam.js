@@ -65,20 +65,18 @@ function LicensureExam(props) {
                         <td>{props.children[key].status}</td>
                         <td>{props.children[key].approverRemarks || 'None'}</td>
                         <td>
-                        {
-                            props.facultyFlag && !props.viewFlag &&
+                        { props.editable &&
                             <div className = "btn-group">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
-                                    setEdit(props.children.[key].licenseId)
+                                    setEdit(props.children[key].licenseId)
                                     setKey(editLic)
                                 }}>Edit</a>
                                 <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
-                                    setDelete(props.children.[key].licenseId)
+                                    setDelete(props.children[key].licenseId)
                                 }}>Delete</a>
                             </div>
                         }
-                        {
-                            !props.facultyFlag && !props.viewFlag &&
+                        { props.approver &&
                             <div className = "btn-grp">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#approveLicense" onClick={() => {
                                     setApprove(props.children[key].licenseId)
@@ -112,9 +110,9 @@ function LicensureExam(props) {
 
     function setKey(x) {
         Object.keys(props.children).map(key => {
-            if(props.children.[key].licenseId == x) {
-                setData(props.children.[key])
-                if(props.children.[key].rank == "" || props.children.[key].rank == null) {
+            if(props.children[key].licenseId == x) {
+                setData(props.children[key])
+                if(props.children[key].rank == "" || props.children[key].rank == null) {
                     setData(currData => ({...currData, rank: ''}))
                 }
             }
@@ -137,15 +135,14 @@ function LicensureExam(props) {
                             <th>Proof</th>
                             <th>Status</th>
                             <th>Approver Remarks</th>
-                            {!props.viewFlag && <th>Action</th>}
+                            { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                         {content}
                     </tbody>
                 </table>
             </div>
 
-            {
-                props.facultyFlag && 
+            { props.editable && 
                 <div>
                     <LicensureExamForm token = { props.token } />
                 </div>   
@@ -224,7 +221,7 @@ function LicensureExam(props) {
                             </div>
                             <div className="modal-footer">
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" className="btn btn-primary" data-dismiss="modal" disabled = {isSubmitting} onClick = {() => {
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#editLicensureExam').modal('toggle');
                                 }}>Save changes</button>
                             </div>

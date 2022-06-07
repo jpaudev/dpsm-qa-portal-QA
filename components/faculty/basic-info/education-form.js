@@ -97,7 +97,7 @@ class EducationForm extends React.Component{
                                 </div>
                                 <div className = "form-group col-md-2">
                                     <label htmlFor = "ProofEducationalHistory[]" className = "required-label"> Proof </label>
-                                    <Field type = "file" className = "form-control-file" name = "proof" id = "proof" required />
+                                    <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
                                 </div>
                          </div>
                         <br />

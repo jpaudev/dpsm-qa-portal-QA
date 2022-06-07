@@ -242,10 +242,7 @@ function Table ({columns, data}){
 
 // configure columns, populate cells, render table
  function EmploymentAnalyticsTable(props) {
-   const data = React.useMemo(
-     () => props.data,
-     []
-   )
+   const data = props.data
  
    const columns = React.useMemo(
      () => [

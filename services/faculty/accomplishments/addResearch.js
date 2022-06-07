@@ -13,6 +13,10 @@ export default async function addResearch(formData, token) {
                     	researchers.push(pair[1])
                     }
                 }
+
+                formData.append('facultyId', facultyId)
+				formData.append('status', 'Pending')
+               	
                	let proof = formData.get('proof')
 				const response = await axios({
 				    method: 'POST',
