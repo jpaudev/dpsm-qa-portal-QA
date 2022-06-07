@@ -72,11 +72,11 @@ function TrainingSeminar(props) {
                         { props.editable &&
                             <div className = "btn-group">
                                 <a className="btn btn-info" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
-                                        setEdit(props.children.[key].tsId)
+                                        setEdit(props.children[key].tsId)
                                         setKey(editTS)
                                     }}>Edit</a>
                                 <a className="btn btn-danger" data-toggle="modal" data-target="#deleteTrainingSeminar" onClick={() => {
-                                    setDelete(props.children.[key].tsId)
+                                    setDelete(props.children[key].tsId)
                                 }}>Delete</a>
                             </div>
                         }
@@ -114,10 +114,15 @@ function TrainingSeminar(props) {
 
     function setKey(x) {
         Object.keys(props.children).map(key => {
-            if(props.children.[key].tsId == x) {
-                setData(props.children.[key])
-                if(props.children.[key].endDate == "" || props.children.[key].endDate == null) {
+            if(props.children[key].tsId == x) {
+                setData(props.children[key])
+                if(props.children[key].endDate == "" || props.children[key].endDate == null) {
                     setData(currData => ({...currData, endDate: ''}))
+                }
+                if(props.children[key].proof) {
+                    setData(currData => ({...currData, proof: props.children[key].proof}))
+                } else {
+                    setData(currData => ({...currData, proof: 'None'}))
                 }
             }
         });
@@ -232,7 +237,7 @@ function TrainingSeminar(props) {
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
-                                        <label htmlFor = "TrainingSeminarProofUpdate"> Proof </label>
+                                        <label htmlFor = "TrainingSeminarProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                         <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
                                     </div>
                                 </div>

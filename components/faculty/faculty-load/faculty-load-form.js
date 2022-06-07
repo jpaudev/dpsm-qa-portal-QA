@@ -26,7 +26,7 @@ class FacultyLoadForm extends React.Component{
             subject: "",
             section: "",
             semester: "1st Semester",
-            acadYear: currYear,
+            academicYear: currYear,
             syllabus: ""
         }
 

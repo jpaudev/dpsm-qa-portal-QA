@@ -115,6 +115,11 @@ function LicensureExam(props) {
                 if(props.children[key].rank == "" || props.children[key].rank == null) {
                     setData(currData => ({...currData, rank: ''}))
                 }
+                if(props.children[key].proof) {
+                    setData(currData => ({...currData, proof: props.children[key].proof}))
+                } else {
+                    setData(currData => ({...currData, proof: 'None'}))
+                }
             }
         });
     }
@@ -214,7 +219,7 @@ function LicensureExam(props) {
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
-                                        <label htmlFor = "LicensureExamProofUpdate"> Proof </label>
+                                        <label htmlFor = "LicensureExamProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                         <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
                                     </div>
                                 </div>
@@ -243,7 +248,7 @@ function LicensureExam(props) {
                         </div>
                         <div className="modal-body">
                             <hr />
-                            <p> Are you sure you want to delete this education information? </p>
+                            <p> Are you sure you want to delete this licensure exam information? </p>
                         </div>
                         <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
