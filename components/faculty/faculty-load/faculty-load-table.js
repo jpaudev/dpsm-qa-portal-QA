@@ -54,7 +54,7 @@ function FacultyLoadTable(props) {
                                     target="_blank">
                                     View
                                 </a>
-                                {(props.role==1 || props.role==2 || props.role==3) && 
+                                {(props.editClass) && 
                                     <a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
                                         setEdit(props.children[key].recordId)
                                         setKey(editClass)
@@ -63,14 +63,14 @@ function FacultyLoadTable(props) {
                             </div>
                         }
                         {
-                            (props.role==1 || props.role==2 || props.role==3) && !props.children[key].syllabus &&
+                            (props.editClass) && !props.children[key].syllabus &&
                             <a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
                                 setEdit(props.children[key].recordId)
                                 setKey(editClass)
                             }}>Add Syllabus</a>
                         }
                         {
-                            props.role==5 && !props.children[key].syllabus &&
+                            !props.editClass && !props.children[key].syllabus &&
                             <div>None</div>
                         }
                     </td>

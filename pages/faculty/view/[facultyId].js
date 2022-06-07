@@ -8,7 +8,7 @@ import LicensureExam from '../../../components/faculty/accomplishments/licensure
 import TrainingSeminar from '../../../components/faculty/accomplishments/training-seminar'
 import ResearchGrant from '../../../components/faculty/accomplishments/research-grant'
 import Evaluation from '../../../components/unit-head/faculty-list/evaluation/evaluation'
-import FacultyLoader from '../../../components/faculty/faculty-load/faculty-load'
+import FacultyLoader from '../../../components/faculty/faculty-load/faculty-load-table'
 
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../../helpers"
@@ -21,7 +21,6 @@ function ViewFaculty(props) {
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
                     <a className="nav-item nav-link active" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic Information</a>
                     <a className="nav-item nav-link" id="accomplishments-tab" data-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">Accomplishments</a>
-	{/*<a className="nav-item nav-link" id="evaluation-tab" data-toggle="tab" href="#evaluation" role="tab" aria-controls="evaluation" aria-selected="false">Peer Evaluation</a>*/}
                     <a className="nav-item nav-link" id="SET-tab" data-toggle="tab" href="#SET" role="tab" aria-controls="SET" aria-selected="false">Faculty Load</a>
                 </div>
                 <div className="tab-content" id="nav-tabContent-main">
@@ -86,7 +85,6 @@ function ViewFaculty(props) {
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
                     <a className="nav-item nav-link active" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic Information</a>
                     <a className="nav-item nav-link" id="accomplishments-tab" data-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">Accomplishments</a>
-{/*<a className="nav-item nav-link" id="evaluation-tab" data-toggle="tab" href="#evaluation" role="tab" aria-controls="evaluation" aria-selected="false">Peer Evaluation</a>*/}
                     <a className="nav-item nav-link" id="SET-tab" data-toggle="tab" href="#SET" role="tab" aria-controls="SET" aria-selected="false">Faculty Load</a>
                 </div>
                 <div className="tab-content" id="nav-tabContent-main">
@@ -138,11 +136,8 @@ function ViewFaculty(props) {
                             </div>
                         </div>
                     </div>
-		{/*<div className="tab-pane fade" id="evaluation" role="tabpanel" aria-labelledby="evaluation-tab">
-                        <Evaluation />
-                    </div>*/}
                     <div className="tab-pane fade" id="SET" role="tabpanel" aria-labelledby="SET-tab">
-                        <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.pathFacultyId}>{ props.facultyLoad }</FacultyLoader>
+                        <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.pathFacultyId} role={props.data.role} editClass = {false}>{ props.facultyLoad }</FacultyLoader>
                     </div>
                     
                 </div>
@@ -199,7 +194,8 @@ function ViewFaculty(props) {
     let userFacultyId = data.facultyId
     let facultyId
     let status = '?status='
-    
+    let facultyLoad
+
     if(context.params.facultyId != userFacultyId && (data.role == 2 || data.role == 3) ) {
         facultyId = context.params.facultyId
     } else {
@@ -222,6 +218,9 @@ function ViewFaculty(props) {
     const employmentInfo = await employment.json()
     let unit = employmentInfo.result.faculty_unit.unit.unit
     let position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
+
+    const load = await fetch(process.env.API_URL + '/faculty/load/' + facultyId, header)
+    facultyLoad = await load.json()
 
     const personal = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId, header)
     const personalInfo = await personal.json()
@@ -282,6 +281,7 @@ function ViewFaculty(props) {
             name,
             unit,
             position,
+            facultyLoad: facultyLoad.result,
             pathFacultyId: context.params.facultyId,
             faculty: faculty.result,
             personalInfo: personalInfo.result,
