@@ -9,7 +9,7 @@ function FacultyLoad(props) {
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
 		<br />
-		<FacultyLoader name = { props.data.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.data.facultyId} facultyFlag={true} clerkFlag={false}>
+		<FacultyLoader name = { props.data.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.data.facultyId} role={props.data.role}>
 			{props.facultyLoad}
 		</FacultyLoader>
 	    <style jsx>{`

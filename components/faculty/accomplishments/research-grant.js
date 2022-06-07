@@ -170,28 +170,55 @@ function ResearchGrant(props){
     async function setKey(x) {
         await Object.keys(props.children).map(async key => {
             if(props.children[key].researchId == x) {
+                let tempProof = ''
                 await props.children[key].faculty_researchers.forEach(async (e) => {
+                    if(e.facultyId == props.facultyId) {
+                        if(e.proof) {
+                            tempProof = e.proof
+                        } else {
+                            tempProof = null
+                        }
+                    }
                     await authors.forEach(async (fp, index) => {
                         if(fp.value == e.facultyId) {
                             await faculty_researchers.push(fp)
                         }
                     })
                 })
-
-                let temp = {
-                    researchId: props.children[key].researchId,
-                    researchName: props.children[key].researchName,
-                    granter: props.children[key].granter,
-                    amount: props.children[key].amount,
-                    projectedStart: props.children[key].projectedStart,
-                    projectedEnd: props.children[key].projectedEnd,
-                    actualStart: props.children[key].actualStart,
-                    actualEnd: props.children[key].actualEnd,
-                    researchProgress: props.children[key].researchProgress,
-                    nonFacultyResearchers: props.children[key].nonFacultyResearchers,
-                    faculty_researchers: faculty_researchers,
-                    og_auth: faculty_researchers
+                let temp
+                if(tempProof){
+                    temp = {
+                        researchId: props.children[key].researchId,
+                        researchName: props.children[key].researchName,
+                        granter: props.children[key].granter,
+                        amount: props.children[key].amount,
+                        projectedStart: props.children[key].projectedStart,
+                        projectedEnd: props.children[key].projectedEnd,
+                        actualStart: props.children[key].actualStart,
+                        actualEnd: props.children[key].actualEnd,
+                        researchProgress: props.children[key].researchProgress,
+                        nonFacultyResearchers: props.children[key].nonFacultyResearchers,
+                        faculty_researchers: faculty_researchers,
+                        og_auth: faculty_researchers,
+                        proof: tempProof
+                    }
+                } else {
+                    temp = {
+                        researchId: props.children[key].researchId,
+                        researchName: props.children[key].researchName,
+                        granter: props.children[key].granter,
+                        amount: props.children[key].amount,
+                        projectedStart: props.children[key].projectedStart,
+                        projectedEnd: props.children[key].projectedEnd,
+                        actualStart: props.children[key].actualStart,
+                        actualEnd: props.children[key].actualEnd,
+                        researchProgress: props.children[key].researchProgress,
+                        nonFacultyResearchers: props.children[key].nonFacultyResearchers,
+                        faculty_researchers: faculty_researchers,
+                        og_auth: faculty_researchers
+                    }
                 }
+                
                 await setData(temp)
             }
         });
@@ -361,7 +388,7 @@ function ResearchGrant(props){
                             </div>
                             <div className = "form-row">
                                 <div className = "form-group">
-                                    <label htmlFor = "ResearchProofUpdate"> Proof </label>
+                                    <label htmlFor = "ResearchProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                     <Field type = "file" className = "form-control-file" name = "proof"  value={undefined} />
                                 </div>
                             </div>

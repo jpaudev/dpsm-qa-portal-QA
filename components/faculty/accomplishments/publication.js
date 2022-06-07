@@ -83,7 +83,7 @@ function Publication(props){
                                             </button>
                                             <a
                                                 className ="btn btn-info"
-                                                href={"https://localhost:3001/uploads/" + pub[auth].proof}
+                                                href={process.env.UPLOADS_URL + pub[auth].proof}
                                                 style = {{ color: 'white' }}
                                                 target="_blank">
                                                 Preview
@@ -156,24 +156,47 @@ function Publication(props){
     async function setKey(x) { 
         await Object.keys(props.children).map(async key => {
             if(props.children[key].publicationId == x) {
+                let tempProof = ''
                 await props.children[key].faculty_publishers.forEach(async (e) => {
+                    if(e.facultyId == props.facultyId) {
+                        if(e.proof) {
+                            tempProof = e.proof
+                        } else {
+                            tempProof = null
+                        }
+                    }
                     await authors.forEach(async (fp, index) => {
                         if(fp.value == e.facultyId) {
                             await faculty_publishers.push(fp)
                         }
                     })
                 })
-
-                let temp = {
-                    citation: props.children[key].citation,
-                    faculty_publishers: faculty_publishers,
-                    nonFacultyAuthors: props.children[key].nonFacultyAuthors,
-                    publicationDate: props.children[key].publicationDate,
-                    publicationId: props.children[key].publicationId,
-                    title: props.children[key].title,
-                    url: props.children[key].url,
-                    og_auth: faculty_publishers
+                let temp
+                if(tempProof) {
+                    temp = {
+                        citation: props.children[key].citation,
+                        faculty_publishers: faculty_publishers,
+                        nonFacultyAuthors: props.children[key].nonFacultyAuthors,
+                        publicationDate: props.children[key].publicationDate,
+                        publicationId: props.children[key].publicationId,
+                        title: props.children[key].title,
+                        url: props.children[key].url,
+                        og_auth: faculty_publishers,
+                        proof: tempProof
+                    }
+                } else {
+                    temp = {
+                        citation: props.children[key].citation,
+                        faculty_publishers: faculty_publishers,
+                        nonFacultyAuthors: props.children[key].nonFacultyAuthors,
+                        publicationDate: props.children[key].publicationDate,
+                        publicationId: props.children[key].publicationId,
+                        title: props.children[key].title,
+                        url: props.children[key].url,
+                        og_auth: faculty_publishers
+                    }    
                 }
+                
                 await setData(temp)
             }
         });
@@ -317,7 +340,7 @@ function Publication(props){
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
-                                        <label htmlFor = "PublicationProofUpdate"> Proof </label>
+                                        <label htmlFor = "PublicationProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                         <Field type = "file" className = "form-control-file" name = "proof" value={undefined} />
                                     </div>
                                 </div>

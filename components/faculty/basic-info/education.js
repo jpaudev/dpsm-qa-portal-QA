@@ -22,8 +22,7 @@ function Education(props) {
         degreeCert: '',
         majorSpecialization: '',
         startDate: '',
-        endDate: '',
-        proof: ''
+        endDate: ''
     })
     let content 
     if(props.children != null) {
@@ -116,8 +115,14 @@ function Education(props) {
         Object.keys(props.children).map(key => {
             if(props.children[key].educInfoId == x) {
                 setData(props.children[key])
+                console.log(props.children[key].proof)
                 if(props.children[key].endDate == "" || props.children[key].endDate == null) {
                     setData(currData => ({...currData, endDate: ''}))
+                }
+                if(props.children[key].proof) {
+                    setData(currData => ({...currData, proof: props.children[key].proof}))
+                } else {
+                    setData(currData => ({...currData, proof: 'None'}))
                 }
             }
         });
@@ -244,8 +249,8 @@ function Education(props) {
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
-                                        <label for = "proof" > Add/Edit Proof {currData.endDate} {currData.proof.name}</label>
-                                        <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={currData.proof.name} />
+                                        <label htmlFor = "proof" > Add/Edit Proof [Uploaded: {currData.proof}] </label>
+                                        <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
                                     </div>
                                 </div>
                             </div>
