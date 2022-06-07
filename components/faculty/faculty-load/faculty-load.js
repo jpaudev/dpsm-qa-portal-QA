@@ -50,7 +50,7 @@ function FacultyLoader(props) {
 	 							<div>
 		 							<a className = "list-group-item list-group-item-action list-group-item-info" data-target = {"#" + sem[0].semester} data-toggle = "collapse" aria-controls = {sem[0].semester}>{sem[0].semester} Semester</a>
 		 							<div id = {sem[0].semester} className = "jumbotron">
-		 								<FacultyLoadSemester records = {sem} role={props.role} facultyFlag = {props.facultyFlag} token = {props.token} facultyId = {props.facultyId} />
+		 								<FacultyLoadSemester records = {sem} role={props.role} token = {props.token} facultyId = {props.facultyId} />
 		 							</div>
 	 							</div>
 	 						)

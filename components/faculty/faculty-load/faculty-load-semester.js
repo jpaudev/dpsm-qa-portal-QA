@@ -52,7 +52,7 @@ function FacultyLoadSemester(props) {
                                     target="_blank">
                                     View
                                 </a>
-                                {!props.role==5 && 
+                                {(props.role==1 || props.role==2 || props.role==3) && 
                                     <a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
                                         setEdit(props.records[key].recordId)
                                         setKey(editClass)
@@ -61,12 +61,16 @@ function FacultyLoadSemester(props) {
                             </div>
     					}
     					{
-    						!props.records[key].syllabus &&
+    						(props.role==1 || props.role==2 || props.role==3) && !props.records[key].syllabus &&
     						<a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
                             	setEdit(props.records[key].recordId)
                                 setKey(editClass)
                             }}>Add Syllabus</a>
     					}
+                        {
+                            props.role==5 && !props.records[key].syllabus &&
+                            <div>None</div>
+                        }
     				</td>
     				{props.role==5 && <td>
     					<div className = "btn-group">
