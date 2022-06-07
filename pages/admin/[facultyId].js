@@ -75,7 +75,7 @@ function BasicInfo(props) {
                     <Evaluation />
                 </div>
                 <div className="tab-pane fade" id="faculty-load" role="tabpanel" aria-labelledby="faculty-load-tab">
-                    <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position}facultyId={props.pathFacultyId}>{ props.facultyLoad }</FacultyLoader>
+                    <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.pathFacultyId} role={props.data.role}>{ props.facultyLoad }</FacultyLoader>
                 </div>
             </div>
 
