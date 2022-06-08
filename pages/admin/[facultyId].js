@@ -32,7 +32,7 @@ function BasicInfo(props) {
                     </nav>
 				    <div className="tab-content" id="nav-tabContent-basic-info">
                         <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                            <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position}>{ props.personalInfo }</PersonalInfo>
+                            <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} hasDisabledFields={true}>{ props.personalInfo }</PersonalInfo>
                         </div>
                         <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
                             <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position}>{ props.education }</Education>
