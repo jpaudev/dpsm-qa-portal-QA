@@ -25,7 +25,7 @@ function Login() {
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </Head>
 	<div className = "jumbotron" id = "logo">
-		<h3> DPSM QA PORTAL </h3>
+		<h3> DPSM QA PORTAL <br /> <br /></h3>
 		<br />
 		<br />
 		<center><img src="/dpsm-seal.png" width="142" height="115" alt="DPSM-QA-Portal" /></center>
