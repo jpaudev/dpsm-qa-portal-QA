@@ -41,7 +41,8 @@ class AccomplishmentDashboardGraph extends React.Component{
             tickRotation: 0,
             legend: 'Count', //label
             legendPosition: 'middle',
-            legendOffset: -40
+            legendOffset: -40,
+	    format: e => Math.floor(e) === e && e
         }}
         labelSkipWidth={12}
         labelSkipHeight={12}
