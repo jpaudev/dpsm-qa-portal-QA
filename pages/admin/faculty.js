@@ -12,7 +12,7 @@ function BasicInfo(props) {
 		<br />
 		<br />
             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                <PersonalInfo editable={true} role={props.data.role} token = {props.token.user} positions={props.positionsList} />
+                <PersonalInfo editable={true} role={props.data.role} token = {props.token.user} positions={props.positionsList} hasDisabledFields={false} />
             </div>
 	<style jsx>{`
 		a.nav-item:focus{

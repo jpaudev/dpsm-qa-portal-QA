@@ -106,6 +106,11 @@ function FacultyLoadTable(props) {
         Object.keys(props.children).map(key => {
             if(props.children[key].recordId == x) {
                 setData(props.children[key])
+                if(props.children[key].syllabus) {
+                    setData(currData => ({...currData, syllabus: props.children[key].syllabus}))
+                } else {
+                    setData(currData => ({...currData, syllabus: 'None'}))
+                }
             }
         });
     }
@@ -303,7 +308,7 @@ function FacultyLoadTable(props) {
                             <div className="modal-body">
                                 <div className = "form-row">
                                     <div className = "form-group">
-                                        <label htmlFor = "syllabus"> Add Syllabus </label>
+                                        <label htmlFor = "syllabus"> Add/Edit Syllabus [Uploaded: {currData.syllabus}] </label>
                                         <Field type = "file" className = "form-control-file" name = "syllabus" id = "syllabus" value={undefined} />
                                         <Field type = "hidden" className = "form-control" name = "subject" />
                                         <Field type = "hidden" className = "form-control" name = "section" />
