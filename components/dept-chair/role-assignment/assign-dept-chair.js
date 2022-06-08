@@ -1,6 +1,5 @@
 import Router from 'next/router'
 import assignDeptChair from '../../../services/faculty/assignments/assignDeptChair'
-// import Select from 'react-select'
 
 function AssignDeptChair(props) {
     let faculty
@@ -14,12 +13,6 @@ function AssignDeptChair(props) {
                 )
             }
         )        
-
-        // faculty = Object.keys(props.children).map(key => {
-        //     return(
-        //         {value: props.children[key].facultyId, label: props.children[key].lastName + ', ' + props.children[key].firstName}
-        //     );
-        // });
     }
 
     return (
@@ -30,12 +23,6 @@ function AssignDeptChair(props) {
             <div className = "jumbotron">
                 <div className = "form-group col-md-8">
                     <label htmlFor = "deptChair"> Select New Department Chair </label>
-			        {/* <Select
-                        className = "col-md-8"
-                        name = "deptChair"
-                        id = "deptChair"
-                        options = {faculty}
-                        required />*/}
                     <select className = "form-control" name = "deptChair" id="deptChair" required>
                         <option value="0" key = "0">-- SELECT FACULTY --</option>
                         {faculty}
@@ -65,7 +52,7 @@ function AssignDeptChair(props) {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't assign</button>
-			            <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+			            <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("deptchairalert")
                             $('#assignDeptChair').modal('toggle');
 
@@ -79,9 +66,9 @@ function AssignDeptChair(props) {
                                     alert.style = "visibility: visible"
                                     alert.innerHTML = res.message
     
-                                    $("#deptchairalert").fadeTo(5000, 500).slideUp(500, function(){
+                                    $("#deptchairalert").fadeTo(3000, 500).slideUp(500, function(){
                                         $("#deptchairalert").slideUp(500);
-                                        Router.push('/login', '/login')
+                                        window.location.href='/login'
                                     });
                                 } else {
                                     alert.className = "alert alert-danger"
