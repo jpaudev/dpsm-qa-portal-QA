@@ -9,7 +9,7 @@ import { parseCookies } from "../../../helpers"
 import updateFaculty from '../../../services/faculty/basic-info/updateFaculty'
 import addFaculty from '../../../services/admin/addFaculty'
 
-function PersonalInfo(props) { 
+function PersonalInfo(props) { console.log(props.hasDisabledFields);
     let FacultyDetails
     let name
     let dependents
@@ -33,7 +33,7 @@ function PersonalInfo(props) {
             religion: props.children.religion,
             emergencyContactPerson: props.children.emergencyContactPerson,
             emergencyContactNumber: props.children.emergencyContactNumber,
-            suffix: props.children.suffix,
+            suffix: props.children.suffix || '',
             faculty_dependents: props.children.faculty_dependents,
             philosophy: props.children.teachingPhilosophy
         }
@@ -163,18 +163,18 @@ function PersonalInfo(props) {
                     <div className = "form-row">
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "Sex"> Sex (at birth) </label>
-                            <Field as = "select" className = "form-control" name = "gender" defaultValue = { FacultyDetails.gender } disabled={true} required>
+                            <Field as = "select" className = "form-control" name = "gender" defaultValue = { FacultyDetails.gender } disabled={props.hasDisabledFields} required>
                                 <option value = "Male">Male</option>
                                 <option value = "Female">Female</option>
                             </Field>
                         </div>
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "DateOfBirth"> Date of Birth </label>
-                            <Field className = "form-control" type = "date" name = "dateOfBirth" defaultValue = { FacultyDetails.dateOfBirth } disabled={true} required />
+                            <Field className = "form-control" type = "date" name = "dateOfBirth" defaultValue = { FacultyDetails.dateOfBirth } disabled={props.hasDisabledFields} required />
                         </div>
                         <div className = "form-group col-md-4 required">
                             <label className = "control-label" htmlFor = "PlaceOfBirth"> Place of Birth </label>
-                            <Field className = "form-control" type = "text" name = "placeOfBirth" defaultValue = { FacultyDetails.placeOfBirth } disabled={true} required />
+                            <Field className = "form-control" type = "text" name = "placeOfBirth" defaultValue = { FacultyDetails.placeOfBirth } disabled={props.hasDisabledFields} required />
                         </div>
                     </div>
                     <br />

@@ -115,7 +115,6 @@ function Education(props) {
         Object.keys(props.children).map(key => {
             if(props.children[key].educInfoId == x) {
                 setData(props.children[key])
-                console.log(props.children[key].proof)
                 if(props.children[key].endDate == "" || props.children[key].endDate == null) {
                     setData(currData => ({...currData, endDate: ''}))
                 }
@@ -199,7 +198,6 @@ function Education(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editEducForm">
                             <div className="modal-body">
-                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "SchoolEducationHistoryUpdate"> School/Institution </label>

@@ -271,14 +271,13 @@ class EducationForm extends (external_react_default()).Component {
             className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ProofEducationalHistory[]",
-              className: "jsx-371132353" + " " + "required-label",
+              className: "jsx-371132353",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof",
-              required: true
+              id: "proof"
             })]
           })]
         }), /*#__PURE__*/jsx_runtime_.jsx("br", {
@@ -445,8 +444,7 @@ function Education(props) {
     degreeCert: '',
     majorSpecialization: '',
     startDate: '',
-    endDate: '',
-    proof: ''
+    endDate: ''
   });
   let content;
 
@@ -494,7 +492,7 @@ function Education(props) {
           children: props.children[key].status
         }), /*#__PURE__*/jsx_runtime_.jsx("td", {
           children: props.children[key].approverRemarks || 'None'
-        }), props.facultyFlag && !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("td", {
+        }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("td", {
           children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "btn-grp",
             children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
@@ -516,7 +514,7 @@ function Education(props) {
               children: "Delete"
             })]
           })
-        }), !props.facultyFlag && !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("td", {
+        }), props.approver && /*#__PURE__*/jsx_runtime_.jsx("td", {
           children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "btn-grp",
             children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
@@ -574,6 +572,16 @@ function Education(props) {
             endDate: ''
           }));
         }
+
+        if (props.children[key].proof) {
+          setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+            proof: props.children[key].proof
+          }));
+        } else {
+          setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+            proof: 'None'
+          }));
+        }
       }
     });
   } // let message
@@ -618,13 +626,13 @@ function Education(props) {
               children: "Status"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Approver Remarks"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+            }), (props.editable || props.approver) && /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Action"
             })]
           }), content]
         })
       })
-    }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("div", {
+    }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("div", {
       children: /*#__PURE__*/jsx_runtime_.jsx(education_form, {
         token: props.token
       })
@@ -689,7 +697,7 @@ function Education(props) {
               id: "editEducForm",
               children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                 className: "modal-body",
-                children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("div", {
+                children: [/*#__PURE__*/jsx_runtime_.jsx("div", {
                   className: "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                     className: "form-group",
@@ -814,14 +822,14 @@ function Education(props) {
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                     className: "form-group",
                     children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("label", {
-                      for: "proof",
-                      children: [" Add/Edit Proof ", currData.endDate, " ", currData.proof.name]
+                      htmlFor: "proof",
+                      children: [" Add/Edit Proof [Uploaded: ", currData.proof, "] "]
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       type: "file",
                       className: "form-control-file",
                       name: "proof",
                       id: "proof",
-                      value: currData.proof.name
+                      value: undefined
                     })]
                   })
                 })]

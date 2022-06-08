@@ -31,7 +31,7 @@ function LicensureExam(props) {
                 return (
                     <tr key = {props.children[key].licenseId}>
                         <td>{props.children[key].examName}</td>
-                        <td>{props.children[key].rank == 0 ? 'N/A' : props.children[key].rank}</td>
+                        <td>{props.children[key].rank == 0 || props.children[key].rank == null ? 'N/A' : props.children[key].rank}</td>
                         <td>{props.children[key].examDate}</td>
                         <td>{props.children[key].licenseNumber}</td>
                         <td>
@@ -248,7 +248,7 @@ function LicensureExam(props) {
                         </div>
                         <div className="modal-body">
                             <hr />
-                            <p> Are you sure you want to delete this education information? </p>
+                            <p> Are you sure you want to delete this licensure exam information? </p>
                         </div>
                         <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>

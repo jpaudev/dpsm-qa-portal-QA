@@ -6,131 +6,107 @@ import updateFacultyLoad from '../../../services/admin/updateFacultyLoad'
 import deleteFacultyLoad from '../../../services/admin/deleteFacultyLoad'
 
 function FacultyLoadSemester(props) {
+    let year = []
+    let currYear = new Date().getFullYear()
+    for(let i = currYear; i >= 1970; i--) {
+        year.push(i)
+    }
+    
+    let options = Object.keys(year).map((i) => {
+        return(
+            <option value={year[i]}>{year[i]-1}-{year[i]}</option>
+        )
+    })
 	let deleteClass = 0
 	let editClass = 0
-	function setDelete(id) {
-        deleteClass = id
-    }
-    function setEdit(id) {
-        editClass = id
-    }
-    function setKey(x) {
-        Object.keys(props.records).map(key => {
-            if(props.records[key].recordId == x) {
-                setData(props.records[key])
-            }
-        });
-    }
-    let ctr = 0
+
     const [currData, setData] = React.useState({
         recordId: 0,
         subject: '',
         section: '',
-        setResults: '',
+        semester: '',
+        academicYear: '',
         syllabus: ''
     })
 
-	let content = Object.keys(props.records).map(key => {
-		ctr++
-		return (
-			<tr key = {props.records[key].recordId}>
-				<td>{props.records[key].subject}</td>
-				<td>{props.records[key].section}</td>
-				{props.facultyFlag && <td>
-					{
-						props.records[key].syllabus &&
-                        <div className = "btn-grp">
-                            <a
-                                className ="btn btn-info"
-                                href={process.env.UPLOADS_URL + props.records[key].syllabus}
-                                style = {{ color: 'white' }}
-                                target="_blank">
-                                View
-                            </a>
-                            <a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
-	                        	setEdit(props.records[key].recordId)
-	                            setKey(editClass)
-	                        }}>Edit</a>
+    let ctr = 0
+
+	let content 
+    if(props.records !=null) {
+        content = Object.keys(props.records).map(key => {
+    		ctr++
+    		return (
+    			<tr key = {props.records[key].recordId}>
+    				<td>{props.records[key].subject}</td>
+    				<td>{props.records[key].section}</td>
+                    <td>{props.records[key].semester}</td>
+                    <td>{props.records[key].academicYear}</td>
+    				<td>
+    					{
+    						props.records[key].syllabus &&
+                            <div className = "btn-grp">
+                                <a
+                                    className ="btn btn-info"
+                                    href={process.env.UPLOADS_URL + props.records[key].syllabus}
+                                    style = {{ color: 'white' }}
+                                    target="_blank">
+                                    View
+                                </a>
+                                {(props.role==1 || props.role==2 || props.role==3) && 
+                                    <a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
+                                        setEdit(props.records[key].recordId)
+                                        setKey(editClass)
+                                    }}>Edit</a>
+                                }
+                            </div>
+    					}
+    					{
+    						(props.role==1 || props.role==2 || props.role==3) && !props.records[key].syllabus &&
+    						<a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
+                            	setEdit(props.records[key].recordId)
+                                setKey(editClass)
+                            }}>Add Syllabus</a>
+    					}
+                        {
+                            props.role==5 && !props.records[key].syllabus &&
+                            <div>None</div>
+                        }
+    				</td>
+    				{props.role==5 && <td>
+    					<div className = "btn-group">
+                            <a className="btn btn-info" data-toggle="modal" data-target="#editClass" onClick={() => {
+                            	setEdit(props.records[key].recordId)
+                                setKey(editClass)
+                            }}>Edit</a>
+                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteClass" onClick={() => {
+                                setDelete(props.records[key].recordId)
+                            }}>Delete</a>
                         </div>
-					}
-					{
-						!props.records[key].syllabus &&
-						<a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
-                        	setEdit(props.records[key].recordId)
-                            setKey(editClass)
-                        }}>Add Syllabus</a>
-					}
-				</td>}
-				{props.facultyFlag && <td>
-					{
-                        props.records[key].setResults &&
-                        <div className = "btn-grp">
-                            <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick = {() => {
-                                    let file = props.records[key].setResults
-                                    downloadProof(file, props.token)
-                                }}
-                            >
-                                Download
-                            </button>
-                            <a
-                                className ="btn btn-info"
-                                href={process.env.UPLOADS_URL + props.records[key].setResults}
-                                style = {{ color: 'white' }}
-                                target="_blank">
-                                Preview
-                            </a>
-                        </div>
-                    }
-                    { 
-                        !props.records[key].setResults && 
-                        <div>None</div>
-                    }
-				</td>}
-				{props.clerkFlag && <td>
-					{
-                        props.records[key].setResults &&
-                        <div className = "btn-grp">
-                            <button
-                                type="button"
-                                className="btn btn-primary"
-                                onClick = {() => {
-                                    let file = props.records[key].setResults
-                                    downloadProof(file, props.token)
-                                }}
-                            >
-                                Download
-                            </button>
-                            <a
-                                className ="btn btn-info"
-                                href={process.env.UPLOADS_URL + props.records[key].setResults}
-                                style = {{ color: 'white' }}
-                                target="_blank">
-                                Preview
-                            </a>
-                        </div>
-                    }
-                    { 
-                        !props.records[key].setResults && 
-                        <div>None</div>
-                    }
-				</td>}
-				{props.clerkFlag && <td>
-					<div className = "btn-group">
-                        <a className="btn btn-info" data-toggle="modal" data-target="#editClass" onClick={() => {
-                        	setEdit(props.records[key].recordId)
-                            setKey(editClass)
-                        }}>Edit</a>
-                        <a className="btn btn-danger" data-toggle="modal" data-target="#deleteClass" onClick={() => {
-                            setDelete(props.records[key].recordId)
-                        }}>Delete</a>
-                    </div>
-				</td>}
-			</tr>
-		)
-	});
+    				</td>}
+    			</tr>
+    		)
+    	});
+    } else {
+        content = <td colSpan = "9"><p align = "center">No data available!</p></td>
+    }
+
+    function setDelete(id) {
+        deleteClass = id
+    }
+
+    function setEdit(id) {
+        editClass = id
+    }
+    
+    function setKey(x) {
+        Object.keys(props.records).map(key => {
+            if(props.records[key].recordId == x) {
+                setData(props.records[key])
+                console.log(currData)
+            }
+        });
+    }
+
 	return(
 		<div>
 			<div className = "table-responsive">
@@ -139,23 +115,15 @@ function FacultyLoadSemester(props) {
 					<tr>
 						<th>Subject</th>
 						<th>Section</th>
-						{!props.clerkFlag && <th>Syllabus</th>}
-						<th>SET</th>
-						{props.clerkFlag && <th>Action</th>}
+                        <th>Semester</th>
+                        <th>Academic Year</th>
+						<th>Syllabus</th>
+						{props.role==5 && <th>Action</th>}
 					</tr>
 				</thead>
 				<tbody>
 					{content}
 				</tbody>
-				{/*<tfoot>
-					<tr>
-						<td></td>
-						<td></td>
-						{!props.clerkFlag && <td></td>}
-						<td></td>
-						<th>Total Units: {ctr*3}</th>
-					</tr>
-				</tfoot>*/}
 			</table>
 			</div>
 
@@ -177,7 +145,6 @@ function FacultyLoadSemester(props) {
                             let form = document.getElementById('editClassForm')
                             let formData = new FormData(form)
                             formData.append('recordId', currData.recordId)
-                            
                             let res = await updateFacultyLoad(formData, props.token, props.facultyId)
                             if(res.success == true) { 
                                 alert.className ="alert alert-success"
@@ -198,23 +165,35 @@ function FacultyLoadSemester(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editClassForm">
                             <div className="modal-body">
+                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "subject"> Subject </label>
-                                        <Field className = "form-control" type = "text" name = "subject" placeholder = "Input subject" />
+                                        <Field className = "form-control" type = "text" name = "subject" id = "subject" placeholder = "Input subject" />
                                     </div>
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "section"> Section </label>
-                                        <Field className = "form-control" type = "text" name = "section" placeholder = "Input section" />
+                                        <Field className = "form-control" type = "text" name = "section" id= "section" placeholder = "Input section" />
                                     </div>
                                 </div>
                                 <div className = "form-row">
                                     <div className = "form-group">
-                                        <label htmlFor = "setResults"> Add SET Results </label>
-                                        <Field type = "file" className = "form-control-file" name = "setResults" id = "setResults" value={undefined} />
-                                        <Field type = "hidden" className = "form-control" name = "syllabus" value="" />
+                                        <label htmlFor = "semester"> Semester </label>
+                                        <Field as = "select" className = "form-control" name = "semester" id = "semester" required>
+                                            <option value = "1st">1st Semester</option>
+                                            <option value = "2nd">2nd Semester</option>
+                                            <option value = "Midyear">Mid-Year</option>
+                                        </Field>
+                                    </div>
+                                </div>
+                                <div className = "form-row">
+                                    <div className = "form-group">
+                                        <label htmlFor = "Year"> Academic Year </label>
+                                        <Field as = "select" className = "form-control" name = "academicYear" id = "academicYear" required>
+                                            {options}
+                                        </Field>
                                     </div>
                                 </div>
                             </div>

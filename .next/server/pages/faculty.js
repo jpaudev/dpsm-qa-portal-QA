@@ -316,7 +316,7 @@ function Table({
 
 
 function AccomplishmentAnalyticsTable(props) {
-  const data = external_react_default().useMemo(() => props.data, []);
+  const data = props.data;
   const columns = external_react_default().useMemo(() => [{
     Header: 'Name of Faculty',
     Footer: '',
@@ -523,10 +523,7 @@ function AccomplishmentCount(props) {
       if (accompList[key].faculty_public_services.length > 0) {
         accompList[key].faculty_public_services.forEach(async i => {
           await tableData.push({
-            col1: /*#__PURE__*/jsx_runtime_.jsx("a", {
-              href: `${'/faculty/view/' + encodeURIComponent(accompList[key].facultyId)}`,
-              children: accompList[key].lastName + ', ' + accompList[key].firstName
-            }),
+            col1: accompList[key].lastName + ', ' + accompList[key].firstName,
             col2: i.position + ' - ' + i.organization,
             col3: 'Public Service',
             col4: i.startDate,
@@ -538,10 +535,7 @@ function AccomplishmentCount(props) {
       if (accompList[key].faculty_publishers.length > 0) {
         accompList[key].faculty_publishers.forEach(async i => {
           await tableData.push({
-            col1: /*#__PURE__*/jsx_runtime_.jsx("a", {
-              href: `${'/faculty/view/' + encodeURIComponent(accompList[key].facultyId)}`,
-              children: accompList[key].lastName + ', ' + accompList[key].firstName
-            }),
+            col1: accompList[key].lastName + ', ' + accompList[key].firstName,
             col2: i.faculty_publication.title,
             col3: 'Publication',
             col4: i.faculty_publication.publicationDate,
@@ -553,10 +547,7 @@ function AccomplishmentCount(props) {
       if (accompList[key].faculty_training_seminars.length > 0) {
         accompList[key].faculty_training_seminars.forEach(async i => {
           await tableData.push({
-            col1: /*#__PURE__*/jsx_runtime_.jsx("a", {
-              href: `${'/faculty/view/' + encodeURIComponent(accompList[key].facultyId)}`,
-              children: accompList[key].lastName + ', ' + accompList[key].firstName
-            }),
+            col1: accompList[key].lastName + ', ' + accompList[key].firstName,
             col2: i.role + ' - ' + i.title,
             col3: 'Training/Seminar',
             col4: i.dateFrom,
@@ -568,10 +559,7 @@ function AccomplishmentCount(props) {
       if (accompList[key].faculty_researchers.length > 0) {
         accompList[key].faculty_researchers.forEach(async i => {
           await tableData.push({
-            col1: /*#__PURE__*/jsx_runtime_.jsx("a", {
-              href: `${'/faculty/view/' + encodeURIComponent(accompList[key].facultyId)}`,
-              children: accompList[key].lastName + ', ' + accompList[key].firstName
-            }),
+            col1: accompList[key].lastName + ', ' + accompList[key].firstName,
             col2: i.faculty_research_grant.researchName,
             col3: 'Research Grant',
             col4: i.faculty_research_grant.actualStart,
@@ -712,9 +700,6 @@ function AccomplishmentCount(props) {
               pathname: url,
               query
             });
-            window.setTimeout(function () {
-              window.location.reload();
-            }, 1000);
           },
           className: "jsx-298159374" + " " + "btn btn-info",
           children: " Filter"
@@ -1022,7 +1007,7 @@ function employment_dashboard_table_Table({
 
 
 function EmploymentAnalyticsTable(props) {
-  const data = external_react_default().useMemo(() => props.data, []);
+  const data = props.data;
   const columns = external_react_default().useMemo(() => [{
     Header: 'Name of Faculty',
     Footer: '',
@@ -1055,6 +1040,15 @@ function EmploymentAnalyticsTable(props) {
     Header: 'Category',
     Footer: '',
     accessor: 'col4',
+    aggregate: 'count',
+    Aggregated: ({
+      value
+    }) => `${value} Entries`,
+    Filter: employment_dashboard_table_SelectColumnFilter
+  }, {
+    Header: 'Start Date',
+    Footer: '',
+    accessor: 'col5',
     aggregate: 'count',
     Aggregated: ({
       value
@@ -1202,13 +1196,11 @@ function EmploymentStatus(props) {
       }
 
       await tableData.push({
-        col1: /*#__PURE__*/jsx_runtime_.jsx("a", {
-          href: `${'/faculty/view/' + encodeURIComponent(e.facultyId)}`,
-          children: e.lastName + ', ' + e.firstName
-        }),
+        col1: e.lastName + ', ' + e.firstName,
         col2: e.faculty_employment_infos[0].faculty_employment_position.position,
         col3: e.faculty_employment_infos[0].status,
-        col4: e.faculty_employment_infos[0].category
+        col4: e.faculty_employment_infos[0].category,
+        col5: e.faculty_employment_infos[0].startDate
       });
     });
   }
@@ -1316,7 +1308,8 @@ function EmploymentStatus(props) {
           className: "jsx-298159374"
         }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           onClick: () => {
-            let unitId = document.getElementById('EmpDeptUnit').value;
+            let unitId;
+            if (props.role == 3) unitId = document.getElementById('EmpDeptUnit').value;
             let startDate = document.getElementById('EmpStartTimePeriod').value;
             let endDate = document.getElementById('EmpEndTimePeriod').value;
             let url = '/faculty';
@@ -1330,9 +1323,6 @@ function EmploymentStatus(props) {
               pathname: url,
               query
             });
-            window.setTimeout(function () {
-              window.location.reload();
-            }, 1000);
           },
           className: "jsx-298159374" + " " + "btn btn-info",
           children: " Filter"
@@ -1640,7 +1630,7 @@ function degree_dashboard_table_Table({
 
 
 function DegreeAnalyticsTable(props) {
-  const data = external_react_default().useMemo(() => props.data, []);
+  const data = props.data;
   const columns = external_react_default().useMemo(() => [{
     Header: 'Name of Faculty',
     Footer: '',
@@ -1848,10 +1838,7 @@ function DegreeCount(props) {
         }
 
         await tableData.push({
-          col1: /*#__PURE__*/jsx_runtime_.jsx("a", {
-            href: `${'/faculty/view/' + encodeURIComponent(e.facultyId)}`,
-            children: e.lastName + ', ' + e.firstName
-          }),
+          col1: e.lastName + ', ' + e.firstName,
           col2: i.degreeCert,
           col3: i.degreeType,
           col4: i.endDate
@@ -1974,7 +1961,8 @@ function DegreeCount(props) {
           className: "jsx-298159374"
         }), /*#__PURE__*/jsx_runtime_.jsx("button", {
           onClick: () => {
-            let unitId = document.getElementById('DegreeDeptUnit').value;
+            let unitId;
+            if (props.role == 3) unitId = document.getElementById('DegreeDeptUnit').value;
             let startDate = document.getElementById('DegreeStartTimePeriod').value;
             let endDate = document.getElementById('DegreeEndTimePeriod').value;
             let url = '/faculty';
@@ -1988,9 +1976,6 @@ function DegreeCount(props) {
               pathname: url,
               query
             });
-            window.setTimeout(function () {
-              window.location.reload();
-            }, 1000);
           },
           className: "jsx-298159374" + " " + "btn btn-info",
           children: " Filter"
@@ -2059,7 +2044,6 @@ function DegreeCount(props) {
 
 
 
- // import SETResults from '../../components/unit-head/dashboard/SET-results/SET-results'
 
 
 
@@ -2204,27 +2188,32 @@ async function getServerSideProps(context) {
       if (data.role == 2 || data.role == 3) {
         if (data.role == 2) {
           approvalURL += '?unitId=' + data.unitId;
+          roleAssignmentURL += '?unitId=' + data.unitId;
           accompURL += '?unitId=' + data.unitId;
           empURL += '?unitId=' + data.unitId;
           educURL += '?unitId=' + data.unitId;
-          roleAssignmentURL += '?unitId=' + data.unitId;
-        } else if (data.role == 3 && context.query) {
+        } else if (data.role == 3) {
           if (context.query.accomplishment == 1) {
             accompURL += '?';
             if (context.query.unitId && context.query.unitId != 0) accompURL += 'unitId=' + context.query.unitId;
-            if (context.query.startDate) accompURL += '&startDate=' + context.query.startDate;
-            if (context.query.endDate) accompURL += '&endDate=' + context.query.endDate;
           } else if (context.query.employment == 1) {
             empURL += '?';
             if (context.query.unitId) empURL += 'unitId=' + context.query.unitId;
-            if (context.query.startDate) empURL += '&startDate=' + context.query.startDate;
-            if (context.query.endDate) empURL += '&endDate=' + context.query.endDate;
           } else if (context.query.degree == 1) {
             educURL += '?';
             if (context.query.unitId) educURL += 'unitId=' + context.query.unitId;
-            if (context.query.startDate) educURL += '&startDate=' + context.query.startDate;
-            if (context.query.endDate) educURL += '&endDate=' + context.query.endDate;
           }
+        }
+
+        if (context.query.accomplishment == 1) {
+          if (context.query.startDate) accompURL += '&startDate=' + context.query.startDate;
+          if (context.query.endDate) accompURL += '&endDate=' + context.query.endDate;
+        } else if (context.query.employment == 1) {
+          if (context.query.startDate) empURL += '&startDate=' + context.query.startDate;
+          if (context.query.endDate) empURL += '&endDate=' + context.query.endDate;
+        } else if (context.query.degree == 1) {
+          if (context.query.startDate) educURL += '&startDate=' + context.query.startDate;
+          if (context.query.endDate) educURL += '&endDate=' + context.query.endDate;
         }
 
         const approval = await fetch(approvalURL, header);
@@ -2244,7 +2233,7 @@ async function getServerSideProps(context) {
         roleAssignmentList = roleAssignmentList.result;
 
         if (data.role == 2) {
-          if (roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true;
+          if (roleAssignmentList && roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true;
         } else if (data.role == 3 && roleAssignmentList) {
           roleAssignmentFlag = true;
         }
@@ -2265,7 +2254,7 @@ async function getServerSideProps(context) {
       data,
       personalInfo: personalInfo.result,
       approvalList: approvalList,
-      accompList,
+      accompList: accompList,
       empList,
       educList: educList || null,
       roleAssignmentFlag,

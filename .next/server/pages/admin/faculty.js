@@ -52,10 +52,11 @@ function BasicInfo(props) {
       "aria-labelledby": "personal-info-tab",
       className: "jsx-216710277" + " " + "tab-pane fade show active",
       children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_basic_info_personal_info__WEBPACK_IMPORTED_MODULE_3__/* .default */ .Z, {
-        facultyFlag: false,
-        clerkFlag: true,
+        editable: true,
+        role: props.data.role,
         token: props.token.user,
-        positions: props.positionsList
+        positions: props.positionsList,
+        hasDisabledFields: false
       })
     }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
       id: "216710277",

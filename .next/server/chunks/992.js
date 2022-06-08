@@ -185,13 +185,12 @@ class LicensureExamForm extends (external_react_default()).Component {
             className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "LicensureExamProof[]",
-              className: "jsx-371132353" + " " + "required-label",
+              className: "jsx-371132353",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
-              name: "proof",
-              required: true
+              name: "proof"
             })]
           })]
         }), /*#__PURE__*/jsx_runtime_.jsx("br", {
@@ -369,7 +368,7 @@ function LicensureExam(props) {
           children: [/*#__PURE__*/jsx_runtime_.jsx("td", {
             children: props.children[key].examName
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
-            children: props.children[key].rank == 0 ? 'N/A' : props.children[key].rank
+            children: props.children[key].rank == 0 || props.children[key].rank == null ? 'N/A' : props.children[key].rank
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
             children: props.children[key].examDate
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
@@ -402,7 +401,7 @@ function LicensureExam(props) {
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
             children: props.children[key].approverRemarks || 'None'
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
-            children: [props.facultyFlag && !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            children: [props.editable && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-group",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -422,7 +421,7 @@ function LicensureExam(props) {
                 },
                 children: "Delete"
               })]
-            }), !props.facultyFlag && !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            }), props.approver && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-grp",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -478,6 +477,16 @@ function LicensureExam(props) {
             rank: ''
           }));
         }
+
+        if (props.children[key].proof) {
+          setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+            proof: props.children[key].proof
+          }));
+        } else {
+          setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+            proof: 'None'
+          }));
+        }
       }
     });
   }
@@ -516,13 +525,13 @@ function LicensureExam(props) {
               children: "Status"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Approver Remarks"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+            }), (props.editable || props.approver) && /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Action"
             })]
           }), content]
         })
       })
-    }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("div", {
+    }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("div", {
       children: /*#__PURE__*/jsx_runtime_.jsx(licensure_exam_form, {
         token: props.token
       })
@@ -650,9 +659,9 @@ function LicensureExam(props) {
                   className: "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                     className: "form-group",
-                    children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
+                    children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("label", {
                       htmlFor: "LicensureExamProofUpdate",
-                      children: " Proof "
+                      children: [" Add/Edit Proof [Uploaded: ", currData.proof, "] "]
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       type: "file",
                       className: "form-control-file",
@@ -672,7 +681,6 @@ function LicensureExam(props) {
                 }), /*#__PURE__*/jsx_runtime_.jsx("button", {
                   type: "submit",
                   className: "btn btn-primary",
-                  "data-dismiss": "modal",
                   disabled: isSubmitting,
                   onClick: () => {
                     $('#editLicensureExam').modal('toggle');
@@ -715,7 +723,7 @@ function LicensureExam(props) {
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "modal-body",
             children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("p", {
-              children: " Are you sure you want to delete this education information? "
+              children: " Are you sure you want to delete this licensure exam information? "
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "modal-footer",
@@ -1118,14 +1126,13 @@ class PublicServiceAccomplishmentForm extends (external_react_default()).Compone
             className: "jsx-371132353" + " " + "form-group col-md-2",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicServiceAccomplishmentProof[]",
-              className: "jsx-371132353" + " " + "required-label",
+              className: "jsx-371132353",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof",
-              required: true
+              id: "proof"
             })]
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -1394,8 +1401,8 @@ function PublicServiceAccomplishment(props) {
             children: props.children[key].status
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
             children: props.children[key].approverRemarks || 'None'
-          }), !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
-            children: [props.facultyFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
+            children: [props.editable && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-group",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -1415,7 +1422,7 @@ function PublicServiceAccomplishment(props) {
                 },
                 children: "Delete"
               })]
-            }), !props.facultyFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            }), props.approver && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-grp",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -1479,8 +1486,8 @@ function PublicServiceAccomplishment(props) {
             children: props.children[key].status
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
             children: props.children[key].approverRemarks || 'None'
-          }), !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
-            children: [props.facultyFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
+            children: [props.editable && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-group",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -1500,7 +1507,7 @@ function PublicServiceAccomplishment(props) {
                 },
                 children: "Delete"
               })]
-            }), !props.facultyFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            }), props.approver && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-grp",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -1564,8 +1571,8 @@ function PublicServiceAccomplishment(props) {
             children: props.children[key].status
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
             children: props.children[key].approverRemarks || 'None'
-          }), !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
-            children: [props.facultyFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
+            children: [props.editable && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-group",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -1585,7 +1592,7 @@ function PublicServiceAccomplishment(props) {
                 },
                 children: "Delete"
               })]
-            }), !props.facultyFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            }), props.approver && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-grp",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -1649,8 +1656,8 @@ function PublicServiceAccomplishment(props) {
             children: props.children[key].status
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
             children: props.children[key].approverRemarks || 'None'
-          }), !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
-            children: [props.facultyFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
+            children: [props.editable && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-group",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -1670,7 +1677,7 @@ function PublicServiceAccomplishment(props) {
                 },
                 children: "Delete"
               })]
-            }), !props.facultyFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            }), props.approver && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-grp",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -1718,6 +1725,16 @@ function PublicServiceAccomplishment(props) {
             endDate: ''
           }));
         }
+
+        if (props.children[key].proof) {
+          setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+            proof: props.children[key].proof
+          }));
+        } else {
+          setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+            proof: 'None'
+          }));
+        }
       }
     });
   }
@@ -1762,7 +1779,7 @@ function PublicServiceAccomplishment(props) {
                 children: "Status"
               }), /*#__PURE__*/jsx_runtime_.jsx("th", {
                 children: "Approver Remarks"
-              }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+              }), (props.editable || props.approver) && /*#__PURE__*/jsx_runtime_.jsx("th", {
                 children: "Action"
               })]
             }), upm ? upm : /*#__PURE__*/jsx_runtime_.jsx("td", {
@@ -1801,7 +1818,7 @@ function PublicServiceAccomplishment(props) {
                 children: "Status"
               }), /*#__PURE__*/jsx_runtime_.jsx("th", {
                 children: "Approver Remarks"
-              }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+              }), (props.editable || props.approver) && /*#__PURE__*/jsx_runtime_.jsx("th", {
                 children: "Action"
               })]
             }), pro ? pro : /*#__PURE__*/jsx_runtime_.jsx("td", {
@@ -1838,7 +1855,7 @@ function PublicServiceAccomplishment(props) {
                 children: "Status"
               }), /*#__PURE__*/jsx_runtime_.jsx("th", {
                 children: "Approver Remarks"
-              }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+              }), (props.editable || props.approver) && /*#__PURE__*/jsx_runtime_.jsx("th", {
                 children: "Action"
               })]
             }), nat ? nat : /*#__PURE__*/jsx_runtime_.jsx("td", {
@@ -1875,7 +1892,7 @@ function PublicServiceAccomplishment(props) {
                 children: "Status"
               }), /*#__PURE__*/jsx_runtime_.jsx("th", {
                 children: "Approver Remarks"
-              }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+              }), (props.editable || props.approver) && /*#__PURE__*/jsx_runtime_.jsx("th", {
                 children: "Action"
               })]
             }), wor ? wor : /*#__PURE__*/jsx_runtime_.jsx("td", {
@@ -1888,7 +1905,7 @@ function PublicServiceAccomplishment(props) {
           })
         })
       })]
-    }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("div", {
+    }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("div", {
       children: /*#__PURE__*/jsx_runtime_.jsx(public_service_accomplishment_form, {
         token: props.token
       })
@@ -2031,9 +2048,9 @@ function PublicServiceAccomplishment(props) {
                   className: "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                     className: "form-group",
-                    children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
+                    children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("label", {
                       htmlFor: "PublicServiceAccomplishmentProofUpdate",
-                      children: " Proof "
+                      children: [" Add/Edit Proof [Uploaded: ", currData.proof, "] "]
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       type: "file",
                       className: "form-control-file",
@@ -2055,7 +2072,7 @@ function PublicServiceAccomplishment(props) {
                   className: "btn btn-primary",
                   disabled: isSubmitting,
                   onClick: () => {
-                    $('#editPublicService').modal('toggle');
+                    $('#editPublicService').modal('hide');
                   },
                   children: "Save changes"
                 })]
@@ -2428,13 +2445,19 @@ async function addPublication(formData, token) {
           }
         }
 
+        if (formData.get('url') == '') {
+          formData.delete('url');
+        }
+
+        formData.append('facultyId', facultyId);
+        formData.append('status', 'Pending');
         let proof = formData.get('proof');
         const response = await external_axios_default()({
           method: 'POST',
           url: "http://localhost:3001/api" + '/faculty/accomplishment/add/publication',
           data: formData,
           headers: {
-            'Content-Type': 'multipart/form-data',
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
           }
         });
@@ -2598,14 +2621,13 @@ class PublicationForm extends (external_react_default()).Component {
             className: "jsx-371132353" + " " + "form-group col-md-3",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "PublicationProof[]",
-              className: "jsx-371132353" + " " + "required-label",
+              className: "jsx-371132353",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof",
-              required: true
+              id: "proof"
             })]
           })]
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -2851,11 +2873,24 @@ function Publication(props) {
       let pub = props.children[key].faculty_publishers;
       let dpsmauth = [];
       pub.forEach(auth => {
-        let link = props.facultyFlag ? "/faculty/view/" + auth.facultyId : "/admin/" + auth.facultyId;
-        dpsmauth.push( /*#__PURE__*/jsx_runtime_.jsx("a", {
-          href: link,
-          children: auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', '
-        }));
+        let link;
+        let name = auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', ';
+
+        if (auth.facultyId == props.facultyId || props.role == 1) {
+          dpsmauth.push(name);
+        } else if (props.role == 5) {
+          link = "/admin/" + auth.facultyId;
+          dpsmauth.push( /*#__PURE__*/jsx_runtime_.jsx("a", {
+            href: link,
+            children: name
+          }));
+        } else if (props.role == 2 || props.role == 3) {
+          link = "/faculty/view/" + auth.facultyId;
+          dpsmauth.push( /*#__PURE__*/jsx_runtime_.jsx("a", {
+            href: link,
+            children: name
+          }));
+        }
       });
       return /*#__PURE__*/(0,jsx_runtime_.jsxs)("tr", {
         children: [/*#__PURE__*/jsx_runtime_.jsx("td", {
@@ -2884,7 +2919,7 @@ function Publication(props) {
                     children: "Download"
                   }), /*#__PURE__*/jsx_runtime_.jsx("a", {
                     className: "btn btn-info",
-                    href: "https://localhost:3001/uploads/" + pub[auth].proof,
+                    href: "http://localhost:3001/" + pub[auth].proof,
                     style: {
                       color: 'white'
                     },
@@ -2912,7 +2947,7 @@ function Publication(props) {
             }
           })
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
-          children: [props.facultyFlag && !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          children: [props.editable && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "btn-group",
             children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
               className: "btn btn-info",
@@ -2932,7 +2967,7 @@ function Publication(props) {
               },
               children: "Delete"
             })]
-          }), !props.facultyFlag && !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+          }), props.approver && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "btn-grp",
             children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
               className: "btn btn-info",
@@ -2980,23 +3015,50 @@ function Publication(props) {
   async function setKey(x) {
     await Object.keys(props.children).map(async key => {
       if (props.children[key].publicationId == x) {
+        let tempProof = '';
         await props.children[key].faculty_publishers.forEach(async e => {
+          if (e.facultyId == props.facultyId) {
+            if (e.proof) {
+              tempProof = e.proof;
+            } else {
+              tempProof = null;
+            }
+          }
+
           await authors.forEach(async (fp, index) => {
             if (fp.value == e.facultyId) {
               await faculty_publishers.push(fp);
             }
           });
         });
-        let temp = {
-          citation: props.children[key].citation,
-          faculty_publishers: faculty_publishers,
-          nonFacultyAuthors: props.children[key].nonFacultyAuthors,
-          publicationDate: props.children[key].publicationDate,
-          publicationId: props.children[key].publicationId,
-          title: props.children[key].title,
-          url: props.children[key].url,
-          og_auth: faculty_publishers
-        };
+        let temp;
+
+        if (tempProof) {
+          temp = {
+            citation: props.children[key].citation,
+            faculty_publishers: faculty_publishers,
+            nonFacultyAuthors: props.children[key].nonFacultyAuthors,
+            publicationDate: props.children[key].publicationDate,
+            publicationId: props.children[key].publicationId,
+            title: props.children[key].title,
+            url: props.children[key].url,
+            og_auth: faculty_publishers,
+            proof: tempProof
+          };
+        } else {
+          temp = {
+            citation: props.children[key].citation,
+            faculty_publishers: faculty_publishers,
+            nonFacultyAuthors: props.children[key].nonFacultyAuthors,
+            publicationDate: props.children[key].publicationDate,
+            publicationId: props.children[key].publicationId,
+            title: props.children[key].title,
+            url: props.children[key].url,
+            og_auth: faculty_publishers,
+            proof: 'None'
+          };
+        }
+
         await setData(temp);
       }
     });
@@ -3058,14 +3120,14 @@ function Publication(props) {
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               className: "jsx-3325321127",
               children: "Approver Remarks"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+            }), (props.editable || props.approver) && /*#__PURE__*/jsx_runtime_.jsx("th", {
               className: "jsx-3325321127",
               children: "Action"
             })]
           }), content]
         })
       })
-    }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("div", {
+    }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("div", {
       className: "jsx-3325321127",
       children: /*#__PURE__*/jsx_runtime_.jsx(publication_form, {
         faculty: props.faculty,
@@ -3250,10 +3312,10 @@ function Publication(props) {
                   className: "jsx-3325321127" + " " + "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                     className: "jsx-3325321127" + " " + "form-group",
-                    children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
+                    children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("label", {
                       htmlFor: "PublicationProofUpdate",
                       className: "jsx-3325321127",
-                      children: " Proof "
+                      children: [" Add/Edit Proof [Uploaded: ", currData.proof, "] "]
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       type: "file",
                       className: "form-control-file",
@@ -3273,7 +3335,7 @@ function Publication(props) {
                   type: "submit",
                   disabled: isSubmitting,
                   onClick: () => {
-                    $('#editPublication').modal('toggle');
+                    $('#editPublication').modal('hide');
                   },
                   className: "jsx-3325321127" + " " + "btn btn-primary",
                   children: "Save changes"
@@ -3663,6 +3725,8 @@ async function addResearch(formData, token) {
           }
         }
 
+        formData.append('facultyId', facultyId);
+        formData.append('status', 'Pending');
         let proof = formData.get('proof');
         const response = await external_axios_default()({
           method: 'POST',
@@ -3829,14 +3893,13 @@ class ResearchGrantForm extends (external_react_default()).Component {
             className: "jsx-371132353" + " " + "form-group col-md-6",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "ResearchProof[]",
-              className: "jsx-371132353" + " " + "required-label",
+              className: "jsx-371132353",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof",
-              required: true
+              id: "proof"
             })]
           })]
         }), /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -4156,11 +4219,24 @@ function ResearchGrant(props) {
       let res = props.children[key].faculty_researchers;
       let dpsmauth = [];
       res.forEach(auth => {
-        let link = props.facultyFlag ? "/faculty/view/" + auth.facultyId : "/admin/" + auth.facultyId;
-        dpsmauth.push( /*#__PURE__*/jsx_runtime_.jsx("a", {
-          href: link,
-          children: auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', '
-        }));
+        let link;
+        let name = auth.faculty_personal_info.firstName + ' ' + auth.faculty_personal_info.lastName + ', ';
+
+        if (auth.facultyId == props.facultyId || props.role == 1) {
+          dpsmauth.push(name);
+        } else if (props.role == 5) {
+          link = "/admin/" + auth.facultyId;
+          dpsmauth.push( /*#__PURE__*/jsx_runtime_.jsx("a", {
+            href: link,
+            children: name
+          }));
+        } else if (props.role == 2 || props.role == 3) {
+          link = "/faculty/view/" + auth.facultyId;
+          dpsmauth.push( /*#__PURE__*/jsx_runtime_.jsx("a", {
+            href: link,
+            children: name
+          }));
+        }
       });
 
       if (props.children[key].researchId != null) {
@@ -4225,7 +4301,7 @@ function ResearchGrant(props) {
               }
             })
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
-            children: [props.facultyFlag && !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            children: [props.editable && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-group",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -4245,7 +4321,7 @@ function ResearchGrant(props) {
                 },
                 children: "Delete"
               })]
-            }), !props.facultyFlag && !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            }), props.approver && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-grp",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -4294,27 +4370,58 @@ function ResearchGrant(props) {
   async function setKey(x) {
     await Object.keys(props.children).map(async key => {
       if (props.children[key].researchId == x) {
+        let tempProof = '';
         await props.children[key].faculty_researchers.forEach(async e => {
+          if (e.facultyId == props.facultyId) {
+            if (e.proof) {
+              tempProof = e.proof;
+            } else {
+              tempProof = null;
+            }
+          }
+
           await authors.forEach(async (fp, index) => {
             if (fp.value == e.facultyId) {
               await faculty_researchers.push(fp);
             }
           });
         });
-        let temp = {
-          researchId: props.children[key].researchId,
-          researchName: props.children[key].researchName,
-          granter: props.children[key].granter,
-          amount: props.children[key].amount,
-          projectedStart: props.children[key].projectedStart,
-          projectedEnd: props.children[key].projectedEnd,
-          actualStart: props.children[key].actualStart,
-          actualEnd: props.children[key].actualEnd,
-          researchProgress: props.children[key].researchProgress,
-          nonFacultyResearchers: props.children[key].nonFacultyResearchers,
-          faculty_researchers: faculty_researchers,
-          og_auth: faculty_researchers
-        };
+        let temp;
+
+        if (tempProof) {
+          temp = {
+            researchId: props.children[key].researchId,
+            researchName: props.children[key].researchName,
+            granter: props.children[key].granter,
+            amount: props.children[key].amount,
+            projectedStart: props.children[key].projectedStart,
+            projectedEnd: props.children[key].projectedEnd,
+            actualStart: props.children[key].actualStart,
+            actualEnd: props.children[key].actualEnd,
+            researchProgress: props.children[key].researchProgress,
+            nonFacultyResearchers: props.children[key].nonFacultyResearchers,
+            faculty_researchers: faculty_researchers,
+            og_auth: faculty_researchers,
+            proof: tempProof
+          };
+        } else {
+          temp = {
+            researchId: props.children[key].researchId,
+            researchName: props.children[key].researchName,
+            granter: props.children[key].granter,
+            amount: props.children[key].amount,
+            projectedStart: props.children[key].projectedStart,
+            projectedEnd: props.children[key].projectedEnd,
+            actualStart: props.children[key].actualStart,
+            actualEnd: props.children[key].actualEnd,
+            researchProgress: props.children[key].researchProgress,
+            nonFacultyResearchers: props.children[key].nonFacultyResearchers,
+            faculty_researchers: faculty_researchers,
+            og_auth: faculty_researchers,
+            proof: 'None'
+          };
+        }
+
         await setData(temp);
       }
     });
@@ -4370,13 +4477,13 @@ function ResearchGrant(props) {
               children: "Status"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Approver Remarks"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+            }), (props.editable || props.approver) && /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Action"
             })]
           }), content]
         })
       })
-    }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("div", {
+    }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("div", {
       children: /*#__PURE__*/jsx_runtime_.jsx(research_grant_form, {
         faculty: props.faculty,
         token: props.token
@@ -4603,9 +4710,9 @@ function ResearchGrant(props) {
                   className: "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                     className: "form-group",
-                    children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
+                    children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("label", {
                       htmlFor: "ResearchProofUpdate",
-                      children: " Proof "
+                      children: [" Add/Edit Proof [Uploaded: ", currData.proof, "] "]
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       type: "file",
                       className: "form-control-file",
@@ -5099,14 +5206,13 @@ class TrainingSeminarForm extends (external_react_default()).Component {
             className: "jsx-371132353" + " " + "form-group col-md-4",
             children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
               htmlFor: "TrainingSeminarProof[]",
-              className: "jsx-371132353" + " " + "required-label",
+              className: "jsx-371132353",
               children: " Proof "
             }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
               type: "file",
               className: "form-control-file",
               name: "proof",
-              id: "proof",
-              required: true
+              id: "proof"
             })]
           })]
         }), /*#__PURE__*/jsx_runtime_.jsx("br", {
@@ -5324,7 +5430,7 @@ function TrainingSeminar(props) {
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
             children: props.children[key].approverRemarks || 'None'
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("td", {
-            children: [props.facultyFlag && !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            children: [props.editable && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-group",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -5344,7 +5450,7 @@ function TrainingSeminar(props) {
                 },
                 children: "Delete"
               })]
-            }), !props.facultyFlag && !props.viewFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+            }), props.approver && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-grp",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
                 className: "btn btn-info",
@@ -5400,6 +5506,16 @@ function TrainingSeminar(props) {
             endDate: ''
           }));
         }
+
+        if (props.children[key].proof) {
+          setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+            proof: props.children[key].proof
+          }));
+        } else {
+          setData(currData => _objectSpread(_objectSpread({}, currData), {}, {
+            proof: 'None'
+          }));
+        }
       }
     });
   }
@@ -5442,13 +5558,13 @@ function TrainingSeminar(props) {
               children: "Status"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Approver Remarks"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+            }), (props.editable || props.approver) && /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Action"
             })]
           }), content]
         })
       })
-    }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("div", {
+    }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("div", {
       children: /*#__PURE__*/jsx_runtime_.jsx(training_seminar_form, {
         token: props.token
       })
@@ -5605,9 +5721,9 @@ function TrainingSeminar(props) {
                   className: "form-row",
                   children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
                     className: "form-group",
-                    children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
+                    children: [/*#__PURE__*/(0,jsx_runtime_.jsxs)("label", {
                       htmlFor: "TrainingSeminarProofUpdate",
-                      children: " Proof "
+                      children: [" Add/Edit Proof [Uploaded: ", currData.proof, "] "]
                     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Field, {
                       type: "file",
                       className: "form-control-file",

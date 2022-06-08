@@ -277,6 +277,14 @@ function Table ({columns, data}){
 	 aggregate: 'count',
          Aggregated: ({ value }) => `${value} Entries`,
 	 Filter: SelectColumnFilter
+       },
+       {
+         Header: 'Start Date',
+   Footer: '',
+         accessor: 'col5',
+   aggregate: 'count',
+         Aggregated: ({ value }) => `${value} Entries`,
+   Filter: SelectColumnFilter
        }
      ],
      []

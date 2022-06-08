@@ -7,8 +7,7 @@ import PublicServiceAccomplishment from '../../components/faculty/accomplishment
 import LicensureExam from '../../components/faculty/accomplishments/licensure-exam'
 import TrainingSeminar from '../../components/faculty/accomplishments/training-seminar'
 import ResearchGrant from '../../components/faculty/accomplishments/research-grant'
-import Evaluation from '../../components/unit-head/faculty-list/evaluation/evaluation'
-import FacultyLoader from '../../components/faculty/faculty-load/faculty-load'
+import FacultyLoader from '../../components/faculty/faculty-load/faculty-load-table'
 
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
@@ -20,7 +19,6 @@ function BasicInfo(props) {
             <div className="nav nav-tabs nav-justified flex-column flex-md-row" id="nav-tab-main" role="tablist">
 				<a className="nav-item nav-link active" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">Basic Information</a>
 				<a className="nav-item nav-link" id="accomplishments-tab" data-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">Accomplishments</a>
-				<a className="nav-item nav-link" id="evaluation-tab" data-toggle="tab" href="#evaluation" role="tab" aria-controls="evaluation" aria-selected="false">Peer Evaluation</a>
 				<a className="nav-item nav-link" id="faculty-load-tab" data-toggle="tab" href="#faculty-load" role="tab" aria-controls="faculty-load" aria-selected="false">Faculty Load</a>
             </div>
             <div className="tab-content" id="nav-tabContent-main">
@@ -34,7 +32,7 @@ function BasicInfo(props) {
                     </nav>
 				    <div className="tab-content" id="nav-tabContent-basic-info">
                         <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                            <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position}>{ props.personalInfo }</PersonalInfo>
+                            <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} hasDisabledFields={true}>{ props.personalInfo }</PersonalInfo>
                         </div>
                         <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
                             <Education name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position}>{ props.education }</Education>
@@ -71,11 +69,8 @@ function BasicInfo(props) {
                         </div>
                     </div>
                 </div>
-                <div className="tab-pane fade" id="evaluation" role="tabpanel" aria-labelledby="evaluation-tab">
-                    <Evaluation />
-                </div>
                 <div className="tab-pane fade" id="faculty-load" role="tabpanel" aria-labelledby="faculty-load-tab">
-                    <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.pathFacultyId} role={props.data.role}>{ props.facultyLoad }</FacultyLoader>
+                    <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.pathFacultyId} role={props.data.role} editClass = {false}>{ props.facultyLoad }</FacultyLoader>
                 </div>
             </div>
 

@@ -193,7 +193,8 @@ function Publication(props){
                         publicationId: props.children[key].publicationId,
                         title: props.children[key].title,
                         url: props.children[key].url,
-                        og_auth: faculty_publishers
+                        og_auth: faculty_publishers,
+                        proof: 'None'
                     }    
                 }
                 

@@ -861,11 +861,7 @@ async function assignDeptChair(incomingDeptChair, token) {
     return err;
   }
 }
-// EXTERNAL MODULE: external "react-select"
-var external_react_select_ = __webpack_require__(724);
-var external_react_select_default = /*#__PURE__*/__webpack_require__.n(external_react_select_);
 ;// CONCATENATED MODULE: ./components/dept-chair/role-assignment/assign-dept-chair.js
-
 
 
 
@@ -876,10 +872,10 @@ function AssignDeptChair(props) {
 
   if (props.children != null) {
     faculty = Object.keys(props.children).map(key => {
-      return {
-        value: props.children[key].facultyId,
-        label: props.children[key].lastName + ', ' + props.children[key].firstName
-      };
+      return /*#__PURE__*/jsx_runtime_.jsx("option", {
+        value: props.children[key].userId,
+        children: props.children[key].lastName + ', ' + props.children[key].firstName
+      }, props.children[key].userId);
     });
   }
 
@@ -901,12 +897,15 @@ function AssignDeptChair(props) {
         children: [/*#__PURE__*/jsx_runtime_.jsx("label", {
           htmlFor: "deptChair",
           children: " Select New Department Chair "
-        }), /*#__PURE__*/jsx_runtime_.jsx((external_react_select_default()), {
-          className: "col-md-8",
+        }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("select", {
+          className: "form-control",
           name: "deptChair",
           id: "deptChair",
-          options: faculty,
-          required: true
+          required: true,
+          children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
+            value: "0",
+            children: "-- SELECT FACULTY --"
+          }, "0"), faculty]
         })]
       }), /*#__PURE__*/jsx_runtime_.jsx("button", {
         className: "btn btn-danger",
@@ -957,11 +956,10 @@ function AssignDeptChair(props) {
             }), /*#__PURE__*/jsx_runtime_.jsx("button", {
               type: "button",
               className: "btn btn-danger",
-              "data-dismiss": "modal",
               onClick: async () => {
                 let alert = document.getElementById("deptchairalert");
                 $('#assignDeptChair').modal('toggle');
-                let incomingDeptChair = document.getElementById('deptChair').value;
+                let incomingDeptChair = document.getElementById('deptChair').value; // console.log(incomingDeptChair)
 
                 if (incomingDeptChair != 0) {
                   let res = await assignDeptChair(incomingDeptChair, props.token);
@@ -970,9 +968,9 @@ function AssignDeptChair(props) {
                     alert.className = "alert alert-success";
                     alert.style = "visibility: visible";
                     alert.innerHTML = res.message;
-                    $("#deptchairalert").fadeTo(5000, 500).slideUp(500, function () {
+                    $("#deptchairalert").fadeTo(3000, 500).slideUp(500, function () {
                       $("#deptchairalert").slideUp(500);
-                      router_default().push('/login', '/login');
+                      window.location.href = '/login';
                     });
                   } else {
                     alert.className = "alert alert-danger";
@@ -1293,14 +1291,6 @@ module.exports = require("react");;
 
 "use strict";
 module.exports = require("react-cookie");;
-
-/***/ }),
-
-/***/ 724:
-/***/ (function(module) {
-
-"use strict";
-module.exports = require("react-select");;
 
 /***/ }),
 

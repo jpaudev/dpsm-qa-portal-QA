@@ -629,6 +629,22 @@ async function addFaculty(data, token) {
 
   try {
     if (token) {
+      if (data.unit == "") {
+        data.unit = 1;
+      }
+
+      if (data.category == "") {
+        data.category = "Permanent";
+      }
+
+      if (data.status == "") {
+        data.status = "Full-time";
+      }
+
+      if (data.employmentPosition == "") {
+        data.employmentPosition = 1;
+      }
+
       let url = "http://localhost:3001/api" + '/user/add';
       let header = {
         headers: {
@@ -695,6 +711,7 @@ async function addFaculty(data, token) {
 
 
 function PersonalInfo(props) {
+  console.log(props.hasDisabledFields);
   let FacultyDetails;
   let name;
   let dependents;
@@ -719,7 +736,7 @@ function PersonalInfo(props) {
       religion: props.children.religion,
       emergencyContactPerson: props.children.emergencyContactPerson,
       emergencyContactNumber: props.children.emergencyContactNumber,
-      suffix: props.children.suffix,
+      suffix: props.children.suffix || '',
       faculty_dependents: props.children.faculty_dependents,
       philosophy: props.children.teachingPhilosophy
     };
@@ -738,7 +755,7 @@ function PersonalInfo(props) {
             type: "text",
             name: "name",
             defaultValue: props.children.faculty_dependents[key].name,
-            disabled: !props.facultyFlag && !props.clerkFlag,
+            disabled: !props.editable,
             required: true
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -752,7 +769,7 @@ function PersonalInfo(props) {
             type: "date",
             name: "birthDate",
             defaultValue: props.children.faculty_dependents[key].birthDate,
-            disabled: !props.facultyFlag && !props.clerkFlag,
+            disabled: !props.editable,
             required: true
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -766,7 +783,7 @@ function PersonalInfo(props) {
             type: "text",
             name: "relationship",
             defaultValue: props.children.faculty_dependents[key].relationship,
-            disabled: !props.facultyFlag && !props.clerkFlag,
+            disabled: !props.editable,
             required: true
           })]
         })]
@@ -821,7 +838,7 @@ function PersonalInfo(props) {
     }), /*#__PURE__*/jsx_runtime_.jsx(external_formik_.Formik, {
       initialValues: FacultyDetails,
       onSubmit: async (values, token) => {
-        if (props.clerkFlag) {
+        if (props.role == 5) {
           res = await addFaculty(values, props.token);
         } else {
           res = await updateFaculty(values, props.token);
@@ -842,7 +859,7 @@ function PersonalInfo(props) {
           $("#alert").slideUp(500);
         });
 
-        if (props.clerkFlag) {
+        if (props.role == 5) {
           router_default().push('/admin/faculty');
 
           if (res.success == true) {
@@ -865,7 +882,7 @@ function PersonalInfo(props) {
           id: "alert",
           className: "jsx-2179700803",
           children: values.message
-        }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("h6", {
+        }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("h6", {
           className: "jsx-2179700803",
           children: "Required"
         }), /*#__PURE__*/jsx_runtime_.jsx("br", {
@@ -883,7 +900,7 @@ function PersonalInfo(props) {
               type: "text",
               name: "firstName",
               defaultValue: FacultyDetails.firstName,
-              disabled: !props.facultyFlag && !props.clerkFlag,
+              disabled: !props.editable,
               required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -897,7 +914,7 @@ function PersonalInfo(props) {
               type: "text",
               name: "middleName",
               defaultValue: FacultyDetails.middleName,
-              disabled: !props.facultyFlag && !props.clerkFlag
+              disabled: !props.editable
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "jsx-2179700803" + " " + "form-group col-md-3 required",
@@ -910,7 +927,7 @@ function PersonalInfo(props) {
               type: "text",
               name: "lastName",
               defaultValue: FacultyDetails.lastName,
-              disabled: !props.facultyFlag && !props.clerkFlag,
+              disabled: !props.editable,
               required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -924,7 +941,7 @@ function PersonalInfo(props) {
               type: "text",
               name: "suffix",
               defaultValue: FacultyDetails.suffix,
-              disabled: !props.facultyFlag && !props.clerkFlag
+              disabled: !props.editable
             })]
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -940,7 +957,7 @@ function PersonalInfo(props) {
               className: "form-control",
               name: "gender",
               defaultValue: FacultyDetails.gender,
-              disabled: !props.clerkFlag,
+              disabled: props.hasDisabledFields,
               required: true,
               children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "Male",
@@ -963,7 +980,7 @@ function PersonalInfo(props) {
               type: "date",
               name: "dateOfBirth",
               defaultValue: FacultyDetails.dateOfBirth,
-              disabled: !props.clerkFlag,
+              disabled: props.hasDisabledFields,
               required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -977,7 +994,7 @@ function PersonalInfo(props) {
               type: "text",
               name: "placeOfBirth",
               defaultValue: FacultyDetails.placeOfBirth,
-              disabled: !props.clerkFlag,
+              disabled: props.hasDisabledFields,
               required: true
             })]
           })]
@@ -994,7 +1011,7 @@ function PersonalInfo(props) {
             type: "text",
             name: "presentAddress",
             defaultValue: FacultyDetails.presentAddress,
-            disabled: !props.facultyFlag && !props.clerkFlag,
+            disabled: !props.editable,
             required: true
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -1008,7 +1025,7 @@ function PersonalInfo(props) {
             type: "text",
             name: "permanentAddress",
             defaultValue: FacultyDetails.permanentAddress,
-            disabled: !props.facultyFlag && !props.clerkFlag,
+            disabled: !props.editable,
             required: true
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -1024,7 +1041,7 @@ function PersonalInfo(props) {
               className: "form-control",
               name: "civilStatus",
               defaultValue: FacultyDetails.civilStatus,
-              disabled: !props.facultyFlag && !props.clerkFlag,
+              disabled: !props.editable,
               required: true,
               children: [/*#__PURE__*/jsx_runtime_.jsx("option", {
                 value: "single",
@@ -1059,7 +1076,7 @@ function PersonalInfo(props) {
               type: "text",
               name: "religion",
               defaultValue: FacultyDetails.religion,
-              disabled: !props.facultyFlag && !props.clerkFlag
+              disabled: !props.editable
             })]
           })]
         }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -1076,7 +1093,7 @@ function PersonalInfo(props) {
               name: "landline",
               pattern: "[0-9]{10}",
               defaultValue: FacultyDetails.landline,
-              disabled: !props.facultyFlag && !props.clerkFlag
+              disabled: !props.editable
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "jsx-2179700803" + " " + "form-group col-md-3 required",
@@ -1090,7 +1107,7 @@ function PersonalInfo(props) {
               name: "mobile",
               pattern: "[0]{1}[9]{1}[0-9]{9}",
               defaultValue: FacultyDetails.mobile,
-              disabled: !props.facultyFlag && !props.clerkFlag,
+              disabled: !props.editable,
               required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -1104,7 +1121,7 @@ function PersonalInfo(props) {
               type: "email",
               name: "email",
               defaultValue: FacultyDetails.email,
-              disabled: !props.facultyFlag && !props.clerkFlag
+              disabled: !props.editable
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
             className: "jsx-2179700803" + " " + "form-group col-md-3",
@@ -1133,7 +1150,7 @@ function PersonalInfo(props) {
               type: "text",
               name: "emergencyContactPerson",
               defaultValue: FacultyDetails.emergencyContactPerson,
-              disabled: !props.facultyFlag && !props.clerkFlag,
+              disabled: !props.editable,
               required: true
             })]
           }), /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
@@ -1148,7 +1165,7 @@ function PersonalInfo(props) {
               name: "emergencyContactNumber",
               pattern: "[0]{1}[9]{1}[0-9]{9}",
               defaultValue: FacultyDetails.emergencyContactNumber,
-              disabled: !props.facultyFlag && !props.clerkFlag,
+              disabled: !props.editable,
               required: true
             })]
           })]
@@ -1166,13 +1183,13 @@ function PersonalInfo(props) {
               rows: 5,
               name: "philosophy",
               defaultValue: FacultyDetails.philosophy,
-              disabled: !props.facultyFlag && !props.clerkFlag,
+              disabled: !props.editable,
               required: true
             })]
           })
         }), /*#__PURE__*/jsx_runtime_.jsx("br", {
           className: "jsx-2179700803"
-        }), props.clerkFlag && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+        }), props.role == 5 && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
           className: "jsx-2179700803",
           children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {
             className: "jsx-2179700803"
@@ -1300,12 +1317,12 @@ function PersonalInfo(props) {
               })]
             })]
           })]
-        }), props.facultyFlag && /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), props.editable && props.role != 5 && /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
           disabled: isSubmitting,
           className: "jsx-2179700803" + " " + "btn btn-primary col-md-12",
           children: " Update "
-        }), props.clerkFlag && /*#__PURE__*/jsx_runtime_.jsx("button", {
+        }), props.role == 5 && /*#__PURE__*/jsx_runtime_.jsx("button", {
           type: "submit",
           disabled: isSubmitting,
           className: "jsx-2179700803" + " " + "btn btn-primary col-md-12",
@@ -1901,7 +1918,7 @@ function WorkExperience(props) {
             })]
           }), /*#__PURE__*/jsx_runtime_.jsx("td", {
             children: props.children[key].description
-          }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("td", {
+          }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("td", {
             children: /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
               className: "btn-grp",
               children: [/*#__PURE__*/jsx_runtime_.jsx("a", {
@@ -2006,17 +2023,17 @@ function WorkExperience(props) {
               children: "End Date"
             }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Description"
-            }), !props.viewFlag && /*#__PURE__*/jsx_runtime_.jsx("th", {
+            }), /*#__PURE__*/jsx_runtime_.jsx("th", {
               children: "Action"
             })]
           }, "headers"), content]
         })
       })
-    }), !props.viewFlag && props.role != 5 && /*#__PURE__*/jsx_runtime_.jsx("div", {
+    }), props.editable && /*#__PURE__*/jsx_runtime_.jsx("div", {
       children: /*#__PURE__*/jsx_runtime_.jsx(work_exp_form, {
         token: props.token
       })
-    }), props.role && props.role == 5 && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
+    }), props.role == 5 && /*#__PURE__*/(0,jsx_runtime_.jsxs)("div", {
       children: [/*#__PURE__*/jsx_runtime_.jsx("hr", {}), /*#__PURE__*/jsx_runtime_.jsx("h3", {
         align: "center",
         children: " Add Faculty Employment "
