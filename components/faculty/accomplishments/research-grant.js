@@ -215,7 +215,8 @@ function ResearchGrant(props){
                         researchProgress: props.children[key].researchProgress,
                         nonFacultyResearchers: props.children[key].nonFacultyResearchers,
                         faculty_researchers: faculty_researchers,
-                        og_auth: faculty_researchers
+                        og_auth: faculty_researchers,
+                        proof: 'None'
                     }
                 }
                 

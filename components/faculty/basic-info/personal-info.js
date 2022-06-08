@@ -33,7 +33,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
             religion: props.children.religion,
             emergencyContactPerson: props.children.emergencyContactPerson,
             emergencyContactNumber: props.children.emergencyContactNumber,
-            suffix: props.children.suffix,
+            suffix: props.children.suffix || '',
             faculty_dependents: props.children.faculty_dependents,
             philosophy: props.children.teachingPhilosophy
         }

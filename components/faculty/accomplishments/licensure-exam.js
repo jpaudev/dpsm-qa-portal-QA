@@ -31,7 +31,7 @@ function LicensureExam(props) {
                 return (
                     <tr key = {props.children[key].licenseId}>
                         <td>{props.children[key].examName}</td>
-                        <td>{props.children[key].rank == 0 ? 'N/A' : props.children[key].rank}</td>
+                        <td>{props.children[key].rank == 0 || props.children[key].rank == null ? 'N/A' : props.children[key].rank}</td>
                         <td>{props.children[key].examDate}</td>
                         <td>{props.children[key].licenseNumber}</td>
                         <td>

@@ -68,8 +68,8 @@ class PublicServiceAccomplishmentForm extends React.Component{
                             <Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
                         </div>
                         <div className = "form-group col-md-2">
-                            <label htmlFor = "PublicServiceAccomplishmentProof[]" className = "required-label"> Proof </label>
-                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof" required />
+                            <label htmlFor = "PublicServiceAccomplishmentProof[]"> Proof </label>
+                            <Field type = "file" className = "form-control-file" name = "proof" id = "proof"  />
                         </div>
                     </div>
                     <div className = "form-row">
