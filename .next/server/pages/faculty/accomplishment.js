@@ -200,7 +200,7 @@ function Accomplishments(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: true,
+          editable: true,
           children: props.publicService
         })
       }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -214,7 +214,8 @@ function Accomplishments(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: true,
+          role: props.data.role,
+          editable: true,
           facultyId: props.data.facultyId,
           children: props.publications
         })
@@ -228,7 +229,7 @@ function Accomplishments(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: true,
+          editable: true,
           children: props.trainingSeminar
         })
       }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -241,7 +242,7 @@ function Accomplishments(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: true,
+          editable: true,
           children: props.licensureExam
         })
       }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -255,7 +256,8 @@ function Accomplishments(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: true,
+          role: props.data.role,
+          editable: true,
           facultyId: props.data.facultyId,
           children: props.researchGrant
         })

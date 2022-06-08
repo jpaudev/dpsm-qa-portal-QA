@@ -18,7 +18,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(styled_jsx_style__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_layout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7752);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(1664);
-/* harmony import */ var _components_faculty_faculty_load_faculty_load__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(9187);
+/* harmony import */ var _components_faculty_faculty_load_faculty_load_table__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4689);
 /* harmony import */ var _components_name_display__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(1588);
 /* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9722);
 /* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_6__);
@@ -43,14 +43,14 @@ function FacultyLoad(props) {
     roleAssignmentFlag: props.roleAssignmentFlag,
     children: [/*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("br", {
       className: "jsx-4140694371"
-    }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_faculty_load_faculty_load__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
+    }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_faculty_load_faculty_load_table__WEBPACK_IMPORTED_MODULE_4__/* .default */ .Z, {
       name: props.data.name,
       token: props.token.user,
       unit: props.unit,
       position: props.position,
+      role: props.data.role,
       facultyId: props.data.facultyId,
-      facultyFlag: true,
-      clerkFlag: false,
+      editClass: true,
       children: props.facultyLoad
     }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx((styled_jsx_style__WEBPACK_IMPORTED_MODULE_1___default()), {
       id: "4140694371",
@@ -236,7 +236,7 @@ module.exports = require("styled-jsx/style");;
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = __webpack_require__.X(0, [664,287,752,429,187], function() { return __webpack_exec__(4856); });
+var __webpack_exports__ = __webpack_require__.X(0, [664,287,752,429,689], function() { return __webpack_exec__(4856); });
 module.exports = __webpack_exports__;
 
 })();

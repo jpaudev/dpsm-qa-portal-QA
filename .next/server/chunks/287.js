@@ -243,15 +243,6 @@ function Sidebar(props) {
               className: "jsx-1836586042" + " " + "list-group-item list-group-item-action list-group-item-success",
               children: "Faculty Load"
             })
-          }), !staff && /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_2__.default, {
-            href: {
-              pathname: "/faculty/evaluation"
-            },
-            children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-              id: router.pathname === "/faculty/evaluation" ? "active" : "inactive",
-              className: "jsx-1836586042" + " " + "list-group-item list-group-item-action list-group-item-success ",
-              children: "Peer Evaluation"
-            })
           }), !staff && !faculty && /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_2__.default, {
             href: {
               pathname: "/faculty/view/all"
@@ -305,33 +296,6 @@ function Sidebar(props) {
             })
           })]
         })]
-      }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-        className: "jsx-1836586042" + " " + "list-group col-12",
-        children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_2__.default, {
-          href: "/student",
-          children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-            className: "jsx-1836586042" + " " + "list-group-item list-group-item-action list-group-item-secondary",
-            children: "Student"
-          })
-        })
-      }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-        className: "jsx-1836586042" + " " + "list-group col-12",
-        children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_2__.default, {
-          href: "/alumni",
-          children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-            className: "jsx-1836586042" + " " + "list-group-item list-group-item-action list-group-item-secondary",
-            children: "Alumni"
-          })
-        })
-      }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-        className: "jsx-1836586042" + " " + "list-group col-12",
-        children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_2__.default, {
-          href: "/department-activities",
-          children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-            className: "jsx-1836586042" + " " + "list-group-item list-group-item-action list-group-item-secondary",
-            children: "Department Activities"
-          })
-        })
       }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
         className: "jsx-1836586042" + " " + "list-group col-12",
         children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(next_link__WEBPACK_IMPORTED_MODULE_2__.default, {

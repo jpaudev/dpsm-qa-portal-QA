@@ -25,12 +25,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_faculty_accomplishments_licensure_exam__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(4588);
 /* harmony import */ var _components_faculty_accomplishments_training_seminar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(3851);
 /* harmony import */ var _components_faculty_accomplishments_research_grant__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(9535);
-/* harmony import */ var _components_unit_head_faculty_list_evaluation_evaluation__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(4252);
-/* harmony import */ var _components_faculty_faculty_load_faculty_load__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(9187);
-/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(9722);
-/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_13__);
-/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(4750);
-
+/* harmony import */ var _components_faculty_faculty_load_faculty_load_table__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(4689);
+/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(9722);
+/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(4750);
 
 
 
@@ -76,15 +74,6 @@ function BasicInfo(props) {
           "aria-selected": "false",
           className: "jsx-4228111268" + " " + "nav-item nav-link",
           children: "Accomplishments"
-        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
-          id: "evaluation-tab",
-          "data-toggle": "tab",
-          href: "#evaluation",
-          role: "tab",
-          "aria-controls": "evaluation",
-          "aria-selected": "false",
-          className: "jsx-4228111268" + " " + "nav-item nav-link",
-          children: "Peer Evaluation"
         }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("a", {
           id: "faculty-load-tab",
           "data-toggle": "tab",
@@ -150,6 +139,7 @@ function BasicInfo(props) {
                 token: props.token.user,
                 unit: props.unit,
                 position: props.position,
+                hasDisabledFields: true,
                 children: props.personalInfo
               })
             }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -162,8 +152,6 @@ function BasicInfo(props) {
                 token: props.token.user,
                 unit: props.unit,
                 position: props.position,
-                facultyFlag: false,
-                viewFlag: true,
                 children: props.education
               })
             }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -177,7 +165,6 @@ function BasicInfo(props) {
                 unit: props.unit,
                 position: props.position,
                 employment: props.employment,
-                viewFlag: true,
                 role: props.data.role,
                 facultyId: props.pathFacultyId,
                 positionsList: props.positionsList,
@@ -256,8 +243,6 @@ function BasicInfo(props) {
                 token: props.token.user,
                 unit: props.unit,
                 position: props.position,
-                facultyFlag: false,
-                viewFlag: true,
                 children: props.publicService
               })
             }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -271,9 +256,8 @@ function BasicInfo(props) {
                 token: props.token.user,
                 unit: props.unit,
                 position: props.position,
-                facultyFlag: false,
                 facultyId: props.pathFacultyId,
-                viewFlag: true,
+                role: props.data.role,
                 children: props.publications
               })
             }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -286,8 +270,6 @@ function BasicInfo(props) {
                 token: props.token.user,
                 unit: props.unit,
                 position: props.position,
-                facultyFlag: false,
-                viewFlag: true,
                 children: props.trainingSeminar
               })
             }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -300,8 +282,6 @@ function BasicInfo(props) {
                 token: props.token.user,
                 unit: props.unit,
                 position: props.position,
-                facultyFlag: false,
-                viewFlag: true,
                 children: props.licensureExam
               })
             }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
@@ -315,33 +295,25 @@ function BasicInfo(props) {
                 token: props.token.user,
                 unit: props.unit,
                 position: props.position,
-                facultyFlag: false,
                 facultyId: props.pathFacultyId,
-                viewFlag: true,
+                role: props.data.role,
                 children: props.researchGrant
               })
             })]
           })]
         }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
-          id: "evaluation",
-          role: "tabpanel",
-          "aria-labelledby": "evaluation-tab",
-          className: "jsx-4228111268" + " " + "tab-pane fade",
-          children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_unit_head_faculty_list_evaluation_evaluation__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, {})
-        }), /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx("div", {
           id: "faculty-load",
           role: "tabpanel",
           "aria-labelledby": "faculty-load-tab",
           className: "jsx-4228111268" + " " + "tab-pane fade",
-          children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_faculty_load_faculty_load__WEBPACK_IMPORTED_MODULE_12__/* .default */ .Z, {
+          children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_faculty_load_faculty_load_table__WEBPACK_IMPORTED_MODULE_11__/* .default */ .Z, {
             name: props.name,
             token: props.token.user,
             unit: props.unit,
             position: props.position,
-            facultyFlag: false,
             facultyId: props.pathFacultyId,
-            clerkFlag: true,
-            viewFlag: true,
+            role: props.data.role,
+            editClass: false,
             children: props.facultyLoad
           })
         })]
@@ -354,7 +326,7 @@ function BasicInfo(props) {
 }
 
 async function getServerSideProps(context) {
-  const token = (0,_helpers__WEBPACK_IMPORTED_MODULE_14__/* .parseCookies */ .j)(context.req);
+  const token = (0,_helpers__WEBPACK_IMPORTED_MODULE_13__/* .parseCookies */ .j)(context.req);
   let personalInfo;
   let name;
   let unit;
@@ -373,7 +345,7 @@ async function getServerSideProps(context) {
   let facultyLoad;
 
   if (context.res) {
-    if ((0,_helpers__WEBPACK_IMPORTED_MODULE_14__/* .isExpired */ .B)(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
+    if ((0,_helpers__WEBPACK_IMPORTED_MODULE_13__/* .isExpired */ .B)(token.user) || Object.keys(token).length === 0 && token.constructor === Object) {
       return {
         redirect: {
           destination: '/login',
@@ -381,7 +353,7 @@ async function getServerSideProps(context) {
         }
       };
     } else {
-      data = jsonwebtoken__WEBPACK_IMPORTED_MODULE_13___default().decode(token.user);
+      data = jsonwebtoken__WEBPACK_IMPORTED_MODULE_12___default().decode(token.user);
 
       if (context.params.facultyId) {
         let facultyId = context.params.facultyId;
@@ -581,7 +553,7 @@ module.exports = require("styled-jsx/style");;
 var __webpack_require__ = require("../../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-var __webpack_exports__ = __webpack_require__.X(0, [664,287,752,429,939,798,992,147,187,252], function() { return __webpack_exec__(6840); });
+var __webpack_exports__ = __webpack_require__.X(0, [664,287,752,429,939,798,992,147,689], function() { return __webpack_exec__(6840); });
 module.exports = __webpack_exports__;
 
 })();

@@ -157,7 +157,7 @@ function Approval(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: false,
+          approver: true,
           facultyId: props.pathFacultyId,
           children: props.education
         })
@@ -171,7 +171,7 @@ function Approval(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: false,
+          approver: true,
           facultyId: props.pathFacultyId,
           children: props.publicService
         })
@@ -186,7 +186,7 @@ function Approval(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: false,
+          approver: true,
           facultyId: props.pathFacultyId,
           children: props.publications
         })
@@ -200,7 +200,7 @@ function Approval(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: false,
+          approver: true,
           facultyId: props.pathFacultyId,
           children: props.trainingSeminar
         })
@@ -214,7 +214,7 @@ function Approval(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: false,
+          approver: true,
           facultyId: props.pathFacultyId,
           children: props.licensureExam
         })
@@ -224,11 +224,12 @@ function Approval(props) {
         "aria-labelledby": "research-grant-tab",
         className: "jsx-3469655085" + " " + "tab-pane fade",
         children: /*#__PURE__*/react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx(_components_faculty_accomplishments_research_grant__WEBPACK_IMPORTED_MODULE_8__/* .default */ .Z, {
+          faculty: props.faculty,
           name: props.name,
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: false,
+          approver: true,
           facultyId: props.pathFacultyId,
           children: props.researchGrant
         })

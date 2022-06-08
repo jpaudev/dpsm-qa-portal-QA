@@ -155,8 +155,10 @@ function BasicInfo(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: true,
+          role: props.data.role,
+          editable: true,
           email: props.data.upemail,
+          hasDisabledFields: true,
           children: props.personalInfo
         })
       }), /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -169,7 +171,8 @@ function BasicInfo(props) {
           token: props.token.user,
           unit: props.unit,
           position: props.position,
-          facultyFlag: true,
+          role: props.data.role,
+          editable: true,
           children: props.education
         })
       }), /*#__PURE__*/jsx_runtime_.jsx("div", {
@@ -183,6 +186,8 @@ function BasicInfo(props) {
           unit: props.unit,
           position: props.position,
           employment: props.employment,
+          role: props.data.role,
+          editable: true,
           children: props.workExperience
         })
       })]
