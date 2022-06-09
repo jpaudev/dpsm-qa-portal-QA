@@ -77,6 +77,9 @@ function BasicInfo(props) {
             </nav>
 
     <style jsx>{`
+    		a.nav-item{
+			color:#000;
+		}
 		#nav-tab-main a.nav-item:focus{
 			background-color:#78b6c2;
 		}
