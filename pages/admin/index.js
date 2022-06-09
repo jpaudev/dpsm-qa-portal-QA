@@ -11,6 +11,7 @@ function FacultyList(props) {
 			<br />
 			<h2 align="center">Faculty List</h2>
             <Link href = "/admin/faculty"><button type="button" className="btn btn-primary float-right">Add Faculty</button></Link>
+	    <Link href = "/admin/generate-reports"><button type="button" className="btn btn-primary float-right">Generate Reports</button></Link>
             <br />
             <Faculty path="admin" role={props.data.role} token={props.token.user}>{props.facultyList}</Faculty>
         </Layout>
