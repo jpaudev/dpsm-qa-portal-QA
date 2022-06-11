@@ -69,8 +69,8 @@ class LicensureExamForm extends React.Component{
                                 <Field className = "form-control" type = "text" name = "licenseNumber" placeholder = "Input licensure number" required />
                             </div>
                             <div className = "form-group col-md-2">
-                                <label htmlFor = "LicensureExamProof[]" className = "required-label"> Proof </label>
-                                <Field type = "file" className = "form-control-file" name = "proof" required />
+                                <label htmlFor = "LicensureExamProof[]"> Proof </label>
+                                <Field type = "file" className = "form-control-file" name = "proof" />
                             </div>
                         </div>
                         <br />

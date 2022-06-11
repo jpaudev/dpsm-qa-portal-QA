@@ -74,8 +74,8 @@ class ResearchGrantForm extends React.Component{
 								<Field className = "form-control" type = "text" name = "amount" placeholder = "Input amount" required />
 							</div>
 							<div className = "form-group col-md-6">
-	                            				<label htmlFor = "ResearchProof[]" className = "required-label"> Proof </label>
-	                            				<Field type = "file" className = "form-control-file" name = "proof" id = "proof" required />
+	                            				<label htmlFor = "ResearchProof[]"> Proof </label>
+	                            				<Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
 	                       				 </div>
 						</div>
 						<div className = "form-row">

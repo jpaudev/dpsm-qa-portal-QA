@@ -26,11 +26,14 @@ function Publication(props){
         faculty_publishers: [],
         og_auth: []
     })
-    let authors = Object.keys(props.faculty).map(key => {
-        return(
-            {value: props.faculty[key].facultyId, label: props.faculty[key].lastName + ', ' + props.faculty[key].firstName}
-        );
-    });
+    let authors 
+    if(props.faculty) {
+    authors = Object.keys(props.faculty).map(key => {
+            return(
+                {value: props.faculty[key].facultyId, label: props.faculty[key].lastName + ', ' + props.faculty[key].firstName}
+            );
+        });
+    }    
     let faculty_publishers = []
     
     if(props.children != null) { 
@@ -190,7 +193,8 @@ function Publication(props){
                         publicationId: props.children[key].publicationId,
                         title: props.children[key].title,
                         url: props.children[key].url,
-                        og_auth: faculty_publishers
+                        og_auth: faculty_publishers,
+                        proof: 'None'
                     }    
                 }
                 

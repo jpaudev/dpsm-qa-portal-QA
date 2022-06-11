@@ -30,11 +30,14 @@ function ResearchGrant(props){
         faculty_researchers: [],
         og_auth: []
     })
-    let authors = Object.keys(props.faculty).map(key => {
-        return(
-            {value: props.faculty[key].facultyId, label: props.faculty[key].lastName + ', ' + props.faculty[key].firstName}
-        );
-    });
+    let authors
+    if(props.faculty) {
+        authors = Object.keys(props.faculty).map(key => {
+            return(
+                {value: props.faculty[key].facultyId, label: props.faculty[key].lastName + ', ' + props.faculty[key].firstName}
+            );
+        });
+    }
     let faculty_researchers = []
 
     if(props.children != null) {
@@ -212,7 +215,8 @@ function ResearchGrant(props){
                         researchProgress: props.children[key].researchProgress,
                         nonFacultyResearchers: props.children[key].nonFacultyResearchers,
                         faculty_researchers: faculty_researchers,
-                        og_auth: faculty_researchers
+                        og_auth: faculty_researchers,
+                        proof: 'None'
                     }
                 }
                 

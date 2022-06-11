@@ -75,8 +75,8 @@ class TrainingSeminarForm extends React.Component{
                                 <Field className = "form-control" type = "text" name = "remarks" id = "remarks" placeholder = "Input remarks" />
                             </div>
                             <div className = "form-group col-md-4">
-                                <label htmlFor = "TrainingSeminarProof[]" className = "required-label"> Proof </label>
-                                <Field type = "file" className = "form-control-file" name = "proof" id = "proof" required />
+                                <label htmlFor = "TrainingSeminarProof[]"> Proof </label>
+                                <Field type = "file" className = "form-control-file" name = "proof" id = "proof" />
                             </div>
                         </div>
                         <br />

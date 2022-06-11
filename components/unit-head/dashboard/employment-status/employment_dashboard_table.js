@@ -281,7 +281,16 @@ function Table ({columns, data}){
          Aggregated: ({ value }) => `${value} Entries`,
 	 Filter: SelectColumnFilter,
 	 disableSortBy: true
-       }
+       },
+       {
+        Header: 'Start Date',
+  Footer: '',
+        accessor: 'col5',
+  aggregate: 'count',
+        Aggregated: ({ value }) => `${value} Entries`,
+  Filter: SelectColumnFilter,
+  disableSortBy: true
+      }
      ],
      []
    )
