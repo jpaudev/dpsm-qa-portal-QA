@@ -27,6 +27,7 @@ function ResetPassword(props){
                 <center><img src="/dpsm-seal.png" width="115" height="115" alt="DPSM-QA-Portal" /></center>
                 <br />
                 <br />
+		<br />
             </div>
             <div className = "jumbotron" id = "reset-password">
                 <Formik
