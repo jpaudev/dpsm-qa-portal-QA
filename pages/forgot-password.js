@@ -25,6 +25,8 @@ function ForgotPassword(props){
 		<center><img src="/dpsm-seal.png" width="115" height="115" alt="DPSM-QA-Portal" /></center>
 		<br />
 		<br />
+		<br />
+		<br />
 	</div>
 	<div className = "jumbotron" id = "recovery-email">
 		<Formik
