@@ -27,6 +27,7 @@ function ForgotPassword(props){
 		<br />
 		<br />
 		<br />
+		<br />
 	</div>
 	<div className = "jumbotron" id = "recovery-email">
 		<Formik
