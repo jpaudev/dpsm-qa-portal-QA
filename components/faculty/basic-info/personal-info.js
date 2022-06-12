@@ -83,8 +83,8 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
             employmentPosition: '1',
             startDate: '',
             philosophy: '',
-            status: '',
-            category: ''
+            status: 'Full-time',
+            category: 'Permanent'
         }
 
         props.positions.forEach(key => {
@@ -127,7 +127,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
                     if(res.success == true) {
                         window.setTimeout(function(){
                             window.location.href = "/admin";
-                        }, 5000);
+                        }, 3000);
                     }
                 }
                 else {

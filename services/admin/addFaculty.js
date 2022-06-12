@@ -6,16 +6,16 @@ export default async function addFaculty(data, token) {
 	
 	try {
 	    if (token) {	      
-	    	if(data.unit == "") {
+	    	if(data.unit == "" || data.unit == null) {
 				data.unit = 1
 			}
-	    	if(data.category == "") {
+	    	if(data.category == "" || data.category == null) {
 				data.category = "Permanent"
 			}
-			if(data.status == "") {
+			if(data.status == "" || data.status == null) {
 				data.status = "Full-time"
 			}
-			if(data.employmentPosition == "") {
+			if(data.employmentPosition == "" || data.employmentPosition == null) {
 				data.employmentPosition = 1
 			}
 	        let url = process.env.API_URL + '/user/add';
