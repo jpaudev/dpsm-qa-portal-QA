@@ -20,7 +20,7 @@ function GenerateReports(props) {
 					onSubmit={async (values) => {
 					try {
 						if(values.reports.length > 0) {
-							generateReports(props.token.user, values.reports)
+							generateReports(props.token.user, values.reports, null)
 							values.reports = []
 						}
 						else {

@@ -5,6 +5,7 @@ import { parseCookies, isExpired } from "../../helpers"
 import AccomplishmentCount from '../../components/unit-head/dashboard/accomplishment-count/accomplishment-count'
 import EmploymentStatus from '../../components/unit-head/dashboard/employment-status/employment-status'
 import DegreeCount from '../../components/unit-head/dashboard/degree/degree'
+import Link from 'next/Link'
 
 function Dashboard(props) { 
 	if(props.data.role == 1) {
@@ -15,7 +16,7 @@ function Dashboard(props) {
 
 	                <div className="container">
                         <br />
-                        <button className = "btn btn-info">Download All Faculty Information</button>
+                        <Link href = {{ pathname: "/faculty/generate-reports"}}><button className = "btn btn-info">Download All Faculty Information</button></Link>
                         <br />
 	                    <nav>
             			<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
