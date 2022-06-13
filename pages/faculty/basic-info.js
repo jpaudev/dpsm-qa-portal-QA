@@ -91,8 +91,7 @@ function BasicInfo(props) {
                     permanent: false,
                 },
             }
-        }
-        else {
+        } else {
             data = jwt.decode(token.user)
         
             let facultyId = data.facultyId

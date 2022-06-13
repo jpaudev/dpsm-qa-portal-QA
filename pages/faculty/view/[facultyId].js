@@ -7,7 +7,6 @@ import PublicServiceAccomplishment from '../../../components/faculty/accomplishm
 import LicensureExam from '../../../components/faculty/accomplishments/licensure-exam'
 import TrainingSeminar from '../../../components/faculty/accomplishments/training-seminar'
 import ResearchGrant from '../../../components/faculty/accomplishments/research-grant'
-import Evaluation from '../../../components/unit-head/faculty-list/evaluation/evaluation'
 import FacultyLoader from '../../../components/faculty/faculty-load/faculty-load-table'
 
 import jwt from 'jsonwebtoken'
