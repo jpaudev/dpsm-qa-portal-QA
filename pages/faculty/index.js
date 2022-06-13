@@ -5,7 +5,7 @@ import { parseCookies, isExpired } from "../../helpers"
 import AccomplishmentCount from '../../components/unit-head/dashboard/accomplishment-count/accomplishment-count'
 import EmploymentStatus from '../../components/unit-head/dashboard/employment-status/employment-status'
 import DegreeCount from '../../components/unit-head/dashboard/degree/degree'
-import Link from 'next/Link'
+import Link from 'next/link'
 
 function Dashboard(props) { 
 	if(props.data.role == 1) {
