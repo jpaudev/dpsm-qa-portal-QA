@@ -288,8 +288,7 @@ function Table ({columns, data}){
         accessor: 'col5',
   aggregate: 'count',
         Aggregated: ({ value }) => `${value} Entries`,
-  Filter: SelectColumnFilter,
-  disableSortBy: true
+  disableFilters: true,
       }
      ],
      []
