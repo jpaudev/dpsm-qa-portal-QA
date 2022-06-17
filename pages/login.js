@@ -31,6 +31,8 @@ function Login() {
 		<center><img src="/dpsm-seal.png" width="142" height="115" alt="DPSM-QA-Portal" /></center>
 		<br />
 		<br />
+		<br />
+		<br />
 	</div>
 	<div className = "jumbotron" id = "login">
           <Formik
