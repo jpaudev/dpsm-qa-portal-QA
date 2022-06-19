@@ -7,15 +7,11 @@ export default async function updateResearch(formData, token) {
 	try {
 	    if (token) {
 	        let url = process.env.API_URL + '/faculty/accomplishment/' + facultyId;
-		    let header = {
-		        headers: {
-		            'Authorization': 'Bearer ' + token
-		        }
-		    }
+
 		    if(formData.get('proof') == "") {
 				formData.delete('proof')
 			}
-
+			
 		    const response = await axios({
 			    method: 'PUT',
 			    url: url + '/research-grant',
@@ -29,7 +25,6 @@ export default async function updateResearch(formData, token) {
 		    		bodData = new FormData()
 		    		bodData.append('facultyId', pair[1])
 		    		bodData.append('researchId', formData.get('researchId'))
-		    		bodData.append('status', 'Pending')
 
 		    		const auth = await axios({
 			        	method: 'POST',
@@ -37,19 +32,6 @@ export default async function updateResearch(formData, token) {
 					    data: bodData,
 					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 			        })
-		    	}
-            }
-
-            for(var pair of formData.entries()) {
-		    	if(pair[0] == 'rem_res') {
-		    		const auth = await axios.delete(process.env.API_URL + "/faculty/accomplishment/" + pair[1] + "/researcher", {
-						headers: {
-							Authorization: `Bearer ${token}`
-						},
-						data: {
-							researchId: `${formData.get('researchId')}`
-						}
-					})
 		    	}
             }
 

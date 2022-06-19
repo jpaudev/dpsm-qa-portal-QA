@@ -9,18 +9,21 @@ export default async function addPublication(formData, token) {
 			try {
 				let authors = []
 				for (var pair of formData.entries()) {
-                    if(pair[0] == 'PublicationAuthorDPSM[]' && pair[1] != facultyId) {
+                    if(pair[0] == 'PublicationAuthorDPSM[]') {
                     	authors.push(pair[1])
                     }
                 }
                 
+				if(authors[0] == "") authors[0] = facultyId.toString()
+				else authors.push(facultyId.toString())
+				formData.delete('PublicationAuthorDPSM[]')
                 if(formData.get('url') == ''){
                 	formData.delete('url')	
                 }
                 formData.append('facultyId', facultyId)
-				formData.append('status', 'Pending')
-
-               	let proof = formData.get('proof')
+				
+				formData.append('dpsmAuthors', JSON.stringify(authors))
+               	
 				const response = await axios({
 				    method: 'POST',
 				    url: process.env.API_URL + '/faculty/accomplishment/add/publication',
@@ -28,27 +31,6 @@ export default async function addPublication(formData, token) {
 				    headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`}
 			    })
 				
-				let bodData = new FormData()
-		    	bodData.append('facultyId', facultyId)
-		    	bodData.append('publicationId', response.data.result.publicationId)
-				bodData.append('proof', proof)
-		        const res = await axios({
-		        	method: 'POST',
-				    url: process.env.API_URL + '/faculty/accomplishment/add/publisher',
-				    data: bodData,
-				    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
-		        })
-		        bodData.delete('proof')
-
-				for(var value of authors) {
-		        	bodData.set('facultyId', value)
-		        	const auth = await axios({
-			        	method: 'POST',
-					    url: process.env.API_URL + '/faculty/accomplishment/add/publisher',
-					    data: bodData,
-					    headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
-			        })
-		        }
 				return response.data
 			} catch (err) {
 				console.error(err)
