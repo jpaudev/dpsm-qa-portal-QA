@@ -1,8 +1,12 @@
 import Router from 'next/router'
 import assignDeptChair from '../../../services/faculty/assignments/assignDeptChair'
+import { useCookies } from "react-cookie";
 
 function AssignDeptChair(props) {
     let faculty
+
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
     if(props.children != null) {
         faculty = Object.keys(props.children).map(key => 
             {
@@ -68,6 +72,7 @@ function AssignDeptChair(props) {
     
                                     $("#deptchairalert").fadeTo(3000, 500).slideUp(500, function(){
                                         $("#deptchairalert").slideUp(500);
+                                        removeCookie("user", {path:'/'});
                                         window.location.href='/login'
                                     });
                                 } else {

@@ -2,7 +2,6 @@ import Link from 'next/link'
 import { MenuItem } from '@material-ui/core'
 import { Formik, Form, Field } from "formik"
 import Router from 'next/router'
-import PersonalInfoDependents from './personal-info-dependents'
 import NameDisplay from '../../../components/name-display'
 import { parseCookies } from "../../../helpers"
 
@@ -236,8 +235,6 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
                             <Field className = "form-control" component = "textarea" rows = {5} name = "philosophy" defaultValue = { FacultyDetails.philosophy } disabled={!props.editable} required />
                         </div>
                     </div>
-                    {/*<h5 align = "center"> Dependents </h5>*/}
-                    {/*{dependents}*/}
                     <br />
                     
                     { props.role==5 &&
@@ -291,7 +288,6 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
 
                     { props.editable && props.role!=5 && <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}> Update </button> }
                     { props.role==5 && <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}> Add Faculty </button> }
-                    {/*{ props.facultyFlag && <PersonalInfoDependents /> }*/}
                     <br />
                 </Form>
             )}

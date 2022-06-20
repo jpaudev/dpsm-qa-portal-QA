@@ -23,7 +23,11 @@ export default async function updatePublication(formData, token) {
 		    for(var pair of formData.entries()) {
 		    	if(pair[0] == 'add_auth') {
 		    		bodData = new FormData()
-		    		bodData.append('facultyId', pair[1])
+		    		if(pair[1] == 0) {
+		    			bodData.append('facultyId', facultyId)
+		    		} else {
+		    			bodData.append('facultyId', pair[1])
+		    		}
 		    		bodData.append('publicationId', formData.get('publicationId'))
 
 		    		const auth = await axios({

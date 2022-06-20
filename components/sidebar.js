@@ -9,7 +9,7 @@ function Sidebar(props) {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     function handleRemoveCookie() {
-        removeCookie("user");
+        removeCookie("user", {path:'/'});
     }
 
     let faculty = true

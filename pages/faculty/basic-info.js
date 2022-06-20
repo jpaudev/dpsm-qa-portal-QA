@@ -3,7 +3,6 @@ import PersonalInfo from '../../components/faculty/basic-info/personal-info'
 import Education from '../../components/faculty/basic-info/education'
 import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
-import TeachingPhilosophy from '../../components/faculty/basic-info/teaching-philosophy'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
 
