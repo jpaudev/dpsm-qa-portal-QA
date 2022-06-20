@@ -78,6 +78,12 @@ function GenerateReports(props) {
 										&nbsp;Licensure Exams
 								</label>
 							</div>
+                            <div className = "form-check">
+								<Field type="checkbox" name="reports" value="education" />
+								<label class="form-check-label" for="education">
+										&nbsp;Education
+								</label>
+							</div>
 						</div>
 							
 						<br />
