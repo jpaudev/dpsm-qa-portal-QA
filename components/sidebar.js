@@ -9,7 +9,7 @@ function Sidebar(props) {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     function handleRemoveCookie() {
-        removeCookie("user");
+        removeCookie("user", {path:'/'});
     }
 
     let faculty = true
@@ -39,7 +39,6 @@ function Sidebar(props) {
                     { !staff && <Link href={{ pathname: "/faculty/basic-info" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/basic-info" ?  "active"  : "inactive" }>Basic Information</a></Link> }
                     { !staff && <Link href={{ pathname: "/faculty/accomplishment" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>Accomplishment</a></Link> }
                     { !staff && <Link href={{ pathname: "/faculty/faculty-load" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/faculty-load" ?  "active"  : "inactive" }>Faculty Load</a></Link> }
-                    {/* !staff && <Link href={{ pathname: "/faculty/evaluation" }}><a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/evaluation" ?  "active"  : "inactive" }>Peer Evaluation</a></Link> */}
                     { !staff && !faculty && <Link href={{ pathname: "/faculty/view/all" }}><a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/view/all" ?  "active"  : "inactive" }>Faculty List</a></Link> }
                     { !staff && !faculty && <Link href={{ pathname: "/faculty/approval" }}>
                         <a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" }> 
@@ -59,15 +58,6 @@ function Sidebar(props) {
                     </Link> }
                 </div>
                 </div>
-		{/*<div className="list-group col-12">
-                    <Link href="/student"><a className = "list-group-item list-group-item-action list-group-item-secondary">Student</a></Link>
-                </div>
-                <div className="list-group col-12">
-                    <Link href="/alumni"><a className = "list-group-item list-group-item-action list-group-item-secondary">Alumni</a></Link>
-                </div>
-                <div className="list-group col-12">
-                    <Link href="/department-activities"><a className = "list-group-item list-group-item-action list-group-item-secondary">Department Activities</a></Link>
-                </div>*/}
 		        <div className="list-group col-12">
                     <Link href="/login"><a className = "list-group-item list-group-item-action list-group-item-danger" onClick={handleRemoveCookie}>Log Out</a></Link>
                 </div>

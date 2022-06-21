@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import PublicationForm from './publication-form'
 import NameDisplay from '../../../components/name-display'
 import Router from 'next/router'
@@ -65,51 +64,34 @@ function Publication(props){
                     <td>{props.children[key].publicationDate}</td>
                     <td>{props.children[key].url}</td>
                     <td>{props.children[key].citation}</td>
-                    <td>
-                        {Object.keys(pub).map(auth => {
-                            if(pub[auth].facultyId == props.facultyId) {
-                                if(pub[auth].proof) {
-                                    return (
-                                        <div className = "btn-grp">
-                                            <button
-                                                type="button"
-                                                className="btn btn-primary"
-                                                onClick = {() => {
-                                                    let file = pub[auth].proof
-                                                    downloadProof(file, props.token)
-                                                }}
-                                            >
-                                                Download
-                                            </button>
-                                            <a
-                                                className ="btn btn-info"
-                                                href={process.env.UPLOADS_URL + pub[auth].proof}
-                                                style = {{ color: 'white' }}
-                                                target="_blank">
-                                                Preview
-                                            </a>
-                                        </div>
-                                    );
-                                } else {
-                                    return(<div>None</div>)
-                                }
-                            }
-                        })}
+                    <td>{
+                            props.children[key].proof && 
+                            <div className = "btn-grp">
+                                <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                    onClick = {() => {
+                                        let file = props.children[key].proof
+                                        downloadProof(file, props.token)
+                                    }}
+                                >
+                                    Download
+                                </button>
+                                <a
+                                    className ="btn btn-info"
+                                    href={process.env.UPLOADS_URL + props.children[key].proof}
+                                    style = {{ color: 'white' }}
+                                    target="_blank">
+                                    Preview
+                                </a>
+                            </div>
+                        }
+                        {
+                            !props.children[key].proof && <div>None</div>
+                        }
                     </td>
-                    <td>
-                        {Object.keys(pub).map(auth => {
-                            if(pub[auth].facultyId == props.facultyId) {
-                                return (pub[auth].status);
-                            }
-                        })}
-                    </td>
-                    <td>
-                        {Object.keys(pub).map(auth => {
-                            if(pub[auth].facultyId == props.facultyId) {
-                                return (pub[auth].approverRemarks || 'None');
-                            }
-                        })}
-                    </td>
+                    <td>{props.children[key].status}</td>
+                    <td>{props.children[key].approverRemarks || 'None'}</td>
                     <td>
                     { props.editable &&
                         <div className = "btn-group">
@@ -156,47 +138,25 @@ function Publication(props){
     async function setKey(x) { 
         await Object.keys(props.children).map(async key => {
             if(props.children[key].publicationId == x) {
-                let tempProof = ''
+                let tempProof = props.children[key].proof
                 await props.children[key].faculty_publishers.forEach(async (e) => {
-                    if(e.facultyId == props.facultyId) {
-                        if(e.proof) {
-                            tempProof = e.proof
-                        } else {
-                            tempProof = null
-                        }
-                    }
                     await authors.forEach(async (fp, index) => {
                         if(fp.value == e.facultyId) {
                             await faculty_publishers.push(fp)
                         }
                     })
                 })
-                let temp
-                if(tempProof) {
-                    temp = {
-                        citation: props.children[key].citation,
-                        faculty_publishers: faculty_publishers,
-                        nonFacultyAuthors: props.children[key].nonFacultyAuthors,
-                        publicationDate: props.children[key].publicationDate,
-                        publicationId: props.children[key].publicationId,
-                        title: props.children[key].title,
-                        url: props.children[key].url,
-                        og_auth: faculty_publishers,
-                        proof: tempProof
-                    }
-                } else {
-                    temp = {
-                        citation: props.children[key].citation,
-                        faculty_publishers: faculty_publishers,
-                        nonFacultyAuthors: props.children[key].nonFacultyAuthors,
-                        publicationDate: props.children[key].publicationDate,
-                        publicationId: props.children[key].publicationId,
-                        title: props.children[key].title,
-                        url: props.children[key].url,
-                        og_auth: faculty_publishers,
-                        proof: 'None'
-                    }    
+                let temp = {
+                    citation: props.children[key].citation,
+                    faculty_publishers: faculty_publishers,
+                    nonFacultyAuthors: props.children[key].nonFacultyAuthors,
+                    publicationDate: props.children[key].publicationDate,
+                    publicationId: props.children[key].publicationId,
+                    title: props.children[key].title,
+                    url: props.children[key].url,
+                    og_auth: faculty_publishers
                 }
+                temp.proof = tempProof ? tempProof : 'None'
                 
                 await setData(temp)
             }
@@ -374,7 +334,7 @@ function Publication(props){
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+                        <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("publicationalert")
                             let res = await deletePublication(deletePub, props.token)
                             

@@ -23,7 +23,7 @@ export default async function approvePublication(formData, approveFlag, facultyI
 				let url = process.env.API_URL + '/faculty/accomplishment/' + facultyId;
 				const response = await axios({
 					method: 'PUT',
-					url: url + '/publisher',
+					url: url + '/publication',
 					data: formData,
 					headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 				})	

@@ -7,7 +7,6 @@ import PublicServiceAccomplishment from '../../../components/faculty/accomplishm
 import LicensureExam from '../../../components/faculty/accomplishments/licensure-exam'
 import TrainingSeminar from '../../../components/faculty/accomplishments/training-seminar'
 import ResearchGrant from '../../../components/faculty/accomplishments/research-grant'
-import Evaluation from '../../../components/unit-head/faculty-list/evaluation/evaluation'
 import FacultyLoader from '../../../components/faculty/faculty-load/faculty-load-table'
 
 import jwt from 'jsonwebtoken'
@@ -48,33 +47,37 @@ function ViewFaculty(props) {
     
                 </nav>
         <style jsx>{`
-            a.nav-item:focus{
-                background-color:#78b6c2;
-            }
-            a.nav-item:hover{
-                background-color:#78b6c2;
-            }
-            a.active{
-                background-color:#78b6c2;
-            }
-            a#basic-info-tab.active{
-                background-color:#78b6c2;
-            }
-            a#personal-info-tab.active{
-                background-color:#78b6c2;
-            }
-            a#public-service-accomplishment-tab.active{
-                background-color:#78b6c2;
-            }
-            nav{
-                background-color:#aaa;
-            }
-            nav#nav-tab-main{
-                background-color:#999;
-            }
-	    .tab-content{
-	    	background-color:#fff;
-	    }
+		a.nav-item{
+			color:#000;
+		}
+           	#nav-tab-main a.nav-item:focus{
+			background-color:#78b6c2;
+		}
+		#nav-tab-main a.nav-item:hover{
+			background-color:#78b6c2;
+		}
+		#nav-tab-main a.nav-item .active{
+			background-color:#78b6c2;
+		}
+		a.nav-item{
+			background-color: #aaa;
+		}
+		#nav-tabContent-main a.nav-item{
+			background-color: #78b6c2;
+		}
+		#nav-tabContent-main a.nav-item .active{
+			background-color: #5486b8;
+		}
+		#nav-tabContent-main a.nav-item:focus{
+			background-color:#5486b8;
+		}
+		#nav-tabContent-main a.nav-item:hover{
+			background-color:#5486b8;
+		}
+		.tab-pane.active
+		{
+			background-color: #fff;
+		}
         `}</style>
             </Layout>
         )

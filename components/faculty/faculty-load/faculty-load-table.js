@@ -243,7 +243,7 @@ function FacultyLoadTable(props) {
                         </div>
                         <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
-                        <button type="button" className="btn btn-danger" data-dismiss="modal" onClick = {async () => {
+                        <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("loadalert")
                             let res = await deleteFacultyLoad(deleteClass, props.token, props.facultyId)
                             if(res.success == true) { 

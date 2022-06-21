@@ -65,7 +65,7 @@ function Approval(props) {
                 </PublicServiceAccomplishment>
             </div>
     	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} approver={true} facultyId={props.pathFacultyId}>
+                <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} approver={true} facultyId={props.pathFacultyId} role={props.data.role}>
                     { props.publications }
                 </Publication>
             </div>

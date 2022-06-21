@@ -25,10 +25,12 @@ function Login() {
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
             </Head>
 	<div className = "jumbotron" id = "logo">
-		<h3> DPSM QA PORTAL </h3>
+		<h3> DPSM QA PORTAL <br /> <br /></h3>
 		<br />
 		<br />
 		<center><img src="/dpsm-seal.png" width="142" height="115" alt="DPSM-QA-Portal" /></center>
+		<br />
+		<br />
 		<br />
 		<br />
 	</div>
@@ -84,7 +86,7 @@ function Login() {
                 <label htmlFor="password">Password:</label>
                 <Field className = "form-control" type="password" id="password" name="password" />
 		            <br />
-		<a href = "#" data-toggle="modal" data-target="#forgot-password">Forgot Password?</a>
+		<Link href = "/forgot-password"><a href = "#">Forgot Password?</a></Link>
 		<br />
 		<br />
                 <button
@@ -99,36 +101,6 @@ function Login() {
             )}
           </Formik>
 	</div>
-
-	<div className="modal fade" id="forgot-password" tabIndex="-1" role="dialog" aria-labelledby="forgotPasswordLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title" id="forgotPasswordLabel">Forgot Password?</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div className="modal-body">
-			<p> Input the UP Mail account associated with your account for the DPSM QA Portal here. Clicking 'submit' will send an email containing your login credentials
-			for this application </p>
-                        <form>
-                            <hr />
-                            <div className = "form-row">
-                                <div className = "form-group">
-                                    <label htmlFor = "recovery-email" id = "recovery-email"> UP Mail Account </label>
-                                    <input type = "email" className = "form-control col-md-12" name = "recovery-email" placeholder = "Input UP Mail account" required />
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" className="btn btn-primary">Submit</button>
-                    </div>
-                    </div>
-                </div>
-            </div>
 	
 	<style jsx>{`
 		.d-flex{

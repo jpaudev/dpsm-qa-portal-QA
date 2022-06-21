@@ -1,10 +1,13 @@
 import Router from 'next/router'
 import comparePassword from '../services/faculty/change-password/comparePassword'
 import updatePassword from '../services/faculty/change-password/updatePassword'
+import { useCookies } from "react-cookie";
 
 function ChangePassword(props) { 
     let validated
     
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
     return (
         <div>
             <br />
@@ -72,6 +75,7 @@ function ChangePassword(props) {
     
                                     $("#changepassalert").fadeTo(5000, 500).slideUp(500, function(){
                                         $("#changepassalert").slideUp(500);
+                                        removeCookie("user", {path:'/'});
                                         Router.push('/login', '/login')
                                     });
                                 } else { 

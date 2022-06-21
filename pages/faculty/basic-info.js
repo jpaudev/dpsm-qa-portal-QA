@@ -3,7 +3,6 @@ import PersonalInfo from '../../components/faculty/basic-info/personal-info'
 import Education from '../../components/faculty/basic-info/education'
 import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
-import TeachingPhilosophy from '../../components/faculty/basic-info/teaching-philosophy'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
 
@@ -46,6 +45,9 @@ function BasicInfo(props) {
             </div>
             </div>
 	<style jsx>{`
+		a.nav-item{
+			color:#000;
+		}
 		a.nav-item:focus{
 			background-color:#78b6c2;
 		}
@@ -88,8 +90,7 @@ function BasicInfo(props) {
                     permanent: false,
                 },
             }
-        }
-        else {
+        } else {
             data = jwt.decode(token.user)
         
             let facultyId = data.facultyId

@@ -82,8 +82,8 @@ class EducationForm extends React.Component{
                             </div>
 
                             <div className = "form-group col-md-4">
-                                <label htmlFor = "MajorEducationalHistory[]" className = "required-label"> Major/Specialization </label>
-                                <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" required />
+                                <label htmlFor = "MajorEducationalHistory[]"> Major/Specialization </label>
+                                <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
                             </div>
                         </div>
                          <div className = "form-row">

@@ -8,7 +8,6 @@ import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
 
 function Accomplishments(props) { 
-    let name = props.personalInfo.lastName + ', ' + props.personalInfo.firstName
 
     let psaRejected = false
     if(props.publicService != null) {
@@ -24,13 +23,11 @@ function Accomplishments(props) {
     let publicationRejected = false
     if(props.publications != null) {
         props.publications.forEach((e) => {
-            e.faculty_publishers.every((i) => {
-                if(i.status == 'Rejected') {
-                    publicationRejected = true 
-                    return false
-                }
-                return true
-            })
+            if(e.status == 'Rejected') {
+                publicationRejected = true 
+                return false
+            }
+            return true
         })
     }
 
@@ -59,18 +56,16 @@ function Accomplishments(props) {
     let rgRejected = false
     if(props.researchGrant != null) {
         props.researchGrant.forEach((e) => {
-            e.faculty_researchers.every((i) => {
-                if(i.status == 'Rejected') {
-                    rgRejected = true 
-                    return false
-                }
-                return true
-            })
+            if(e.status == 'Rejected') {
+                rgRejected = true 
+                return false
+            }
+            return true
         })
     }
 
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
             <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link active" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">
@@ -99,32 +94,35 @@ function Accomplishments(props) {
 		<br />
         <div className="tab-content" id="nav-tabContent">
     	    <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
-                <PublicServiceAccomplishment name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} editable={true}>
+                <PublicServiceAccomplishment name = { props.data.name } token = { props.token.user } unit = {props.data.unit} position={props.data.position} editable={true}>
                     { props.publicService }
                 </PublicServiceAccomplishment>
             </div>
     	    <div className="tab-pane fade" id="publication" role="tabpanel" aria-labelledby="publication-tab">
-                <Publication faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} role={props.data.role} editable={true} facultyId={props.data.facultyId}>
+                <Publication faculty = { props.faculty } name = { props.data.name } token = { props.token.user } unit = {props.data.unit} position={props.data.position} role={props.data.role} editable={true} facultyId={props.data.facultyId}>
                     { props.publications }
                 </Publication>
             </div>
     	    <div className="tab-pane fade" id="training-seminar" role="tabpanel" aria-labelledby="training-seminar-tab">
-                <TrainingSeminar name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} editable={true}>
+                <TrainingSeminar name = { props.data.name } token = { props.token.user } unit = {props.data.unit} position={props.data.position} editable={true}>
                     { props.trainingSeminar }
                 </TrainingSeminar>
             </div>
     	    <div className="tab-pane fade" id="licensure-exam" role="tabpanel" aria-labelledby="licensure-exam-tab">
-                <LicensureExam name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} editable={true}>
+                <LicensureExam name = { props.data.name } token = { props.token.user } unit = {props.data.unit} position={props.data.position} editable={true}>
                     { props.licensureExam }
                 </LicensureExam>
             </div>
     	    <div className="tab-pane fade" id="research-grant" role="tabpanel" aria-labelledby="research-grant-tab">
-                <ResearchGrant faculty = { props.faculty } name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} role={props.data.role} editable={true} facultyId={props.data.facultyId}>
+                <ResearchGrant faculty = { props.faculty } name = { props.data.name } token = { props.token.user } unit = {props.data.unit} position={props.data.position} role={props.data.role} editable={true} facultyId={props.data.facultyId}>
                     { props.researchGrant }
                 </ResearchGrant>
             </div>
         </div>
 	<style jsx>{`
+		a.nav-item{
+			color:#000;
+		}
 		a.nav-item:focus{
 			background-color:#78b6c2;
 		}
@@ -166,15 +164,6 @@ function Accomplishments(props) {
             'Authorization': 'Bearer ' + token.user
         }
     }
-
-    const employment = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId + '/employment', header)
-    const employmentInfo = await employment.json()
-    let unit = employmentInfo.result.faculty_unit.unit.unit
-    let position = employmentInfo.result.faculty_employment_infos[0].faculty_employment_position.position
-
-    const personal = await fetch(process.env.API_URL + '/faculty/basic-info/' + facultyId, header)
-    const personalInfo = await personal.json()
-    let name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
 
     const fac = await fetch(process.env.API_URL + '/faculty/basic-info/list/all?facultyId=' + facultyId, header)
     const faculty = await fac.json()
@@ -225,11 +214,7 @@ function Accomplishments(props) {
         props: {
             token: token && token,
             data: data,
-            name,
-            unit,
-            position,
             faculty: faculty.result,
-            personalInfo: personalInfo.result,
             publicService: publicService.result,
             publications: publications.result,
             trainingSeminar: trainingSeminar.result,

@@ -23,7 +23,7 @@ export default async function approveResearchGrant(formData, approveFlag, facult
 				let url = process.env.API_URL + '/faculty/accomplishment/' + facultyId;
 				const response = await axios({
 					method: 'PUT',
-					url: url + '/researcher',
+					url: url + '/research-grant',
 					data: formData,
 					headers: {'Content-Type': 'multipart/form-data', Authorization: `Bearer ${token}`}
 				})	

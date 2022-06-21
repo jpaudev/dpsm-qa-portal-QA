@@ -106,9 +106,9 @@ function Table ({columns, data}){
 		 <span>
                     {column.isSorted
                       ? column.isSortedDesc
-                        ? '(Descending Order)'
-                        : '(Ascending Order)'
-                      : ' (click to sort)'}
+                        ? '▼'
+                        : '▲'
+                      : ''}
                   </span>
 		  <div>{column.canFilter ? column.render('Filter') : null}</div>
                </th>
@@ -142,7 +142,7 @@ function Table ({columns, data}){
                         // If it's a grouped cell, add an expander and row count
                         <>
                           <span {...row.getToggleRowExpandedProps()}>
-                            {row.isExpanded ? '👇' : '👉'}
+                            {row.isExpanded ? '▼' : '►'}
                           </span>{' '}
                           {cell.render('Cell')} ({row.subRows.length})
                         </>
@@ -252,7 +252,8 @@ function Table ({columns, data}){
          accessor: 'col1', // accessor is the "key" in the data,
 	 aggregate: 'count',
          Aggregated: ({ value }) => `${value} Names`,
-	 Filter: DefaultColumnFilter
+	 Filter: DefaultColumnFilter,
+	 disableSortBy: true
        },
        {
          Header: 'Position',
@@ -260,7 +261,8 @@ function Table ({columns, data}){
          accessor: 'col2',
 	 aggregate: 'count',
          Aggregated: ({ value }) => `${value} Entries`,
-	 Filter: SelectColumnFilter
+	 Filter: SelectColumnFilter,
+	 disableSortBy: true
        },
        {
          Header: 'Status',
@@ -268,7 +270,8 @@ function Table ({columns, data}){
          accessor: 'col3',
 	 aggregate: 'count',
          Aggregated: ({ value }) => `${value} Entries`,
-	 Filter: SelectColumnFilter
+	 Filter: SelectColumnFilter,
+	 disableSortBy: true
        },
        {
          Header: 'Category',
@@ -276,16 +279,17 @@ function Table ({columns, data}){
          accessor: 'col4',
 	 aggregate: 'count',
          Aggregated: ({ value }) => `${value} Entries`,
-	 Filter: SelectColumnFilter
+	 Filter: SelectColumnFilter,
+	 disableSortBy: true
        },
        {
-         Header: 'Start Date',
-   Footer: '',
-         accessor: 'col5',
-   aggregate: 'count',
-         Aggregated: ({ value }) => `${value} Entries`,
-   Filter: SelectColumnFilter
-       }
+        Header: 'Start Date',
+  Footer: '',
+        accessor: 'col5',
+  aggregate: 'count',
+        Aggregated: ({ value }) => `${value} Entries`,
+  disableFilters: true,
+      }
      ],
      []
    )
