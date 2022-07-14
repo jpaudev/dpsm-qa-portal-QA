@@ -24,6 +24,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
+    "/faculty": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/faculty.js"
+    ],
     "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

@@ -4,7 +4,6 @@ import '../styles/nprogress.css'; //styles of nprogress
 import '../styles/layout-height.css';
 import '../styles/sidebar-responsive.css';
 import { CookiesProvider } from 'react-cookie'
-import "../styles/style.css"
 
 //Binding events. 
 Router.events.on('routeChangeStart', () => NProgress.start());
