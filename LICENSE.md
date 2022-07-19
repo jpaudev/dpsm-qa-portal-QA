@@ -23,3 +23,5 @@ SOFTWARE.
 Developers: Sarah Grace Maglanque Jodie Lee Diane Cristobal Derryck Ramos
 
 Project Adviser: Ma. Sheila A. Magboo
+
+Project Specification: Marie Josephine De Luna
