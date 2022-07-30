@@ -123,13 +123,15 @@ body{
     width: 96%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 18rem auto 20rem;    
+    grid-template-columns: 18rem auto 20rem; 
 }
 
 a{
     color: var(--color-dark);
     text-decoration: none;
 }
+
+
 
 img{
     display: block;
@@ -971,3 +973,4 @@ main .card form button span{
         display: none;
     }
 } 
+

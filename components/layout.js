@@ -38,14 +38,14 @@ function Layout(props) {
             <Head>
                 <title>DPSM-QA-PORTAL MOD</title>
                 {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link> */}
-                <link rel="stylesheet" href= "/testStyle.css" />
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
                 <link rel="stylesheet" hrsef="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+                <link rel="stylesheet" href= "/testStyle.css" />
                 {/* MATERIAL CDN */}
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet"/>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                {/* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> */}
 
             </Head>
             {/* Header -- Topbar */}
@@ -65,20 +65,20 @@ function Layout(props) {
                 <div className="right">
 
                     {/* TOP */}
-                    <div class="top">
+                    <div className="top">
                         <button id="menu-btn">
-                            <span class="material-icons-sharp">menu</span>
+                            <span className="material-icons-sharp">menu</span>
                         </button>
-                        <div class="theme-toggler">
-                            <span class="material-icons-sharp active">light_mode</span>
-                            <span class="material-icons-sharp">dark_mode</span>
+                        <div className="theme-toggler">
+                            <span className="material-icons-sharp active">light_mode</span>
+                            <span className="material-icons-sharp">dark_mode</span>
                         </div>
-                        <div class="profile">
-                            <div class="info">
+                        <div className="profile">
+                            <div className="info">
                                 <p>Hey, <b>User</b></p>
-                                <small class="text-muted">Department Chair</small>
+                                <small className="text-muted">Department Chair</small>
                             </div>
-                            <div class="profile-photo">
+                            <div className="profile-photo">
                                 <img src="/profile-1.jpg"/>
                             </div>
                         </div>
