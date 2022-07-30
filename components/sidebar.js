@@ -85,151 +85,221 @@ function Sidebar(props) {
             </div>
 
             <div className="sidebar">
+    
             {/* Dashboard Group */}
+
+
+            
+                { !staff && !faculty &&  
                 <button className="dropdown-btn"><span className="material-icons-sharp">grid_view</span>Dashboard
                     <i className="fa fa-caret-down"></i>
                 </button>
+                }
 
-                <div className="dropdown-container">
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Accomplishment Count</h3>
-                    </a>
+                
+                { !staff && !faculty && 
+                    <div className="dropdown-container">
 
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Employment Status</h3>
-                    </a>
+                    
+                    <Link href={{ pathname: "/faculty" }}>
+                        <a className = { router.pathname === "/faculty" ?  "active"  : "inactive" } id = { router.pathname === "/faculty" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">military_tech</span>
+                            <h3>Accomplishment Count</h3>
+                        </a>
+                    </Link> 
+                    
+                        
 
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Attained Degrees</h3>
-                    </a>
-                </div>
+
+
+
+                        {/* Dashboard Group Original */}
+
+                        {/* <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">military_tech</span>
+                            <h3>Accomplishment Count</h3>
+                        </a>
+
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">badge</span>
+                            <h3>Employment Status</h3>
+                        </a>
+
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">history_edu</span>
+                            <h3>Attained Degrees</h3>
+                        </a> */}
+
+
+                    </div>
+                }
+
+
+
 
                 {/* Basic Information Group */}
 
-                <button className="dropdown-btn"><span className="material-icons-sharp">person</span>Basic Information
-                    <i className="fa fa-caret-down"></i>
-                </button>
+                { !staff && 
+                
+                    <button className="dropdown-btn"><span className="material-icons-sharp">person</span>Basic Information
+                        <i className="fa fa-caret-down"></i>
+                    </button>
+                }
 
-                <div className="dropdown-container">
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">person</span>
-                        <h3>Personal Information</h3>
-                    </a> 
+                { !staff && 
+                    <div className="dropdown-container">
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">contact_page</span>
+                            <h3>Personal Information</h3>
+                        </a> 
 
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Education</h3>
-                    </a>
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Work Experience</h3>
-                    </a>    
-                </div>
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">school</span>
+                            <h3>Education</h3>
+                        </a>
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">work_history</span>
+                            <h3>Work Experience</h3>
+                        </a>    
+                    </div>
+                }
+                
+
 
                 {/* Accomplishment Group */}
-                <button className="dropdown-btn"><span className="material-icons-sharp">emoji_events</span>Accomplishment
-                    <i className="fa fa-caret-down"></i>
-                </button>
 
-                <div className="dropdown-container">
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Public Service</h3>
-                    </a>
+                { !staff && 
+                    <button className="dropdown-btn"><span className="material-icons-sharp">emoji_events</span>Accomplishment
+                        <i className="fa fa-caret-down"></i>
+                    </button>
+                }
 
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Publications</h3>
-                    </a>
+                { !staff && 
+                    <div className="dropdown-container">
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">groups</span>
+                            <h3>Public Service</h3>
+                        </a>
 
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Trainings and Seminars</h3>
-                    </a>
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">article</span>
+                            <h3>Publications</h3>
+                        </a>
 
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Licensure Exams</h3>
-                    </a>
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">fitness_center</span>
+                            <h3>Trainings and Seminars</h3>
+                        </a>
 
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Research Grants</h3>
-                    </a>
-                </div>
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">contact_emergency</span>
+                            <h3>Licensure Exams</h3>
+                        </a>
+
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">find_in_page</span>
+                            <h3>Research Grants</h3>
+                        </a>
+                    </div>
+                }
 
                 {/* Role Assignment Group */}
-                <button className="dropdown-btn"><span className="material-icons-sharp">assignment_ind</span>Role Assignment
-                    <i className="fa fa-caret-down"></i>
-                </button>   
+                { !staff && !faculty &&
+                    <button className="dropdown-btn"><span className="material-icons-sharp">assignment_ind</span>Role Assignment
+                        <i className="fa fa-caret-down"></i>
+                    </button>   
+                }
 
-                <div className="dropdown-container">
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>unitHeadAssignment</h3>
-                    </a>
+                { !staff && !faculty &&
 
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>adminClerkAssignment</h3>
-                    </a>
+                    <div className="dropdown-container">
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">assignment_ind</span>
+                            <h3>unitHeadAssignment</h3>
+                        </a>
 
-                    <a href="#" className={isActive ? null : "active"}>
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>deptChairAssignment</h3>
-                    </a>   
-                </div>
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">support_agent</span>
+                            <h3>adminClerkAssignment</h3>
+                        </a>
+
+                        <a href="#" className={isActive ? null : "active"}>
+                            <span className="material-icons-sharp">accessible</span>
+                            <h3>deptChairAssignment</h3>
+                        </a>   
+                    </div>
+                }
+
+
 
                 {/* Others Group */}
 
-                <a href="#" className={isActive ? null : "active"}>
-                    <span className="material-icons-sharp">work</span>
-                    <h3>Faculty Load</h3>
-                </a>
 
-                <a href="#" className={isActive ? null : "active"}>
-                    <span className="material-icons-sharp">format_list_bulleted</span>
-                    <h3>Faculty List</h3>
-                </a>
+                {/* //                 { !staff && <Link href={{ pathname: "/faculty/faculty-load" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/faculty-load" ?  "active"  : "inactive" }>Faculty Load</a></Link> }
+    //                 { !staff && !faculty && <Link href={{ pathname: "/faculty/view/all" }}><a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/view/all" ?  "active"  : "inactive" }>Faculty List</a></Link> }
+    //                 { !staff && !faculty && <Link href={{ pathname: "/faculty/approval" }}>
+    //                     <a className = "list-group-item list-group-item-action list-group-item-success " id = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" }> 
+    //                         Pending Approvals &nbsp;{props.approvalList.facultyCount > 0 && <span className="badge badge-danger">{props.approvalList.facultyCount}</span>}
+    //                     </a>
+    //                 </Link> } */}
 
-                <a href="#" className={isActive ? null : "active"}>
-                    <span className="material-icons-sharp">pending_actions</span>
-                    <h3>Pending Approvals</h3>
-                    <span className="approval-count">26</span>
-                </a>
+                { !staff && 
+                    <Link href={{ pathname: "/faculty/faculty-load" }}>
+                        <a className = { router.pathname === "/faculty/faculty-load" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/faculty-load" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">work</span>
+                            <h3>Faculty Load</h3>
+                        </a>
+                    </Link> 
+                }
 
-                <a href="#" className={isActive ? null : "active"}>
-                    <span className="material-icons-sharp">assignment_ind</span>
-                    <h3>homepage</h3>
-                </a>
+                { staff && 
+                    <Link href={{ pathname: "/admin" }}>
+                        <a className = { router.pathname === "/admin" ?  "active"  : "inactive" } id = { router.pathname === "/admin" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">format_list_bulleted</span>
+                            <h3>Faculty List</h3>
+                        </a>
+                    </Link> 
+                }
 
-                <a href="#" className={isActive ? null : "active"}>
-                    <span className="material-icons-sharp">assignment_ind</span>
-                    <h3>signIn</h3>
-                </a>
+                { !staff && !faculty &&
+                    <Link href={{ pathname: "/faculty/view/all" }}>
+                        <a className = { router.pathname === "/faculty/view/all" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/view/all" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">format_list_bulleted</span>
+                            <h3>Faculty List</h3>
+                        </a>
+                    </Link> 
+                }
 
-                <a href="#" className={isActive ? null : "active"}>
-                    <span className="material-icons-sharp">assignment_ind</span>
-                    <h3>passwordForgot</h3>
-                </a>
 
-                <a href="#" className={isActive ? null : "active"}>
-                    <span className="material-icons-sharp">assignment_ind</span>
-                    <h3>passwordChange</h3>
-                </a>
+               { !staff && !faculty && 
+                    <Link href={{ pathname: "/faculty/approval" }}>
+                        <a className = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" }> 
+                            <span className="material-icons-sharp">pending_actions</span>
+                            <h3>Pending Approvals</h3> 
+                            &nbsp;{props.approvalList.facultyCount > 0 && <span className="approval-count">{props.approvalList.facultyCount}</span>}
+                        </a>
+                    </Link> 
+                }
 
-                <a href="#" className={isActive ? null : "active"}>
-                    <span className="material-icons-sharp">assignment_ind</span>
+
+                <Link href = "/settings/change-password">
+                    <a className={ router.pathname === "/settings/change-password" ?  "active"  : "inactive" }>
+                        <span className="material-icons-sharp">vpn_key</span>
+                        <h3>Change Password</h3>
+                    </a>
+                </Link>
+
+
+
+                {/* <a href="#" className={isActive ? null : "active"}>
+                    <span className="material-icons-sharp">summarize</span>
                     <h3>generateReports</h3>
                 </a>
 
                 <a href="#" className={isActive ? null : "active"}>
-                    <span className="material-icons-sharp">assignment_ind</span>
+                    <span className="material-icons-sharp">file_download</span>
                     <h3>downloadFacultyInfo</h3>
-                </a>
+                </a> */}
 
                 <Link href="/login">
                     <a onClick={handleRemoveCookie}>

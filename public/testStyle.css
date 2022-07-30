@@ -4,14 +4,14 @@
 /* ROOT VARIABLES */
 
 :root{
-    --color-primary: #7380ec;
-    --color-danger: #ff7782;
-    --color-success: #41f1b6;
-    --color-warning: #ffbb55;
+    --color-primary: #6671d5;
+    --color-danger: #b90707;
+    --color-success: #23be8a;
+    --color-warning: #ffae35;
     --color-white: #fff;
     --color-info-dark: #7d8da1;
     --color-info-light: #dce1eb;
-    --color-dark: #363949;
+    --color-dark: #404356;
     --color-light: rgba(132,139,200,0.18);
     --color-primary-variant: #111e88;
     --color-dark-variant: #677483;
@@ -22,6 +22,7 @@
     --color-title-white: #fff;
     --color-green: #152d17;
     --color-yellow: #b1d942;
+    --color-button: #800020;
 
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
@@ -55,6 +56,8 @@
     --box-shadow: 0 2rem 3rem var(--color-light);
     --color-maroon: #152d17;
     --color-title-white: rgb(216, 216, 216);
+    --color-button: #cecece;
+    --color-green: #cecece;
 }
 
 
@@ -123,15 +126,13 @@ body{
     width: 96%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 18rem auto 20rem; 
+    grid-template-columns: 18rem auto 20rem;    
 }
 
 a{
     color: var(--color-dark);
     text-decoration: none;
 }
-
-
 
 img{
     display: block;
@@ -211,9 +212,13 @@ aside .sidebar .dropdown-btn{
     background: var(--color-white);
 }
 
+aside .dropdown-container a{
+    height: 20px;
+}
+
 aside .dropdown-container{
-    display: none;
-    padding-left: 8px;
+    /* display: none; */
+    padding-left: 2rem;
 }
 
 aside .top{
@@ -260,13 +265,14 @@ aside h3{
 
 aside .sidebar a, aside .sidebar .dropdown-btn{
     display: flex;
-    color: var(--color-info-dark);
-    margin-left: 2rem;
+    color: var(--color-dark);
+    margin-left: 1rem;
     gap: 1rem;
     align-items: center;
     position: relative;
-    height: 3.7rem;
+    height: 2.5rem;
     transition: all 300ms ease;
+    margin-bottom: 5px;
 }
 
 aside .sidebar a span{
@@ -296,15 +302,16 @@ aside .sidebar a.active:before{
 aside .sidebar a.active span{
     color: var(--color-primary);
     margin-left: calc(1rem - 3px);
-
+    text-decoration: none;
 }
 
 aside .sidebar a:hover, aside .sidebar .dropdown-btn:hover{
     color: var(--color-primary);
+    text-decoration: none;
 }
 
 aside .sidebar a:hover span{
-    margin-left: 1rem;
+    margin-left: 3px;
 }
 
 aside .sidebar .approval-count{
@@ -372,7 +379,7 @@ main .insights .left h3{
 }
 
 main .insights > div.statistic-success span{
-    background: var(--color-success);
+    background: var(--color-success);  
 }
 
 main .insights > div.statistic-primary span{
@@ -445,7 +452,7 @@ main table tbody td{
     height: 2.8rem;
     border-bottom: 1px solid var(--color-light);
     color: var(--color-dark-variant);
-    font-size: 1rem;
+    font-size: 1.05rem;
 }
 
 main table tbody tr{
@@ -550,7 +557,11 @@ main .card form button span{
 }
 
 .maroon{
-    background: var(--color-maroon);
+    background: var(--color-button);
+}
+
+.maroon:hover{
+    background: var(--color-danger);
 }
 
 .yellow{
@@ -750,7 +761,17 @@ main .card form button span{
 }
 
 
-
+.modal-title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    margin-left: 6.5rem;
+    margin-top: 0.5rem;
+ }
+ 
+ .modal-content {
+     font-family: Arial, Helvetica, sans-serif;
+     font-size: 1rem;
+ }
 
 .modal {
     overflow-y:auto;
@@ -838,6 +859,9 @@ main .card form button span{
     main table tbody tr td:first-child{
         display: none;
     }
+
+
+
 
 }
 
@@ -972,5 +996,13 @@ main .card form button span{
     .modal-backdrop {
         display: none;
     }
+
+    .not-important{
+        display: none;
+    }
 } 
+
+
+
+
 
