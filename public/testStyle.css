@@ -514,6 +514,10 @@ main .card form select option p{
 }
 
 
+
+
+
+
 /* Buttons */
 
 /* main .card form button{
@@ -588,6 +592,7 @@ main .card form button span{
 .form-check .form-check-input{
     height: 1.5rem;
     width: 1.5rem;
+    display: block;
 }
 
 .form-check .form-check-label{

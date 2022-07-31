@@ -77,9 +77,12 @@ function Sidebar(props) {
     //         </div>
 	// </div>			
     
-        <aside>
+        <aside id="sidebar">
             <div className="top">
-                <div className ="close" id="close-btn">
+                <div className ="close" id="close-btn" onClick={() => {
+                                    const sideMenu = document.querySelector("aside")
+                                    sideMenu.style.display = 'none';
+                                }}>
                     <span className="material-icons-sharp">close</span>
                 </div>
             </div>
@@ -309,7 +312,6 @@ function Sidebar(props) {
                 </Link>
 
             </div>
-
 
         </aside>
 

@@ -4,6 +4,11 @@ import Sidebar from './sidebar'
 import Footer from './footer'
 import Content from './content'
 import jwt from 'jsonwebtoken'
+
+
+
+
+
 function Layout(props) {
     let approvalList
     if(props.approvalList) approvalList = props.approvalList
@@ -36,11 +41,18 @@ function Layout(props) {
 
         <div>
             <Head>
-                <title>DPSM-QA-PORTAL MOD</title>
-                {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link> */}
-                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-                <link rel="stylesheet" hrsef="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+                <title id="demo1">DPSM-QA-PORTAL MOD</title>
+                
+
+                {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossOrigin="anonymous"></link> */}
+                {/* <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> */}
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossOrigin="anonymous"></link>
+
                 <link rel="stylesheet" href= "/testStyle.css" />
+
+                {/* Fonts and Iconds */}
+                <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+                <link rel="stylesheet" hrsef="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
                 {/* MATERIAL CDN */}
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet"/>
                 {/* JavaScript Bundle with Popper */}
@@ -55,52 +67,66 @@ function Layout(props) {
             {/* Header -- Topbar */}
             <Header name={ props.name } role={props.role}/>
 
-            {/* Main Container */}
-            <div className="containerMain">
-                {/* Sidebar */}
-                <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} roleAssignment={props.roleAssignmentFlag} />
+            <body>
 
-                {/* Content */}
-                <main>
-                    {props.children}
-                </main>
 
-                {/* right */}
-                <div className="right">
+            
+                {/* Main Container */}
+                <div className="containerMain">
+                    {/* Sidebar */}
+                    <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} roleAssignment={props.roleAssignmentFlag} />
 
-                    {/* TOP */}
-                    <div className="top">
-                        <button id="menu-btn">
-                            <span className="material-icons-sharp">menu</span>
-                        </button>
-                        <div className="theme-toggler">
-                            <span className="material-icons-sharp active">light_mode</span>
-                            <span className="material-icons-sharp">dark_mode</span>
-                        </div>
-                        <div className="profile">
-                            <div className="info">
-                                <p>Hey, <b>User</b></p>
-                                <small className="text-muted">Department Chair</small>
+                    {/* Content */}
+                    <main>
+                        {props.children}
+                    </main>
+
+                    {/* right */}
+                    <div className="right">
+
+                        {/* TOP */}
+                        <div className="top" >
+                            <button id="menu-btn" onClick={() => {
+                                        const sideMenu = document.querySelector("aside")
+                                        sideMenu.style.display = 'block'
+
+                                    }}>
+                                <span className="material-icons-sharp">menu</span>
+                            </button>
+                            <div className="theme-toggler" onClick={() => {
+                                        const themeToggler = document.querySelector(".theme-toggler")
+                                        document.body.classList.toggle('dark-theme-variables')
+                                        themeToggler.querySelector('span').classList.toggle('active')
+                                    }}>
+                                <span className="material-icons-sharp active">light_mode</span>
+                                <span className="material-icons-sharp">dark_mode</span>
                             </div>
-                            <div className="profile-photo">
-                                <img src="/profile-1.jpg"/>
+                            <div className="profile">
+                                <div className="info">
+                                    <p>Hey, <b>User</b></p>
+                                    <small className="text-muted">Department Chair</small>
+                                </div>
+                                <div className="profile-photo">
+                                    <img src="/profile-1.jpg"/>
+                                </div>
                             </div>
                         </div>
+                        {/* End Top */}
+
+
                     </div>
-                    {/* End Top */}
-
-
                 </div>
-            </div>
 
 
-            {/* <div className = "row" id = "layout_row">
-                <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} roleAssignment={props.roleAssignmentFlag} />
-                    <div className="col" id = "layout_content">
-                        { props.children }
-                    </div>
-	       </div> */}
+                {/* <div className = "row" id = "layout_row">
+                    <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} roleAssignment={props.roleAssignmentFlag} />
+                        <div className="col" id = "layout_content">
+                            { props.children }
+                        </div>
+            </div> */}
 
+
+            </body>
 
         </div>
 
@@ -110,3 +136,4 @@ function Layout(props) {
 }
 
 export default Layout
+

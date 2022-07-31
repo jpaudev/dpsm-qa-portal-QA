@@ -1,23 +1,22 @@
-const sideMenu = document.querySelector("aside");
-const menuBtn = document.querySelector("#menu-btn");
-const closeBtn = document.querySelector("#close-btn");
-const themeToggler = document.querySelector(".theme-toggler");
-// const activeMode = document.querySelector(".right .theme-toggler span.active")
 
-// show sidebar
-menuBtn.addEventListener('click', () => {
-    sideMenu.style.display = 'block';
-})
+function reportWindowSize() {
+    var maxWidth = 768;
+    var iWidth = window.innerWidth;
+    var iHeight = window.innerHeight;
 
-// close sidebar
-closeBtn.addEventListener('click', () => {
-    sideMenu.style.display = 'none';
-})
+    var oWidth = window.outerWidth;
+    var oHeight = window.outerHeight;
 
-// change theme
-themeToggler.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme-variables');
-    themeToggler.querySelector('span').classList.toggle('active');
+    if(iWidth > maxWidth){
+        document.getElementById("demo1").innerHTML = "Julius";
+        document.getElementById("sidebar").style.display = "block";
+    }
+    else{
+        document.getElementById("demo1").innerHTML = iWidth + " " + iHeight + ": " + oWidth + " " + oHeight;
+        document.getElementById("sidebar").style.display = "none";
+    }
 
-})
+    
+}
 
+window.onresize = reportWindowSize;
