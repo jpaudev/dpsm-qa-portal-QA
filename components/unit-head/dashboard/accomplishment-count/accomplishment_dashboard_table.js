@@ -84,7 +84,7 @@ function Table ({columns, data}){
    } = useTable({ columns, data, defaultColumn, initialState: { pageIndex: 0 } }, useFilters, useGroupBy, useSortBy, useExpanded, usePagination)
 
  return(
-<div>
+<div className="table-title">
     <br />
     <ReactHTMLTableToExcel
 				id="test-table-xls-button"
@@ -93,7 +93,7 @@ function Table ({columns, data}){
 				filename="accomplishment"
 				buttonText="Download as XLS"/>
     <br />
-   <table className = "table table-striped" {...getTableProps()} id="accomplishmentTable">
+   <table className = "table" {...getTableProps()} id="accomplishmentTable">
        <thead>
          {headerGroups.map(headerGroup => (
            <tr {...headerGroup.getHeaderGroupProps()}>
