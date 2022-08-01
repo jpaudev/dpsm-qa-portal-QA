@@ -82,7 +82,7 @@ function FacultyList(props){
 										setEdit(faculty[index].faculty_personal_info.user.userId)
 										setKey(user)
 									}}>
-										<span class="material-icons-sharp">edit</span>
+										<span className="material-icons-sharp">edit</span>
 									</button>
 								</td>
 							}

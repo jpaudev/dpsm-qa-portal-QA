@@ -25,11 +25,11 @@ function Dashboard(props) {
                                     <h3>Accomplishment Count</h3>
                                 </a>
                                 <a className="nav-item nav-link nav-top" id="employment-status-tab" data-toggle="tab" href="#employment-status" role="tab" aria-controls="employment-status" aria-selected="false">
-                                    <span class="material-icons-sharp">badge</span>
+                                    <span className="material-icons-sharp">badge</span>
                                     <h3>Employment Status</h3>
                                 </a>
                                 <a className="nav-item nav-link nav-top" id="degree-tab" data-toggle="tab" href="#degree" role="tab" aria-controls="degree" aria-selected="false">
-                                    <span class="material-icons-sharp">history_edu</span>
+                                    <span className="material-icons-sharp">history_edu</span>
                                     <h3>Attained Degrees</h3>
                                 </a>
                             </div>

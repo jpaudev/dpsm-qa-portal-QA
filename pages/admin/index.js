@@ -13,13 +13,13 @@ function FacultyList(props) {
                     <br />
                     <h2 style={{display: "inline-block"}}>List of Faculty</h2>
                     <Link href = "/admin/faculty">
-                        <button type="button" class="btn customButton-icon-only maroon" style={{marginLeft: "1rem", marginBottom: "1rem"}}>
-                            <span class="material-icons-sharp">add</span>
+                        <button type="button" className="btn customButton-icon-only maroon" style={{marginLeft: "1rem", marginBottom: "1rem"}}>
+                            <span className="material-icons-sharp">add</span>
                         </button>
                     </Link>
                     <Link href = "/admin/generate-reports">
-                        <button type="button" class="btn customButton-icon-only yellow" style={{marginLeft: "1rem", marginBottom: "1rem"}}>
-                            <span class="material-icons-sharp">download</span>
+                        <button type="button" className="btn customButton-icon-only yellow" style={{marginLeft: "1rem", marginBottom: "1rem"}}>
+                            <span className="material-icons-sharp">download</span>
                         </button>
                     </Link>
                     <br />

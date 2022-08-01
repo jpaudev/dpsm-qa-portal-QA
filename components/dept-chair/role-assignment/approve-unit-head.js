@@ -19,10 +19,10 @@ function ApproveUnitHead(props) {
                     <td>
                         <button className="btn customButton green" style={{marginRight:"1rem"}} data-toggle="modal" data-target="#approveUnitHead" onClick={() => {
                             setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
-                        }}><span class="material-icons-sharp">check_circle_outline</span>Apply Changes</button>
+                        }}><span className="material-icons-sharp">check_circle_outline</span>Apply Changes</button>
                         <button className="btn customButton maroon" data-toggle="modal" data-target="#rejectUnitHead" onClick={() => {
                             setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
-                        }}><span class="material-icons-sharp">delete_outline</span>Delete</button>
+                        }}><span className="material-icons-sharp">delete_outline</span>Delete</button>
                     </td>
                 </tr>
             )
@@ -68,7 +68,7 @@ function ApproveUnitHead(props) {
                         </div>
                         <div className="modal-body">
                             <hr />
-                            <p> Are you sure you want to approve the change in Unit Head role? </p>
+                            <p> Are you sure you want to approve the change in Unit Head Role? </p>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>

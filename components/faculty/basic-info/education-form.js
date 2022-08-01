@@ -62,7 +62,7 @@ class EducationForm extends React.Component{
                         </div>
                         <div className = "form-row">
                             <div className = "form-group col-md-2 required">
-                                <label className = "control-label" htmlFor ="DegreeType" className = "required-label"> Degree Type </label>
+                                <label className = "control-label" htmlFor ="DegreeType" class = "required-label"> Degree Type </label>
                                     <Field as = "select" className = "form-control" name = "degreeType" id = "degreeType" required>
                                         <option value = "AA">AA</option>
                                         <option value = "AS">AS</option>

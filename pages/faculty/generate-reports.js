@@ -50,37 +50,37 @@ function GenerateReports(props) {
 						<div role="group" aria-labelledby="checkbox-group">
 							<div className = "form-check">
 								<Field type="checkbox" name="reports" value="publicService" />
-								<label class="form-check-label" for="publicService">
+								<label className="form-check-label" for="publicService">
 										&nbsp;Public Service Accomplishments
 								</label>
 							</div>
 							<div className = "form-check">
 								<Field type="checkbox" name="reports" value="publication" />
-								<label class="form-check-label" for="publication">
+								<label className="form-check-label" for="publication">
 										&nbsp;Publications
 								</label>
 							</div>
 							<div className = "form-check">
 								<Field type="checkbox" name="reports" value="trainingSeminar" />
-								<label class="form-check-label" for="trainingSeminar">
+								<label className="form-check-label" for="trainingSeminar">
 										&nbsp;Training/Seminars
 								</label>
 							</div>
 							<div className = "form-check">
 								<Field type="checkbox" name="reports" value="researchGrant" />
-								<label class="form-check-label" for="researchGrant">
+								<label className="form-check-label" for="researchGrant">
 										&nbsp;Research Grants
 								</label>
 							</div>
 							<div className = "form-check">
 								<Field type="checkbox" name="reports" value="licensureExam" />
-								<label class="form-check-label" for="licensureExam">
+								<label className="form-check-label" for="licensureExam">
 										&nbsp;Licensure Exams
 								</label>
 							</div>
                             <div className = "form-check">
 								<Field type="checkbox" name="reports" value="education" />
-								<label class="form-check-label" for="education">
+								<label className="form-check-label" for="education">
 										&nbsp;Education
 								</label>
 							</div>

@@ -15,11 +15,9 @@ function AssignAdminClerk(props) {
                 <tr key = {props.children[key].userId}>
                     <td>{props.children[key].name}</td>
                     <td>
-                        <div className = "btn-group">
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteClerk" onClick={() => {
-                                setDelete(props.children[key].userId)
-                            }}>Delete</a>
-                        </div>
+                        <button className="btn customButton maroon" data-toggle="modal" data-target="#deleteClerk" onClick={() => {
+                            setDelete(props.children[key].userId)
+                        }}><span className="material-icons-sharp">delete_outline</span>Delete</button>
                     </td>
                 </tr>
             )
@@ -33,21 +31,20 @@ function AssignAdminClerk(props) {
     }
 
     return (
-        <div>
+        <div className='table-title'>
 		<h2 align = "center"> Admin Clerk Assignment </h2>
         <div className ="alert alert-success" role="alert" id="clerkalert" style={{visibility:"hidden"}}></div>
-        <br />
-        <div>
-            <table className = "table table-striped table-sm">
-                <tbody>
-                    <tr>
-                        <th>Name</th>
-                        <th>Action</th>
-                    </tr>
-                    {content}
-                </tbody>
-            </table>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {content}
+            </tbody>
+        </table>
         <br />
 
         <ClerkForm token = { props.token }/>
@@ -88,14 +85,10 @@ function AssignAdminClerk(props) {
                         Router.push('/faculty/role-assignment', '/faculty/role-assignment')
                     }}>Yes, delete</button>
                 </div>
-                </div>
             </div>
         </div>
-    
-        
-        </div>
-	
-	
+    </div>
+</div>
     )
   }
   
