@@ -23,16 +23,18 @@ function AssignDeptChair(props) {
         <div>
             <h2 align = "center"> Department Chair Assignment </h2>
             <div className ="alert alert-success" role="alert" id="deptchairalert" style={{visibility:"hidden"}}></div>
-            <br />
-            <div className = "jumbotron">
-                <div className = "form-group col-md-8">
-                    <label htmlFor = "deptChair"> Select New Department Chair </label>
+            <div className = "card">
+                <div className = "form-group col-md-12">
+                    <label htmlFor = "deptChair"> Select New Department Chair </label><br/>
                     <select className = "form-control" name = "deptChair" id="deptChair" required>
                         <option value="0" key = "0">-- SELECT FACULTY --</option>
                         {faculty}
                     </select>
                 </div>
-                <button className = "btn btn-danger" data-toggle="modal" data-target="#assignDeptChair">Assign New Department Chair</button>
+                <br/>
+                <button className = "btn customButton maroon" data-toggle="modal" style={{width:"50%", margin:"auto"}} data-target="#assignDeptChair">
+                <span className="material-icons-sharp">check_circle_outline</span>
+                Assign New Department Chair</button>
             </div>
 		
 
