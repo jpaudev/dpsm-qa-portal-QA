@@ -9,9 +9,9 @@ function ChangePassword(props) {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     return (
-        <div className="card">
+        <div className="card" style={{marginTop:"2rem"}}>
             <div className="center">
-                <h1> Change Password Form</h1>
+                <h2> <b>Change Password Form</b></h2>
             </div>
             <div className ="alert alert-success" role="alert" id="changepassalert" style={{visibility:"hidden", height:"1.5rem", marginBottom:"-2rem"}}></div>
             <form className="row g-3 p-3">
@@ -67,7 +67,7 @@ function ChangePassword(props) {
                     </div>
 
                     <div className="text-end row p-1">
-                        <button type="button" className = "customButton green" style={{margin: "auto"}} onClick = {async (e) => {
+                        <button type="button" className = "customButton green" style={{margin: "auto", width:"25%"}} onClick = {async (e) => {
                                     let alert = document.getElementById("changepassalert")
                                     
                                     if(!validated) e.preventDefault()
@@ -93,13 +93,13 @@ function ChangePassword(props) {
                                         }
                                     }
                                     
-                                }}>Change Password</button>
+                                }}><span className="material-icons-sharp">check_circle</span>Change Password</button>
                     </div>
                 </div>
             </form>
             <style jsx>{`
 		        label.required-label:after{
-			        content: "*";
+			        content: " *";
 			        color: #f00;
 		        }
 		        h6:before{
