@@ -12,7 +12,6 @@ function RoleAssignment(props) {
             { props.data.role == 3 &&
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-<<<<<<< Updated upstream
                     <a className="nav-item nav-link active nav-top" id="unit-head-tab" data-toggle="tab" href="#unit-head" role="tab" aria-controls="unit-head" aria-selected="true">
                         <span className="material-icons-sharp">assignment_ind</span>
                         <h3>Unit Head</h3>
@@ -25,10 +24,6 @@ function RoleAssignment(props) {
                     <a className="nav-item nav-link nav-top" id="dept-chair-tab" data-toggle="tab" href="#dept-chair" role="tab" aria-controls="dept-chair" aria-selected="false">
                         <span className="material-icons-sharp">accessible</span>
                         <h3>Department Chair</h3>
-=======
-                    <a className="nav-item nav-link active" id="unit-head-tab" data-toggle="tab" href="#unit-head" role="tab" aria-controls="unit-head" aria-selected="true">
-                        Unit Head Assignment {props.roleAssignmentFlag && <span className="badge">!</span>}
->>>>>>> Stashed changes
                     </a>
                 </div>
                 </nav>
