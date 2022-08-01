@@ -573,7 +573,6 @@ nav .nav a.active{
 
 nav .nav a.active span{
     color: var(--color-primary);
-    margin-left: calc(1rem - 3px);
 }
 
 
