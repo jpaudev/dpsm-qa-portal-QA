@@ -66,9 +66,12 @@ class ClerkForm extends React.Component{
                                 </div>
                             </div>
                         </div>
-                        <button type = "submit" className = "btn customButton green" disabled = {isSubmitting}>
-                            Add Clerk
+                        <div className = "row pb-3">
+                        <button type = "submit" className = "btn customButton green" style={{margin:"auto"}} disabled = {isSubmitting}>
+                            <span className="material-icons-sharp">person_add</span> Add Clerk
                         </button>
+                        </div>
+
 
 			            <style jsx>{`
 		                    label.required-label:after{
@@ -80,7 +83,6 @@ class ClerkForm extends React.Component{
 			                    color: #f00;
 		                    }`
                         }</style>
-
                     </Form>
                     </div>
                 )}

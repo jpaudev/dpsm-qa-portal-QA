@@ -138,9 +138,10 @@ function ForgotPassword(props){
 
 				<div className="col-md-6">
 					<div className="login" style={{padding: "0 0 0 24px"}}>
+						<br/>
 						<Link href = "/login">
 							<a href="#" className="return">
-								<h4><span className="material-icons-sharp">arrow_back_ios</span>  Return to Login</h4>
+								<h4><span className="material-icons-sharp" style={{marginRight:"0.5rem"}}>arrow_back_ios</span>Return to Login</h4>
 							</a>
 						</Link>
 

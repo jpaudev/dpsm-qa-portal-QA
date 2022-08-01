@@ -13,9 +13,10 @@ function RoleAssignment(props) {
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link active nav-top" id="unit-head-tab" data-toggle="tab" href="#unit-head" role="tab" aria-controls="unit-head" aria-selected="true">
-                        <span className="material-icons-sharp">assignment_ind</span>
-                        <h3>Unit Head</h3>
-                        {props.roleAssignmentFlag && <span className="badge badge-danger">!</span>}
+                        <span className="material-icons-sharp">assignment_ind</span> 
+                        <h3>Unit Head</h3> 
+                        {/* {props.roleAssignmentFlag && <span className="badge">!</span>} */}
+
                     </a>
                     <a className="nav-item nav-link nav-top" id="admin-clerk-tab" data-toggle="tab" href="#admin-clerk" role="tab" aria-controls="admin-clerk" aria-selected="false">
                         <span className="material-icons-sharp">support_agent</span>
