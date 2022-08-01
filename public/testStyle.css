@@ -884,13 +884,17 @@ main .card form button span{
     aside{
         position: fixed;
         left: -100%;
-        background: var(--color-grey);
         z-index: 10;
         box-shadow: 1rem 3rem 4rem var(--color-light);
         height: 100%;
         padding-right: var(--card-padding);
         display: none;
         animation: showMenu 400ms ease forwards;
+        background: pink;
+    }
+
+    aside .sidebar{
+        background: blue;
     }
 
     @keyframes showMenu{
