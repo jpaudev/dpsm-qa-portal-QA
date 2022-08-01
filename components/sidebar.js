@@ -279,9 +279,9 @@ function Sidebar(props) {
                { !staff && !faculty && 
                     <Link href={{ pathname: "/faculty/approval" }}>
                         <a className = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" }> 
-                            <span className="material-icons-sharp">pending_actions</span>
-                            <h3>Pending Approvals</h3> 
-                            &nbsp;{props.approvalList.facultyCount > 0 && <span className="approval-count">{props.approvalList.facultyCount}</span>}
+                            <span style={{marginLeft:"-5px"}} className="material-icons-sharp">pending_actions</span>
+                            <h3>Pending Approvals</h3>
+                            {props.approvalList.facultyCount > 0 && <span className="badge" style={{marginLeft:"-0.5rem"}}>{props.approvalList.facultyCount}</span>}
                         </a>
                     </Link> 
                 }
@@ -308,7 +308,7 @@ function Sidebar(props) {
                     <Link href={{ pathname: "/faculty/role-assignment" }}>
                         <a className = { router.pathname === "/faculty/role-assignment" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/role-assignment" ?  "active"  : "inactive" }>
                             <span className="material-icons-sharp">assignment_ind</span>
-                            <h3>Role Assignment &nbsp;<span className="badge badge-danger">!</span></h3>
+                            <h3>Role Assignment &nbsp;<span className="badge">!</span></h3>
                         </a>
                     </Link> 
 
