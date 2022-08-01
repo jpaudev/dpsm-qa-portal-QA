@@ -17,21 +17,19 @@ function ApproveUnitHead(props) {
                     <td>{currentUnitHead}</td>
                     <td>{incomingUnitHead}</td>
                     <td>
-                        <div className = "btn-group">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#approveUnitHead" onClick={() => {
-                                setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
-                            }}>Approve</a>
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#rejectUnitHead" onClick={() => {
-                                setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
-                            }}>Reject</a>
-                        </div>
+                        <button className="btn customButton green" style={{marginRight:"1rem"}} data-toggle="modal" data-target="#approveUnitHead" onClick={() => {
+                            setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
+                        }}><span class="material-icons-sharp">check_circle_outline</span>Apply Changes</button>
+                        <button className="btn customButton maroon" data-toggle="modal" data-target="#rejectUnitHead" onClick={() => {
+                            setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
+                        }}><span class="material-icons-sharp">delete_outline</span>Delete</button>
                     </td>
                 </tr>
             )
         })
         
     } else {
-        content = <tr><td colSpan = "4"><p align = "center">No data available!</p></td></tr>
+        content = <tr><td colSpan = "4"><p align = "center">No data available.</p></td></tr>
     }
 
     function setApprove(current, incoming, unit) {
@@ -41,23 +39,23 @@ function ApproveUnitHead(props) {
     }
 
     return (
-        <div>
+        <div className='table-title'>
 		    <h2 align = "center"> Unit Head Assignment </h2>
             <div role="alert" id="assignalert" style={{visibility:"hidden"}}></div>
-            <br />
-            <div>
-                <table className = "table table-striped table-sm">
-                    <tbody>
-                        <tr>
-                            <th>Unit</th>
-                            <th>Current Unit Head</th>
-                            <th>Incoming Unit Head</th>
-                            <th>Action</th>
-                        </tr>
-                        {content}
-                    </tbody>
-                </table>
-            </div>
+            <br/>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unit</th>
+                        <th>Current Unit Head</th>
+                        <th>Incoming Unit Head</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {content}
+                </tbody>
+            </table>
 	
             <div className="modal fade" id="approveUnitHead" tabIndex="-1" role="dialog" aria-labelledby="approveUnitHeadLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
@@ -70,7 +68,7 @@ function ApproveUnitHead(props) {
                         </div>
                         <div className="modal-body">
                             <hr />
-                            <p> Are you sure you want to approve the change in unit head role? </p>
+                            <p> Are you sure you want to approve the change in Unit Head role? </p>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
