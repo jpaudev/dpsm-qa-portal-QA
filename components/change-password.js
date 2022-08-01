@@ -13,13 +13,13 @@ function ChangePassword(props) {
             <div className="center">
                 <h1> Change Password Form</h1>
             </div>
-            <div className ="alert alert-success" role="alert" id="changepassalert" style={{visibility:"hidden"}}></div>
+            <div className ="alert alert-success" role="alert" id="changepassalert" style={{visibility:"hidden", height:"1.5rem", marginBottom:"-2rem"}}></div>
             <form className="row g-3 p-3">
-                <div class="d-grid gap-2 col-12 d-md-block">
+                <div className="d-grid gap-2 col-12 d-md-block">
 
                     <div className = "form-group row p-3">
                         <label htmlFor="old-password" className = "required-label" style={{fontSize: "18px"}}>Current Password:</label>
-                        <input className = "form-control" type="password" id="old-password" name="old-password" required onBlur={async () => {
+                        <input className = "form-control" type="password" id="old-password" name="old-password" placeholder='Current Password' required onBlur={async () => {
                             let alert = document.getElementById("changepassalert")
 
                             const oldPassword = document.getElementById('old-password').value
@@ -41,12 +41,12 @@ function ChangePassword(props) {
 
                     <div className = "form-group row p-3">
                         <label htmlFor="new-password" className = "required-label" style={{fontSize: "18px"}}>New Password:</label>
-                        <input className = "form-control" type="password" id="new-password" name="new-password" required />
+                        <input className = "form-control" type="password" id="new-password" name="new-password" placeholder='New Password' required />
                     </div>
 
                     <div className = "form-group row p-3">
                         <label htmlFor="confirm-new-password" className = "required-label" style={{fontSize: "18px"}}>Confirm New Password:</label>
-                        <input className = "form-control" type="password" id="confirm-new-password" name="confirm-new-password" required onChange={async () => {
+                        <input className = "form-control" type="password" id="confirm-new-password" name="confirm-new-password" placeholder='Confirm Password' required onChange={async () => {
                             let alert = document.getElementById("changepassalert")
                                 
                             const newPassword = document.getElementById('new-password').value
@@ -66,7 +66,7 @@ function ChangePassword(props) {
                         }} />
                     </div>
 
-                    <div class="text-end row p-4">
+                    <div className="text-end row p-4">
                         <button type="button" className = "customButton green" style={{margin: "auto"}} onClick = {async (e) => {
                                     let alert = document.getElementById("changepassalert")
                                     
