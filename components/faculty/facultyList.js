@@ -321,7 +321,7 @@ function FacultyList(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="editStatus">Update Faculty Status - {currData.facultyName}</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -362,7 +362,7 @@ function FacultyList(props){
                         </form>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" className="btn btn-primary" onClick = {async () => {
                             $('#editStatus').modal('toggle');
                             let alert = document.getElementById("facultyStatusalert")
