@@ -66,7 +66,7 @@ function ChangePassword(props) {
                         }} />
                     </div>
 
-                    <div className="text-end row p-4">
+                    <div className="text-end row p-1">
                         <button type="button" className = "customButton green" style={{margin: "auto"}} onClick = {async (e) => {
                                     let alert = document.getElementById("changepassalert")
                                     
@@ -98,15 +98,15 @@ function ChangePassword(props) {
                 </div>
             </form>
             <style jsx>{`
-		label.required-label:after{
-			content: "*";
-			color: #f00;
-		}
-		h6:before{
-			content: "* ";
-			color: #f00;
-		}
-	`}</style>
+		        label.required-label:after{
+			        content: "*";
+			        color: #f00;
+		        }
+		        h6:before{
+			        content: "* ";
+			        color: #f00;
+		        }`       
+            }</style>
         </div>
     )
     
@@ -115,5 +115,4 @@ function ChangePassword(props) {
     }
   }
 
-  
   export default ChangePassword
