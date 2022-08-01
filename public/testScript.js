@@ -8,11 +8,11 @@ function reportWindowSize() {
     var oHeight = window.outerHeight;
 
     if(iWidth > maxWidth){
-        document.getElementById("demo1").innerHTML = "Julius";
+        // document.getElementById("demo1").innerHTML = "Julius";
         document.getElementById("sidebar").style.display = "block";
     }
     else{
-        document.getElementById("demo1").innerHTML = iWidth + " " + iHeight + ": " + oWidth + " " + oHeight;
+        // document.getElementById("demo1").innerHTML = iWidth + " " + iHeight + ": " + oWidth + " " + oHeight;
         document.getElementById("sidebar").style.display = "none";
     }
 

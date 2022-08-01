@@ -93,21 +93,12 @@ function Sidebar(props) {
 
 
             
-                { !staff && !faculty &&  
-                <button className="dropdown-btn"><span className="material-icons-sharp">grid_view</span>Dashboard
-                    <i className="fa fa-caret-down"></i>
-                </button>
-                }
-
                 
                 { !staff && !faculty && 
-                    <div className="dropdown-container">
-
-                    
                     <Link href={{ pathname: "/faculty" }}>
                         <a className = { router.pathname === "/faculty" ?  "active"  : "inactive" } id = { router.pathname === "/faculty" ?  "active"  : "inactive" }>
-                            <span className="material-icons-sharp">military_tech</span>
-                            <h3>Accomplishment Count</h3>
+                            <span className="material-icons-sharp">grid_view</span>
+                            <h3>Dashboard</h3>
                         </a>
                     </Link> 
                     
@@ -116,9 +107,9 @@ function Sidebar(props) {
 
 
 
-                        {/* Dashboard Group Original */}
+                        /* Dashboard Group Original */
 
-                        {/* <a href="#" className={isActive ? null : "active"}>
+                        /* <a href="#" className={isActive ? null : "active"}>
                             <span className="material-icons-sharp">military_tech</span>
                             <h3>Accomplishment Count</h3>
                         </a>
@@ -131,10 +122,9 @@ function Sidebar(props) {
                         <a href="#" className={isActive ? null : "active"}>
                             <span className="material-icons-sharp">history_edu</span>
                             <h3>Attained Degrees</h3>
-                        </a> */}
+                        </a> */
 
-
-                    </div>
+                    // </div>
                 }
 
 
@@ -143,13 +133,19 @@ function Sidebar(props) {
                 {/* Basic Information Group */}
 
                 { !staff && 
+                    <Link href={{ pathname: "/faculty/basic-info" }}>
+                        <a className = { router.pathname === "/faculty/basic-info" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/basic-info" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">person</span>
+                            <h3>Basic Information</h3>
+                        </a>
+                    </Link> 
                 
-                    <button className="dropdown-btn"><span className="material-icons-sharp">person</span>Basic Information
-                        <i className="fa fa-caret-down"></i>
-                    </button>
+                    // <button className="dropdown-btn"><span className="material-icons-sharp">person</span>Basic Information
+                    //     <i className="fa fa-caret-down"></i>
+                    // </button>
                 }
 
-                { !staff && 
+                {/* { !staff && 
                     <div className="dropdown-container">
                         <a href="#" className={isActive ? null : "active"}>
                             <span className="material-icons-sharp">contact_page</span>
@@ -165,19 +161,23 @@ function Sidebar(props) {
                             <h3>Work Experience</h3>
                         </a>    
                     </div>
-                }
+                } */}
                 
 
 
                 {/* Accomplishment Group */}
 
                 { !staff && 
-                    <button className="dropdown-btn"><span className="material-icons-sharp">emoji_events</span>Accomplishment
-                        <i className="fa fa-caret-down"></i>
-                    </button>
+                    <Link href={{ pathname: "/faculty/accomplishment" }}>
+                        <a className = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">emoji_events</span>
+                            <h3>Accomplishment</h3>
+                        </a>
+                    </Link> 
+
                 }
 
-                { !staff && 
+                {/* { !staff && 
                     <div className="dropdown-container">
                         <a href="#" className={isActive ? null : "active"}>
                             <span className="material-icons-sharp">groups</span>
@@ -204,16 +204,18 @@ function Sidebar(props) {
                             <h3>Research Grants</h3>
                         </a>
                     </div>
-                }
+                } */}
 
-                {/* Role Assignment Group */}
-                { !staff && !faculty &&
-                    <button className="dropdown-btn"><span className="material-icons-sharp">assignment_ind</span>Role Assignment
-                        <i className="fa fa-caret-down"></i>
-                    </button>   
-                }
 
-                { !staff && !faculty &&
+
+
+
+
+
+
+
+
+                {/* { !staff && !faculty &&
 
                     <div className="dropdown-container">
                         <a href="#" className={isActive ? null : "active"}>
@@ -231,7 +233,7 @@ function Sidebar(props) {
                             <h3>deptChairAssignment</h3>
                         </a>   
                     </div>
-                }
+                } */}
 
 
 
@@ -282,6 +284,34 @@ function Sidebar(props) {
                             &nbsp;{props.approvalList.facultyCount > 0 && <span className="approval-count">{props.approvalList.facultyCount}</span>}
                         </a>
                     </Link> 
+                }
+
+
+
+                                {/* Role Assignment Group */}
+
+                {/* Head */}
+                { !staff && !faculty && !props.roleAssignment &&
+
+                    <Link href={{ pathname: "/faculty/role-assignment" }}>
+                        <a className = { router.pathname === "/faculty/role-assignment" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/role-assignment" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">assignment_ind</span>
+                            <h3>Role Assignment</h3>
+                        </a>
+                    </Link> 
+
+                }
+
+                {/* Chair */}
+                { !staff && !faculty && props.roleAssignment &&
+
+                    <Link href={{ pathname: "/faculty/role-assignment" }}>
+                        <a className = { router.pathname === "/faculty/role-assignment" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/role-assignment" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">assignment_ind</span>
+                            <h3>Role Assignment &nbsp;<span className="badge badge-danger">!</span></h3>
+                        </a>
+                    </Link> 
+
                 }
 
 

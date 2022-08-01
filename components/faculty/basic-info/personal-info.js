@@ -94,7 +94,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
     }
 
     return (
-        <div>
+        <div className="card">
         <h2 align = "center"> Personal Information </h2>
         <NameDisplay unit = {props.unit} position={props.position}>{name}</NameDisplay>
 		<Formik

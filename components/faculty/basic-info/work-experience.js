@@ -37,11 +37,11 @@ function WorkExperience(props){
                         { props.editable &&
                             <td>
                                 <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editWorkExperience" onClick={() => {
+                                    <a className="btn btn-info" data-bs-toggle="modal" data-bs-target="#editWorkExperience" onClick={() => {
                                         setEdit(props.children[key].workExpId)
                                         setKey(editWork)
                                     }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteWorkExperience" onClick={() => {
+                                    <a className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteWorkExperience" onClick={() => {
                                         setDelete(props.children[key].workExpId)
                                     }}>Delete</a>
                                 </div>
@@ -104,7 +104,7 @@ function WorkExperience(props){
                 </table>
             </div>
             { props.editable &&
-                <div>
+                <div className="card">
                     <WorkExpForm token = { props.token }/>
                 </div>
             }
@@ -122,7 +122,7 @@ function WorkExperience(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="editWorkExperienceLabel">Update Work Experience Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -162,7 +162,7 @@ function WorkExperience(props){
                         </form>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" className="btn btn-primary" onClick = {async () => {
                             $('#editWorkExperience').modal('toggle');
                             let alert = document.getElementById("workexpalert")
@@ -192,7 +192,7 @@ function WorkExperience(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="deleteWorkExperienceLabel">Delete Work Experience Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -201,7 +201,7 @@ function WorkExperience(props){
                         <p> Are you sure you want to delete this work experience information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             $('#deleteWorkExperience').modal('toggle');
                             let alert = document.getElementById("workexpalert")

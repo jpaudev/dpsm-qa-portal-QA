@@ -68,11 +68,11 @@ function Education(props) {
                         { props.editable &&
                             <td>
                                 <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#editEducation" onClick={() => {
+                                    <a className="btn btn-info" data-bs-toggle="modal" data-bs-target="#editEducation" onClick={() => {
                                         setEdit(props.children[key].educInfoId)
                                         setKey(editEduc)
                                     }}>Edit</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#deleteEducation" onClick={() => {
+                                    <a className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEducation" onClick={() => {
                                         setDelete(props.children[key].educInfoId)
                                     }}>Delete</a>
                                 </div>
@@ -81,10 +81,10 @@ function Education(props) {
                         { props.approver && 
                             <td>
                                 <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#approveEducation" onClick={() => {
+                                    <a className="btn btn-info" data-bs-toggle="modal" data-bs-target="#approveEducation" onClick={() => {
                                         setApprove(props.children[key].educInfoId)
                                     }}>Approve</a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#rejectEducation" onClick={() => {
+                                    <a className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#rejectEducation" onClick={() => {
                                         setApprove(props.children[key].educInfoId)
                                     }}>Reject</a>
                                 </div>
@@ -155,7 +155,7 @@ function Education(props) {
             </div>
             
             { props.editable && 
-                <div>
+                <div className="card">
                     <EducationForm token = { props.token }/>
                 </div>   
             }
@@ -165,7 +165,7 @@ function Education(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="editEducationLabel">Update Education Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -253,7 +253,7 @@ function Education(props) {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#editEducation').modal('toggle');
                                 }}>Save changes</button>
@@ -270,7 +270,7 @@ function Education(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="deleteEducationLabel">Delete Education Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -279,7 +279,7 @@ function Education(props) {
                         <p> Are you sure you want to delete this education information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("educalert")
                             $('#deleteEducation').modal('toggle');
@@ -310,7 +310,7 @@ function Education(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="approveEducationLabel">Approve Education Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -319,7 +319,7 @@ function Education(props) {
                         <p> Are you sure you want to approve this education information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't approve</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("educalert")
                             $('#approveEducation').modal('toggle');
@@ -354,7 +354,7 @@ function Education(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="rejectEducationLabel">Reject Education Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -399,7 +399,7 @@ function Education(props) {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#rejectEducation').modal('toggle');
                                 }}>Save changes</button>
