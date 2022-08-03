@@ -286,8 +286,24 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
                         </div>
                     }
 
-                    { props.editable && props.role!=5 && <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}> Update </button> }
-                    { props.role==5 && <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}> Add Faculty </button> }
+                    { props.editable && props.role!=5 && 
+                        <div className="center">
+                            <button type = "submit" className = "customButton maroon" disabled = {isSubmitting}> 
+                                <span className="material-icons-sharp">update</span>
+                                Update 
+                            </button> 
+                        </div>
+
+                    }
+                    { props.role==5 && 
+                        <div className="center">
+                            <button type = "submit" className = "customButton maroon" disabled = {isSubmitting}> 
+                                <span className="material-icons-sharp">add</span>
+                                Add Faculty 
+                            </button> 
+                        </div>
+
+                    }
                     <br />
                 </Form>
             )}
