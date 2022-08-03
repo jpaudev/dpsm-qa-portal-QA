@@ -91,11 +91,11 @@ function FacultyList(props){
 				})
 
 				return (
-					<div className="table-title" >
+					<div>
 						{/* Table Title */}
 						<h4 align = "center"> {props.children[key].unit} </h4>
-						<div>
-							<table className = "table">
+						<div className="table-title" >
+							<table>
 								<thead>
 									<tr>
 										<th>Name</th>
@@ -117,7 +117,6 @@ function FacultyList(props){
 									{/* tbody starts here */}
 									{facultyList}
 								</tbody>
-
 							</table>
 						</div>
 					</div>
@@ -177,25 +176,29 @@ function FacultyList(props){
 				return (
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
-						<div className = "table-responsive">
-						<table className = "table">
-							<tr>
-								<th>Name</th>
-								{
-								props.path != 'approval' &&
-								<th>Status</th>
-								}
-								{
-								props.path != 'approval' &&
-								<th>Remarks</th>
-								}
-								{
-									props.role == 5 &&
-									<th>Action</th>
-								}
-							</tr>
-							{facultyList}
-						</table>
+						<div className = "table-title">
+							<table>
+								<thead>
+									<tr>
+										<th>Name</th>
+										{
+										props.path != 'approval' &&
+										<th>Status</th>
+										}
+										{
+										props.path != 'approval' &&
+										<th>Remarks</th>
+										}
+										{
+											props.role == 5 &&
+											<th>Action</th>
+										}
+									</tr>
+								</thead>
+								<tbody>
+									{facultyList}
+								</tbody>
+							</table>
 						</div>
 					</div>
 				); 
@@ -254,25 +257,29 @@ function FacultyList(props){
 				return (
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
-						<div className = "table-responsive">
-						<table className = "table">
-							<tr>
-								<th>Name</th>
-								{
-								props.path != 'approval' &&
-								<th>Status</th>
-								}
-								{
-								props.path != 'approval' &&
-								<th>Remarks</th>
-								}
-								{
-									props.role == 5 &&
-									<th>Action</th>
-								}
-							</tr>
-							{facultyList}
-						</table>
+						<div className = "table-title">
+							<table>
+								<thead>
+									<tr>
+										<th>Name</th>
+										{
+										props.path != 'approval' &&
+										<th>Status</th>
+										}
+										{
+										props.path != 'approval' &&
+										<th>Remarks</th>
+										}
+										{
+											props.role == 5 &&
+											<th>Action</th>
+										}
+									</tr>
+								</thead>
+								<tbody>
+									{facultyList}
+								</tbody>
+							</table>
 						</div>
 					</div>
 				); 
