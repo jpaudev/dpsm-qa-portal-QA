@@ -165,7 +165,7 @@ function Education(props) {
                 </table>
             </div>
             
-            <br></br>
+            <br/><br/>
             { props.editable && 
                 <div className="card">
                     <EducationForm token = { props.token }/>
@@ -424,6 +424,7 @@ function Education(props) {
                     </div>
                 </div>
             </div>
+            <br/><br/>
         </div>
     )
 }

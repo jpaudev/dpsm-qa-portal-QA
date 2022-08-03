@@ -111,19 +111,19 @@ function WorkExperience(props){
                     </tbody>
                 </table>
             </div>
-            <br></br>
+            <br/><br/>
 
             { props.editable &&
                 <div className="card">
                     <WorkExpForm token = { props.token }/>
                 </div>
             }
+            
             { props.role == 5 &&
                 <div>
                     <hr />
                     <h3 align ="center"> Add Faculty Employment </h3>
                     <EmploymentForm token={props.token} facultyId={props.facultyId} positionsList={props.positionsList}/>
-
                 </div>
             }
 
