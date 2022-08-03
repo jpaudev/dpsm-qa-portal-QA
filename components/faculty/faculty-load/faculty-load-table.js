@@ -117,20 +117,20 @@ function FacultyLoadTable(props) {
 
     return (
         <div>
-            <h2 align = "center"> Faculty Load </h2>
+            <h2 align = "center"> Faculty Load</h2>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="loadalert" style={{visibility:"hidden"}}></div>
-            <div className = "table-responsive">
-                <table className = "table table-striped table-sm">
+            <div className = "table-title">
+                <table>
                     <thead>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Section</th>
-                        <th>Semester</th>
-                        <th>Academic Year</th>
-                        <th>Syllabus</th>
-                        {props.role==5 && <th>Action</th>}
-                    </tr>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Section</th>
+                            <th>Semester</th>
+                            <th>Academic Year</th>
+                            <th>Syllabus</th>
+                            {props.role==5 && <th>Action</th>}
+                        </tr>
                     </thead>
                     <tbody>
                         {content}
