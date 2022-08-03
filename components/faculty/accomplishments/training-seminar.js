@@ -133,15 +133,14 @@ function TrainingSeminar(props) {
             <h2 align = "center"> Training/Seminars </h2>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="trainingseminaralert" style={{visibility:"hidden"}}></div>
-            <div className = "table-responsive">
-                <table className = "table table-striped table-sm">
-                    <tbody>
+            <div className = "table-title">
+                <table>
+                    <thead>
                         <tr>
                             <th>Name of Training/Seminar</th>
                             <th>Role</th>
                             <th>Venue</th>
                             <th>Start Date</th>
-
                             <th>End Date</th>
                             <th>Remarks</th>
                             <th>Proof</th>
@@ -149,6 +148,8 @@ function TrainingSeminar(props) {
                             <th>Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
+                    </thead>
+                    <tbody>
                         {content}
                     </tbody>
                 </table>	

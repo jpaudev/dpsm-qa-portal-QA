@@ -386,7 +386,7 @@ function PublicServiceAccomplishment(props){
 		
 	<div className = "table-title">
         <h5 align = "center"> Contributions to the Nation </h5>
-        <table className>
+        <table>
             <thead>
                 <tr>
                     <th>Position/Role</th>
@@ -406,24 +406,29 @@ function PublicServiceAccomplishment(props){
         </table>
 	</div>
 		<br />
-		<h5 align = "center"> Contributions to the World </h5>
-	<div className = "table-responsive">
-            <table className = "table table-striped table-sm">
-                <tbody>
-                    <tr>
-                        <th>Position/Role</th>
-                        <th>Organization</th>
-                        <th>Description</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Proof</th>
-                        <th>Status</th>
-                        <th>Approver Remarks</th>
-                        { (props.editable || props.approver) && <th>Action</th>}
-                    </tr>
-                    {wor ? wor : <td colSpan = "8"><p align = "center">No data available!</p></td>}
-                </tbody>
-            </table>
+
+
+		
+	<div className = "table-title">
+        <h5 align = "center"> Contributions to the World </h5>
+        <table>
+            <thead>
+                <tr>
+                    <th>Position/Role</th>
+                    <th>Organization</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Proof</th>
+                    <th>Status</th>
+                    <th>Approver Remarks</th>
+                    { (props.editable || props.approver) && <th>Action</th>}
+                </tr>
+            </thead>
+            <tbody>
+                {wor ? wor : <td colSpan = "8"><p align = "center">No data available!</p></td>}
+            </tbody>
+        </table>
 	</div>
             </div>
 

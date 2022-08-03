@@ -129,9 +129,9 @@ function LicensureExam(props) {
             <h2 align = "center"> Licensure Exams </h2>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="licensureexamalert" style={{visibility:"hidden"}}></div>
-            <div className = "table-responsive">
-                <table className = "table table-striped table-sm">
-                    <tbody>
+            <div className = "table-title">
+                <table>
+                    <thead>
                         <tr>
                             <th>Exam Name</th>
                             <th>Rank</th>
@@ -142,6 +142,8 @@ function LicensureExam(props) {
                             <th>Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
+                    </thead>
+                    <tbody>
                         {content}
                     </tbody>
                 </table>

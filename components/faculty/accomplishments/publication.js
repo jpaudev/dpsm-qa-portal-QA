@@ -174,24 +174,26 @@ function Publication(props){
             <h2 align = "center"> Publications </h2>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div className ="alert alert-success" role="alert" id="publicationalert" style={{visibility:"hidden"}}></div>
-			<div className = "table-responsive">
-	<table className = "table table-striped table-sm">
-		<tbody>
-			<tr>
-				<th className = "widen">Publication</th>
-				<th className = "widen" >Author/s</th>
-				<th>Publication Date</th>
-				<th>URL</th>
-				<th className = "widen">Citation</th>
-				<th>Proof</th>
-				<th>Status</th>
-                <th>Approver Remarks</th>
-                { (props.editable || props.approver) && <th>Action</th>}
-			</tr>
-            {content}
-		</tbody>
-	</table>	
-	</div>
+			<div className = "table-title">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Publication</th>
+                            <th>Author/s</th>
+                            <th>Publication Date</th>
+                            <th>URL</th>
+                            <th>Citation</th>
+                            <th>Proof</th>
+                            <th>Status</th>
+                            <th>Approver Remarks</th>
+                            { (props.editable || props.approver) && <th>Action</th>}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {content}
+                    </tbody>
+                </table>	
+	        </div>
     { props.editable && 
         <div>
             <PublicationForm faculty = {props.faculty} token = {props.token} />

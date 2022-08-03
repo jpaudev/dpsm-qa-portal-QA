@@ -188,27 +188,29 @@ function ResearchGrant(props){
             <h2 align = "center"> Research Grants </h2>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
 			<div className ="alert alert-success" role="alert" id="researchalert" style={{visibility:"hidden"}}></div>
-            <div className = "table-responsive">
-	<table className = "table table-striped table-sm">
-		<tbody>
-			<tr>
-				<th>Research Project</th>
-				<th>Researcher/s</th>
-				<th>Sponsor</th>
-				<th>Amount</th>
-				<th>Projected Duration</th>
-				<th>Start Date</th>
-				<th>End Date</th>
-				<th>Research Progress</th>
-				<th>Proof</th>
-				<th>Status</th>
-                <th>Approver Remarks</th>
-                { (props.editable || props.approver) && <th>Action</th>}
-			</tr>
-            {content}
-		</tbody>
-	</table>	
-	</div>
+            <div className = "table-title">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Research Project</th>
+                            <th>Researcher/s</th>
+                            <th>Sponsor</th>
+                            <th>Amount</th>
+                            <th>Projected Duration</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Research Progress</th>
+                            <th>Proof</th>
+                            <th>Status</th>
+                            <th>Approver Remarks</th>
+                            { (props.editable || props.approver) && <th>Action</th>}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {content}
+                    </tbody>
+                </table>	
+	        </div>
     { props.editable &&
         <div>
             <ResearchGrantForm faculty = {props.faculty} token = {props.token} />
