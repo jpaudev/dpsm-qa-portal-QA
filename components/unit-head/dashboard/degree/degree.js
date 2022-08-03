@@ -124,10 +124,10 @@ function DegreeCount(props) {
 			<br />
 			<h3 align = "center">Attained Degrees</h3>
 
-			<div className = "form-row">
+			<div className = "dashboard-form-row">
 				{
 					props.role == 3 && 
-					<div className = "form-group col-md-3">
+					<div className = "dashboard-form-group col-md-3">
 						<label className = "control-label" htmlFor ="DegreeDeptUnit"> Department Unit </label>
 						<select className = "form-control" name = "DegreeDeptUnit" id="DegreeDeptUnit" defaultValue={unitId}>
 							<option value="0">All</option>
@@ -138,17 +138,17 @@ function DegreeCount(props) {
 					</div>
 				}
 
-				<div className = "form-group col-md-3">
+				<div className = "dashboard-form-group col-md-3">
 					<label className = "control-label" htmlFor ="DegreeStartTimePeriod"> From  </label>
 					<input className = "form-control" type = "date" name = "DegreeStartTimePeriod" id="DegreeStartTimePeriod" defaultValue={startDate} />
 				</div>
 
-				<div className = "form-group col-md-3">
+				<div className = "dashboard-form-group col-md-3">
 					<label className = "control-label" htmlFor ="DegreeEndTimePeriod"> To </label>
 					<input className = "form-control" type = "date" name = "DegreeEndTimePeriod" id="DegreeEndTimePeriod" defaultValue={endDate}/>
 				</div>
 				
-				<div className = "form-group col-md-3">
+				<div className = "dashboard-form-group col-md-3">
 					<br/>
 					<button className = "btn btn-info" onClick={() => {
 						let unitId 

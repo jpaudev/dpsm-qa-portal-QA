@@ -89,10 +89,10 @@ function EmploymentStatus(props){
 		<div>
 			<br />
 			<h3 align = "center">Employment Status</h3>
-			<div className = "form-row">
+			<div className = "dashboard-form-row">
 				{
 					props.role == 3 &&
-					<div className = "form-group col-md-3">
+					<div className = "dashboard-form-group col-md-3">
 						<label className = "control-label" htmlFor ="EmpDeptUnit"> Department Unit </label>
 						<select className = "form-control" name = "EmpDeptUnit" id="EmpDeptUnit" defaultValue={unitId}>
 							<option value="0">All</option>
@@ -102,17 +102,17 @@ function EmploymentStatus(props){
 						</select>
 					</div>
 				}
-				<div className = "form-group col-md-3">
+				<div className = "dashboard-form-group col-md-3">
 					<label className = "control-label" htmlFor ="EmpStartTimePeriod"> From  </label>
 					<input className = "form-control" type = "date" name = "EmpStartTimePeriod" id="EmpStartTimePeriod" defaultValue={startDate} />
 				</div>
 
-				<div className = "form-group col-md-3">
+				<div className = "dashboard-form-group col-md-3">
 					<label className = "control-label" htmlFor ="EmpEndTimePeriod"> To </label>
 					<input className = "form-control" type = "date" name = "EmpEndTimePeriod" id="EmpEndTimePeriod" defaultValue={endDate}/>
 				</div>
 				
-				<div className = "form-group col-md-3">
+				<div className = "dashboard-form-group col-md-3">
 					<br/>
 					<button className = "btn btn-info" onClick={() => {
 						let unitId 
