@@ -37,13 +37,17 @@ function WorkExperience(props){
                         { props.editable &&
                             <td>
                                 <div className = "btn-grp">
-                                    <a className="btn btn-info" data-bs-toggle="modal"  data-bs-target="#editWorkExperience" onClick={() => {
+                                    <button className="btn customButton-icon-only yellow" data-bs-toggle="modal"  data-bs-target="#editWorkExperience" onClick={() => {
                                         setEdit(props.children[key].workExpId)
                                         setKey(editWork)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-bs-toggle="modal"  data-bs-target="#deleteWorkExperience" onClick={() => {
+                                    }}>
+                                        <span class="material-icons-sharp">edit</span>
+                                    </button>
+                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal"  data-bs-target="#deleteWorkExperience" onClick={() => {
                                         setDelete(props.children[key].workExpId)
-                                    }}>Delete</a>
+                                    }}>
+                                        <span class="material-icons-sharp">delete</span>
+                                    </button>
                                 </div>
                             </td>
                         }

@@ -88,7 +88,12 @@ class EmploymentForm extends React.Component{
                             </div>
                         </div>
                         <br />
-                        <button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}>Submit</button>
+						<div>
+							<button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}>
+								Submit
+							</button>
+						</div>
+
 			<style jsx>{`
 		label.required-label:after{
 			content: "*";
