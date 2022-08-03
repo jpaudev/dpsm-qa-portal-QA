@@ -23,7 +23,7 @@ function AssignAdminClerk(props) {
             )
         })
     } else {
-        content = <td colSpan = "2"><p align = "center">No data available.</p></td>
+        content = <td colSpan = "2"><br/><p align = "center">No data available.</p></td>
     }
 
     function setDelete(id) {

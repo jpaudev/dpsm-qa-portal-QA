@@ -29,7 +29,7 @@ function ApproveUnitHead(props) {
         })
         
     } else {
-        content = <tr><td colSpan = "4"><p align = "center">No data available.</p></td></tr>
+        content = <tr><td colSpan = "4"><br/><p align = "center">No data available.</p></td></tr>
     }
 
     function setApprove(current, incoming, unit) {

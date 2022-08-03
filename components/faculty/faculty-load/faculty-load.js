@@ -62,7 +62,7 @@ function FacultyLoader(props) {
 		})
 		
 	} else {
-        content = <p align = "center">No data available.</p>
+        content = <p align = "center"><br/>No data available.</p>
     }
 	return (
 		<div>
