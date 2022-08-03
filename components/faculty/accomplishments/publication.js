@@ -202,8 +202,9 @@ function Publication(props){
                     </tbody>
                 </table>	
 	        </div>
+            <br/><br/>
     { props.editable && 
-        <div>
+        <div className="card">
             <PublicationForm faculty = {props.faculty} token = {props.token} />
         </div>
     }
@@ -474,11 +475,12 @@ function Publication(props){
                     </div>
                 </div>
             </div>
-		<style jsx>{`
-			th.widen{
-				width: 30%;
-			}
-		`}</style>
+            <style jsx>{`
+                th.widen{
+                    width: 30%;
+                }
+            `}</style>
+        <br/><br/>
 		</div>
 	)
 }
