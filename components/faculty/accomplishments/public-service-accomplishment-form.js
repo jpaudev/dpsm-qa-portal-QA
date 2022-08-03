@@ -100,18 +100,16 @@ class PublicServiceAccomplishmentForm extends React.Component{
                                 Submit
                         </button>
                     </div>
-
-                    <hr />
-			<style jsx>{`
-		label.required-label:after{
-			content: "*";
-			color: #f00;
-		}
-		h6:before{
-			content: "* ";
-			color: #f00;
-		}
-	`}</style>
+			        <style jsx>{`
+                        label.required-label:after{
+                            content: "*";
+                            color: #f00;
+                        }
+                        h6:before{
+                            content: "* ";
+                            color: #f00;
+                        }
+                    `}</style>
                 </Form>
                 )}
 		
