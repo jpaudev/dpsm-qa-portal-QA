@@ -42,7 +42,7 @@ function EmploymentHistory(props){
 			);
 		});
 	} else {
-        content = <td colSpan = "5"><p align = "center">No data available!</p></td>
+        content = <td colSpan = "5"><p align = "center">No data available.</p></td>
     }
 
 	function setKey(x) {

@@ -87,7 +87,7 @@ function FacultyLoadSemester(props) {
     		)
     	});
     } else {
-        content = <td colSpan = "9"><p align = "center">No data available!</p></td>
+        content = <td colSpan = "9"><p align = "center">No data available.</p></td>
     }
 
     function setDelete(id) {
