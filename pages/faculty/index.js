@@ -16,8 +16,13 @@ function Dashboard(props) {
 
 	                <div className="container">
                         <br />
-                        <Link href = {{ pathname: "/faculty/generate-reports"}}><button className = "btn btn-info">Download All Faculty Information</button></Link>
-                        <br />
+                        <Link href = {{ pathname: "/faculty/generate-reports"}}>
+                            <button className = "btn customButton btn-info">
+                                <span className="material-icons-sharp">file_download</span>
+                                Get All Info
+                            </button>
+                        </Link>
+                        <br /> <br></br>
 	                    <nav>
                             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                                 <a className="nav-item nav-link nav-top" id="accomplishment-count-tab" data-bs-toggle="tab" href="#accomplishment-count" role="tab" aria-controls="accomplishment-count" aria-selected="false">
