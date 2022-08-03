@@ -95,7 +95,7 @@ function Education(props) {
         });
     }
     else{
-        content = <td colSpan = "9"><p align = "center">No data available!</p></td>
+        content = <td colSpan = "9"><p align = "center">No data available.</p></td>
     }
     let res
 
