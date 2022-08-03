@@ -150,7 +150,7 @@ function DegreeCount(props) {
 				
 				<div className = "dashboard-form-group col-md-3">
 					<br/>
-					<button className = "btn btn-info" onClick={() => {
+					<button className = "btn customButton-icon-only btn-info" onClick={() => {
 						let unitId 
 						if(props.role == 3) unitId = document.getElementById('DegreeDeptUnit').value
 						let startDate = document.getElementById('DegreeStartTimePeriod').value
@@ -168,7 +168,9 @@ function DegreeCount(props) {
 							pathname: url,
 							query
 						})
-					}}> Filter</button>
+					}}> 
+						<span className="material-icons-sharp">filter_alt</span>
+					</button>
 				</div>
 			</div>
 
