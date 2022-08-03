@@ -156,9 +156,10 @@ function LicensureExam(props) {
                     </tbody>
                 </table>
             </div>
+            <br/><br/>
 
             { props.editable && 
-                <div>
+                <div className="card">
                     <LicensureExamForm token = { props.token } />
                 </div>   
             }
@@ -389,7 +390,7 @@ function LicensureExam(props) {
                 </div>
             </div>
         </div>
-    
+        <br/><br/>
 
         </div>
 	
