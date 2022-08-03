@@ -94,14 +94,18 @@ function Publication(props){
                     <td>{props.children[key].approverRemarks || 'None'}</td>
                     <td>
                     { props.editable &&
-                        <div className = "btn-group">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#editPublication" onClick={async () => {
+                        <div>
+                            <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editPublication" onClick={async () => {
                                 setEdit(props.children[key].publicationId)
                                 setKey(editPub)
-                            }}>Edit</a>
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#deletePublication" onClick={() => {
+                            }}>
+                                <span class="material-icons-sharp">edit</span>
+                            </button>
+                            <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublication" onClick={() => {
                                 setDelete(props.children[key].publicationId)
-                            }}>Delete</a>
+                            }}>
+                                <span class="material-icons-sharp">delete</span>
+                            </button>
                         </div>
                     }
                     { props.approver &&

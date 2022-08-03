@@ -66,14 +66,18 @@ function LicensureExam(props) {
                         <td>{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         { props.editable &&
-                            <div className = "btn-group">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
+                            <div>
+                                <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
                                     setEdit(props.children[key].licenseId)
                                     setKey(editLic)
-                                }}>Edit</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
+                                }}>
+                                    <span class="material-icons-sharp">edit</span>
+                                </button>
+                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
                                     setDelete(props.children[key].licenseId)
-                                }}>Delete</a>
+                                }}>
+                                    <span class="material-icons-sharp">delete</span>
+                                </button>
                             </div>
                         }
                         { props.approver &&
