@@ -162,9 +162,10 @@ function TrainingSeminar(props) {
                     </tbody>
                 </table>	
             </div>
+            <br/><br/>
 
             { props.editable && 
-                <div>
+                <div className="card">
                     <TrainingSeminarForm token = { props.token } />
                 </div>  
             } 	
@@ -410,7 +411,7 @@ function TrainingSeminar(props) {
                 </div>
             </div>
         </div>
-    
+            <br/><br/> 
         </div>	
     )
 }  
