@@ -147,15 +147,15 @@ function Education(props) {
                 <table>
                     <thead>
                         <tr>
-                            <th>Degree/Certification</th>
-                            <th>Degree Type</th>
-                            <th>Major/Specialization</th>
-                            <th>Institution/School</th>
+                            <th>Degree</th>
+                            <th>Type</th>
+                            <th>Major</th>
+                            <th>Institution</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th>Approver Remarks</th>
+                            <th>Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>
@@ -210,13 +210,13 @@ function Education(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editEducForm">
                             <div className="modal-body">
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "SchoolEducationHistoryUpdate"> School/Institution </label>
                                         <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" required />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree Type </label>
                                         <Field as = "select" className = "form-control" name = "degreeType" id = "degreeType" >
@@ -233,31 +233,31 @@ function Education(props) {
                                         </Field>
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree/Certification </label>
                                         <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "MajorEducationalHistoryUpdate"> Major/Specialization </label>
                                         <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "StartDateEducationalHistoryUpdate"> Start Date </label>
                                         <Field className = "form-control" type = "date" name = "startDate" id = "startDate" required />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "EndDateEducationalHistoryUpdate"> End Date </label>
                                         <Field className = "form-control" type = "date" name = "endDate" id = "endDate" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "proof" > Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                         <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
@@ -287,7 +287,7 @@ function Education(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
+                        <br />
                         <p> Are you sure you want to delete this education information? </p>
                     </div>
                     <div className="modal-footer">
@@ -327,7 +327,7 @@ function Education(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
+                        {/* <hr /> */}
                         <p> Are you sure you want to approve this education information? </p>
                     </div>
                     <div className="modal-footer">
@@ -402,7 +402,7 @@ function Education(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "rejectEducForm">
                             <div className="modal-body">
-                                <hr />
+                                {/* <hr /> */}
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
@@ -424,7 +424,6 @@ function Education(props) {
                     </div>
                 </div>
             </div>
-        
         </div>
     )
 }
