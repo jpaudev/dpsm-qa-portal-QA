@@ -59,7 +59,7 @@ class EducationForm extends React.Component{
                         <div className = "row pb-3">
                             <div className = "form-group col-md-12">
                                 <label htmlFor = "SchoolEducationalHistory[]" className = "required-label" style={{fontSize:"16px"}}> Institution </label>
-                                <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Name of Institution or School" required />
+                                <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input name of Institution or School" required />
                             </div>
                         </div>
 

@@ -20,7 +20,7 @@ function AssignDeptChair(props) {
     }
 
     return (
-        <div>
+        <div className='table-title'>
             <h2 align = "center"> Department Chair Assignment </h2>
             <div className ="alert alert-success" role="alert" id="deptchairalert" style={{visibility:"hidden"}}></div>
             <div className = "card">
