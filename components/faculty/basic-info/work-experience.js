@@ -235,6 +235,7 @@ function WorkExperience(props){
                     </div>
                 </div>
             </div>
+            <br/><br/>
         </div>
     )
 }

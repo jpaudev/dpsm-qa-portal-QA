@@ -633,21 +633,6 @@ nav .nav a.active span{
 .blue{
     background: var(--color-primary);
 }
-
-
-.grey{
-    background: rgb(176, 176, 176);
-}
-
-.grey:hover{
-    background: rgb(86, 86, 86);
-}
-
-.
-
-
-
-
 /* main .card form select{
     width: 5rem;
     background: rgb(225, 252, 252);;
