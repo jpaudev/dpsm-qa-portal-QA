@@ -63,20 +63,22 @@ function EmploymentHistory(props){
 	return(
 		<div>
 			<div className ="alert alert-success" role="alert" id="employmentalert" style={{visibility:"hidden"}}></div>
-			<div className = "table-responsive">
-			<table className = "table table-striped table-sm">
-				<tbody>
-					<tr>
-						<th>Position</th>
-						<th>Status</th>
-                        <th>Category</th>
-						<th>Start Date</th>
-						<th>End Date</th>
-						{ props.role == 5 && <th>Action</th> }
-					</tr>
-					{content}
-				</tbody>
-			</table>
+			<div className = "table-title">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Positions</th>
+                            <th>Status</th>
+                            <th>Category</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            { props.role == 5 && <th>Action</th> }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {content}
+                    </tbody>
+                </table>
 			</div>
 
 			<div className="modal fade" id="editEmployment" tabIndex="-1" role="dialog" aria-labelledby="editEmploymentLabel" aria-hidden="true">

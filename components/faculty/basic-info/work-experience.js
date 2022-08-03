@@ -87,10 +87,11 @@ function WorkExperience(props){
             <h5 align = "center"> Within UP Manila </h5>
             <EmploymentHistory role={props.role} token={props.token} facultyId={props.facultyId}>{props.employment}</EmploymentHistory>
             <br />
-            <h5 align = "center"> Outside UP Manila </h5>
-            <div className = "table-responsive">
-                <table className = "table table-striped table-sm">
-                    <tbody>
+            
+            <div className = "table-title">
+                <h5 align = "center"> Outside UP Manila </h5>
+                <table>
+                    <thead>
                         <tr key = "headers">
                             <th>Employer</th>
                             <th>Position</th>
@@ -98,11 +99,16 @@ function WorkExperience(props){
                             <th>End Date</th>
                             <th>Description</th>
                             <th>Action</th>
-                    </tr>
-                    {content}
-                   </tbody>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        {content}
+                    </tbody>
                 </table>
             </div>
+            <br></br>
+
             { props.editable &&
                 <div className="card">
                     <WorkExpForm token = { props.token }/>

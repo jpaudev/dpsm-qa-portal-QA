@@ -134,9 +134,9 @@ function Education(props) {
 
             <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
             
-            <div className = "table-responsive">
-                <table className = "table table-striped table-sm">
-                    <tbody>
+            <div className = "table-title">
+                <table>
+                    <thead>
                         <tr>
                             <th>Degree/Certification</th>
                             <th>Degree Type</th>
@@ -149,11 +149,14 @@ function Education(props) {
                             <th>Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
+                    </thead>
+                    <tbody>
                         {content}
                     </tbody>
                 </table>
             </div>
             
+            <br></br>
             { props.editable && 
                 <div className="card">
                     <EducationForm token = { props.token }/>

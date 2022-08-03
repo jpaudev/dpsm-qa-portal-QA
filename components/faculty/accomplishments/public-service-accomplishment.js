@@ -326,18 +326,19 @@ function PublicServiceAccomplishment(props){
 
 	return(
 	<div>
-		<h2 align = "center"> Public Service Accomplishments </h2>
+		<h2 align = "center"> Public Service Accomplishments</h2>
         <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
         <div role="alert" id="publicservicealert" style={{visibility:"hidden"}}></div>
 		<div>
-		<h5 align = "center">Within UP Manila </h5>
-	<div className = "table-responsive">
-            <table className = "table table-striped table-sm">
-                <tbody>
+		
+        <div className = "table-title">
+            <h5 align = "center">Within UP Manila </h5>
+            <table>
+                <thead>
                     <tr>
                         <th>Position/Role</th>
-        			    <th>Organization</th>
-		          	    <th>Description</th>
+                        <th>Organization</th>
+                        <th>Description</th>
                         <th>Start Date</th>
                         <th>End Date</th>
                         <th>Proof</th>
@@ -345,17 +346,22 @@ function PublicServiceAccomplishment(props){
                         <th>Approver Remarks</th>
                         { (props.editable || props.approver) && <th>Action</th>}
                     </tr>
+                </thead>
+                <tbody>
                     {upm ? upm : <td colSpan = "8"><p align = "center">No data available!</p></td>} 
                 </tbody>
             </table>
-	</div>
+        </div>
+
+
             </div>
             <div>
 		<br />
-		<h5 align = "center"> Contributions to Profession </h5>
-	<div className = "table-responsive">
-            <table className = "table table-striped table-sm">
-                <tbody>
+		
+        <div className = "table-title">
+            <h5 align = "center"> Contributions to Profession </h5>
+            <table>
+                <thead>
                     <tr>
                         <th>Position/Role</th>
                         <th>Organization</th>
@@ -367,29 +373,37 @@ function PublicServiceAccomplishment(props){
                         <th>Approver Remarks</th>
                         { (props.editable || props.approver) && <th>Action</th>}
                     </tr>
+                </thead>
+                <tbody>
+
                     {pro ? pro : <td colSpan = "8"><p align = "center">No data available!</p></td>}
                 </tbody>
             </table>
-	</div>
+        </div>
+
+
 		<br />
-		<h5 align = "center"> Contributions to the Nation </h5>
-	<div className = "table-responsive">
-            <table className = "table table-striped table-sm">
-                <tbody>
-                    <tr>
-                        <th>Position/Role</th>
-                        <th>Organization</th>
-                        <th>Description</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Proof</th>
-                        <th>Status</th>
-                        <th>Approver Remarks</th>
-                        { (props.editable || props.approver) && <th>Action</th>}
-                    </tr>
-                    {nat ? nat : <td colSpan = "8"><p align = "center">No data available!</p></td>}
-                </tbody>
-            </table>
+		
+	<div className = "table-title">
+        <h5 align = "center"> Contributions to the Nation </h5>
+        <table className>
+            <thead>
+                <tr>
+                    <th>Position/Role</th>
+                    <th>Organization</th>
+                    <th>Description</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Proof</th>
+                    <th>Status</th>
+                    <th>Approver Remarks</th>
+                    { (props.editable || props.approver) && <th>Action</th>}
+                </tr>
+            </thead>
+            <tbody>
+                {nat ? nat : <td colSpan = "8"><p align = "center">No data available!</p></td>}
+            </tbody>
+        </table>
 	</div>
 		<br />
 		<h5 align = "center"> Contributions to the World </h5>
