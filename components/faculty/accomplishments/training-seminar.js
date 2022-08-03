@@ -75,23 +75,27 @@ function TrainingSeminar(props) {
                                         setEdit(props.children[key].tsId)
                                         setKey(editTS)
                                     }}>
-                                        <span class="material-icons-sharp">edit</span>
+                                        <span className="material-icons-sharp">edit</span>
                                     </button>
                                 <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deleteTrainingSeminar" onClick={() => {
                                     setDelete(props.children[key].tsId)
                                 }}>
-                                    <span class="material-icons-sharp">delete</span>
+                                    <span className="material-icons-sharp">delete</span>
                                 </button>
                             </div>
                         }
                         { props.approver &&
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#approveTrainingSeminar" onClick={() => {
+                            <div className = "center">
+                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approveTrainingSeminar" onClick={() => {
                                     setApprove(props.children[key].tsId)
-                                }}>Approve</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#rejectTrainingSeminar" onClick={() => {
+                                }}>
+                                    <span className="material-icons-sharp">check</span>
+                                </button>
+                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectTrainingSeminar" onClick={() => {
                                     setApprove(props.children[key].tsId)
-                                }}>Reject</a>
+                                }}>
+                                    <span className="material-icons-sharp">close</span>
+                                </button>
                             </div>
                         }
                         </td>

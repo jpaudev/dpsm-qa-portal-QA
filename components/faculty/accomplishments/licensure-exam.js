@@ -71,23 +71,27 @@ function LicensureExam(props) {
                                     setEdit(props.children[key].licenseId)
                                     setKey(editLic)
                                 }}>
-                                    <span class="material-icons-sharp">edit</span>
+                                    <span className="material-icons-sharp">edit</span>
                                 </button>
                                 <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
                                     setDelete(props.children[key].licenseId)
                                 }}>
-                                    <span class="material-icons-sharp">delete</span>
+                                    <span className="material-icons-sharp">delete</span>
                                 </button>
                             </div>
                         }
                         { props.approver &&
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#approveLicense" onClick={() => {
+                            <div className = "center">
+                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approveLicense" onClick={() => {
                                     setApprove(props.children[key].licenseId)
-                                }}>Approve</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#rejectLicense" onClick={() => {
+                                }}>
+                                    <span className="material-icons-sharp">check</span>
+                                </button>
+                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectLicense" onClick={() => {
                                     setApprove(props.children[key].licenseId)
-                                }}>Reject</a>
+                                }}>
+                                    <span className="material-icons-sharp">close</span>
+                                </button>
                             </div>
                         }
                         </td>

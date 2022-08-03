@@ -84,13 +84,17 @@ function Education(props) {
                         }
                         { props.approver && 
                             <td>
-                                <div className = "btn-grp">
-                                    <a className="btn btn-info" data-bs-toggle="modal" data-bs-target="#approveEducation" onClick={() => {
+                                <div className = "center">
+                                    <button className="btn customButton-icon-only green" data-bs-toggle="modal" data-bs-target="#approveEducation" onClick={() => {
                                         setApprove(props.children[key].educInfoId)
-                                    }}>Approve</a>
-                                    <a className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#rejectEducation" onClick={() => {
+                                    }}>
+                                        <span className="material-icons-sharp">check</span>
+                                    </button>
+                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#rejectEducation" onClick={() => {
                                         setApprove(props.children[key].educInfoId)
-                                    }}>Reject</a>
+                                    }}>
+                                        <span className="material-icons-sharp">close</span>
+                                    </button>
                                 </div>
                             </td>
                         }

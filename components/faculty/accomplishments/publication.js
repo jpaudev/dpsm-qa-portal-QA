@@ -99,23 +99,27 @@ function Publication(props){
                                 setEdit(props.children[key].publicationId)
                                 setKey(editPub)
                             }}>
-                                <span class="material-icons-sharp">edit</span>
+                                <span className="material-icons-sharp">edit</span>
                             </button>
                             <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublication" onClick={() => {
                                 setDelete(props.children[key].publicationId)
                             }}>
-                                <span class="material-icons-sharp">delete</span>
+                                <span className="material-icons-sharp">delete</span>
                             </button>
                         </div>
                     }
                     { props.approver &&
-                        <div className = "btn-grp">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#approvePublication" onClick={() => {
+                        <div className = "center">
+                            <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublication" onClick={() => {
                                 setApprove(props.children[key].publicationId)
-                            }}>Approve</a>
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublication" onClick={() => {
+                            }}>
+                                <span className="material-icons-sharp">check</span>
+                            </button>
+                            <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublication" onClick={() => {
                                 setApprove(props.children[key].publicationId)
-                            }}>Reject</a>
+                            }}>
+                                <span className="material-icons-sharp">close</span>
+                            </button>
                         </div>
                     }
                     </td>

@@ -118,13 +118,17 @@ function ResearchGrant(props){
                             </div>
                         }
                         { props.approver &&
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#approveResearchGrant" onClick={() => {
+                            <div className = "center">
+                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approveResearchGrant" onClick={() => {
                                     setApprove(props.children[key].researchId)
-                                }}>Approve</a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#rejectResearchGrant" onClick={() => {
+                                }}>
+                                    <span className="material-icons-sharp">check</span>
+                                </button>
+                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectResearchGrant" onClick={() => {
                                     setApprove(props.children[key].researchId)
-                                }}>Reject</a>
+                                }}>
+                                    <span className="material-icons-sharp">close</span>
+                                </button>
                             </div>
                         }
                         </td>

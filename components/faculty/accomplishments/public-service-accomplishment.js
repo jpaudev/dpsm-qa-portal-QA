@@ -76,27 +76,27 @@ function PublicServiceAccomplishment(props){
                                         setEdit(props.children[key].publicServiceId)
                                         setKey(editPS)
                                     }}>
-                                        <span class="material-icons-sharp">edit</span>
+                                        <span className="material-icons-sharp">edit</span>
                                     </button>
                                     <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
                                         setDelete(props.children[key].publicServiceId)
                                     }}>
-                                        <span class="material-icons-sharp">delete</span>
+                                        <span className="material-icons-sharp">delete</span>
                                     </button>
                                 </div>
                             }
                             { props.approver &&
-                                <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                <div className="center">
+                                    <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
                                         setApprove(props.children[key].publicServiceId)
                                     }}>
-                                        Approve
-                                    </a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                        <span className="material-icons-sharp">check</span>
+                                    </button>
+                                    <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
                                         setApprove(props.children[key].publicServiceId)
                                     }}>
-                                        Reject
-                                    </a>
+                                        <span className="material-icons-sharp">close</span>
+                                    </button>
                                 </div>
                             }
                         </td>
@@ -150,27 +150,27 @@ function PublicServiceAccomplishment(props){
                                         setEdit(props.children[key].publicServiceId)
                                         setKey(editPS)
                                     }}>
-                                        <span class="material-icons-sharp">edit</span>
+                                        <span className="material-icons-sharp">edit</span>
                                     </button>
                                     <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
                                         setDelete(props.children[key].publicServiceId)
                                     }}>
-                                        <span class="material-icons-sharp">delete</span>
+                                        <span className="material-icons-sharp">delete</span>
                                     </button>
                                 </div>
                             }
                             { props.approver &&
-                                <div className = "btn-grp">
-                                    <a className="btn btn-info" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                <div className = "center">
+                                    <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
                                         setApprove(props.children[key].publicServiceId)
                                     }}>
-                                        Approve
-                                    </a>
-                                    <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                       <span className="material-icons-sharp">check</span>
+                                    </button>
+                                    <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
                                         setApprove(props.children[key].publicServiceId)
                                     }}>
-                                        Reject
-                                    </a>
+                                       <span className="material-icons-sharp">close</span>
+                                    </button>
                                 </div>
                             }
                         </td>
@@ -224,27 +224,27 @@ function PublicServiceAccomplishment(props){
                                     setEdit(props.children[key].publicServiceId)
                                     setKey(editPS)
                                 }}>
-                                    <span class="material-icons-sharp">edit</span>
+                                    <span className="material-icons-sharp">edit</span>
                                 </button>
                                 <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
                                     setDelete(props.children[key].publicServiceId)
                                 }}>
-                                    <span class="material-icons-sharp">delete</span>
+                                    <span className="material-icons-sharp">delete</span>
                                 </button>
                             </div>
                         }
                         { props.approver &&
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                            <div className = "center">
+                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
                                     setApprove(props.children[key].publicServiceId)
                                 }}>
-                                    Approve
-                                </a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                    <span className="material-icons-sharp">check</span>
+                                </button>
+                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
                                     setApprove(props.children[key].publicServiceId)
                                 }}>
-                                    Reject
-                                </a>
+                                   <span className="material-icons-sharp">close</span>
+                                </button>
                             </div>
                         }
                         </td>
@@ -298,27 +298,27 @@ function PublicServiceAccomplishment(props){
                                     setEdit(props.children[key].publicServiceId)
                                     setKey(editPS)
                                 }}>
-                                    <span class="material-icons-sharp">edit</span>
+                                    <span className="material-icons-sharp">edit</span>
                                 </button>
                                 <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
                                     setDelete(props.children[key].publicServiceId)
                                 }}>
-                                    <span class="material-icons-sharp">delete</span>
+                                    <span className="material-icons-sharp">delete</span>
                                 </button>
                             </div>
                         }
                         { props.approver &&
-                            <div className = "btn-grp">
-                                <a className="btn btn-info" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                            <div className = "center">
+                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
                                     setApprove(props.children[key].publicServiceId)
                                 }}>
-                                    Approve
-                                </a>
-                                <a className="btn btn-danger" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                    <span className="material-icons-sharp">check</span>
+                                </button>
+                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
                                     setApprove(props.children[key].publicServiceId)
                                 }}>
-                                    Reject
-                                </a>
+                                    <span className="material-icons-sharp">close</span>
+                                </button>
                             </div>
                         }
                         </td>
