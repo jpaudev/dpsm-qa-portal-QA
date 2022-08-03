@@ -52,7 +52,7 @@ class EmploymentForm extends React.Component{
 					<Form>
                         <hr />
                         <br />
-			<h6>Required</h6>
+					<h6>Required</h6>
                         <div className = "form-row">
                             <div className = "form-group col-md-3">
                                 <label htmlFor = "Position[]" className = "required-label"> Position </label>
@@ -78,7 +78,7 @@ class EmploymentForm extends React.Component{
 									<option value="Temporary">Temporary</option>
                                 </Field>
                             </div>
-                            <div className = "form-group col-md-3" className = "required-label">
+                            <div className = "form-group col-md-3">
                                 <label htmlFor = "StartDateEmployment[]"> Start Date *</label>
                                 <Field type = "date" className = "form-control" name = "startDate" required />
                             </div>
@@ -95,16 +95,16 @@ class EmploymentForm extends React.Component{
 							</button>
 						</div>
 
-			<style jsx>{`
-		label.required-label:after{
-			content: "*";
-			color: #f00;
-		}
-		h6:before{
-			content: "* ";
-			color: #f00;
-		}
-	`}</style>
+					<style jsx>{`
+						label.required-label:after{
+							content: "*";
+							color: #f00;
+						}
+						h6:before{
+							content: "* ";
+							color: #f00;
+						}
+					`}</style>
                     </Form>
 				)}
 				
