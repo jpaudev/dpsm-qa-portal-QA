@@ -52,7 +52,7 @@ class TrainingSeminarForm extends React.Component{
                         {/* 1st Row */}
                         <div className = "row pb-3">
                             <div className = "form-group col-md-6">
-                                <label htmlFor = "TrainingSeminar[]" className = "required-label" style={{fontSize:"16px"}}> Name of Training/Seminar </label>
+                                <label htmlFor = "TrainingSeminar[]" className = "required-label" style={{fontSize:"16px"}} > Name of Training/Seminar </label>
                                 <Field className = "form-control" type = "text" name = "title" id = "title" placeholder = "Input name of Training/Seminar" required />
                             </div>
                             <div className = "form-group col-md-6">
@@ -60,6 +60,7 @@ class TrainingSeminarForm extends React.Component{
                                 <Field className = "form-control" type = "text" name = "role" id = "role" placeholder = "Input role in training/seminar" required />
                             </div>
                         </div>
+
                         {/* 2nd Row */}
                         <div className = "row pb-3">
                             <div className = "form-group col-md-4">
@@ -75,6 +76,7 @@ class TrainingSeminarForm extends React.Component{
                                 <Field type = "date" className = "form-control" name = "dateTo" id = "dateTo" />
                             </div>
                         </div>
+
                         {/* 3rd Row */}
                         <div className="row pb-3">
                             <div className = "form-group col-md-8">
@@ -88,26 +90,22 @@ class TrainingSeminarForm extends React.Component{
                         </div>
                         <br />
                         <div className="center">
-                            <button
-                                type = "submit"
-                                className = "btn customButton maroon"
-                                disabled = {isSubmitting}
-                            >
-                                <span className="material-icons-sharp">add</span>
-                                    Submit
+                            <button type = "submit" className = "btn customButton maroon" disabled = {isSubmitting}>
+                                <span className="material-icons-sharp">add</span> 
+                                Submit
                             </button>
                         </div>
                         
-			<style jsx>{`
-		label.required-label:after{
-			content: "*";
-			color: #f00;
-		}
-		h6:before{
-			content: "* ";
-			color: #f00;
-		}
-	`}</style>
+                    <style jsx>{`
+                        label.required-label:after{
+                            content: "*";
+                            color: #f00;
+                        }
+                        h6:before{
+                            content: "* ";
+                            color: #f00;
+                        }
+                    `}</style>
                     </Form>
                 )}
 		
