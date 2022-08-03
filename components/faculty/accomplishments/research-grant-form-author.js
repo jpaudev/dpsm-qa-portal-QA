@@ -39,17 +39,18 @@ class ResearchGrantFormAuthor extends React.Component{
 				{value: this.props.faculty[key].facultyId, label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}
 			);
 		});
-		return(<div>
+		
+		return(
+		<div>
 			<div className = "form-row">
-
-				<div className = "form-group col-md-6">
-					<label htmlFor = "ResearchAuthorDPSM[]"> Researchers (from DPSM) </label>
+				<div className = "form-group">
+					<label htmlFor = "ResearchAuthorDPSM[]" style={{fontSize:"16px"}}> DPSM Researchers </label>
 					<Select className = "col-md-12" name = "ResearchAuthorDPSM[]" isMulti options = {authors} required />
 				</div>
-		</div>
-		<div>
+			</div>
+			<div>
 				{this.state.duplicateAuthors}
-		</div>
+			</div>
 		</div>
 		)
 	}
