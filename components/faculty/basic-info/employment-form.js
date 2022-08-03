@@ -88,9 +88,10 @@ class EmploymentForm extends React.Component{
                             </div>
                         </div>
                         <br />
-						<div>
-							<button type = "submit" className = "btn btn-primary col-md-12" disabled = {isSubmitting}>
-								Submit
+						<div className="center">
+							<button type = "submit" className = "btn customButton maroon" disabled = {isSubmitting}>
+								<span className="material-icons-sharp">add</span>
+                                Submit
 							</button>
 						</div>
 
