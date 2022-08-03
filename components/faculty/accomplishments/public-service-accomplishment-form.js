@@ -47,7 +47,7 @@ class PublicServiceAccomplishmentForm extends React.Component{
             >
                 {({ values, errors, touched, isSubmitting }) => (
                 <Form id = "psForm">
-                    <h2 className='center'> Add Public Service Accomplishments</h2>
+                    <h2 className='center'> Add Public Service Accomplishment Form</h2>
                     <hr />
 		            <h6>Required</h6>
                     <div className = "row pb-3">
