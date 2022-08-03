@@ -42,23 +42,23 @@ function PublicServiceAccomplishment(props){
                         <td>
                             {
                                 props.children[key].proof &&
-                                <div className = "btn-grp">
+                                <div className = "center">
                                     <button
                                         type="button"
-                                        className="btn btn-primary"
+                                        className="btn customButton-icon-only blue"
                                         onClick = {() => {
                                             let file = props.children[key].proof
                                             downloadProof(file, props.token)
                                         }}
                                     >
-                                        Download
+                                        <span className="material-icons-sharp">file_download</span>
                                     </button>
                                     <a
-                                        className ="btn btn-info"
+                                        className ="btn customButton-icon-only blue"
                                         href={process.env.UPLOADS_URL + props.children[key].proof}
                                         style = {{ color: 'white' }}
                                         target="_blank">
-                                        Preview
+                                        <span className="material-icons-sharp">visibility</span>
                                     </a>
                                 </div>
                             }
@@ -116,23 +116,23 @@ function PublicServiceAccomplishment(props){
                         <td>
                         {
                             props.children[key].proof &&
-                            <div className = "btn-grp">
+                            <div className = "center">
                                 <button
                                     type="button"
-                                    className="btn btn-primary"
+                                    className="btn customButton-icon-only blue"
                                     onClick = {() => {
                                         let file = props.children[key].proof
                                         downloadProof(file, props.token)
                                     }}
                                 >
-                                    Download
+                                    <span className="material-icons-sharp">file_download</span>
                                 </button>
                                 <a
-                                    className ="btn btn-info"
+                                    className ="btn customButton-icon-only blue"
                                     href={process.env.UPLOADS_URL + props.children[key].proof}
                                     style = {{ color: 'white' }}
                                     target="_blank">
-                                    Preview
+                                    <span className="material-icons-sharp">visibility</span>
                                 </a>
                             </div>
                         }
@@ -190,23 +190,23 @@ function PublicServiceAccomplishment(props){
                         <td>
                         {
                             props.children[key].proof &&
-                            <div className = "btn-grp">
+                            <div className = "center">
                                 <button
                                     type="button"
-                                    className="btn btn-primary"
+                                    className="btn customButton-icon-only blue"
                                     onClick = {() => {
                                         let file = props.children[key].proof
                                         downloadProof(file, props.token)
                                     }}
                                 >
-                                    Download
+                                    <span className="material-icons-sharp">file_download</span>
                                 </button>
                                 <a
-                                    className ="btn btn-info"
+                                    className ="btn customButton-icon-only blue"
                                     href={process.env.UPLOADS_URL + props.children[key].proof}
                                     style = {{ color: 'white' }}
                                     target="_blank">
-                                    Preview
+                                    <span className="material-icons-sharp">visibility</span>
                                 </a>
                             </div>
                         }
@@ -264,23 +264,23 @@ function PublicServiceAccomplishment(props){
                         <td>
                         {
                             props.children[key].proof &&
-                            <div className = "btn-grp">
+                            <div className = "center">
                                 <button
                                     type="button"
-                                    className="btn btn-primary"
+                                    className="btn customButton-icon-only blue"
                                     onClick = {() => {
                                         let file = props.children[key].proof
                                         downloadProof(file, props.token)
                                     }}
                                 >
-                                    Download
+                                    <span className="material-icons-sharp">file_download</span>
                                 </button>
                                 <a
-                                    className ="btn btn-info"
+                                    className ="btn customButton-icon-only blue"
                                     href={process.env.UPLOADS_URL + props.children[key].proof}
                                     style = {{ color: 'white' }}
                                     target="_blank">
-                                    Preview
+                                    <span className="material-icons-sharp">visibility</span>
                                 </a>
                             </div>
                         }
