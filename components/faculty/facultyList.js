@@ -246,11 +246,11 @@ function FacultyList(props){
 							{
 								props.role == 5 &&
 								<td>
-									<button className="btn btn-info" data-toggle="modal" data-dismiss="modal" data-target="#editStatus" onClick={() => {
+									<button className="btn customButton-icon-only yellow" data-toggle="modal" data-dismiss="modal" data-target="#editStatus" onClick={() => {
 										setEdit(faculty[index].faculty_personal_info.user.userId)
 										setKey(user)
-									}}>Edit
-										
+									}}>
+										<span className="material-icons-sharp">edit</span>
 									</button>
 								</td>
 							}
