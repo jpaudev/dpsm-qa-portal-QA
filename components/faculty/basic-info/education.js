@@ -68,13 +68,17 @@ function Education(props) {
                         { props.editable &&
                             <td>
                                 <div className = "btn-grp">
-                                    <a className="btn btn-info" data-bs-toggle="modal" data-bs-target="#editEducation" onClick={() => {
+                                    <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editEducation" onClick={() => {
                                         setEdit(props.children[key].educInfoId)
                                         setKey(editEduc)
-                                    }}>Edit</a>
-                                    <a className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEducation" onClick={() => {
+                                    }}>
+                                        <span class="material-icons-sharp">edit</span>
+                                    </button>
+                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteEducation" onClick={() => {
                                         setDelete(props.children[key].educInfoId)
-                                    }}>Delete</a>
+                                    }}>
+                                        <span class="material-icons-sharp">delete</span>
+                                    </button>
                                 </div>
                             </td>
                         }
@@ -405,7 +409,9 @@ function Education(props) {
                                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#rejectEducation').modal('toggle');
-                                }}>Save changes</button>
+                                }}>
+                                    Save changes
+                                </button>
                             </div>
                         </Form>
                     )}
