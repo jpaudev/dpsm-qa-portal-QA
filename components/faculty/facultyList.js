@@ -94,11 +94,11 @@ function FacultyList(props){
 					<div>
 						{/* Table Title */}
 						<h4 align = "center"> {props.children[key].unit} </h4>
-						<div className="table-title" >
+						<div className="table-title">
 							<table>
 								<thead>
 									<tr>
-										<th>Name</th>
+										<th className="table-name">Name</th>
 										{
 										props.path != 'approval' &&
 										<th>Status</th>
@@ -163,10 +163,12 @@ function FacultyList(props){
 							{
 								props.role == 5 &&
 								<td>
-									<a className="btn btn-info" data-toggle="modal" data-dismiss="modal" data-target="#editStatus" onClick={() => {
+									<button className="btn customButton-icon-only yellow" data-toggle="modal" data-dismiss="modal" data-target="#editStatus" onClick={() => {
 										setEdit(faculty[index].faculty_personal_info.user.userId)
 										setKey(user)
-									}}>Edit</a>
+									}}>
+									<span className="material-icons-sharp">edit</span>
+									</button>
 								</td>
 							}
 						</tr>
@@ -180,7 +182,7 @@ function FacultyList(props){
 							<table>
 								<thead>
 									<tr>
-										<th>Name</th>
+										<th className="table-name">Name</th>
 										{
 										props.path != 'approval' &&
 										<th>Status</th>
@@ -244,10 +246,12 @@ function FacultyList(props){
 							{
 								props.role == 5 &&
 								<td>
-									<a className="btn btn-info" data-toggle="modal" data-dismiss="modal" data-target="#editStatus" onClick={() => {
+									<button className="btn btn-info" data-toggle="modal" data-dismiss="modal" data-target="#editStatus" onClick={() => {
 										setEdit(faculty[index].faculty_personal_info.user.userId)
 										setKey(user)
-									}}>Edit</a>
+									}}>Edit
+										
+									</button>
 								</td>
 							}
 						</tr>
@@ -261,7 +265,7 @@ function FacultyList(props){
 							<table>
 								<thead>
 									<tr>
-										<th>Name</th>
+										<th className="table-name">Name</th>
 										{
 										props.path != 'approval' &&
 										<th>Status</th>

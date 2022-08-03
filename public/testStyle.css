@@ -471,6 +471,24 @@ main .table-title a{
     color: var(--color-primary);
 }
 
+/* List Group */
+
+.list-group{
+    margin-right: 200px;
+    margin-left: 1rem;
+    width: 600px;
+}
+
+.list-group .list-group-item{
+    text-align: left;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.table-name{
+    width: 600px;
+}
+
 /* Cards */
 
 main .card{
@@ -510,16 +528,18 @@ main .card form select option p{
 
 
     /* Form Group */
-.form-row{
+.dashboard-form-row{
     width: 100%;
     text-align: left;
 }
 
-.form-group{
+.dashboard-form-group{
     width: 20%;
     display: inline-block;
     margin-left: 1rem;
 }
+
+    
 
 
 
