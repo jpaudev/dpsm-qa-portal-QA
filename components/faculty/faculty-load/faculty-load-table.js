@@ -91,7 +91,7 @@ function FacultyLoadTable(props) {
         })
     }
     else{
-        content = <td colSpan = "7"><p align = "center">No data available.</p></td>
+        content =<td colSpan = "7"> <br/><p align = "center">No data available.</p></td>
     }
 
     function setEdit(id) {
