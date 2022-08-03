@@ -95,13 +95,13 @@ function Publication(props){
                     <td>
                     { props.editable &&
                         <div>
-                            <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editPublication" onClick={async () => {
+                            <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublication" onClick={async () => {
                                 setEdit(props.children[key].publicationId)
                                 setKey(editPub)
                             }}>
                                 <span className="material-icons-sharp">edit</span>
                             </button>
-                            <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublication" onClick={() => {
+                            <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublication" onClick={() => {
                                 setDelete(props.children[key].publicationId)
                             }}>
                                 <span className="material-icons-sharp">delete</span>
@@ -110,12 +110,12 @@ function Publication(props){
                     }
                     { props.approver &&
                         <div className = "center">
-                            <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublication" onClick={() => {
+                            <button className="btn customButton-icon-only green" data-bs-toggle="modal" data-bs-target="#approvePublication" onClick={() => {
                                 setApprove(props.children[key].publicationId)
                             }}>
                                 <span className="material-icons-sharp">check</span>
                             </button>
-                            <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublication" onClick={() => {
+                            <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#rejectPublication" onClick={() => {
                                 setApprove(props.children[key].publicationId)
                             }}>
                                 <span className="material-icons-sharp">close</span>
@@ -213,7 +213,7 @@ function Publication(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="editPublicationLabel">Update Publication Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -317,7 +317,7 @@ function Publication(props){
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#editPublication').modal('hide');
                                 }}>Save changes</button>
@@ -334,7 +334,7 @@ function Publication(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="deletePublicationLabel">Delete Publication Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -343,7 +343,7 @@ function Publication(props){
                         <p> Are you sure you want to delete this publication information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("publicationalert")
                             let res = await deletePublication(deletePub, props.token)
@@ -374,7 +374,7 @@ function Publication(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="approvePublicationLabel">Approve Publication Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -383,7 +383,7 @@ function Publication(props){
                         <p> Are you sure you want to approve this publication information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't approve</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("publicationalert")
                             $('#approvePublication').modal('toggle');
@@ -418,7 +418,7 @@ function Publication(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="rejectPublicationLabel">Reject Publication Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -463,7 +463,7 @@ function Publication(props){
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#rejectPublication').modal('toggle');
                                 }}>Save changes</button>

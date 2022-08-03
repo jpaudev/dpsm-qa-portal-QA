@@ -163,7 +163,7 @@ function FacultyList(props){
 							{
 								props.role == 5 &&
 								<td>
-									<button className="btn customButton-icon-only yellow" data-toggle="modal" data-dismiss="modal" data-target="#editStatus" onClick={() => {
+									<button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#editStatus" onClick={() => {
 										setEdit(faculty[index].faculty_personal_info.user.userId)
 										setKey(user)
 									}}>
@@ -246,7 +246,7 @@ function FacultyList(props){
 							{
 								props.role == 5 &&
 								<td>
-									<button className="btn customButton-icon-only yellow" data-toggle="modal" data-dismiss="modal" data-target="#editStatus" onClick={() => {
+									<button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#editStatus" onClick={() => {
 										setEdit(faculty[index].faculty_personal_info.user.userId)
 										setKey(user)
 									}}>

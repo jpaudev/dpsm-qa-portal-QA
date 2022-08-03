@@ -12,17 +12,17 @@ function RoleAssignment(props) {
             { props.data.role == 3 &&
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-                    <a className="nav-item nav-link active nav-top" id="unit-head-tab" data-toggle="tab" href="#unit-head" role="tab" aria-controls="unit-head" aria-selected="true">
+                    <a className="nav-item nav-link active nav-top" id="unit-head-tab" data-bs-toggle="tab" href="#unit-head" role="tab" aria-controls="unit-head" aria-selected="true">
                         <span className="material-icons-sharp">assignment_ind</span> 
                         <h3>Unit Head</h3> 
                         {/* {props.roleAssignmentFlag && <span className="badge">!</span>} */}
 
                     </a>
-                    <a className="nav-item nav-link nav-top" id="admin-clerk-tab" data-toggle="tab" href="#admin-clerk" role="tab" aria-controls="admin-clerk" aria-selected="false">
+                    <a className="nav-item nav-link nav-top" id="admin-clerk-tab" data-bs-toggle="tab" href="#admin-clerk" role="tab" aria-controls="admin-clerk" aria-selected="false">
                         <span className="material-icons-sharp">support_agent</span>
                         <h3>Admin Clerk</h3>
                     </a>
-                    <a className="nav-item nav-link nav-top" id="dept-chair-tab" data-toggle="tab" href="#dept-chair" role="tab" aria-controls="dept-chair" aria-selected="false">
+                    <a className="nav-item nav-link nav-top" id="dept-chair-tab" data-bs-toggle="tab" href="#dept-chair" role="tab" aria-controls="dept-chair" aria-selected="false">
                         <span className="material-icons-sharp">accessible</span>
                         <h3>Department Chair</h3>
                     </a>

@@ -55,7 +55,7 @@ function FacultyLoadTable(props) {
                                     View
                                 </a>
                                 {(props.editClass) && 
-                                    <a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
+                                    <a className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addSyllabus" onClick={() => {
                                         setEdit(props.children[key].recordId)
                                         setKey(editClass)
                                     }}>Edit</a>
@@ -64,7 +64,7 @@ function FacultyLoadTable(props) {
                         }
                         {
                             (props.editClass) && !props.children[key].syllabus &&
-                            <a className="btn btn-warning" data-toggle="modal" data-target="#addSyllabus" onClick={() => {
+                            <a className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addSyllabus" onClick={() => {
                                 setEdit(props.children[key].recordId)
                                 setKey(editClass)
                             }}>Add Syllabus</a>
@@ -76,11 +76,11 @@ function FacultyLoadTable(props) {
                     </td>
                     {props.role==5 && <td>
                         <div className = "btn-group">
-                            <a className="btn btn-info" data-toggle="modal" data-target="#editClass" onClick={() => {
+                            <a className="btn btn-info" data-bs-toggle="modal" data-bs-target="#editClass" onClick={() => {
                                 setEdit(props.children[key].recordId)
                                 setKey(editClass)
                             }}>Edit</a>
-                            <a className="btn btn-danger" data-toggle="modal" data-target="#deleteClass" onClick={() => {
+                            <a className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteClass" onClick={() => {
                                 setDelete(props.children[key].recordId)
                             }}>Delete</a>
                         </div>
@@ -149,7 +149,7 @@ function FacultyLoadTable(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="editClassLabel">Update Class Record</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -216,7 +216,7 @@ function FacultyLoadTable(props) {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#editClass').modal('toggle');
                                 }}>Save changes</button>
@@ -233,7 +233,7 @@ function FacultyLoadTable(props) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="deleteClassLabel">Delete Class Record</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -242,7 +242,7 @@ function FacultyLoadTable(props) {
                             <p> Are you sure you want to delete this faculty load information? </p>
                         </div>
                         <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("loadalert")
                             let res = await deleteFacultyLoad(deleteClass, props.token, props.facultyId)
@@ -271,7 +271,7 @@ function FacultyLoadTable(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="addSyllabusLabel">Update Class Records</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -317,7 +317,7 @@ function FacultyLoadTable(props) {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#addSyllabus').modal('toggle');
                                 }}>Save changes</button>

@@ -20,15 +20,15 @@ function Dashboard(props) {
                         <br />
 	                    <nav>
                             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-                                <a className="nav-item nav-link nav-top" id="accomplishment-count-tab" data-toggle="tab" href="#accomplishment-count" role="tab" aria-controls="accomplishment-count" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="accomplishment-count-tab" data-bs-toggle="tab" href="#accomplishment-count" role="tab" aria-controls="accomplishment-count" aria-selected="false">
                                     <span className="material-icons-sharp">military_tech</span>
                                     <h3>Accomplishment Count</h3>
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="employment-status-tab" data-toggle="tab" href="#employment-status" role="tab" aria-controls="employment-status" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="employment-status-tab" data-bs-toggle="tab" href="#employment-status" role="tab" aria-controls="employment-status" aria-selected="false">
                                     <span className="material-icons-sharp">badge</span>
                                     <h3>Employment Status</h3>
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="degree-tab" data-toggle="tab" href="#degree" role="tab" aria-controls="degree" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="degree-tab" data-bs-toggle="tab" href="#degree" role="tab" aria-controls="degree" aria-selected="false">
                                     <span className="material-icons-sharp">history_edu</span>
                                     <h3>Attained Degrees</h3>
                                 </a>

@@ -139,11 +139,11 @@ function EmploymentStatus(props){
 			<br></br>
 			<nav>
 				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-					<button className="nav-item nav-link nav-top" id="employment-graph-tab" data-toggle="tab" href="#employment-graph" role="tab" aria-controls="employment-graph" aria-selected="false">
+					<button className="nav-item nav-link nav-top" id="employment-graph-tab" data-bs-toggle="tab" href="#employment-graph" role="tab" aria-controls="employment-graph" aria-selected="false">
 						<span className="material-icons-sharp">equalizer</span>
                         <h3>Overview</h3>
 					</button>
-					<button className="nav-item nav-link nav-top" id="employment-table-tab" data-toggle="tab" href="#employment-table" role="tab" aria-controls="employment-table" aria-selected="false">
+					<button className="nav-item nav-link nav-top" id="employment-table-tab" data-bs-toggle="tab" href="#employment-table" role="tab" aria-controls="employment-table" aria-selected="false">
 						<span className="material-icons-sharp">view_list</span>
                         <h3>Full List</h3>
 					</button>

@@ -15,7 +15,7 @@ function AssignAdminClerk(props) {
                 <tr key = {props.children[key].userId}>
                     <td>{props.children[key].name}</td>
                     <td>
-                        <button className="btn customButton maroon" data-toggle="modal" data-target="#deleteClerk" onClick={() => {
+                        <button className="btn customButton maroon" data-bs-toggle="modal" data-bs-target="#deleteClerk" onClick={() => {
                             setDelete(props.children[key].userId)
                         }}><span className="material-icons-sharp">delete_outline</span>Delete</button>
                     </td>
@@ -54,7 +54,7 @@ function AssignAdminClerk(props) {
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="deleteClerkLabel">Delete Admin Clerk</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -63,7 +63,7 @@ function AssignAdminClerk(props) {
                     <p> Are you sure you want to delete this admin clerk? </p>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                     <button type="button" className="btn btn-danger" onClick = {async () => {
                         let alert = document.getElementById("clerkalert")
                         $('#deleteClerk').modal('toggle'); 

@@ -67,13 +67,13 @@ function LicensureExam(props) {
                         <td>
                         { props.editable &&
                             <div>
-                                <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editLicensureExam" onClick={() => {
+                                <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editLicensureExam" onClick={() => {
                                     setEdit(props.children[key].licenseId)
                                     setKey(editLic)
                                 }}>
                                     <span className="material-icons-sharp">edit</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deleteLicensureExam" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteLicensureExam" onClick={() => {
                                     setDelete(props.children[key].licenseId)
                                 }}>
                                     <span className="material-icons-sharp">delete</span>
@@ -82,12 +82,12 @@ function LicensureExam(props) {
                         }
                         { props.approver &&
                             <div className = "center">
-                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approveLicense" onClick={() => {
+                                <button className="btn customButton-icon-only green" data-bs-toggle="modal" data-bs-target="#approveLicense" onClick={() => {
                                     setApprove(props.children[key].licenseId)
                                 }}>
                                     <span className="material-icons-sharp">check</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectLicense" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#rejectLicense" onClick={() => {
                                     setApprove(props.children[key].licenseId)
                                 }}>
                                     <span className="material-icons-sharp">close</span>
@@ -168,7 +168,7 @@ function LicensureExam(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="editLicensureExamLabel">Update Licensure Exam Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -235,7 +235,7 @@ function LicensureExam(props) {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#editLicensureExam').modal('toggle');
                                 }}>Save changes</button>
@@ -252,7 +252,7 @@ function LicensureExam(props) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="deleteLicensureExamLabel">Delete Licensure Exam Information</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -261,7 +261,7 @@ function LicensureExam(props) {
                             <p> Are you sure you want to delete this licensure exam information? </p>
                         </div>
                         <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("licensureexamalert")
                             let res = await deleteLicensure(deleteLic, props.token)
@@ -289,7 +289,7 @@ function LicensureExam(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="approveLicenseLabel">Approve Licensure Exam Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -298,7 +298,7 @@ function LicensureExam(props) {
                         <p> Are you sure you want to approve this licensure exam information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't approve</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("licensureexamalert")
                             $('#approveLicense').modal('toggle');
@@ -333,7 +333,7 @@ function LicensureExam(props) {
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="rejectLicenseLabel">Reject Licensure Exam Information</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -378,7 +378,7 @@ function LicensureExam(props) {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                 $('#rejectLicense').modal('toggle');
                             }}>Save changes</button>

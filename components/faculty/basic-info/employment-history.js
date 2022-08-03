@@ -28,11 +28,11 @@ function EmploymentHistory(props){
 						props.role == 5 && 
 						<td>
 							<div className = "btn-grp">
-								<a className="btn btn-info" data-toggle="modal" data-target="#editEmployment" onClick={() => {
+								<a className="btn btn-info" data-bs-toggle="modal" data-bs-target="#editEmployment" onClick={() => {
 									empInfoId = props.children.faculty_employment_infos[key].employmentInfoId
 									setKey(props.children.faculty_employment_infos[key].employmentInfoId)
 								}}>Edit</a>
-								<a className="btn btn-danger" data-toggle="modal" data-target="#deleteEmployment" onClick={() => {
+								<a className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployment" onClick={() => {
 									empInfoId = props.children.faculty_employment_infos[key].employmentInfoId
 								}}>Delete</a>
 							</div>
@@ -86,7 +86,7 @@ function EmploymentHistory(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="editEmploymentLabel">Update Employment Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -108,7 +108,7 @@ function EmploymentHistory(props){
                         </form>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" className="btn btn-primary" onClick = {async () => {
                             $('#editEmployment').modal('toggle');
                             let alert = document.getElementById("employmentalert")
@@ -138,7 +138,7 @@ function EmploymentHistory(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="deleteEmploymentLabel">Delete Employment Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -147,7 +147,7 @@ function EmploymentHistory(props){
                         <p> Are you sure you want to delete this employment information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("employmentalert")
                             $('#deleteEmployment').modal('toggle');

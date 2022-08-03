@@ -27,42 +27,42 @@ function Approval(props) {
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-                <button className="nav-item nav-link active nav-top" id="educ-tab" data-toggle="tab" data-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
+                <button className="nav-item nav-link active nav-top" id="educ-tab" data-bs-toggle="tab" data-bs-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
                     <span className="material-icons-sharp">school</span>
                     <h3>Education
                      &nbsp;
                     {educFlag && <span className="badge badge-danger">!</span>}
                     </h3>
                 </button>
-                <button className="nav-item nav-link nav-top" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">
+                <button className="nav-item nav-link nav-top" id="public-service-accomplishment-tab" data-bs-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">
                     <span className="material-icons-sharp">groups</span>
                     <h3>Public Service
                      &nbsp;
                     {publicServiceFlag && <span className="badge badge-danger">!</span>}
                     </h3>
                 </button>
-                <button className="nav-item nav-link nav-top" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">
+                <button className="nav-item nav-link nav-top" id="publication-tab" data-bs-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">
                     <span className="material-icons-sharp">article</span>
                     <h3>Publications
                      &nbsp;
                     {publicationsFlag && <span className="badge badge-danger">!</span>}
                     </h3>
                 </button>
-                <button className="nav-item nav-link nav-top" id="training-seminar-tab" data-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">
+                <button className="nav-item nav-link nav-top" id="training-seminar-tab" data-bs-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">
                     <span className="material-icons-sharp">fitness_center</span>
                     <h3>Training/Seminars
                      &nbsp;
                     {tsFlag && <span className="badge badge-danger">!</span>}
                     </h3>
                 </button>
-                <button className="nav-item nav-link nav-top" id="licensure-exam-tab" data-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">
+                <button className="nav-item nav-link nav-top" id="licensure-exam-tab" data-bs-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">
                     <span className="material-icons-sharp">contact_emergency</span>
                     <h3>Licensure Exams
                      &nbsp;
                     {licensureExamFlag && <span className="badge badge-danger">!</span>}
                     </h3>
                 </button>
-                <button className="nav-item nav-link nav-top" id="research-grant-tab" data-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">
+                <button className="nav-item nav-link nav-top" id="research-grant-tab" data-bs-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">
                     <span className="material-icons-sharp">find_in_page</span>
                     <h3>Research Grants
                      &nbsp;

@@ -33,7 +33,7 @@ function Sidebar(props) {
 	//     <div className = "alert alert-info col-12 d-md-none text-center" onClick = {handleToggle}> Main Menu </div>
     //         <div id = "menu" className = {isActive ? null : "d-none d-md-block"}>
     //             <div className="list-group col-12">
-	// 		<a className = "list-group-item list-group-item-action list-group-item-secondary" data-toggle = "collapse" data-target = "#facultyMenu" aria-controls = "facultyMenu"> Faculty </a>
+	// 		<a className = "list-group-item list-group-item-action list-group-item-secondary" data-bs-toggle = "collapse" data-bs-target = "#facultyMenu" aria-controls = "facultyMenu"> Faculty </a>
     //             <div id = "facultyMenu" className = "collapse show">
     //                 { !staff && !faculty && <Link href={{ pathname: "/faculty" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty" ?  "active"  : "inactive" }>Dashboard</a></Link> }
     //                 { !staff && <Link href={{ pathname: "/faculty/basic-info" }}><a className = "list-group-item list-group-item-action list-group-item-success" id = { router.pathname === "/faculty/basic-info" ?  "active"  : "inactive" }>Basic Information</a></Link> }

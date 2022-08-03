@@ -32,7 +32,7 @@ function AssignDeptChair(props) {
                     </select>
                 </div>
                 <br/>
-                <button className = "btn customButton maroon" data-toggle="modal" style={{width:"50%", margin:"auto"}} data-target="#assignDeptChair">
+                <button className = "btn customButton maroon" data-bs-toggle="modal" style={{width:"50%", margin:"auto"}} data-bs-target="#assignDeptChair">
                 <span className="material-icons-sharp">check_circle_outline</span>
                 Assign New Department Chair</button>
             </div>
@@ -43,7 +43,7 @@ function AssignDeptChair(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="assignDeptChairLabel">Assign New Department Chair</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -57,7 +57,7 @@ function AssignDeptChair(props) {
                         </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't assign</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't assign</button>
 			            <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("deptchairalert")
                             $('#assignDeptChair').modal('toggle');

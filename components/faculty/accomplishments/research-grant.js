@@ -104,13 +104,13 @@ function ResearchGrant(props){
                         <td>
                         { props.editable &&
                             <div>
-                                <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editResearchGrant" onClick={() => {
+                                <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editResearchGrant" onClick={() => {
                                     setEdit(props.children[key].researchId)
                                     setKey(editRes)
                                 }}>
                                     <span class="material-icons-sharp">edit</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deleteResearchGrant" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteResearchGrant" onClick={() => {
                                     setDelete(props.children[key].researchId)
                                 }}>
                                     <span class="material-icons-sharp">delete</span>
@@ -119,12 +119,12 @@ function ResearchGrant(props){
                         }
                         { props.approver &&
                             <div className = "center">
-                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approveResearchGrant" onClick={() => {
+                                <button className="btn customButton-icon-only green" data-bs-toggle="modal" data-bs-target="#approveResearchGrant" onClick={() => {
                                     setApprove(props.children[key].researchId)
                                 }}>
                                     <span className="material-icons-sharp">check</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectResearchGrant" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#rejectResearchGrant" onClick={() => {
                                     setApprove(props.children[key].researchId)
                                 }}>
                                     <span className="material-icons-sharp">close</span>
@@ -229,7 +229,7 @@ function ResearchGrant(props){
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="editResearchGrantLabel">Update Research Grant Information</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -357,7 +357,7 @@ function ResearchGrant(props){
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                 $('#editResearchGrant').modal('toggle');
                             }}>Save changes</button>
@@ -374,7 +374,7 @@ function ResearchGrant(props){
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="deleteResearchGrantLabel">Delete Research Grant Information</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -383,7 +383,7 @@ function ResearchGrant(props){
                     <p> Are you sure you want to delete this research grant information? </p>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                     <button type="button" className="btn btn-danger" onClick = {async () => {
                         let alert = document.getElementById("researchalert")
                         let res = await deleteResearch(deleteRes, props.token)
@@ -414,7 +414,7 @@ function ResearchGrant(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="approveResearchGrantLabel">Approve Research Grant Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -423,7 +423,7 @@ function ResearchGrant(props){
                         <p> Are you sure you want to approve this research grant information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't approve</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("researchalert")
                             $('#approveResearchGrant').modal('toggle');
@@ -458,7 +458,7 @@ function ResearchGrant(props){
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="rejectResearchGrantLabel">Reject Research Grant Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -503,7 +503,7 @@ function ResearchGrant(props){
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#rejectResearchGrant').modal('toggle');
                                 }}>Save changes</button>

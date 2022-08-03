@@ -200,11 +200,11 @@ function AccomplishmentCount(props){
 				<br></br>
 			<nav>
 				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-					<button className="nav-item nav-link nav-top" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">
+					<button className="nav-item nav-link nav-top" id="graph-tab" data-bs-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">
 						<span className="material-icons-sharp">equalizer</span>
                         <h3>Overview</h3>
 					</button>
-					<button className="nav-item nav-link nav-top" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="false">
+					<button className="nav-item nav-link nav-top" id="table-tab" data-bs-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="false">
 						<span className="material-icons-sharp">view_list</span>
                         <h3>Full List</h3>
 					</button>

@@ -41,14 +41,14 @@ function FacultyLoader(props) {
  			year = all[key]
  			return (
  				<div>
-	 				<a className = "list-group-item list-group-item-action list-group-item-secondary" data-target = {"#" + year[key][0].academicYear} data-toggle = "collapse" aria-controls = {year[key][0].academicYear}>AY {year[key][0].academicYear - 1}-{year[key][0].academicYear}</a>
+	 				<a className = "list-group-item list-group-item-action list-group-item-secondary" data-bs-target = {"#" + year[key][0].academicYear} data-bs-toggle = "collapse" aria-controls = {year[key][0].academicYear}>AY {year[key][0].academicYear - 1}-{year[key][0].academicYear}</a>
 	 				<div className="list-group" id = {year[key][0].academicYear}>
 	 				{	
 	 					Object.keys(year).map(i => {
 	 						let sem = year[i]
 	 						return (
 	 							<div>
-		 							<a className = "list-group-item list-group-item-action list-group-item-info" data-target = {"#" + sem[0].semester} data-toggle = "collapse" aria-controls = {sem[0].semester}>{sem[0].semester} Semester</a>
+		 							<a className = "list-group-item list-group-item-action list-group-item-info" data-bs-target = {"#" + sem[0].semester} data-bs-toggle = "collapse" aria-controls = {sem[0].semester}>{sem[0].semester} Semester</a>
 		 							<div id = {sem[0].semester} className = "jumbotron">
 		 								<FacultyLoadSemester records = {sem} role={props.role} token = {props.token} facultyId = {props.facultyId} />
 		 							</div>

@@ -18,15 +18,15 @@ function ViewFaculty(props) {
             <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
-                    <a className="nav-item nav-link activ nav-top" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">
+                    <a className="nav-item nav-link activ nav-top" id="basic-info-tab" data-bs-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">
                         <span className="material-icons-sharp">person</span>
                         <h3>Basic Information</h3>
                     </a>
-                    <a className="nav-item nav-link nav-top" id="accomplishments-tab" data-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">
+                    <a className="nav-item nav-link nav-top" id="accomplishments-tab" data-bs-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">
                         <span className="material-icons-sharp">emoji_events</span>
                         <h3>Accomplishment</h3>
                     </a>
-                    <a className="nav-item nav-link nav-top" id="SET-tab" data-toggle="tab" href="#SET" role="tab" aria-controls="SET" aria-selected="false">
+                    <a className="nav-item nav-link nav-top" id="SET-tab" data-bs-toggle="tab" href="#SET" role="tab" aria-controls="SET" aria-selected="false">
                         <span className="material-icons-sharp">work</span>
                         <h3>Faculty Load</h3>
                     </a>
@@ -35,15 +35,15 @@ function ViewFaculty(props) {
                     <div className="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="basic-info-tab">
                         <nav>
                                <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-basic-info" role="tablist">
-                                <a className="nav-item nav-link active nav-top" id="personal-info-tab" data-toggle="tab" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">
+                                <a className="nav-item nav-link active nav-top" id="personal-info-tab" data-bs-toggle="tab" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">
                                     <span className="material-icons-sharp">contact_page</span>
                                     <h3>Personal Information</h3>
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="educ-tab" data-toggle="tab" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="educ-tab" data-bs-toggle="tab" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
                                     <span className="material-icons-sharp">school</span>
                                     <h3>Education</h3>
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="work-exp-tab" data-toggle="tab" href="#work-exp" role="tab" aria-controls="work-exp" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="work-exp-tab" data-bs-toggle="tab" href="#work-exp" role="tab" aria-controls="work-exp" aria-selected="false">
                                     <span className="material-icons-sharp">work_history</span>
                                     <h3>Work Experience</h3>
                                 </a>
@@ -104,15 +104,15 @@ function ViewFaculty(props) {
             <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
-                    <a className="nav-item nav-link active nav-top" id="basic-info-tab" data-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">
+                    <a className="nav-item nav-link active nav-top" id="basic-info-tab" data-bs-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">
                         <span className="material-icons-sharp">person</span>
                         <h3>Basic Information</h3>
                     </a>
-                    <a className="nav-item nav-link nav-top" id="accomplishments-tab" data-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">
+                    <a className="nav-item nav-link nav-top" id="accomplishments-tab" data-bs-toggle="tab" href="#accomplishments" role="tab" aria-controls="accomplishments" aria-selected="false">
                         <span className="material-icons-sharp">emoji_events</span>
                         <h3>Accomplishment</h3>
                     </a>
-                    <a className="nav-item nav-link nav-top" id="SET-tab" data-toggle="tab" href="#SET" role="tab" aria-controls="SET" aria-selected="false">
+                    <a className="nav-item nav-link nav-top" id="SET-tab" data-bs-toggle="tab" href="#SET" role="tab" aria-controls="SET" aria-selected="false">
                         <span className="material-icons-sharp">work</span>
                         <h3>Faculty Load</h3>
                     </a>
@@ -121,15 +121,15 @@ function ViewFaculty(props) {
                     <div className="tab-pane fade show active" id="basic-info" role="tabpanel" aria-labelledby="basic-info-tab">
                         <nav>
                                <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-basic-info" role="tablist">
-                               <a className="nav-item nav-link active nav-top" id="personal-info-tab" data-toggle="tab" data-target="#personal-info" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">
+                               <a className="nav-item nav-link active nav-top" id="personal-info-tab" data-bs-toggle="tab" data-bs-target="#personal-info" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">
                                     <span className="material-icons-sharp">contact_page</span>
                                     <h3>Personal Information</h3>
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="educ-tab" data-toggle="tab" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="educ-tab" data-bs-toggle="tab" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
                                     <span className="material-icons-sharp">school</span>
                                     <h3>Education</h3>
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="work-exp-tab" data-toggle="tab" href="#work-exp" role="tab" aria-controls="work-exp" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="work-exp-tab" data-bs-toggle="tab" href="#work-exp" role="tab" aria-controls="work-exp" aria-selected="false">
                                     <span className="material-icons-sharp">work_history</span>
                                     <h3>Work Experience</h3>
                                 </a>
@@ -151,23 +151,23 @@ function ViewFaculty(props) {
                     <div className="tab-pane fade" id="accomplishments" role="tabpanel" aria-labelledby="accomplishments-tab">
                         <nav>
                             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-accomplishment" role="tablist">
-                                <a className="nav-item nav-link active nav-top" id="public-service-accomplishment-tab" data-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">
+                                <a className="nav-item nav-link active nav-top" id="public-service-accomplishment-tab" data-bs-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">
                                     <span className="material-icons-sharp">groups</span>
                                     <h3>Public Service</h3>
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="publication-tab" data-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="publication-tab" data-bs-toggle="tab" href="#publication" role="tab" aria-controls="publication" aria-selected="false">
                                     <span className="material-icons-sharp">article</span>
                                     <h3>Publications</h3>
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="training-seminar-tab" data-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="training-seminar-tab" data-bs-toggle="tab" href="#training-seminar" role="tab" aria-controls="training-seminar" aria-selected="false">
                                     <span className="material-icons-sharp">fitness_center</span>
                                     <h3>Trainings & Seminars</h3>
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="licensure-exam-tab" data-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="licensure-exam-tab" data-bs-toggle="tab" href="#licensure-exam" role="tab" aria-controls="licensure-exam" aria-selected="false">
                                     <span className="material-icons-sharp">contact_emergency</span>
                                     <h3>Licensure Exams</h3> 
                                 </a>
-                                <a className="nav-item nav-link nav-top" id="research-grant-tab" data-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">
+                                <a className="nav-item nav-link nav-top" id="research-grant-tab" data-bs-toggle="tab" href="#research-grant" role="tab" aria-controls="research-grant" aria-selected="false">
                                     <span className="material-icons-sharp">find_in_page</span>
                                     <h3>Research Grants</h3>
                                 </a>

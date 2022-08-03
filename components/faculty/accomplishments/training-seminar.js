@@ -71,13 +71,13 @@ function TrainingSeminar(props) {
                         <td>
                         { props.editable &&
                             <div>
-                                <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editTrainingSeminar" onClick={() => {
+                                <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editTrainingSeminar" onClick={() => {
                                         setEdit(props.children[key].tsId)
                                         setKey(editTS)
                                     }}>
                                         <span className="material-icons-sharp">edit</span>
                                     </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deleteTrainingSeminar" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteTrainingSeminar" onClick={() => {
                                     setDelete(props.children[key].tsId)
                                 }}>
                                     <span className="material-icons-sharp">delete</span>
@@ -86,12 +86,12 @@ function TrainingSeminar(props) {
                         }
                         { props.approver &&
                             <div className = "center">
-                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approveTrainingSeminar" onClick={() => {
+                                <button className="btn customButton-icon-only green" data-bs-toggle="modal" data-bs-target="#approveTrainingSeminar" onClick={() => {
                                     setApprove(props.children[key].tsId)
                                 }}>
                                     <span className="material-icons-sharp">check</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectTrainingSeminar" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#rejectTrainingSeminar" onClick={() => {
                                     setApprove(props.children[key].tsId)
                                 }}>
                                     <span className="material-icons-sharp">close</span>
@@ -173,7 +173,7 @@ function TrainingSeminar(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="editTrainingSeminarLabel">Update Training/Seminar Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -252,7 +252,7 @@ function TrainingSeminar(props) {
                                 </div>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                     $('#editTrainingSeminar').modal('toggle');
                                 }}>Save changes</button>
@@ -269,7 +269,7 @@ function TrainingSeminar(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="deleteTrainingSeminarLabel">Delete Training/Seminar Information</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -278,7 +278,7 @@ function TrainingSeminar(props) {
                         <p> Are you sure you want to delete this training/seminar information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             $('#deleteTrainingSeminar').modal('toggle');
 
@@ -309,7 +309,7 @@ function TrainingSeminar(props) {
                     <div className="modal-header">
                         <h5 className="modal-title" id="approveTrainingSeminarLabel">Approve Training/Seminar Information</h5>
 
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -318,7 +318,7 @@ function TrainingSeminar(props) {
                         <p> Are you sure you want to approve this training/seminar information? </p>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't approve</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
                             let alert = document.getElementById("trainingseminaralert")
                             $('#approveTrainingSeminar').modal('toggle');
@@ -354,7 +354,7 @@ function TrainingSeminar(props) {
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="rejectTrainingSeminarLabel">Reject Training/Seminar Information</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -399,7 +399,7 @@ function TrainingSeminar(props) {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                 $('#rejectTrainingSeminar').modal('toggle');
                             }}>Save changes</button>

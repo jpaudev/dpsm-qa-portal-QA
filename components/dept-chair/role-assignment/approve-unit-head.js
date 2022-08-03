@@ -17,10 +17,10 @@ function ApproveUnitHead(props) {
                     <td>{currentUnitHead}</td>
                     <td>{incomingUnitHead}</td>
                     <td>
-                        <button className="btn customButton green" style={{marginRight:"1rem"}} data-toggle="modal" data-target="#approveUnitHead" onClick={() => {
+                        <button className="btn customButton green" style={{marginRight:"1rem"}} data-bs-toggle="modal" data-bs-target="#approveUnitHead" onClick={() => {
                             setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
                         }}><span className="material-icons-sharp">check_circle_outline</span>Apply Changes</button>
-                        <button className="btn customButton maroon" data-toggle="modal" data-target="#rejectUnitHead" onClick={() => {
+                        <button className="btn customButton maroon" data-bs-toggle="modal" data-bs-target="#rejectUnitHead" onClick={() => {
                             setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
                         }}><span className="material-icons-sharp">delete_outline</span>Delete</button>
                     </td>
@@ -62,7 +62,7 @@ function ApproveUnitHead(props) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="approveUnitHeadLabel">Approve Unit Head Change</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -71,7 +71,7 @@ function ApproveUnitHead(props) {
                             <p> Are you sure you want to approve the change in Unit Head Role? </p>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't approve</button>
                             <button type="button" className="btn btn-danger" onClick = {async () => {
                                 let alert = document.getElementById("assignalert")
                                 $('#approveUnitHead').modal('toggle');
@@ -103,7 +103,7 @@ function ApproveUnitHead(props) {
                     <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="rejectUnitHeadLabel">Reject Unit Head Change</h5>
-                        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -118,7 +118,7 @@ function ApproveUnitHead(props) {
                         <hr />
                     </div>
                     <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't reject</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't reject</button>
                             <button type="button" className="btn btn-danger" onClick = {async () => {
                                 let alert = document.getElementById("assignalert")
                                 $('#rejectUnitHead').modal('toggle');

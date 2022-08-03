@@ -72,13 +72,13 @@ function PublicServiceAccomplishment(props){
                        <td>
                             { props.editable &&
                                 <div>
-                                    <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublicService" onClick={() => {
                                         setEdit(props.children[key].publicServiceId)
                                         setKey(editPS)
                                     }}>
                                         <span className="material-icons-sharp">edit</span>
                                     </button>
-                                    <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
                                         setDelete(props.children[key].publicServiceId)
                                     }}>
                                         <span className="material-icons-sharp">delete</span>
@@ -87,12 +87,12 @@ function PublicServiceAccomplishment(props){
                             }
                             { props.approver &&
                                 <div className="center">
-                                    <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only green" data-bs-toggle="modal" data-bs-target="#approvePublicService" onClick={() => {
                                         setApprove(props.children[key].publicServiceId)
                                     }}>
                                         <span className="material-icons-sharp">check</span>
                                     </button>
-                                    <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#rejectPublicService" onClick={() => {
                                         setApprove(props.children[key].publicServiceId)
                                     }}>
                                         <span className="material-icons-sharp">close</span>
@@ -146,13 +146,13 @@ function PublicServiceAccomplishment(props){
                         <td>
                             { props.editable &&
                                 <div>
-                                    <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublicService" onClick={() => {
                                         setEdit(props.children[key].publicServiceId)
                                         setKey(editPS)
                                     }}>
                                         <span className="material-icons-sharp">edit</span>
                                     </button>
-                                    <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
                                         setDelete(props.children[key].publicServiceId)
                                     }}>
                                         <span className="material-icons-sharp">delete</span>
@@ -161,12 +161,12 @@ function PublicServiceAccomplishment(props){
                             }
                             { props.approver &&
                                 <div className = "center">
-                                    <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only green" data-bs-toggle="modal" data-bs-target="#approvePublicService" onClick={() => {
                                         setApprove(props.children[key].publicServiceId)
                                     }}>
                                        <span className="material-icons-sharp">check</span>
                                     </button>
-                                    <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#rejectPublicService" onClick={() => {
                                         setApprove(props.children[key].publicServiceId)
                                     }}>
                                        <span className="material-icons-sharp">close</span>
@@ -220,13 +220,13 @@ function PublicServiceAccomplishment(props){
                         <td>
                         { props.editable &&
                             <div>
-                                <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublicService" onClick={() => {
                                     setEdit(props.children[key].publicServiceId)
                                     setKey(editPS)
                                 }}>
                                     <span className="material-icons-sharp">edit</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
                                     setDelete(props.children[key].publicServiceId)
                                 }}>
                                     <span className="material-icons-sharp">delete</span>
@@ -235,12 +235,12 @@ function PublicServiceAccomplishment(props){
                         }
                         { props.approver &&
                             <div className = "center">
-                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                <button className="btn customButton-icon-only green" data-bs-toggle="modal" data-bs-target="#approvePublicService" onClick={() => {
                                     setApprove(props.children[key].publicServiceId)
                                 }}>
                                     <span className="material-icons-sharp">check</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#rejectPublicService" onClick={() => {
                                     setApprove(props.children[key].publicServiceId)
                                 }}>
                                    <span className="material-icons-sharp">close</span>
@@ -294,13 +294,13 @@ function PublicServiceAccomplishment(props){
                         <td>
                         { props.editable &&
                             <div>
-                                <button className="btn customButton-icon-only yellow" data-toggle="modal" data-target="#editPublicService" onClick={() => {
+                                <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublicService" onClick={() => {
                                     setEdit(props.children[key].publicServiceId)
                                     setKey(editPS)
                                 }}>
                                     <span className="material-icons-sharp">edit</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#deletePublicService" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
                                     setDelete(props.children[key].publicServiceId)
                                 }}>
                                     <span className="material-icons-sharp">delete</span>
@@ -309,12 +309,12 @@ function PublicServiceAccomplishment(props){
                         }
                         { props.approver &&
                             <div className = "center">
-                                <button className="btn customButton-icon-only green" data-toggle="modal" data-target="#approvePublicService" onClick={() => {
+                                <button className="btn customButton-icon-only green" data-bs-toggle="modal" data-bs-target="#approvePublicService" onClick={() => {
                                     setApprove(props.children[key].publicServiceId)
                                 }}>
                                     <span className="material-icons-sharp">check</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-toggle="modal" data-target="#rejectPublicService" onClick={() => {
+                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#rejectPublicService" onClick={() => {
                                     setApprove(props.children[key].publicServiceId)
                                 }}>
                                     <span className="material-icons-sharp">close</span>
@@ -475,7 +475,7 @@ function PublicServiceAccomplishment(props){
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="editPublicServiceLabel">Update Public Service Accomplishment Information</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -547,7 +547,7 @@ function PublicServiceAccomplishment(props){
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                 $('#editPublicService').modal('hide');
                             }}>Save changes</button>
@@ -564,7 +564,7 @@ function PublicServiceAccomplishment(props){
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="deletePublicServiceLabel">Delete Public Service Accomplishment Information</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -573,7 +573,7 @@ function PublicServiceAccomplishment(props){
                     <p> Are you sure you want to delete this public service accomplishment information? </p>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't delete</button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                     <button type="button" className="btn btn-danger" onClick = {async () => {
                         let alert = document.getElementById("publicservicealert")
                         let res = await deletePublicService(deletePS, props.token)
@@ -604,7 +604,7 @@ function PublicServiceAccomplishment(props){
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="approvePublicServiceLabel">Approve Public Service Information</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -613,7 +613,7 @@ function PublicServiceAccomplishment(props){
                     <p> Are you sure you want to approve this public service information? </p>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No, don't approve</button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't approve</button>
                     <button type="button" className="btn btn-danger" onClick = {async () => {
                         let alert = document.getElementById("publicservicealert")
                         $('#approvePublicService').modal('toggle');
@@ -648,7 +648,7 @@ function PublicServiceAccomplishment(props){
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="rejectPublicServiceLabel">Reject Public Service Information</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -693,7 +693,7 @@ function PublicServiceAccomplishment(props){
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
                                 $('#rejectPublicService').modal('toggle');
                             }}>Save changes</button>
