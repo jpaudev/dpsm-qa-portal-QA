@@ -94,13 +94,13 @@ class PublicServiceAccomplishmentForm extends React.Component{
                     </div>
 
                     <br/>
-                    <button
-                        type = "submit"
-                        className = "btn btn-primary col-md-12"
-                        disabled = {isSubmitting}
-                    >
-                        Submit
-                    </button>
+                    <div className="center">
+                        <button type = "submit" className = "btn customButton maroon" disabled = {isSubmitting}>
+                            <span className="material-icons-sharp">add</span>
+                                Submit
+                        </button>
+                    </div>
+
                     <hr />
 			<style jsx>{`
 		label.required-label:after{

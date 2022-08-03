@@ -85,13 +85,16 @@ class PublicationForm extends React.Component{
 							<PublicationFormAuthor faculty = {this.props.faculty} />
 						</div>
 						<br />
-						<button
-							type = "submit"
-							className = "btn btn-primary col-md-12"
-							disabled = {isSubmitting}
-						>
-							Submit
-						</button>
+						<div className="center">
+							<button
+								type = "submit"
+								className = "btn customButton maroon"
+								disabled = {isSubmitting}
+							>
+								Submit
+							</button>
+						</div>
+
 						<style jsx>{`
 		label.required-label:after{
 			content: "*";
