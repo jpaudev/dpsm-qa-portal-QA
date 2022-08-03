@@ -172,18 +172,26 @@ function DegreeCount(props) {
 				</div>
 			</div>
 
+			<br></br>
 			<nav>
-            			<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-					<a className="nav-item nav-link" id="degree-graph-tab" data-toggle="tab" href="#degree-graph" role="tab" aria-controls="degree-graph" aria-selected="false">Overview</a>
-					<a className="nav-item nav-link" id="table-tab" data-toggle="tab" href="#degree-table" role="tab" aria-controls="degree-table" aria-selected="false">Full List</a>
-            			</div>
-            		</nav>
+				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
+					<a className="nav-item nav-link" id="degree-graph-tab" data-toggle="tab" href="#degree-graph" role="tab" aria-controls="degree-graph" aria-selected="false">
+						<span className="material-icons-sharp">equalizer</span>
+                        <h3>Overview</h3>
+					</a>
+					<a className="nav-item nav-link" id="table-tab" data-toggle="tab" href="#degree-table" role="tab" aria-controls="degree-table" aria-selected="false">
+						<span className="material-icons-sharp">view_list</span>
+                        <h3>Full List</h3>
+					</a>
+				</div>
+            </nav>
+
 	    		<div className="tab-content" id="nav-tabContent">
 	    			<div className="tab-pane fade show active" id="degree-graph" role="tabpanel" aria-labelledby="degree-graph-tab"><DegreeDashboardGraph data={graphData} /></div>
 	    			<div className="tab-pane fade" id="degree-table" role="tabpanel" aria-labelledby="degree-table-tab"><DegreeAnalyticsTable data={tableData} /></div>
             		</div>
                 
-		<style jsx>{`
+		{/* <style jsx>{`
 			a.nav-item:focus{
 				background-color:#78b6c2;
 			}
@@ -193,7 +201,7 @@ function DegreeCount(props) {
 			a.active{
 				background-color:#78b6c2;
 			}
-		`}</style>
+		`}</style> */}
 		</div>
 	)
 }

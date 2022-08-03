@@ -146,7 +146,6 @@ function AccomplishmentCount(props){
 		<div>
 			<br />
 			<h3 align = "center">Accomplishment Count</h3>
-			
 			<div className = "form-row">
 				{
 					props.role == 3 && 
@@ -160,7 +159,6 @@ function AccomplishmentCount(props){
 						</select>
 					</div>
 				}
-
 				<div className = "form-group col-md-3">
 					<label className = "control-label" htmlFor ="StartTimePeriod"> From  </label>
 					<input className = "form-control" type = "date" name = "StartTimePeriod" id="StartTimePeriod" defaultValue={startDate} />
@@ -196,12 +194,20 @@ function AccomplishmentCount(props){
 						})
 					}}> Filter</button>
 				</div>
+
 			</div>
 
+				<br></br>
 			<nav>
 				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-					<a className="nav-item nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Overview</a>
-					<a className="nav-item nav-link" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="false">Full List</a>
+					<a className="nav-item nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">
+						<span className="material-icons-sharp">equalizer</span>
+                        <h3>Overview</h3>
+					</a>
+					<a className="nav-item nav-link" id="table-tab" data-toggle="tab" href="#table" role="tab" aria-controls="table" aria-selected="false">
+						<span className="material-icons-sharp">view_list</span>
+                        <h3>Full List</h3>
+					</a>
 				</div>
 			</nav>
 			<div className="tab-content" id="nav-tabContent">
@@ -209,7 +215,7 @@ function AccomplishmentCount(props){
 				<div className="tab-pane fade" id="table" role="tabpanel" aria-labelledby="table-tab"><AccomplishmentAnalyticsTable data={tableData} /></div>
 			</div>
                 
-		<style jsx>{`
+		{/* <style jsx>{`
 			a.nav-item:focus{
 				background-color:#78b6c2;
 			}
@@ -219,7 +225,7 @@ function AccomplishmentCount(props){
 			a.active{
 				background-color:#78b6c2;
 			}
-		`}</style>
+		`}</style> */}
 		</div>
 	)
 }

@@ -509,6 +509,17 @@ main .card form select option p{
 }
 
 
+    /* Form Group */
+.form-row{
+    width: 100%;
+    text-align: left;
+}
+
+.form-group{
+    width: 20%;
+    display: inline-block;
+    margin-left: 1rem;
+}
 
 
 
