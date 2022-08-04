@@ -39,16 +39,17 @@ class PublicationFormAuthor extends React.Component{
 				{value: this.props.faculty[key].facultyId, label: this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}
 			);
 		});
-		return(<div>
+		return(
+		<div>
 			<div className = "form-row">
 				<div className = "form-group col-md-12">
-					<label htmlFor = "PublicationAuthorDPSM[]"> Authors (from DPSM) </label>
+					<label htmlFor = "PublicationAuthorDPSM[]" style={{fontSize:"16px"}}> DPSM Co-Authors </label>
 					<Select className = "col-md-12" name = "PublicationAuthorDPSM[]" isMulti options = {authors} />
 				</div>
 			</div>
-		<div>
+			<div>
 				{this.state.duplicateAuthors}
-		</div>
+			</div>
 		</div>
 		)
 	}

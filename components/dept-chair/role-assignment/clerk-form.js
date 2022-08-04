@@ -54,14 +54,14 @@ class ClerkForm extends React.Component{
                         <div className = "row pb-3">
                             <div className="col-md-6">
                                 <div className = "form-group">
-                                    <label htmlFor = "ClerkName[]" className = "required-label"> Name </label>
+                                    <label htmlFor = "ClerkName[]" className = "required-label" style={{fontSize:"16px"}}> Name </label>
                                     <input className = "form-control" type = "text" name = "name" placeholder = "Input name" required />
                                 </div>
                             </div>
                             <br />
                             <div className="col-md-6">
                                 <div className = "form-group">
-                                    <label htmlFor = "ClerkEmail[]" className = "required-label"> UP Email Address </label>
+                                    <label htmlFor = "ClerkEmail[]" className = "required-label" style={{fontSize:"16px"}}> UP Email Address </label>
                                     <input className = "form-control" type = "email" name = "upemail" placeholder = "Input UP Email" required />
                                 </div>
                             </div>

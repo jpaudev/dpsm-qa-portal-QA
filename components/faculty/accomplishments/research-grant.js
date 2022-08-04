@@ -219,8 +219,9 @@ function ResearchGrant(props){
                     </tbody>
                 </table>	
 	        </div>
+            <br/><br/>
     { props.editable &&
-        <div>
+        <div className="card">
             <ResearchGrantForm faculty = {props.faculty} token = {props.token} />
         </div>
     }
@@ -514,8 +515,7 @@ function ResearchGrant(props){
                     </div>
                 </div>
             </div>
-
-
+            <br/><br/>
 		</div>
 	)
 }
