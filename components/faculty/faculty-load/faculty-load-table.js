@@ -117,9 +117,27 @@ function FacultyLoadTable(props) {
 
     return (
         <div>
-            <h2 align = "center"> Faculty Load</h2>
+            <div className="center">
+            <h2 align = "center" style={{display: "inline-block"}}> Faculty Load </h2>
+				{ props.role == 5 &&
+					<button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addFacultyLoad" aria-expanded="false" aria-controls="addFacultyLoad" style={{left: "1rem", position: "relative"}}>
+						<span className="material-icons-sharp">add</span>
+					</button>
+                }
+            </div>
+
+            <br></br><br></br>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="loadalert" style={{visibility:"hidden"}}></div>
+            
+            { props.role==5 && 
+                <div className="collapse" id="addFacultyLoad">
+                    <FacultyLoadForm token = { props.token } facultyId = { props.facultyId } role={ props.role } />
+                </div>   
+            }
+            
+            <br></br><br></br>
+
             <div className = "table-title">
                 <table>
                     <thead>
@@ -138,11 +156,7 @@ function FacultyLoadTable(props) {
                 </table>
             </div>
 
-            { props.role==5 && 
-                <div>
-                    <FacultyLoadForm token = { props.token } facultyId = { props.facultyId } role={ props.role } />
-                </div>   
-            }
+
 	
             <div className="modal fade" id="editClass" tabIndex="-1" role="dialog" aria-labelledby="editClassLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

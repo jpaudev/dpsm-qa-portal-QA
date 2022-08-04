@@ -64,12 +64,31 @@ function FacultyLoader(props) {
 	} else {
         content = <p align = "center"><br/>No data available.</p>
     }
+
 	return (
 		<div>
-			<h2 align = "center"> Faculty Load </h2>
+			<div className="center">
+				<h2 align = "center" style={{display: "inline-block"}}> Faculty Load </h2>
+				{ props.role == 5 &&
+					<button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addFacultyLoad" aria-expanded="false" aria-controls="addFacultyLoad" style={{left: "1rem", position: "relative"}}>
+						<span className="material-icons-sharp">add</span>
+					</button>
+                }
+			</div>
+			
+
+			<br></br><br></br>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
 
 			<div className ="alert alert-success" role="alert" id="loadalert" style={{visibility:"hidden"}}></div>
+			
+
+			{ props.role == 5 &&
+		    	<div className="collapse" id="addFacultyLoad">
+					<FacultyLoadForm token = { props.token } facultyId = { props.facultyId } role={ props.role } />
+				</div>   
+			}
+			<br></br><br></br>
 			<div className="list-group">
 				{content}
 			</div>
@@ -78,9 +97,7 @@ function FacultyLoader(props) {
 					text-indent:5%;
 				}
 		    `}</style>
-		    { props.role == 5 &&
-		    	<FacultyLoadForm token = { props.token } facultyId = { props.facultyId } role={ props.role } />
-			}
+
 
 	    </div>
 	)
