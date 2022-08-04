@@ -149,6 +149,7 @@ function Education(props) {
             </div>
 
             <br></br><br></br>
+
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
 
@@ -183,11 +184,8 @@ function Education(props) {
                 </table>
             </div>
             
-            <br></br><br></br>
+            <br/><br/>
             
-
-
-
             <div className="modal fade" id="editEducation" tabIndex="-1" role="dialog" aria-labelledby="editEducationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">

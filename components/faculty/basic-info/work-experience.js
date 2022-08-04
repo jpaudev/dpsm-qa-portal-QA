@@ -100,10 +100,10 @@ function WorkExperience(props){
                 </button>
                 }
             </div>
-
             <br></br><br></br>
+
             <NameDisplay unit = {props.unit} position={props.position}>{name}</NameDisplay>
-            <div role="alert" id="workexpalert" style={{visibility:"hidden"}}></div>
+            <div className ="alert alert-success" role="alert" id="workexpalert" style={{visibility:"hidden"}}></div>
             
             
             { props.editable &&
