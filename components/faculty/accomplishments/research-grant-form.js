@@ -105,19 +105,19 @@ class ResearchGrantForm extends React.Component{
 						{/* 5th Row  */}
 						<div className = "row pb-3">
 							<div className = "form-group col-md-3">
-								<label htmlFor = "ResearchProjectedStartDate[]" className = "required-label" style={{fontSize:"16px"}}> Start Date (Projected) </label>
+								<label htmlFor = "ResearchProjectedStartDate[]" className = "required-label" style={{fontSize:"16px"}}> Projected Start </label>
 								<Field type = "date" className = "form-control" name = "projectedStart" required />
 							</div>
 							<div className = "form-group col-md-3">
-								<label htmlFor = "ResearchProjectedEndDate[]" className = "required-label" style={{fontSize:"16px"}}> End Date (Projected) </label>
+								<label htmlFor = "ResearchProjectedEndDate[]" className = "required-label" style={{fontSize:"16px"}}> Projected End </label>
 								<Field type = "date" className = "form-control" name = "projectedEnd" required />
 							</div>
 							<div className = "form-group col-md-3">
-								<label htmlFor = "ResearchStartDate[]" className = "required-label" style={{fontSize:"16px"}}> Start Date (Actual) </label>
+								<label htmlFor = "ResearchStartDate[]" className = "required-label" style={{fontSize:"16px"}}> Actual Start </label>
 								<Field type = "date" className = "form-control" name = "actualStart" required />
 							</div>
 							<div className = "form-group col-md-3">
-								<label htmlFor = "ResearchEndDate[]" style={{fontSize:"16px"}}> End Date (Actual) </label>
+								<label htmlFor = "ResearchEndDate[]" style={{fontSize:"16px"}}> Actual End </label>
 								<Field type = "date" className = "form-control" name = "actualEnd" />
 							</div>
 						</div>
