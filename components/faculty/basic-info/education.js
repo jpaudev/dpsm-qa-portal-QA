@@ -141,23 +141,24 @@ function Education(props) {
             <div className="center">
                 <h2 align = "center" style={{display: "inline-block"}}> Educational History </h2>
                 {/* Add Button Trigger */}
-                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style={{left: "1rem", position: "relative"}}>
+                { props.editable && 
+                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addEducation" aria-expanded="false" aria-controls="addEducation" style={{left: "1rem", position: "relative"}}>
                     <span className="material-icons-sharp">add</span>
                 </button>
+                }
             </div>
 
             <br></br><br></br>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
-
+            <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
 
             { props.editable && 
-                <div className="card collapse" id="collapseExample">
+                <div className="card collapse" id="addEducation">
                     <EducationForm token = { props.token }/>
-                    <br/><br/>
                 </div>   
             }
 
-            <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
+            
             
             
             <div className = "table-title">

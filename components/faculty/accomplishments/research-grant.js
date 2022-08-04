@@ -193,9 +193,29 @@ function ResearchGrant(props){
 
 	return(
 		<div>
-            <h2 align = "center"> Research Grants </h2>
+            <div className="center">
+                <h2 align = "center" style={{display: "inline-block"}}> Research Grants </h2>
+                {/* Add Button Trigger */}
+                { props.editable &&
+                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addResearch" aria-expanded="false" aria-controls="addResearch" style={{left: "1rem", position: "relative"}}>
+                    <span className="material-icons-sharp">add</span>
+                </button>
+                }
+            </div>
+
+
+            <br></br><br></br>    
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
 			<div className ="alert alert-success" role="alert" id="researchalert" style={{visibility:"hidden"}}></div>
+            
+            { props.editable &&
+                <div className="card collapse" id="addResearch">
+                    <ResearchGrantForm faculty = {props.faculty} token = {props.token} />
+                </div>
+            }
+            <br></br><br></br>
+            
+            
             <div className = "table-title">
                 <table>
                     <thead>
@@ -220,11 +240,7 @@ function ResearchGrant(props){
                 </table>	
 	        </div>
             <br/><br/>
-    { props.editable &&
-        <div className="card">
-            <ResearchGrantForm faculty = {props.faculty} token = {props.token} />
-        </div>
-    }
+
         <div className="modal fade" id="editResearchGrant" tabIndex="-1" role="dialog" aria-labelledby="editResearchGrantLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">

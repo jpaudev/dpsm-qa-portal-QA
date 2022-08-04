@@ -85,9 +85,37 @@ function WorkExperience(props){
 
     return(
         <div>
-            <h2 align = "center"> Work Experience </h2>
+            <div className="center">
+                <h2 align = "center" style={{display: "inline-block"}}> Work Experience </h2>
+                {/* Add Button Trigger */}
+                { props.editable && 
+                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addEmployment" aria-expanded="false" aria-controls="addEmployment" style={{left: "1rem", position: "relative"}}>
+                <span className="material-icons-sharp">add</span>
+                </button>
+                }
+            </div>
+
+            <br></br><br></br>
             <NameDisplay unit = {props.unit} position={props.position}>{name}</NameDisplay>
             <div role="alert" id="workexpalert" style={{visibility:"hidden"}}></div>
+            
+            
+            { props.editable &&
+                <div className="card collapse" id="addEmployment">
+                    <WorkExpForm token = { props.token }/>
+                </div>
+            }
+            
+            { props.role == 5 &&
+                <div>
+                    <hr />
+                    <h3 align ="center"> Add Faculty Employment </h3>
+                    <EmploymentForm token={props.token} facultyId={props.facultyId} positionsList={props.positionsList}/>
+                </div>
+            }
+            
+            
+            <br/><br/>
             <h5 align = "center"> Within UP Manila </h5>
             <EmploymentHistory role={props.role} token={props.token} facultyId={props.facultyId}>{props.employment}</EmploymentHistory>
             <br />
@@ -113,19 +141,6 @@ function WorkExperience(props){
             </div>
             <br/><br/>
 
-            { props.editable &&
-                <div className="card">
-                    <WorkExpForm token = { props.token }/>
-                </div>
-            }
-            
-            { props.role == 5 &&
-                <div>
-                    <hr />
-                    <h3 align ="center"> Add Faculty Employment </h3>
-                    <EmploymentForm token={props.token} facultyId={props.facultyId} positionsList={props.positionsList}/>
-                </div>
-            }
 
             <div className="modal fade" id="editWorkExperience" tabIndex="-1" role="dialog" aria-labelledby="editWorkExperienceLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

@@ -32,8 +32,25 @@ function AssignAdminClerk(props) {
 
     return (
         <div className='table-title'>
-		<h2 align = "center"> Admin Clerk Assignment </h2>
+
+        <div className="center">
+            <h2 align = "center" style={{display: "inline-block"}}> Admin Clerk Assignment </h2>
+            {/* Add Button Trigger */}
+            <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addAdmin" aria-expanded="false" aria-controls="addAdmin" style={{left: "1rem", position: "relative"}}>
+                <span className="material-icons-sharp">add</span>
+            </button>
+        </div>
+
+        <br></br><br></br>
+
         <div className ="alert alert-success" role="alert" id="clerkalert" style={{visibility:"hidden"}}></div>
+        <div className="collapse" id="addAdmin">
+            <ClerkForm token = { props.token }/>
+        </div>
+        
+        <br></br><br></br>
+
+        
         <table>
             <thead>
                 <tr>
@@ -45,9 +62,9 @@ function AssignAdminClerk(props) {
                 {content}
             </tbody>
         </table>
-        <br />
+        <br /><br></br><br></br>
 
-        <ClerkForm token = { props.token }/>
+
 
         <div className="modal fade" id="deleteClerk" tabIndex="-1" role="dialog" aria-labelledby="deleteClerkLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">

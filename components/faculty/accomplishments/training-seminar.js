@@ -138,9 +138,29 @@ function TrainingSeminar(props) {
 
     return (
         <div>
-            <h2 align = "center"> Training/Seminars </h2>
+            <div className="center">
+                <h2 align = "center" style={{display: "inline-block"}}> Training/Seminars </h2>
+                {/* Add Button Trigger */}
+                { props.editable &&
+                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addTraining" aria-expanded="false" aria-controls="addTraining" style={{left: "1rem", position: "relative"}}>
+                    <span className="material-icons-sharp">add</span>
+                </button>
+                }
+            </div>
+
+            <br></br><br></br>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="trainingseminaralert" style={{visibility:"hidden"}}></div>
+            
+
+            { props.editable && 
+                <div className="card collapse" id="addTraining">
+                    <TrainingSeminarForm token = { props.token } />
+                </div>  
+            } 	
+            <br></br><br></br>
+
+
             <div className = "table-title">
                 <table>
                     <thead>
@@ -164,11 +184,7 @@ function TrainingSeminar(props) {
             </div>
             <br/><br/>
 
-            { props.editable && 
-                <div className="card">
-                    <TrainingSeminarForm token = { props.token } />
-                </div>  
-            } 	
+
             <div className="modal fade" id="editTrainingSeminar" tabIndex="-1" role="dialog" aria-labelledby="editTrainingSeminarLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">

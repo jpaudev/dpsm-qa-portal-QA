@@ -358,10 +358,30 @@ function PublicServiceAccomplishment(props){
 
 	return(
 	<div>
-		<h2 align = "center"> Public Service Accomplishments</h2>
+        <div className="center">
+            <h2 align = "center" style={{display: "inline-block"}}> Public Service Accomplishments</h2>
+            {/* Add Button Trigger */}
+            { props.editable &&
+                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addPublicService" aria-expanded="false" aria-controls="addPublicService" style={{left: "1rem", position: "relative"}}>
+                    <span className="material-icons-sharp">add</span>
+                </button>
+            }
+        </div>
+
+
+        <br></br><br></br>
         <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
         <div role="alert" id="publicservicealert" style={{visibility:"hidden"}}></div>
-		<div>
+		
+        
+        { props.editable &&
+                <div className="card collapse" id="addPublicService">
+                    <PublicServiceAccomplishmentForm token = { props.token } />
+                </div>  
+        } 
+
+        <br></br><br></br>
+        <div>
             <div className = "table-title">
                 <h5 align = "center">Within UP Manila </h5>
                 <table>
@@ -460,11 +480,7 @@ function PublicServiceAccomplishment(props){
             </div>
             <br/><br/>
 
-            { props.editable &&
-                <div className='card'>
-                    <PublicServiceAccomplishmentForm token = { props.token } />
-                </div>  
-            } 
+
 
             <br/>
 
