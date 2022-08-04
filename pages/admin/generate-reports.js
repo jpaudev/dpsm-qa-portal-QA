@@ -88,13 +88,12 @@ function GenerateReports(props) {
 							
 						<br />
 
-						<button
-						type = "submit"
-						className = "btn btn-primary"
-						disabled = {isSubmitting}
-						>
-						Generate Report
-						</button>
+						<div className="center">
+							<button type = "submit" className = "btn customButton blue" disabled = {isSubmitting}>
+								<span className="material-icons-sharp">get_app</span>
+								Get Reports
+							</button>
+						</div>
 						{/*<Link href="/faculty"><input type="submit" className = "btn btn-primary" value="Login"></input></Link>*/}
 					</Form>
 					)}
