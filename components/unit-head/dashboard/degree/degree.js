@@ -189,7 +189,7 @@ function DegreeCount(props) {
             </nav>
 
 	    		<div className="tab-content" id="nav-tabContent">
-	    			<div className="tab-pane fade show active" id="degree-graph" role="tabpanel" aria-labelledby="degree-graph-tab"><DegreeDashboardGraph data={graphData} /></div>
+	    			<div className="tab-pane fade" id="degree-graph" role="tabpanel" aria-labelledby="degree-graph-tab"><DegreeDashboardGraph data={graphData} /></div>
 	    			<div className="tab-pane fade" id="degree-table" role="tabpanel" aria-labelledby="degree-table-tab"><DegreeAnalyticsTable data={tableData} /></div>
             		</div>
                 
