@@ -7,7 +7,6 @@ import Faculty from "../../components/faculty/facultyList"
 
 function FacultyList(props) {
     return (
-
             <div>
                 <Layout userId={props.data.userId} role={props.data.role} name={props.data.name}>
                     <br />

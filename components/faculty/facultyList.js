@@ -55,6 +55,7 @@ function FacultyList(props){
 						statusClass = 'disabled btn '
 						faculty[index].faculty_personal_info.user.status == 'Active' ? statusClass +='btn-warning' : statusClass += 'btn-danger'
 					}
+					
 					return (
 						<tr>
 							<td>
@@ -313,7 +314,7 @@ function FacultyList(props){
 		}
     } 
     else{ 
-        return(<p align = "center">No approvals needed!</p>)
+        return(<p align = "center">No approvals needed.</p>)
     }
 
 	return(
