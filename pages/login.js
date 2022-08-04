@@ -35,7 +35,7 @@ function Login() {
           <div className="login">
             <div className="container">
               <div className="img">
-                <img src="/user.png" id="user" alt="user" style={{margin: "auto", width: "120px", height: "120px"}}/>
+                <img src="/user.png" id="user" alt="user" style={{margin: "auto", width: "140px", height: "140px"}}/>
               </div>
               
               <br/>
