@@ -133,14 +133,15 @@ span.psw {
 
 .img-lock{
     margin: auto; 
-    width: 75px; 
-    height: 75px;
+    width: 90px; 
+    height: 90px;
 }
 
 #alert {
  	visibility: hidden;
     width: 60%;
     margin: auto;
+    margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 20px;
 }

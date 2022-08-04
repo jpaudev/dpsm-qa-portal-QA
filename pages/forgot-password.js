@@ -140,8 +140,8 @@ function ForgotPassword(props){
 					<div className="login" style={{padding: "0 0 0 24px"}}>
 						<br/>
 						<Link href = "/login">
-							<a href="#" className="return">
-								<h4><span className="material-icons-sharp" style={{marginRight:"0.5rem"}}>arrow_back_ios</span>Return to Login</h4>
+							<a href="#" className="btn" style={{color: "#800020"}}>
+								<span className="material-icons-sharp" style={{marginTop:"1rem"}}>arrow_back_ios</span>
 							</a>
 						</Link>
 
@@ -149,16 +149,13 @@ function ForgotPassword(props){
 							<div className = "img">
 								<img className = "img-lock" src="/lock.png" id = "user" alt="Forgot Password"></img>
 							</div>
+
 							<br/><br/>
 							<h2><b>FORGOT PASSWORD</b></h2>
 							<br/>
-							<h4>Input the UP Email account associated with  </h4>
-							<h4>your account here in the UPM QA Portal.</h4>
-							<br/>
-							<h4>We will send you an email message containing  </h4>
-							<h4>a link that will redirect you to a reset </h4>
-							<h4>password page.</h4>    
-							<br/>
+							<h4> An e-mail message will be sent to your UP Mail  </h4>
+							<h4> shortly. It will contain a link that will redirect </h4>
+							<h4> you to a reset password page. </h4>  
 
 							<div className="login-form" id = "recovery-email">
 								<Formik
@@ -215,13 +212,7 @@ function ForgotPassword(props){
 					</div>
 				</div>
 			</div>
-
-
-
 		</div>
-
-		
-
 	)
 }
 
