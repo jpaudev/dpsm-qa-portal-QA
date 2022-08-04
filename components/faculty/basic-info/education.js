@@ -138,10 +138,27 @@ function Education(props) {
     // let message
     return (
         <div>
-            <h2 align = "center"> Educational History </h2>
+            <div className="center">
+                <h2 align = "center" style={{display: "inline-block"}}> Educational History </h2>
+                {/* Add Button Trigger */}
+                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style={{left: "1rem", position: "relative"}}>
+                    <span className="material-icons-sharp">add</span>
+                </button>
+            </div>
+
+            <br></br><br></br>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
 
+
+            { props.editable && 
+                <div className="card collapse" id="collapseExample">
+                    <EducationForm token = { props.token }/>
+                    <br/><br/>
+                </div>   
+            }
+
             <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
+            
             
             <div className = "table-title">
                 <table>
@@ -165,12 +182,10 @@ function Education(props) {
                 </table>
             </div>
             
-            <br/><br/>
-            { props.editable && 
-                <div className="card">
-                    <EducationForm token = { props.token }/>
-                </div>   
-            }
+            <br></br><br></br>
+            
+
+
 
             <div className="modal fade" id="editEducation" tabIndex="-1" role="dialog" aria-labelledby="editEducationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
