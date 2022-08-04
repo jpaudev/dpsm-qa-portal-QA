@@ -139,6 +139,10 @@ span.psw {
 
 #alert {
  	visibility: hidden;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 5px;
+    border-radius: 20px;
 }
 
 
