@@ -25,7 +25,7 @@ function Dashboard(props) {
                         <br /> <br></br>
 	                    <nav>
                             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-                                <a className="nav-item nav-link nav-top" id="accomplishment-count-tab" data-bs-toggle="tab" href="#accomplishment-count" role="tab" aria-controls="accomplishment-count" aria-selected="false">
+                                <a className="nav-item nav-link nav-top active" id="accomplishment-count-tab" data-bs-toggle="tab" href="#accomplishment-count" role="tab" aria-controls="accomplishment-count" aria-selected="true">
                                     <span className="material-icons-sharp">military_tech</span>
                                     <h3>Accomplishment Count</h3>
                                 </a>
@@ -40,7 +40,7 @@ function Dashboard(props) {
                             </div>
             		    </nav>
                         <div className="tab-content" id="nav-tabContent">
-                            <div className="tab-pane fade" id="accomplishment-count" role="tabpanel" aria-labelledby="accomplishment-count-tab"><AccomplishmentCount role={props.data.role} queryList={props.queryList}>{props.accompList}</AccomplishmentCount></div>
+                            <div className="tab-pane fade show active" id="accomplishment-count" role="tabpanel" aria-labelledby="accomplishment-count-tab"><AccomplishmentCount role={props.data.role} queryList={props.queryList}>{props.accompList}</AccomplishmentCount></div>
                             <div className="tab-pane fade" id="employment-status" role="tabpanel" aria-labelledby="employment-status-tab"><EmploymentStatus role={props.data.role} queryList={props.queryList}>{props.empList}</EmploymentStatus></div>
                             <div className="tab-pane fade" id="degree" role="tabpanel" aria-labelledby="degree-tab"><DegreeCount role={props.data.role} queryList={props.queryList}>{props.educList}</DegreeCount></div>
                         </div>

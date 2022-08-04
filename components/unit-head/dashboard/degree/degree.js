@@ -177,7 +177,7 @@ function DegreeCount(props) {
 			<br></br>
 			<nav>
 				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-					<button className="nav-item nav-link nav-top" id="degree-graph-tab" data-bs-toggle="tab" href="#degree-graph" role="tab" aria-controls="degree-graph" aria-selected="false">
+					<button className="nav-item nav-link nav-top active" id="degree-graph-tab" data-bs-toggle="tab" href="#degree-graph" role="tab" aria-controls="degree-graph" aria-selected="false">
 						<span className="material-icons-sharp">equalizer</span>
                         <h3>Overview</h3>
 					</button>
@@ -189,7 +189,7 @@ function DegreeCount(props) {
             </nav>
 
 	    		<div className="tab-content" id="nav-tabContent">
-	    			<div className="tab-pane fade" id="degree-graph" role="tabpanel" aria-labelledby="degree-graph-tab"><DegreeDashboardGraph data={graphData} /></div>
+	    			<div className="tab-pane fade show active" id="degree-graph" role="tabpanel" aria-labelledby="degree-graph-tab"><DegreeDashboardGraph data={graphData} /></div>
 	    			<div className="tab-pane fade" id="degree-table" role="tabpanel" aria-labelledby="degree-table-tab"><DegreeAnalyticsTable data={tableData} /></div>
             		</div>
                 

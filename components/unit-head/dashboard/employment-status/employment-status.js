@@ -141,7 +141,7 @@ function EmploymentStatus(props){
 			<br></br>
 			<nav>
 				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-					<button className="nav-item nav-link nav-top" id="employment-graph-tab" data-bs-toggle="tab" href="#employment-graph" role="tab" aria-controls="employment-graph" aria-selected="false">
+					<button className="nav-item nav-link nav-top active" id="employment-graph-tab" data-bs-toggle="tab" href="#employment-graph" role="tab" aria-controls="employment-graph" aria-selected="false">
 						<span className="material-icons-sharp">equalizer</span>
                         <h3>Overview</h3>
 					</button>
@@ -153,7 +153,7 @@ function EmploymentStatus(props){
 			</nav>
 
 			<div className="tab-content" id="nav-tabContent">
-				<div className="tab-pane fade" id="employment-graph" role="tabpanel" aria-labelledby="employment-graph-tab"><EmploymentDashboardGraph data={graphData} /></div>
+				<div className="tab-pane fade show active" id="employment-graph" role="tabpanel" aria-labelledby="employment-graph-tab"><EmploymentDashboardGraph data={graphData} /></div>
 				<div className="tab-pane fade" id="employment-table" role="tabpanel" aria-labelledby="employment-table-tab"><EmploymentAnalyticsTable data={tableData} /></div>
 			</div>
                 

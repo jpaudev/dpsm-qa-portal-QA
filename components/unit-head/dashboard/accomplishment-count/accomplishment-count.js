@@ -203,7 +203,7 @@ function AccomplishmentCount(props){
 				<br></br>
 			<nav>
 				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-					<a className="nav-item nav-link nav-top" id="graph-tab" data-bs-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">
+					<a className="nav-item nav-link nav-top active" id="graph-tab" data-bs-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">
 						<span className="material-icons-sharp">equalizer</span>
                         <h3>Overview</h3>
 					</a>
@@ -215,7 +215,7 @@ function AccomplishmentCount(props){
 
 			</nav>
 			<div className="tab-content" id="nav-tabContent">
-				<div className="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab"><AccomplishmentDashboardGraph data={graphData} /></div>
+				<div className="tab-pane fade show active" id="graph" role="tabpanel" aria-labelledby="graph-tab"><AccomplishmentDashboardGraph data={graphData} /></div>
 				<div className="tab-pane fade" id="table" role="tabpanel" aria-labelledby="table-tab"><AccomplishmentAnalyticsTable data={tableData} /></div>
 			</div>
 
