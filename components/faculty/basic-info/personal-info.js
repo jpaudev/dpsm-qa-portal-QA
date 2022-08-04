@@ -255,6 +255,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
                                 <Field className = "form-control" component = "textarea" rows = {5} name = "philosophy" defaultValue = { FacultyDetails.philosophy } disabled={!props.editable} required />
                             </div>
                         </div>
+                        <br/>
                         
                         { props.role==5 &&
                             <div>
