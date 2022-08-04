@@ -132,7 +132,7 @@ function EmploymentHistory(props){
 
                             Router.push('/admin/' + props.facultyId)
                         }}>Save changes</button>
-                    </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,10 +173,10 @@ function EmploymentHistory(props){
                             Router.push('/admin/' + props.facultyId, '/admin/' + props.facultyId)
                         }}>Yes, delete</button>
                     </div>
-                    </div>
                 </div>
             </div>
-		</div>
+        </div>
+	</div>
 	)
 }
 
