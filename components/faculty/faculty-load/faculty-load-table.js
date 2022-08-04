@@ -128,15 +128,15 @@ function FacultyLoadTable(props) {
 
             <br></br><br></br>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
-            <div role="alert" id="loadalert" style={{visibility:"hidden"}}></div>
+            <div className="alert alert-success" role="alert" id="loadalert" style={{visibility:"hidden"}}></div>
             
             { props.role==5 && 
-                <div className="collapse" id="addFacultyLoad">
+                <div className="card collapse" id="addFacultyLoad">
                     <FacultyLoadForm token = { props.token } facultyId = { props.facultyId } role={ props.role } />
                 </div>   
             }
             
-            <br></br><br></br>
+            <br></br>
 
             <div className = "table-title">
                 <table>
