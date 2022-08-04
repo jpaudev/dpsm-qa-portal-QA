@@ -28,13 +28,17 @@ function EmploymentHistory(props){
 						props.role == 5 && 
 						<td>
 							<div className = "btn-grp">
-								<a className="btn btn-info" data-bs-toggle="modal" data-bs-target="#editEmployment" onClick={() => {
+								<button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editEmployment" onClick={() => {
 									empInfoId = props.children.faculty_employment_infos[key].employmentInfoId
 									setKey(props.children.faculty_employment_infos[key].employmentInfoId)
-								}}>Edit</a>
-								<a className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployment" onClick={() => {
+								}}>
+                                    <span className="material-icons-sharp">edit</span>
+                                </button>
+								<button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteEmployment" onClick={() => {
 									empInfoId = props.children.faculty_employment_infos[key].employmentInfoId
-								}}>Delete</a>
+								}}>
+                                    <span className="material-icons-sharp">delete</span>
+                                </button>
 							</div>
 						</td> 
 					}

@@ -89,8 +89,14 @@ function WorkExperience(props){
                 <h2 align = "center" style={{display: "inline-block"}}> Work Experience </h2>
                 {/* Add Button Trigger */}
                 { props.editable && 
-                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addEmployment" aria-expanded="false" aria-controls="addEmployment" style={{left: "1rem", position: "relative"}}>
-                <span className="material-icons-sharp">add</span>
+                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addEmploymentHistory" aria-expanded="false" aria-controls="addEmploymentHistory" style={{left: "1rem", position: "relative"}}>
+                    <span className="material-icons-sharp">add</span>
+                </button>
+                }
+
+                { props.role == 5 &&
+                <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addEmploymentForm" aria-expanded="false" aria-controls="addEmploymentForm" style={{left: "1rem", position: "relative"}}>
+                    <span className="material-icons-sharp">add</span>
                 </button>
                 }
             </div>
@@ -101,15 +107,13 @@ function WorkExperience(props){
             
             
             { props.editable &&
-                <div className="card collapse" id="addEmployment">
+                <div className="card collapse" id="addEmploymentHistory">
                     <WorkExpForm token = { props.token }/>
                 </div>
             }
             
             { props.role == 5 &&
-                <div>
-                    <hr />
-                    <h3 align ="center"> Add Faculty Employment </h3>
+                <div className="card collapse" id="addEmploymentForm">
                     <EmploymentForm token={props.token} facultyId={props.facultyId} positionsList={props.positionsList}/>
                 </div>
             }
