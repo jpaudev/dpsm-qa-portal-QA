@@ -65,7 +65,7 @@ function ChangePassword(props) {
                             }
                         }} />
                     </div>
-
+                    <br/>
                     <div className="text-end row p-1">
                         <button type="button" className = "customButton green" style={{margin: "auto", width:"25%"}} onClick = {async (e) => {
                                     let alert = document.getElementById("changepassalert")
