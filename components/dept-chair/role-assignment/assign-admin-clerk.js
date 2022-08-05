@@ -51,7 +51,7 @@ function AssignAdminClerk(props) {
         <br></br><br></br>
 
         
-        <table>
+        <table className="table table-hover">
             <thead>
                 <tr>
                     <th>Name</th>

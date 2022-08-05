@@ -217,7 +217,7 @@ function ResearchGrant(props){
             
             
             <div className = "table-title">
-                <table>
+                <table className="table table-hover">
                     <thead>
                         <tr>
                             <th>Research Project</th>

@@ -384,7 +384,7 @@ function PublicServiceAccomplishment(props){
         <div>
             <div className = "table-title">
                 <h5 align = "center">Within UP Manila </h5>
-                <table>
+                <table className="table table-hover">
                     <thead>
                         <tr>
                             <th>Position/Role</th>
@@ -409,7 +409,7 @@ function PublicServiceAccomplishment(props){
 		<br />
         <div className = "table-title">
             <h5 align = "center"> Contributions to Profession </h5>
-            <table>
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th>Position/Role</th>
@@ -433,7 +433,7 @@ function PublicServiceAccomplishment(props){
 		
         <div className = "table-title">
             <h5 align = "center"> Contributions to the Nation </h5>
-            <table>
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th>Position/Role</th>
@@ -458,7 +458,7 @@ function PublicServiceAccomplishment(props){
 		
 	<div className = "table-title">
         <h5 align = "center"> Contributions to the World </h5>
-        <table>
+        <table className="table table-hover">
             <thead>
                 <tr>
                     <th>Position/Role</th>

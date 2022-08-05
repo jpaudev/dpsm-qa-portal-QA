@@ -159,7 +159,7 @@ function LicensureExam(props) {
             <br></br><br></br>
 
             <div className = "table-title">
-                <table>
+                <table className="table table-hover">
                     <thead>
                         <tr>
                             <th>Exam Name</th>

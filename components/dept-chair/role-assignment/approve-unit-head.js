@@ -42,7 +42,7 @@ function ApproveUnitHead(props) {
         <div className='table-title'>
 		    <h2 align = "center"> Unit Head Assignment </h2>
             <div className="alert alert-success" role="alert" id="assignalert" style={{visibility:"hidden"}}></div>
-            <table>
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th>Unit</th>

@@ -126,7 +126,7 @@ function WorkExperience(props){
             
             <div className = "table-title">
                 <h5 align = "center"> Outside UP Manila </h5>
-                <table>
+                <table className="table table-hover">
                     <thead>
                         <tr key = "headers">
                             <th>Employer</th>
