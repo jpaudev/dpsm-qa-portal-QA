@@ -96,7 +96,7 @@ function FacultyList(props){
 						{/* Table Title */}
 						<h4 align = "center"> {props.children[key].unit} </h4>
 						<div className="table-title">
-							<table>
+							<table className="table table-hover">
 								<thead>
 									<tr>
 										<th className="table-name">Name</th>
@@ -180,7 +180,7 @@ function FacultyList(props){
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
 						<div className = "table-title">
-							<table>
+							<table className="table table-hover">
 								<thead>
 									<tr>
 										<th className="table-name">Name</th>
@@ -263,7 +263,7 @@ function FacultyList(props){
 					<div>
 						<h4 align = "center"> {props.children[key].unit} </h4>
 						<div className = "table-title">
-							<table>
+							<table className="table table-hover">
 								<thead>
 									<tr>
 										<th className="table-name">Name</th>
