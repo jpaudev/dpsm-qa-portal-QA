@@ -86,7 +86,7 @@ function WorkExperience(props){
     return(
         <div>
             <div className="center">
-                <h2 align = "center" style={{display: "inline-block"}}> Work Experience </h2>
+                <h2 align = "center" style={{display: "inline-block", verticalAlign: "bottom"}}> Work Experience </h2>
                 {/* Add Button Trigger */}
                 { props.editable && 
                 <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addEmploymentHistory" aria-expanded="false" aria-controls="addEmploymentHistory" style={{left: "1rem", position: "relative"}}>

@@ -139,7 +139,7 @@ function TrainingSeminar(props) {
     return (
         <div>
             <div className="center">
-                <h2 align = "center" style={{display: "inline-block"}}> Training/Seminars </h2>
+                <h2 align = "center" style={{display: "inline-block", verticalAlign: "bottom"}}> Training/Seminars </h2>
                 {/* Add Button Trigger */}
                 { props.editable &&
                 <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addTraining" aria-expanded="false" aria-controls="addTraining" style={{left: "1rem", position: "relative"}}>

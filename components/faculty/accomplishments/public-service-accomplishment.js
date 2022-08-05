@@ -359,7 +359,7 @@ function PublicServiceAccomplishment(props){
 	return(
 	<div>
         <div className="center">
-            <h2 align = "center" style={{display: "inline-block"}}> Public Service Accomplishments</h2>
+            <h2 align = "center" style={{display: "inline-block", verticalAlign: "bottom"}}> Public Service Accomplishments</h2>
             {/* Add Button Trigger */}
             { props.editable &&
                 <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addPublicService" aria-expanded="false" aria-controls="addPublicService" style={{left: "1rem", position: "relative"}}>

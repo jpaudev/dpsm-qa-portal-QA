@@ -34,7 +34,7 @@ function AssignAdminClerk(props) {
         <div className='table-title'>
 
         <div className="center">
-            <h2 align = "center" style={{display: "inline-block"}}> Admin Clerk Assignment </h2>
+            <h2 align = "center" style={{display: "inline-block", verticalAlign: "bottom"}}> Admin Clerk Assignment </h2>
             {/* Add Button Trigger */}
             <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addAdmin" aria-expanded="false" aria-controls="addAdmin" style={{left: "1rem", position: "relative"}}>
                 <span className="material-icons-sharp">add</span>

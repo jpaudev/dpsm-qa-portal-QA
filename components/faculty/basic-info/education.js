@@ -139,13 +139,13 @@ function Education(props) {
     return (
         <div>
             <div className="center">
-                <h2 align = "center" style={{display: "inline-block"}}> Educational History </h2>
+                <h2 align = "center" style={{display: "inline-block", verticalAlign: "bottom"}}> Educational History </h2>
                 {/* Add Button Trigger */}
-                {/* { props.editable && 
+                { props.editable && 
                 <button type="button" className="btn customButton-icon-only maroon" data-bs-toggle="collapse" data-bs-target="#addEducation" aria-expanded="false" aria-controls="addEducation" style={{left: "1rem", position: "relative"}}>
                     <span className="material-icons-sharp">add</span>
                 </button>
-                } */}
+                }
             </div>
 
             <br></br><br></br>
@@ -153,17 +153,10 @@ function Education(props) {
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
 
-            { props.editable && 
-                    <button type="button" className="btn btn customButton maroon" data-bs-toggle="collapse" data-bs-target="#addEducation" aria-expanded="false" aria-controls="addEducation" style={{left: "1rem", position: "relative"}}>
-                        <span className="material-icons-sharp">add</span>
-                        Add Education
-                    </button>
-            }
             
 
             { props.editable && 
                 <div>
-                    <div><br></br><br></br></div>
                     <div className="card collapse" id="addEducation">
                         <EducationForm token = { props.token }/>
                     </div>
