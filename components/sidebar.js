@@ -335,7 +335,7 @@ function Sidebar(props) {
                 </a> */}
 
                 <Link href="/login">
-                    <a onClick={handleRemoveCookie}>
+                    <a onClick={handleRemoveCookie} style={{color:"#e23636"}}>
                         <span className="material-icons-sharp">logout</span>
                         <h3>Logout</h3>
                     </a>
