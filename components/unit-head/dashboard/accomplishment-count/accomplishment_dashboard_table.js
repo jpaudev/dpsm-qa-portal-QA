@@ -93,7 +93,7 @@ function Table ({columns, data}){
 				filename="accomplishment"
 				buttonText="Download as XLS"/>
     <br />
-   <table className = "table" {...getTableProps()} id="accomplishmentTable">
+   <table className = "table table-hover" {...getTableProps()} id="accomplishmentTable">
        <thead>
          {headerGroups.map(headerGroup => (
            <tr {...headerGroup.getHeaderGroupProps()}>
