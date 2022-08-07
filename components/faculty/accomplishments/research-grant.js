@@ -138,7 +138,7 @@ function ResearchGrant(props){
         });
     }
     else{
-        content = <td colSpan = "10"><br/><p align = "center">No data available.</p></td>
+        content = <td colSpan = "12"><br/><p className='center'>No data available.</p></td>
     }
 
     function setEdit(id) {
@@ -204,7 +204,7 @@ function ResearchGrant(props){
             </div>
 
 
-            <br></br><br></br>    
+            <br/>   
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
 			<div className ="alert alert-success" role="alert" id="researchalert" style={{visibility:"hidden"}}></div>
             

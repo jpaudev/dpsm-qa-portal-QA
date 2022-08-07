@@ -319,7 +319,6 @@ function FacultyList(props){
 
 	return(
 		<div>
-			<br />
 			<div className ="alert alert-success" role="alert" id="facultyStatusalert" style={{visibility:"hidden"}}></div>
 			<br />
 			{chem}

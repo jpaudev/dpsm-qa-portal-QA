@@ -101,7 +101,7 @@ function LicensureExam(props) {
         })
     }
     else{
-        content = <td colSpan = "7"><br/><p align = "center">No data available.</p></td>
+        content = <td colSpan = "8"><br/><p align = "center">No data available.</p></td>
     }
 
     function setEdit(id) {
@@ -146,7 +146,7 @@ function LicensureExam(props) {
 
             
             
-            <br></br><br></br>
+            <br/>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="licensureexamalert" style={{visibility:"hidden"}}></div>
             

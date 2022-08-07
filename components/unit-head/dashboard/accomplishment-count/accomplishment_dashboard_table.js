@@ -234,10 +234,14 @@ function Table ({columns, data}){
 	
 
       <style jsx>{`
-		table{
+		thead{
+      white-space: normal;
+    }
+    
+    table{
 			display: block;
 			overflow: x;
-			white-space: nowrap;
+			white-space: normal;
 		}
 	`}</style>
 </div>
@@ -271,7 +275,7 @@ function Table ({columns, data}){
 	 disableSortBy: true
        },
        {
-         Header: 'Accomplishment Type',
+         Header: 'Category',
 	 Footer: '',
          accessor: 'col3',
 	 aggregate: 'count',
@@ -280,7 +284,7 @@ function Table ({columns, data}){
 	 disableSortBy: true
        },
        {
-         Header: 'Start Date (click to sort)',
+         Header: 'Start Date',
 	 Footer: '',
          accessor: 'col4',
 	 sortBy: 'datetime',
@@ -289,7 +293,7 @@ function Table ({columns, data}){
 	 disableFilters: true
        },
        {
-         Header: 'End Date (click to sort)',
+         Header: 'End Date',
 	 Footer: '',
          accessor: 'col5',
 	 sortBy: 'datetime',

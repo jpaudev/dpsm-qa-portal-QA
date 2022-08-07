@@ -10,13 +10,10 @@ function ChangePassword(props) {
 
     return (
         <div className="card" style={{marginTop:"2rem"}}>
-            <div className="center">
-                <h2> <b>Change Password Form</b></h2>
-            </div>
-            <div className ="alert alert-success" role="alert" id="changepassalert" style={{visibility:"hidden", height:"1.5rem", marginBottom:"-2rem"}}></div>
+            <h2 className="center"> Change Password Form</h2>
+            <div role="alert" id="changepassalert" style={{visibility:"hidden", height:"1.5rem", marginBottom:"-2rem"}}></div>
             <form className="row g-3 p-3">
                 <div className="d-grid gap-2 col-12 d-md-block">
-
                     <div className = "form-group row p-3">
                         <label htmlFor="old-password" className = "required-label" style={{fontSize: "18px"}}>Current Password:</label>
                         <input className = "form-control" type="password" id="old-password" name="old-password" placeholder='Current Password' required onBlur={async () => {

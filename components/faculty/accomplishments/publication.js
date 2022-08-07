@@ -128,7 +128,7 @@ function Publication(props){
         });
     }
     else{
-        content = <td colSpan = "7"><br/><p align = "center">No data available.</p></td>
+        content = <td colSpan = "9"><br/><p align = "center">No data available.</p></td>
     }
 
     function setEdit(id) {
@@ -189,7 +189,7 @@ function Publication(props){
                 }
             </div>
 
-            <br></br><br></br>
+            <br/>
 
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div className ="alert alert-success" role="alert" id="publicationalert" style={{visibility:"hidden"}}></div>

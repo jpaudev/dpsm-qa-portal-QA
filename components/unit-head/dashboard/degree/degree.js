@@ -121,7 +121,7 @@ function DegreeCount(props) {
 	}
 	return(
 		<div>
-			<br />
+			<br /><br/>
 			<h3 align = "center">Attained Degrees</h3>
 
 			<div className = "dashboard-form-row">
@@ -174,7 +174,7 @@ function DegreeCount(props) {
 				</div>
 			</div>
 
-			<br></br>
+			<br/><br/>
 			<nav>
 				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 					<a className="nav-item nav-link nav-top active" id="degree-graph-tab" data-bs-toggle="tab" href="#degree-graph" role="tab" aria-controls="degree-graph" aria-selected="false">
@@ -191,7 +191,8 @@ function DegreeCount(props) {
 	    		<div className="tab-content" id="nav-tabContent">
 	    			<div className="tab-pane fade show active" id="degree-graph" role="tabpanel" aria-labelledby="degree-graph-tab"><DegreeDashboardGraph data={graphData} /></div>
 	    			<div className="tab-pane fade" id="degree-table" role="tabpanel" aria-labelledby="degree-table-tab"><DegreeAnalyticsTable data={tableData} /></div>
-            		</div>
+            	</div>
+				<br/><br/>
                 
 		{/* <style jsx>{`
 			a.nav-item:focus{

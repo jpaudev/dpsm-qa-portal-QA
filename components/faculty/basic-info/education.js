@@ -107,7 +107,7 @@ function Education(props) {
         });
     }
     else{
-        content = <td colSpan = "9"><br/><p align = "center">No data available.</p></td>
+        content = <td colSpan = "10"><br/><p align = "center">No data available.</p></td>
     }
     let res
 
@@ -151,7 +151,7 @@ function Education(props) {
                 }
             </div>
 
-            <br></br><br></br>
+            <br/>
 
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div className ="alert alert-success" role="alert" id="educalert" style={{visibility:"hidden"}}></div>
@@ -174,7 +174,7 @@ function Education(props) {
                 <table className="table table-hover">
                     <thead>
                         <tr>
-                            <th>Deegree</th>
+                            <th>Degree</th>
                             <th>Type</th>
                             <th className="less-important-pc">Major</th>
                             <th className="less-important-mobile">Institution</th>

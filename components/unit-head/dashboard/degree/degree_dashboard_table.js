@@ -268,7 +268,7 @@ function Table ({columns, data}){
 	 disableSortBy: true
        },
        {
-         Header: 'Date Earned (click to sort)',
+         Header: 'Date Earned',
 	 Footer: '',
          accessor: 'col4',
 	 sortBy: 'datetime',
