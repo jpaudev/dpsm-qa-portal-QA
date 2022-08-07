@@ -101,6 +101,7 @@ function Layout(props) {
                                 <span className="material-icons-sharp active">light_mode</span>
                                 <span className="material-icons-sharp">dark_mode</span>
                             </div>
+                            
                             <div className="profile">
                                 <div className="info">
                                     <p>Hey, <b>{props.name}</b></p>

@@ -418,6 +418,10 @@ main .table-title h2{
 
 }
 
+main .table-title tr{
+    color: var(--color-dark);
+}
+
 main .table-title table thead{
     margin-bottom: 0.8rem;
 }
@@ -493,6 +497,7 @@ main .table-title a{
 
 .table-name{
     width: 600px;
+    color: var(--color-dark);
 }
 
 /* Cards */
@@ -632,6 +637,15 @@ nav .nav a.active span{
     background: var(--color-danger);
 }
 
+.ramoon{
+    background: var(--color-button);
+}
+
+.ramoon:hover{
+    background: var(--color-danger);
+    color: white;
+}
+
 .yellow{
     background: var(--color-warning);
 }
@@ -663,6 +677,11 @@ nav .nav a.active span{
 .form-check .form-check-label{
     font-size: 16px;
     padding-left: 1rem;
+}
+
+#form-select{
+    background: white;
+    color: #181a1e;
 }
 
 
