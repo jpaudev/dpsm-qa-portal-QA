@@ -93,96 +93,100 @@ function Table ({columns, data}){
           filename="employment"
           buttonText="Download as XLS"/>
       <br />
-    <table className = "table" {...getTableProps()} id="employmentTable">
-        <thead>
-          {headerGroups.map(headerGroup => (
-            <tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map(column => (
-                <th
-                // sorting function
-                  {...column.getHeaderProps(column.getSortByToggleProps())}
-                  >
-                  {column.render('Header')}
-                      <span>
-                        {column.isSorted
-                          ? column.isSortedDesc
-                            ? '▼'
-                            : '▲'
-                          : ''}
-                      </span>
-                      <div>{column.canFilter ? column.render('Filter') : null}</div>
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
-              prepareRow(row)
-              return (
-                <tr {...row.getRowProps()}>
-                  {row.cells.map(cell => {
-                    return (
-                      <td
-                        // For educational purposes, let's color the
-                        // cell depending on what type it is given
-                        // from the useGroupBy hook
-                        {...cell.getCellProps()}
-                        style={{
-                          background: cell.isGrouped
-                            ? '#0aff0082'
-                            : cell.isAggregated
-                            ? '#ffa50078'
-                            : cell.isPlaceholder
-                            ? '#ff000042'
-                            : 'white',
-                        }}
-                      >
-                        {cell.isGrouped ? (
-                          // If it's a grouped cell, add an expander and row count
-                          <>
-                            <span {...row.getToggleRowExpandedProps()}>
-                              {row.isExpanded ? '▼' : '►'}
-                            </span>{' '}
-                            {cell.render('Cell')} ({row.subRows.length})
-                          </>
-                        ) : cell.isAggregated ? (
-                          // If the cell is aggregated, use the Aggregated
-                          // renderer for cell
-                          cell.render('Aggregated')
-                        ) : cell.isPlaceholder ? null : ( // For cells with repeated values, render null
-                          // Otherwise, just render the regular cell
-                          cell.render('Cell')
-                        )}
-                      </td>
-                    )
-                  })}
-                </tr>
-              )
-            })}
-        </tbody>
-    <tfoot>
-          {footerGroups.map(group => (
-            <tr {...group.getFooterGroupProps()}>
-              {group.headers.map(column => (
-                <td 
-      {...column.getFooterProps()}>
-      {column.canGroupBy ? (
-                      // If the column can be grouped, let's add a toggle
-                      <span {...column.getGroupByToggleProps()}>
-                        {column.isGrouped ? 'Click to Ungroup ' : 'Click to Group'}
-                      </span>
-                    ) : null}
-      
-      {column.render('Footer')}
-          </td>
-              ))}
-            </tr>
-          ))}
-        </tfoot>
-      </table>
+     
 
-    
+     
+      <table className = "table table-hover" {...getTableProps()} id="employmentTable" >
+          <thead>
+            {headerGroups.map(headerGroup => (
+              <tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map(column => (
+                  <th
+                  // sorting function
+                    {...column.getHeaderProps(column.getSortByToggleProps())}
+                    >
+                    {column.render('Header')}
+                        <span>
+                          {column.isSorted
+                            ? column.isSortedDesc
+                              ? '▼'
+                              : '▲'
+                            : ''}
+                        </span>
+                        <div>{column.canFilter ? column.render('Filter') : null}</div>
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody {...getTableBodyProps()}>
+            {page.map((row, i) => {
+                prepareRow(row)
+                return (
+                  <tr {...row.getRowProps()}>
+                    {row.cells.map(cell => {
+                      return (
+                        <td
+                          // For educational purposes, let's color the
+                          // cell depending on what type it is given
+                          // from the useGroupBy hook
+                          {...cell.getCellProps()}
+                          style={{
+                            background: cell.isGrouped
+                              ? '#0aff0082'
+                              : cell.isAggregated
+                              ? '#ffa50078'
+                              : cell.isPlaceholder
+                              ? '#ff000042'
+                              : 'white',
+                          }}
+                        >
+                          {cell.isGrouped ? (
+                            // If it's a grouped cell, add an expander and row count
+                            <>
+                              <span {...row.getToggleRowExpandedProps()}>
+                                {row.isExpanded ? '▼' : '►'}
+                              </span>{' '}
+                              {cell.render('Cell')} ({row.subRows.length})
+                            </>
+                          ) : cell.isAggregated ? (
+                            // If the cell is aggregated, use the Aggregated
+                            // renderer for cell
+                            cell.render('Aggregated')
+                          ) : cell.isPlaceholder ? null : ( // For cells with repeated values, render null
+                            // Otherwise, just render the regular cell
+                            cell.render('Cell')
+                          )}
+                        </td>
+                      )
+                    })}
+                  </tr>
+                )
+              })}
+          </tbody>
+      <tfoot>
+            {footerGroups.map(group => (
+              <tr {...group.getFooterGroupProps()}>
+                {group.headers.map(column => (
+                  <td 
+        {...column.getFooterProps()}>
+        {column.canGroupBy ? (
+                        // If the column can be grouped, let's add a toggle
+                        <span {...column.getGroupByToggleProps()}>
+                          {column.isGrouped ? 'Click to Ungroup ' : 'Click to Group'}
+                        </span>
+                      ) : null}
+        
+        {column.render('Footer')}
+            </td>
+                ))}
+              </tr>
+            ))}
+          </tfoot>
+        </table>
+
+
+
       <div className="pagination">
           <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
             {'<<'}
@@ -227,13 +231,10 @@ function Table ({columns, data}){
             ))}
           </select>
         </div>
-        <style jsx>{`
-      table{
-        display: block;
-        overflow: x;
-        white-space: nowrap;
-      }
-    `}</style>
+
+
+
+
   </div>
 
  )

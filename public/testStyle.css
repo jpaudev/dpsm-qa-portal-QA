@@ -60,6 +60,8 @@
 
 
 
+
+
 *{
     margin: 0;
     padding: 0;
@@ -470,6 +472,7 @@ main .table-title a{
     margin: 1rem auto;
     color: var(--color-primary);
 }
+
 
 /* List Group */
 

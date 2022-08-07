@@ -93,7 +93,7 @@ function Table ({columns, data}){
 				filename="degree"
 				buttonText="Download as XLS"/>
     <br />
-   <table className = "table table-striped" {...getTableProps()} id="degreeTable">
+   <table className = "table table-hover" {...getTableProps()} id="degreeTable">
        <thead>
          {headerGroups.map(headerGroup => (
            <tr {...headerGroup.getHeaderGroupProps()}>
@@ -227,13 +227,7 @@ function Table ({columns, data}){
           ))}
         </select>
       </div>
-      <style jsx>{`
-		table{
-			display: block;
-			overflow: x;
-			white-space: nowrap;
-		}
-	`}</style>
+
 </div>
  )
   
