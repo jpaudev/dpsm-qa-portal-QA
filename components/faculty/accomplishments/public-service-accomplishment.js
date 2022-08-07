@@ -488,7 +488,7 @@ function PublicServiceAccomplishment(props){
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title" id="editPublicServiceLabel">Update Public Service Accomplishment Information</h5>
+                    <h5 className="modal-title" id="editPublicServiceLabel">Update Public Service Accomplishment Info</h5>
                     <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
