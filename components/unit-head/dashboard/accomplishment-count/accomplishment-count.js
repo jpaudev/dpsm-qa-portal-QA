@@ -144,7 +144,7 @@ function AccomplishmentCount(props){
 
 	return(
 		<div>
-			<br />
+			<br /><br/>
 			<h3 align = "center">Accomplishment Count</h3>
 			<div className = "dashboard-form-row">
 				{
@@ -200,7 +200,7 @@ function AccomplishmentCount(props){
 
 			</div>
 
-				<br></br>
+				<br/><br/>
 			<nav>
 				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 					<a className="nav-item nav-link nav-top active" id="graph-tab" data-bs-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">

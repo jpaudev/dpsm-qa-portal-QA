@@ -121,7 +121,7 @@ function DegreeCount(props) {
 	}
 	return(
 		<div>
-			<br />
+			<br /><br/>
 			<h3 align = "center">Attained Degrees</h3>
 
 			<div className = "dashboard-form-row">
@@ -174,7 +174,7 @@ function DegreeCount(props) {
 				</div>
 			</div>
 
-			<br></br>
+			<br/><br/>
 			<nav>
 				<div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
 					<a className="nav-item nav-link nav-top active" id="degree-graph-tab" data-bs-toggle="tab" href="#degree-graph" role="tab" aria-controls="degree-graph" aria-selected="false">
