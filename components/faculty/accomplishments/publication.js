@@ -284,31 +284,31 @@ function Publication(props){
                     {({ values, errors, touched, isSubmitting, setFieldValue }) => (
                         <Form id = "editPubForm">
                             <div className="modal-body">
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "PublicationUpdate"> Publication </label>
                                         <Field className = "form-control" type = "text" name = "title" placeholder = "Input publication name/title" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "PublicationCitationUpdate"> Citation </label>
                                         <Field className = "form-control" type = "text" name = "citation" placeholder = "Input full citation for publication" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "PublicationURLUpdate"> URL </label>
                                         <Field className = "form-control" type = "text" name = "url" placeholder = "Input publication URL" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "PublishDateUpdate"> Date Published </label>
                                         <Field type = "date" className = "form-control" name = "publicationDate" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "PublicationAuthorDPSMUpdate"> Authors (DPSM) </label>
                                         <Select
@@ -320,13 +320,13 @@ function Publication(props){
                                         />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "PublicationAuthorNonDPSMUpdate"> Authors (non-DPSM) </label>
                                         <Field className = "form-control" type = "text" name = "nonFacultyAuthors" placeholder = "Input all authors outside DPSM (separate names with commas)" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "PublicationProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                         <Field type = "file" className = "form-control-file" name = "proof" value={undefined} />
@@ -469,7 +469,7 @@ function Publication(props){
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "rejectPubForm">
                             <div className="modal-body">
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
                                         <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />

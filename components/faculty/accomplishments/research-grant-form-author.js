@@ -42,7 +42,7 @@ class ResearchGrantFormAuthor extends React.Component{
 		
 		return(
 		<div>
-			<div className = "form-row">
+			<div className = "row pb-3">
 				<div className = "form-group">
 					<label htmlFor = "ResearchAuthorDPSM[]" style={{fontSize:"16px"}}> DPSM Researchers </label>
 					<Select className = "col-md-12" name = "ResearchAuthorDPSM[]" isMulti options = {authors} required />

@@ -156,38 +156,43 @@ function WorkExperience(props){
                     </div>
                     <div className="modal-body">
                         <form>
-                            <div className = "form-row">
-                            <div className = "form-group">
-                    <label htmlFor = "EmployerWorkExperienceUpdate"> Employer </label>
-                    <input className = "form-control" type = "text" name = "EmployerWorkExperienceUpdate" placeholder = "Input name of employer" defaultValue = { currData.employerName } onChange = {(e) => handleInputChange("employerName", e)} />
-                    </div>
-                </div>
-                            <div className = "form-row">
-                            <div className = "form-group">
-                    <label htmlFor = "PositionWorkExperienceUpdate"> Title/Position </label>
-                    <input className = "form-control" type = "text" name = "PositionWorkExperienceUpdate" placeholder = "Input position" defaultValue = { currData.position } onChange = {(e) => handleInputChange("position", e)}/>
-                </div>
+                            <div className = "row pb-3">
+                                <div className = "form-group">
+                                    <label htmlFor = "EmployerWorkExperienceUpdate"> Employer </label>
+                                    <input className = "form-control" type = "text" name = "EmployerWorkExperienceUpdate" placeholder = "Input name of employer" defaultValue = { currData.employerName } onChange = {(e) => handleInputChange("employerName", e)} />
+                                </div>
                             </div>
-                            <div className = "form-row">
-                            <div className = "form-group">
-                    <label htmlFor = "StartDateWorkExperienceUpdate"> Start Date </label>
-                    <input type = "date" className = "form-control" name = "StartDateWorkExperienceUpdate" defaultValue = { currData.startDate } onChange = {(e) => handleInputChange("startDate", e)} />
-                </div>
+
+                            <div className = "row pb-3">
+                                <div className = "form-group">
+                                    <label htmlFor = "PositionWorkExperienceUpdate"> Title/Position </label>
+                                    <input className = "form-control" type = "text" name = "PositionWorkExperienceUpdate" placeholder = "Input position" defaultValue = { currData.position } onChange = {(e) => handleInputChange("position", e)}/>
+                                </div>
                             </div>
-                            <div className = "form-row">
-                            <div className = "form-group">
-                    <label htmlFor = "EndDateWorkExperienceUpdate"> End Date </label>
-                    <input type = "date" className = "form-control" name = "EndDateWorkExperienceUpdate" defaultValue = { currData.endDate } onChange = {(e) => handleInputChange("endDate", e)} />
-                </div>
+
+                            <div className = "row pb-3">
+                                <div className = "form-group">
+                                    <label htmlFor = "StartDateWorkExperienceUpdate"> Start Date </label>
+                                    <input type = "date" className = "form-control" name = "StartDateWorkExperienceUpdate" defaultValue = { currData.startDate } onChange = {(e) => handleInputChange("startDate", e)} />
+                                </div>
                             </div>
-                            <div className = "form-row">
-                            <div className = "form-group">
-                    <label htmlFor = "DescriptionWorkExperienceUpdate"> Description </label>
-                    <input className = "form-control" type = "text" name = "DescriptionWorkExperienceUpdate" placeholder = "Add Description" defaultValue = { currData.description } onChange = {(e) => handleInputChange("description", e)} />
-                </div>
+
+                            <div className = "row pb-3">
+                                <div className = "form-group">
+                                    <label htmlFor = "EndDateWorkExperienceUpdate"> End Date </label>
+                                    <input type = "date" className = "form-control" name = "EndDateWorkExperienceUpdate" defaultValue = { currData.endDate } onChange = {(e) => handleInputChange("endDate", e)} />
+                                </div>
+                            </div>
+
+                            <div className = "row pb-3">
+                                <div className = "form-group">
+                                    <label htmlFor = "DescriptionWorkExperienceUpdate"> Description </label>
+                                    <input className = "form-control" type = "text" name = "DescriptionWorkExperienceUpdate" placeholder = "Add Description" defaultValue = { currData.description } onChange = {(e) => handleInputChange("description", e)} />
+                                </div>
                             </div>
                         </form>
                     </div>
+
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="button" className="btn btn-primary" onClick = {async () => {

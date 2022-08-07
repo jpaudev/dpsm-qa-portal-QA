@@ -69,9 +69,9 @@ function ResearchGrant(props){
                         </td>
                         <td>{props.children[key].granter}</td>
                         <td>{props.children[key].amount}</td>
-                        <td>{props.children[key].projectedStart} to {props.children[key].projectedEnd}</td>
-                        <td className="less-important-pc">{props.children[key].actualStart}</td>
-                        <td className="less-important-pc">{props.children[key].actualEnd}</td>
+                        <td>{props.children[key].projectedStart} <i>to</i> {props.children[key].projectedEnd}</td>
+                        {/* <td className="less-important-pc">{props.children[key].actualStart}</td>
+                        <td className="less-important-pc">{props.children[key].actualEnd}</td> */}
                         <td>{props.children[key].researchProgress}</td>
                         <td>{
                                 props.children[key].proof && 
@@ -225,8 +225,8 @@ function ResearchGrant(props){
                             <th>Sponsor</th>
                             <th>Amount</th>
                             <th>Projected Duration</th>
-                            <th className="less-important-pc">Start Date</th>
-                            <th className="less-important-pc">End Date</th>
+                            {/* <th className="less-important-pc">Start Date</th>
+                            <th className="less-important-pc">End Date</th> */}
                             <th>Research Progress</th>
                             <th>Proof</th>
                             <th>Status</th>
@@ -299,55 +299,55 @@ function ResearchGrant(props){
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "editResForm">
                         <div className="modal-body">
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchUpdate"> Research Project </label>
                                     <Field className = "form-control" type = "text" name = "researchName" placeholder = "Input research name" />
                                 </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchSponsorUpdate"> Sponsor </label>
                                     <Field className = "form-control" type = "text" name = "granter" placeholder = "Input sponsor" />
                                 </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchAmountUpdate"> Amount </label>
                                     <Field className = "form-control" type = "text" name = "amount" placeholder = "Input amount" />
                                 </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchStartDateUpdate"> Start Date (Actual) </label>
                                     <Field type = "date" className = "form-control" name = "actualStart" />
                                 </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchEndDateUpdate"> End Date (Actual) </label>
                                     <Field type = "date" className = "form-control" name = "actualEnd" />
                                 </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchProjectedStartDateUpdate"> Start Date (Projected) </label>
                                     <Field type = "date" className = "form-control" name = "projectedStart" />
                                 </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchProjectedEndDateUpdate"> End Date (Projected) </label>
                                     <Field type = "date" className = "form-control" name = "projectedEnd" />
                                 </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchProgressUpdate"> Progress </label>
                                     <Field className = "form-control" type = "text" name = "researchProgress" placeholder = "Input progress" />
                                 </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "ResearchAuthorDPSMUpdate"> Authors (DPSM) </label>
                                         <Select
@@ -359,13 +359,13 @@ function ResearchGrant(props){
                                         />
                                     </div>
                                 </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchAuthorNonDPSMUpdate"> Authors (non-DPSM) </label>
                                     <Field className = "form-control" type = "text" name = "nonFacultyResearchers" placeholder = "Input all authors outside DPSM (separate names with commas)" />
                                 </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                     <Field type = "file" className = "form-control-file" name = "proof"  value={undefined} />
@@ -509,7 +509,7 @@ function ResearchGrant(props){
                         <Form id = "rejectRGForm">
                             <div className="modal-body">
                                 <br />
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
                                         <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />

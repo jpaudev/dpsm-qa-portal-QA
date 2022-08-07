@@ -107,7 +107,7 @@ function ApproveUnitHead(props) {
                     </div>
                     <div className="modal-body">
                         <p> Are you sure you want to reject this change in unit head? </p>
-                        <div className = "form-row">
+                        <div className = "row pb-3">
                             <div className = "form-group">
                                 <label htmlFor = "approverRemarks"> Reason/Remarks for Rejection </label>
                                 <input className = "form-control" type = "text" name = "approverRemarks" id = "approverRemarks" placeholder = "Input remarks" required />

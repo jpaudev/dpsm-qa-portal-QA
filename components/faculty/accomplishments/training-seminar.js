@@ -224,43 +224,43 @@ function TrainingSeminar(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editTSForm">
                             <div className="modal-body">
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "TrainingSeminarUpdate"> Name of Training/Seminar </label>
                                         <Field className = "form-control" type = "text" name = "title" id = "title" placeholder = "Input training/seminar" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "TrainingSeminarRoleUpdate"> Role </label>
                                         <Field className = "form-control" type = "text" name = "role" id = "role" placeholder = "Input role" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "TrainingSeminarVenueUpdate"> Venue </label>
                                         <Field className = "form-control" type = "text" name = "venue" id = "venue" placeholder = "Input venue" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "TrainingSeminarStartDateUpdate"> Start Date </label>
                                         <Field type = "date" className = "form-control" name = "dateFrom" id = "dateFrom" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "TrainingSeminarEndDateUpdate"> End Date </label>
                                         <Field type = "date" className = "form-control" name = "dateTo" id = "dateTo" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "TrainingSeminarVenueUpdate"> Remarks </label>
                                         <Field className = "form-control" type = "text" name = "remarks" id = "remarks" placeholder = "Input remarks" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "TrainingSeminarProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                         <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
@@ -404,7 +404,7 @@ function TrainingSeminar(props) {
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "rejectTrainingSeminarForm">
                         <div className="modal-body">
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
                                     <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />

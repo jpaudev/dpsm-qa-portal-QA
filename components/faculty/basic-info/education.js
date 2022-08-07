@@ -522,7 +522,7 @@ function Education(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "rejectEducForm">
                             <div className="modal-body">
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
                                         <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />

@@ -522,37 +522,37 @@ function PublicServiceAccomplishment(props){
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "editPSForm">
                         <div className="modal-body">
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                             <div className = "form-group">
                                 <label htmlFor = "PublicServicePositionUpdate"> Position/Role </label>
                                 <Field className = "form-control" type = "text" name = "position" id = "position" placeholder = "Input position/role" />
                             </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                             <div className = "form-group">
                                 <label htmlFor = "PublicServiceOrganizationUpdate"> Organization </label>
                                 <Field className = "form-control" type = "text" name = "organization" id = "organization" placeholder = "Input organization" />
                             </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                             <div className = "form-group">
                                 <label htmlFor = "PublicServiceAccomplishmentStartDateUpdate"> Start Date </label>
                                 <Field type = "date" className = "form-control" name = "startDate" id = "startDate" />
                             </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                             <div className = "form-group">
                                 <label htmlFor = "PublicServiceAccomplishmentEndDateUpdate"> End Date </label>
                                 <Field type = "date" className = "form-control" name = "endDate" id = "endDate" />
                             </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                             <div className = "form-group col-md-12">
                                 <label htmlFor = "PublicServiceAccomplishmentDescriptionUpdate"> Description </label>
                                 <Field className = "form-control" type = "text" name = "description" id = "description" placeholder = "Input description" />
                             </div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                             <div className = "form-group">
                                 <label htmlFor = "PublicServiceAccomplishmentProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                 <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
@@ -695,7 +695,7 @@ function PublicServiceAccomplishment(props){
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "rejectPublicServiceForm">
                         <div className="modal-body">
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
                                     <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />

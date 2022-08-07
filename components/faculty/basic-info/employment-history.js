@@ -98,13 +98,13 @@ function EmploymentHistory(props){
                     </div>
                     <div className="modal-body">
                         <form>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
 								<div className = "form-group">
 									<label htmlFor = "startDate"> Start Date </label>
 									<input type = "date" className = "form-control" name = "startDate" defaultValue = { currData.startDate } onChange = {(e) => handleInputChange("startDate", e)} />
 								</div>
                             </div>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
 								<div className = "form-group">
 									<label htmlFor = "endDate"> End Date </label>
 									<input type = "date" className = "form-control" name = "endDate" defaultValue = { currData.endDate } onChange = {(e) => handleInputChange("endDate", e)} />

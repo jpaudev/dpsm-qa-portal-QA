@@ -219,31 +219,31 @@ function LicensureExam(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editLicForm">
                             <div className="modal-body">
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "LicensureExamUpdate"> Licensure Exam </label>
                                         <Field className = "form-control" type = "text" name = "examName" id = "examName" placeholder = "Input licensure exam" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "LicensureExamDateUpdate"> Date </label>
                                         <Field type = "date" className = "form-control" name = "examDate" id = "examDate" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "LicensureExamRankUpdate"> Rank </label>
                                         <Field className = "form-control" type = "text" name = "rank" id = "rank" placeholder = "Input rank" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "LicenseNumeberUpdate"> License Number </label>
                                         <Field className = "form-control" type = "text" name = "licenseNumber" id = "licenseNumber" placeholder = "Input licensure number" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "LicensureExamProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
                                         <Field type = "file" className = "form-control-file" name = "proof" id = "proof" value={undefined} />
@@ -383,7 +383,7 @@ function LicensureExam(props) {
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "rejectLicenseForm">
                         <div className="modal-body">
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
                                     <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />

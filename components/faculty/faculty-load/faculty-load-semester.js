@@ -165,19 +165,19 @@ function FacultyLoadSemester(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editClassForm">
                             <div className="modal-body">
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "subject"> Subject </label>
                                         <Field className = "form-control" type = "text" name = "subject" id = "subject" placeholder = "Input subject" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "section"> Section </label>
                                         <Field className = "form-control" type = "text" name = "section" id= "section" placeholder = "Input section" />
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "semester"> Semester </label>
                                         <Field as = "select" className = "form-control" name = "semester" id = "semester" required>
@@ -187,7 +187,7 @@ function FacultyLoadSemester(props) {
                                         </Field>
                                     </div>
                                 </div>
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "Year"> Academic Year </label>
                                         <Field as = "select" className = "form-control" name = "academicYear" id = "academicYear" required>
@@ -248,7 +248,7 @@ function FacultyLoadSemester(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "addSyllForm">
                             <div className="modal-body">
-                                <div className = "form-row">
+                                <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "syllabus"> Add Syllabus </label>
                                         <Field type = "file" className = "form-control-file" name = "syllabus" id = "syllabus" value={undefined} />

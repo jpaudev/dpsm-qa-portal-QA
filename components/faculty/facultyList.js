@@ -340,7 +340,7 @@ function FacultyList(props){
                     </div>
                     <div className="modal-body">
                         <form>
-                            <div className = "form-row">
+                            <div className = "row pb-3">
                             	<div className = "form-group">
 									<label htmlFor = "Status"> Status </label>
 									<select className = "form-control" name="Status" id="Status" value = { currData.status } onChange = {(e) => handleInputChange("status", e)}>
@@ -350,7 +350,7 @@ function FacultyList(props){
 								</div>
 							</div>
 							
-							<div className = "form-row" id="activeremarksrow" style={{display: activeRemarksStyle}}>
+							<div className = "row pb-3" id="activeremarksrow" style={{display: activeRemarksStyle}}>
 								<div className = "form-group">
 									<label htmlFor = "Remarks"> Remarks </label>
 									<select className = "form-control" name="Remarks" id="Remarks" value = { currData.remarks || ''} onChange = {(e) => handleInputChange("remarks", e)}>
@@ -360,7 +360,7 @@ function FacultyList(props){
 								</div>
 							</div>
 
-							<div className = "form-row" id="inactiveremarksrow" style={{display: inactiveRemarksStyle}}>
+							<div className = "row pb-3" id="inactiveremarksrow" style={{display: inactiveRemarksStyle}}>
 								<div className = "form-group">
 									<label htmlFor = "Remarks"> Remarks </label>
 									<select className = "form-control" name="Remarks" id="Remarks" value = { currData.remarks || ''} onChange = {(e) => handleInputChange("remarks", e)}>

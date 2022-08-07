@@ -41,7 +41,7 @@ class PublicationFormAuthor extends React.Component{
 		});
 		return(
 		<div>
-			<div className = "form-row">
+			<div className = "row pb-3">
 				<div className = "form-group col-md-12">
 					<label htmlFor = "PublicationAuthorDPSM[]" style={{fontSize:"16px"}}> DPSM Co-Authors </label>
 					<Select className = "col-md-12" name = "PublicationAuthorDPSM[]" isMulti options = {authors} />

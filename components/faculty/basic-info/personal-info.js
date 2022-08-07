@@ -39,7 +39,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
         name = props.children.lastName + ', ' + props.children.firstName
         dependents = Object.keys(props.children.faculty_dependents).map(key => {
             return (
-                <div className = "form-row">
+                <div className = "row pb-3">
                     <div className = "form-group col-md-4 required"> 
                         <label className = "control-label" htmlFor = "Dependent"> Name of Dependent </label>
                         <input className = "form-control" type = "text" name = "name" defaultValue = { props.children.faculty_dependents[key].name } disabled={!props.editable} required />
