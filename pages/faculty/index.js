@@ -17,7 +17,7 @@ function Dashboard(props) {
 	                <div className="container">
                         <br />
                         <Link href = {{ pathname: "/faculty/generate-reports"}}>
-                            <button className = "btn customButton btn-info">
+                            <button className = "btn customButton maroon">
                                 <span className="material-icons-sharp">file_download</span>
                                 Get All Info
                             </button>

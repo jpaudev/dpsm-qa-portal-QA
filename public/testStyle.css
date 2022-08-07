@@ -21,7 +21,12 @@
     --color-title-white: #fff;
     --color-green: #152d17;
     --color-yellow: #b1d942;
-    --color-button: #800020;
+    --color-button-maroon: #800020;
+    --color-button-maroon-hover: #c62c53;
+    --color-button-yellow: #ffae35;
+    --color-button-yellow-hover: #e69317;
+    --color-button-blue: #6671d5;
+    --color-button-blue-hover: #2734a9;
 
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
@@ -55,7 +60,8 @@
     --box-shadow: 0 2rem 3rem var(--color-light);
     --color-maroon: #152d17;
     --color-title-white: rgb(216, 216, 216);
-    --color-button: #cecece;
+    --color-button-maroon: #152d17;
+    --color-button-maroon-hover: #215025;
     --color-green: #cecece;
 }
 
@@ -648,28 +654,33 @@ nav .nav a.active span{
 }
 
 .maroon{
-    background: var(--color-button);
+    background: var(--color-button-maroon);
+    color: white;
 }
 
 .maroon:hover{
-    background: var(--color-danger);
-}
-
-.ramoon{
-    background: var(--color-button);
-}
-
-.ramoon:hover{
-    background: var(--color-danger);
+    background: var(--color-button-maroon-hover);
     color: white;
 }
 
 .yellow{
-    background: var(--color-warning);
+    background: var(--color-button-yellow);
+    color: white;
+}
+
+.yellow:hover{
+    background: var(--color-button-yellow-hover);
+    color: white;
 }
 
 .blue{
-    background: var(--color-primary);
+    background: var(--color-button-blue);
+    color: white;
+}
+
+.blue:hover{
+    background: var(--color-button-blue-hover);
+    color: white;
 }
 
 /* main .card form select{
