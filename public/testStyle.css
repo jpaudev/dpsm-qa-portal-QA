@@ -596,9 +596,21 @@ main .card form button span{
 nav .nav .nav-top{
     height: 5rem;
     width: 4rem;
+    margin-left: 1px;
+    margin-right: 1px;
     align-items: left;
     color: var(--color-dark);
-    background-color: var(--color-background);
+    background-color: var(--color-white);
+    border:none;
+}
+
+nav .nav .nav-top.active{
+    height: 5rem;
+    width: 4rem;
+    margin: 1px;
+    align-items: left;
+    color: white;
+    background-color: var(--color-maroon);
 }
 
 nav .nav .nav-top a span{
@@ -614,7 +626,7 @@ nav .nav a.active{
 }
 
 nav .nav a.active span{
-    color: var(--color-primary);
+    color: white;
 }
 
 
@@ -1095,7 +1107,6 @@ nav .nav a.active span{
     }
 } 
 
-
-
-
-
+#graph{
+    color: var(--color-dark);
+}

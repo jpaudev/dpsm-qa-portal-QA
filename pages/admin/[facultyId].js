@@ -47,10 +47,9 @@ function BasicInfo(props) {
                                     <h3>Work Experience</h3>
                                 </a>
                             </div>
-
-                            <br/>
-
+                            <br/><br/>
                         </nav>
+
                         <div className="tab-content" id="nav-tabContent-basic-info">
                             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
                                 <PersonalInfo token = { props.token.user } unit = {props.unit} position={props.position} hasDisabledFields={true}>{ props.personalInfo }</PersonalInfo>
@@ -63,6 +62,7 @@ function BasicInfo(props) {
                             </div>
                         </div>
                     </div>
+
                     <div className="tab-pane fade" id="accomplishments" role="tabpanel" aria-labelledby="accomplishments-tab">
                         <nav>
                             <div className="nav nav-tabs nav-justified flex-column flex-md-row" id="nav-tab-accomplishment" role="tablist">
@@ -87,6 +87,7 @@ function BasicInfo(props) {
                                     <h3>Research Grants</h3>
                                 </a>
                             </div>
+                            <br/><br/>
                         </nav>
                         <div className="tab-content" id="nav-tabContent-accomplishment">
                             <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
@@ -106,8 +107,10 @@ function BasicInfo(props) {
                         </div>
                     </div>
                     <div className="tab-pane fade" id="faculty-load" role="tabpanel" aria-labelledby="faculty-load-tab">
+                        <br/><br/>
                         <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.pathFacultyId} role={props.data.role} editClass = {false}>{ props.facultyLoad }</FacultyLoader>
                     </div>
+                    <br/>
                 </div>
             </nav>
 
