@@ -148,7 +148,7 @@ function TrainingSeminar(props) {
                 }
             </div>
 
-            <br></br><br></br>
+            <br/>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="trainingseminaralert" style={{visibility:"hidden"}}></div>
             

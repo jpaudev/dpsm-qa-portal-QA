@@ -41,14 +41,14 @@ function AssignAdminClerk(props) {
             </button>
         </div>
 
-        <br></br><br></br>
+        <br/>
 
-        <div className ="alert alert-success" role="alert" id="clerkalert" style={{visibility:"hidden"}}></div>
+        <div role="alert" id="clerkalert" style={{visibility:"hidden"}}></div>
         <div className="collapse" id="addAdmin">
             <ClerkForm token = { props.token }/>
         </div>
         
-        <br></br><br></br>
+        <br/>
 
         
         <table className="table table-hover">

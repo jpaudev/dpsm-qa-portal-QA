@@ -204,7 +204,7 @@ function ResearchGrant(props){
             </div>
 
 
-            <br></br><br></br>    
+            <br/>   
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
 			<div className ="alert alert-success" role="alert" id="researchalert" style={{visibility:"hidden"}}></div>
             

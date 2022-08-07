@@ -146,7 +146,7 @@ function LicensureExam(props) {
 
             
             
-            <br></br><br></br>
+            <br/>
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="licensureexamalert" style={{visibility:"hidden"}}></div>
             

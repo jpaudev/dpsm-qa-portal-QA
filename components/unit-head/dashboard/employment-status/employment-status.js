@@ -156,6 +156,7 @@ function EmploymentStatus(props){
 				<div className="tab-pane fade show active" id="employment-graph" role="tabpanel" aria-labelledby="employment-graph-tab"><EmploymentDashboardGraph data={graphData} /></div>
 				<div className="tab-pane fade" id="employment-table" role="tabpanel" aria-labelledby="employment-table-tab"><EmploymentAnalyticsTable data={tableData} /></div>
 			</div>
+			<br/><br/>
                 
 		{/* <style jsx>{`
 			a.nav-item:focus{

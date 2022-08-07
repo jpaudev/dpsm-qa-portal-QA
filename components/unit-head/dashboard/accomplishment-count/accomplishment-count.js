@@ -218,6 +218,7 @@ function AccomplishmentCount(props){
 				<div className="tab-pane fade show active" id="graph" role="tabpanel" aria-labelledby="graph-tab"><AccomplishmentDashboardGraph data={graphData} /></div>
 				<div className="tab-pane fade" id="table" role="tabpanel" aria-labelledby="table-tab"><AccomplishmentAnalyticsTable data={tableData} /></div>
 			</div>
+			<br/><br/>
 
 
                 
