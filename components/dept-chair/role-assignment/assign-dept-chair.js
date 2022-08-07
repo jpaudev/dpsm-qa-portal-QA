@@ -25,8 +25,9 @@ function AssignDeptChair(props) {
             <div className ="alert alert-success" role="alert" id="deptchairalert" style={{visibility:"hidden"}}></div>
             <div className = "card">
                 <div className = "form-group col-md-12">
-                    <label htmlFor = "deptChair"> Select New Department Chair </label><br/>
-                    <select className = "form-control" name = "deptChair" id="deptChair" required>
+                    <label htmlFor = "deptChair" style={{fontSize:"16px"}}> Select New Department Chair </label>
+                    <br/><br/>
+                    <select className = "form-control" name = "deptChair" id="deptChair" style={{fontSize:"16px"}} required>
                         <option value="0" key = "0">-- SELECT FACULTY --</option>
                         {faculty}
                     </select>
