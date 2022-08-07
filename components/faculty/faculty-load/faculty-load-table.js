@@ -44,46 +44,60 @@ function FacultyLoadTable(props) {
                     <td>{props.children[key].semester}</td>
                     <td>{props.children[key].academicYear - 1 + ' - ' + props.children[key].academicYear}</td>
                     <td>
-                        {
-                            props.children[key].syllabus &&
-                            <div className = "btn-grp">
+                            {
+                                props.children[key].syllabus &&
+
                                 <a
-                                    className ="btn btn-info"
+                                    className ="btn customButton-icon-only blue"
                                     href={process.env.UPLOADS_URL + props.children[key].syllabus}
-                                    style = {{ color: 'white' }}
+                                    style = {{ color: 'white'}}
                                     target="_blank">
-                                    View
+                                    <span className="material-icons-sharp">visibility</span>
                                 </a>
-                                {(props.editClass) && 
-                                    <a className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addSyllabus" onClick={() => {
-                                        setEdit(props.children[key].recordId)
-                                        setKey(editClass)
-                                    }}>Edit</a>
-                                }
-                            </div>
-                        }
-                        {
-                            (props.editClass) && !props.children[key].syllabus &&
-                            <a className="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addSyllabus" onClick={() => {
-                                setEdit(props.children[key].recordId)
-                                setKey(editClass)
-                            }}>Add Syllabus</a>
-                        }
-                        {
-                            !props.editClass && !props.children[key].syllabus &&
-                            <div>None</div>
-                        }
+                            }
+
+                            {
+                                props.children[key].syllabus && (props.editClass) &&
+                                <a className="btn customButton-icon-only yellow"
+                                style = {{ color: 'white'}}
+                                 data-bs-toggle="modal" data-bs-target="#addSyllabus" onClick={() => {
+                                    setEdit(props.children[key].recordId)
+                                    setKey(editClass)
+                                    
+                                }}>
+                                    <span className="material-icons-sharp">edit</span>
+                                </a>
+                            }
+
+                            {
+                                (props.editClass) && !props.children[key].syllabus &&
+                                <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#addSyllabus" onClick={() => {
+                                    setEdit(props.children[key].recordId)
+                                    setKey(editClass)
+                                }}>
+                                    <span className="material-icons-sharp">edit</span>
+                                </button>
+                            }
+                            {
+                                !props.editClass && !props.children[key].syllabus &&
+                                <div>None</div>
+                            }
                     </td>
+
                     {props.role==5 && <td>
-                        <div className = "btn-group">
-                            <a className="btn btn-info" data-bs-toggle="modal" data-bs-target="#editClass" onClick={() => {
+                            <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editClass" onClick={() => {
                                 setEdit(props.children[key].recordId)
                                 setKey(editClass)
-                            }}>Edit</a>
-                            <a className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteClass" onClick={() => {
+                            }}>
+                                <span className="material-icons-sharp">edit</span>
+                            </button>
+
+                            <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteClass" onClick={() => {
                                 setDelete(props.children[key].recordId)
-                            }}>Delete</a>
-                        </div>
+                            }}>
+                                <span className="material-icons-sharp">delete</span>
+                            </button>
+
                     </td>}
                 </tr>
                 );
