@@ -47,6 +47,9 @@ function BasicInfo(props) {
                                     <h3>Work Experience</h3>
                                 </a>
                             </div>
+
+                            <br/>
+
                         </nav>
                         <div className="tab-content" id="nav-tabContent-basic-info">
                             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
@@ -106,7 +109,6 @@ function BasicInfo(props) {
                         <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.pathFacultyId} role={props.data.role} editClass = {false}>{ props.facultyLoad }</FacultyLoader>
                     </div>
                 </div>
-
             </nav>
 
     {/* <style jsx>{`
