@@ -299,54 +299,54 @@ function ResearchGrant(props){
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "editResForm">
                         <div className="modal-body">
+
                             <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchUpdate"> Research Project </label>
                                     <Field className = "form-control" type = "text" name = "researchName" placeholder = "Input research name" />
                                 </div>
                             </div>
+
                             <div className = "row pb-3">
-                                <div className = "form-group">
+                                <div className = "form-group col-md-5">
                                     <label htmlFor = "ResearchSponsorUpdate"> Sponsor </label>
                                     <Field className = "form-control" type = "text" name = "granter" placeholder = "Input sponsor" />
                                 </div>
-                            </div>
-                            <div className = "row pb-3">
-                                <div className = "form-group">
+                                <div className = "form-group col-md-4">
                                     <label htmlFor = "ResearchAmountUpdate"> Amount </label>
                                     <Field className = "form-control" type = "text" name = "amount" placeholder = "Input amount" />
                                 </div>
-                            </div>
-                            <div className = "row pb-3">
-                                <div className = "form-group">
-                                    <label htmlFor = "ResearchStartDateUpdate"> Start Date (Actual) </label>
-                                    <Field type = "date" className = "form-control" name = "actualStart" />
+                                <div className = "form-group col-md-3">
+                                    <label htmlFor = "ResearchProgressUpdate"> Progress </label>
+                                    <Field as = "select" className = "form-control" style={{height: "2.45rem"}} name = "researchProgress" required>
+                                        <option value = "Ongoing">Ongoing</option>
+                                        <option value = "Completed">Completed</option>
+                                    </Field>
                                 </div>
                             </div>
+
                             <div className = "row pb-3">
-                                <div className = "form-group">
-                                    <label htmlFor = "ResearchEndDateUpdate"> End Date (Actual) </label>
-                                    <Field type = "date" className = "form-control" name = "actualEnd" />
-                                </div>
-                            </div>
-                            <div className = "row pb-3">
-                                <div className = "form-group">
-                                    <label htmlFor = "ResearchProjectedStartDateUpdate"> Start Date (Projected) </label>
+                                <div className = "form-group col-md-6">
+                                    <label htmlFor = "ResearchProjectedStartDateUpdate"> Projected Start </label>
                                     <Field type = "date" className = "form-control" name = "projectedStart" />
                                 </div>
-                            </div>
-                            <div className = "row pb-3">
-                                <div className = "form-group">
-                                    <label htmlFor = "ResearchProjectedEndDateUpdate"> End Date (Projected) </label>
+                                <div className = "form-group col-md-6">
+                                    <label htmlFor = "ResearchProjectedEndDateUpdate"> Projected End </label>
                                     <Field type = "date" className = "form-control" name = "projectedEnd" />
                                 </div>
                             </div>
+
                             <div className = "row pb-3">
-                                <div className = "form-group">
-                                    <label htmlFor = "ResearchProgressUpdate"> Progress </label>
-                                    <Field className = "form-control" type = "text" name = "researchProgress" placeholder = "Input progress" />
+                                <div className = "form-group col-md-6">
+                                    <label htmlFor = "ResearchStartDateUpdate"> Actual Start </label>
+                                    <Field type = "date" className = "form-control" name = "actualStart" />
+                                </div>
+                                <div className = "form-group col-md-6">
+                                    <label htmlFor = "ResearchEndDateUpdate"> Actual End </label>
+                                    <Field type = "date" className = "form-control" name = "actualEnd" />
                                 </div>
                             </div>
+
                             <div className = "row pb-3">
                                     <div className = "form-group">
                                         <label htmlFor = "ResearchAuthorDPSMUpdate"> Authors (DPSM) </label>
@@ -359,12 +359,14 @@ function ResearchGrant(props){
                                         />
                                     </div>
                                 </div>
+
                             <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchAuthorNonDPSMUpdate"> Authors (non-DPSM) </label>
                                     <Field className = "form-control" type = "text" name = "nonFacultyResearchers" placeholder = "Input all authors outside DPSM (separate names with commas)" />
                                 </div>
                             </div>
+
                             <div className = "row pb-3">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchProofUpdate"> Add/Edit Proof [Uploaded: {currData.proof}] </label>
@@ -372,6 +374,7 @@ function ResearchGrant(props){
                                 </div>
                             </div>
                         </div>
+
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
