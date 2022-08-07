@@ -210,7 +210,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
                             </div>
                             <div className = "form-group col-md-3 required">
                                 <label className = "control-label" htmlFor ="CivilStatus" style={{fontSize:"16px"}}> Civil Status </label>
-                                <Field as = "select" className = "form-control" style={{height:"2.45rem"}} name = "civilStatus" defaultValue = { FacultyDetails.civilStatus } disabled={!props.editable} required>
+                                <Field as = "select" id = "form-select" className = "form-control" style={{height:"2.45rem"}} name = "civilStatus" defaultValue = { FacultyDetails.civilStatus } disabled={!props.editable} required>
                                     <option value = "single">Single</option>
                                     <option value = "married">Married</option>
                                     <option value = "separated">Separated</option>
@@ -311,7 +311,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
 
                     { props.editable && props.role!=5 && 
                         <div className="center">
-                            <button type = "submit" className = "customButton maroon" disabled = {isSubmitting}> 
+                            <button type = "submit" className = "customButton ramoon" disabled = {isSubmitting}> 
                                 <span className="material-icons-sharp">update</span>
                                 Update 
                             </button> 

@@ -629,6 +629,15 @@ nav .nav a.active span{
     background: var(--color-danger);
 }
 
+.ramoon{
+    background: var(--color-button);
+}
+
+.ramoon:hover{
+    background: var(--color-danger);
+    color: white;
+}
+
 .yellow{
     background: var(--color-warning);
 }
@@ -660,6 +669,11 @@ nav .nav a.active span{
 .form-check .form-check-label{
     font-size: 16px;
     padding-left: 1rem;
+}
+
+#form-select{
+    background: white;
+    color: #181a1e;
 }
 
 
