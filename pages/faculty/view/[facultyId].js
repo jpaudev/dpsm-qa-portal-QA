@@ -134,6 +134,7 @@ function ViewFaculty(props) {
                                     <h3>Work Experience</h3>
                                 </a>
                             </div>
+                            <br/><br/>
                         </nav>
                         <div className="tab-content" id="nav-tabContent-basic-info">
                             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
@@ -172,6 +173,7 @@ function ViewFaculty(props) {
                                     <h3>Research Grants</h3>
                                 </a>
                             </div>
+                            <br/><br/>
                         </nav>
                         <div className="tab-content" id="nav-tabContent-accomplishment">
                             <div className="tab-pane fade show active" id="public-service-accomplishment" role="tabpanel" aria-labelledby="public-service-accomplishment-tab">
@@ -191,6 +193,7 @@ function ViewFaculty(props) {
                         </div>
                     </div>
                     <div className="tab-pane fade" id="SET" role="tabpanel" aria-labelledby="SET-tab">
+                        <br/><br/>
                         <FacultyLoader name = { props.name } token = { props.token.user } unit = {props.unit} position={props.position} facultyId={props.pathFacultyId} role={props.data.role} editClass = {false}>{ props.facultyLoad }</FacultyLoader>
                     </div>
                     
