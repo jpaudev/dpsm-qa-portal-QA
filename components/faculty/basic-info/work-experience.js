@@ -32,8 +32,8 @@ function WorkExperience(props){
                         <td>{props.children[key].employerName}</td>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
-                        <td>{props.children[key].description}</td>
+                        <td className="less-important-mobile">{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
+                        <td className="less-important-pc">{props.children[key].description}</td>
                         { props.editable &&
                             <td>
                                 <div className = "btn-grp">
@@ -132,8 +132,8 @@ function WorkExperience(props){
                             <th>Employer</th>
                             <th>Position</th>
                             <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Description</th>
+                            <th className="less-important-pc">End Date</th>
+                            <th className="less-important-pc">Description</th>
                             <th>Action</th>
                         </tr>
                     </thead>

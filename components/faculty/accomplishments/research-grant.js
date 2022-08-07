@@ -70,8 +70,8 @@ function ResearchGrant(props){
                         <td>{props.children[key].granter}</td>
                         <td>{props.children[key].amount}</td>
                         <td>{props.children[key].projectedStart} to {props.children[key].projectedEnd}</td>
-                        <td>{props.children[key].actualStart}</td>
-                        <td>{props.children[key].actualEnd}</td>
+                        <td className="less-important-pc">{props.children[key].actualStart}</td>
+                        <td className="less-important-pc">{props.children[key].actualEnd}</td>
                         <td>{props.children[key].researchProgress}</td>
                         <td>{
                                 props.children[key].proof && 
@@ -100,7 +100,7 @@ function ResearchGrant(props){
                             }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td>{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-pc">{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         { props.editable &&
                             <div>
@@ -225,12 +225,12 @@ function ResearchGrant(props){
                             <th>Sponsor</th>
                             <th>Amount</th>
                             <th>Projected Duration</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
+                            <th className="less-important-pc">Start Date</th>
+                            <th className="less-important-pc">End Date</th>
                             <th>Research Progress</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th>Approver Remarks</th>
+                            <th className="less-important-pc">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>

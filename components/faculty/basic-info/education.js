@@ -31,10 +31,10 @@ function Education(props) {
                     <tr key = {props.children[key].educInfoId}>
                         <td>{props.children[key].degreeCert}</td>
                         <td>{props.children[key].degreeType}</td>
-                        <td>{props.children[key].majorSpecialization}</td>
-                        <td>{props.children[key].institutionSchool}</td>
-                        <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
+                        <td className="less-important-pc">{props.children[key].majorSpecialization}</td>
+                        <td className="less-important-mobile">{props.children[key].institutionSchool}</td>
+                        <td className="less-important-pc">{props.children[key].startDate}</td>
+                        <td className="less-important-mobile">{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
                         <td>
                             {
                                 props.children[key].proof &&
@@ -64,21 +64,24 @@ function Education(props) {
                                 <div>None</div>
                             }
                         </td>
-                        <td>{props.children[key].status}</td>
-                        <td>{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-mobile">{props.children[key].status}</td>
+                        <td className="less-important-mobile">{props.children[key].approverRemarks || 'None'}</td>
                         { props.editable &&
                             <td>
                                 <div className = "btn-grp">
+                                    <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetails">
+                                        <span className="material-icons-sharp">visibility</span>
+                                    </button>
                                     <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editEducation" onClick={() => {
                                         setEdit(props.children[key].educInfoId)
                                         setKey(editEduc)
                                     }}>
-                                        <span class="material-icons-sharp">edit</span>
+                                        <span className="material-icons-sharp">edit</span>
                                     </button>
                                     <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteEducation" onClick={() => {
                                         setDelete(props.children[key].educInfoId)
                                     }}>
-                                        <span class="material-icons-sharp">delete</span>
+                                        <span className="material-icons-sharp">delete</span>
                                     </button>
                                 </div>
                             </td>
@@ -173,13 +176,13 @@ function Education(props) {
                         <tr>
                             <th>Deegree</th>
                             <th>Type</th>
-                            <th>Major</th>
-                            <th>Institution</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
+                            <th className="less-important-pc">Major</th>
+                            <th className="less-important-mobile">Institution</th>
+                            <th className="less-important-pc">Start Date</th>
+                            <th className="less-important-mobile">End Date</th>
                             <th>Proof</th>
-                            <th>Status</th>
-                            <th>Remarks</th>
+                            <th className="less-important-mobile">Status</th>
+                            <th className="less-important-mobile">Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>
@@ -191,6 +194,105 @@ function Education(props) {
             
             <br/><br/>
             
+
+            {/* <!-- See More Modal --> */}
+            <div className="modal fade" id="seeDetails" tabIndex="-1" role="dialog" aria-labelledby="editEducationLabel" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="editEducationLabel">View Education Details</h5>
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <Formik
+                        enableReinitialize
+                        initialValues={currData}
+                        onSubmit={async (values) => {
+                            let alert = document.getElementById("educalert")
+                            
+                            let form = document.getElementById('editEducForm')
+                            let formData = new FormData(form)
+                            formData.append('educInfoId', currData.educInfoId)
+                            let res = await updateEducation(formData, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#educalert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#educalert").slideUp(500);
+                            });
+                            Router.push('/faculty/basic-info', '/faculty/basic-info')
+                        }}
+                    >
+                    {({ values, errors, touched, isSubmitting }) => (
+                        <Form id = "abc">
+                            <div className="modal-body">
+                                <div className = "row pb-3">
+                                    <div className = "form-group">
+                                        <label htmlFor = "SchoolEducationHistoryUpdate"> School/Institution </label>
+                                        <Field className = "form-control" type = "text" name = "institutionSchool" id ="institutionSchool" placeholder = "Input school" required />
+                                    </div>
+                                </div>
+                                <div className = "row pb-3">
+                                    <div className = "form-group">
+                                        <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree Type </label>
+                                        <Field as = "select" className = "form-control" name = "degreeType" id = "degreeType" >
+                                            <option value = "AA">AA</option>
+                                            <option value = "AS">AS</option>
+                                            <option value = "BA">BA</option>
+                                            <option value = "BS">BS</option>
+                                            <option value = "MA">MA</option>
+                                            <option value = "MS">MS</option>
+                                            <option value = "MD">MD</option>
+                                            <option value = "PhD">PhD</option>
+                                            <option value = "DEng">DEng</option>
+                                            <option value = "DrPH">DrPH</option>
+                                        </Field>
+                                    </div>
+                                </div>
+                                <div className = "row pb-3">
+                                    <div className = "form-group">
+                                        <label htmlFor = "DegreeEducationalHistoryUpdate"> Degree/Certification </label>
+                                        <Field className = "form-control" type = "text" name = "degreeCert" id = "degreeCert" placeholder = "Input degree" />
+                                    </div>
+                                </div>
+                                <div className = "row pb-3">
+                                    <div className = "form-group">
+                                        <label htmlFor = "MajorEducationalHistoryUpdate"> Major/Specialization </label>
+                                        <Field className = "form-control" type = "text" name = "majorSpecialization" id = "majorSpecialization" placeholder = "Input major" />
+                                    </div>
+                                </div>
+                                <div className = "row pb-3">
+                                    <div className = "form-group">
+                                        <label htmlFor = "StartDateEducationalHistoryUpdate"> Start Date </label>
+                                        <Field className = "form-control" type = "date" name = "startDate" id = "startDate" required />
+                                    </div>
+                                </div>
+                                <div className = "row pb-3">
+                                    <div className = "form-group">
+                                        <label htmlFor = "EndDateEducationalHistoryUpdate"> End Date </label>
+                                        <Field className = "form-control" type = "date" name = "endDate" id = "endDate" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </Form>
+                    )}
+                    </Formik>
+                    </div>
+                </div>
+            </div>
+
+
             <div className="modal fade" id="editEducation" tabIndex="-1" role="dialog" aria-labelledby="editEducationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -295,6 +397,7 @@ function Education(props) {
                     </div>
                 </div>
             </div>
+
         
             <div className="modal fade" id="deleteEducation" tabIndex="-1" role="dialog" aria-labelledby="deleteEducationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">

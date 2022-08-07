@@ -62,7 +62,7 @@ function Publication(props){
                         {props.children[key].nonFacultyAuthors}
                     </td>
                     <td>{props.children[key].publicationDate}</td>
-                    <td>{props.children[key].url}</td>
+                    <td className="less-important-pc">{props.children[key].url}</td>
                     <td>{props.children[key].citation}</td>
                     <td>{
                             props.children[key].proof && 
@@ -210,7 +210,7 @@ function Publication(props){
                             <th>Publication</th>
                             <th>Author/s</th>
                             <th>Publication Date</th>
-                            <th>URL</th>
+                            <th className="less-important-pc">URL</th>
                             <th>Citation</th>
                             <th>Proof</th>
                             <th>Status</th>

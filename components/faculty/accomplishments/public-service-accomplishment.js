@@ -35,10 +35,10 @@ function PublicServiceAccomplishment(props){
                 return(
                     <tr key = {props.children[key].publicServiceId}>
                         <td>{props.children[key].position}</td>
-                        <td>{props.children[key].organization}</td>
-                        <td>{props.children[key].description}</td>
+                        <td className="less-important-mobile">{props.children[key].organization}</td>
+                        <td className="less-important-pc">{props.children[key].description}</td>
                         <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}</td>
+                        <td className="less-important-pc">{props.children[key].endDate}</td>
                         <td>
                             {
                                 props.children[key].proof &&
@@ -68,7 +68,7 @@ function PublicServiceAccomplishment(props){
                             }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td>{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-mobile">{props.children[key].approverRemarks || 'None'}</td>
                        <td>
                             { props.editable &&
                                 <div>
@@ -110,9 +110,9 @@ function PublicServiceAccomplishment(props){
                     <tr key = {props.children[key].publicServiceId}>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].organization}</td>
-                        <td>{props.children[key].description}</td>
+                        <td className="less-important-pc">{props.children[key].description}</td>
                         <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}</td>
+                        <td className="less-important-pc">{props.children[key].endDate}</td>
                         <td>
                         {
                             props.children[key].proof &&
@@ -184,9 +184,9 @@ function PublicServiceAccomplishment(props){
                     <tr key = {props.children[key].publicServiceId}>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].organization}</td>
-                        <td>{props.children[key].description}</td>
+                        <td className="less-important-pc">{props.children[key].description}</td>
                         <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}</td>
+                        <td className="less-important-pc">{props.children[key].endDate}</td>
                         <td>
                         {
                             props.children[key].proof &&
@@ -258,9 +258,9 @@ function PublicServiceAccomplishment(props){
                     <tr key = {props.children[key].publicServiceId}>
                         <td>{props.children[key].position}</td>
                         <td>{props.children[key].organization}</td>
-                        <td>{props.children[key].description}</td>
+                        <td className="less-important-pc">{props.children[key].description}</td>
                         <td>{props.children[key].startDate}</td>
-                        <td>{props.children[key].endDate}</td>
+                        <td className="less-important-pc">{props.children[key].endDate}</td>
                         <td>
                         {
                             props.children[key].proof &&
@@ -388,13 +388,13 @@ function PublicServiceAccomplishment(props){
                     <thead>
                         <tr>
                             <th>Position/Role</th>
-                            <th>Organization</th>
-                            <th>Description</th>
+                            <th className="less-important-mobile">Organization</th>
+                            <th className="less-important-pc">Description</th>
                             <th>Start Date</th>
-                            <th>End Date</th>
+                            <th className="less-important-pc">End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th>Approver Remarks</th>
+                            <th className="less-important-mobile">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>
@@ -414,9 +414,9 @@ function PublicServiceAccomplishment(props){
                     <tr>
                         <th>Position/Role</th>
                         <th>Organization</th>
-                        <th>Description</th>
+                        <th className="less-important-pc">Description</th>
                         <th>Start Date</th>
-                        <th>End Date</th>
+                        <th className="less-important-pc">End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
                         <th>Approver Remarks</th>
@@ -438,9 +438,9 @@ function PublicServiceAccomplishment(props){
                     <tr>
                         <th>Position/Role</th>
                         <th>Organization</th>
-                        <th>Description</th>
+                        <th className="less-important-pc">Description</th>
                         <th>Start Date</th>
-                        <th>End Date</th>
+                        <th className="less-important-pc">End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
                         <th>Approver Remarks</th>
@@ -463,9 +463,9 @@ function PublicServiceAccomplishment(props){
                 <tr>
                     <th>Position/Role</th>
                     <th>Organization</th>
-                    <th>Description</th>
+                    <th className="less-important-pc">Description</th>
                     <th>Start Date</th>
-                    <th>End Date</th>
+                    <th className="less-important-pc">End Date</th>
                     <th>Proof</th>
                     <th>Status</th>
                     <th>Approver Remarks</th>

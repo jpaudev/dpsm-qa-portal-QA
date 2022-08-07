@@ -63,7 +63,7 @@ function LicensureExam(props) {
                         }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td>{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-pc">{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         { props.editable &&
                             <div>
@@ -168,7 +168,7 @@ function LicensureExam(props) {
                             <th>License Number</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th>Approver Remarks</th>
+                            <th className="less-important-pc">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>

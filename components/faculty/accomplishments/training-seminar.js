@@ -36,8 +36,8 @@ function TrainingSeminar(props) {
                         <td>{props.children[key].role}</td>
                         <td>{props.children[key].venue}</td>
                         <td>{props.children[key].dateFrom}</td>
-                        <td>{props.children[key].dateTo}</td>
-                        <td>{props.children[key].remarks}</td>
+                        <td className="less-important-pc">{props.children[key].dateTo}</td>
+                        <td className="less-important-pc">{props.children[key].remarks}</td>
                         <td>
                             {
                                 props.children[key].proof &&
@@ -169,11 +169,11 @@ function TrainingSeminar(props) {
                             <th>Role</th>
                             <th>Venue</th>
                             <th>Start Date</th>
-                            <th>End Date</th>
+                            <th className="less-important-pc">End Date</th>
                             <th>Remarks</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th>Approver Remarks</th>
+                            <th className="less-important-pc">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>

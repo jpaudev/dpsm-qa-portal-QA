@@ -876,8 +876,23 @@ nav .nav a.active span{
 }
 
 
+/* Importance */
+
+.less-important-pc{
+    display: none;
+}
 
 
+/* Name and Positin Display */
+.display-name{
+    font-size: 18px;
+    color: var(--color-dark);
+}
+
+.display-position{
+    font-size: 16px;
+    color: var(--color-dark-variant);
+}
 
     /* PC Screen Size */
 @media screen and (max-width: 1201px){
@@ -941,13 +956,6 @@ nav .nav a.active span{
         width: 83vw;
     }
 
-    main table thead tr th:first-child{
-        display: none;
-    }
-
-    main table tbody tr td:first-child{
-        display: none;
-    }
 
 
 
@@ -1091,6 +1099,10 @@ nav .nav a.active span{
     }
 
     .not-important{
+        display: none;
+    }
+
+    .less-important-mobile{
         display: none;
     }
 } 
