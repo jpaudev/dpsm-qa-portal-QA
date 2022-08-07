@@ -457,6 +457,7 @@ main .table-title table thead{
 main table thead th{
     font-size: 1.1rem;
     vertical-align: middle;
+    color: var(--color-dark);
 }
 
 main table tbody td{
@@ -885,6 +886,7 @@ nav .nav a.active span{
     margin-left: 6.5rem;
     margin-top: 0.5rem;
     margin:auto;
+    vertical-align: middle;
  }
  
  .modal-content {

@@ -33,7 +33,7 @@ function AssignUnitHead(props) {
                         <tr>
                             <th>Incoming Unit Head</th>
                             <th>Status</th>
-                            <th>Approver Remarks</th>
+                            <th>Remarks</th>
                         </tr>
                     </thead>
 
@@ -41,7 +41,7 @@ function AssignUnitHead(props) {
                         <tr key = {props.children.unitId}>
                             <td>
                                 <form>
-                                    <select name="faculty" className = "form-control" id="faculty" onChange={async () => {
+                                    <select name="faculty" className = "form-control" style={{color: "var(--color-primary)", width: "40rem"}} id="faculty" onChange={async () => {
                                         let alert = document.getElementById("assignalert")
                                         let incomingUnitHead = document.getElementById('faculty').value                       
                                         let res = await updateUnitAssignment(incomingUnitHead, props.children.unitId, props.token)

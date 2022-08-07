@@ -118,8 +118,7 @@ function WorkExperience(props){
                 </div>
             }
             
-            
-            <br/><br/>
+
             <EmploymentHistory role={props.role} token={props.token} facultyId={props.facultyId}>{props.employment}</EmploymentHistory>
             <br />
             

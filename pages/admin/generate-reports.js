@@ -9,7 +9,7 @@ function GenerateReports(props) {
 
     return (
 		<div>
-        <Layout>
+        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
 			<br></br>
 			<div className="header">
 				<h1 className="center">Generate Reports</h1>

@@ -178,7 +178,7 @@ function FacultyList(props){
 
 				return (
 					<div>
-						<br></br><br></br><br></br>
+						<br/><br/>
 						<h3 className="table-title-text" align = "center"> {props.children[key].unit} </h3>
 						<div className = "table-title">
 							<table className="table table-hover">
@@ -262,7 +262,7 @@ function FacultyList(props){
 
 				return (
 					<div>
-						<br></br><br></br><br></br>
+						<br/><br/>
 						<h3 className="table-title-text" align = "center"> {props.children[key].unit} </h3>
 						<div className = "table-title">
 							<table className="table table-hover">
@@ -322,7 +322,6 @@ function FacultyList(props){
 	return(
 		<div>
 			<div className ="alert alert-success" role="alert" id="facultyStatusalert" style={{visibility:"hidden"}}></div>
-			<br />
 			{chem}
 			<br />
 			{mcsu}
@@ -398,7 +397,7 @@ function FacultyList(props){
                     </div>
                 </div>
             </div>
-        
+			<br/>
 		</div>
 	)
 }
