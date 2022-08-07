@@ -104,22 +104,22 @@ function Layout(props) {
                             
                             <div className="profile">
                                 <div className="info">
-                                    <p>Hey, <b>{props.name}</b></p>
+                                    <p>Logged In As: <br/> <b>{props.name}</b></p>
                                     { props.role == "1" &&
-                                        <small className="text-muted">Faculty</small>
+                                        <p className="text-muted">Faculty</p>
                                     }
                                     { props.role == "2" &&
-                                        <small className="text-muted">Unit Head</small>
+                                        <p className="text-muted">Unit Head</p>
                                     }
                                     { props.role == "3" &&
-                                        <small className="text-muted">Department Chair</small>
+                                        <p className="text-muted">Department Chair</p>
                                     }
 
                                     { props.role == "4" &&
-                                        <small className="text-muted">DAPC</small>
+                                        <p className="text-muted">DAPC</p>
                                     }
                                     { props.role == "5" &&
-                                        <small className="text-muted">Admin Staff</small>
+                                        <p className="text-muted">Admin Staff</p>
                                     }
                                 
                                 </div>
