@@ -9,7 +9,7 @@
     --color-success: #23be8a;
     --color-warning: #ffae35;
     --color-white: #fff;
-    --color-info-dark: #7d8da1;
+    --color-info-dark: #c6ccd6;
     --color-info-light: #dce1eb;
     --color-dark: #404356;
     --color-light: rgba(132,139,200,0.18);
@@ -49,6 +49,7 @@
     --color-background: #181a1e;
     --color-white: #202528;
     --color-dark: #edeffd;
+    --color-info-dark: #edeffd;
     --color-dark-variant: #a3bdcc;
     --color-light: rgba(0,0,0,0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
@@ -614,8 +615,8 @@ nav .nav .nav-top.active{
     width: 4rem;
     margin: 1px;
     align-items: left;
-    color: white;
-    background-color: var(--color-maroon);
+    color: #404356;
+    background-color: var(--color-info-dark);
 }
 
 nav .nav .nav-top a span{
@@ -631,7 +632,7 @@ nav .nav a.active{
 }
 
 nav .nav a.active span{
-    color: white;
+    color: 404356;
 }
 
 
@@ -872,6 +873,7 @@ nav .nav a.active span{
     font-size: 1.5rem;
     margin-left: 6.5rem;
     margin-top: 0.5rem;
+    margin:auto;
  }
  
  .modal-content {
@@ -893,27 +895,7 @@ nav .nav a.active span{
 }
 
 
-/* Importance */
 
-.less-important-pc{
-    display: none;
-}
-
-
-/* Name and Positin Display */
-.display-name{
-    font-size: 18px;
-    color: var(--color-dark);
-}
-
-.display-position{
-    font-size: 16px;
-    color: var(--color-dark-variant);
-}
-
-.table-title-text{
-    font-size: 18px;
-}
 
 
     /* PC Screen Size */
@@ -978,6 +960,13 @@ nav .nav a.active span{
         width: 83vw;
     }
 
+    main table thead tr th:first-child{
+        display: none;
+    }
+
+    main table tbody tr td:first-child{
+        display: none;
+    }
 
 
 
@@ -1121,10 +1110,6 @@ nav .nav a.active span{
     }
 
     .not-important{
-        display: none;
-    }
-
-    .less-important-mobile{
         display: none;
     }
 } 
