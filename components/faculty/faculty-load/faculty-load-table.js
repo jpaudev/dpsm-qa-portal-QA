@@ -209,7 +209,6 @@ function FacultyLoadTable(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editClassForm">
                             <div className="modal-body">
-                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "subject"> Subject </label>
@@ -264,7 +263,6 @@ function FacultyLoadTable(props) {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <hr />
                             <p> Are you sure you want to delete this faculty load information? </p>
                         </div>
                         <div className="modal-footer">

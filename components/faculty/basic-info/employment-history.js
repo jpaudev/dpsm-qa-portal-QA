@@ -98,7 +98,6 @@ function EmploymentHistory(props){
                     </div>
                     <div className="modal-body">
                         <form>
-                            <hr />
                             <div className = "form-row">
 								<div className = "form-group">
 									<label htmlFor = "startDate"> Start Date </label>
@@ -149,7 +148,6 @@ function EmploymentHistory(props){
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
                         <p> Are you sure you want to delete this employment information? </p>
                     </div>
                     <div className="modal-footer">

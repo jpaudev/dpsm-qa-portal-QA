@@ -522,7 +522,6 @@ function PublicServiceAccomplishment(props){
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "editPSForm">
                         <div className="modal-body">
-                            <hr />
                             <div className = "form-row">
                             <div className = "form-group">
                                 <label htmlFor = "PublicServicePositionUpdate"> Position/Role </label>
@@ -583,7 +582,6 @@ function PublicServiceAccomplishment(props){
                     </button>
                 </div>
                 <div className="modal-body">
-                    <hr />
                     <p> Are you sure you want to delete this public service accomplishment information? </p>
                 </div>
                 <div className="modal-footer">
@@ -623,7 +621,6 @@ function PublicServiceAccomplishment(props){
                     </button>
                 </div>
                 <div className="modal-body">
-                    <hr />
                     <p> Are you sure you want to approve this public service information? </p>
                 </div>
                 <div className="modal-footer">
@@ -698,7 +695,6 @@ function PublicServiceAccomplishment(props){
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "rejectPublicServiceForm">
                         <div className="modal-body">
-                            <hr />
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>

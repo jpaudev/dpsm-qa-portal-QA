@@ -219,7 +219,6 @@ function LicensureExam(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editLicForm">
                             <div className="modal-body">
-                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "LicensureExamUpdate"> Licensure Exam </label>
@@ -274,7 +273,6 @@ function LicensureExam(props) {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <hr />
                             <p> Are you sure you want to delete this licensure exam information? </p>
                         </div>
                         <div className="modal-footer">
@@ -311,7 +309,6 @@ function LicensureExam(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
                         <p> Are you sure you want to approve this licensure exam information? </p>
                     </div>
                     <div className="modal-footer">
@@ -386,7 +383,6 @@ function LicensureExam(props) {
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "rejectLicenseForm">
                         <div className="modal-body">
-                            <hr />
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>

@@ -284,7 +284,6 @@ function Publication(props){
                     {({ values, errors, touched, isSubmitting, setFieldValue }) => (
                         <Form id = "editPubForm">
                             <div className="modal-body">
-                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "PublicationUpdate"> Publication </label>
@@ -357,7 +356,6 @@ function Publication(props){
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
                         <p> Are you sure you want to delete this publication information? </p>
                     </div>
                     <div className="modal-footer">
@@ -397,7 +395,6 @@ function Publication(props){
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
                         <p> Are you sure you want to approve this publication information? </p>
                     </div>
                     <div className="modal-footer">
@@ -472,7 +469,6 @@ function Publication(props){
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "rejectPubForm">
                             <div className="modal-body">
-                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>

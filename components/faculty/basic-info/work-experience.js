@@ -156,7 +156,6 @@ function WorkExperience(props){
                     </div>
                     <div className="modal-body">
                         <form>
-                            <hr />
                             <div className = "form-row">
                             <div className = "form-group">
                     <label htmlFor = "EmployerWorkExperienceUpdate"> Employer </label>
@@ -225,7 +224,6 @@ function WorkExperience(props){
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
                         <p> Are you sure you want to delete this work experience information? </p>
                     </div>
                     <div className="modal-footer">

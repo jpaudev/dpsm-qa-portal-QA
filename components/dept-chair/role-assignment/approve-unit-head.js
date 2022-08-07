@@ -66,7 +66,6 @@ function ApproveUnitHead(props) {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <hr />
                             <p> Are you sure you want to approve the change in Unit Head Role? </p>
                         </div>
                         <div className="modal-footer">
@@ -114,7 +113,6 @@ function ApproveUnitHead(props) {
                                 <input className = "form-control" type = "text" name = "approverRemarks" id = "approverRemarks" placeholder = "Input remarks" required />
                             </div>
                         </div>
-                        <hr />
                     </div>
                     <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't reject</button>

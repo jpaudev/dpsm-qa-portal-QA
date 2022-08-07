@@ -224,7 +224,6 @@ function TrainingSeminar(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editTSForm">
                             <div className="modal-body">
-                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "TrainingSeminarUpdate"> Name of Training/Seminar </label>
@@ -291,7 +290,6 @@ function TrainingSeminar(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
                         <p> Are you sure you want to delete this training/seminar information? </p>
                     </div>
                     <div className="modal-footer">
@@ -331,7 +329,6 @@ function TrainingSeminar(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
                         <p> Are you sure you want to approve this training/seminar information? </p>
                     </div>
                     <div className="modal-footer">
@@ -407,7 +404,6 @@ function TrainingSeminar(props) {
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "rejectTrainingSeminarForm">
                         <div className="modal-body">
-                            <hr />
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>

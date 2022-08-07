@@ -49,11 +49,10 @@ function AssignDeptChair(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
                         <p> 
                             Are you sure you want to assign this user as the new department chair?
                             You will lose access to all department chair-specific functionalities, and the user you assigned will gain access to said functionalities.
-                            Once you finalize this decision, you will be logged out immediately, and your account will be reverted to a standard faculty account when you
+                            Once you finalize this decision, you will be logged out immediately, and your account will be reverted to a standard faculty account once you
                             log in again.
                         </p>
                     </div>

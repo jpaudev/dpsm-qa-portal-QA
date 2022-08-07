@@ -340,7 +340,6 @@ function FacultyList(props){
                     </div>
                     <div className="modal-body">
                         <form>
-                            <hr />
                             <div className = "form-row">
                             	<div className = "form-group">
 									<label htmlFor = "Status"> Status </label>

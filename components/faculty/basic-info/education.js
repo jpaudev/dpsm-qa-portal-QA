@@ -409,7 +409,6 @@ function Education(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <br />
                         <p> Are you sure you want to delete this education information? </p>
                     </div>
                     <div className="modal-footer">
@@ -449,7 +448,6 @@ function Education(props) {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <br />
                         <p> Are you sure you want to approve this education information? </p>
                     </div>
                     <div className="modal-footer">
@@ -524,7 +522,6 @@ function Education(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "rejectEducForm">
                             <div className="modal-body">
-                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>

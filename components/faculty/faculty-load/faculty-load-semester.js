@@ -165,7 +165,6 @@ function FacultyLoadSemester(props) {
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "editClassForm">
                             <div className="modal-body">
-                                <hr />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "subject"> Subject </label>
@@ -282,7 +281,6 @@ function FacultyLoadSemester(props) {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <hr />
                             <p> Are you sure you want to delete this class record? </p>
                         </div>
                         <div className="modal-footer">

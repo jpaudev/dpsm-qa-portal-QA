@@ -299,7 +299,6 @@ function ResearchGrant(props){
                 {({ values, errors, touched, isSubmitting }) => (
                     <Form id = "editResForm">
                         <div className="modal-body">
-                            <hr />
                             <div className = "form-row">
                                 <div className = "form-group">
                                     <label htmlFor = "ResearchUpdate"> Research Project </label>
@@ -396,7 +395,6 @@ function ResearchGrant(props){
                     </button>
                 </div>
                 <div className="modal-body">
-                    <hr />
                     <p> Are you sure you want to delete this research grant information? </p>
                 </div>
                 <div className="modal-footer">
@@ -436,7 +434,6 @@ function ResearchGrant(props){
                         </button>
                     </div>
                     <div className="modal-body">
-                        <hr />
                         <p> Are you sure you want to approve this research grant information? </p>
                     </div>
                     <div className="modal-footer">
@@ -511,7 +508,7 @@ function ResearchGrant(props){
                     {({ values, errors, touched, isSubmitting }) => (
                         <Form id = "rejectRGForm">
                             <div className="modal-body">
-                                <hr />
+                                <br />
                                 <div className = "form-row">
                                     <div className = "form-group">
                                         <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
