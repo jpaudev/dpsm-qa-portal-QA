@@ -48,8 +48,8 @@ class ClerkForm extends React.Component{
                 {({ values, errors, touched, isSubmitting }) => (
                     <div className='card'>
                     <Form id = "clerkForm">
+                        <h2 className="center"> Add Admin Clerk Form </h2>
                         <hr />
-                        <br />
                         <h6>Required</h6>
                         <div className = "row pb-3">
                             <div className="col-md-6">
