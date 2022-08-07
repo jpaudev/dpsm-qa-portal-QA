@@ -120,19 +120,18 @@ function WorkExperience(props){
             
             
             <br/><br/>
-            <h5 align = "center"> Within UP Manila </h5>
             <EmploymentHistory role={props.role} token={props.token} facultyId={props.facultyId}>{props.employment}</EmploymentHistory>
             <br />
             
             <div className = "table-title">
-                <h5 align = "center"> Outside UP Manila </h5>
+                <h3 className="table-title-text"align = "center"> Outside UP Manila </h3>
                 <table className="table table-hover">
                     <thead>
                         <tr key = "headers">
                             <th>Employer</th>
                             <th>Position</th>
                             <th>Start Date</th>
-                            <th className="less-important-pc">End Date</th>
+                            <th className="less-important-mobile">End Date</th>
                             <th className="less-important-pc">Description</th>
                             <th>Action</th>
                         </tr>

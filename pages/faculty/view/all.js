@@ -9,7 +9,7 @@ function FacultyList(props) {
     return (
         <Layout userId={props.data.userId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
 			<br />
-			<h2 align="center">Faculty List</h2>
+			<h2 align="center" style={{fontSize:"24px"}}>Faculty List</h2>
             <br />
             <Faculty path="info" role={props.data.role} >{props.facultyList}</Faculty>
         </Layout>
