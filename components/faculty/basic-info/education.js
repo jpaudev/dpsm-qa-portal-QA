@@ -171,7 +171,7 @@ function Education(props) {
                 <table className="table table-hover">
                     <thead>
                         <tr>
-                            <th>Deegree</th>
+                            <th>Degree</th>
                             <th>Type</th>
                             <th>Major</th>
                             <th>Institution</th>

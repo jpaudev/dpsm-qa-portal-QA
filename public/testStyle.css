@@ -424,6 +424,7 @@ main .table-title tr{
 
 main .table-title table thead{
     margin-bottom: 0.8rem;
+    vertical-align: middle;
 }
 
 main .table-title table{
@@ -443,10 +444,12 @@ main .table-title table:hover{
 main .table-title table thead{
     height: 4rem;
     border-bottom: 2px solid var(--color-light);
+    vertical-align: middle;
 }
 
 main table thead th{
     font-size: 1.1rem;
+    vertical-align: middle;
 }
 
 main table tbody td{
@@ -454,11 +457,13 @@ main table tbody td{
     border-bottom: 1px solid var(--color-light);
     color: var(--color-dark-variant);
     font-size: 1.05rem;
+    vertical-align: middle;
 }
 
 main table tbody tr{
     height: 4rem;
     border-bottom: 1px solid var(--color-light);
+    vertical-align: middle;
 }
 
 main table tbody tr:last-child{
