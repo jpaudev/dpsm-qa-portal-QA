@@ -476,13 +476,16 @@ main .table-title a{
 .list-group{
     margin-right: 200px;
     margin-left: 1rem;
-    width: 486px;
+    width: 95%;
 }
 
 .list-group .list-group-item{
     text-align: left;
-    margin-right: 0;
-    margin-left: auto;
+    margin:auto;
+    /* margin-right: 0;
+    margin-left: auto; */
+    border: none;
+    background: var(--color-white);
 }
 
 .table-name{
