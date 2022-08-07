@@ -399,7 +399,7 @@ function PublicServiceAccomplishment(props){
                         </tr>
                     </thead>
                     <tbody>
-                        {upm ? upm : <td colSpan = "8"><br/><p align = "center">No data available.</p></td>} 
+                        {upm ? upm : <td colSpan = "9"><br/><p align = "center">No data available.</p></td>} 
                     </tbody>
                 </table>
             </div>
@@ -425,7 +425,7 @@ function PublicServiceAccomplishment(props){
                 </thead>
                 <tbody>
 
-                    {pro ? pro : <td colSpan = "8"><br/><p align = "center">No data available.</p></td>}
+                    {pro ? pro : <td colSpan = "9"><br/><p align = "center">No data available.</p></td>}
                 </tbody>
             </table>
         </div>
@@ -448,7 +448,7 @@ function PublicServiceAccomplishment(props){
                     </tr>
                 </thead>
                 <tbody>
-                    {nat ? nat : <td colSpan = "8"><br/><p align = "center">No data available.</p></td>}
+                    {nat ? nat : <td colSpan = "9"><br/><p align = "center">No data available.</p></td>}
                 </tbody>
             </table>
         </div>
@@ -473,7 +473,7 @@ function PublicServiceAccomplishment(props){
                 </tr>
             </thead>
             <tbody>
-                {wor ? wor : <td colSpan = "8"><br/><p align = "center">No data available.</p></td>}
+                {wor ? wor : <td colSpan = "9"><br/><p align = "center">No data available.</p></td>}
             </tbody>
         </table>
 	</div>

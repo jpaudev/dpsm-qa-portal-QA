@@ -138,7 +138,7 @@ function ResearchGrant(props){
         });
     }
     else{
-        content = <td colSpan = "10"><br/><p align = "center">No data available.</p></td>
+        content = <td colSpan = "12"><br/><p className='center'>No data available.</p></td>
     }
 
     function setEdit(id) {
