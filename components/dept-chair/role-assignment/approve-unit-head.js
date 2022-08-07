@@ -20,7 +20,7 @@ function ApproveUnitHead(props) {
                         <button className="btn customButton green" style={{marginRight:"1rem"}} data-bs-toggle="modal" data-bs-target="#approveUnitHead" onClick={() => {
                             setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
                         }}><span className="material-icons-sharp">check_circle_outline</span>Apply Changes</button>
-                        <button className="btn customButton maroon" data-bs-toggle="modal" data-bs-target="#rejectUnitHead" onClick={() => {
+                        <button className="btn customButton ramoon" data-bs-toggle="modal" data-bs-target="#rejectUnitHead" onClick={() => {
                             setApprove(props.children[key].currentUnitHead.faculty_personal_info.user.userId, props.children[key].faculty_personal_info.user.userId, props.children[key].unitId)
                         }}><span className="material-icons-sharp">delete_outline</span>Delete</button>
                     </td>

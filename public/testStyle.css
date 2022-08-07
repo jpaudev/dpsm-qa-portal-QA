@@ -418,6 +418,10 @@ main .table-title h2{
 
 }
 
+main .table-title tr{
+    color: var(--color-dark);
+}
+
 main .table-title table thead{
     margin-bottom: 0.8rem;
 }
@@ -493,6 +497,7 @@ main .table-title a{
 
 .table-name{
     width: 600px;
+    color: var(--color-dark);
 }
 
 /* Cards */
