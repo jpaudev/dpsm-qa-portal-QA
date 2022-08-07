@@ -213,9 +213,7 @@ function ResearchGrant(props){
                     <ResearchGrantForm faculty = {props.faculty} token = {props.token} />
                 </div>
             }
-            <br></br><br></br>
-            
-            
+                      
             <div className = "table-title">
                 <table className="table table-hover">
                     <thead>

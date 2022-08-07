@@ -200,9 +200,6 @@ function Publication(props){
                 </div>
             }
 
-            <br></br><br></br>
-
-
 			<div className = "table-title">
                 <table className="table table-hover">
                     <thead>
