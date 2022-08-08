@@ -152,13 +152,12 @@ function TrainingSeminar(props) {
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="trainingseminaralert" style={{visibility:"hidden"}}></div>
             
-
+            <br/>
             { props.editable && 
                 <div className="card collapse" id="addTraining">
                     <TrainingSeminarForm token = { props.token } />
                 </div>  
             } 	
-            <br></br><br></br>
 
 
             <div className = "table-title">

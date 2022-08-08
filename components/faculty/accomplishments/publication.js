@@ -193,13 +193,13 @@ function Publication(props){
 
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div className ="alert alert-success" role="alert" id="publicationalert" style={{visibility:"hidden"}}></div>
-
+            
             { props.editable && 
                 <div className="card collapse" id="addPublication">
                     <PublicationForm faculty = {props.faculty} token = {props.token} />
                 </div>
             }
-
+            
 			<div className = "table-title">
                 <table className="table table-hover">
                     <thead>
@@ -220,7 +220,7 @@ function Publication(props){
                     </tbody>
                 </table>	
 	        </div>
-            <br/><br/>
+            <br/>
 
 
 	       <div className="modal fade" id="editPublication" tabIndex="-1" role="dialog" aria-labelledby="editPublicationLabel" aria-hidden="true">

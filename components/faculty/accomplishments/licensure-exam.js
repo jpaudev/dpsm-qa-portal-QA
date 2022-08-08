@@ -150,13 +150,12 @@ function LicensureExam(props) {
             <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
             <div role="alert" id="licensureexamalert" style={{visibility:"hidden"}}></div>
             
-            
+            <br/>
             { props.editable && 
                 <div className="card collapse" id="addLicense">
                     <LicensureExamForm token = { props.token } />
                 </div>   
             }
-            <br></br><br></br>
 
             <div className = "table-title">
                 <table className="table table-hover">

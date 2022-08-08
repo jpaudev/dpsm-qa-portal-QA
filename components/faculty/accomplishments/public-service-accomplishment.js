@@ -373,14 +373,14 @@ function PublicServiceAccomplishment(props){
         <NameDisplay unit = {props.unit} position={props.position}>{props.name}</NameDisplay>
         <div role="alert" id="publicservicealert" style={{visibility:"hidden"}}></div>
 		
-        
+        <br/>
         { props.editable &&
                 <div className="card collapse" id="addPublicService">
                     <PublicServiceAccomplishmentForm token = { props.token } />
                 </div>  
         } 
 
-        <br></br><br></br>
+        <br/>
         <div>
             <div className = "table-title">
                 <h3 className="table-title-text" align = "center">Within UP Manila </h3>
