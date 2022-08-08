@@ -88,14 +88,12 @@ function Table ({columns, data}){
       <br />
       <ReactHTMLTableToExcel
           id="test-table-xls-button"
-          className="btn btn-primary mb-2"
+          className="btn customButton maroon"
           table="employmentTable"
           filename="employment"
           buttonText="Download as XLS"/>
-      <br />
-     
-
-     
+      <br/><br/>
+    
       <table className = "table table-hover" {...getTableProps()} id="employmentTable" >
           <thead>
             {headerGroups.map(headerGroup => (
