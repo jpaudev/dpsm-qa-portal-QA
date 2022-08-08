@@ -103,9 +103,8 @@ function WorkExperience(props){
             <br/>
 
             <NameDisplay unit = {props.unit} position={props.position}>{name}</NameDisplay>
-            <div className ="alert alert-success" role="alert" id="workexpalert" style={{visibility:"hidden"}}></div>
             
-            
+            <br/>
             { props.editable &&
                 <div className="card collapse" id="addEmploymentHistory">
                     <WorkExpForm token = { props.token }/>
@@ -120,8 +119,8 @@ function WorkExperience(props){
             
 
             <EmploymentHistory role={props.role} token={props.token} facultyId={props.facultyId}>{props.employment}</EmploymentHistory>
-            <br />
-            
+            <br/>
+            <div className ="alert alert-success" role="alert" id="workexpalert" style={{visibility:"hidden"}}></div>
             <div className = "table-title">
                 <h3 className="table-title-text"align = "center"> Outside UP Manila </h3>
                 <table className="table table-hover">
