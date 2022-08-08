@@ -311,7 +311,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
 
                     { props.editable && props.role!=5 && 
                         <div className="center">
-                            <button type = "submit" className = "customButton ramoon" disabled = {isSubmitting}> 
+                            <button type = "submit" className = "customButton maroon" disabled = {isSubmitting}> 
                                 <span className="material-icons-sharp">update</span>
                                 Update 
                             </button> 

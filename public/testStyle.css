@@ -60,8 +60,8 @@
     --box-shadow: 0 2rem 3rem var(--color-light);
     --color-maroon: #152d17;
     --color-title-white: rgb(216, 216, 216);
-    --color-button-maroon: #152d17;
-    --color-button-maroon-hover: #215025;
+    --color-button-maroon: #215025;
+    --color-button-maroon-hover: #2d5f32;
     --color-green: #cecece;
 }
 
