@@ -88,7 +88,7 @@ function EmploymentStatus(props){
 	return(
 		<div>
 			<br /><br/>
-			<h3 className="table-title-text" align = "center">Employment Stdasatus</h3>
+			<h3 className="table-title-text" align = "center">Employment Status</h3>
 			<div className = "dashboard-form-row">
 				{
 					props.role == 3 &&

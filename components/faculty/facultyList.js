@@ -323,9 +323,7 @@ function FacultyList(props){
 		<div>
 			<div className ="alert alert-success" role="alert" id="facultyStatusalert" style={{visibility:"hidden"}}></div>
 			{chem}
-			<br />
 			{mcsu}
-			<br />
 			{physgeo}
 
 			<div className="modal fade" id="editStatus" tabIndex="-1" role="dialog" aria-labelledby="editStatus" aria-hidden="true">
@@ -369,7 +367,6 @@ function FacultyList(props){
 									</select>
 								</div>
 							</div>
-							
                         </form>
                     </div>
                     <div className="modal-footer">
