@@ -61,9 +61,9 @@ function Publication(props){
                         { dpsmauth } 
                         {props.children[key].nonFacultyAuthors}
                     </td>
-                    <td>{props.children[key].publicationDate}</td>
+                    <td className="less-important-pc">{props.children[key].publicationDate}</td>
                     <td className="less-important-pc">{props.children[key].url}</td>
-                    <td>{props.children[key].citation}</td>
+                    <td className="less-important-pc">{props.children[key].citation}</td>
                     <td>{
                             props.children[key].proof && 
                             <div className = "center">
@@ -95,6 +95,12 @@ function Publication(props){
                     <td>
                     { props.editable &&
                         <div>
+                            <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsPublication" onClick={() => {
+                                setEdit(props.children[key].publicationId)
+                                setKey(editPub)
+                            }}>
+                                <span className="material-icons-sharp">visibility</span>
+                            </button>
                             <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublication" onClick={async () => {
                                 setEdit(props.children[key].publicationId)
                                 setKey(editPub)
@@ -206,9 +212,9 @@ function Publication(props){
                         <tr>
                             <th>Publication</th>
                             <th>Author/s</th>
-                            <th>Publication Date</th>
+                            <th className="less-important-pc">Publication Date</th>
                             <th className="less-important-pc">URL</th>
-                            <th>Citation</th>
+                            <th className="less-important-pc">Citation</th>
                             <th>Proof</th>
                             <th>Status</th>
                             <th>Approver Remarks</th>
@@ -221,6 +227,10 @@ function Publication(props){
                 </table>	
 	        </div>
             <br/>
+
+
+
+
 
 
 	       <div className="modal fade" id="editPublication" tabIndex="-1" role="dialog" aria-labelledby="editPublicationLabel" aria-hidden="true">
@@ -485,11 +495,44 @@ function Publication(props){
                     </div>
                 </div>
             </div>
-            <style jsx>{`
-                th.widen{
-                    width: 30%;
-                }
-            `}</style>
+
+
+        {/* <!-- See More Modal--> */}
+        <div className="modal fade" id="seeDetailsPublication" tabIndex="-1" role="dialog" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">View Publication Information</h5>
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-details">
+                        <h3>Title: </h3>
+                        <h4>{currData.title}</h4>
+                        <br></br>
+                        <h3>Publication Date: </h3>
+                        <h4>{currData.publicationDate}</h4>
+                        <br></br>
+                        <h3>Citation: </h3>
+                        <h4>{currData.citation}</h4>
+                        <br></br>
+                        <h3>URL: </h3>
+                        <h4>{currData.url}</h4>
+                        <br></br>
+                        <h3>Non-Faculty Authors: </h3>
+                        <h4>{currData.nonFacultyAuthors}</h4>
+                        <br></br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+        
         <br/><br/>
 		</div>
 	)

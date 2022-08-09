@@ -72,6 +72,12 @@ function PublicServiceAccomplishment(props){
                        <td>
                             { props.editable &&
                                 <div>
+                                    <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsPSAWithin" onClick={() => {
+                                        setEdit(props.children[key].publicServiceId)
+                                        setKey(editPS)
+                                    }}>
+                                        <span className="material-icons-sharp">visibility</span>
+                                    </button>
                                     <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublicService" onClick={() => {
                                         setEdit(props.children[key].publicServiceId)
                                         setKey(editPS)
@@ -146,6 +152,12 @@ function PublicServiceAccomplishment(props){
                         <td>
                             { props.editable &&
                                 <div>
+                                    <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsPSAProfession" onClick={() => {
+                                        setEdit(props.children[key].publicServiceId)
+                                        setKey(editPS)
+                                    }}>
+                                        <span className="material-icons-sharp">visibility</span>
+                                    </button>
                                     <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublicService" onClick={() => {
                                         setEdit(props.children[key].publicServiceId)
                                         setKey(editPS)
@@ -220,6 +232,12 @@ function PublicServiceAccomplishment(props){
                         <td>
                         { props.editable &&
                             <div>
+                                <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsPSANation" onClick={() => {
+                                        setEdit(props.children[key].publicServiceId)
+                                        setKey(editPS)
+                                    }}>
+                                        <span className="material-icons-sharp">visibility</span>
+                                </button>
                                 <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublicService" onClick={() => {
                                     setEdit(props.children[key].publicServiceId)
                                     setKey(editPS)
@@ -294,6 +312,12 @@ function PublicServiceAccomplishment(props){
                         <td>
                         { props.editable &&
                             <div>
+                                <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsPSAWorld" onClick={() => {
+                                        setEdit(props.children[key].publicServiceId)
+                                        setKey(editPS)
+                                    }}>
+                                        <span className="material-icons-sharp">visibility</span>
+                                </button>
                                 <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editPublicService" onClick={() => {
                                     setEdit(props.children[key].publicServiceId)
                                     setKey(editPS)
@@ -483,6 +507,168 @@ function PublicServiceAccomplishment(props){
 
 
             <br/>
+
+
+        {/* <!-- See More Modal Within UP Manila--> */}
+        <div className="modal fade" id="seeDetailsPSAWithin" tabIndex="-1" role="dialog" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">View Public Service Information</h5>
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-details">
+                        <h3>Position: </h3>
+                        <h4>{currData.position}</h4>
+                        <br></br>
+                        <h3>Organization: </h3>
+                        <h4>{currData.organization}</h4>
+                        <br></br>
+                        <h3>Description: </h3>
+                        <h4>{currData.description}</h4>
+                        <br></br>
+                        <h3>Type: </h3>
+                        <h4>{currData.type}</h4>
+                        <br></br>
+                        <h3>Start Date: </h3>
+                        <h4>{currData.startDate}</h4>
+                        <br></br>
+                        <h3>End Date: </h3>
+                        <h4>{currData.endDate}</h4>
+                        <br></br>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        {/* <!-- See More Modal to Profession--> */}
+        <div className="modal fade" id="seeDetailsPSAProfession" tabIndex="-1" role="dialog" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">View Public Service Information</h5>
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-details">
+                        <h3>Position: </h3>
+                        <h4>{currData.position}</h4>
+                        <br></br>
+                        <h3>Organization: </h3>
+                        <h4>{currData.organization}</h4>
+                        <br></br>
+                        <h3>Description: </h3>
+                        <h4>{currData.description}</h4>
+                        <br></br>
+                        <h3>Type: </h3>
+                        <h4>{currData.type}</h4>
+                        <br></br>
+                        <h3>Start Date: </h3>
+                        <h4>{currData.startDate}</h4>
+                        <br></br>
+                        <h3>End Date: </h3>
+                        <h4>{currData.endDate}</h4>
+                        <br></br>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        {/* <!-- See More Modal to Profession--> */}
+        <div className="modal fade" id="seeDetailsPSANation" tabIndex="-1" role="dialog" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">View Public Service Information</h5>
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-details">
+                        <h3>Position: </h3>
+                        <h4>{currData.position}</h4>
+                        <br></br>
+                        <h3>Organization: </h3>
+                        <h4>{currData.organization}</h4>
+                        <br></br>
+                        <h3>Description: </h3>
+                        <h4>{currData.description}</h4>
+                        <br></br>
+                        <h3>Type: </h3>
+                        <h4>{currData.type}</h4>
+                        <br></br>
+                        <h3>Start Date: </h3>
+                        <h4>{currData.startDate}</h4>
+                        <br></br>
+                        <h3>End Date: </h3>
+                        <h4>{currData.endDate}</h4>
+                        <br></br>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        {/* <!-- See More Modal to World--> */}
+        <div className="modal fade" id="seeDetailsPSAWorld" tabIndex="-1" role="dialog" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">View Public Service Information</h5>
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-details">
+                        <h3>Position: </h3>
+                        <h4>{currData.position}</h4>
+                        <br></br>
+                        <h3>Organization: </h3>
+                        <h4>{currData.organization}</h4>
+                        <br></br>
+                        <h3>Description: </h3>
+                        <h4>{currData.description}</h4>
+                        <br></br>
+                        <h3>Type: </h3>
+                        <h4>{currData.type}</h4>
+                        <br></br>
+                        <h3>Start Date: </h3>
+                        <h4>{currData.startDate}</h4>
+                        <br></br>
+                        <h3>End Date: </h3>
+                        <h4>{currData.endDate}</h4>
+                        <br></br>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
 
 		<div className="modal fade" id="editPublicService" tabIndex="-1" role="dialog" aria-labelledby="editPublicServiceLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">

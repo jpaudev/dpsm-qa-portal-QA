@@ -37,6 +37,12 @@ function WorkExperience(props){
                         { props.editable &&
                             <td>
                                 <div className = "btn-grp">
+                                    <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsWork" onClick={() => {
+                                        setEdit(props.children[key].workExpId)
+                                        setKey(editWork)
+                                    }}>
+                                        <span className="material-icons-sharp">visibility</span>
+                                    </button>
                                     <button className="btn customButton-icon-only yellow" data-bs-toggle="modal"  data-bs-target="#editWorkExperience" onClick={() => {
                                         setEdit(props.children[key].workExpId)
                                         setKey(editWork)
@@ -141,6 +147,43 @@ function WorkExperience(props){
                 </table>
             </div>
             <br/><br/>
+
+            {/* <!-- See More Modal --> */}
+            <div className="modal fade" id="seeDetailsWork" tabIndex="-1" role="dialog" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">View Education Information</h5>
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-details">
+                            <h3>Employer: </h3>
+                            <h4>{currData.employerName}</h4>
+                            <br></br>
+                            <h3>Position: </h3>
+                            <h4>{currData.position}</h4>
+                            <br></br>
+                            <h3>Start Date: </h3>
+                            <h4>{currData.startDate}</h4>
+                            <br></br>
+                            <h3>End Date: </h3>
+                            <h4>{currData.endDate}</h4>
+                            <br></br>
+                            <h3>Description: </h3>
+                            <h4>{currData.description}</h4>
+                            <br></br>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
 
 
             <div className="modal fade" id="editWorkExperience" tabIndex="-1" role="dialog" aria-labelledby="editWorkExperienceLabel" aria-hidden="true">
@@ -255,7 +298,11 @@ function WorkExperience(props){
                 </div>
             </div>
             <br/><br/>
+
+            
         </div>
+
+        
     )
 }
 

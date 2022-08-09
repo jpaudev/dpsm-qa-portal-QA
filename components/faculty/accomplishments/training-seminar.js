@@ -71,6 +71,12 @@ function TrainingSeminar(props) {
                         <td>
                         { props.editable &&
                             <div>
+                                <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsTrainingSeminar" onClick={() => {
+                                        setEdit(props.children[key].tsId)
+                                        setKey(editTS)
+                                    }}>
+                                        <span className="material-icons-sharp">visibility</span>
+                                </button>
                                 <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editTrainingSeminar" onClick={() => {
                                         setEdit(props.children[key].tsId)
                                         setKey(editTS)
@@ -363,65 +369,108 @@ function TrainingSeminar(props) {
             </div>
         
             <div className="modal fade" id="rejectTrainingSeminar" tabIndex="-1" role="dialog" aria-labelledby="rejectTrainingSeminarLabel" aria-hidden="true">
-            <div className="modal-dialog" role="document">
-                <div className="modal-content">
-                <div className="modal-header">
-                    <h5 className="modal-title" id="rejectTrainingSeminarLabel">Reject Training/Seminar Information</h5>
-                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <Formik
-                    enableReinitialize
-                    initialValues={currData}
-                    onSubmit={async (values) => {
-                        let alert = document.getElementById("trainingseminaralert")
-                        $('#rejectTrainingSeminar').modal('toggle');
-                        
-                        let form = document.getElementById('rejectTrainingSeminarForm')
-                        let formData = new FormData(form)
-                        formData.append('tsId', approveTS)
-                        
-                        let res = await approveTraining(formData, false, props.facultyId, props.token)
-                        if(res.success == true) { 
-                            alert.className ="alert alert-success"
-                            alert.style = "visibility: visible"
-                            alert.innerHTML = res.message
-                        } else {
-                            alert.className = "alert alert-danger"
-                            alert.style = "visibility: visible"
-                            if(res.error) alert.innerHTML = res.error[0].message
-                            else alert.innerHTML = res.message
-                        }
-                        
-                        $("#trainingseminaralert").fadeTo(5000, 500).slideUp(500, function(){
-                            $("#trainingseminaralert").slideUp(500);
-                        });
-                        Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
-                    }}
-                >
-                {({ values, errors, touched, isSubmitting }) => (
-                    <Form id = "rejectTrainingSeminarForm">
-                        <div className="modal-body">
-                            <div className = "row pb-3">
-                                <div className = "form-group">
-                                    <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
-                                    <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="rejectTrainingSeminarLabel">Reject Training/Seminar Information</h5>
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <Formik
+                        enableReinitialize
+                        initialValues={currData}
+                        onSubmit={async (values) => {
+                            let alert = document.getElementById("trainingseminaralert")
+                            $('#rejectTrainingSeminar').modal('toggle');
+                            
+                            let form = document.getElementById('rejectTrainingSeminarForm')
+                            let formData = new FormData(form)
+                            formData.append('tsId', approveTS)
+                            
+                            let res = await approveTraining(formData, false, props.facultyId, props.token)
+                            if(res.success == true) { 
+                                alert.className ="alert alert-success"
+                                alert.style = "visibility: visible"
+                                alert.innerHTML = res.message
+                            } else {
+                                alert.className = "alert alert-danger"
+                                alert.style = "visibility: visible"
+                                if(res.error) alert.innerHTML = res.error[0].message
+                                else alert.innerHTML = res.message
+                            }
+                            
+                            $("#trainingseminaralert").fadeTo(5000, 500).slideUp(500, function(){
+                                $("#trainingseminaralert").slideUp(500);
+                            });
+                            Router.push('/faculty/approval/' + props.facultyId, '/faculty/approval/' + props.facultyId)
+                        }}
+                    >
+                    {({ values, errors, touched, isSubmitting }) => (
+                        <Form id = "rejectTrainingSeminarForm">
+                            <div className="modal-body">
+                                <div className = "row pb-3">
+                                    <div className = "form-group">
+                                        <label htmlFor = "RejectionRemarks"> Reason/Remarks for Rejection </label>
+                                        <Field className = "form-control" type = "text" name = "approverRemarks" placeholder = "Input remarks" required />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
-                                $('#rejectTrainingSeminar').modal('toggle');
-                            }}>Save changes</button>
-                        </div>
-                    </Form>
-                )}
-                </Formik>
+                            <div className="modal-footer">
+                                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" className="btn btn-primary" disabled = {isSubmitting} onClick = {() => {
+                                    $('#rejectTrainingSeminar').modal('toggle');
+                                }}>Save changes</button>
+                            </div>
+                        </Form>
+                    )}
+                    </Formik>
+                    </div>
                 </div>
             </div>
-        </div>
+
+
+            {/* <!-- See More Modal--> */}
+            <div className="modal fade" id="seeDetailsTrainingSeminar" tabIndex="-1" role="dialog" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">View Training/Seminars Information</h5>
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-details">
+                            <h3>Role: </h3>
+                            <h4>{currData.role}</h4>
+                            <br></br>
+                            <h3>Title: </h3>
+                            <h4>{currData.title}</h4>
+                            <br></br>
+                            <h3>Start Date: </h3>
+                            <h4>{currData.dateFrom}</h4>
+                            <br></br>
+                            <h3>End Date: </h3>
+                            <h4>{currData.dateTo}</h4>
+                            <br></br>
+                            <h3>Venue: </h3>
+                            <h4>{currData.venue}</h4>
+                            <br></br>
+                            <h3>Remarks: </h3>
+                            <h4>{currData.remarks}</h4>
+                            <br></br>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
+        
             <br/><br/> 
         </div>	
     )

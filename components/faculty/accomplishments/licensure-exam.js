@@ -67,6 +67,12 @@ function LicensureExam(props) {
                         <td>
                         { props.editable &&
                             <div>
+                                <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsLicensureExam" onClick={() => {
+                                        setEdit(props.children[key].licenseId)
+                                        setKey(editLic)
+                                    }}>
+                                        <span className="material-icons-sharp">visibility</span>
+                                </button>
                                 <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editLicensureExam" onClick={() => {
                                     setEdit(props.children[key].licenseId)
                                     setKey(editLic)
@@ -401,6 +407,40 @@ function LicensureExam(props) {
                 </div>
             </div>
         </div>
+
+        {/* <!-- See More Modal--> */}
+        <div className="modal fade" id="seeDetailsLicensureExam" tabIndex="-1" role="dialog" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">View Licensure Exam Information</h5>
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-details">
+                        <h3>Exam Name: </h3>
+                        <h4>{currData.examName}</h4>
+                        <br></br>
+                        <h3>Exam Date: </h3>
+                        <h4>{currData.examDate}</h4>
+                        <br></br>
+                        <h3>License Number: </h3>
+                        <h4>{currData.licenseNumber}</h4>
+                        <br></br>
+                        <h3>Rank: </h3>
+                        <h4>{currData.rank}</h4>
+                        <br></br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
+
         <br/><br/>
 
         </div>

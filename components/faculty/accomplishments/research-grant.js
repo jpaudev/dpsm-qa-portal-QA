@@ -67,8 +67,8 @@ function ResearchGrant(props){
                             { dpsmauth } 
                             {props.children[key].nonFacultyResearchers}
                         </td>
-                        <td>{props.children[key].granter}</td>
-                        <td>{props.children[key].amount}</td>
+                        <td className="less-important-pc">{props.children[key].granter}</td>
+                        <td className="less-important-pc">{props.children[key].amount}</td>
                         <td className="less-important-pc">{props.children[key].projectedStart} <i>to</i> {props.children[key].projectedEnd}</td>
                         {/* <td className="less-important-pc">{props.children[key].actualStart}</td>
                         <td className="less-important-pc">{props.children[key].actualEnd}</td> */}
@@ -104,6 +104,12 @@ function ResearchGrant(props){
                         <td>
                         { props.editable &&
                             <div>
+                                <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsResearchGrant" onClick={() => {
+                                    setEdit(props.children[key].researchId)
+                                    setKey(editRes)
+                                }}>
+                                    <span className="material-icons-sharp">visibility</span>
+                                </button>
                                 <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editResearchGrant" onClick={() => {
                                     setEdit(props.children[key].researchId)
                                     setKey(editRes)
@@ -220,8 +226,8 @@ function ResearchGrant(props){
                         <tr>
                             <th>Research Project</th>
                             <th>Researcher/s</th>
-                            <th>Sponsor</th>
-                            <th>Amount</th>
+                            <th className="less-important-pc">Sponsor</th>
+                            <th className="less-important-pc">Amount</th>
                             <th className="less-important-pc">Projected Duration</th>
                             {/* <th className="less-important-pc">Start Date</th>
                             <th className="less-important-pc">End Date</th> */}
@@ -529,6 +535,53 @@ function ResearchGrant(props){
                     </div>
                 </div>
             </div>
+
+            {/* <!-- See More Modal--> */}
+            <div className="modal fade" id="seeDetailsResearchGrant" tabIndex="-1" role="dialog" aria-hidden="true">
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">View Research Grant Information</h5>
+                        <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-details">
+                            <h3>Research Project: </h3>
+                            <h4>{currData.researchName}</h4>
+                            <br></br>
+                            <h3>Sponsor: </h3>
+                            <h4>{currData.granter}</h4>
+                            <br></br>
+                            <h3>Amount: </h3>
+                            <h4>{currData.amount}</h4>
+                            <br></br>
+                            <h3>Projected Start Date: </h3>
+                            <h4>{currData.projectedStart}</h4>
+                            <br></br>
+                            <h3>Projected End Date: </h3>
+                            <h4>{currData.projectedEnd}</h4>
+                            <br></br>
+                            <h3>Actual Start Date: </h3>
+                            <h4>{currData.actualStart}</h4>
+                            <br></br>
+                            <h3>Actual End Date: </h3>
+                            <h4>{currData.actualEnd}</h4>
+                            <br></br>
+                            <h3>Progress: </h3>
+                            <h4>{currData.researchProgress}</h4>
+                            <br></br>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+
             <br/><br/>
 		</div>
 	)
