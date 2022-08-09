@@ -67,7 +67,7 @@ function TrainingSeminar(props) {
                             }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td>{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-pc">{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         { props.editable &&
                             <div>
@@ -169,7 +169,7 @@ function TrainingSeminar(props) {
                             <th>Venue</th>
                             <th>Start Date</th>
                             <th className="less-important-pc">End Date</th>
-                            <th>Remarks</th>
+                            <th className="less-important-pc">Remarks</th>
                             <th>Proof</th>
                             <th>Status</th>
                             <th className="less-important-pc">Approver Remarks</th>

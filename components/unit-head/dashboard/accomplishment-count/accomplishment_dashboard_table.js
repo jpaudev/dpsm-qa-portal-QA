@@ -180,9 +180,10 @@ function Table ({columns, data}){
           </tr>
         ))}
       </tfoot>
-     
-     
-        <div className="pagination">
+
+     </table>
+
+     <div className="pagination">
           <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
             {'<<'}
           </button>{' '}
@@ -226,24 +227,7 @@ function Table ({columns, data}){
             ))}
           </select>
         </div>
-     
-     
-     
-     </table>
 
-	
-
-      <style jsx>{`
-		thead{
-      white-space: normal;
-    }
-    
-    table{
-			display: block;
-			overflow: x;
-			white-space: normal;
-		}
-	`}</style>
 </div>
  )
   

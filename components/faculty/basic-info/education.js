@@ -196,11 +196,11 @@ function Education(props) {
             
 
             {/* <!-- See More Modal --> */}
-            <div className="modal fade" id="seeDetails" tabIndex="-1" role="dialog" aria-labelledby="editEducationLabel" aria-hidden="true">
-                <div className="modal-dialog" role="document">
+            <div className="modal fade" id="seeDetails" tabIndex="-1" role="dialog" aria-labelledby="seeDetailsLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
                     <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title" id="editEducationLabel">View Education Details</h5>
+                        <h5 className="modal-title" id="seeDetailsLabel">View Education Information</h5>
                         <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -211,7 +211,7 @@ function Education(props) {
                         onSubmit={async (values) => {
                             let alert = document.getElementById("educalert")
                             
-                            let form = document.getElementById('editEducForm')
+                            let form = document.getElementById('viewEducForm')
                             let formData = new FormData(form)
                             formData.append('educInfoId', currData.educInfoId)
                             let res = await updateEducation(formData, props.token)
@@ -232,7 +232,7 @@ function Education(props) {
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
-                        <Form id = "abc">
+                        <Form id = "viewEducForm">
                             <div className="modal-body">
                                 <div className = "row pb-3">
                                     <div className = "form-group">
@@ -292,7 +292,7 @@ function Education(props) {
                 </div>
             </div>
 
-
+            {/* Edit Modal */}
             <div className="modal fade" id="editEducation" tabIndex="-1" role="dialog" aria-labelledby="editEducationLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">

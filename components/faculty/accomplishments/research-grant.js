@@ -69,7 +69,7 @@ function ResearchGrant(props){
                         </td>
                         <td>{props.children[key].granter}</td>
                         <td>{props.children[key].amount}</td>
-                        <td>{props.children[key].projectedStart} <i>to</i> {props.children[key].projectedEnd}</td>
+                        <td className="less-important-pc">{props.children[key].projectedStart} <i>to</i> {props.children[key].projectedEnd}</td>
                         {/* <td className="less-important-pc">{props.children[key].actualStart}</td>
                         <td className="less-important-pc">{props.children[key].actualEnd}</td> */}
                         <td>{props.children[key].researchProgress}</td>
@@ -222,7 +222,7 @@ function ResearchGrant(props){
                             <th>Researcher/s</th>
                             <th>Sponsor</th>
                             <th>Amount</th>
-                            <th>Projected Duration</th>
+                            <th className="less-important-pc">Projected Duration</th>
                             {/* <th className="less-important-pc">Start Date</th>
                             <th className="less-important-pc">End Date</th> */}
                             <th>Research Progress</th>
