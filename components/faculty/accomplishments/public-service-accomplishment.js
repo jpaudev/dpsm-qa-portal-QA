@@ -84,7 +84,7 @@ function PublicServiceAccomplishment(props){
                                     }}>
                                         <span className="material-icons-sharp">edit</span>
                                     </button>
-                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
                                         setDelete(props.children[key].publicServiceId)
                                     }}>
                                         <span className="material-icons-sharp">delete</span>
@@ -164,7 +164,7 @@ function PublicServiceAccomplishment(props){
                                     }}>
                                         <span className="material-icons-sharp">edit</span>
                                     </button>
-                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
+                                    <button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
                                         setDelete(props.children[key].publicServiceId)
                                     }}>
                                         <span className="material-icons-sharp">delete</span>
@@ -244,7 +244,7 @@ function PublicServiceAccomplishment(props){
                                 }}>
                                     <span className="material-icons-sharp">edit</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
+                                <button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
                                     setDelete(props.children[key].publicServiceId)
                                 }}>
                                     <span className="material-icons-sharp">delete</span>
@@ -324,7 +324,7 @@ function PublicServiceAccomplishment(props){
                                 }}>
                                     <span className="material-icons-sharp">edit</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
+                                <button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deletePublicService" onClick={() => {
                                     setDelete(props.children[key].publicServiceId)
                                 }}>
                                     <span className="material-icons-sharp">delete</span>

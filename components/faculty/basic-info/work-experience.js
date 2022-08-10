@@ -49,7 +49,7 @@ function WorkExperience(props){
                                     }}>
                                         <span class="material-icons-sharp">edit</span>
                                     </button>
-                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal"  data-bs-target="#deleteWorkExperience" onClick={() => {
+                                    <button className="btn customButton-icon-only delete" data-bs-toggle="modal"  data-bs-target="#deleteWorkExperience" onClick={() => {
                                         setDelete(props.children[key].workExpId)
                                     }}>
                                         <span class="material-icons-sharp">delete</span>

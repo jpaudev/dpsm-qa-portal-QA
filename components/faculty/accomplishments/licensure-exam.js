@@ -79,7 +79,7 @@ function LicensureExam(props) {
                                 }}>
                                     <span className="material-icons-sharp">edit</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteLicensureExam" onClick={() => {
+                                <button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deleteLicensureExam" onClick={() => {
                                     setDelete(props.children[key].licenseId)
                                 }}>
                                     <span className="material-icons-sharp">delete</span>

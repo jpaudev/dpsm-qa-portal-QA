@@ -116,7 +116,7 @@ function ResearchGrant(props){
                                 }}>
                                     <span class="material-icons-sharp">edit</span>
                                 </button>
-                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteResearchGrant" onClick={() => {
+                                <button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deleteResearchGrant" onClick={() => {
                                     setDelete(props.children[key].researchId)
                                 }}>
                                     <span class="material-icons-sharp">delete</span>
@@ -357,7 +357,7 @@ function ResearchGrant(props){
                                         <Select
                                             name = "faculty_researchers"
                                             isMulti
-                                            options = {authors}
+                                            options = {authors} 
                                             value = {currData.faculty_researchers}
                                             onChange = {event => handleChange(event)}
                                         />

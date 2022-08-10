@@ -107,7 +107,7 @@ function Publication(props){
                             }}>
                                 <span className="material-icons-sharp">edit</span>
                             </button>
-                            <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deletePublication" onClick={() => {
+                            <button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deletePublication" onClick={() => {
                                 setDelete(props.children[key].publicationId)
                             }}>
                                 <span className="material-icons-sharp">delete</span>
