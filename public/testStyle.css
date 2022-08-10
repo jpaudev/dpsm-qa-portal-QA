@@ -1145,6 +1145,7 @@ main .tablet-only{
     .right{
         width: 94%;
         margin: 0 auto 4rem;
+        display: block;
     }
 
     .right .top{
