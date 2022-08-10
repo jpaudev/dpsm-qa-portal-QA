@@ -43,7 +43,7 @@ function FacultyLoadTable(props) {
                     <td className="less-important-mobile">{props.children[key].section}</td>
                     <td className="less-important-mobile">{props.children[key].semester}</td>
                     <td className="less-important-mobile">{props.children[key].academicYear - 1 + ' - ' + props.children[key].academicYear}</td>
-                    <td className="less-important-mobile">
+                    <td>
                             {
                                 props.children[key].syllabus &&
 
@@ -164,7 +164,7 @@ function FacultyLoadTable(props) {
                             <th className="less-important-mobile">Section</th>
                             <th className="less-important-mobile">Semester</th>
                             <th className="less-important-mobile">Academic Year</th>
-                            <th className="less-important-mobile">Syllabus</th>
+                            <th>Syllabus</th>
                             {props.role==5 && <th>Action</th>}
                         </tr>
                     </thead>

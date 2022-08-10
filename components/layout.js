@@ -49,7 +49,7 @@ function Layout(props) {
 
                         {/* Content */}
                         <main>
-                            <div className="top">
+                            <div className="top-tablet">
                                 <div className="theme-toggler tablet-only" onClick={() => {
                                                 const themeToggler = document.querySelector(".theme-toggler")
                                                 document.body.classList.toggle('dark-theme-variables')
