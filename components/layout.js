@@ -78,6 +78,15 @@ function Layout(props) {
 
                     {/* Content */}
                     <main>
+                        <div className="theme-toggler tablet-only" onClick={() => {
+                                        const themeToggler = document.querySelector(".theme-toggler")
+                                        document.body.classList.toggle('dark-theme-variables')
+                                        themeToggler.querySelector('span').classList.toggle('active')
+                                    }}>
+                                <span className="material-icons-sharp active">light_mode</span>
+                                <span className="material-icons-sharp">dark_mode</span>
+                        </div>
+                        <br></br>
                         {props.children}
                     </main>
 

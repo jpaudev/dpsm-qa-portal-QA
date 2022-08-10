@@ -748,7 +748,7 @@ nav .nav a.active span{
     display: none;
 }
 
-.right .theme-toggler{
+.right .theme-toggler, main .theme-toggler{
     background: var(--color-light);
     display: flex;
     justify-content: space-between;
@@ -759,7 +759,7 @@ nav .nav a.active span{
     border-radius: var(--border-radius-1);
 }
 
-.right .theme-toggler span{
+.right .theme-toggler span, main .theme-toggler span{
     font-size: 1.2rem;
     width: 50%;
     height: 100%;
@@ -768,7 +768,7 @@ nav .nav a.active span{
     justify-content: center;
 }
 
-.right .theme-toggler span.active{
+.right .theme-toggler span.active, main .theme-toggler span.active{
     background: var(--color-maroon);
     color: white;
     border-radius: var(--border-radius-1);
@@ -930,16 +930,12 @@ nav .nav a.active span{
     font-size: 18px;
 }
 
+/* Responsiveness */
 
-
-
-
-    /* PC Screen Size */
-@media screen and (max-width: 1201px){
-    aside{
-        display: block;
-    }
+main .tablet-only{
+    display: none;
 }
+
 
 
 
@@ -950,11 +946,17 @@ nav .nav a.active span{
 @media screen and (max-width: 1200px){
     .containerMain{
         width: 94%;
-        grid-template-columns: 9rem auto 20rem;
+        grid-template-columns: 7rem auto;
     }
+
+
 
     aside{
         display: block;
+    }
+    
+    aside .logo{
+        margin-left: 1rem;
     }
 
     aside .logo h2{
@@ -978,6 +980,54 @@ nav .nav a.active span{
         grid-template-columns: 1fr;
         gap: 0;
     }
+
+    
+    .right{
+        width: 94%;
+        margin: 0 auto 4rem;
+    }
+
+    .right .top{
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        padding: 0 0.8rem;
+        height: 4.6rem;
+        background: var(--color-maroon);
+        width: 100%;
+        margin: 0;
+        z-index: 2;
+        box-shadow: 0 1rem 1rem var(--color-light);
+    }
+
+    .right .top .theme-toggler{
+        width: 4.4rem;
+        position: absolute;
+        left: 66%;
+    }
+
+    .right .profile .info{
+        display: none;
+    }
+
+    .right .top button{
+        display: inline-block;
+        background: transparent;
+        cursor: pointer;
+        color: var(--color-dark);
+        position: absolute;
+        left: 1rem;
+    }
+
+    .right .top button span{
+        font-size: 2rem;
+    }
+
+    main .tablet-only{
+        display: flex;
+    }
+
 
 }
 
@@ -1004,9 +1054,6 @@ nav .nav a.active span{
         animation: showMenu 400ms ease forwards;
     }
 
-    /* aside .sidebar{
-        background: blue;
-    } */
 
     @keyframes showMenu{
         to{
@@ -1121,6 +1168,10 @@ nav .nav a.active span{
     }
 
     .less-important-mobile{
+        display: none;
+    }
+
+    .tablet-only{
         display: none;
     }
 
