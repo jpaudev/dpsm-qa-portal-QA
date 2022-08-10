@@ -32,7 +32,7 @@ function LicensureExam(props) {
                     <tr key = {props.children[key].licenseId}>
                         <td>{props.children[key].examName}</td>
                         <td className="less-important-mobile">{props.children[key].rank == 0 || props.children[key].rank == null ? 'N/A' : props.children[key].rank}</td>
-                        <td className="less-important-tablet">{props.children[key].examDate}</td>
+                        <td className="less-important-pc">{props.children[key].examDate}</td>
                         <td className="less-important-mobile">{props.children[key].licenseNumber}</td>
                         <td className="less-important-tablet">
                         {
@@ -169,7 +169,7 @@ function LicensureExam(props) {
                         <tr>
                             <th>Exam Name</th>
                             <th className="less-important-mobile">Rank</th>
-                            <th className="less-important-tablet">Date</th>
+                            <th className="less-important-pc">Date</th>
                             <th className="less-important-mobile">License Number</th>
                             <th className="less-important-tablet">Proof</th>
                             <th className="less-important-mobile">Status</th>

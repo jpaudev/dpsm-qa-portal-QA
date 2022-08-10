@@ -35,7 +35,7 @@ function TrainingSeminar(props) {
                         <td>{props.children[key].title}</td>
                         <td className="less-important-mobile">{props.children[key].role}</td>
                         <td className="less-important-tablet">{props.children[key].venue}</td>
-                        <td className="less-important-tablet">{props.children[key].dateFrom}</td>
+                        <td className="less-important-pc">{props.children[key].dateFrom}</td>
                         <td className="less-important-pc">{props.children[key].dateTo}</td>
                         <td className="less-important-pc">{props.children[key].remarks}</td>
                         <td className="less-important-tablet">
@@ -173,7 +173,7 @@ function TrainingSeminar(props) {
                             <th>Name of Training/Seminar</th>
                             <th className="less-important-mobile">Role</th>
                             <th className="less-important-tablet">Venue</th>
-                            <th className="less-important-tablet">Start Date</th>
+                            <th className="less-important-pc">Start Date</th>
                             <th className="less-important-pc">End Date</th>
                             <th className="less-important-pc">Remarks</th>
                             <th className="less-important-tablet">Proof</th>

@@ -418,7 +418,7 @@ function PublicServiceAccomplishment(props){
                             <th className="less-important-pc">End Date</th>
                             <th className="less-important-tablet">Proof</th>
                             <th className="less-important-mobile">Status</th>
-                            <th className="less-important-tablet">Approver Remarks</th>
+                            <th className="less-important-pc">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>
