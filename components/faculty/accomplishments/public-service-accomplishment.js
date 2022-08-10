@@ -68,7 +68,7 @@ function PublicServiceAccomplishment(props){
                             }
                         </td>
                         <td>{props.children[key].status}</td>
-                        <td className="less-important-mobile">{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-pc">{props.children[key].approverRemarks || 'None'}</td>
                        <td>
                             { props.editable &&
                                 <div>
@@ -418,7 +418,7 @@ function PublicServiceAccomplishment(props){
                             <th className="less-important-pc">End Date</th>
                             <th>Proof</th>
                             <th>Status</th>
-                            <th className="less-important-mobile">Approver Remarks</th>
+                            <th className="less-important-pc">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>
@@ -443,7 +443,7 @@ function PublicServiceAccomplishment(props){
                         <th className="less-important-pc">End Date</th>
                         <th>Proof</th>
                         <th>Status</th>
-                        <th>Approver Remarks</th>
+                        <th >Approver Remarks</th>
                         { (props.editable || props.approver) && <th>Action</th>}
                     </tr>
                 </thead>
