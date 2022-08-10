@@ -2,17 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /* ROOT VARIABLES */
-#panel1{
-    background-image: url('upm.jpg');
-    background-size: cover; 
-}
-
-a:link {
-    color: black;
-    background-color: transparent;
-    text-decoration: underline;
-}
-
 :root{
     --color-primary: #7380ec;
     --color-danger: #ff7782;
@@ -75,11 +64,6 @@ img{
     color: var(--color-info-dark);
 }
 
-
-/* form{
-    border: 3px solid #f1f1f1;
-} */
-
 input[type=email], input[type=password] {
      width: 60%;
      padding: 12px 20px;
@@ -133,6 +117,12 @@ span.psw {
     color: #800020
 }
 
+a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: underline;
+}
+
 .img-lock{
     margin: auto; 
     width: 90px; 
@@ -148,8 +138,21 @@ span.psw {
     border-radius: 20px;
 }
 
+#panel1{
+    background-image: url('upm.jpg');
+    background-size: cover; 
+}
 
-/* Change styles for span and cancel button on extra small screens */
+/* Media Queries */
+
+    /* Media Queries */
+
+        /* Big Tablet */
+
+@media screen and (max-width: 1200px) {
+  }
+
+        /* Mobile and Smaller Tablets */
 @media screen and (max-width: 768px) {
   span.psw {
         display: block;
