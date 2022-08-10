@@ -33,7 +33,7 @@ function Layout(props) {
                 <script src="/testScript.js"> </script>
 
             </Head>
-            
+
             {/* Header -- Topbar */}
             <Header name={ props.name } role={props.role}/>
 
@@ -49,14 +49,45 @@ function Layout(props) {
 
                         {/* Content */}
                         <main>
-                            <div className="theme-toggler tablet-only" onClick={() => {
-                                            const themeToggler = document.querySelector(".theme-toggler")
-                                            document.body.classList.toggle('dark-theme-variables')
-                                            themeToggler.querySelector('span').classList.toggle('active')
-                                        }}>
-                                    <span className="material-icons-sharp active">light_mode</span>
-                                    <span className="material-icons-sharp">dark_mode</span>
+                            <div className="top">
+                                <div className="theme-toggler tablet-only" onClick={() => {
+                                                const themeToggler = document.querySelector(".theme-toggler")
+                                                document.body.classList.toggle('dark-theme-variables')
+                                                themeToggler.querySelector('span').classList.toggle('active')
+                                            }}>
+                                        <span className="material-icons-sharp active">light_mode</span>
+                                        <span className="material-icons-sharp">dark_mode</span>
+                                </div>
+
+
+                                <div className="profile tablet-only">
+                                        <div className="info">
+                                            <p>Logged In As: <br/> <b>{props.name}</b></p>
+                                            { props.role == "1" &&
+                                                <p className="text-muted">Faculty</p>
+                                            }
+                                            { props.role == "2" &&
+                                                <p className="text-muted">Unit Head</p>
+                                            }
+                                            { props.role == "3" &&
+                                                <p className="text-muted">Department Chair</p>
+                                            }
+
+                                            { props.role == "4" &&
+                                                <p className="text-muted">DAPC</p>
+                                            }
+                                            { props.role == "5" &&
+                                                <p className="text-muted">Admin Staff</p>
+                                            }
+                                        
+                                        </div>
+                                        <div className="profile-photo">
+                                            <img src="/profile-1.jpg"/>
+                                        </div>
+                                </div>
                             </div>
+
+
                             <br></br>
                             {props.children}
                         </main>

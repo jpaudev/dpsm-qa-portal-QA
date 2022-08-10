@@ -1061,6 +1061,19 @@ main .tablet-only{
         font-size: 2rem;
     }
 
+    main .top{
+        display: flex;
+        position: relative;
+        height: 75px;
+    }
+
+    main .profile{
+        position: absolute;
+        right: 0;
+    }
+
+
+
     /* Responsiveness */
 
     main .tablet-only{
