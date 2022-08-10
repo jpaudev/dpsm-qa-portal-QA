@@ -33,7 +33,7 @@ function AssignDeptChair(props) {
                     </select>
                 </div>
                 <br/>
-                <button className = "btn customButton maroon" data-bs-toggle="modal" style={{width:"50%", margin:"auto"}} data-bs-target="#assignDeptChair">
+                <button className = "btn customButton maroon" data-bs-toggle="modal" style={{width:"25rem", margin:"auto"}} data-bs-target="#assignDeptChair">
                 <span className="material-icons-sharp">check_circle_outline</span>
                 Assign New Department Chair</button>
             </div>

@@ -86,7 +86,7 @@ function Layout(props) {
 
                         {/* TOP */}
                         <div className="top" >
-                            <button id="menu-btn" onClick={() => {
+                            <button id="menu-btn" style={{color: "white"}} onClick={() => {
                                         const sideMenu = document.querySelector("aside")
                                         sideMenu.style.display = 'block'
 
