@@ -943,9 +943,9 @@ nav .nav a.active span{
 
 
 
-    /* Media Queries */
+/* Media Queries */
 
-    /* Big Tablet */
+/* Big Tablet */
 
 @media screen and (max-width: 1200px){
     .containerMain{
@@ -979,31 +979,10 @@ nav .nav a.active span{
         gap: 0;
     }
 
-    main .table-title{
-        width: 94%;
-        position: relative;
-        left: 50%;
-        transform: translateX(-50%);
-        margin: 2rem 0 0 8.8rem;
-    }
-
-
-    main .table-title h2{
-        padding-left: 2.5rem;
-    }
-
-    main .table-title table{
-        width: 83vw;
-    }
-
-
-
-
-
-
 }
 
 /* Mobile and Smaller Tablets */
+
 @media screen and (max-width: 768px){
     .containerMain{
         width: 100%;
