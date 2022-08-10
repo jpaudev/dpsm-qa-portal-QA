@@ -1137,7 +1137,6 @@ main .tablet-only{
     aside .close{
         display: inline-block;
         cursor: pointer;
-        margin-left: 1rem;
         background: var(--color-background);
     }
 
