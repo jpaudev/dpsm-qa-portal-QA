@@ -15,7 +15,7 @@ function AssignAdminClerk(props) {
                 <tr key = {props.children[key].userId}>
                     <td>{props.children[key].name}</td>
                     <td>
-                        <button className="btn customButton maroon" data-bs-toggle="modal" data-bs-target="#deleteClerk" onClick={() => {
+                        <button className="btn customButton delete" data-bs-toggle="modal" data-bs-target="#deleteClerk" onClick={() => {
                             setDelete(props.children[key].userId)
                         }}><span className="material-icons-sharp">delete_outline</span>Delete</button>
                     </td>

@@ -66,6 +66,7 @@ class ClerkForm extends React.Component{
                                 </div>
                             </div>
                         </div>
+                        <br/>
                         <div className = "row pb-3">
                         <button type = "submit" className = "btn customButton green" style={{margin:"auto"}} disabled = {isSubmitting}>
                             <span className="material-icons-sharp">person_add</span> Add Clerk

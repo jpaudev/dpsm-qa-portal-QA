@@ -6,7 +6,8 @@
 :root{
     --color-primary: #6671d5;
     --color-danger: #b90707;
-    --color-success: #23be8a;
+    /* --color-success: #23be8a; */
+    --color-success: #2d5f32;
     --color-warning: #ffae35;
     --color-white: #fff;
     --color-info-dark: #c6ccd6;
@@ -27,6 +28,13 @@
     --color-button-yellow-hover: #e69317;
     --color-button-blue: #6671d5;
     --color-button-blue-hover: #2734a9;
+    --color-button-delete: #800020;
+    --color-button-add: #215025;
+    --color-text-hover: white;
+    --color-text-disabled: #404356;
+    --color-field-white: white;
+    --color-field-disabled: #F0F0F0;
+
 
     --card-border-radius: 2rem;
     --border-radius-1: 0.4rem;
@@ -54,7 +62,7 @@
     --color-background: #181a1e;
     --color-white: #202528;
     --color-dark: #edeffd;
-    --color-info-dark: #edeffd;
+    --color-info-dark: #2f333a;
     --color-dark-variant: #a3bdcc;
     --color-light: rgba(0,0,0,0.4);
     --box-shadow: 0 2rem 3rem var(--color-light);
@@ -63,11 +71,20 @@
     --color-button-maroon: #215025;
     --color-button-maroon-hover: #2d5f32;
     --color-green: #cecece;
+    --color-field-white: #2f333a;
+    --color-field-disabled: #4f5761;
+    --color-text-disabled: #c4c4c4;
 }
 
+.form-control, .form-select{
+    background: var(--color-field-white);
+    color: var(--color-dark);
+}
 
-
-
+.form-control:disabled {
+    background: var(--color-field-disabled);
+    color: var(--color-text-disabled);
+}
 
 *{
     margin: 0;
@@ -508,6 +525,11 @@ main .table-title a{
     background: var(--color-white);
 }
 
+.list-group .list-group-item:hover{
+    background: var(--color-background);
+    color: var(--color-dark);
+}
+
 .table-name{
     width: 600px;
     color: var(--color-dark);
@@ -622,7 +644,7 @@ nav .nav .nav-top.active{
     width: 4rem;
     margin: 1px;
     align-items: left;
-    color: #404356;
+    color: var(--color-dark);
     background-color: var(--color-info-dark);
 }
 
@@ -646,42 +668,53 @@ nav .nav a.active span{
 
 
 .green{
-    outline-color: violet;
-    background: var(--color-green);
+    background: var(--color-button-add);
+    color: var(--color-text-hover);
 }
 
 .green:hover{
     background: var(--color-success);
+    color: var(--color-text-hover);
 }
 
 .maroon{
     background: var(--color-button-maroon);
-    color: white;
+    color: var(--color-text-hover);
 }
 
 .maroon:hover{
     background: var(--color-button-maroon-hover);
-    color: white;
+    color: var(--color-text-hover);
+}
+
+.delete{
+    background: var(--color-button-delete);
+    color: var(--color-text-hover);
+}
+
+.delete:hover{
+    background: var(--color-danger);
+    color: var(--color-text-hover);
 }
 
 .yellow{
     background: var(--color-button-yellow);
-    color: white;
+    color: var(--color-text-hover);
 }
 
 .yellow:hover{
     background: var(--color-button-yellow-hover);
-    color: white;
+    color: var(--color-text-hover);
 }
 
 .blue{
     background: var(--color-button-blue);
-    color: white;
+    color: var(--color-text-hover);
 }
 
 .blue:hover{
     background: var(--color-button-blue-hover);
-    color: white;
+    color: var(--color-text-hover);
 }
 
 /* main .card form select{
@@ -707,11 +740,6 @@ nav .nav a.active span{
 .form-check .form-check-label{
     font-size: 16px;
     padding-left: 1rem;
-}
-
-#form-select{
-    background: white;
-    color: #181a1e;
 }
 
 
@@ -889,9 +917,11 @@ nav .nav a.active span{
     vertical-align: middle;
  }
  
- .modal-content {
+ .modal-content, .close {
      font-family: Arial, Helvetica, sans-serif;
      font-size: 1rem;
+     background: var(--color-white);
+     color: var(--color-dark)
  }
 
 .modal {
@@ -939,9 +969,13 @@ main .tablet-only{
 
 
 
+
 /* Media Queries */
 
-/* Big Tablet */
+    /* Media Queries */
+
+
+    /* Big Tablet */
 
 @media screen and (max-width: 1200px){
     .containerMain{
@@ -980,6 +1014,7 @@ main .tablet-only{
         grid-template-columns: 1fr;
         gap: 0;
     }
+
 
     
     .right{
@@ -1029,10 +1064,10 @@ main .tablet-only{
     }
 
 
+
 }
 
 /* Mobile and Smaller Tablets */
-
 @media screen and (max-width: 768px){
     .containerMain{
         width: 100%;
@@ -1052,6 +1087,12 @@ main .tablet-only{
         padding-right: var(--card-padding);
         display: none;
         animation: showMenu 400ms ease forwards;
+        background: var(--color-background);
+    }
+
+
+    aside .sidebar{
+        background: var(--color-background);
     }
 
 
@@ -1088,6 +1129,8 @@ main .tablet-only{
     aside .close{
         display: inline-block;
         cursor: pointer;
+        margin-left: 1rem;
+        background: var(--color-background);
     }
 
     aside .top{
@@ -1177,6 +1220,5 @@ main .tablet-only{
 
 } 
 
-#graph{
-    color: var(--color-dark);
-}
+
+

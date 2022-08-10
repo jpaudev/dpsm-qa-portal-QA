@@ -148,9 +148,9 @@ span.psw {
 
 
 /* Change styles for span and cancel button on extra small screens */
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 768px) {
   span.psw {
-         display: block;
+        display: block;
         float: none;
   }
   .cancelbtn {
@@ -160,6 +160,10 @@ span.psw {
   #panel1{
         display: none;
   }
+
+  body{
+    overflow-y: visible;
+}
 
   /*#user{
         display: none;

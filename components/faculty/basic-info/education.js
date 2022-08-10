@@ -81,7 +81,7 @@ function Education(props) {
                                     }}>
                                         <span className="material-icons-sharp">edit</span>
                                     </button>
-                                    <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteEducation" onClick={() => {
+                                    <button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deleteEducation" onClick={() => {
                                         setDelete(props.children[key].educInfoId)
                                     }}>
                                         <span className="material-icons-sharp">delete</span>

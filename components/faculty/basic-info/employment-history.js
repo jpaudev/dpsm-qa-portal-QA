@@ -34,7 +34,7 @@ function EmploymentHistory(props){
 								}}>
                                     <span className="material-icons-sharp">edit</span>
                                 </button>
-								<button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteEmployment" onClick={() => {
+								<button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deleteEmployment" onClick={() => {
 									empInfoId = props.children.faculty_employment_infos[key].employmentInfoId
 								}}>
                                     <span className="material-icons-sharp">delete</span>

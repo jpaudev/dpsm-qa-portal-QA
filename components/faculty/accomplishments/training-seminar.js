@@ -83,7 +83,7 @@ function TrainingSeminar(props) {
                                     }}>
                                         <span className="material-icons-sharp">edit</span>
                                     </button>
-                                <button className="btn customButton-icon-only maroon" data-bs-toggle="modal" data-bs-target="#deleteTrainingSeminar" onClick={() => {
+                                <button className="btn customButton-icon-only delete" data-bs-toggle="modal" data-bs-target="#deleteTrainingSeminar" onClick={() => {
                                     setDelete(props.children[key].tsId)
                                 }}>
                                     <span className="material-icons-sharp">delete</span>

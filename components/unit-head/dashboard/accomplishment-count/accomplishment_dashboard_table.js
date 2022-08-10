@@ -135,7 +135,7 @@ function Table ({columns, data}){
                           ? '#ffa50078'
                           : cell.isPlaceholder
                           ? '#ff000042'
-                          : 'white',
+                          : 'var(--color-background)',
                       }}
                     >
                       {cell.isGrouped ? (
