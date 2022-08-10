@@ -29,9 +29,9 @@ function WorkExperience(props){
             if(props.children[key].workExpId != null) {
                 return (
                     <tr key = {props.children[key].workExpId}>
-                        <td>{props.children[key].employerName}</td>
+                        <td className="less-important-mobile">{props.children[key].employerName}</td>
                         <td>{props.children[key].position}</td>
-                        <td>{props.children[key].startDate}</td>
+                        <td className="less-important-mobile">{props.children[key].startDate}</td>
                         <td className="less-important-mobile">{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
                         <td className="less-important-pc">{props.children[key].description}</td>
                         { props.editable &&
@@ -132,9 +132,9 @@ function WorkExperience(props){
                 <table className="table table-hover">
                     <thead>
                         <tr key = "headers">
-                            <th>Employer</th>
+                            <th className="less-important-mobile">Employer</th>
                             <th>Position</th>
-                            <th>Start Date</th>
+                            <th className="less-important-mobile">Start Date</th>
                             <th className="less-important-mobile">End Date</th>
                             <th className="less-important-pc">Description</th>
                             <th>Action</th>

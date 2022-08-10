@@ -22,7 +22,7 @@ function EmploymentHistory(props){
 					<td>{props.children.faculty_employment_infos[key].faculty_employment_position.position}</td>
                     <td>{props.children.faculty_employment_infos[key].status}</td>
                     <td>{props.children.faculty_employment_infos[key].category}</td>
-					<td>{props.children.faculty_employment_infos[key].startDate}</td>
+					<td className="less-important-mobile">{props.children.faculty_employment_infos[key].startDate}</td>
 					<td className="less-important-mobile">{props.children.faculty_employment_infos[key].endDate || 'Present'}</td>
 					{
 						props.role == 5 && 
@@ -76,7 +76,7 @@ function EmploymentHistory(props){
                             <th>Positions</th>
                             <th>Status</th>
                             <th>Category</th>
-                            <th>Start Date</th>
+                            <th className="less-important-mobile">Start Date</th>
                             <th className="less-important-mobile">End Date</th>
                             { props.role == 5 && <th>Action</th> }
                         </tr>

@@ -30,12 +30,12 @@ function Education(props) {
                 return (
                     <tr key = {props.children[key].educInfoId}>
                         <td>{props.children[key].degreeCert}</td>
-                        <td>{props.children[key].degreeType}</td>
+                        <td className="less-important-mobile">{props.children[key].degreeType}</td>
                         <td className="less-important-pc">{props.children[key].majorSpecialization}</td>
                         <td className="less-important-mobile">{props.children[key].institutionSchool}</td>
                         <td className="less-important-pc">{props.children[key].startDate}</td>
                         <td className="less-important-mobile">{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
-                        <td>
+                        <td className="less-important-mobile">
                             {
                                 props.children[key].proof &&
                                 <div className = "center">
@@ -178,12 +178,12 @@ function Education(props) {
                     <thead>
                         <tr>
                             <th>Degree</th>
-                            <th>Type</th>
+                            <th className="less-important-mobile">Type</th>
                             <th className="less-important-pc">Major</th>
                             <th className="less-important-mobile">Institution</th>
                             <th className="less-important-pc">Start Date</th>
                             <th className="less-important-mobile">End Date</th>
-                            <th>Proof</th>
+                            <th className="less-important-mobile">Proof</th>
                             <th className="less-important-mobile">Status</th>
                             <th className="less-important-mobile">Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
