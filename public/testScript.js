@@ -9,7 +9,7 @@ function reportWindowSize() {
     const sideMenu = document.querySelector("aside");
 
     if(iWidth > maxWidth){
-        document.getElementById("demo1").innerHTML = "Julius";
+        document.getElementById("demo1").innerHTML = "QA Portal";
         sideMenu.style.display = "block";
     }
     else{
