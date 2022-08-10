@@ -1029,12 +1029,11 @@ nav .nav a.active span{
         padding-right: var(--card-padding);
         display: none;
         animation: showMenu 400ms ease forwards;
-        background: pink;
     }
 
-    aside .sidebar{
+    /* aside .sidebar{
         background: blue;
-    }
+    } */
 
     @keyframes showMenu{
         to{
@@ -1069,7 +1068,6 @@ nav .nav a.active span{
     aside .close{
         display: inline-block;
         cursor: pointer;
-        margin-left: 2rem;
     }
 
     aside .top{

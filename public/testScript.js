@@ -6,17 +6,25 @@ function reportWindowSize() {
 
     var oWidth = window.outerWidth;
     var oHeight = window.outerHeight;
+    const sideMenu = document.querySelector("aside");
 
     if(iWidth > maxWidth){
-        // document.getElementById("demo1").innerHTML = "Julius";
-        document.getElementById("sidebar").style.display = "block";
+        document.getElementById("demo1").innerHTML = "Julius";
+        sideMenu.style.display = "block";
     }
     else{
-        // document.getElementById("demo1").innerHTML = iWidth + " " + iHeight + ": " + oWidth + " " + oHeight;
-        document.getElementById("sidebar").style.display = "none";
+        try{
+            document.getElementById("demo1").innerHTML = iWidth + " " + iHeight + ": " + oWidth + " " + oHeight;
+            sideMenu.style.display = "none";
+        }
+        catch(e){
+            alert("Error: " + e.description );
+        }
     }
 
     
 }
 
 window.onresize = reportWindowSize;
+
+

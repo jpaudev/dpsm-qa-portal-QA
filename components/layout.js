@@ -135,13 +135,6 @@ function Layout(props) {
                 </div>
 
 
-                {/* <div className = "row" id = "layout_row">
-                    <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} roleAssignment={props.roleAssignmentFlag} />
-                        <div className="col" id = "layout_content">
-                            { props.children }
-                        </div>
-            </div> */}
-
 
             </body>
 
