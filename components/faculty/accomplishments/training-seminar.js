@@ -33,12 +33,12 @@ function TrainingSeminar(props) {
                 return (
                     <tr key = {props.children[key].tsId}>
                         <td>{props.children[key].title}</td>
-                        <td>{props.children[key].role}</td>
-                        <td>{props.children[key].venue}</td>
-                        <td>{props.children[key].dateFrom}</td>
+                        <td className="less-important-mobile">{props.children[key].role}</td>
+                        <td className="less-important-mobile">{props.children[key].venue}</td>
+                        <td className="less-important-mobile">{props.children[key].dateFrom}</td>
                         <td className="less-important-pc">{props.children[key].dateTo}</td>
                         <td className="less-important-pc">{props.children[key].remarks}</td>
-                        <td>
+                        <td className="less-important-mobile">
                             {
                                 props.children[key].proof &&
                                 <div className = "center">
@@ -66,7 +66,7 @@ function TrainingSeminar(props) {
                                 <div>None</div>
                             }
                         </td>
-                        <td>{props.children[key].status}</td>
+                        <td className="less-important-mobile">{props.children[key].status}</td>
                         <td className="less-important-pc">{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         { props.editable &&
@@ -171,13 +171,13 @@ function TrainingSeminar(props) {
                     <thead>
                         <tr>
                             <th>Name of Training/Seminar</th>
-                            <th>Role</th>
-                            <th>Venue</th>
-                            <th>Start Date</th>
+                            <th className="less-important-mobile">Role</th>
+                            <th className="less-important-mobile">Venue</th>
+                            <th className="less-important-mobile">Start Date</th>
                             <th className="less-important-pc">End Date</th>
                             <th className="less-important-pc">Remarks</th>
-                            <th>Proof</th>
-                            <th>Status</th>
+                            <th className="less-important-mobile">Proof</th>
+                            <th className="less-important-mobile">Status</th>
                             <th className="less-important-pc">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>

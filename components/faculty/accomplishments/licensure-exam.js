@@ -31,10 +31,10 @@ function LicensureExam(props) {
                 return (
                     <tr key = {props.children[key].licenseId}>
                         <td>{props.children[key].examName}</td>
-                        <td>{props.children[key].rank == 0 || props.children[key].rank == null ? 'N/A' : props.children[key].rank}</td>
-                        <td>{props.children[key].examDate}</td>
-                        <td>{props.children[key].licenseNumber}</td>
-                        <td>
+                        <td className="less-important-mobile">{props.children[key].rank == 0 || props.children[key].rank == null ? 'N/A' : props.children[key].rank}</td>
+                        <td className="less-important-mobile">{props.children[key].examDate}</td>
+                        <td className="less-important-mobile">{props.children[key].licenseNumber}</td>
+                        <td className="less-important-mobile">
                         {
                             props.children[key].proof &&
                             <div className = "btn-grp">
@@ -62,7 +62,7 @@ function LicensureExam(props) {
                             <div>None</div>
                         }
                         </td>
-                        <td>{props.children[key].status}</td>
+                        <td className="less-important-mobile">{props.children[key].status}</td>
                         <td className="less-important-pc">{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         { props.editable &&
@@ -168,11 +168,11 @@ function LicensureExam(props) {
                     <thead>
                         <tr>
                             <th>Exam Name</th>
-                            <th>Rank</th>
-                            <th>Date</th>
-                            <th>License Number</th>
-                            <th>Proof</th>
-                            <th>Status</th>
+                            <th className="less-important-mobile">Rank</th>
+                            <th className="less-important-mobile">Date</th>
+                            <th className="less-important-mobile">License Number</th>
+                            <th className="less-important-mobile">Proof</th>
+                            <th className="less-important-mobile">Status</th>
                             <th className="less-important-pc">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>

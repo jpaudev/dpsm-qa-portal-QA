@@ -13,8 +13,8 @@ function ApproveUnitHead(props) {
             let incomingUnitHead = props.children[key].faculty_personal_info.lastName + ', ' + props.children[key].faculty_personal_info.firstName
             return(
                 <tr key = {props.children[key].unitId}>
-                    <td>{props.children[key].unit}</td>
-                    <td>{currentUnitHead}</td>
+                    <td className="less-important-mobile">{props.children[key].unit}</td>
+                    <td className="less-important-mobile">{currentUnitHead}</td>
                     <td>{incomingUnitHead}</td>
                     <td>
                         <button className="btn customButton green" style={{marginRight:"1rem"}} data-bs-toggle="modal" data-bs-target="#approveUnitHead" onClick={() => {
@@ -45,8 +45,8 @@ function ApproveUnitHead(props) {
             <table className="table table-hover">
                 <thead>
                     <tr>
-                        <th>Unit</th>
-                        <th>Current Unit Head</th>
+                        <th className="less-important-mobile">Unit</th>
+                        <th className="less-important-mobile">Current Unit Head</th>
                         <th>Incoming Unit Head</th>
                         <th>Action</th>
                     </tr>

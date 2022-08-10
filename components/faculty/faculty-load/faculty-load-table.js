@@ -40,10 +40,10 @@ function FacultyLoadTable(props) {
                 return (
                     <tr key = {props.children[key].recordId}>
                     <td>{props.children[key].subject}</td>
-                    <td>{props.children[key].section}</td>
-                    <td>{props.children[key].semester}</td>
-                    <td>{props.children[key].academicYear - 1 + ' - ' + props.children[key].academicYear}</td>
-                    <td>
+                    <td className="less-important-mobile">{props.children[key].section}</td>
+                    <td className="less-important-mobile">{props.children[key].semester}</td>
+                    <td className="less-important-mobile">{props.children[key].academicYear - 1 + ' - ' + props.children[key].academicYear}</td>
+                    <td className="less-important-mobile">
                             {
                                 props.children[key].syllabus &&
 
@@ -85,6 +85,12 @@ function FacultyLoadTable(props) {
                     </td>
 
                     {props.role==5 && <td>
+                            <button type="submit" className="btn customButton-icon-only blue" data-bs-toggle="modal" data-bs-target="#seeDetailsFacultyLoad" onClick={() => {
+                                setEdit(props.children[key].recordId)
+                                setKey(editClass)
+                            }}>
+                                <span className="material-icons-sharp">visibility</span>
+                            </button>
                             <button className="btn customButton-icon-only yellow" data-bs-toggle="modal" data-bs-target="#editClass" onClick={() => {
                                 setEdit(props.children[key].recordId)
                                 setKey(editClass)
@@ -155,10 +161,10 @@ function FacultyLoadTable(props) {
                     <thead>
                         <tr>
                             <th>Subject</th>
-                            <th>Section</th>
-                            <th>Semester</th>
-                            <th>Academic Year</th>
-                            <th>Syllabus</th>
+                            <th className="less-important-mobile">Section</th>
+                            <th className="less-important-mobile">Semester</th>
+                            <th className="less-important-mobile">Academic Year</th>
+                            <th className="less-important-mobile">Syllabus</th>
                             {props.role==5 && <th>Action</th>}
                         </tr>
                     </thead>
@@ -352,6 +358,42 @@ function FacultyLoadTable(props) {
                     </div>
                 </div>
             </div>
+
+                    {/* <!-- See More Modal--> */}
+        <div className="modal fade" id="seeDetailsFacultyLoad" tabIndex="-1" role="dialog" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+                <div className="modal-content">
+                <div className="modal-header">
+                    <h5 className="modal-title">View Faculty Load Information</h5>
+                    <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-details">
+                        <h3>Subject: </h3>
+                        <h4>{currData.subject}</h4>
+                        <br></br>
+                        <h3>Section: </h3>
+                        <h4>{currData.section}</h4>
+                        <br></br>
+                        <h3>Semester: </h3>
+                        <h4>{currData.semester}</h4>
+                        <br></br>
+                        <h3>Academic Year: </h3>
+                        <h4>{currData.academicYear}</h4>
+                        <br></br>
+                        <h3>Syllabus: </h3>
+                        <h4>{currData.syllabus}</h4>
+                        <br></br>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+                </div>
+            </div>
+        </div>
 
         </div>
 

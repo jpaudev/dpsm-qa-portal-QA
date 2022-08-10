@@ -70,11 +70,11 @@ function FacultyList(props){
 
 							{
 								props.path != 'approval' &&
-								<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
+								<td className="less-important-mobile"><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
 							}
 							{
 								props.path != 'approval' &&
-								<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
+								<td className="less-important-mobile">{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
 							}
 							{
 								props.role == 5 &&
@@ -102,11 +102,11 @@ function FacultyList(props){
 										<th className="table-name">Name</th>
 										{
 										props.path != 'approval' &&
-										<th>Status</th>
+										<th className="less-important-mobile">Status</th>
 										}
 										{
 										props.path != 'approval' &&
-										<th>Remarks</th>
+										<th className="less-important-mobile">Remarks</th>
 										}
 										{
 											props.role == 5 &&
@@ -155,11 +155,11 @@ function FacultyList(props){
 							</td>
 							{
 								props.path != 'approval' &&
-								<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
+								<td className="less-important-mobile"><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
 							}
 							{
 								props.path != 'approval' &&
-								<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
+								<td className="less-important-mobile">{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
 							}
 							{
 								props.role == 5 &&
@@ -187,11 +187,11 @@ function FacultyList(props){
 										<th className="table-name">Name</th>
 										{
 										props.path != 'approval' &&
-										<th>Status</th>
+										<th className="less-important-mobile">Status</th>
 										}
 										{
 										props.path != 'approval' &&
-										<th>Remarks</th>
+										<th className="less-important-mobile">Remarks</th>
 										}
 										{
 											props.role == 5 &&
@@ -239,11 +239,11 @@ function FacultyList(props){
 							</td>
 							{
 								props.path != 'approval' &&
-								<td><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
+								<td className="less-important-mobile"><span className={statusClass}>{faculty[index].faculty_personal_info.user.status}</span></td>
 							}
 							{
 								props.path != 'approval' &&
-								<td>{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
+								<td className="less-important-mobile">{faculty[index].faculty_personal_info.user.remarks || 'None'}</td>
 							}
 							{
 								props.role == 5 &&
@@ -271,11 +271,11 @@ function FacultyList(props){
 										<th className="table-name">Name</th>
 										{
 										props.path != 'approval' &&
-										<th>Status</th>
+										<th className="less-important-mobile">Status</th>
 										}
 										{
 										props.path != 'approval' &&
-										<th>Remarks</th>
+										<th className="less-important-mobile">Remarks</th>
 										}
 										{
 											props.role == 5 &&
