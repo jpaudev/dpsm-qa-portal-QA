@@ -193,18 +193,6 @@ function DegreeCount(props) {
 	    			<div className="tab-pane fade" id="degree-table" role="tabpanel" aria-labelledby="degree-table-tab"><DegreeAnalyticsTable data={tableData} /></div>
             	</div>
 				<br/><br/>
-                
-		{/* <style jsx>{`
-			a.nav-item:focus{
-				background-color:#78b6c2;
-			}
-			a.nav-item:hover{
-				background-color:#78b6c2;
-			}
-			a.active{
-				background-color:#78b6c2;
-			}
-		`}</style> */}
 		</div>
 	)
 }

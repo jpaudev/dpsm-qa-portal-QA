@@ -70,8 +70,6 @@ function ResearchGrant(props){
                         <td className="less-important-pc">{props.children[key].granter}</td>
                         <td className="less-important-pc">{props.children[key].amount}</td>
                         <td className="less-important-pc">{props.children[key].projectedStart} <i>to</i> {props.children[key].projectedEnd}</td>
-                        {/* <td className="less-important-pc">{props.children[key].actualStart}</td>
-                        <td className="less-important-pc">{props.children[key].actualEnd}</td> */}
                         <td className="less-important-mobile">{props.children[key].researchProgress}</td>
                         <td className="less-important-tablet">{
                                 props.children[key].proof && 
@@ -229,8 +227,6 @@ function ResearchGrant(props){
                             <th className="less-important-pc">Sponsor</th>
                             <th className="less-important-pc">Amount</th>
                             <th className="less-important-pc">Projected Duration</th>
-                            {/* <th className="less-important-pc">Start Date</th>
-                            <th className="less-important-pc">End Date</th> */}
                             <th className="less-important-mobile">Research Progress</th>
                             <th className="less-important-tablet">Proof</th>
                             <th className="less-important-mobile">Status</th>

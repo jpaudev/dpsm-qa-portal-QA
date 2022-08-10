@@ -8,31 +8,6 @@ class ResearchGrantFormAuthor extends React.Component{
 			duplicateAuthors: []
 		}
 	}
-	// clone(){
-	// 	let authors = Object.keys(this.props.faculty).map(key => {
-	// 		return (
-	// 			<option value = {this.props.faculty[key].facultyId}>{this.props.faculty[key].lastName + ', ' + this.props.faculty[key].firstName}</option> 
-	// 		);
-	// 	});
-	// 	this.state.duplicateAuthors.push(<div><div className = "form-row">
-	// 		<div className = "form-group col-md-6">
-
-	// 			<label htmlFor = "ResearchAuthorDPSM[]"> Researcher (from DPSM) </label>
-	// 			<select className = "form-control col-md-6" name = "ResearchAuthorDPSM[]" required>
-	// 				{authors}
-	// 			</select>
-	// 		</div>
-	// 	</div></div>)
-	// 	this.setState({
-
-	// 	})
-	// }
-	// remove(){
-	// 	this.state.duplicateAuthors.pop()
-	// 	this.setState({
-
-	// 	})
-	// }
 	render(){	
 		let authors = Object.keys(this.props.faculty).map(key => {
 			return(

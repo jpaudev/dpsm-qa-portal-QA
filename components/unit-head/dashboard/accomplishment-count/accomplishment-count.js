@@ -219,20 +219,6 @@ function AccomplishmentCount(props){
 				<div className="tab-pane fade" id="table" role="tabpanel" aria-labelledby="table-tab"><AccomplishmentAnalyticsTable data={tableData} /></div>
 			</div>
 			<br/><br/>
-
-
-                
-		{/* <style jsx>{`
-			a.nav-item:focus{
-				background-color:#78b6c2;
-			}
-			a.nav-item:hover{
-				background-color:#78b6c2;
-			}
-			a.active{
-				background-color:#78b6c2;
-			}
-		`}</style> */}
 		</div>
 	)
 }
