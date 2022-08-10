@@ -1070,7 +1070,8 @@ nav .nav a.active span{
     aside .close{
         display: inline-block;
         cursor: pointer;
-        margin-left: 2rem;
+        margin-left: 1rem;
+        background: var(--color-background);
     }
 
     aside .top{
