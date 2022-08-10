@@ -128,6 +128,7 @@ function ForgotPassword(props){
 				<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet"/>    
 			</Head>
 
+			{/* Frame While CSS is not fully loaded */}
 			<div id="loadOverlay" style={{backgroundColor: "#333", position: "absolute", top: "0px", left: "0px", width: "100%" , height: "100%", zIndex: "2000"}}></div>
 			
 			<div className = "row">
