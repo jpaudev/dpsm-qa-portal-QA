@@ -105,9 +105,9 @@ function Sidebar(props) {
                { !staff && !faculty && 
                     <Link href={{ pathname: "/faculty/approval" }}>
                         <a className = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" }> 
-                            <span style={{marginLeft:"-5px"}} className="material-icons-sharp">pending_actions</span>
-                            <h3>Pending Approvals</h3>
-                            {props.approvalList.facultyCount > 0 && <span className="badge" style={{marginLeft:"-0.5rem"}}>{props.approvalList.facultyCount}</span>}
+                            <span className="material-icons-sharp">pending_actions</span>
+                            <h3 style={{marginRight:"-0.5rem"}}>Pending Approvals</h3>
+                            {props.approvalList.facultyCount > 0 && <span className="badge pa">{props.approvalList.facultyCount}</span>}
                         </a>
                     </Link> 
                 }
