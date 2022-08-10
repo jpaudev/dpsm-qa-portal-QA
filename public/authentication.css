@@ -39,6 +39,8 @@ a:link {
     --box-shadow: 0 2rem 3 rem var(--color-light);
 }
 
+#loadOverlay{display: none;}
+
 *{
     margin: 0;
     outline: 0;

@@ -128,6 +128,8 @@ function ForgotPassword(props){
 				<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet"/>    
 			</Head>
 
+			<div id="loadOverlay" style={{backgroundColor: "#333", position: "absolute", top: "0px", left: "0px", width: "100%" , height: "100%", zIndex: "2000"}}></div>
+			
 			<div className = "row">
 				<div className="col-md-6" id = "panel1">
 					<div className="img">

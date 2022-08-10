@@ -76,6 +76,8 @@
     --color-text-disabled: #c4c4c4;
 }
 
+#loadOverlay{display: none;}
+
 .form-control, .form-select{
     background: var(--color-field-white);
     color: var(--color-dark);
