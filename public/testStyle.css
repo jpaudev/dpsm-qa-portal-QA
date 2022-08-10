@@ -1131,7 +1131,6 @@ main .tablet-only{
         display: inline-block;
         cursor: pointer;
         background: var(--color-background);
-        margin-left: 2.75rem;
     }
 
     aside .top{
@@ -1221,6 +1220,10 @@ main .tablet-only{
     }
 
     main .tablet-only{
+        display: none;
+    }
+
+    main .top-tablet{
         display: none;
     }
 
