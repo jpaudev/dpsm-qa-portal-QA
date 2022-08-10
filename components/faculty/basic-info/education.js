@@ -34,8 +34,8 @@ function Education(props) {
                         <td className="less-important-pc">{props.children[key].majorSpecialization}</td>
                         <td className="less-important-mobile">{props.children[key].institutionSchool}</td>
                         <td className="less-important-pc">{props.children[key].startDate}</td>
-                        <td className="less-important-mobile">{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
-                        <td className="less-important-mobile">
+                        <td className="less-important-tablet">{props.children[key].endDate}{!props.children[key].endDate && <div>Present</div>}</td>
+                        <td className="less-important-tablet">
                             {
                                 props.children[key].proof &&
                                 <div className = "center">
@@ -65,7 +65,7 @@ function Education(props) {
                             }
                         </td>
                         <td className="less-important-mobile">{props.children[key].status}</td>
-                        <td className="less-important-mobile">{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-tablet">{props.children[key].approverRemarks || 'None'}</td>
                         { props.editable &&
                             <td>
                                 <div className = "btn-grp">
@@ -182,10 +182,10 @@ function Education(props) {
                             <th className="less-important-pc">Major</th>
                             <th className="less-important-mobile">Institution</th>
                             <th className="less-important-pc">Start Date</th>
-                            <th className="less-important-mobile">End Date</th>
-                            <th className="less-important-mobile">Proof</th>
+                            <th className="less-important-tablet">End Date</th>
+                            <th className="less-important-tablet    ">Proof</th>
                             <th className="less-important-mobile">Status</th>
-                            <th className="less-important-mobile">Remarks</th>
+                            <th className="less-important-tablet">Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>

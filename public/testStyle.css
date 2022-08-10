@@ -1059,8 +1059,14 @@ main .tablet-only{
         font-size: 2rem;
     }
 
+    /* Responsiveness */
+
     main .tablet-only{
         display: flex;
+    }
+
+    .less-important-tablet{
+        display: none;
     }
 
 
@@ -1214,7 +1220,7 @@ main .tablet-only{
         display: none;
     }
 
-    .tablet-only{
+    main .tablet-only{
         display: none;
     }
 

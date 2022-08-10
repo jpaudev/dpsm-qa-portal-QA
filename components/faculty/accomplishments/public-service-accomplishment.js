@@ -37,9 +37,9 @@ function PublicServiceAccomplishment(props){
                         <td>{props.children[key].position}</td>
                         <td className="less-important-mobile">{props.children[key].organization}</td>
                         <td className="less-important-pc">{props.children[key].description}</td>
-                        <td className="less-important-mobile">{props.children[key].startDate}</td>
+                        <td className="less-important-tablet">{props.children[key].startDate}</td>
                         <td className="less-important-pc">{props.children[key].endDate}</td>
-                        <td className="less-important-mobile">
+                        <td className="less-important-tablet">
                             {
                                 props.children[key].proof &&
                                 <div className = "center">
@@ -117,9 +117,9 @@ function PublicServiceAccomplishment(props){
                         <td>{props.children[key].position}</td>
                         <td className="less-important-mobile">{props.children[key].organization}</td>
                         <td className="less-important-pc">{props.children[key].description}</td>
-                        <td className="less-important-mobile">{props.children[key].startDate}</td>
+                        <td className="less-important-tablet">{props.children[key].startDate}</td>
                         <td className="less-important-pc">{props.children[key].endDate}</td>
-                        <td className="less-important-mobile">
+                        <td className="less-important-tablet">
                         {
                             props.children[key].proof &&
                             <div className = "center">
@@ -148,7 +148,7 @@ function PublicServiceAccomplishment(props){
                         }
                         </td>
                         <td className="less-important-mobile">{props.children[key].status}</td>
-                        <td className="less-important-mobile">{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-tablet">{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                             { props.editable &&
                                 <div>
@@ -197,9 +197,9 @@ function PublicServiceAccomplishment(props){
                         <td>{props.children[key].position}</td>
                         <td className="less-important-mobile">{props.children[key].organization}</td>
                         <td className="less-important-pc">{props.children[key].description}</td>
-                        <td className="less-important-mobile">{props.children[key].startDate}</td>
+                        <td className="less-important-tablet">{props.children[key].startDate}</td>
                         <td className="less-important-pc">{props.children[key].endDate}</td>
-                        <td className="less-important-mobile">
+                        <td className="less-important-tablet">
                         {
                             props.children[key].proof &&
                             <div className = "center">
@@ -228,7 +228,7 @@ function PublicServiceAccomplishment(props){
                         }
                         </td>
                         <td className="less-important-mobile">{props.children[key].status}</td>
-                        <td className="less-important-mobile">{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-tablet">{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         { props.editable &&
                             <div>
@@ -277,9 +277,9 @@ function PublicServiceAccomplishment(props){
                         <td>{props.children[key].position}</td>
                         <td className="less-important-mobile">{props.children[key].organization}</td>
                         <td className="less-important-pc">{props.children[key].description}</td>
-                        <td className="less-important-mobile">{props.children[key].startDate}</td>
+                        <td className="less-important-tablet">{props.children[key].startDate}</td>
                         <td className="less-important-pc">{props.children[key].endDate}</td>
-                        <td className="less-important-mobile">
+                        <td className="less-important-tablet">
                         {
                             props.children[key].proof &&
                             <div className = "center">
@@ -308,7 +308,7 @@ function PublicServiceAccomplishment(props){
                         }
                         </td>
                         <td className="less-important-mobile">{props.children[key].status}</td>
-                        <td className="less-important-mobile">{props.children[key].approverRemarks || 'None'}</td>
+                        <td className="less-important-tablet">{props.children[key].approverRemarks || 'None'}</td>
                         <td>
                         { props.editable &&
                             <div>
@@ -414,11 +414,11 @@ function PublicServiceAccomplishment(props){
                             <th>Position/Role</th>
                             <th className="less-important-mobile">Organization</th>
                             <th className="less-important-pc">Description</th>
-                            <th className="less-important-mobile">Start Date</th>
+                            <th className="less-important-tablet">Start Date</th>
                             <th className="less-important-pc">End Date</th>
-                            <th className="less-important-mobile">Proof</th>
+                            <th className="less-important-tablet">Proof</th>
                             <th className="less-important-mobile">Status</th>
-                            <th className="less-important-mobile">Approver Remarks</th>
+                            <th className="less-important-tablet">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>
@@ -439,11 +439,11 @@ function PublicServiceAccomplishment(props){
                         <th>Position/Role</th>
                         <th className="less-important-mobile">Organization</th>
                         <th className="less-important-pc">Description</th>
-                        <th className="less-important-mobile">Start Date</th>
+                        <th className="less-important-tablet">Start Date</th>
                         <th className="less-important-pc">End Date</th>
-                        <th className="less-important-mobile">Proof</th>
+                        <th className="less-important-tablet">Proof</th>
                         <th className="less-important-mobile">Status</th>
-                        <th className="less-important-mobile">Approver Remarks</th>
+                        <th className="less-important-tablet">Approver Remarks</th>
                         { (props.editable || props.approver) && <th>Action</th>}
                     </tr>
                 </thead>
@@ -463,11 +463,11 @@ function PublicServiceAccomplishment(props){
                         <th>Position/Role</th>
                         <th className="less-important-mobile">Organization</th>
                         <th className="less-important-pc">Description</th>
-                        <th className="less-important-mobile">Start Date</th>
+                        <th className="less-important-tablet">Start Date</th>
                         <th className="less-important-pc">End Date</th>
-                        <th className="less-important-mobile">Proof</th>
+                        <th className="less-important-tablet">Proof</th>
                         <th className="less-important-mobile">Status</th>
-                        <th className="less-important-mobile">Approver Remarks</th>
+                        <th className="less-important-tablet">Approver Remarks</th>
                         { (props.editable || props.approver) && <th>Action</th>}
                     </tr>
                 </thead>
@@ -488,11 +488,11 @@ function PublicServiceAccomplishment(props){
                     <th>Position/Role</th>
                     <th className="less-important-mobile">Organization</th>
                     <th className="less-important-pc">Description</th>
-                    <th className="less-important-mobile">Start Date</th>
+                    <th className="less-important-tablet">Start Date</th>
                     <th className="less-important-pc">End Date</th>
-                    <th className="less-important-mobile">Proof</th>
+                    <th className="less-important-tablet">Proof</th>
                     <th className="less-important-mobile">Status</th>
-                    <th className="less-important-mobile">Approver Remarks</th>
+                    <th className="less-important-tablet">Approver Remarks</th>
                     { (props.editable || props.approver) && <th>Action</th>}
                 </tr>
             </thead>

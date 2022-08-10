@@ -64,7 +64,7 @@ function Publication(props){
                     <td className="less-important-pc">{props.children[key].publicationDate}</td>
                     <td className="less-important-pc">{props.children[key].url}</td>
                     <td className="less-important-pc">{props.children[key].citation}</td>
-                    <td className="less-important-mobile">{
+                    <td className="less-important-tablet">{
                             props.children[key].proof && 
                             <div className = "center">
                                 <button
@@ -91,7 +91,7 @@ function Publication(props){
                         }
                     </td>
                     <td className="less-important-mobile">{props.children[key].status}</td>
-                    <td className="less-important-mobile">{props.children[key].approverRemarks || 'None'}</td>
+                    <td className="less-important-tablet">{props.children[key].approverRemarks || 'None'}</td>
                     <td>
                     { props.editable &&
                         <div>
@@ -215,9 +215,9 @@ function Publication(props){
                             <th className="less-important-pc">Publication Date</th>
                             <th className="less-important-pc">URL</th>
                             <th className="less-important-pc">Citation</th>
-                            <th className="less-important-mobile">Proof</th>
+                            <th className="less-important-tablet">Proof</th>
                             <th className="less-important-mobile">Status</th>
-                            <th className="less-important-mobile">Approver Remarks</th>
+                            <th className="less-important-tablet">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
                         </tr>
                     </thead>

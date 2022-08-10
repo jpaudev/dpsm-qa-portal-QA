@@ -63,7 +63,7 @@ function ResearchGrant(props){
                 return (
                     <tr>
                         <td>{props.children[key].researchName}</td>
-                        <td className="less-important-mobile">
+                        <td className="less-important-tablet">
                             { dpsmauth } 
                             {props.children[key].nonFacultyResearchers}
                         </td>
@@ -73,7 +73,7 @@ function ResearchGrant(props){
                         {/* <td className="less-important-pc">{props.children[key].actualStart}</td>
                         <td className="less-important-pc">{props.children[key].actualEnd}</td> */}
                         <td className="less-important-mobile">{props.children[key].researchProgress}</td>
-                        <td className="less-important-mobile">{
+                        <td className="less-important-tablet">{
                                 props.children[key].proof && 
                                 <div className = "center">
                                     <button
@@ -225,14 +225,14 @@ function ResearchGrant(props){
                     <thead>
                         <tr>
                             <th>Research Project</th>
-                            <th className="less-important-mobile">Researcher/s</th>
+                            <th className="less-important-tablet">Researcher/s</th>
                             <th className="less-important-pc">Sponsor</th>
                             <th className="less-important-pc">Amount</th>
                             <th className="less-important-pc">Projected Duration</th>
                             {/* <th className="less-important-pc">Start Date</th>
                             <th className="less-important-pc">End Date</th> */}
                             <th className="less-important-mobile">Research Progress</th>
-                            <th className="less-important-mobile">Proof</th>
+                            <th className="less-important-tablet">Proof</th>
                             <th className="less-important-mobile">Status</th>
                             <th className="less-important-pc">Approver Remarks</th>
                             { (props.editable || props.approver) && <th>Action</th>}
