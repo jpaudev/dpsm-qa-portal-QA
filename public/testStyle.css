@@ -150,6 +150,7 @@ body{
 .containerMain{
     display: grid;
     width: 96%;
+    height: 100%;
     margin: 0 auto;
     gap: 1.8rem;
     grid-template-columns: 18rem auto 20rem;    
@@ -280,7 +281,7 @@ aside .sidebar{
     background: none;
     display: flex;
     flex-direction: column;
-    height: 86vh;
+    height: 100%;
     position: relative;
     /* top: 3em; */
 }
