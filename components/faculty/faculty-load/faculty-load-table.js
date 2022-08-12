@@ -156,7 +156,7 @@ function FacultyLoadTable(props) {
                 </div>   
             }
 
-            <div className = "table-title">
+            <div className = "table-container">
                 <table>
                     <thead>
                         <tr>

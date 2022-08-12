@@ -31,7 +31,7 @@ function AssignAdminClerk(props) {
     }
 
     return (
-        <div className='table-title'>
+        <div className='table-container'>
 
         <div className="center">
             <h2 align = "center" style={{display: "inline-block", verticalAlign: "bottom"}}> Admin Clerk Assignment </h2>

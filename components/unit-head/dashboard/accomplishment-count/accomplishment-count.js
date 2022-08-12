@@ -145,7 +145,7 @@ function AccomplishmentCount(props){
 	return(
 		<div>
 			<br /><br/>
-			<h3 className="table-title-text" align = "center">Accomplishment Count</h3>
+			<h3 className="table-container-text" align = "center">Accomplishment Count</h3>
 			<div className = "dashboard-form-row">
 				{
 					props.role == 3 && 

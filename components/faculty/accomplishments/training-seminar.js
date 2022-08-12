@@ -166,7 +166,7 @@ function TrainingSeminar(props) {
             } 	
 
 
-            <div className = "table-title">
+            <div className = "table-container">
                 <table className="table table-hover">
                     <thead>
                         <tr>

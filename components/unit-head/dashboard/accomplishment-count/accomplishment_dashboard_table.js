@@ -84,7 +84,7 @@ function Table ({columns, data}){
    } = useTable({ columns, data, defaultColumn, initialState: { pageIndex: 0 } }, useFilters, useGroupBy, useSortBy, useExpanded, usePagination)
 
  return(
-<div className="table-title">
+<div className="table-container">
     <br />
     <ReactHTMLTableToExcel
 				id="test-table-xls-button"

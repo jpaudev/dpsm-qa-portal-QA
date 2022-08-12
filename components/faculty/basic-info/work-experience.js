@@ -127,8 +127,8 @@ function WorkExperience(props){
             <EmploymentHistory role={props.role} token={props.token} facultyId={props.facultyId}>{props.employment}</EmploymentHistory>
             <br/>
             <div className ="alert alert-success" role="alert" id="workexpalert" style={{visibility:"hidden"}}></div>
-            <div className = "table-title">
-                <h3 className="table-title-text"align = "center"> Outside UP Manila </h3>
+            <div className = "table-container">
+                <h3 className="table-container-text"align = "center"> Outside UP Manila </h3>
                 <table className="table table-hover">
                     <thead>
                         <tr key = "headers">

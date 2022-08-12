@@ -122,7 +122,7 @@ function DegreeCount(props) {
 	return(
 		<div>
 			<br /><br/>
-			<h3 className="table-title-text" align = "center">Attained Degrees</h3>
+			<h3 className="table-container-text" align = "center">Attained Degrees</h3>
 
 			<div className = "dashboard-form-row">
 				{

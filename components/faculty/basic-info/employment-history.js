@@ -68,8 +68,8 @@ function EmploymentHistory(props){
 		<div>
             <br/>
 			<div className ="alert alert-success" role="alert" id="employmentalert" style={{visibility:"hidden"}}></div>
-            <div className = "table-title">
-                <h3 className="table-title-text" align = "center"> Within UP Manila </h3>
+            <div className = "table-container">
+                <h3 className="table-container-text" align = "center"> Within UP Manila </h3>
                 <table className="table table-hover">
                     <thead>
                         <tr>
