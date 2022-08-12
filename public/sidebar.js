@@ -11,7 +11,6 @@ function reportWindowSize() {
         catch(e){
             ;
         }
-        
     }
     else{
         try{
@@ -21,8 +20,6 @@ function reportWindowSize() {
             ;
         }
     }
-
-    
 }
 
 window.onresize = reportWindowSize;
