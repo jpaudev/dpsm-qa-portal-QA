@@ -9,6 +9,7 @@ function reportWindowSize() {
             sideMenu.style.display = "block";
         }
         catch(e){
+            //Ignore if sideMenu does not exist
             ;
         }
     }
@@ -17,6 +18,7 @@ function reportWindowSize() {
             sideMenu.style.display = "none";
         }
         catch(e){
+            //Ignore if sideMenu does not exist
             ;
         }
     }
