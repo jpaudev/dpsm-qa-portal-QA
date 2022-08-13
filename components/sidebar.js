@@ -41,6 +41,8 @@ function Sidebar(props) {
             </div>
 
             <div className="sidebar">
+                {/* Dashboard */}
+                {/* Visibility: Department head, department chair */}
                 { !staff && !faculty && 
                     <Link href={{ pathname: "/faculty" }}>
                         <a className = { router.pathname === "/faculty" ?  "active"  : "inactive" } id = { router.pathname === "/faculty" ?  "active"  : "inactive" }>
@@ -50,7 +52,8 @@ function Sidebar(props) {
                     </Link> 
                 }
 
-                {/* Basic Information Group */}
+                {/* Basic Information */}
+                {/* Visibility: All users except admin */}
                 { !staff && 
                     <Link href={{ pathname: "/faculty/basic-info" }}>
                         <a className = { router.pathname === "/faculty/basic-info" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/basic-info" ?  "active"  : "inactive" }>
@@ -61,7 +64,8 @@ function Sidebar(props) {
                 }
 
 
-                {/* Accomplishment Group */}
+                {/* Accomplishment */}
+                {/* Visibility: All users except admin */}
                 { !staff && 
                     <Link href={{ pathname: "/faculty/accomplishment" }}>
                         <a className = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>
@@ -73,7 +77,8 @@ function Sidebar(props) {
                 }
 
 
-                {/* Others Group */}
+                {/* Faculty Load */}
+                {/* Visibility: All users except admin */}
                 { !staff && 
                     <Link href={{ pathname: "/faculty/faculty-load" }}>
                         <a className = { router.pathname === "/faculty/faculty-load" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/faculty-load" ?  "active"  : "inactive" }>
@@ -83,6 +88,8 @@ function Sidebar(props) {
                     </Link> 
                 }
 
+                {/* Faculty List */}
+                {/* Visibility: admin */}
                 { staff && 
                     <Link href={{ pathname: "/admin" }}>
                         <a className = { router.pathname === "/admin" ?  "active"  : "inactive" } id = { router.pathname === "/admin" ?  "active"  : "inactive" }>
@@ -92,6 +99,8 @@ function Sidebar(props) {
                     </Link> 
                 }
 
+                {/* Faculty List */}
+                {/* Visibility: Department head, department chair */}
                 { !staff && !faculty &&
                     <Link href={{ pathname: "/faculty/view/all" }}>
                         <a className = { router.pathname === "/faculty/view/all" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/view/all" ?  "active"  : "inactive" }>
@@ -101,7 +110,8 @@ function Sidebar(props) {
                     </Link> 
                 }
 
-
+                {/* Pending Approvals */}
+                {/* Visibility: Department head, department chair */}
                { !staff && !faculty && 
                     <Link href={{ pathname: "/faculty/approval" }}>
                         <a className = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/approval" ?  "active"  : "inactive" }> 
@@ -114,7 +124,7 @@ function Sidebar(props) {
 
 
                 {/* Role Assignment Group */}
-                {/* Head */}
+                {/* Visibility: Department Head */}
                 { !staff && !faculty && !props.roleAssignment &&
 
                     <Link href={{ pathname: "/faculty/role-assignment" }}>
@@ -126,7 +136,8 @@ function Sidebar(props) {
 
                 }
 
-                {/* Chair */}
+                {/* Role Assignment Group */}
+                {/* Visibility: Department Chair */}
                 { !staff && !faculty && props.roleAssignment &&
 
                     <Link href={{ pathname: "/faculty/role-assignment" }}>
@@ -138,6 +149,8 @@ function Sidebar(props) {
 
                 }
 
+                {/* Change Password */}
+                {/* Visibility: All Users */}
                 <Link href = "/settings/change-password">
                     <a className={ router.pathname === "/settings/change-password" ?  "active"  : "inactive" }>
                         <span className="material-icons-sharp">vpn_key</span>
@@ -145,7 +158,8 @@ function Sidebar(props) {
                     </a>
                 </Link>
 
-
+                {/* Logout */}
+                {/* Visibility: All Users */}
                 <Link href="/login">
                     <a onClick={handleRemoveCookie} style={{color:"#e23636"}}>
                         <span className="material-icons-sharp">logout</span>

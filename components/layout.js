@@ -42,78 +42,26 @@ function Layout(props) {
                 {/* Frame While CSS is not fully loaded */}
                 <div id="loadOverlay" style={{backgroundColor: "#333", position: "absolute", top: "0px", left: "0px", width: "100%" , height: "100%", zIndex: "2000"}}></div>
                 
-                    {/* Main Container */}
-                    <div className="containerMain">
-                        {/* Sidebar */}
-                        <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} roleAssignment={props.roleAssignmentFlag} />
+                {/* Main Container */}
+                <div className="containerMain">
+                    {/* Sidebar */}
+                    <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} roleAssignment={props.roleAssignmentFlag} />
+                    {/* End of Sidebar */}
 
-                        {/* Content */}
-                        <main>
-                            <div className="top-tablet">
-                                <div className="theme-toggler tablet-only" onClick={() => {
-                                                const themeToggler = document.querySelector(".theme-toggler")
-                                                document.body.classList.toggle('dark-theme-variables')
-                                                themeToggler.querySelector('span').classList.toggle('active')
-                                            }}>
-                                        <span className="material-icons-sharp active">light_mode</span>
-                                        <span className="material-icons-sharp">dark_mode</span>
-                                </div>
-
-
-                                <div className="profile tablet-only">
-                                        <div className="info">
-                                            <p>Logged In As: <br/> <b>{props.name}</b></p>
-                                            { props.role == "1" &&
-                                                <p className="text-muted">Faculty</p>
-                                            }
-                                            { props.role == "2" &&
-                                                <p className="text-muted">Unit Head</p>
-                                            }
-                                            { props.role == "3" &&
-                                                <p className="text-muted">Department Chair</p>
-                                            }
-
-                                            { props.role == "4" &&
-                                                <p className="text-muted">DAPC</p>
-                                            }
-                                            { props.role == "5" &&
-                                                <p className="text-muted">Admin Staff</p>
-                                            }
-                                        
-                                        </div>
-                                        <div className="profile-photo">
-                                            <img src="/profile-1.jpg"/>
-                                        </div>
-                                </div>
-                            </div>
-
-
-                            <br></br>
-                            {props.children}
-                        </main>
-
-                        {/* right */}
-                        <div className="right">
-
-                            {/* TOP */}
-                            <div className="top" >
-                                <button id="menu-btn" style={{color: "white"}} onClick={() => {
-                                            const sideMenu = document.querySelector("aside")
-                                            sideMenu.style.display = 'block'
-
-                                        }}>
-                                    <span className="material-icons-sharp">menu</span>
-                                </button>
-                                <div className="theme-toggler" onClick={() => {
+                    {/* Content */}
+                    <main>
+                        <div className="top-tablet">
+                            <div className="theme-toggler tablet-only" onClick={() => {
                                             const themeToggler = document.querySelector(".theme-toggler")
                                             document.body.classList.toggle('dark-theme-variables')
                                             themeToggler.querySelector('span').classList.toggle('active')
                                         }}>
                                     <span className="material-icons-sharp active">light_mode</span>
                                     <span className="material-icons-sharp">dark_mode</span>
-                                </div>
-                                
-                                <div className="profile">
+                            </div>
+
+
+                            <div className="profile tablet-only">
                                     <div className="info">
                                         <p>Logged In As: <br/> <b>{props.name}</b></p>
                                         { props.role == "1" &&
@@ -137,12 +85,68 @@ function Layout(props) {
                                     <div className="profile-photo">
                                         <img src="/profile-1.jpg"/>
                                     </div>
+                            </div>
+                        </div>
+
+
+                        <br></br>
+                        {props.children}
+                    </main>
+                    {/* End of Content */}
+
+                    {/* Right */}
+                    <div className="right">
+
+                        {/* TOP */}
+                        <div className="top" >
+                            <button id="menu-btn" style={{color: "white"}} onClick={() => {
+                                        const sideMenu = document.querySelector("aside")
+                                        sideMenu.style.display = 'block'
+
+                                    }}>
+                                <span className="material-icons-sharp">menu</span>
+                            </button>
+                            <div className="theme-toggler" onClick={() => {
+                                        const themeToggler = document.querySelector(".theme-toggler")
+                                        document.body.classList.toggle('dark-theme-variables')
+                                        themeToggler.querySelector('span').classList.toggle('active')
+                                    }}>
+                                <span className="material-icons-sharp active">light_mode</span>
+                                <span className="material-icons-sharp">dark_mode</span>
+                            </div>
+                            
+                            <div className="profile">
+                                <div className="info">
+                                    <p>Logged In As: <br/> <b>{props.name}</b></p>
+                                    { props.role == "1" &&
+                                        <p className="text-muted">Faculty</p>
+                                    }
+                                    { props.role == "2" &&
+                                        <p className="text-muted">Unit Head</p>
+                                    }
+                                    { props.role == "3" &&
+                                        <p className="text-muted">Department Chair</p>
+                                    }
+
+                                    { props.role == "4" &&
+                                        <p className="text-muted">DAPC</p>
+                                    }
+                                    { props.role == "5" &&
+                                        <p className="text-muted">Admin Staff</p>
+                                    }
+                                
+                                </div>
+                                <div className="profile-photo">
+                                    <img src="/profile-1.jpg"/>
                                 </div>
                             </div>
-                            {/* End Top */}
-
                         </div>
+                        {/* End of Top */}
+
+                    </div>
+                    {/* End of Right */}
                 </div>
+                {/* End of Main Container */}
 
             </body>
 

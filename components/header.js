@@ -19,6 +19,7 @@ function Header(props) {
 	}
 	
     return (
+		// Topbar
 		<div className="topbar">
 			<div className="topbanner">
 				<img src="/logo.png"/>
