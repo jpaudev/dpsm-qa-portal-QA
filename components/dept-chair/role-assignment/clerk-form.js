@@ -47,44 +47,50 @@ class ClerkForm extends React.Component{
 
                 {({ values, errors, touched, isSubmitting }) => (
                     <div className='card'>
-                    <Form id = "clerkForm">
-                        <h2 className="center"> Add Admin Clerk Form </h2>
-                        <hr />
-                        <h6>Required</h6>
-                        <div className = "row pb-3">
-                            <div className="col-md-6">
-                                <div className = "form-group">
-                                    <label htmlFor = "ClerkName[]" className = "required-label" style={{fontSize:"16px"}}> Name </label>
-                                    <input className = "form-control" type = "text" name = "name" placeholder = "Input name" required />
+                        {/* Form: Add Admin Clerk Form */}
+                        <Form id = "clerkForm">
+                            <h2 className="center"> Add Admin Clerk Form </h2>
+                            <hr />
+                            <h6>Required</h6>
+                            <div className = "row pb-3">
+                                {/* Field: Name */}
+                                <div className="col-md-6">
+                                    <div className = "form-group">
+                                        <label htmlFor = "ClerkName[]" className = "required-label" style={{fontSize:"16px"}}> Name </label>
+                                        <input className = "form-control" type = "text" name = "name" placeholder = "Input name" required />
+                                    </div>
                                 </div>
-                            </div>
-                            <br />
-                            <div className="col-md-6">
-                                <div className = "form-group">
-                                    <label htmlFor = "ClerkEmail[]" className = "required-label" style={{fontSize:"16px"}}> UP Email Address </label>
-                                    <input className = "form-control" type = "email" name = "upemail" placeholder = "Input UP Email" required />
+                                {/* End of Name */}
+                                <br />
+                                {/* Field: UP Mail Address */}
+                                <div className="col-md-6">
+                                    <div className = "form-group">
+                                        <label htmlFor = "ClerkEmail[]" className = "required-label" style={{fontSize:"16px"}}> UP Email Address </label>
+                                        <input className = "form-control" type = "email" name = "upemail" placeholder = "Input UP Email" required />
+                                    </div>
                                 </div>
+                                {/* End of UP Mail */}
                             </div>
-                        </div>
-                        <br/>
-                        <div className = "row pb-3">
-                        <button type = "submit" className = "btn customButton green" style={{margin:"auto"}} disabled = {isSubmitting}>
-                            <span className="material-icons-sharp">person_add</span> Add Clerk
-                        </button>
-                        </div>
+                            <br/>
+                            {/* Add Clerk Button */}
+                            <div className = "row pb-3">
+                                <button type = "submit" className = "btn customButton green" style={{margin:"auto"}} disabled = {isSubmitting}>
+                                    <span className="material-icons-sharp">person_add</span> Add Clerk
+                                </button>
+                            </div>
 
 
-			            <style jsx>{`
-		                    label.required-label:after{
-			                    content: "*";
-			                    color: #f00;
-		                    }
-		                    h6:before{
-			                    content: "* ";
-			                    color: #f00;
-		                    }`
-                        }</style>
-                    </Form>
+                            <style jsx>{`
+                                label.required-label:after{
+                                    content: "*";
+                                    color: #f00;
+                                }
+                                h6:before{
+                                    content: "* ";
+                                    color: #f00;
+                                }`
+                            }</style>
+                        </Form>
                     </div>
                 )}
                 

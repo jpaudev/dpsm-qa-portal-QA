@@ -12,6 +12,7 @@ function ApproveUnitHead(props) {
             let currentUnitHead = props.children[key].currentUnitHead.faculty_personal_info.lastName + ', ' + props.children[key].currentUnitHead.faculty_personal_info.firstName
             let incomingUnitHead = props.children[key].faculty_personal_info.lastName + ', ' + props.children[key].faculty_personal_info.firstName
             return(
+                // Table Entries
                 <tr key = {props.children[key].unitId}>
                     <td className="less-important-mobile">{props.children[key].unit}</td>
                     <td className="less-important-mobile">{currentUnitHead}</td>
@@ -43,6 +44,7 @@ function ApproveUnitHead(props) {
 		    <h2 align = "center"> Unit Head Assignment </h2>
             <div className="alert alert-success" role="alert" id="assignalert" style={{visibility:"hidden"}}></div>
             <table className="table table-hover">
+                {/* Table Headers */}
                 <thead>
                     <tr>
                         <th className="less-important-mobile">Unit</th>
@@ -56,6 +58,7 @@ function ApproveUnitHead(props) {
                 </tbody>
             </table>
 	
+            {/* Modal for Approving unit head */}
             <div className="modal fade" id="approveUnitHead" tabIndex="-1" role="dialog" aria-labelledby="approveUnitHeadLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
@@ -96,6 +99,7 @@ function ApproveUnitHead(props) {
                 </div>
             </div>
         
+            {/* Modal for rejecting unit head */}
             <div className="modal fade" id="rejectUnitHead" tabIndex="-1" role="dialog" aria-labelledby="rejectUnitHeadLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">

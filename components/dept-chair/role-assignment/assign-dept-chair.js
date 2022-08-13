@@ -22,23 +22,35 @@ function AssignDeptChair(props) {
     return (
         <div className='table-container'>
             <h2 align = "center"> Department Chair Assignment </h2>
+
+            {/* Response Message */}
             <div className ="alert alert-success" role="alert" id="deptchairalert" style={{visibility:"hidden"}}></div>
+
+            {/* Card: Select New Department Chair */}
             <div className = "card">
+                {/* Form */}
                 <div className = "form-group col-md-12">
-                    <label htmlFor = "deptChair" style={{fontSize:"16px"}}> Select New Department Chair </label>
+                    <div className="center">   
+                        <label htmlFor = "deptChair" style={{fontSize:"16px"}}> Select New Department Chair </label>
+                    </div>
                     <br/><br/>
                     <select className = "form-control" name = "deptChair" id="deptChair" style={{fontSize:"16px"}} required>
                         <option value="0" key = "0">-- SELECT FACULTY --</option>
                         {faculty}
                     </select>
                 </div>
+                {/* End of Form */}
                 <br/>
+                {/* Assign Button */}
                 <button className = "btn customButton maroon" data-bs-toggle="modal" style={{width:"25rem", margin:"auto"}} data-bs-target="#assignDeptChair">
-                <span className="material-icons-sharp">check_circle_outline</span>
-                Assign New Department Chair</button>
+                    <span className="material-icons-sharp">check_circle_outline</span>
+                    Assign New Department Chair
+                </button>
+                {/* End of Assign Button */}
             </div>
 		
 
+            {/* Modal: Assign Department Chair */}
             <div className="modal fade" id="assignDeptChair" tabIndex="-1" role="dialog" aria-labelledby="assignDeptChairLabel" aria-hidden="true">
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
