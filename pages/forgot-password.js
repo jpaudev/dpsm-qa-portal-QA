@@ -41,7 +41,7 @@ function ForgotPassword(props){
 						</Link>
 
 						<div className="container">
-							<div className = "img">
+							<div className = "img" style={{marginTop: "-1rem"}}>
 								<img className = "img-lock" src="/lock.png" id = "user" alt="Forgot Password"></img>
 							</div>
 
