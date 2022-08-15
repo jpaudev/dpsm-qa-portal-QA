@@ -14,17 +14,17 @@ function ResetPassword(props){
         return(
             <div className = "d-flex justify-content-center" style = {{ backgroundImage: "url(../../kbblur.jpg)" }}>
                 <Head>
-                    <title>DPSM-QA-PORTAL</title>
+                    <title>UPM QA Portal</title>
                     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
                     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
                 </Head>
             <div className = "jumbotron" id = "logo">
-                <h3> DPSM QA PORTAL </h3>
+                <h3> UPM QA Portal </h3>
                 <br />
                 <br />
-                <center><img src="/dpsm-seal.png" width="115" height="115" alt="DPSM-QA-Portal" /></center>
+                <center><img src="/dpsm-seal.png" width="115" height="115" alt="UPM QA Portal" /></center>
                 <br />
                 <br />
 		<br />
@@ -80,7 +80,7 @@ function ResetPassword(props){
                         </div>
 
                         <p>Input and confirm a new password<br />
-                        for your DPSM QA Portal account. </p>
+                        for your UPM QA Portal account. </p>
 
                         <br />                        
 
@@ -141,7 +141,7 @@ function ResetPassword(props){
         return(
             <div className = "d-flex justify-content-center" style = {{ backgroundImage: "url(../../kbblur.jpg)" }}>
                 <Head>
-                        <title>DPSM-QA-PORTAL</title>
+                        <title>UPM QA Portal</title>
                         {/* <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"></link> */}
                         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
                         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -152,10 +152,10 @@ function ResetPassword(props){
         
                     </Head>
             <div className = "jumbotron" id = "logo">
-                <h3> DPSM QA PORTAL </h3>
+                <h3> UPM QA Portal </h3>
                 <br />
                 <br />
-                <center><img src="/dpsm-seal.png" width="115" height="115" alt="DPSM-QA-Portal" /></center>
+                <center><img src="/dpsm-seal.png" width="115" height="115" alt="UPM QA Portal" /></center>
                 <br />
                 <br />
             </div>
