@@ -33,12 +33,9 @@ function Layout(props) {
                 <script src="/sidebar.js"> </script>
 
             </Head>
-
             {/* Header -- Topbar */}
             <Header name={ props.name } role={props.role}/>
-
             <body>
-
                 {/* Frame While CSS is not fully loaded */}
                 <div id="loadOverlay" style={{backgroundColor: "#333", position: "absolute", top: "0px", left: "0px", width: "100%" , height: "100%", zIndex: "2000"}}></div>
                 
@@ -87,8 +84,7 @@ function Layout(props) {
                                     </div>
                             </div>
                         </div>
-
-
+                        
                         <br></br>
                         {props.children}
                     </main>
@@ -147,9 +143,7 @@ function Layout(props) {
                     {/* End of Right */}
                 </div>
                 {/* End of Main Container */}
-
             </body>
-
         </div>
 
 
