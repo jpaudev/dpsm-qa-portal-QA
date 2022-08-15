@@ -49,17 +49,6 @@ function RoleAssignment(props) {
                     <AssignDeptChair token={props.token.user} role={props.data.role}>{props.facultyListInfo}</AssignDeptChair>
                 </div>
             </div>
-	{/* <style jsx>{`
-		a.nav-item:focus{
-			background-color:#78b6c2;
-		}
-		a.nav-item:hover{
-			background-color:#78b6c2;
-		}
-		a.active{
-			background-color:#78b6c2;
-		}
-	`}</style> */}
         </Layout>
     )
   }

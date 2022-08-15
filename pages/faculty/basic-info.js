@@ -35,7 +35,6 @@ function BasicInfo(props) {
                     <span className="material-icons-sharp">work_history</span>
                     <h3>Work Experience</h3>
                 </a>
-		     {/*<a className="nav-item nav-link" id="teaching-philosophy-tab" data-bs-toggle="tab" href="#teaching-philosophy" role="tab" aria-controls="teaching-philosophy" aria-selected="false">Teaching Philosophy</a>*/}     
             </div>
             </nav>
 		<br />
@@ -51,26 +50,6 @@ function BasicInfo(props) {
                 <WorkExperience name={props.name} token={props.token.user} unit={props.unit} position={props.position} employment={props.employment} role={props.data.role} editable={true}>{props.workExperience}</WorkExperience>
             </div>
             </div>
-	{/* <style jsx>{`
-		a.nav-item{
-			color:#000;
-		}
-		a.nav-item:focus{
-			background-color:#78b6c2;
-		}
-		a.nav-item:hover{
-			background-color:#78b6c2;
-		}
-		a.active{
-			background-color:#78b6c2;
-		}
-		a#personal-info-tab.active{
-			background-color:#78b6c2;
-		}
-		nav{
-			background-color:#aaa;
-		}
-	`}</style> */}
         </Layout>
     )
   }

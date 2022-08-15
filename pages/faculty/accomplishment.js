@@ -129,26 +129,6 @@ function Accomplishments(props) {
                 </ResearchGrant>
             </div>
         </div>
-	{/* <style jsx>{`
-		a.nav-item{
-			color:#000;
-		}
-		a.nav-item:focus{
-			background-color:#78b6c2;
-		}
-		a.nav-item:hover{
-			background-color:#78b6c2;
-		}
-		a.active{
-			background-color:#78b6c2;
-		}
-		a#public-service-accomplishment-tab.active{
-			background-color:#78b6c2;
-		}
-		nav{
-			background-color:#aaa;
-		}
-	`}</style> */}
         </Layout>
     )
   }

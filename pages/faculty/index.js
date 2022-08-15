@@ -44,24 +44,6 @@ function Dashboard(props) {
                             <div className="tab-pane fade" id="employment-status" role="tabpanel" aria-labelledby="employment-status-tab"><EmploymentStatus role={props.data.role} queryList={props.queryList}>{props.empList}</EmploymentStatus></div>
                             <div className="tab-pane fade" id="degree" role="tabpanel" aria-labelledby="degree-tab"><DegreeCount role={props.data.role} queryList={props.queryList}>{props.educList}</DegreeCount></div>
                         </div>
-                    
-                        {/* <style jsx>{`
-                            a.nav-item{
-                                color:#000;
-                            }
-                            a.nav-item:focus{
-                                background-color:#78b6c2;
-                            }
-                            a.nav-item:hover{
-                                background-color:#78b6c2;
-                            }
-                            a.active{
-                                background-color:#78b6c2;
-                            }
-                            a#accomplishment-count-tab.active{
-                                background-color:#78b6c2;
-                            }
-                        `}</style> */}
 	                </div>
 
 	        </Layout>

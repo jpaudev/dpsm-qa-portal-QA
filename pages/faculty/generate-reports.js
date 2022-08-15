@@ -100,7 +100,6 @@ function GenerateReports(props) {
                             </button>
                         </div>
 
-						{/*<Link href="/faculty"><input type="submit" className = "btn btn-primary" value="Login"></input></Link>*/}
 					</Form>
 					)}
 				</Formik>

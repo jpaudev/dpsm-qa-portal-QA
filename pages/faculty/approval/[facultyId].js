@@ -103,17 +103,6 @@ function Approval(props) {
                 </ResearchGrant>
             </div>
         </div>
-	{/* <style jsx>{`
-		a.nav-item:focus{
-			background-color:#78b6c2;
-		}
-		a.nav-item:hover{
-			background-color:#78b6c2;
-		}
-		a.active{
-			background-color:#78b6c2;
-		}
-	`}</style> */}
         </Layout>
     )
   }
