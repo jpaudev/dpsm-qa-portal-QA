@@ -403,6 +403,7 @@ function ResearchGrant(props){
                 <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                     <button type="button" className="btn btn-danger" onClick = {async () => {
+                        $('#deleteResearchGrant').modal('toggle');
                         let alert = document.getElementById("researchalert")
                         let res = await deleteResearch(deleteRes, props.token)
                         

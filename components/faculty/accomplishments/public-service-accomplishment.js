@@ -9,6 +9,7 @@ import downloadProof from '../../../services/faculty/downloadProof'
 import deletePublicService from '../../../services/faculty/accomplishments/deletePublicService'
 import updatePublicService from '../../../services/faculty/accomplishments/updatePublicService'
 import approvePublicService from '../../../services/faculty/accomplishments/approvePublicService'
+import { Backdrop } from '@material-ui/core'
 
 function PublicServiceAccomplishment(props){
     const name = props.name
@@ -773,12 +774,14 @@ function PublicServiceAccomplishment(props){
                 <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                     <button type="button" className="btn btn-danger" onClick = {async () => {
+                        $('#deletePublicService').modal('toggle');
                         let alert = document.getElementById("publicservicealert")
                         let res = await deletePublicService(deletePS, props.token)
                         if(res.success == true) { 
                             alert.className ="alert alert-success"
                             alert.style = "visibility: visible"
                             alert.innerHTML = res.message
+                        
                         } else {
                             alert.className = "alert alert-danger"
                             if(res.error) alert.innerHTML = res.error[0].message
@@ -786,7 +789,9 @@ function PublicServiceAccomplishment(props){
                         }
                         $("#publicservicealert").fadeTo(5000, 500).slideUp(500, function(){
                             $("#publicservicealert").slideUp(500);
-                        });
+                        }
+                            
+                        );
 
                         Router.push('/faculty/accomplishment')
                         

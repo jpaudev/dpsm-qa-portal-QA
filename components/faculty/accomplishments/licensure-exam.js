@@ -283,6 +283,7 @@ function LicensureExam(props) {
                         <div className="modal-footer">
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">No, don't delete</button>
                         <button type="button" className="btn btn-danger" onClick = {async () => {
+                            $('#deleteLicensureExam').modal('toggle');
                             let alert = document.getElementById("licensureexamalert")
                             let res = await deleteLicensure(deleteLic, props.token)
                             if(res.success == true) { 
