@@ -48,7 +48,7 @@ function Layout(props) {
                     {/* Content */}
                     <main>
                         <div className="top-tablet">
-                            <div className="theme-toggler tablet-only" onClick={() => {
+                            <div className="theme-toggler pc-tablet-only" onClick={() => {
                                             const themeToggler = document.querySelector(".theme-toggler")
                                             document.body.classList.toggle('dark-theme-variables')
                                             themeToggler.querySelector('span').classList.toggle('active')
@@ -58,7 +58,7 @@ function Layout(props) {
                             </div>
 
 
-                            <div className="profile tablet-only">
+                            <div className="profile pc-tablet-only">
                                     <div className="info">
                                         <p>Logged In As: <br/> <b>{props.name}</b></p>
                                         { props.role == "1" &&

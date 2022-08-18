@@ -210,7 +210,7 @@ main{
     height: 100%;
     margin: 0 auto;
     gap: 1.8rem;
-    grid-template-columns: 18rem auto 20rem;    
+    grid-template-columns: 18rem auto;    
 }
 
 /* End of Main Container */
@@ -762,6 +762,31 @@ nav .nav a.active span{
 /* End of Right */
 
 
+
+
+    /* Right */
+
+    .right{
+        display: none;
+    }
+
+
+    main .top-tablet{
+        display: flex;
+        position: relative;
+        height: 75px;
+    }
+
+    main .profile{
+        position: absolute;
+        right: 0;
+    }
+
+    /* End of Right */
+
+
+
+
 /* Modals */
 
 .modal-details{
@@ -811,8 +836,8 @@ nav .nav a.active span{
 
 /* Responsiveness */
 
-main .tablet-only{
-    display: none;
+main .pc-tablet-only{
+    display: flex;
 }
 
 .less-important-pc{
@@ -889,7 +914,7 @@ main .tablet-only{
 
     /* Responsiveness */
 
-    main .tablet-only{
+    main .pc-tablet-only{
         display: flex;
     }
 
@@ -1090,7 +1115,7 @@ main .tablet-only{
         display: none;
     }
 
-    main .tablet-only{
+    main .pc-tablet-only{
         display: none;
     }
 
