@@ -9,7 +9,7 @@ function ChangePassword(props) {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
     return (
-        <div className="card" style={{marginTop:"2rem"}}>
+        <div className="card">
             <h2 className="center"> Change Password Form</h2>
             <div role="alert" id="changepassalert" style={{visibility:"hidden", height:"1.5rem", marginBottom:"-2rem"}}></div>
             <form className="row g-3 p-3">

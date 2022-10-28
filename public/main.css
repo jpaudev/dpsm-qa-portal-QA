@@ -25,7 +25,7 @@
 
     /* Buttons Colors */
     --color-button-maroon: #800020;
-    --color-button-maroon-hover: #c62c53;
+    --color-button-maroon-hover: #b3133b;
     --color-button-yellow: #ffae35;
     --color-button-yellow-hover: #e69317;
     --color-button-blue: #6671d5;
@@ -507,7 +507,7 @@ main .card:hover{
 }
 
 main .card form label{
-    font-size: 20px;
+    font-size: 16px;
 }
 
 main .card form select{
@@ -625,6 +625,15 @@ nav .nav a.active span{
 
 /* Buttons */
 
+.default_button {
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin: 10px;
+    display: inline-block;
+    width: 150px;
+}
+
 .green{
     background: var(--color-button-add);
     color: var(--color-text-hover);
@@ -638,6 +647,7 @@ nav .nav a.active span{
 .maroon{
     background: var(--color-button-maroon);
     color: var(--color-text-hover);
+    cursor: pointer;
 }
 
 .maroon:hover{

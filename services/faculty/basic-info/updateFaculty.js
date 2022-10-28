@@ -23,7 +23,7 @@ export default async function updateFaculty(data, token) {
 					religion: `${data.religion}`,
 					emergencyContactPerson: `${data.emergencyContactPerson}`,
 	  				emergencyContactNumber: `${data.emergencyContactNumber}`,
-					teachingPhilosophy: `${data.philosophy}`,
+					teachingPhilosophy: `${data.teachingPhilosophy}`,
 				}, {
 					headers: {
 						Authorization: `Bearer ${token}`
