@@ -7,7 +7,6 @@ export default async function updateFaculty(data, token) {
 	try {
 	    if (token) {	      
 	        let url = process.env.API_URL + '/faculty/basic-info/' + facultyId;
-		    
 	        try {
 				const response = await axios.put(url + "/personal", {
 					firstName: `${data.firstName}`, 
@@ -24,6 +23,9 @@ export default async function updateFaculty(data, token) {
 					emergencyContactPerson: `${data.emergencyContactPerson}`,
 	  				emergencyContactNumber: `${data.emergencyContactNumber}`,
 					teachingPhilosophy: `${data.teachingPhilosophy}`,
+					dateOfBirth: `${data.dateOfBirth}`,
+					placeOfBirth: `${data.placeOfBirth}`,
+					gender: `${data.gender}`
 				}, {
 					headers: {
 						Authorization: `Bearer ${token}`

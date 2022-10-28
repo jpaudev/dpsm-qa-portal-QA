@@ -110,8 +110,8 @@ const PersonalInformation = (props) => {
                       <div className="col-4">
                           <label className = "control-label" htmlFor="gender">Sex</label>
                           <Field as = "select" className = "form-control" style={{height:"2.45rem"}} name = "gender" id = "gender" required disabled={!editable}>
-                              <option value = "female">Female</option>
-                              <option value = "male">Male</option>
+                              <option value = "Female">Female</option>
+                              <option value = "Male">Male</option>
                           </Field>
                       </div>
                       <div className="col-4">
@@ -170,7 +170,7 @@ const PersonalInformation = (props) => {
                       </div>
                       <div className="col-6">
                           <label className = "control-label" htmlFor="upemail">UP E-mail Address</label>
-                          <Field className="form-control" type="email" id="upemail" name="upemail" placeholder="" disabled={!editable}/>
+                          <Field className="form-control" type="email" id="upemail" name="upemail" placeholder="" disabled/>
                       </div>
                   </div>
 
