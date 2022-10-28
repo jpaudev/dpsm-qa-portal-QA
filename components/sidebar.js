@@ -162,7 +162,7 @@ function Sidebar(props) {
                 {/* Visibility: All Users */}
                 <Link href = "/user-profile">
                     <a className={ router.pathname === "/user-profile" ?  "active"  : "inactive" }>
-                        <span class='material-icons-sharp'>account_circle</span>
+                        <span className='material-icons-sharp'>account_circle</span>
                         <h3>User Profile</h3>
                     </a>
                 </Link>

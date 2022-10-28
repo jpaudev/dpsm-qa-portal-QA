@@ -63,7 +63,7 @@ const UserProfileUpload = (props) => {
     <>
         <PopupModal content={modalContent} visibility={showModal} closeModal={closeModal}></PopupModal>
         <div className="card">
-            <div class="card-body text-center">
+            <div className="card-body text-center">
                     <img src={file ? file : "../DefaultUser.jpg"} className={`rounded img-fluid mx-auto d-block ${styles.profile_img}`} name="image" alt="No Photo"/>
                     {
                         !showButtons ?
@@ -73,8 +73,8 @@ const UserProfileUpload = (props) => {
                         </label>
                         : 
                         <div className="d-grid d-md-flex justify-content-md-center">
-                            <button type = "submit" className = "maroon default_button" onClick={uploadImage}><i class="fa fa-edit pr-3"/>Save </button>
-                            <button className = "maroon default_button" onClick={cancelUpload}><i class="fa fa-edit pr-3"/>Cancel </button>     
+                            <button type = "submit" className = "maroon default_button" onClick={uploadImage}>Save </button>
+                            <button className = "maroon default_button" onClick={cancelUpload}>Cancel </button>     
                         </div>
                     }
                 <div>

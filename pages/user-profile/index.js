@@ -5,27 +5,31 @@ import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
 
 import PersonalInformation from "../../components/user/PersonalInformation"
+import ChangePassword from "../../components/change-password"
 
 const UserProfile = (props) => {
-  return (
-    <>      
-        <Layout 
-            userId={props.data.userId} 
-            facultyId={props.data.facultyId} 
-            role={props.data.role} name={props.name} 
-            approvalList={props.approvalList} 
-            roleAssignmentFlag={props.roleAssignmentFlag} 
-        >
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-4">
-                        <UserProfileUpload data={props}></UserProfileUpload>
-                    </div>               
-                        { props.data.role != 5 ? <div className="col-8"><PersonalInformation data={props}></PersonalInformation></div> : ""} 
+  return (    
+    <Layout 
+        userId={props.data.userId} 
+        facultyId={props.data.facultyId} 
+        role={props.data.role} 
+        name={props.data.name} 
+        approvalList={props.approvalList} 
+        roleAssignmentFlag={props.roleAssignmentFlag} 
+    >
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-4">
+                    <UserProfileUpload data={props}></UserProfileUpload>
+                    <br/>
+                    { props.data.role != 5 ? <ChangePassword token={props.token.user}>{props.data}</ChangePassword> : "" }
+                </div>        
+                <div className="col-8">       
+                    { props.data.role != 5 ? <PersonalInformation data={props}></PersonalInformation> : <ChangePassword token={props.token.user}>{props.data}</ChangePassword>} 
                 </div>
             </div>
-        </Layout>  
-    </>
+        </div>
+    </Layout>  
   )
 }
 

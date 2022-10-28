@@ -47,12 +47,12 @@ const PersonalInformation = (props) => {
         { !editable ?
             <div className="row">
                 <div className="d-grid d-md-flex justify-content-md-end">
-                    <button type = "submit" className = "customButton maroon" onClick={onEdit}><span class="material-icons-sharp">edit</span>Edit </button> 
+                    <button type = "submit" className = "customButton maroon" onClick={onEdit}><span className="material-icons-sharp">edit</span>Edit </button> 
                 </div>
             </div>
           :""
         }
-        
+        <h2 className="center pb-3">Personal Information</h2>
         <Formik
             initialValues={data}
             onSubmit={async (values) => {
@@ -90,19 +90,19 @@ const PersonalInformation = (props) => {
                   <div className="row pt-3">
                       <div className="col-3 form-group required">
                           <label className = "control-label" htmlFor="firstName">First Name</label>
-                          <Field class="form-control" id="firstName" name="firstName" placeholder="" disabled={!editable} required/>
+                          <Field className="form-control" id="firstName" name="firstName" placeholder="" disabled={!editable} required/>
                       </div>
                       <div className="col-3">
                           <label className = "control-label" htmlFor="middleName">Middle Name</label>
-                          <Field class="form-control" id="middleName" name="middleName" placeholder="" disabled={!editable}/>
+                          <Field className="form-control" id="middleName" name="middleName" placeholder="" disabled={!editable}/>
                       </div>
                       <div className="col-3">
                           <label className = "control-label" htmlFor="lastName">Last Name</label>
-                          <Field class="form-control" id="lastName" name="lastName" placeholder="" disabled={!editable}/>
+                          <Field className="form-control" id="lastName" name="lastName" placeholder="" disabled={!editable}/>
                       </div>
                       <div className="col-3">
                           <label className = "control-label" htmlFor="suffix">Suffix</label>
-                          <Field class="form-control" id="lassuffixtName" name="suffix" placeholder="-" disabled={!editable}/>
+                          <Field className="form-control" id="lassuffixtName" name="suffix" placeholder="-" disabled={!editable}/>
                       </div>
                   </div>
 
@@ -116,36 +116,36 @@ const PersonalInformation = (props) => {
                       </div>
                       <div className="col-4">
                           <label className = "control-label" htmlFor="dateOfBirth">Birth Date</label>
-                          <Field name="dateOfBirth" type="date" class="form-control" id="dateOfBirth" disabled={!editable}/>
+                          <Field name="dateOfBirth" type="date" className="form-control" id="dateOfBirth" disabled={!editable}/>
                       </div>
                       <div className="col-4">
                           <label className = "control-label" htmlFor="placeOfBirth">Birth Place</label>
-                          <Field class="form-control" id="placeOfBirth" name="placeOfBirth" placeholder="" disabled={!editable}/>
+                          <Field className="form-control" id="placeOfBirth" name="placeOfBirth" placeholder="" disabled={!editable}/>
                       </div>
                   </div>
 
                   <div className="row pt-3">
                       <div>
                           <label className = "control-label" htmlFor="presentAddress">Present Address</label>
-                          <Field class="form-control" id="presentAddress" name="presentAddress" placeholder="Manila" disabled={!editable}/>
+                          <Field className="form-control" id="presentAddress" name="presentAddress" placeholder="Manila" disabled={!editable}/>
                       </div>
                   </div>
 
                   <div className="rowpt-3">
                       <div>
                           <label className = "control-label" htmlFor="permanentAddress">Permanent Address</label>
-                          <Field class="form-control" id="permanentAddress" name="permanentAddress" placeholder="Manila" disabled={!editable}/>
+                          <Field className="form-control" id="permanentAddress" name="permanentAddress" placeholder="Manila" disabled={!editable}/>
                       </div>
                   </div>
 
                   <div className="row pt-3">
                       <div className="col-3">
                           <label className = "control-label" htmlFor="mobile">Mobile Number</label>
-                          <Field class="form-control" id="mobile" name="mobile" placeholder="09#########" disabled={!editable}/>
+                          <Field className="form-control" id="mobile" name="mobile" placeholder="09#########" disabled={!editable}/>
                       </div>
                       <div className="col-3">
                           <label className = "control-label" htmlFor="landline">Landline Number</label>
-                          <Field class="form-control" id="landline" name="landline" placeholder="Enter 10 Digits" disabled={!editable}/>
+                          <Field className="form-control" id="landline" name="landline" placeholder="Enter 10 Digits" disabled={!editable}/>
                       </div>
                       <div className="col-3">
                           <label className = "control-label" htmlFor="civilStatus">Civil Status</label>
@@ -159,29 +159,29 @@ const PersonalInformation = (props) => {
                       </div>
                       <div className="col-3">
                           <label className = "control-label" htmlFor="religion">Religion</label>
-                          <Field class="form-control" id="religion" name="religion" placeholder="" disabled={!editable}/>
+                          <Field className="form-control" id="religion" name="religion" placeholder="" disabled={!editable}/>
                       </div>
                   </div>
 
                   <div className="row pt-3">
                       <div className="col-6">
                           <label className = "control-label" htmlFor="email">Personal E-mail Address</label>
-                          <Field class="form-control" type="email" id="email" name="email" placeholder="" disabled={!editable}/>
+                          <Field className="form-control" type="email" id="email" name="email" placeholder="" disabled={!editable}/>
                       </div>
                       <div className="col-6">
                           <label className = "control-label" htmlFor="upemail">UP E-mail Address</label>
-                          <Field class="form-control" type="email" id="upemail" name="upemail" placeholder="" disabled={!editable}/>
+                          <Field className="form-control" type="email" id="upemail" name="upemail" placeholder="" disabled={!editable}/>
                       </div>
                   </div>
 
                   <div className="row pt-3">
                       <div className="col-6">
                           <label className = "control-label" htmlFor="emergencyContactPerson">Emergency Contact</label>
-                          <Field class="form-control" id="emergencyContactPerson" name="emergencyContactPerson" placeholder=""  disabled={!editable}/>
+                          <Field className="form-control" id="emergencyContactPerson" name="emergencyContactPerson" placeholder=""  disabled={!editable}/>
                       </div>
                       <div className="col-6">
                           <label className = "control-label" htmlFor="emergencyContactNumber">Emergency Contact Number</label>
-                          <Field class="form-control" id="emergencyContactNumber" name="emergencyContactNumber" placeholder="" disabled={!editable}/>
+                          <Field className="form-control" id="emergencyContactNumber" name="emergencyContactNumber" placeholder="" disabled={!editable}/>
                       </div>
                   </div>
 
@@ -198,10 +198,6 @@ const PersonalInformation = (props) => {
                               <span className="material-icons-sharp">update</span>
                               Update 
                           </button> 
-                          {/* <button className = "customButton maroon" onClick={onCancel} > 
-                              <span class="material-icons-sharp">cancel</span>
-                              Cancel 
-                          </button>  */}
                       </div>
                     :""
                   }
