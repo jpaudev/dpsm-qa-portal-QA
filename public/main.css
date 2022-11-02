@@ -222,7 +222,6 @@ main{
 .topbar{
     background: var(--color-maroon);
     border-radius: 0px 0px 0px 0px;
-    height: 6rem;
     box-shadow: var(--box-shadow);
     position: relative;
     z-index: 3;
@@ -235,9 +234,8 @@ main{
     
 }
 
-.topbar .topbanner h2{
-    margin-left: 10rem;
-    padding-top: 15px;
+.topbar .topbanner span{
+    margin: 1rem;
     font-size: 1.6rem;
     color: var(--color-title-white);
 }
@@ -245,9 +243,9 @@ main{
 .topbar .topbanner img{
     display: flex;
     gap: 0.8rem;
-    width: 5rem;
-    height: 5rem;
-    margin-left: 5rem;   
+    width: 4rem;
+    height: 4rem;
+    margin-left: 3rem;   
 }
 
 /* End of Topbar */
@@ -1077,7 +1075,7 @@ main .pc-tablet-only{
         left: 66%;
     }
 
-    .right .profile .info{
+    .profile .info{
         display: none;
     }
 
