@@ -1,3 +1,4 @@
+import * as React from "react"
 import Router from 'next/router'
 import comparePassword from '../services/faculty/change-password/comparePassword'
 import updatePassword from '../services/faculty/change-password/updatePassword'
@@ -7,10 +8,11 @@ function ChangePassword(props) {
     let validated
     
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+    const [disable, setdisable] = React.useState(true)
 
     return (
-        <div className="card" style={{marginTop:"2rem"}}>
-            <h2 className="center"> Change Password Form</h2>
+        <div className="card">
+            <h2 className="center"> Change Password</h2>
             <div role="alert" id="changepassalert" style={{visibility:"hidden", height:"1.5rem", marginBottom:"-2rem"}}></div>
             <form className="row g-3 p-3">
                 <div className="d-grid gap-2 col-12 d-md-block">
@@ -24,6 +26,7 @@ function ChangePassword(props) {
 
                             if(res.success == true) {
                                 alert.style = "visibility: hidden"
+                                setdisable(false)
                                 setValidate(true)
                             } else {
                                 alert.className = "alert alert-danger"
@@ -38,12 +41,12 @@ function ChangePassword(props) {
 
                     <div className = "form-group row p-3">
                         <label htmlFor="new-password" className = "required-label" style={{fontSize: "18px"}}>New Password:</label>
-                        <input className = "form-control" type="password" id="new-password" name="new-password" placeholder='New Password' required />
+                        <input className = "form-control" type="password" id="new-password" name="new-password" placeholder='New Password' disabled={disable} required />
                     </div>
 
                     <div className = "form-group row p-3">
                         <label htmlFor="confirm-new-password" className = "required-label" style={{fontSize: "18px"}}>Confirm New Password:</label>
-                        <input className = "form-control" type="password" id="confirm-new-password" name="confirm-new-password" placeholder='Confirm Password' required onChange={async () => {
+                        <input className = "form-control" type="password" id="confirm-new-password" name="confirm-new-password" placeholder='Confirm Password' disabled={disable} required onChange={async () => {
                             let alert = document.getElementById("changepassalert")
                                 
                             const newPassword = document.getElementById('new-password').value
@@ -64,7 +67,7 @@ function ChangePassword(props) {
                     </div>
                     <br/>
                     <div className="text-end row p-1">
-                        <button type="button" className = "customButton green" style={{margin: "auto", width:"25%"}} onClick = {async (e) => {
+                        <button type="button" className = "customButton green" style={{margin: "auto"}} onClick = {async (e) => {
                                     let alert = document.getElementById("changepassalert")
                                     
                                     if(!validated) e.preventDefault()
@@ -90,7 +93,7 @@ function ChangePassword(props) {
                                         }
                                     }
                                     
-                                }}><span className="material-icons-sharp">check_circle</span>Change Password</button>
+                                }}>Change Password</button>
                     </div>
                 </div>
             </form>

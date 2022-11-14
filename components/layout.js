@@ -1,15 +1,36 @@
+import * as React from 'react';
 import Head from 'next/head'
 import Header from './header'
 import Sidebar from './sidebar'
 import Footer from './footer'
 import Content from './content'
 import jwt from 'jsonwebtoken'
+import { useCookies } from "react-cookie"
+import getProfilePicture from '../services/user/getProfilePicture'
 
 
 
 
 
 function Layout(props) {
+    const [file, setFile] = React.useState();
+    const [cookie, setCookie] = useCookies(["user"])
+    
+    const getImage = async () => {
+        if(Object.keys(cookie).length !== 0) {
+            let res = await getProfilePicture(cookie.user)
+            if(res.success) { 
+                setFile(res.result.image ? process.env.UPLOADS_URL + res.result.image : "../../DefaultUser.jpg")
+            } else {
+                setFile("../../DefaultUser.jpg")
+            }
+        }
+        
+    } 
+    React.useEffect( () => {
+        getImage();
+    })
+
     let approvalList
     if(props.approvalList) approvalList = props.approvalList
     return (
@@ -80,7 +101,7 @@ function Layout(props) {
                                     
                                     </div>
                                     <div className="profile-photo">
-                                        <img src="/profile-1.jpg"/>
+                                        <img src={file}/>
                                     </div>
                             </div>
                         </div>

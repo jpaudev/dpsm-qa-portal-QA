@@ -34,7 +34,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
             emergencyContactNumber: props.children.emergencyContactNumber,
             suffix: props.children.suffix || '',
             faculty_dependents: props.children.faculty_dependents,
-            philosophy: props.children.teachingPhilosophy
+            teachingPhilosophy: props.children.teachingPhilosophy
         }
         name = props.children.lastName + ', ' + props.children.firstName
         dependents = Object.keys(props.children.faculty_dependents).map(key => {
@@ -81,7 +81,7 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
             unit: '1',
             employmentPosition: '1',
             startDate: '',
-            philosophy: '',
+            teachingPhilosophy: '',
             status: 'Full-time',
             category: 'Permanent'
         }
@@ -251,8 +251,8 @@ function PersonalInfo(props) { console.log(props.hasDisabledFields);
                         {/* 8th Row */}
                         <div className = "row pb-3">
                             <div className = "form-group col-md-12 required">
-                                <label className = "control-label" htmlFor = "philosophy" style={{fontSize:"16px"}}> Teaching Philosophy </label>
-                                <Field className = "form-control" component = "textarea" rows = {5} name = "philosophy" defaultValue = { FacultyDetails.philosophy } disabled={!props.editable} required />
+                                <label className = "control-label" htmlFor = "teachingPhilosophy" style={{fontSize:"16px"}}> Teaching Philosophy </label>
+                                <Field className = "form-control" component = "textarea" rows = {5} name = "teachingPhilosophy" defaultValue = { FacultyDetails.teachingPhilosophy } disabled={!props.editable} required />
                             </div>
                         </div>
                         <br/>
