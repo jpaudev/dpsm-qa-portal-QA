@@ -22,8 +22,12 @@ function Header(props) {
 		// Topbar
 		<div className="topbar">
 			<div className="topbanner">
-				<img src="/logo.png"/>
-				<h2> QUALITY ASSURANCE PORTAL</h2>
+				<nav className="navbar">
+					<div className="navbar-brand" href="#">
+						<img src="/logo.png"className="d-inline-block" alt=""/>
+						<span>Quality Assurance Portal</span>
+					</div>
+				</nav>
 			</div>
 		</div>
     )
