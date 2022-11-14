@@ -267,7 +267,7 @@ function PersonalInfo(props) {
                     style={{ height: "2.45rem" }}
                     name="gender"
                     defaultValue={FacultyDetails.gender}
-                    disabled={props.hasDisabledFields}
+                    // disabled={props.hasDisabledFields}
                     required
                   >
                     <option value="Male">Male</option>
@@ -288,7 +288,7 @@ function PersonalInfo(props) {
                     type="date"
                     name="dateOfBirth"
                     defaultValue={FacultyDetails.dateOfBirth}
-                    disabled={props.hasDisabledFields}
+                    // disabled={props.hasDisabledFields}
                     required
                   />
                 </div>
@@ -306,7 +306,7 @@ function PersonalInfo(props) {
                     type="text"
                     name="placeOfBirth"
                     defaultValue={FacultyDetails.placeOfBirth}
-                    disabled={props.hasDisabledFields}
+                    // disabled={props.hasDisabledFields}
                     required
                   />
                 </div>
