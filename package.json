@@ -28,7 +28,7 @@
     "formik": "^2.2.6",
     "isomorphic-unfetch": "^3.1.0",
     "jsonwebtoken": "^8.5.1",
-    "next": "^10.2.3",
+    "next": "^12.3.2",
     "nivo": "^0.31.0",
     "nprogress": "^0.2.0",
     "react": "^17.0.1",
