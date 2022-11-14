@@ -43,7 +43,7 @@ class DegreeDashboardGraph extends React.Component{
         }}
         labelSkipWidth={12}
         labelSkipHeight={12}
-        labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+        labelTextColor="#737373"
         legends={[
             {
                 dataFrom: 'keys',
