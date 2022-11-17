@@ -1,4 +1,3 @@
-import Layout from '../../components/layout'
 import { parseCookies, isExpired } from "../../helpers"
 import jwt from 'jsonwebtoken'
 import ChangePasswordComponent from '../../components/change-password'
@@ -6,15 +5,15 @@ import ChangePasswordComponent from '../../components/change-password'
 function ChangePassword(props) {
     if(props.data.role != 5) {
         return (
-            <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
+            <>
                 <ChangePasswordComponent token={props.token.user}>{props.data}</ChangePasswordComponent>
-            </Layout>
+            </>
         )
     } else {
         return (
-            <Layout userId={props.data.userId} role={props.data.role} name={props.data.name}>
+            <>
                 <ChangePasswordComponent token={props.token.user}>{props.data}</ChangePasswordComponent>
-            </Layout>
+            </>
         )
     }
   }

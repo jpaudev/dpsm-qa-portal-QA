@@ -1,4 +1,3 @@
-import Layout from '../../components/layout'
 import PersonalInfo from '../../components/faculty/basic-info/personal-info'
 import Education from '../../components/faculty/basic-info/education'
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
@@ -14,7 +13,7 @@ import { parseCookies, isExpired } from "../../helpers"
 
 function BasicInfo(props) {
     return (
-        <Layout userId={props.data.userId} role={props.data.role} name={props.data.name}>
+        <>
             <nav>
                 <div className="nav nav-tabs nav-justified flex-column flex-md-row" id="nav-tab-main" role="tablist">
                     <a className="nav-item nav-link active nav-top" id="basic-info-tab" data-bs-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">
@@ -113,7 +112,7 @@ function BasicInfo(props) {
                     <br/>
                 </div>
             </nav>
-        </Layout>
+        </>
     )
   }
 

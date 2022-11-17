@@ -1,4 +1,3 @@
-import Layout from '../../../components/layout'
 import PersonalInfo from '../../../components/faculty/basic-info/personal-info'
 import Education from '../../../components/faculty/basic-info/education'
 import WorkExperience from '../../../components/faculty/basic-info/work-experience'
@@ -15,7 +14,7 @@ import { parseCookies, isExpired } from "../../../helpers"
 function ViewFaculty(props) {
     if(props.role == 1) {
         return (
-            <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
+            <>
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
                     <a className="nav-item nav-link activ nav-top" id="basic-info-tab" data-bs-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">
@@ -97,11 +96,11 @@ function ViewFaculty(props) {
 			background-color: #fff;
 		}
         `}</style>
-            </Layout>
+            </>
         )
     } else {
         return (
-            <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
+            <>
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab-main" role="tablist">
                     <a className="nav-item nav-link active nav-top" id="basic-info-tab" data-bs-toggle="tab" href="#basic-info" role="tab" aria-controls="basic-info" aria-selected="true">
@@ -200,7 +199,7 @@ function ViewFaculty(props) {
                 </div>
     
                 </nav>
-            </Layout>
+            </>
         )
     }
   }

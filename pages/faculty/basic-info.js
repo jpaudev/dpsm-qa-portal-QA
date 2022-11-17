@@ -1,4 +1,3 @@
-import Layout from '../../components/layout'
 import PersonalInfo from '../../components/faculty/basic-info/personal-info'
 import Education from '../../components/faculty/basic-info/education'
 import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
@@ -19,7 +18,7 @@ function BasicInfo(props) {
     }
     
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
+        <>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                 <a className="nav-item nav-link active nav-top" id="personal-info-tab" data-bs-toggle="tab" data-bs-target="#personal-info" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">
@@ -50,7 +49,7 @@ function BasicInfo(props) {
                 <WorkExperience name={props.name} token={props.token.user} unit={props.unit} position={props.position} employment={props.employment} role={props.data.role} editable={true}>{props.workExperience}</WorkExperience>
             </div>
             </div>
-        </Layout>
+        </>
     )
   }
 

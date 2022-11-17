@@ -1,4 +1,3 @@
-import Layout from '../../components/layout'
 import { Formik, Form, Field } from "formik"
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
@@ -9,7 +8,7 @@ function GenerateReports(props) {
 
     return (
 		<div>
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
+        <>
             <br></br>
             <div className="header">
                 <h1 align = "center"> Generate Reports</h1>
@@ -104,7 +103,7 @@ function GenerateReports(props) {
 					)}
 				</Formik>
 			</div>
-        </Layout>
+        </>
 
 		<style jsx>{`
 		.d-flex{

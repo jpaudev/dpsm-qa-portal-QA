@@ -1,4 +1,3 @@
-import Layout from '../../components/layout'
 import PersonalInfo from '../../components/faculty/basic-info/personal-info'
 import Education from '../../components/faculty/basic-info/education'
 import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
@@ -8,7 +7,7 @@ import { parseCookies, isExpired } from "../../helpers"
 
 function BasicInfo(props) { 
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList}>
+        <>
 		<br />
 		<br />
             <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
@@ -28,7 +27,7 @@ function BasicInfo(props) {
 			background-color: #fff;
 		}
 	`}</style>
-        </Layout>
+        </>
     )
   }
 

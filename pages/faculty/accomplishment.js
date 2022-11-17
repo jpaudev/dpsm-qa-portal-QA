@@ -1,4 +1,3 @@
-import Layout from '../../components/layout'
 import Publication from '../../components/faculty/accomplishments/publication'
 import PublicServiceAccomplishment from '../../components/faculty/accomplishments/public-service-accomplishment'
 import LicensureExam from '../../components/faculty/accomplishments/licensure-exam'
@@ -65,7 +64,7 @@ function Accomplishments(props) {
     }
 
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
+        <>
             <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                     <a className="nav-item nav-link active nav-top" id="public-service-accomplishment-tab" data-bs-toggle="tab" href="#public-service-accomplishment" role="tab" aria-controls="public-service-accomplishment" aria-selected="true">
@@ -129,7 +128,7 @@ function Accomplishments(props) {
                 </ResearchGrant>
             </div>
         </div>
-        </Layout>
+        </>
     )
   }
 

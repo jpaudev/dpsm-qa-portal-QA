@@ -1,4 +1,3 @@
-import Layout from '../../../components/layout'
 import Link from 'next/link'
 import Router from 'next/router'
 import jwt from 'jsonwebtoken'
@@ -7,12 +6,12 @@ import Faculty from "../../../components/faculty/facultyList"
 
 function FacultyList(props) {
     return (
-        <Layout userId={props.data.userId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
+        <>
 			<br />
 			<h2 align="center">Faculty List</h2>
             <br />
             <Faculty path="info" role={props.data.role} >{props.facultyList}</Faculty>
-        </Layout>
+        </>
     )
   }
 
