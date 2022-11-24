@@ -489,6 +489,62 @@ main .card:hover{
     box-shadow: none;
 }
 
+.card-group{
+    margin-bottom: 30px;
+}
+.card-group .card {
+    border-radius: var(--card-border-radius) !important;   
+    padding: 0; 
+    position: relative;
+    cursor: pointer;
+}
+.card-group .card:not(:last-child){
+    margin-right: 10px;
+}
+.card .card-sub{
+    /* background: var(--color-button-maroon-hover); */
+    /* background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(179, 19, 59)); */
+    /* border-top-left-radius: var(--card-border-radius); */
+    border-top-right-radius: var(--card-border-radius);
+    padding: 10px;
+    /* color:#fff; */
+}
+.card-icon-container {
+    align-items: center;
+    display: flex;
+}
+.card-icon{
+    vertical-align: middle;
+    font-size: 70px !important;
+    color:#fff;
+}
+.card-title-container > div > div{
+    display: flex;
+    align-items: center;
+    margin-left: inherit;
+    justify-content: end;
+    font-weight: bold;
+    color:#fff;  
+}
+.card-count{
+    font-size:40px;
+}
+.card-title-text{
+    justify-content: end;
+    display: flex;
+    font-size:20px;
+    
+}
+.card-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card-date span {
+    font-size: 16px;
+    padding: 5px;
+}
+
 /* End of Cards */
 
 
@@ -855,11 +911,8 @@ main .pc-tablet-only{
 /* End of Responsiveness */
 
 
-
-
-
 /* Media Queries */
-    /* Big Tablet */
+    /* Desktop, Large Screens*/
 @media screen and (max-width: 1200px){
 
     /* Main Container */
@@ -930,12 +983,28 @@ main .pc-tablet-only{
         display: none;
     }
     /* End of Responsiveness */
-
-
-
 }
 
-    /* Mobile and Smaller Tablets */
+/*Small screens, laptops */
+@media screen and (max-width: 1024px){
+    /* CARD-GROUP */
+    .card-body{
+        padding: .7rem;
+        font-size: 1vw;
+    }
+    .card-icon{ 
+        font-size: 5vw !important;
+    }
+    .card-count{
+        font-size: 3vw;
+    }
+    .card-title-text{
+        font-size: 1.5vw;
+    }
+    /* END OF CARD-GROUP */ 
+}
+
+/*Tablets */
 @media screen and (max-width: 768px){
     /* Main Container */
         .containerMain{
@@ -1131,9 +1200,33 @@ main .pc-tablet-only{
         display: none;
     }
 
-    /* End of Responsiveness */
+    /* CARD-GROUP */
+    .card-body{
+        font-size: 1.5vw;
+    }
+    /* END OF CARD-GROUP */ 
 
+    /* End of Responsiveness */
 } 
+/* Mobile */
+@media screen and (max-width: 575px){
+    /* CARD-GROUP */
+    .card-body{
+        padding: .5rem;
+        font-size: 2.8vw;
+    }
+    .card-icon{ 
+        font-size: 15vw !important;
+    }
+    .card-count{
+        font-size: 7vw;
+    }
+    .card-title-text{
+        font-size: 4vw;
+    }
+    /* END OF CARD-GROUP */
+}
+
 
 
 
