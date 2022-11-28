@@ -43,7 +43,7 @@ class PublicationForm extends React.Component{
 					});
 					
                 	resetForm()
-                	Router.push('/faculty/accomplishment')
+                	Router.push('/faculty/accomplishments/publication')
                 }}
 			>
 				{({ values, errors, touched, isSubmitting }) => (

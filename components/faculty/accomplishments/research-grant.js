@@ -293,7 +293,7 @@ function ResearchGrant(props){
                             $("#researchalert").slideUp(500);
                         });
 
-                        Router.push('/faculty/accomplishment')
+                        Router.push('/faculty/accomplishments/research-grant')
                     }}
                 >
                 {({ values, errors, touched, isSubmitting }) => (
@@ -421,7 +421,7 @@ function ResearchGrant(props){
                             $("#researchalert").slideUp(500);
                         });
                         
-                        Router.push('/faculty/accomplishment')
+                        Router.push('/faculty/accomplishments/research-grant')
                     }}>Yes, delete</button>
                 </div>
                 </div>

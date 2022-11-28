@@ -5,7 +5,6 @@ import EmploymentHistory from '../../components/faculty/basic-info/employment-hi
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
-import StatisticCard from '../../components/StatisticCard'
 
 function BasicInfo(props) { 
     let educRejected = false
@@ -21,7 +20,6 @@ function BasicInfo(props) {
     
     return (
         <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
-            <StatisticCard/>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                 <a className="nav-item nav-link active nav-top" id="personal-info-tab" data-bs-toggle="tab" data-bs-target="#personal-info" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">

@@ -315,6 +315,7 @@ aside .sidebar{
 
 aside h3{
     font-weight: 500;
+    margin-bottom: unset;
 }
 
 aside .sidebar a, aside .sidebar .dropdown-btn{
@@ -353,12 +354,26 @@ aside .sidebar a.active:before{
     height: 100%;
     background: var(--color-primary);
 }
-
-aside .sidebar a.active span{
-    color: var(--color-primary);
-    text-decoration: none;
+aside .sidebar a.active::before {
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--color-primary);
 }
-
+/* Submenu */
+aside .sidebar .nav-item-container a {
+    margin-bottom: auto;
+}
+aside .sidebar #nav-item a.active::before{
+    background: none !important;
+}
+aside .sidebar .nav-item-container #nav-item a {
+    padding-left: 1rem;
+}
+aside .sidebar .nav-item-container a[aria-expanded="true"] .arrow-icon {
+    transform: rotate(180deg);
+  }
+/* End of submenu */
 aside .sidebar a:hover, aside .sidebar .dropdown-btn:hover{
     color: var(--color-primary);
     text-decoration: none;
@@ -502,12 +517,8 @@ main .card:hover{
     margin-right: 10px;
 }
 .card .card-sub{
-    /* background: var(--color-button-maroon-hover); */
-    /* background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(179, 19, 59)); */
-    /* border-top-left-radius: var(--card-border-radius); */
     border-top-right-radius: var(--card-border-radius);
     padding: 10px;
-    /* color:#fff; */
 }
 .card-icon-container {
     align-items: center;
