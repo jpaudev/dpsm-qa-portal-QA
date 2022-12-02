@@ -20,7 +20,7 @@ function Accomplishments(props) {
             title: "VERIFIED",
             bgColor1: "#670067", 
             bgColor2: "#c900c9",
-            icon: "fact_check"
+            icon: "verified_user"
         },
         {
             title: "PENDING",
