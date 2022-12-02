@@ -494,6 +494,13 @@ main .card:hover{
 
 
 /* Forms */
+.form-container {
+    font-size: 1rem;
+    
+}
+.form-container .form-row {
+    margin: .5rem;
+}
 .form-control, .form-select{
     background: var(--color-field-white);
     color: var(--color-dark);

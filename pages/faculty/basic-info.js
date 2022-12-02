@@ -4,6 +4,7 @@ import EmploymentHistory from '../../components/faculty/basic-info/employment-hi
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
+import EducationTable from '../../components/faculty/basic-info/Education/DataTable'
 
 function BasicInfo(props) { 
     let educRejected = false
@@ -35,8 +36,9 @@ function BasicInfo(props) {
 		<br />
 		<br />
             <div className="tab-content" id="nav-tabContent">
-            <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                <Education name={props.name} token={props.token.user} unit={props.unit} position={props.position} role={props.data.role} editable={true}>{props.education}</Education>
+            <div className="tab-pane fade show active" id="educ" role="tabpanel" aria-labelledby="educ-tab">
+                {/* <Education name={props.name} token={props.token.user} unit={props.unit} position={props.position} role={props.data.role} editable={true}>{props.education}</Education> */}
+                <EducationTable data={props.education} token={props.token.user}></EducationTable>
             </div>
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
                 <WorkExperience name={props.name} token={props.token.user} unit={props.unit} position={props.position} employment={props.employment} role={props.data.role} editable={true}>{props.workExperience}</WorkExperience>
