@@ -1,3 +1,4 @@
+import * as React from 'react'
 import Layout from '../../components/layout'
 import Education from '../../components/faculty/basic-info/education'
 import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
@@ -5,6 +6,7 @@ import WorkExperience from '../../components/faculty/basic-info/work-experience'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
 import EducationTable from '../../components/faculty/basic-info/Education/DataTable'
+import EducationForm from '../../components/faculty/basic-info/Education/Form'
 
 function BasicInfo(props) { 
     let educRejected = false
@@ -38,6 +40,15 @@ function BasicInfo(props) {
             <div className="tab-content" id="nav-tabContent">
             <div className="tab-pane fade show active" id="educ" role="tabpanel" aria-labelledby="educ-tab">
                 {/* <Education name={props.name} token={props.token.user} unit={props.unit} position={props.position} role={props.data.role} editable={true}>{props.education}</Education> */}
+                <div className="toggle-btn-container">
+                    Add Education
+                    <button type="button" className="btn toggle-btn maroon mx-3 mb-3" data-bs-toggle="collapse" data-bs-target="#addForm" aria-expanded="false" aria-controls="addEducation" >
+                        <span className="material-icons-sharp btn-collapsed">add</span>
+                        <span className="material-icons-sharp btn-expanded">remove</span>
+                    </button>
+                    
+                </div>
+                <EducationForm token={props.token.user}></EducationForm>
                 <EducationTable data={props.education} token={props.token.user}></EducationTable>
             </div>
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">

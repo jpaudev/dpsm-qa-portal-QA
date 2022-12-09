@@ -10,9 +10,37 @@ import ModalForm from './ModalForm';
 import updateEducation from '../../../../services/faculty/basic-info/updateEducation';
 import ResponseAlert from '../../../ResponseAlert';
 import deleteEducation from '../../../../services/faculty/basic-info/deleteEducation';
+import downloadProof from '../../../../services/faculty/downloadProof';
 const EducationTable = (props) => {
     //REF FOR CHILD COMPONENT(Modal Form)
     const formRef = React.useRef();
+
+    let educationId;
+    let isBulkDelete = false;
+    const [selectedRows, setSelectedRows] = React.useState([]);
+    const [selectedRowsId, setSelectedRowsId] = React.useState([]);
+    
+
+    //DIALOG
+    const [showDialog, setShowDialog] = React.useState(false); 
+    const [dialogProps, setDialogProps] = React.useState({
+        title :"",
+        component :"",
+        confirmBtnTxt: "",
+        closeBtnTxt: "",
+        modalWidth: "",
+        fullWidth: true
+    })
+    const [dialogAction, setDialogAction] = React.useState();
+    
+
+    // RESPONSE ALERT
+    const [showAlert, setShowAlert] = React.useState(false); 
+    const [alertProps, setAlertProps] = React.useState({
+      message : "",
+      bgColor : "",
+      severity: ""
+    })
 
     // TABLE COLUMNS
     const columns = [
@@ -74,8 +102,26 @@ const EducationTable = (props) => {
                 <div className='tester'>
                     { value ? 
                         <div>
-                            <button type="button" className="btn yellow m-2"><span className="material-icons-sharp align-middle">visibility</span></button>
-                            <button type="button" className="btn blue m-2"><span className="material-icons-sharp align-middle">download</span></button>
+                            <button 
+                              type="button" 
+                              className="btn yellow m-2"
+                              onClick={()=>{
+                                setShowDialog(true)
+                                setDialogProps({
+                                  title :"Proof",
+                                  component: <img src={process.env.UPLOADS_URL + value} alt="No Image"/>,
+                                  confirmBtnTxt: null,
+                                  closeBtnTxt: "close",
+                                  modalWidth: "md",
+                                  fullWidth: true
+                                })
+                              }}
+                            >
+                                <span className="material-icons-sharp align-middle">visibility</span>
+                            </button>
+                            <button type="button" className="btn blue m-2">
+                                <span className="material-icons-sharp align-middle" onClick={()=> downloadProof(value, props.token)}>download</span>
+                            </button>
                         </div>
                     : "None"}
                 </div>
@@ -125,9 +171,9 @@ const EducationTable = (props) => {
                   <>
                   <div class="row">
                     <div class="col-md-12">
-                      <button type="button" className="btn yellow m-2" onClick={() => handleAction(rowIndex,"view")}><span className="material-icons-sharp align-middle">visibility</span>View</button>
-                      <button type="button" className="btn blue m-2"onClick={() => handleAction(rowIndex,"edit")}><span className="material-icons-sharp align-middle">edit</span>Edit</button>
-                      <button type="button" className="btn delete m-2" onClick={() => handleAction(rowIndex,"delete")}><span className="material-icons-sharp align-middle">delete</span>Delete</button>
+                      <button type="button" className="btn yellow m-2" onClick={() => handleAction(dataIndex,"view")}><span className="material-icons-sharp align-middle">visibility</span>View</button>
+                      <button type="button" className="btn blue m-2" onClick={() => handleAction(dataIndex,"edit")}><span className="material-icons-sharp align-middle">edit</span>Edit</button>
+                      <button type="button" className="btn delete m-2" onClick={() => handleAction(dataIndex,"delete")}><span className="material-icons-sharp align-middle">delete</span>Delete</button>
                       </div>            
                     </div>
                   </>
@@ -146,47 +192,46 @@ const EducationTable = (props) => {
         rowsPerPageOptions : [5,10,20,100,500,1000],
         filter: true,
         filterType: "dropdown",
-        responsive: "scroll",
-      };
-
-    //EDUCATION DATA
-    const [educationId, setEducationId] = React.useState()
-
-    //DIALOG
-    const [showDialog, setShowDialog] = React.useState(false); 
-    const [dialogProps, setDialogProps] = React.useState({
-        title :"",
-        component :"",
-        confirmBtnTxt: "",
-        closeBtnTxt: "",
-        modalWidth: "",
-        fullWidth: true
-    })
-    const [dialogAction, setDialogAction] = React.useState();
-    
-
-    // RESPONSE ALERT
-    const [showAlert, setShowAlert] = React.useState(false); 
-    const [alertProps, setAlertProps] = React.useState({
-      message : "",
-      bgColor : "",
-      severity: ""
-    })
+        selectableRows: "multiple",
+        rowsSelected: selectedRows,
+        onRowSelectionChange: (rowsSelectedData, allRows, rowsSelected) => {
+          let arr = []
+          rowsSelected.forEach(dataIndex => {
+            arr.push(props.data[dataIndex].educInfoId)
+          });
+          
+          setSelectedRows(rowsSelected)
+          setSelectedRowsId(arr)
+        },
+        customToolbarSelect: () => (
+          <button 
+            type="button" 
+            className="btn delete mx-4" 
+            onClick={async() => {
+              isBulkDelete = true
+              handleAction(null, "delete")
+            }}
+          >
+            <span className="material-icons-sharp align-middle">delete</span>
+          </button>
+        )
+      }; 
 
     // DIALOG FUNCTION
     const closeDialog = () => {
         setShowDialog(false)
     }
-    // RESPONSE ALERT FUNCTIONS
+    // RESPONSE ALERT FUNCTION
     const closeAlert = () => {
-      setShowAlert(false)
+        setShowAlert(false)
     }
-    
   
     // TABLE ACTIONS' FUNCTION 
     const handleAction = (data, action) => {
-    
-        setEducationId(props.data[data].educInfoId)
+      
+        if(data !== null) {
+          educationId = props.data[data].educInfoId 
+        }
         setShowDialog(true)
 
         if(action == "view") {
@@ -250,9 +295,12 @@ const EducationTable = (props) => {
       })
     }
     const handleDelete = async() => {
-      
-        let res = await deleteEducation(educationId, props.token)
+        
+        let id = isBulkDelete ? selectedRowsId : educationId   
+        let res = await deleteEducation(id, props.token)
+
         setShowDialog(false)
+        setSelectedRows([])
 
         Router.push("/faculty/basic-info")
         .then(() => {
@@ -269,7 +317,7 @@ const EducationTable = (props) => {
                     message : res.message,
                     bgColor : "#dc3545",
                     severity: "error"
-                    })
+                })
             }
         })
     }
@@ -278,7 +326,7 @@ const EducationTable = (props) => {
     <>  
         <MUIDataTable
             title={"List of Education"}
-            data={props.data}
+            data={props.data !== null ? props.data : []}
             columns={columns}
             options={options}
         />

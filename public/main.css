@@ -505,7 +505,9 @@ main .card:hover{
     background: var(--color-field-white);
     color: var(--color-dark);
 }
-
+.form-group select.form-control {
+    height: 2.45rem
+}
 .form-control:disabled {
     background: var(--color-field-disabled);
     color: var(--color-text-disabled);
@@ -583,6 +585,18 @@ main .card form button span{
 .form-check .form-check-label{
     font-size: 16px;
     padding-left: 1rem;
+}
+label.required-label:after{
+    content: "*";
+    color: #f00;
+}
+.form-group .hidden-file-input{
+    display:none;
+}
+.form-control.custom-file-upload {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 /* End of Forms */
@@ -693,6 +707,23 @@ nav .nav a.active span{
 /* End of buttons */
 
 
+/* Toggle Buttons */
+.toggle-btn-container {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: start;
+    align-items: baseline;
+}
+.toggle-btn{
+    display: flex;
+}
+.toggle-btn[aria-expanded=false] .btn-expanded {
+    display: none;
+}
+.toggle-btn[aria-expanded=true] .btn-collapsed {
+    display: none;
+}
+/* Toggle Buttons */
 
 
 /* Headers */
