@@ -10,7 +10,6 @@ import React from 'react'
 
 
 
-
 class AccomplishmentDashboardGraph extends React.Component{
   render(){
 	return(

@@ -491,7 +491,33 @@ main .card:hover{
 
 /* End of Cards */
 
-
+/* Widget */
+.widget-item-one {
+    color: #ffb649;
+}
+.widget-progress-one {
+    background: #ffb649;
+}
+.widget-item-two {
+    color: #1eb7ff;
+}
+.widget-progress-two {
+    background: #1eb7ff;
+}
+.widget-item-three {
+    color: #d17189;
+}
+.widget-progress-three {
+    background: #d17189;
+}
+.widget-percentage {
+    font-size: 2.2rem;
+}
+.widget-category, .widget-count {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+/* End of Widget */
 
 /* Forms */
 .form-control, .form-select{
@@ -552,7 +578,7 @@ main .card form button span{
 
 .customButton span{
     vertical-align: middle;
-    padding-right: 1rem;
+    /* padding-right: 1rem; */
 }
 
 .customButton-icon-only{
@@ -648,7 +674,7 @@ nav .nav a.active span{
     cursor: pointer;
 }
 
-.maroon:hover{
+.maroon:hover, .maroon.active{
     background: var(--color-button-maroon-hover);
     color: var(--color-text-hover);
 }

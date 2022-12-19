@@ -52,6 +52,17 @@ function Sidebar(props) {
                     </Link> 
                 }
 
+                {/* Dashboard V2 */}
+                {/* Visibility: Department head, department chair */}
+                { !staff && !faculty && 
+                    <Link href={{ pathname: "/faculty/dashboard" }}>
+                        <a className = { router.pathname === "/faculty/dashboard" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/dashboard" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">grid_view</span>
+                            <h3>Dashboard V2</h3>
+                        </a>
+                    </Link> 
+                }
+
                 {/* Basic Information */}
                 {/* Visibility: All users except admin */}
                 { !staff && 
