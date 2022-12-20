@@ -12,6 +12,7 @@ import React from 'react'
 
 class AccomplishmentDashboardGraph extends React.Component{
   render(){
+    console.log(this.props.data,"default")
 	return(
 		<div id = "graph" style = {{height: 700}}>
 			<ResponsiveBar

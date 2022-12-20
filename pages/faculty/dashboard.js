@@ -2,9 +2,6 @@ import Layout from '../../components/layout'
 import Router from 'next/router'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
-import AccomplishmentCount from '../../components/unit-head/dashboard/accomplishment-count/accomplishment-count'
-import EmploymentStatus from '../../components/unit-head/dashboard/employment-status/employment-status'
-import DegreeCount from '../../components/unit-head/dashboard/degree/degree'
 import Link from 'next/link'
 
 import MUIDataTable from "mui-datatables";
@@ -14,11 +11,17 @@ import Filter from '../../components/dashboard/Filter'
 
 import * as React from 'react'
 import getAccomplishments from '../../services/reports/getAccomplishments'
+import getEmployments from '../../services/reports/getEmployments'
+import getEducations from '../../services/reports/getEducations'
+
 const Dashboard = (props) =>{ 
 
     const filterRef = React.useRef()
     const [activeTab, setActiveTab] = React.useState("accomplishment")
-    const [dashboardData, setDashboardData] = React.useState()
+    const [dashboardData, setDashboardData] = React.useState([])
+    const [graphLegend, setGraphLegend] = React.useState()
+    const [graphIndex, setGraphIndex] = React.useState()
+    const [count, setCount] = React.useState()
 
     // Table
     const [tableColumn, setTableColumn] = React.useState([])
@@ -37,90 +40,205 @@ const Dashboard = (props) =>{
             }
         }
     ]
+  
     const getData = async (reqParams) => {
-        let tempColumns = []
+        
+        let graphData = []
+        let department = {
+            "1": "Chem",
+            "2": "MCSU",
+            "3": "Physics/Geology",
+        }
 
+        let department1 = {
+            "1": {
+                "name" : "Chem",
+                "total" : 0,
+                "count" : 0
+            },
+            "2": {
+                "name" : "MCSU",
+                "total" : 0,
+                "count" : 0
+            },
+            "3": {
+                "name" : "Physics/Geology",
+                "total" : 0,
+                "count" : 0
+            }
+        }
+        
+        reqParams = reqParams ? { unitId: reqParams.unitId, startDate: reqParams.startDate, endDate: reqParams.endDate } : {}
         if(activeTab == "accomplishment") {
-            let res = await getAccomplishments({
-                // unitId: 1,
-                // startDate: "2022-08-01",
-                // endDate: "2022-10-01",
-            }, props.token.user)
-            console.log(res)
-
-            const graphData = [
+            let res = await getAccomplishments(reqParams, props.token.user)
+            
+            graphData = [
                 {
                   "AccomplishmentType": "Public Service",
                   "MCSU": 0,
-                  "Chem": 2,
-                  "Physics/Geology": 0,
+                  "Chem": 0,
+                  "Physics/Geology": 0
                 },
                 {
                   "AccomplishmentType": "Publications",
                   "MCSU": 0,
                   "Chem": 0,
-                  "Physics/Geology": 0,
+                  "Physics/Geology": 0
                 },
                 {
                   "AccomplishmentType": "Research Grants",
                   "MCSU": 0,
                   "Chem": 0,
-                  "Physics/Geology": 0,
+                  "Physics/Geology": 0
                 },
                 {
                   "AccomplishmentType": "Training/Seminars",
                   "MCSU": 0,
                   "Chem": 0,
-                  "Physics/Geology": 0,
+                  "Physics/Geology": 0
                 }
               ]
+            console.log(res.result,"DATA")
+            if(res.result){
+                res.result.forEach(element => {
+                    graphData.forEach((val,index) => {
+                        if(val["AccomplishmentType"] == "Public Service") {
+                            graphData[index][department1[element.faculty_unit.unitId].name] += element.faculty_public_services.length
+                        } else if(val["AccomplishmentType"] == "Publications") {
+                            graphData[index][department1[element.faculty_unit.unitId].name] += element.faculty_publishers.length
+                        } else if(val["AccomplishmentType"] == "Research Grants") {
+                            graphData[index][department1[element.faculty_unit.unitId].name] += element.faculty_researchers.length
+                        } else if(val["AccomplishmentType"] == "Training/Seminars") {
+                            graphData[index][department1[element.faculty_unit.unitId].name] += element.faculty_training_seminars.length
+                        }
 
-            let arr;
-            res.result.forEach(element => {
-                let department = {
-                    "1": "Chem",
-                    "2": "MCSU",
-                    "3": "Physics/Geology",
-                }
-
-              
-                graphData.forEach((val,index) => {
-                    if(val["AccomplishmentType"] == "Public Service") {
-                        graphData[index][department[element.faculty_unit.unitId]] += element.faculty_public_services.length
-                    } else if(val["AccomplishmentType"] == "Publications") {
-                        graphData[index][department[element.faculty_unit.unitId]] += element.faculty_publishers.length
-                    } else if(val["AccomplishmentType"] == "Research Grants") {
-                        graphData[index][department[element.faculty_unit.unitId]] += element.faculty_researchers.length
-                    } else if(val["AccomplishmentType"] == "Training/Seminars") {
-                        graphData[index][department[element.faculty_unit.unitId]] += element.faculty_training_seminars.length
-                    }
+                        
+                    });
+                    graphData.forEach((val,index) => {
+                        department1[element.faculty_unit.unitId].count += graphData[index][department1[element.faculty_unit.unitId].name]
+                    })
                 });
-            });
-            
-            console.log(graphData,"Test")
+                
+            }  
+            setGraphLegend("Accomplishment Type")
+            setGraphIndex("AccomplishmentType")
+            setCount(department1)
 
         }else if(activeTab == "employment") {
-            let res = await getAccomplishments({
-                unitId: 1,
-                startDate: "2022-08-01",
-                endDate: "2022-10-01",
-            }, props.token.user)
-            console.log(res)
+            let res = await getEmployments(reqParams, props.token.user)
+        
+            graphData = [
+                {
+                  "EmploymentStatus": "Part-time",
+                  "MCSU": 0,
+                  "Chem": 0,
+                  "Physics/Geology": 0,
+                },
+                {
+                  "EmploymentStatus": "Full-time",
+                  "MCSU": 0,
+                  "Chem": 0,
+                  "Physics/Geology": 0,
+                },
+                {
+                  "EmploymentStatus": "Lecturer",
+                  "MCSU": 0,
+                  "Chem": 0,
+                  "Physics/Geology": 0,
+                }
+            ]
+            
+            if(res.result){
+                res.result.forEach(element => {
+    
+                    graphData.forEach((val,index) => {
+                        if(val["EmploymentStatus"] == "Part-time") {
+                            graphData[index][department[element.faculty_unit.unitId]] += element.faculty_employment_infos.filter((employment) => {
+                                return employment.status == "Part-time"
+                            }).length
+                        } else if(val["EmploymentStatus"] == "Full-time") {
+                            graphData[index][department[element.faculty_unit.unitId]] += element.faculty_employment_infos.filter((employment) => {
+                                return employment.status == "Full-time"
+                            }).length
+                        } else if(val["EmploymentStatus"] == "Lecturer") {
+                            graphData[index][department[element.faculty_unit.unitId]] += element.faculty_employment_infos.filter((employment) => {
+                                return employment.status == "Lecturer"
+                            }).length
+                        }
+                    });
+                });
+            }  
+            setGraphLegend("Employment Status")
+            setGraphIndex("EmploymentStatus")
+            
         } else if(activeTab == "degree") {
-            let res = await getAccomplishments({
-                unitId: 1,
-                startDate: "2022-08-01",
-                endDate: "2022-10-01",
-            }, props.token.user)
-            console.log(res)
+            
+            let res = await getEducations(reqParams, props.token.user)
+
+            graphData = [
+                {
+                    "DegreeAttained": "Bachelor's",
+                    "MCSU": 0,
+                    "Chem": 0,
+                    "Physics/Geology": 0,
+                },
+                {
+                    "DegreeAttained": "Master's",
+                    "MCSU": 0,
+                    "Chem": 0,
+                    "Physics/Geology": 0,
+                },
+                {
+                    "DegreeAttained": "Doctorate",
+                    "MCSU": 0,
+                    "Chem": 0,
+                    "Physics/Geology": 0,
+                },
+                {
+                    "DegreeAttained": "Other",
+                    "MCSU": 0,
+                    "Chem": 0,
+                    "Physics/Geology": 0,
+                }
+            ]
+            
+            let degree = ["BA","BS", "MA","MS","PhD"]
+
+            if(res.result){
+                res.result.forEach(element => {
+    
+                    graphData.forEach((val,index) => {
+                        if(val["DegreeAttained"] == "Bachelor's") {
+                            graphData[index][department[element.faculty_unit.unitId]] += element.faculty_education_infos.filter((education) => {
+                                return education.degreeType == "BA" || education.degreeType == "BS"
+                            }).length
+                        } else if(val["DegreeAttained"] == "Master's") {
+                            graphData[index][department[element.faculty_unit.unitId]] += element.faculty_education_infos.filter((education) => {
+                                return education.degreeType == "MA" || education.degreeType == "MS"
+                            }).length
+                        } else if(val["DegreeAttained"] == "Doctorate") {
+                            graphData[index][department[element.faculty_unit.unitId]] += element.faculty_education_infos.filter((education) => {
+                                return education.degreeType == "PhD"
+                            }).length
+                        } else {
+                            graphData[index][department[element.faculty_unit.unitId]] += element.faculty_education_infos.filter((education) => {
+                                return !degree.includes(education.degreeType)
+                            }).length
+                        }
+                    });
+                });
+            }  
+            setGraphLegend("Degree Attained")
+            setGraphIndex("DegreeAttained")
         } 
+        setDashboardData(graphData)
         
     } 
 
     React.useEffect(()=>{
         getData()
     },[activeTab])
-
+  
     //Table data
     const data = [
         {
@@ -176,9 +294,6 @@ const Dashboard = (props) =>{
         selectableRows: "none"
       }; 
 
-      const test = (a) => {
-        console.log(a)
-      }
 	if(props.data.role == 1) {
 		return (<Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} />)
 	} else if(props.data.role == 2 || props.data.role == 3){ 
@@ -241,7 +356,7 @@ const Dashboard = (props) =>{
                                 </ul>
                                 <div class="tab-content">
                                     <div id="home" class="card  tab-pane active">
-                                        <BarGraph data={props.accompList}></BarGraph>
+                                        <BarGraph data={dashboardData} index={graphIndex} legend={graphLegend}></BarGraph>
                                     </div>
                                     <div id="menu1" class="  tab-pane fade">
                                         <MUIDataTable
@@ -257,7 +372,7 @@ const Dashboard = (props) =>{
 
                         <div className="col-4">
                             <Filter ref={filterRef} handle={getData}></Filter>
-                            <Widget></Widget>
+                            <Widget data={dashboardData} count={count}></Widget>
                             <Link href = {{ pathname: "/faculty/generate-reports"}}>
                                 <button className = "btn customButton maroon w-100">
                                     <span className="material-icons-sharp">file_download</span>

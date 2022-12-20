@@ -1,7 +1,7 @@
 import axios from "axios"
 import jwt from 'jsonwebtoken'
 
-export default async function getAccomplishments(data,token) {
+export default async function getEmployments(data,token) {
 	try {
 		if (token) {
 			let cookieData = jwt.decode(token)
@@ -9,7 +9,7 @@ export default async function getAccomplishments(data,token) {
 			try {
 				const response = await axios({
 				    method: 'GET',
-				    url: process.env.API_URL + '/faculty/reports/accomplishments',
+				    url: process.env.API_URL + '/faculty/reports/employments',
 				    headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`},
 					params : {
 						unitId : data.unitId,

@@ -1,6 +1,50 @@
 import React from 'react'
 
-const Widget = () => {
+const Widget = (props) => {
+//     console.log(props.count)
+//   let total = 0
+//   let obj = {
+//     "Chem" : 0,
+//     "MCSU" : 0,
+//     "Physics/Geology" : 0
+// }
+//   let percentage
+
+//   const calculatePercentage = () => {
+    
+
+//     props.data.forEach(item => {
+
+//         obj["Chem"] += item["Chem"]
+//         obj["MCSU"] += item["MCSU"]
+//         obj["Physics/Geology"] += item["Physics/Geology"]
+       
+//     });
+    
+//     total += Object.values(obj).map(val => { return val })
+//     console.log(obj.Chem,"test")
+
+//   }
+
+//   const [data, setDate] = React.useState(()=>{
+//     props.data.forEach(item => {
+
+//         obj["Chem"] += item["Chem"]
+//         obj["MCSU"] += item["MCSU"]
+//         obj["Physics/Geology"] += item["Physics/Geology"]
+       
+//     });
+//     return obj
+//   })
+//   const [total1, setTotal] = React.useState(()=>{
+//     let A = 0
+//     Object.values(obj).forEach(item =>  A += item)
+    
+//     return A
+//   })
+//   React.useEffect(() => {
+//     calculatePercentage();
+//   }, [props]);
   return (
     <>
         <div className="card my-3">
@@ -13,10 +57,10 @@ const Widget = () => {
                             Physics/Geology
                         </div>
                         <div className='widget-percentage'>
-                                28.4 %
+                            23%
                         </div>
                         <div className='widget-count'>
-                            1234
+                            234
                         </div>
                     </div>
                     <div className='col-4 widget-item-two'>
