@@ -13,8 +13,8 @@ const Filter = (props) => {
                 <div className='row'>
                     <div className = "col-12 mb-2">
                         <label className = "control-label" htmlFor ="DeptUnit"> Department Unit </label>
-                        <div class="input-group">
-                            <span class="input-group-text material-icons-sharp">corporate_fare</span>
+                        <div className="input-group">
+                            <span className="input-group-text material-icons-sharp">corporate_fare</span>
                             <select className = "form-control" name = "DeptUnit" value={unit} id="DeptUnit" onChange={ e => setUnit(e.target.value)}>
                                 <option value="">All</option>
                                 <option value="1">Chemistry Unit</option>
@@ -25,16 +25,16 @@ const Filter = (props) => {
                     </div>
                     <div className = "col-12 mb-2">
                         <label className = "control-label" htmlFor ="StartTimePeriod"> From  </label>
-                        <div class="input-group">
-                            <span class="input-group-text material-icons-sharp">calendar_today</span>
+                        <div className="input-group">
+                            <span className="input-group-text material-icons-sharp">calendar_today</span>
                             <input className = "form-control" type = "date" name = "StartTimePeriod" id="StartTimePeriod" value={startDate} onChange={ e => setStartDate(e.target.value)}/>
                         </div>
                     </div>
 
                     <div className = "col-12 mb-3">
                         <label className = "control-label" htmlFor ="EndTimePeriod"> To </label>
-                        <div class="input-group">
-                            <span class="input-group-text material-icons-sharp">calendar_today</span>
+                        <div className="input-group">
+                            <span className="input-group-text material-icons-sharp">calendar_today</span>
                             <input className = "form-control" type = "date" name = "EndTimePeriod" id="EndTimePeriod"  value={endDate} onChange={ e => setEndDate(e.target.value)}/>
                         </div>
                     </div>

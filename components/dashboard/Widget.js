@@ -1,66 +1,54 @@
-import React from 'react'
+import * as React from 'react'
 
 const Widget = (props) => {
-//     console.log(props.count)
-//   let total = 0
-//   let obj = {
-//     "Chem" : 0,
-//     "MCSU" : 0,
-//     "Physics/Geology" : 0
-// }
-//   let percentage
 
-//   const calculatePercentage = () => {
-    
+    let total = 0
+    let initialDepartment = {
+        Chem : { count: 0, percentage: 0},
+        MCSU : { count: 0, percentage: 0},
+        PhysicsGeology : { count: 0, percentage: 0}
+    }
+    const [departmentData, setDepartmentData] = React.useState(initialDepartment)
 
-//     props.data.forEach(item => {
+    const calculatePercentage = () => {
+        
+        props.data.forEach(item => {
 
-//         obj["Chem"] += item["Chem"]
-//         obj["MCSU"] += item["MCSU"]
-//         obj["Physics/Geology"] += item["Physics/Geology"]
-       
-//     });
-    
-//     total += Object.values(obj).map(val => { return val })
-//     console.log(obj.Chem,"test")
+            initialDepartment["Chem"].count += item["Chem"]
+            initialDepartment["MCSU"].count += item["MCSU"]
+            initialDepartment["PhysicsGeology"].count += item["Physics/Geology"]
+        
+        });
 
-//   }
+        total = initialDepartment["Chem"].count + initialDepartment["MCSU"].count  + initialDepartment["PhysicsGeology"].count
 
-//   const [data, setDate] = React.useState(()=>{
-//     props.data.forEach(item => {
+        for (const key in initialDepartment) {
+            initialDepartment[key].percentage = ((initialDepartment[key].count * 100 ) / total).toFixed(2)
+        }  
+        
+        setDepartmentData(initialDepartment)
+    }
 
-//         obj["Chem"] += item["Chem"]
-//         obj["MCSU"] += item["MCSU"]
-//         obj["Physics/Geology"] += item["Physics/Geology"]
-       
-//     });
-//     return obj
-//   })
-//   const [total1, setTotal] = React.useState(()=>{
-//     let A = 0
-//     Object.values(obj).forEach(item =>  A += item)
-    
-//     return A
-//   })
-//   React.useEffect(() => {
-//     calculatePercentage();
-//   }, [props]);
+    React.useEffect(() => {
+        calculatePercentage()
+    }, [props]);
+
   return (
     <>
         <div className="card my-3">
             <div className="card-body">
                 Department Accomplishments
-                <hr class="bg-danger border-2 border-top border-danger"></hr>
+                <hr className="border-2 border-top border-secondary"></hr>
                 <div className='row'>
                     <div className='col-4 widget-item-one'>
                         <div className='widget-category'>
                             Physics/Geology
                         </div>
                         <div className='widget-percentage'>
-                            23%
+                            {departmentData["PhysicsGeology"].percentage} %
                         </div>
                         <div className='widget-count'>
-                            234
+                            {departmentData["PhysicsGeology"].count}
                         </div>
                     </div>
                     <div className='col-4 widget-item-two'>
@@ -68,10 +56,10 @@ const Widget = (props) => {
                             Chemistry
                         </div>
                         <div className='widget-percentage'>
-                            28.4 %
+                            {departmentData["Chem"].percentage} %
                         </div>
                         <div className='widget-count'>
-                            1234
+                            {departmentData["Chem"].count}
                         </div>
                     </div>
                     <div className='col-4 widget-item-three'>
@@ -79,18 +67,18 @@ const Widget = (props) => {
                             MCSU
                         </div>
                         <div className='widget-percentage'>
-                            28.4 %
+                            {departmentData["MCSU"].percentage} %
                         </div>
                         <div className='widget-count'>
-                            1234
+                            {departmentData["MCSU"].count}
                         </div>
                     </div>
                 </div>
                 
-                <div class="progress mt-1">
-                    <div class="progress-bar widget-progress-one" role="progressbar" aria-label="Segment one" style={{width: `30%`}} aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar widget-progress-two" role="progressbar" aria-label="Segment two" style={{width: `30%`}} aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                    <div class="progress-bar widget-progress-three" role="progressbar" aria-label="Segment three" style={{width: `30%`}} aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                <div className="progress mt-1">
+                    <div className="progress-bar widget-progress-one" role="progressbar" aria-label="Segment one" style={{width: `${departmentData["PhysicsGeology"].percentage}%`}} aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div className="progress-bar widget-progress-two" role="progressbar" aria-label="Segment two" style={{width: `${departmentData["Chem"].percentage}%`}} aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div className="progress-bar widget-progress-three" role="progressbar" aria-label="Segment three" style={{width: `${departmentData["MCSU"].percentage}%`}} aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
             </div>
         </div>
