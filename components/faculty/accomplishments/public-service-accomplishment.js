@@ -703,7 +703,7 @@ function PublicServiceAccomplishment(props){
                             $("#publicservicealert").slideUp(500);
                         });
 
-                        Router.push('/faculty/accomplishment')
+                        Router.push('/faculty/accomplishments/public-service')
                     }}
                 >
                 {({ values, errors, touched, isSubmitting }) => (
@@ -793,7 +793,7 @@ function PublicServiceAccomplishment(props){
                             
                         );
 
-                        Router.push('/faculty/accomplishment')
+                        Router.push('/faculty/accomplishments/public-service')
                         
                     }}>Yes, delete</button>
                 </div>

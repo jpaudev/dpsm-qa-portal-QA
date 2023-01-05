@@ -43,7 +43,7 @@ class LicensureExamForm extends React.Component{
                     });
 
                     resetForm()
-                    Router.push('/faculty/accomplishment')                    
+                    Router.push('/faculty/accomplishments/licensure-exam')                    
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (

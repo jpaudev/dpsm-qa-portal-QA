@@ -223,7 +223,7 @@ function TrainingSeminar(props) {
                                 $("#trainingseminaralert").slideUp(500);
                             });
 
-                            Router.push('/faculty/accomplishment')
+                            Router.push('/faculty/accomplishments/training-seminar')
                         }}
                     >
                     {({ values, errors, touched, isSubmitting }) => (
@@ -317,7 +317,7 @@ function TrainingSeminar(props) {
                                 $("#trainingseminaralert").slideUp(500);
                             });
 
-                            Router.push('/faculty/accomplishment')
+                            Router.push('/faculty/accomplishments/training-seminar')
                         }}>Yes, delete</button>
                     </div>
                     </div>
