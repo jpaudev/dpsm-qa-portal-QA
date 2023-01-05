@@ -35,12 +35,12 @@ function Accomplishments(props) {
     ]
 
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
+        <>
             <StatisticCard data={props.trainingSeminar} statistic={statistic}/>
             <TrainingSeminar name = { props.data.name } token = { props.token.user } unit = {props.data.unit} position={props.data.position} editable={true}>
                 { props.trainingSeminar }
             </TrainingSeminar>  
-        </Layout>
+        </>
     )
   }
 
