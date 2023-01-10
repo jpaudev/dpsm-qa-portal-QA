@@ -11,18 +11,20 @@ const Filter = (props) => {
         <div className="card">
             <div className="card-body">
                 <div className='row'>
-                    <div className = "col-12 mb-2">
-                        <label className = "control-label" htmlFor ="DeptUnit"> Department Unit </label>
-                        <div className="input-group">
-                            <span className="input-group-text material-icons-sharp">corporate_fare</span>
-                            <select className = "form-control" name = "DeptUnit" value={unit} id="DeptUnit" onChange={ e => setUnit(e.target.value)}>
-                                <option value="">All</option>
-                                <option value="1">Chemistry Unit</option>
-                                <option value="2">Mathematics and Computing Sciences Unit</option>
-                                <option value="3">Physics and Geology Unit</option>
-                            </select>
+                    { props.role !== 2 &&
+                        <div className = "col-12 mb-2">
+                            <label className = "control-label" htmlFor ="DeptUnit"> Department Unit </label>
+                            <div className="input-group">
+                                <span className="input-group-text material-icons-sharp">corporate_fare</span>
+                                <select className = "form-control" name = "DeptUnit" value={unit} id="DeptUnit" onChange={ e => setUnit(e.target.value)}>
+                                    <option value="">All</option>
+                                    <option value="1">Chemistry Unit</option>
+                                    <option value="2">Mathematics and Computing Sciences Unit</option>
+                                    <option value="3">Physics and Geology Unit</option>
+                                </select>
+                            </div>
                         </div>
-                    </div>
+                    }
                     <div className = "col-12 mb-2">
                         <label className = "control-label" htmlFor ="StartTimePeriod"> From  </label>
                         <div className="input-group">

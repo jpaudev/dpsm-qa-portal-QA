@@ -73,7 +73,7 @@ function Login() {
                       if(role == 1) { // faculty 
                         Router.push('/faculty/basic-info')
                       } else if (role == 2 || role == 3) { // unit head or dept. chair
-                        Router.push('/faculty')
+                        Router.push('/faculty/dashboard/')
                       } else if(role == 5) { //admin
                         Router.push('/admin')
                       }

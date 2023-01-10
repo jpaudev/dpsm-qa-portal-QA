@@ -43,14 +43,14 @@ function Sidebar(props) {
             <div className="sidebar">
                 {/* Dashboard */}
                 {/* Visibility: Department head, department chair */}
-                { !staff && !faculty && 
+                {/* { !staff && !faculty && 
                     <Link href={{ pathname: "/faculty" }}>
                         <a className = { router.pathname === "/faculty" ?  "active"  : "inactive" } id = { router.pathname === "/faculty" ?  "active"  : "inactive" }>
                             <span className="material-icons-sharp">grid_view</span>
                             <h3>Dashboard</h3>
                         </a>
                     </Link> 
-                }
+                } */}
 
                 {/* Dashboard V2 */}
                 {/* Visibility: Department head, department chair */}
@@ -58,7 +58,7 @@ function Sidebar(props) {
                     <Link href={{ pathname: "/faculty/dashboard" }}>
                         <a className = { router.pathname === "/faculty/dashboard" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/dashboard" ?  "active"  : "inactive" }>
                             <span className="material-icons-sharp">grid_view</span>
-                            <h3>Dashboard V2</h3>
+                            <h3>Dashboard</h3>
                         </a>
                     </Link> 
                 }
@@ -203,12 +203,12 @@ function Sidebar(props) {
 
                 {/* Change Password */}
                 {/* Visibility: All Users */}
-                <Link href = "/settings/change-password">
+                {/* <Link href = "/settings/change-password">
                     <a className={ router.pathname === "/settings/change-password" ?  "active"  : "inactive" }>
                         <span className="material-icons-sharp">vpn_key</span>
                         <h3>Change Password</h3>
                     </a>
-                </Link>
+                </Link> */}
 
                 {/* User Profile */}
                 {/* Visibility: All Users */}

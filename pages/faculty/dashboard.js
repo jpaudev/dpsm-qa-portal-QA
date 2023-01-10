@@ -13,7 +13,7 @@ import getEmployments from '../../services/reports/getEmployments'
 import getEducations from '../../services/reports/getEducations'
 
 const Dashboard = (props) =>{ 
-
+    
     const filterRef = React.useRef()
     const [activeTab, setActiveTab] = React.useState("accomplishment")
     const [activeView, setActiveView] = React.useState("graph")
@@ -45,8 +45,11 @@ const Dashboard = (props) =>{
             "2": "MCSU",
             "3": "Physics/Geology",
         }
-        
-        reqParams = reqParams ? { unitId: reqParams.unitId, startDate: reqParams.startDate, endDate: reqParams.endDate } : {}
+        let unitId = props.data.role == 2 ? props.data.unitId : reqParams ? reqParams.unitId : ""
+
+        // reqParams = reqParams ? { unitId: reqParams.unitId, startDate: reqParams.startDate, endDate: reqParams.endDate } : {}
+
+        reqParams = reqParams ? { unitId: unitId, startDate: reqParams.startDate, endDate: reqParams.endDate } :  { unitId: unitId }
 
         if(activeTab == "accomplishment") {
             let res = await getAccomplishments(reqParams, props.token.user)
@@ -452,7 +455,7 @@ const Dashboard = (props) =>{
 
                     <div className="col-sm-12 col-md-12 col-lg-4">
                         {/* <Filter ref={filterRef} handle={getData}></Filter> */}
-                        <Filter handle={getData}></Filter>
+                        <Filter handle={getData} role={props.data.role}></Filter>
                         <Widget data={dashboardData} count={count}></Widget>
                         <Link href = {{ pathname: "/faculty/generate-reports"}}>
                             <button className = "btn customButton maroon w-100">
