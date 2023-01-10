@@ -1,10 +1,12 @@
+import * as React from 'react'
 import Layout from '../../components/layout'
-import PersonalInfo from '../../components/faculty/basic-info/personal-info'
 import Education from '../../components/faculty/basic-info/education'
 import EmploymentHistory from '../../components/faculty/basic-info/employment-history'
 import WorkExperience from '../../components/faculty/basic-info/work-experience'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
+import EducationTable from '../../components/faculty/basic-info/Education/DataTable'
+import EducationForm from '../../components/faculty/basic-info/Education/Form'
 
 function BasicInfo(props) { 
     let educRejected = false
@@ -19,14 +21,10 @@ function BasicInfo(props) {
     }
     
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
+        <>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
-                <a className="nav-item nav-link active nav-top" id="personal-info-tab" data-bs-toggle="tab" data-bs-target="#personal-info" href="#personal-info" role="tab" aria-controls="personal-info" aria-selected="true">
-                    <span className="material-icons-sharp">contact_page</span>
-                    <h3>Personal Information</h3>
-                </a>
-                <a className="nav-item nav-link nav-top" id="educ-tab" data-bs-toggle="tab" data-bs-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
+                <a className="nav-item nav-link active nav-top" id="educ-tab" data-bs-toggle="tab" data-bs-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
                     <span className="material-icons-sharp">school</span>
                     <h3>Education</h3> &nbsp;
                     {educRejected && <span className="badge badge-danger">!</span>}
@@ -40,17 +38,24 @@ function BasicInfo(props) {
 		<br />
 		<br />
             <div className="tab-content" id="nav-tabContent">
-            <div className="tab-pane fade show active" id="personal-info" role="tabpanel" aria-labelledby="personal-info-tab">
-                <PersonalInfo token={props.token.user} unit={props.unit} position={props.position} role={props.data.role} editable={true} email={props.data.upemail} hasDisabledFields={true}>{props.personalInfo}</PersonalInfo>
-            </div>
-            <div className="tab-pane fade" id="educ" role="tabpanel" aria-labelledby="educ-tab">
-                <Education name={props.name} token={props.token.user} unit={props.unit} position={props.position} role={props.data.role} editable={true}>{props.education}</Education>
+            <div className="tab-pane fade show active" id="educ" role="tabpanel" aria-labelledby="educ-tab">
+                {/* <Education name={props.name} token={props.token.user} unit={props.unit} position={props.position} role={props.data.role} editable={true}>{props.education}</Education> */}
+                <div className="toggle-btn-container">
+                    Add Education
+                    <button type="button" className="btn toggle-btn maroon mx-3 mb-3" data-bs-toggle="collapse" data-bs-target="#addForm" aria-expanded="false" aria-controls="addEducation" >
+                        <span className="material-icons-sharp btn-collapsed">add</span>
+                        <span className="material-icons-sharp btn-expanded">remove</span>
+                    </button>
+                    
+                </div>
+                <EducationForm token={props.token.user}></EducationForm>
+                <EducationTable data={props.education} token={props.token.user}></EducationTable>
             </div>
            <div className="tab-pane fade" id="work-exp" role="tabpanel" aria-labelledby="work-exp-tab">
                 <WorkExperience name={props.name} token={props.token.user} unit={props.unit} position={props.position} employment={props.employment} role={props.data.role} editable={true}>{props.workExperience}</WorkExperience>
             </div>
             </div>
-        </Layout>
+        </>
     )
   }
 
@@ -137,7 +142,6 @@ function BasicInfo(props) {
             name,
             unit,
             position,
-            personalInfo: personalInfo.result,
             education: education.result,
             workExperience: workExperience.result,
             employment: employment.result,

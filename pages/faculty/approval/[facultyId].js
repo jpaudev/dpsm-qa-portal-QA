@@ -1,4 +1,3 @@
-import Layout from '../../../components/layout'
 import Education from '../../../components/faculty/basic-info/education'
 import Publication from '../../../components/faculty/accomplishments/publication'
 import PublicServiceAccomplishment from '../../../components/faculty/accomplishments/public-service-accomplishment'
@@ -24,7 +23,7 @@ function Approval(props) {
     if(props.researchGrant && props.researchGrant.length != 0) rgFlag = true
 
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
+        <>
             <nav>
             <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
                 <button className="nav-item nav-link active nav-top" id="educ-tab" data-bs-toggle="tab" data-bs-target="#educ" href="#educ" role="tab" aria-controls="educ" aria-selected="false">
@@ -103,7 +102,7 @@ function Approval(props) {
                 </ResearchGrant>
             </div>
         </div>
-        </Layout>
+        </>
     )
   }
 

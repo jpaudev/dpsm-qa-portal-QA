@@ -42,7 +42,7 @@ class PublicServiceAccomplishmentForm extends React.Component{
                     });
 
                     resetForm()
-                    Router.push('/faculty/accomplishment')
+                    Router.push('/faculty/accomplishments/public-service')
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (

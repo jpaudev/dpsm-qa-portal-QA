@@ -43,9 +43,20 @@ function Sidebar(props) {
             <div className="sidebar">
                 {/* Dashboard */}
                 {/* Visibility: Department head, department chair */}
-                { !staff && !faculty && 
+                {/* { !staff && !faculty && 
                     <Link href={{ pathname: "/faculty" }}>
                         <a className = { router.pathname === "/faculty" ?  "active"  : "inactive" } id = { router.pathname === "/faculty" ?  "active"  : "inactive" }>
+                            <span className="material-icons-sharp">grid_view</span>
+                            <h3>Dashboard</h3>
+                        </a>
+                    </Link> 
+                } */}
+
+                {/* Dashboard V2 */}
+                {/* Visibility: Department head, department chair */}
+                { !staff && !faculty && 
+                    <Link href={{ pathname: "/faculty/dashboard" }}>
+                        <a className = { router.pathname === "/faculty/dashboard" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/dashboard" ?  "active"  : "inactive" }>
                             <span className="material-icons-sharp">grid_view</span>
                             <h3>Dashboard</h3>
                         </a>
@@ -63,18 +74,59 @@ function Sidebar(props) {
                     </Link> 
                 }
 
-
                 {/* Accomplishment */}
                 {/* Visibility: All users except admin */}
                 { !staff && 
-                    <Link href={{ pathname: "/faculty/accomplishment" }}>
-                        <a className = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>
-                            <span className="material-icons-sharp">emoji_events</span>
-                            <h3>Accomplishment</h3>
-                        </a>
-                    </Link> 
-
-                }
+                    <div className='nav-item-container'>
+                            {/* Parent Menu Item */}
+                            <a className = { router.pathname.includes("/faculty/accomplishments")  ?  "active"  : "inactive" } id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" } data-bs-toggle="collapse" href="#nav-item">
+                                <span className="material-icons-sharp">emoji_events</span>
+                                <h3>Accomplishment</h3>
+                                <span class="material-icons-sharp arrow-icon">arrow_drop_down_circle</span>
+                            </a>
+                            {/* Children Menu Item */}
+                            <div id="nav-item" className="collapse">
+                                    <Link href={{ pathname: "/faculty/accomplishments/public-service" }}>
+                                        <a className = { router.pathname === "/faculty/accomplishments/public-service" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>
+                                            <span className="material-icons-sharp">groups</span>
+                                            <h3>Public Service</h3>
+                                        </a>
+                                    </Link> 
+                            </div>
+                            <div id="nav-item" className="collapse">
+                                    <Link href={{ pathname: "/faculty/accomplishments/publication" }}>
+                                        <a className = { router.pathname === "/faculty/accomplishments/publication" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>
+                                            <span className="material-icons-sharp">description</span>
+                                            <h3>Publication</h3>
+                                        </a>
+                                    </Link> 
+                            </div>
+                            <div id="nav-item" className="collapse">
+                                    <Link href={{ pathname: "/faculty/accomplishments/training-seminar" }}>
+                                        <a className = { router.pathname === "/faculty/accomplishments/training-seminar" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>
+                                            <span className="material-icons-sharp">card_membership</span>
+                                            <h3>Training & Seminar</h3>
+                                        </a>
+                                    </Link> 
+                            </div>
+                            <div id="nav-item" className="collapse">
+                                    <Link href={{ pathname: "/faculty/accomplishments/licensure-exam" }}>
+                                        <a className = { router.pathname === "/faculty/accomplishments/licensure-exam" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>
+                                            <span className="material-icons-sharp">contact_emergency</span>
+                                            <h3>Licensure Exam</h3>
+                                        </a>
+                                    </Link> 
+                            </div>
+                            <div id="nav-item" className="collapse">
+                                    <Link href={{ pathname: "/faculty/accomplishments/research-grant" }}>
+                                        <a className = { router.pathname === "/faculty/accomplishments/research-grant" ?  "active"  : "inactive" } id = { router.pathname === "/faculty/accomplishment" ?  "active"  : "inactive" }>
+                                            <span className="material-icons-sharp">find_in_page</span>
+                                            <h3>Research Grant</h3>
+                                        </a>
+                                    </Link> 
+                            </div>
+                    </div>
+                 }
 
 
                 {/* Faculty Load */}
@@ -151,12 +203,12 @@ function Sidebar(props) {
 
                 {/* Change Password */}
                 {/* Visibility: All Users */}
-                <Link href = "/settings/change-password">
+                {/* <Link href = "/settings/change-password">
                     <a className={ router.pathname === "/settings/change-password" ?  "active"  : "inactive" }>
                         <span className="material-icons-sharp">vpn_key</span>
                         <h3>Change Password</h3>
                     </a>
-                </Link>
+                </Link> */}
 
                 {/* User Profile */}
                 {/* Visibility: All Users */}
@@ -175,6 +227,8 @@ function Sidebar(props) {
                         <h3>Logout</h3>
                     </a>
                 </Link>
+
+                
 
             </div>
         </aside>

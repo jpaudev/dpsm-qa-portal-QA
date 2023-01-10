@@ -4,6 +4,10 @@ import jwt from 'jsonwebtoken'
 export default async function deleteEducation(data, token) {
 	let cookieData = jwt.decode(token)
     let facultyId = cookieData.facultyId
+
+	let dataObj = {}
+	dataObj['educInfoId'] = data
+
 	try {
 		if (token) {
 			try {
@@ -11,9 +15,7 @@ export default async function deleteEducation(data, token) {
 					headers: {
 						Authorization: `Bearer ${token}`
 					},
-					data: {
-						educInfoId: `${data}`
-					}
+					data: dataObj
 				})
 				return response.data
 			}  catch (err) {

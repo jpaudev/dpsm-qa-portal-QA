@@ -217,7 +217,7 @@ function LicensureExam(props) {
                                 $("#licensureexamalert").slideUp(500);
                             });
 
-                            Router.push('/faculty/accomplishment')
+                            Router.push('/faculty/accomplishments/licensure-exam')
                             
                         }}
                     >
@@ -299,7 +299,7 @@ function LicensureExam(props) {
                                 $("#licensureexamalert").slideUp(500);
                             });
 
-                            Router.push('/faculty/accomplishment')
+                            Router.push('/faculty/accomplishments/licensure-exam')
                         }}>Yes, delete</button>
                     </div>
                     </div>

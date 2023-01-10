@@ -1,4 +1,3 @@
-import Layout from '../../components/layout'
 import Link from 'next/link'
 import FacultyLoader from '../../components/faculty/faculty-load/faculty-load-table'
 import NameDisplay from '../../components/name-display'
@@ -7,7 +6,7 @@ import { parseCookies, isExpired } from "../../helpers"
 
 function FacultyLoad(props) {
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag}>
+        <>
 		<br />
 		<FacultyLoader name = { props.data.name } token = { props.token.user } unit = {props.unit} position={props.position} role={props.data.role} facultyId={props.data.facultyId} editClass = {true}>
 			{props.facultyLoad} 
@@ -17,7 +16,7 @@ function FacultyLoad(props) {
 				text-indent:5%;
 			}
 	    `}</style>
-        </Layout>
+        </>
     )
   }
 

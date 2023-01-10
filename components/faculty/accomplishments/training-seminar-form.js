@@ -41,7 +41,7 @@ class TrainingSeminarForm extends React.Component{
                     });
 
                     resetForm()
-                    Router.push('/faculty/accomplishment')
+                    Router.push('/faculty/accomplishments/training-seminar')
                 }}
             >
                 {({ values, errors, touched, isSubmitting }) => (

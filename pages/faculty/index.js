@@ -1,4 +1,3 @@
-import Layout from '../../components/layout'
 import Router from 'next/router'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
@@ -9,10 +8,10 @@ import Link from 'next/link'
 
 function Dashboard(props) { 
 	if(props.data.role == 1) {
-		return (<Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} />)
+		return (<></>)
 	} else if(props.data.role == 2 || props.data.role == 3){ 
 		return (
-	        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
+	        <>
 
 	                <div className="container">
                         <br />
@@ -46,7 +45,7 @@ function Dashboard(props) {
                         </div>
 	                </div>
 
-	        </Layout>
+	        </>
 	    )	
 	}
 }

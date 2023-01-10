@@ -7,36 +7,75 @@ import Content from './content'
 import jwt from 'jsonwebtoken'
 import { useCookies } from "react-cookie"
 import getProfilePicture from '../services/user/getProfilePicture'
-
-
-
-
+import getApprovalListInfo from '../services/faculty/approval/getApprovalListInfo';
+import getUnitAssignmentInfo from '../services/faculty/assignments/getUnitAssignmentInfo';
+import getPersonalInfo from '../services/faculty/basic-info/getPersonalInfo';
 
 function Layout(props) {
-    const [file, setFile] = React.useState();
+
     const [cookie, setCookie] = useCookies(["user"])
     
-    const getImage = async () => {
+    const [file, setFile] = React.useState();
+    const [userDetails, setUserDetails] = React.useState({
+        role: "",
+        facultyId: "",
+        name: ""
+    })
+
+    const [approvalList, setApprovalList] = React.useState({}) 
+    const [roleAssignmentFlag, setRoleAssignmentFlag] = React.useState(false);
+
+    let approval;
+    let roleAssignment;
+    let res;
+
+    const handleUserDetails = async () => {
+        
         if(Object.keys(cookie).length !== 0) {
-            let res = await getProfilePicture(cookie.user)
+
+            let data = jwt.decode(cookie.user)
+
+            //GET PROFILE PICTURE
+            res = await getProfilePicture(cookie.user)
             if(res.success) { 
                 setFile(res.result.image ? process.env.UPLOADS_URL + res.result.image : "../../DefaultUser.jpg")
             } else {
                 setFile("../../DefaultUser.jpg")
             }
-        }
-        
-    } 
-    React.useEffect( () => {
-        getImage();
-    })
 
-    let approvalList
-    if(props.approvalList) approvalList = props.approvalList
+            // OTHER USER DETAILS
+            setUserDetails(data)
+
+            if(data.role != 5 ) {
+                let personalInfo = await getPersonalInfo(cookie.user, data)
+                setUserDetails((prevState) => ({
+                ...prevState, name: [personalInfo.result.lastName, personalInfo.result.firstName].join(",")
+                }))
+
+                if(data.role == 2 || data.role == 3) {
+                    approval = await getApprovalListInfo(cookie.user, data)
+                    setApprovalList(approval.result)
+
+                    roleAssignment =  await getUnitAssignmentInfo(cookie.user, data)
+                
+                    if((data.role == 2 && roleAssignment.result.approverRemarks != null) || (data.role == 3 && roleAssignment.result)) {
+                        setRoleAssignmentFlag(true)
+                    }
+                }
+                
+            }    
+        }
+    } 
+
+    React.useEffect(() => {
+        handleUserDetails();
+    }, [props])
+
     return (
         <div>
             <Head>
                 <title id="demo1">UPM QA Portal</title>
+                <link rel="icon" href="/logo.png" />
                 {/* Stylesheet */}
                 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossOrigin="anonymous"></link>
                 <link rel="stylesheet" href= "/main.css" />
@@ -54,8 +93,9 @@ function Layout(props) {
                 <script src="/sidebar.js"> </script>
 
             </Head>
+           
             {/* Header -- Topbar */}
-            <Header name={ props.name } role={props.role}/>
+            <Header/>
             <body>
                 {/* Frame While CSS is not fully loaded */}
                 <div id="loadOverlay" style={{backgroundColor: "#333", position: "absolute", top: "0px", left: "0px", width: "100%" , height: "100%", zIndex: "2000"}}></div>
@@ -63,7 +103,7 @@ function Layout(props) {
                 {/* Main Container */}
                 <div className="containerMain">
                     {/* Sidebar */}
-                    <Sidebar role = {props.role} approvalList={approvalList} facultyId = {props.facultyId} roleAssignment={props.roleAssignmentFlag} />
+                    <Sidebar role = {userDetails.role} approvalList={approvalList} facultyId = {userDetails.facultyId} roleAssignment={roleAssignmentFlag} />
                     {/* End of Sidebar */}
 
                     {/* Content */}
@@ -78,24 +118,22 @@ function Layout(props) {
                                     <span className="material-icons-sharp">dark_mode</span>
                             </div>
 
-
                             <div className="profile pc-tablet-only">
                                     <div className="info">
-                                        <p>Logged In As: <br/> <b>{props.name}</b></p>
-                                        { props.role == "1" &&
+                                        <p>Logged In As: <br/> <b>{userDetails.name}</b></p>
+                                        { userDetails.role == "1" &&
                                             <p className="text-muted">Faculty</p>
                                         }
-                                        { props.role == "2" &&
+                                        { userDetails.role == "2" &&
                                             <p className="text-muted">Unit Head</p>
                                         }
-                                        { props.role == "3" &&
+                                        { userDetails.role == "3" &&
                                             <p className="text-muted">Department Chair</p>
                                         }
-
-                                        { props.role == "4" &&
+                                        { userDetails.role == "4" &&
                                             <p className="text-muted">DAPC</p>
                                         }
-                                        { props.role == "5" &&
+                                        { userDetails.role == "5" &&
                                             <p className="text-muted">Admin Staff</p>
                                         }
                                     
@@ -134,21 +172,21 @@ function Layout(props) {
                             
                             <div className="profile">
                                 <div className="info">
-                                    <p>Logged In As: <br/> <b>{props.name}</b></p>
-                                    { props.role == "1" &&
+                                    <p>Logged In As: <br/> <b>{userDetails.name}</b></p>
+                                    { userDetails.role == "1" &&
                                         <p className="text-muted">Faculty</p>
                                     }
-                                    { props.role == "2" &&
+                                    { userDetails.role == "2" &&
                                         <p className="text-muted">Unit Head</p>
                                     }
-                                    { props.role == "3" &&
+                                    { userDetails.role == "3" &&
                                         <p className="text-muted">Department Chair</p>
                                     }
 
-                                    { props.role == "4" &&
+                                    { userDetails.role == "4" &&
                                         <p className="text-muted">DAPC</p>
                                     }
-                                    { props.role == "5" &&
+                                    { userDetails.role == "5" &&
                                         <p className="text-muted">Admin Staff</p>
                                     }
                                 
@@ -165,7 +203,7 @@ function Layout(props) {
                 </div>
                 {/* End of Main Container */}
             </body>
-        </div>
+        </div> 
 
 
 

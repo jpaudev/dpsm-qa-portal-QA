@@ -1,5 +1,4 @@
 
-import Layout from "../../components/layout"
 import UserProfileUpload from '../../components/UserProfileUpload'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
@@ -8,15 +7,8 @@ import PersonalInformation from "../../components/user/PersonalInformation"
 import ChangePassword from "../../components/change-password"
 
 const UserProfile = (props) => {
-  return (    
-    <Layout 
-        userId={props.data.userId} 
-        facultyId={props.data.facultyId} 
-        role={props.data.role} 
-        name={props.data.name} 
-        approvalList={props.approvalList} 
-        roleAssignmentFlag={props.roleAssignmentFlag} 
-    >
+  return (   
+    <>
         <div className="container-fluid">
             <div className="row">
                 <div className="col-4">
@@ -29,7 +21,7 @@ const UserProfile = (props) => {
                 </div>
             </div>
         </div>
-    </Layout>  
+    </> 
   )
 }
 
@@ -39,11 +31,8 @@ export async function getServerSideProps(context) {
     const token = parseCookies(context.req)
   
     let personalInfo
-    let name = null
     let fullName = null
     let data
-    let approvalList = {}
-    let roleAssignmentFlag = false
     let userProfilePicture
     let userProfile
 
@@ -74,37 +63,10 @@ export async function getServerSideProps(context) {
 
                 let url = process.env.API_URL + '/faculty/basic-info/' + facultyId;
                 
-                
                 const personal = await fetch(url, header)
                 personalInfo = await personal.json()
-                name = personalInfo.result.lastName + ', ' + personalInfo.result.firstName
                 fullName = [personalInfo.result.firstName, personalInfo.result.lastName, personalInfo.result.suffix].join(' ');
                 personalInfo.result["upemail"] = data.upemail;
-                
-                let approvalURL = process.env.API_URL + '/faculty/approval/' + facultyId
-                let roleAssignmentURL = process.env.API_URL + '/faculty/basic-info/unit/assignment'
-
-                if(data.role == 2 || data.role == 3) {
-                    if(data.role == 2) {
-                        approvalURL += '?unitId=' + data.unitId
-                        roleAssignmentURL += '?unitId=' + data.unitId
-                    }
-    
-                    const approval = await fetch(approvalURL, header)
-                    approvalList = await approval.json()
-                    approvalList = approvalList.result
-    
-                    const roleAssignments = await fetch(roleAssignmentURL, header)
-                    let roleAssignmentList = await roleAssignments.json()
-                    roleAssignmentList = roleAssignmentList.result
-                    if(data.role == 2) {
-                        if(roleAssignmentList.approverRemarks != null) roleAssignmentFlag = true
-                    } else if(data.role == 3 && roleAssignmentList) {
-                        roleAssignmentFlag = true 
-                    }
-                } else if(data.role == 1) {
-                    approvalList = null
-                }
             }      
         }
     } 
@@ -113,11 +75,8 @@ export async function getServerSideProps(context) {
         props: {
             token: token && token,
             data: data,
-            name,
             fullName,
             personalInfo: personalInfo ? personalInfo.result : {},
-            approvalList: approvalList,
-            roleAssignmentFlag,
             profilePicture: userProfile
         }
     }

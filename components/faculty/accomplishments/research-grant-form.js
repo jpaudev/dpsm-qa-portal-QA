@@ -48,7 +48,7 @@ class ResearchGrantForm extends React.Component{
 					});
 
                 	resetForm()
-                	Router.push('/faculty/accomplishment')
+                	Router.push('/faculty/accomplishments/research-grant')
                 }}
 			>
 				{({ values, errors, touched, isSubmitting }) => (

@@ -285,7 +285,7 @@ function Publication(props){
                                 $("#publicationalert").slideUp(500);
                             });
                             
-                            Router.push('/faculty/accomplishment')
+                            Router.push('/faculty/accomplishments/publication')
                         }}
                     >
                     {({ values, errors, touched, isSubmitting, setFieldValue }) => (
@@ -386,7 +386,7 @@ function Publication(props){
                                 $("#publicationalert").slideUp(500);
                             });
                             
-                            Router.push('/faculty/accomplishment')
+                            Router.push('/faculty/accomplishments/publication')
                         }}>Yes, delete</button>
                     </div>
                     </div>

@@ -1,4 +1,3 @@
-import Layout from '../../components/layout'
 import jwt from 'jsonwebtoken'
 import { parseCookies, isExpired } from "../../helpers"
 import AssignUnitHead from '../../components/unit-head/assign-unit-head'
@@ -8,7 +7,7 @@ import AssignDeptChair from '../../components/dept-chair/role-assignment/assign-
 
 function RoleAssignment(props) {
     return (
-        <Layout userId={props.data.userId} facultyId={props.data.facultyId} role={props.data.role} name={props.data.name} approvalList={props.approvalList} roleAssignmentFlag={props.roleAssignmentFlag} >
+        <>
             { props.data.role == 3 &&
                 <nav>
                 <div className="nav nav-tabs nav-fill nav-justified" id="nav-tab" role="tablist">
@@ -49,7 +48,7 @@ function RoleAssignment(props) {
                     <AssignDeptChair token={props.token.user} role={props.data.role}>{props.facultyListInfo}</AssignDeptChair>
                 </div>
             </div>
-        </Layout>
+        </>
     )
   }
 

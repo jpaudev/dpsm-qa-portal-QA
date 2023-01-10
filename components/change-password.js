@@ -25,7 +25,7 @@ function ChangePassword(props) {
                             let res = await comparePassword(oldPassword, props.children.userId, props.token)
 
                             if(res.success == true) {
-                                alert.style = "visibility: hidden"
+                                alert.style = "display: none"
                                 setdisable(false)
                                 setValidate(true)
                             } else {
@@ -60,7 +60,7 @@ function ChangePassword(props) {
                                 setValidate(false)
 
                             } else {
-                                alert.style = "visibility: hidden"
+                                alert.style = "display:none"
                                 setValidate(true)
                             }
                         }} />

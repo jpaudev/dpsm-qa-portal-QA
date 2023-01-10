@@ -1,8 +1,7 @@
-import Layout from '../components/layout'
 
 function ChangePassword() {
     return (
-        <Layout>
+        <>
 			<br />
 			<h4 align = "center"> Change Password </h4>
 			<form>
@@ -20,7 +19,7 @@ function ChangePassword() {
 				</div>
 				<input type="submit" className = "btn btn-primary" value="Change Password"></input>
 			</form>
-        </Layout>
+        </>
     )
   }
   

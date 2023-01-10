@@ -19,7 +19,8 @@ function Login() {
   return (
   <div>
     <Head>
-      <title>UPM QA Portal</title>
+      <title>UPM QA Portal - Login</title>
+      <link rel="icon" href="/logo.png" />
       <link rel="stylesheet" href= "/authentication.css" />
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"/>
       <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -72,7 +73,7 @@ function Login() {
                       if(role == 1) { // faculty 
                         Router.push('/faculty/basic-info')
                       } else if (role == 2 || role == 3) { // unit head or dept. chair
-                        Router.push('/faculty')
+                        Router.push('/faculty/dashboard/')
                       } else if(role == 5) { //admin
                         Router.push('/admin')
                       }
